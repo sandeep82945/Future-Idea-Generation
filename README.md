@@ -28,8 +28,6 @@ Published in **EMNLP 2024 Main**.
 You can read the full paper on arXiv:  
 [Can Large Language Models Unlock Novel Scientific Research Ideas?](https://arxiv.org/abs/2409.06185)
 
-## Paper Image
-
 ![Paper Image](intro.png)
 
 "An idea is nothing more nor less than a new combination of old elements" (Young, J.W.). The widespread adoption of Large Language Models (LLMs) and publicly available ChatGPT have marked a significant turning point in the integration of Artificial Intelligence (AI) into people's everyday lives. This study explores the capability of LLMs in generating novel research ideas based on information from research papers. We conduct a thorough examination of 4 LLMs in five domains (e.g., Chemistry, Computer Science, Economics, Medical, and Physics). 
