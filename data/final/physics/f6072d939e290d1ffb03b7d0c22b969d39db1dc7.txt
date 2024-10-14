@@ -1,0 +1,99 @@
+We extend our recently proposed theoretical framework for estimating cavity-modified equilibrium Fermi’s golden rule (FGR) rate constants beyond the single cavity mode case to cases where the molecular system is coupled to multiple cavity modes. We show that the cumulative effect of simultaneous coupling to multiple modes can enhance FGR rate constants by orders of magnitude relative to the single mode case. We also present an analysis of the conditions necessary for maximizing this effect in the Marcus limit of FGR-based rate theory. Published under an exclusive license by AIP Publishing. https://doi.org/10.1063/5.0172265 ii. hamiltonian We begin, as in Ref. 1, by considering a donor-acceptor molecular system inside a cavity, whose Hamiltonian in its most general form is given by:
+Ĥ = ĤnpD ∣D⟩⟨D∣ + Ĥ np A ∣A⟩⟨A∣ + V̂ np DA[∣D⟩⟨A∣ + ∣A⟩⟨D∣]. (1)
+Here, ∣D⟩ and ∣A⟩ are the diabatic donor and acceptor electronic states, respectively; ĤnpD (Ĥ np A ) is the Hamiltonian of the nuclear and photonic DOF when the system is in the donor (acceptor) state; and V̂npDA is the coupling between the donor and acceptor states (an operator in the nuclear + photonic Hilbert space in the most general case). Assuming that the cavity modes are coupled to the electronic DOF but uncoupled from the nuclear DOF, ĤnpD , Ĥ np A and V̂ np DA are given in terms of sums of purely nuclear and purely photonic terms:1
+ĤnpD = Ĥ n D + Ĥ p (2a)
+ĤnpA = Ĥ n A + Ĥ p (2b)
+V̂npDA = V̂ n DA + V̂ p DA. (2c)
+J. Chem. Phys. 159, 151105 (2023); doi: 10.1063/5.0172265 159, 151105-1
+Published under an exclusive license by AIP Publishing
+12 January 2024 19:15:41
+Here, the n and p superscripts identify contributions from the nuclear and photonic DOF, respectively. It should be noted that, while the nuclear Hamiltonians ĤnD and Ĥ n A are electronic-state specific, the corresponding photonic Hamiltonian, Ĥ p, is not. Going forward, we will also assume that the molecular electronic coupling term satisfies the Condon approximation, such that V̂nDA = V n DA (a constant, as opposed to a nuclear operator). Finally, we note that the Hamiltonian of the molecular system in the cavity-free case is given by
+Ĥ m = ĤnD∣D⟩⟨D∣ + Ĥ n A∣A⟩⟨A∣ + V̂ n DA[∣D⟩⟨A∣ + ∣A⟩⟨D∣], (3)
+where the superscript m will be used throughout to indicate purely molecular (i.e. cavity-free) operators. In this work, the photonic Hamiltonian and electronic coupling term are assumed to account for contributions from multiple cavity modes:1
+Ĥ p =∑ α Ĥ pα = 1 2∑α (p̂2pα + ω 2 pαq̂ 2 pα), (4)
+V̂pDA =∑ α V̂pαDA =∑ α
+√ 2h̵ωpαgpα q̂pα. (5)
+Here, Ĥ pα and V̂pαDA are the contributions of the α-th cavity mode to the photonic Hamiltonian and electronic coupling term, respectively (α = 1, 2, 3, . . . ). This should be contrasted with Ref. 1 where only a single photonic mode was assumed (i.e. the above sums over the index α reduce to a single term). {q̂pα}, {p̂pα} and {ωpα} are the positions, momenta and angular frequencies associated with the cavity modes and
+gpα =
+¿ Á ÁÀμ2DAωpα
+2h̵ε0V , (6)
+where μDA is the donor-acceptor transition dipole moment, ε0 is the vacuum permittivity and V is the volume of the cavity. In the next step, we specialize to the case of a two-dimensional cavity with the z and x-directions parallel and perpendicular to the mirrors, respectively. The frequencies of the photonic modes in such a case are given by:
+ωp = c
+nr
+√
+k2x + k 2 z , (7)
+where kx and kz are wave vectors that correspond to the respective directions and nr is the refractive index. In the x-direction we restrict ourselves to the fundamental mode k0,x = π/Lx, where Lx is the width of the cavity along the x axis, while in the z-direction the modes are assumed to satisfy periodic boundary condition, such that kαz = 2απ/Lz , where Lz is the length of the cavity along the z axis. Substituting kx = k0,x = π/Lx and kαz = 2απ/Lz back into Eq. (7) yields:
+ωpα = √ ω2p0 + α 2δ2z , (8)
+where ωp0 = cπ/(nrLx) is the fundamental cavity frequency along the x axis, and δz = 2cπ/(nrLz) is assumed to be a parameter
+independent of Lx or ωp0.2,3 We also assume that gpα is proportional to√ωp0ωpα, such that the dimensionless parameter χ defined by Eq. (9), which measures strength of the cavity-induced electronic coupling relative to that of the cavity-free electronic coupling, is independent of α:
+1 χ ≡ h̵2g2pα (VnDAβh̵) 2ωp0ωpα . (9) iii. cavity-modified equilibrium fgr rate constants The main assumption underlying the derivation of the cavitymodified equilibrium FGR rate constant is that the electronic coupling term, V̂npDA[∣D⟩⟨A∣ + ∣A⟩⟨D∣], can be treated as a small perturbation within the framework of second-order perturbation theory. This assumption, together with the assumption that the onset of rate kinetics happens on a time scale which is much faster than the time scale of the actual electronic transition (set by the inverse of the rate constant), results in the following expression for the cavity-modified donor-to-acceptor transition rate constant:1,4–6
+kD→A = 1 h̵2∫
+∞
+−∞ dt CD→A(t). (10)
+Here, CD→A(t) is the cavity-modified donor-to-acceptor FGR time correlation function, which is explicitly given by
+CD→A(t) = TrnTrp[ρ̂eqD e iĤ npD t/h̵V̂npDAe −iĤ npA t/h̵V̂npDA]. (11)
+The corresponding cavity-free donor-to-acceptor transition rate constant is given by
+kmD→A = 1 h̵2∫
+∞
+−∞ dt CmD→A(t), (12)
+where CmD→A(t) is the cavity-free donor-to-acceptor FGR time correlation function:
+CmD→A(t) = Trn[ρ̂ eq D,ne iĤ nDt/h̵V̂nDAe −iĤ nAt/h̵V̂nDA]. (13)
+Here, Trn and Trp are the traces over the nuclear and photonic Hilbert spaces, respectively; ρ̂eqD = e −βĤ npD /TrnTrp[eβĤ np D ] is the density operator that describes the initial state of the photonic + nuclear DOF in the cavity-confined system, assumed to be in the thermal equilibrium state that corresponds to the donor state; ρ̂eqD,n = e −βĤ nD/Trn[eβĤ n D] is the density operator that describes the initial state of the nuclear DOF in the cavity-free system, assumed to be in the thermal equilibrium state that corresponds to the donor state.1
+The main quantity of interest in this communication is the ratio of the cavity-modified to cavity-free donor-to-acceptor transition rate constants, kD→AkmD→A , which captures the sought after cavity-induced
+J. Chem. Phys. 159, 151105 (2023); doi: 10.1063/5.0172265 159, 151105-2
+Published under an exclusive license by AIP Publishing
+12 January 2024 19:15:41
+relative change in the FGR rate constant. Thus, kD→AkmD→A = 1 implies no change, kD→AkmD→A > 1 implies a cavity-induced rate enhancement and kD→A kmD→A
+< 1 implies cavity-induced rate suppression. Following a similar procedure to that applied to a single-mode model in Ref. 1, and taking advantage of the fact that the modes in the multiple-mode case are uncoupled, then leads to the following expression for kD→AkmD→A :
+kD→A kmD→A = 1 +∑ α h̵2g2pα (VnDA) 2 ⟨N̂(βh̵ωpα)⟩eq[ kmD→A(ωpα) kmD→A(0) + kmA→D(ωpα) kmA→D(0) ]. (14)
+Here, ⟨N̂(βh̵ωpα)⟩ is the expectation value of the number of photons in the α-th cavity mode at thermal equilibrium,
+⟨N̂(βh̵ωpα)⟩eq = 1
+eβh̵ωpα − 1 , (15)
+kmD→A(ωpα) is given by
+kmD→A(ωpα) = 1 h̵2∫
+∞
+−∞ dteiωpαtCmD→A(t), (16)
+and kmA→D(ωpα) can be obtained from kmD→A(ωpα) by switching the labels A and D in Eqs. (12), (13), and (16). It should be noted that kmD→A(0) ≡ k m D→A and k m A→D(0) ≡ k m A→D are the cavity-free donorto-acceptor and acceptor-to-donor transition rate constants, respectively. It should be noted that kD→AkmD→A →∞ when VDA → 0, which reflects the fact that the cavity-free kmD→A → 0 when VDA → 0, while the cavity-modified kD→A remains finite. Equation (14) is the main result of this communication. It represents a generalization of a similar expression obtained for the single-mode case in Ref. 1. The main difference is the sum over multiple modes on the R.H.S. of Eq. (14), which reduces to a single term in the single cavity mode case studied in Ref. 1. Since every term in the sum on the R.H.S. of Eq. (14) is non-negative, we conclude that kD→AkmD→A ≥ 1, with equality in the cavity-free case. Thus, within our model, coupling to cavity modes would always enhance the rate constant, with the overall enhancement consisting of the sum of enhancements associated with coupling to individual cavity modes. In this communication, we will focus on the effect on the cavityinduced enhancement of the donor-to-acceptor rate constant caused by going from a single mode to multiple modes. To this end, we focus on electronic energy and charge transfer reactions whose cavity-free kinetics can be described by Marcus theory, which corresponds to a widely used approximate version of FGR-based rate theory. iv. cavity-modified marcus theory rate constants As is well known, the cavity-free donor-to-acceptor FGR rate constant, Eqs. (12) and (13), reduces to the Marcus theory rate constant in the short-time and high-temperature limits, provided that the nuclear dynamics satisfy Gaussian statistics.5,6 Within this commonly assumed limit of FGR rate theory, the various cavity-free rate constants that show up on the R.H.S. of Eq. (14) are given by the following expressions:1
+kmD→A(0) = (VmDA) 2
+h̵
+√ π
+kBTEr e−
+(ΔE+Er)2
+4kBTEr , (17a)
+kmA→D(0) = (VmDA) 2
+h̵
+√ π
+kBTEr e−
+(−ΔE+Er)2
+4kBTEr , (17b)
+kmD→A(ωpα) = (VmDA) 2
+h̵
+√ π
+kBTEr e−
+(ΔE−h̵ωpα+Er)2
+4kBTEr , (17c)
+kmA→D(ωpα) = (VmDA) 2
+h̵
+√ π
+kBTEr e−
+(−ΔE−h̵ωpα+Er)2
+4kBTEr . (17d)
+Here, ΔE is the cavity-free donor-to-acceptor reaction free energy and Er is the cavity-free reorganization energy. In what follows, we will assume that the cavity-free donor-to-acceptor (D→ A), transition is thermodynamically favorable (i.e. ΔE < 0). Following a procedure similar to that followed in Ref. 1, we define the following multi-mode cavity enhancement function of the Marcus theory rate constant:
+F(βh̵ωp0,βh̵δz) = χ( kD→A kmD→A − 1)
+=∑ α
+β2h̵2ωp0ωpα⟨N̂(βh̵ωpα)⟩eq
+× [ kmD→A(ωpα)
+kmD→A(0) + kmA→D(ωpα) kmA→D(0) ]. (18)
+We note that the frequencies of the multiple cavity modes, {ωpα∣α = 1, 2, . . . }, depend on two parameters, which are determined by the experimental setup, namely ωp0 and δz [see Eq. (8)]. The results presented below are based on assuming that δz = 0.5 a.u., which corresponds to Lz ∼ 0.1 μm [using δz = 2cπ/(nrLz) and assuming nr = 1]. We also consider a range of ωp0 values such that βhωp0 ∈ [1, 50], which corresponds to Lx ∈ [0.5 − 20] μm [using ωp0 = cπ/(nrLx) and assuming nr = 1 and T = 300 K]. The fact that the length scale of the cavity (as measrued by Lx and Ly) is in the μm range implies that they correspond to experimentally accessible microcavities. We also consider values of β∣ΔE∣ and βEr between 5 and 50. This corresponds to ∣ΔE∣ and Er in the (0.13–1.30) eV range at room temperature, which is typical for charge transfer reactions in molecular systems.1 In what follows, we will focus on analyzing the effect of going from a single cavity mode to multiple cavity modes on the cavity-induced enhancement of the Marcus theory rate constant. The cavity enhancement function in Eq. (18), F(βhωp0, βhδz), is shown in Fig. 1, as a function ωp0, for different numbers of cavity modes (1, 2, 10, 100). Differet panels in this figure correspond to different values of βΔE and βEr . Also shown in Fig. 1 is the contribution from the dominant cavity mode, which corresponds to the cavity mode with the largest contribution to the sum on the R.H.S. of Eq. (18). Inspection of Fig. 1 reveals that going from a single cavity mode to multiple cavity modes can enhance the cavity-modified Marcus theory rate constant by at least an order of magnitude. Furthermore, the additional enhancement is cumulative, i.e. the enhancement results from summing over multiple terms on the R.H.S. of Eq. (18) and cannot be explained by a single dominant mode. We also note that while the dominant term corresponds to
+J. Chem. Phys. 159, 151105 (2023); doi: 10.1063/5.0172265 159, 151105-3
+Published under an exclusive license by AIP Publishing
+12 January 2024 19:15:41
+FIG. 1. Plots of F(βhωp0,βhδz) as a function of F(βhωp0, for different numbers of cavity modes (1, 2, 10, 100). Differet panels in this figure correspond to different values of βΔE and βEr . Also shown is the contribution from the dominant cavity mode, which corresponds to the cavity mode with the largest contribution to the sum on the R.H.S. of Eq. (18) (dotted blue line). the principal cavity mode (α = 0) at small values of ∣ΔE∣, higher frequency cavity modes become dominant at larger values of ∣ΔE∣, and even more so at larger values of Er . While the number of modes included in the sum on the R.H.S. of Eq. (18) is in principle infinite, a closer inspection reveals that there is an effective upper limit beyond which additional modes do not contribute significantly to sum. This is demonstrated in
+Fig. 2(a) which shows the ratio between the multiple-mode and single-mode enhancement functions (FN and F1, respectively) as a function of the number of cavity modes, N, for three different values of the principle cavity frequency, ωp0 (see insert), in the case where β∣ΔE∣ = 35 and βEr = 20. The value of FN/F1 is seen to plateau beyond a certain finite number of modes (N ∼ 40–60 in this example), which implies an effective upper cutoff frequency beyond which
+J. Chem. Phys. 159, 151105 (2023); doi: 10.1063/5.0172265 159, 151105-4
+Published under an exclusive license by AIP Publishing
+12 January 2024 19:15:41
+FIG. 2. (a) The ratio between the multiple-mode and single-mode enhancement functions (FN and F1, respectively) as a function of the number of cavity modes, N, for three different values of the principle cavity frequency, ωp0 (see insert), in the case where β∣ΔE∣ = 35 and βEr = 20. (b) A plot of the ratio between the maximum enhancement in the case of N = 100 cavity modes, Fmax100 , and the maximum enhancement in the case of N = 1 (a single cavity mode), F max 1 , as a function of βEr and βΔE. The 16 black points correspond to the 16 panels of Fig. 1.
+multi-mode enhancement becomes ineffective. It should also be noted that the maximum multi-mode enhancement is sensitive to the value of ωp0. Further insight can be obtained from Fig. 2(b) where we plot the ratio between the maximum enhancement in the case of N = 100 cavity modes, Fmax100 , and the maximum enhancement in the case of N = 1 (a single cavity mode), Fmax1 , as a function of βEr and βΔE. The value of Fmax100 /F max 1 is seen to range between 2 × 10
+2–5 × 103, and to increase with increasing ∣ΔE∣ and decreasing Er . It should also be noted that the dependence on ∣ΔE∣ is significantly stronger than the dependence on Er . We note that a similar trend was previously reported in the context of the dependence of Fmax1 on ΔE and Er .1 v. conclusions FGR rate theory has proven to be extremely useful for calculating electronic energy and charge transfer rates in molecular systems. The considerable recent interest in the ability to modify rates of chemical processes by placing the molecular system inside a photonic cavity therefore calls for a cavity-modified FGR rate theory. In this communication we examined the effect of going from a model that accounts for a single cavity mode in a one-dimensional cavity to a more realistic model that accounts for multiple cavity modes in a two-dimensional cavity. To this end, we extended our recently proposed theoretical framework for estimating cavity-modified equilibrium FGR rate constants1 beyond the single cavity mode case to cases where the molecular system is coupled to multiple cavity modes. Similarly to the single-mode framework in Ref. 1, the FGR rate constant can be calculated from cavity-free inputs in the multi-mode case. Our major finding is that accounting for multiple cavity modes
+can enhance the Marcus theory rate constant by several orders of magnitude in comparison to the single-mode case. Furthermore, the additional enhancement is cumulative and cannot be explained by a single dominant mode. Another finding is that the rate is affected by a finite number of cavity modes whose frequency lies below a cutoff frequency. A detailed analysis of the conditions necessary for maximizing this effect and its dependence on the reaction energy and reorganization energy was presented in the case of the Marcus limit of FGR rate theory.

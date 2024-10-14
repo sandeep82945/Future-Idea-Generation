@@ -1,0 +1,218 @@
+Plastic phases are constituted by molecules whose centers of mass form a long range ordered crystalline lattice, but rotate in a more or less constrained way. Pentachloronitrobenzene (PCNB) is a quasi-planar hexa-substituted benzene formed by a benzene ring decorated with a –NO2 group and five chlorine atoms that displays below the melting point a layered structure of rhombohedral (R % 3) planes in which the molecules can rotate around a six-fold-like axis. Dielectric spectroscopy [Romanini et al., The Journal of Physical Chemistry C, 2016, 120, 10614] of this highly anisotropic phase revealed a complex relaxation dynamics with two coupled primary a processes, initially ascribed to the in-plane and out-ofplane components of the molecular dipole. In this work, we perform a series of molecular dynamics simulations together with single crystal X-ray synchrotron diffraction experiments to investigate the puzzling dynamics of PCNB. We conclude that the molecule undergoes very fast movements due to the high flexibility of the –NO2 group, and two slower movements in which only the in-plane rotation of the whole ring is involved. These two movements are related to fast attempts to perform a 601 in-plane rotation, and a diffusive motion that involves the rotation of the molecule completely decorrelating the dipole orientation. We have also investigated whether a homogeneous or a heterogeneous scenario is better suited to describe the restricted orientational disorder of this anisotropic phase both from a structural and dynamical point of view. 1 experiments and simulations  1.1 diffraction experiments Crystals of PCNB were obtained by recrystallizing the solid in MeOH. Data for the compound were collected on a colorless plate at the BL13-XALOC beamline30 of the ALBA synchrotron (l = 0.72931 Å) at 100 and 200 K. The crystal was mounted with Paratone N grease on a MiTegen kapton loop and placed in the N2 stream of an Oxford Cryosystems Cryostream. The structures were solved by intrinsic phasing with SHELXT31 and refined by full-matrix least-squares on F2 with SHELXL.32 Two twin components were found in the crystal, which were assessed with TWIN and BASF commands. At 200 K, C1 and N1 atoms were refined using SIMU and DELU instructions. Several attempts were made in order to collect data for a non-twinned crystal. However, the compound crystallizes as thin stacked plates, precluding the selection and manipulation of a single crystal. CIF files were deposited at the Cambridge Crystallographic Data Centre as 2266449 and 2266450 at 100 and 200 K, respectively.† 1.2 molecular dynamics MD simulations were performed with the GROMACS code, version 2021 using the CHARMM27 force field.33 The leapfrog algorithm was used as an integrator with a 2 fs time step. Temperature control was realized via velocity rescaling34 using a time constant of 0.5 ps. The pressure was set to 1 bar with a compressibility of 4.5 10 5 bar 1 and kept constant via a new stochastic-cell rescaling method35 (available in Gromacs
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 | 30555
+version 2021 and higher) with a time constant of 2 ps. The Verlet list scheme36 was employed with a neighbor list updated every 100 steps. The calculation of electrostatic interactions was done using the particle mesh Ewald method37 with a cut-off distance of 1.0 nm for the real-space contribution. The aforementioned CIF file 2266450† (200 K) of the diffraction experiment of this study was used to prepare the initial configuration. In order to avoid directional anisotropy in the system, the orientations of all molecules were randomized by means of an in-house developed open-software, ANGULA.38 Subsequently, a simulation was performed under NTP conditions until potential energy stabilized. Moreover, to ensure the randomness of the initially randomized system, additional simulation was carried out for a duration of 20 ns, reaching the decorrelation time. The production run lasted for 0.5 ms recording frames every 2 ps. The time scale of the simulation was limited by the long time required to perform the simulation up to ms. We needed in this study, however, a time scale large enough to obtain the whole relaxation of the molecular dipole. We have performed thus a first set of simulations in order to guess the temperature at which we would obtain the full decay of the autocorrelation curve. As can be seen in Fig. 2 the temperature chosen (T = 500 K) does follow this requirement. 2. results and discussion  2.1 diffraction of pcnb X-Ray and neutron diffraction experiments have previously shown that the six different orientations of the molecule in each crystallographic site have equal probability, thus providing a six-fold site symmetry.10,11 Such an orientational disorder is independent of the temperature, i.e., 1/6 : 5/6 NO2 : Cl occupation factors at each substitution site remain constant, whereas the atomic displacements due to thermal librations strongly depend on temperature (see Fig. 1 and Table 1). Our single crystal measurements (see Table S1, ESI†) at 100 and 200 K confirm those results. The anisotropic displacement parameters accounted for by the components of the thermal
+ellipsoid (Table 1) obtained at 100 and 200 K from the structure refinement, evidence a large amplitude vibration of C and Cl atoms along the normal of the molecular benzene ring (i.e., along the c crystallographic axis). This would entail the hypothesis that thermal displacement of the molecular dipole should appear along the [001] hexagonal direction, as argued in the previous work of Romanini et al.14
+A close look at the atomic displacements reveals that the Uii values for the two oxygen atoms are quite similar and that at least two Uij (i a j) values are one order of magnitude higher than the respective values for the rest of the atoms. It thus means that they display quasi-isotropic thermal displacements. As for the nitrogen atom, the Uii values are overall the smallest values, with the atomic vibration along the c hexagonal axis being the largest. We thus conclude that the nitrogen atom acts in some way as a pivot center for the nearly isotropic vibration of the adjacent oxygens. 2.2 dynamics of pcnb The dynamics of PCNB can be studied in depth by separating movements of different parts of the molecule. Concerning the ring we can define two vectors, one parallel to the ring (-r8) shown as a blue vector in Fig. 2 and one perpendicular to the ring (-r>) shown as a red vector in the same figure. The parallel vector has been chosen to point to the nitro group, being its origin in the carbon atom at the other extreme of the benzene ring. The vector -r> has been chosen as the vectorial product of the vector -r8 and a vector pointing from the center of the molecular ring to one of the carbon atoms. In order to compare our simulations with the results of dielectric spectroscopy, we have also plotted in Fig. 2 the dipole of the molecule ~m. The dynamics of this last vector is indeed the result of the combination of the molecular movements of the ring as a whole and the intra-molecular movements of the nitro group. This fact will be of utter importance throughout the analysis of both the dynamics and structure of the OD phase of PCNB. Fig. 1 Structure of the PCNB molecule. Colors grey, green, red and blue refer to carbon, chlorine, oxygen and nitrogen atoms, respectively. Drawing of a half molecule displaying the atomic displacement ellipsoids at 50% of substituted sites with occupational factors of 1/6 for NO2 and 5/6 for Cl derived from the single-crystal X-Ray diffraction determination at 100 K (left panel) ad 200 K (right panel). Table 1 Anisotropic displacement parameters ( 10 3 Å2) for pentachloronitrobenzene at 100 and 200 K derived from the X-ray diffraction experiment. Uncertainties are in parenthesis 100 k Atom U11 U22 U33 U23 U13 U12
+C1 19.8(7) 22.3(7) 67.4(8) 0.1(4) 0.3(4) 9.2(5) Cl1 18.5(6) 25.0(5) 116.9(8) 0.3(2) 1.0(2) 8.8(3) N1 12(6) 39(8) 63(5) 8(4) 1(3) 12(5) O1 53(5) 75(6) 54(3) 6(3) 11(3) 9(4) O2 47(5) 98(8) 80(5) 30(5) 35(4) 3(5) 200 k Atom U11 U22 U33 U23 U13 U12
+C1 26.8(7) 29.9(8) 101.4(13) 0.4(7) 0.4(6) 12.3(6) Cl1 25.5(5) 36.7(5) 169.2(13) 0.2(4) 1.7(4) 11.7(3) N1 14(3) 58(6) 92(5) 2(5) 2(3) 22(3) O1 67(7) 109(12) 89(6) 0(5) 5(5) 8(6) O2 82(9) 115(11) 126(9) 18(7) 59(8) 13(8)
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 30556 | Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 This journal is © the Owner Societies 2023
+In Fig. 2 we show the rescaled autocorrelation of the three aforementioned vectors. We can extract two conclusions from this figure: The decay of the vector -r> (red) is negligible. This fact proves that molecular tumbling is minimal. Thus, regardless of the temperature-inherent atomic displacements (vibrations) along the perpendicular direction of the ring (c-axis), only inplane rotations appear. When comparing the (rescaled) results of ~m and the vector - r8 we observe that both autocorrelation functions are very similar. The dynamics observed by dielectric spectroscopy is thus dictated by the rotation of the ring as a whole, and not by an out-of-plane component of the dipole as suggested in the work of Romanini et al.14 In order to simplify the notation, and given the fact that vector -r> plays no role in the dynamics of PCNB, we will assign the name ‘‘ring vector’’ to that parallel to the ring -r8 shown in Fig. 2 hereafter. Once stated that in-plane correlations govern the dynamics of PCNB in the OD phase, and thus dipole dynamics, we will investigate whether their autocorrelation functions can be described by a single component, or by two of them. In order to decide which model better describes our results, we use the following equation to perform the fittings:
+h~vðtÞ ~vð0Þi h~vð0Þ ~vð0Þi ¼ F aþ ð1 aÞ expðt=taÞ ba bþ ð1 bÞ expðt=tbÞbb
+(1)
+We use this model to describe the dynamics of all vectors: ~n in the equation stands, thus, for any of the three possibilities, i.e. ~n = -r8, ~n = - r> or ~n = ~m. In eqn (1), ti (i = a, b) is the correlation time, a and b are the long-time correlation asymptotes, ba and bb are the stretching exponents and F is an overall rescaling factor. The fitted function is a multiplicative combination of two movements. We assume here a homogeneous scenario where each molecule performs two movements, as opposed to an additive ansatz that considers the existence of patches with
+molecules exhibiting different dynamics (heterogeneous scenario). The rationale behind choosing the homogeneous scenario will become evident throughout this work (vide infra). We want to compare two models, with one having a single process (setting a = 1), and the second one setting a, ba, and ta as fitting parameters. Model selection has been performed by calculating the reduced w2 for both models, with one among the two processes clearly favoured as seen in Table 2. We have performed the fittings for both the autocorrelation functions of the dipole~m and of the ring vector -r8. The results of the fittings parameters can be found in Table 3, and the comparison with the obtained data is shown in Fig. 3. Results evidence that in the case of the ring vector -r8 the short-time value of the autocorrelation function is 1, while in the case of the dipole ~m is 0.8. Therefore, there is a fast movement occurring in a time scale of pico-seconds in the case of the dipole correlation function. It cannot be related to the movement of the molecule as a whole, described by the ring vector -r8, otherwise, the autocorrelation of this vector would also start at circa 0.8. The only option is thus that the reason for this decay at short times is the fast movement of the nitro group carrying the charge of the dipolar moment of PCNB. We conclude then that, contrary to what happens to the rigid benzene ring, the –NO2 group should be very flexible. This fact agrees with the diffraction results. We will, however, come back again to this point in subsequent sections of this work. From the fitting results, we have concluded that for both the dipole and the ring vector, two processes exist: fast and slow. The fast process is linked to confined motion (a a 0), while the slow process completely decorrelates the vectors over long times. This is unequivocally associated with the rotation of the ring as a whole. Table 3 demonstrates the similarity of parameters for this slow process in both the dipole and the ring vector. Consequently, this implies that the main factor contributing to the loss of dipole correlation is the in-plane rotation of the molecule as a whole. For the fast movement, although there is agreement in the time scale for ~m and -r8, there is a slight difference that can be
+Fig. 2 Relaxation curves obtained by MD simulation related to dipole correlation ~m(t) (black line and black molecular vector), an in-plane vector r-8 defined in the figure (blue dotted line and blue vector) and a vector perpendicular to the molecular ring r-> (red dashed line and red vector). In the figure~n stands for any of the three possibilities, i.e.~n = r-8,~n = r - > or~n =~m. Table 3 Correlation times obtained from MD simulations (ring vector r-8 and dipole ~m) and from dielectric spectroscopy.14 In the second case, the time window of the experiment does not allow us to access the nanosecond region and, therefore, the values are an extrapolation (see the text for details)
+Vector bfast tfast (ns) bslow tslow (ns)
+Dipole ~m 1 1.6 0.7 19 Parallel r-8 0.67 6.6 0.65 28.3 Poisson 3 33 Dielectrics (exp.) 1 4 0.72 6
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 | 30557
+related to the intrinsic flexibility of the nitro group, which strongly contributes to the molecular dipole of the PCNB. Finally, the agreement between the extrapolation of the experimental data and any of the autocorrelation functions is hard to assess: the extrapolation must be done in a temperature range as wide as 100 K, involving the change of two decades in the time scale. This extrapolation leads to two processes that are very close (almost indistinguishable). The correlation time of the fast process found in the simulation (1.6 ns for the dipole vector) is in good agreement with the values reported from dielectric spectroscopy (4 ns).14 However this agreement is not so accurate for the slow process. This discrepancy may reflect the mono/poly-crystalline character of the system: in the experiments for PCNB, powder samples were used, whereas the simulated system corresponds to an infinite monocrystalline structure due to the periodic boundary conditions. In the first case, molecular rotations may be easier to produce since nanocrystalline domains confer the system additional degrees of freedom. In order to go deeper in the study of the OD phase we have first studied the rotational movement of PCNB molecules with respect to the laboratory frame. As can be seen in Fig. 1 as well as in the snapshot of Fig. 4, PCNB is arranged in sheets and, as we have already seen, there is no ‘‘flip’’ movement of PCNB that would involve a change in the direction of a vector -r>, regardless of the fast thermal atomic displacements. Therefore the only movement that will be studied is the rotation of the ring around the z-axis of the lab frame. In Fig. 5 we show the rotation angle, defined as the angle between the x-axis and the vector -r8, as a function of time. Three different types of movements are observed: Changes between equilibrium states in the orientation of the molecules from one equilibrium angle to the next. Short time attempts to go from one equilibrium position to another one seen as spikes in the figure, that occur between changes between equilibrium states in orientation. A rattling movement of small amplitude (less than 51) of the molecule around its equilibrium orientation. For the purpose of detecting rotational jumps we have used the statistical method developed by Caballero et al.29 This
+method calculates a running average and detects, by calculating a t-student function, when a statistically relevant jump in the angle occurs (for further details see ref. 29). Fig. 5 clearly shows the success of detecting the 601 orientational jumps by this method. In order to analyze the jumps, we have calculated the probability distribution function (PDF) of the residence time between jumps.29 The obtained distribution (Fig. 6) has been fitted using two different models with one and two processes. In order to know which model better describes the data, the reduced w2, derived from the fitting, has been calculated. The simplest model corresponds to a unique Poisson distribution (PDF p e t/t) which can be seen as a straight line in Fig. 6. This model has an associated reduced chi-square w1p,red
+2 = 1.83. The second model including two processes has been built using a
+Fig. 3 Fits of auto-correlation curves associated with (panel a) the molecular dipole moment (~mi) and (panel b) the ring vector (r - 8) depicted in Fig. 2. Empty circles represent the auto-correlation results of MD simulations, solid black line shows the result of total fit, dashed blue and red lines show the results of the fast confined motion and the slow free motion, respectively. Fig. 4 Snapshot of a configuration of the OD phase of PCNB together with the laboratory reference system used to calculate the rotation of PCNB of Fig. 5. Red, green and blue vectors defining the laboratory reference frame are axis x, y and z (c-axis), respectively. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 30558 | Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 This journal is © the Owner Societies 2023
+composition of two independent Poisson distributions: one for the range 0 o t o 5 (ns) and another one in the range 5 o t o 20 (ns). In this case, the corresponding w2p,red
+2 takes a value of 1.02. The model selection clearly supports the necessity of using two Poisson processes to describe the data. This is in agreement with the results of the autocorrelation function (see Table 2). We have then calculated, from the values of the slopes, the values of the residence time (see Table 3). The results are compatible with the relaxation times obtained for the dipole ~m and the ring vector -r8. Taking into account Fig. 5, the fast process can be associated with the time between attempts of performing an orientational jump, and the slow process is thus related to the elapsed time between changes in the ‘‘equilibrium’’ positions. It must be pointed out, though, that given the results shown in Fig. 5, there is n sharp distinction between the two movements. The smooth transition between the two dynamics can easily be explained by the fact that ‘‘an attempt’’ to perform a rotational jump, can also be viewed as a ‘‘short stay’’ in an ‘‘equilibrium’’ orientation. What is indisputable is that the spikes seen in Fig. 4, no matter whether regarded as ‘‘attempts’’ or as ‘‘short stays’’, occur more often than jumps between equilibrium positions and can thus be linked to the fast movements characterized by tslow (see Table 3). To further investigate whether there is a (smooth) change between two kinds of dynamics we have also calculated the mean squared angle displacement (MSAD) as a function of time. It is important to note that, in order to calculate the MSAD, the angle cannot be wrapped in the range 01 o y o 3601. This function is therefore always increasing, i.e. no periodic boundary conditions are applied to the timedependent angular trajectories. This must be done in order to investigate if long-time dynamics can be well described by a diffusive mechanism. It must be noted that the calculation of this quantity is completely independent of the previously calculated residence times: it does not involve the use of any statistical tool and is a straightforward calculation of the molecular rotation. It serves, thus, as a consistency test of the obtained results. Fig. 7 clearly shows a (smooth) change in the angular dynamics of PCNB from a subdiffusive movement to an angular diffusive movement, the change between the two regimes is observed at about t E 10 ns. In fact, the time exponent of the long-time regime of MSAD is 1.2 0.1, which is consistent with a diffusive process. We have marked in the figure the times obtained from the Poisson distribution of residence times in abscissa, and of an angle y = 601 in the ordinate axis. As can be seen in the figure the subdiffusive movement takes place only during the first jump (y o 601), the rotations involved are more than one jump diffusive in nature, thus allowing the full decorrelation of the molecular orientation. This result completely agrees with the previous analysis based on the study of the distribution of residence times. MSAD is, indeed, an average of the unwrapped squared rotation angle of PCNB. For this reason, we have also calculated the PDF of angle y at some selected times that is hidden behind the averaged single-valued MSAD as shown in Fig. 8. As expected, for short times all molecules are rattling around the equilibrium position, however, even at the shortest time scale, a very small fraction of molecules have already performed a 601 jump. As time evolves, the number of molecules exploring greater angles increases: This is clearly seen by the PDF of angles as a function of time: peaks appear in the angle distribution at increasing angles of 601, 1201, 1801, etc. We show also in the inset the proportion of molecules with an angle y o 601, i.e. caged molecules as a function of time. For time scales of ns, 80% of molecules are caged, i.e. with an angle aring o 601. After two decades of time (hundreds of nanoseconds) the number of caged molecules has decreased to 20%. Fig. 6 Probability distribution function (PDF) of the time elapsed between two consecutive jumps. Blue and red lines show the two independent Poisson processes that can be fitted to the obtained distribution in the ranges 0 o t o 5 (ns) and 5 o t o 20 (ns), respectively. The corresponding residence times t of the processes are indicated in the figure. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 | 30559
+These results agree, and round off our previous results. Attempts to jump over equilibrium positions are molecules that ‘‘come back’’ to the original position, and therefore they can be seen as caged molecules: their MSAD is less than that related to y = 601. The dynamics of these molecules are seen as spikes in Fig. 5. Moreover, from the calculated MSAD, we have obtained that this movement is subdiffusive. For times a decade longer there is a smooth transition to a movement, diffusive in nature, that completely decorrelates PCNB orientation with respect to the initial one. A question that still needs to be answered is which scenario better describes the molecular dynamics of PCNB in the OD phase, a homogeneous or a heterogeneous one? In more specific terms, are there two patches of molecules, some moving fast and others moving slowly? We plot in Fig. 8 the residence time of a molecule (interarrival time, ti) as a function of the next residence time (ti+1). As
+can be seen in the figure there is neither a correlation between these two magnitudes, nor two groups of fast and slow moving molecules. (The fact that there is a concentration of points at short times is due to the (trivial) Poisson distribution of residence times). We conclude that concerning the dynamics, the homogeneous scenario is clearly favoured. However, this does not exclude short-time congregation of molecules with a correlation in their orientation, i.r., a spatially heterogeneous scenario. For this reason we will study in the next section the spatial orientational correlation of PCNB molecules. 2.3 local orientational ordering of pcnb The first decay in the dipole autocorrelation function in the pico-second time-scale seen in Fig. 3 has been assigned to the high mobility of the –NO2 group in a previous section. In order to test this assessment we have calculated the positions of oxygen atoms with respect to the ring structure. As can be seen in Fig. 10 oxygen atoms are distributed in a very large portion of space. The elongated-disk shape of the cloud formed by possible positions of oxygen atoms is a convolution of the libration movement of the nitrogen atom in a plane perpendicular to that of the ring (not shown for clarity) and the rotation movement of the oxygen atoms. The high flexibility of the –NO2 group is thus clear and compatible with the results of the atomic displacements determined through X-ray single crystal diffraction (see Table 1). This result supports the previous explanation of the initial decay of the dipole correlation (see Fig. 2) which was assigned to the fast movement of the flexible –NO2 group. Finally, we have studied whether there is a correlation between the rotational dynamics and the structure, that is, if there is any angular correlation between neighboring molecules. We have defined two angles that are aimed to describe the relative orientation of two neighboring molecules: aring angle is that formed between two ring vectors - r8. ydip angle is that formed between the dipoles of two molecules. In Fig. 11 panel a, we show the PDF (in the z axis) of the cosines of the angle aring between two molecules as a function of their distance. The cosines must be used to take into account the differences in solid angles as a function of angle aring, which is minimum at the poles (strictly zero indeed) and maximum at the equator. Fig. 8 (Solid lines) Probability distribution function of finding a molecule with a given MSAD after increasing time t. Dashed lines show the cumulative distribution function. The inset shows the number of molecules that are still rattling and did not perform a jump (caged molecules with y o 601). O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 30560 | Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 This journal is © the Owner Societies 2023
+As previously determined, PCNB is jumping between six equivalent positions with respect to the laboratory frame. However, this does not imply that the same result will be obtained when the reference frame is set in a (moving) molecule. As an example, two molecules avoiding an antiparallel orientation of the –NO2 groups would result in the missing of one of the six possible angles between molecules when regarded from the molecular moving frame. With regards to Fig. 11 this is not the case, the six possible relative orientations can be seen, no matter the distance between molecules. No ring correlation between molecules is thus detected and, therefore, when regarding the molecule as a whole, there are no patches of fast and slow-moving molecules. It must be pointed out that given the definition of the angle between molecules, the six orientations are seen as four spots in the plot because the scalar product is constrained between 1 and 1 (angles of 601 and 601 between two vectors result in the same scalar product). We have performed the same procedure with the angle between dipoles ydip expecting to see the same result as for the ring orientation, i.e. four spots in the angle–distance PDF plot. However, as can be seen in Fig. 11b there are two clear maxima for dipole orientations at cos(ydip) = 1. This result is in clear contradiction to that of the ring vector. The only explanation for this fact is that the dipoles of the molecule, mainly governed by the nitro group, tend to be parallel or antiparallel thanks to the high flexibility of the –NO2 group. To understand this result is crucial to point out that the dipole is not coplanar with the ring (see Fig. 2): it has a component perpendicular to it. Therefore, the observed parallelantiparallel conformation is well explained by the combination of the libration of the nitrogen atom, and the rotation of the two oxygen atoms. Finally, as shown in Fig. 11, the dipole has a continuum of relative orientations, contrary to what happens with the ring orientations. This, again, has to be understood taking into account that dipole direction is a convolution of the ring orientation and the movement of the high flexible –NO2 group that tends to orient the dipole parallel or antiparallel with the neighbouring molecules. We have concluded (from the structural analysis) that there is a correlation between dipoles. This fact, however, seems not to agree with the previous result shown in Fig. 9, i.e. there are
+no regions with fast and slow-moving molecules. Orientational correlation between molecules could cause a molecule to rotate faster or slower depending on the relative orientation of its neighbours. Therefore, it is imperative to assess whether this correlation exists only between particular pairs of molecules or the correlation creates regions where all molecules have the dipole parallel or antiparallel. In other words, whether the correlation is homogeneous throughout the structure or heterogeneous. For this reason, we have calculated how many of the first six neighboring molecules surrounding a central one have a given relative orientation. We have calculated this for all possible orientations dividing cos(ydip) in regions of D[cos(ydip)] = 0.2 (symbols in Fig. 12). We show in the figure only two cases as follows: where molecules are parallel 1 o cos(ydip) o 0.8 and when the orientation is antiparallel 0.8 o cos(ydip) o 1. Similar results (not shown) are obtained for all orientations. We have also calculated the results coming from a completely random distribution of possible orientations (lines in the same figure). There are no differences between our simulation and a random distribution as seen in Fig. 12. We thus conclude that although there is a dipole correlation, there are no patches of molecules with a given relative orientation, and thus the homogeneous scenario is undoubtedly favored also from the point of view of the local structural ordering. 3. conclusions The goal of our work was to find the microscopic mechanism behind the dynamics of PCNB molecules in their plastic phase, as obtained by dielectric spectroscopy.14
+We have performed this study by the concurrent use of single crystal X-ray synchrotron diffraction and molecular dynamics (MD) simulation. Fig. 11 Relative orientation of two neighbouring molecules as a function of the distance. Panel (a) shows this correlation taking into account the ring vector (r-8), and panel (b) taking into account the dipole (~m) (see vectors in Fig. 2). Fig. 12 Probability distribution function of the number of neighbours surrounding a central molecule with parallel dipole (cos(ydip) = 1) (black) or anti-parallel dipoles (cos(ydip) = 1) (red). See the text for details. Circles and squares represent the results obtained from MD simulations. Lines are obtained assuming a completely randomized system. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 0
+6 N
+ov em
+be r
+20 23
+. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+6 :4
+9: 16
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 30553–30562 | 30561
+Concerning the structure, our X-ray single crystal diffraction experiments of PCNB confirm the existence of statistical disorder previously reported10,11 for this plastic phase. Furthermore, we have presented new data for the anisotropic displacement parameters that agree with the high thermal flexibility of the molecules shown in the MD simulations. Concerning the dynamics, two relaxations were obtained in the aforementioned dielectric spectroscopy experiments. These were tentatively associated with in-plane and out-of-plane movements of the dipole.14 Our results indicate that the interpretation of the experimental results is not accurate. We identify the two relaxations to a fast attempt of the molecule to jump between ‘‘equilibrium’’ orientations, which is subdiffusive in nature, and a slower process associated with the jump between ‘‘equilibrium’’ positions that completely decorrelates the molecular orientation and that is diffusive in nature. Moreover, the high thermal flexibility of the –NO2 group obtained both by simulation and experiment explains the initial correlation decay of the dipole correlation obtained by MD simulations. We have also investigated if the two relaxations are better described by a homogeneous or by a heterogeneous scenario, both from the point of view of molecular movements and the local structure. We clearly obtain that the homogeneous scenario is better for describing the plastic phase of PCNB: there are neither regions of fast (slow) moving molecules nor patches of molecules with a given orientation.

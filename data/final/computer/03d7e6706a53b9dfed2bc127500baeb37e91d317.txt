@@ -1,0 +1,298 @@
+The conventional polar format algorithm (CPFA) is widely used for synthetic aperture radar (SAR) because of its simple and efficient operations. However, due to its wavefront curvature assumption, the CPFA’s depth-of-focus (DOF) is extremely small, which greatly limits the scene size, especially for high-resolution and highly squinted (HRHS) SAR. To solve this problem, an extended PFA (EPFA) is proposed in this study, re-deriving mapping functions by expanding the range history into slantand cross-range components according to the forms of real data storage. This allows the full use of storage data, which the CPFA cannot achieve due to the large approximations introduced by the projection of echo data onto the ground. The wavefront curvature error is then analyzed and eliminated using a space-variant phase compensation function. Due to the high accuracy of expansion in the slant range plane and the space-variant correction processing, the EPFA has a larger DOF than the CPFA. The EPFA is also more suitable for undulating terrains since it avoids the projection of real data onto the ground plane performed in the CPFA. Using comparative analyses of simulated data and real-world images, the results suggest that the proposed EPFA achieves better focusing effects than the CPFA and is particularly useful for HRHS SAR. 1. introduction Synthetic aperture radar (SAR) imaging is an advanced microwave remote sensing technique capable of high-resolution measurements of the Earth’s surface [1–4]. The highresolution and highly squinted (HRHS) SAR is more flexible in exploring the region of interest and obtaining a detailed image than its broadside counterparts [5]. As a result, HRHS SAR is widely considered one of the most important radar imaging models for military and civilian applications. However, while HRHS SAR can provide more information, it comes with more challenges. Generally, high resolution involves serious range curvature and large computational loads. Similarly, a high squint angle entails large linear range cell migration (LRCM) and a serious cross-coupling phase between the range and azimuth, which makes classical approaches [6–10] such as the range-Doppler algorithm (RDA) and the chirp scaling algorithm (CSA) inapplicable for HRHS SAR. For HRHS SAR data processing, the range-azimuth coupling effect becomes negligible, while the space variance of the second range compression (SRC) and the cubic range frequency phase terms become more significant. Several approaches have been developed to improve highly squinted SAR imaging qualities [11–16]. Because the CSA and ECSA ignore the space-variance SRC term, their performance is degraded for highly squinted SAR images [4]. The nonlinear CSA (NCSA) was developed to eliminate SRC variation in high-squint-angle images by introducing a perturbation function [11,12]. However, the range-dependent cubic- and higher-order terms are neglected in the NCSA. In [17], an extended NCS based on series reversion was proposed, taking higher-order terms into
+Remote Sens. 2023, 15, 456. https://doi.org/10.3390/rs15020456 https://www.mdpi.com/journal/remotesensing
+Remote Sens. 2023, 15, 456 2 of 14
+account. In [18], an azimuth nonlinear scaling algorithm was presented to improve the focusing performance. In general, as the squint angle and the resolution increase, more terms should be considered, which would make focusing more complicated. In recent years, more studies on the NCSAs [19–23] have been conducted to improve SAR data processing for more complicated imaging geometries. As a kind of time-domain algorithm with high precision, the back-projection algorithm (BPA) [24] and fast factorized BPA (FFBPA) [25,26] are considered ideal algorithms for highsquint SAR. However, compared with the frequency-domain algorithms, the time-domain approach provides lower adaptability and practicability in terms of the computational burden [27], especially for HRHS SAR. More appropriate two-dimensional (2-D) frequencydomain imaging methods have been developed, such as the omega-K algorithm [28–30], the polar format algorithm (PFA) [31], and the improved types [32–35]. As a popular method for spotlight SAR, the PFA has been widely studied and used in various applications [31,32]. The conventional PFA (CPFA) considers the center point in the imagery as the compensation reference point, according to the fact that SAR echo signals after demodulation are samples of the Fourier transform (FT) of the scene reflectivity function on a polar grid in the wavenumber domain. The differential range is approximated by utilizing a far-field assumption in CPFA, which restricts the depth of focus (DOF) [36]. The residual errors, primarily referring to wavefront bending errors, increase as the scene size expands, introducing spatially variant distortions and defocus effects into the final image, especially for HRHS SAR. A general formulation for wavefront curvature correction was derived for monistic and bistatic SAR (BiSAR) in [37,38], respectively. Hu et al. [39,40] proposed the refocusing and zoom-in PFAs (RZPFAs) for spotlight SAR imaging on an arbitrary region of interest (ROI). Incorporating 2-D non-uniform fast Fourier transform (NuFFT) operations and sub-ROIs processing into the RZPFAs could greatly decrease the impacts brought by distortion and defocusing. To expand the imaging scene, a wavefront bending correction method is proposed by Mao et al. in [41] for arbitrary flight paths, which is based on the sub-aperture method. In [42], a two-step wide-scene PFA for HRHS SAR was proposed, which uses the first and second PFA to obtain a precisely focused sub-image. Deng et al. presented a generalized PFA for BiSAR with several modes using a space-variant phase filter, which could reduce the effects introduced by the plane-wave assumption [43]. In [44], a space-variant phase compensation method was proposed for BiSAR, deriving the phase error introduced by wavefront curvature. In these methods, the PFA is expected to have been formed in the ground plane to limit the distortions and provide good phase-history matching; however, they largely ignore the height information of the target. One alternative way to produce a SAR image from the received samples is to consider a set of coordinate axes in the slant plane, expanding the range history into slantand cross-range parts according to the forms of real data storage. The target’s position information is then included in the slant-range variable. In this paper, considering the unique decoupling ability of PFA for any squint angle, an extended PFA (EPFA) for HRHS SAR is proposed. The geometric model is first established, and a new range model based on 2-D Taylor series expansion is provided. The phase errors caused by wavefront curvature errors are then analyzed in detail. According to the new range model, the mapping functions of EPFA are re-derived in the slant range plane, having higher accuracies than the CPFA. To eliminate the effect of wavefront curvature, a space-variant compensation filter in the azimuth wavenumber domain is obtained based on the analysis of phase errors. Finally, a subblock compensation method is adopted, which considers the phase error space-invariant in the subblock but the space variance between subblock cannot be ignored. Unlike the CPFA, the EPFA is insensitive to height variations since the out-of-plane projection [45] is avoided. The construction of the paper is arranged as follows: Section 2 describes the geometric model and the wavefront curvature error, while the proposed EPFA based on the new 2-D Taylor series expanded range model is discussed in Section 3. Section 4 presents the experimental comparisons between CPFA and EPFA using simulated and re-al-measured
+Remote Sens. 2023, 15, 456 3 of 14
+SAR data, evaluating the effectiveness of the proposed approach. Finally, the research conclusions are summarized in Section 5. 2. modeling  2.1. geometric model The squinted SAR imaging geometry is shown in Figure 1. The platform p travels along the Y-axis with velocity v. Assuming that M is the central point and that N is an arbitrary point of the scene, then rM and rN are the slant ranges from p to M and N at the aperture center moment (ACM). The azimuth position of points M and N at ACM are yM and yN , and l denotes the position vector from M to N.
+Remote Sens. 2023, 15, x FOR PEER REVIEW 3 of 15
+experimental comparisons between CPFA and EPFA using simulated and re-al-measured SAR data, evaluating the effectiveness of the proposed approach. Finally, the research conclusions are summarized in Section 5. 2. Modeling 2.1. Geometric Model
+The squinted SAR imaging geometry is shown in Figure 1. The platform p travels along the Y-axis with velocity v. Assuming that M is the central point and that N is an arbitrary point of the scene, then Mr and Nr are the slant ranges from p to M and N at the aperture center moment (ACM). The azimuth position of points M and N at ACM are My and Ny , and l denotes the position vector from M to N.
+(a) (b)
+Figure 1. Squinted SAR imaging geometry in (a) Cartesian and (b) Slant-range plane coordinates. Based on the imaging geometry, the instantaneous range history ( )NR η of the arbitrary point N can be given as:
+( ) ( )N MR η η= +R l (1) where η is the slow time, ⋅ denotes the norm operation, and ( )M ηR is the instantaneous range history of point M. In CPFA, the range history in (1) is first expanded into the first-order Taylor series as follows:
+( ) ( )( ) ( )( ) ( ) ( )
+1 2
+, N M M
+M M C
+R
+R
+η η η
+η η σ  = + ⋅ +  ≈ + + Δ R l R l U l (2)
+where ⋅ denotes the inner product operator, ( ) ( ) ( ) ( )( )= , ,M x y zη ζ η ζ η ζ ηU is the unit vector of ( )M ηR , and CσΔ is the range error caused by (2). Suppose that the ground plane is a planar surface without topographic effects, i.e., ( ), , 0x y= Δ Δl . One condition for establishing (2) is that l should be much smaller than ( )M ηR . A CPFA image formed in the ground plane is much preferred, having smaller distortions and good phase-history matching [28], while in high-resolution highly squinted cases, the effects caused by wavefront bending would greatly deteriorate the image performance at the age of the scene. In addition, as shown in (2), the target height is ignored in CPFA. One alternative way to produce a SAR image from the received samples is to consider a set of coordinate axes in the slant plane by expanding the range history into slant- and cross-range components according to the forms of real data storage. Mr Nr
+My Ny
+( ),N NN r y( ),M MM r y
+O
+r
+y
+Figure 1. Squinted SAR imaging geometry in (a) Cartesian and (b) Slant-range plane coordinates. Based on the imagin geometry, the instantaneous r RN( ) of the arbitrary point N can be given as:
+RN(η) = |RM(η) + l| (1)
+where η is the slow time, | · | denotes the norm operation, and |RM(η)| is the instantaneous range history of point M. In CPFA, the range history in (1) is first expanded into the first-order Taylor series as follows:
+RN(η)= [(RM(η) + l) · (RM(η) + l)] 1 2
+≈ RM(η) + 〈UM(η), l〉+ ∆σC (2)
+where 〈·〉 denotes the inner product operator, UM(η) = ( ζx(η), ζy(η), ζz(η) ) is the unit vector of RM(η), and ∆σC is the range error caused by (2). Suppose that the ground plane is a planar surface without topographic effects, i.e., l = (∆x, ∆y, 0). One condition for establishing (2) is that |l| should be much smaller than |RM(η)|. A CPFA image formed in the ground plane is much preferred, having smaller distortions and good phasehistory matching [28], while in high-resolution highly squinted cases, the effects caused by wavefront bending would greatly deteriorat the image performance at th age of the scene. In addition, as shown in (2), the target height is ignored in CPFA. One alternative way to produce a SAR image from the received samples is to consider a set of coordinate axes in the slant plane by expanding the range history into slant- and cross-range components according to the forms of real data storage. In order to extend the imaging scene and improve the imaging performance, a new range model based on 2-D Taylor series expansion is proposed. The RN(η) corresponding to rN can be rewritten as:
+RN(η) = √ r2N − y2N + (vη − yN) 2 (3)
+Remote Sens. 2023, 15, 456 4 of 14
+Given that RN(η) in (3) are described by rN and yN , the expression can be re-expanded as:
+RN(η) ≈ RM(η) + ρr(η) · ∆r + ρy(η) · ∆y + ∆σS (4)
+where ∆r = (rN − rM), ∆y = (yN − yM), and ∆σS denotes the range error caused by wavefront curvature. The expanded coefficients ρr(η) and ρy(η) varying with the azimuth time η can be given as:  ρr(η) = ∂RN(η) ∂rN |N=M = rMRM(η)
+ρy(η) = ∂RN(η)
+∂yN |N=M = −vη RM(η)
+(5) 2.2. wavefront curvature error analysis The CPFA can achieve good imaging performance for small scenes. However, in high-resolution highly squinted images, the wavefront curvature error would cause severe defocusing effects and geometric distortion in large scene-size imaging. The wavefront curvature error cannot be ignored and must be analyzed. The curvature errors caused by the traditional range model and the proposed range model are given as, respectively:{
+∆σC(η, ∆x, ∆y) = RN(η)− RM(η)− ( ζx(η) · ∆x + ζy(η) · ∆y ) ∆σS(η, ∆r, ∆y) = RN(η)− RM(η)− ( ρr(η) · ∆r + ρy(η) · ∆y
+) (6) Applying the parameters listed in Table 1, the phase errors resulting from (6) are shown
+in Figure 2. The π/4 is considered the boundary. Note that the proposed range model is more appropriate for large scenes compared with the traditional. If the imaging scene becomes even larger, the focusing algorithm should consider the wavefront curvature error. Table 1. Parameter settings. Parameter Value Parameter Value
+Carrier Frequency 9.65 GHz Altitude 7 km Pulse Bandwidth 200 MHz Slant range 15 km
+Sampling Frequency 300 MHz Velocity 100 m/s Scene size 2 km × 2 km Squint Angle 60◦
+Remote Sens. 2023, 15, x FOR PEER REVIEW 5 of 15
+The phase errors caused by the 2-D Taylor series expansion of curvature range error SσΔ are shown in Figure 3, and the unit of the contour map is π . The maximum phase errors in the image scene are far less than 4π , which indicates the accuracy of this thirdorder model is satisfactory. 3. Imaging Approach The linear frequency modulation (LFM) signal is assumed to be the transmitted signal. We transform the signal to the range frequency domain and perform range compression. Then the echo signal is given by:
+( ) ( ) ( ) ( ) ( )0 4 , exp r cr r r a N f f
+S f f w j c
+π η ω η η +  = − ⋅ 
+  R (8)
+Remote Sens. 2023, 15, 456 5 of 14
+The phase errors caused by the 2-D Taylor series expansion of curvature range error ∆σS are shown in Figure 3, and the unit of the contour map is π. The maximum phase errors in the image scene are far less than π/4, which indicates the accuracy of this third-order model is satisfactory. Remote Sens. 2023, 15, x FOR PEER REVIEW 5 of 15 (a) (b)
+Figure 2. Phase errors caused by wavefront curvature error. (a) CPFA; (b) EPFA. The range error MσΔ can be approximated as:
+( ) ( ) ( ) 2 3 2 3
+2 3 , , 2 6
+i i N Ni j i j
+S i j i j i j i jN N N N
+C R C R r y r y r y r y r y η η σ η + = + = ∂ ∂ Δ Δ Δ ≈ Δ Δ + Δ Δ ∂ ∂ ∂ ∂  (7)
+The phase errors caused by the 2-D Taylor series expansion of curvature range error SσΔ are shown in Figure 3, and the unit of the contour map is π . The maximum phase errors in the image scene are far less than 4π , which indicates the accuracy of this thirdorder model is satisfactory. (a) (b)
+Figure 3. Phase errors caused by the approximation of the curvature range error: (a) In range–azimuth plane; (b) in the height–azimuth plane. 3. Imaging Approach The linear frequency modulation (LFM) signal is assumed to be the transmitted signal. We transform the signal to the range frequency domain and perform range compression. Then the echo signal is given by:
+( ) ( ) ( ) ( ) ( )0 4 , exp r cr r r a N f f
+S f f w j c
+π η ω η η +  = − ⋅ 
+  R (8)
+0.7854 0.7854 -100 -50 0 50 100 -100 -80 -60 -40 -20 0 20 40 60 80 100
+10 20 30 40 50 60
+0.7854 0.7854 0. 78 54
+0.7854
+0.7854
+0.7854
+-500 0 500
+-500
+-400
+-300
+-200
+-100
+0
+100
+200
+300
+400
+500
+0.5 1 1.5 2 2.5 3 3.5 4
+-1 0
+1
+-1
+0
+1 0
+0.05
+0.1
+0.15
+0.2
+Azimuth(km)Range(km) -1 0
+1
+-0.5
+0
+0.5 0
+0.05
+0.1
+0.15
+0.2
+Azimuth(km)Height(km)
+Figure 3. Phase errors caused by the approxi ation of the curvature range error: (a) In range–azimuth plane; (b) in the height–azimuth plane. 3. imaging a proach The linear frequency modulation (LF ) si l is ss t t e trans itted signal. We transform the signal to the range frequency domain and perform range compression. Then the echo signal is given by:
+S0( fr, η) = ωr( fr)wa(η) exp ( −j 4 ( fr + fc)
+c · |RN(η)|
+) (8)
+where ωr(·) and wa(·) are the range frequency and azimuth time windows, fc and fr are the carrier and range frequencies, and c represents the speed of light. Then, (3) can be expressed as:
+S0(Kr, η) = ωr(Kr)wa(η) exp(−jKr · |RN(η)|) (9)
+where Kr = 4π( fr + fc)/c is the range wavenumber. 3.1. epfa Substituting (4) into (9), the phase of the echo signal after range compression can be expressed as:
+ϕN(Kr, η) ≈ −Kr · [ RM(η) + ρr(η) · ∆r + ρy(η) · ∆y + ∆σS(η, ∆r, ∆y) ] (10)
+The first term could be removed by the bulk compensation, and the compensation function can be constructed by the reference point M, i.e.,
+Hc(Kr, η) = exp(jKr · |RM(η)|) (11)
+After bulk compensation with (11), the reference point can be well-focused, whereas the others cannot. The interpolations are performed with a different mapping function from those of the CPFA, given by: {
+Kr · ρr(η)→ K′r Kr · ρy(η)→ K′y
+(12)
+Remote Sens. 2023, 15, 456 6 of 14
+where K′r and K′y are both the new wavenumbers. Figure 4 depicts the raw data distribution variations, from (Kr, y) to ( K′r, K′y )
+domains after the mapping of (12). Different from CPFA in the squinted SAR, a rectangle can be used to restrict the polar region of support and exploit all of the sampled data, eliminating the spatial variations without losing resolution. Additionally, the interpolation operations can be replaced using the NuFFTs to decrease the computational loads [36,37]. Remote Sens. 2023, 15, x FOR PEER REVIEW 6 of 15 where ( )rω ⋅ and ( )aw ⋅ are the range frequency and azimuth time windows, cf and rf are the carrier and range frequencies, and c represents the speed of light. Then, (3) can be expressed as: ( ) ( ) ( ) ( )( )0 , expr r r a r NS K K w jKη ω η η= − ⋅ R (9) where ( )4r r cK f f cπ= + is the range wavenumber. 3.1. EPFA Substituting (4) into (9), the phase of the echo signal after range compression can be expressed as: ( ) ( ) ( ) ( ) ( ), , ,N r r M r y SK K R r y r yϕ η η ρ η ρ η σ η ≈ − ⋅ + ⋅ Δ + ⋅ Δ + Δ Δ Δ  (10) The first term could be removed by the bulk compensation, and the compensation function can be constructed by the reference point M, i.e.,
+( ) ( )( ), expc r r MH K jKη η= ⋅ R (11) After bulk compensation with (11), the reference point can be well-focused, whereas
+the others cannot. The interpolations are performed with a different mapping function from those of the CPFA, given by:
+( ) ( ) r r r r y y K K K K ρ η ρ η ′ ⋅ →  ′⋅ →
+(12)
+where rK ′ and yK ′ are both the new wavenumbers. Figure 4 depicts the raw data distribution variations, from ( ),rK y to ( ),r yK K′ ′ domains after the mapping of (12). Different from CPFA in the squinted SAR, a rectangle can be used to restrict the polar region of support and exploit all of the sampled data, eliminating the spatial variations without losing resolution. Additionally, the interpolation operations can be replaced using the NuFFTs to decrease the computational loads [36,37]. (a) (b)
+Figure 4. Raw data distribution change diagram of EPFA. (a) Sampled data before mapping; (b) sampled data after mapping. Via the 2-D interpolation processing, the signal changes from ( ),rK η to the new coordinate domain ( ),r yK K′ ′ ,
+Figure 4. Raw data distribution change diagram of EPFA. (a) Sampled data before mapping; (b) sampled data after mapping. Via the 2-D interpolation processing, the signal changes from (Kr, η) to the new coordinate domain ( K′r, K′y ) ,
+S3 ( K′r , K ′ y ) ≈ ωr ( K′r ) ωa ( K′y ) exp [ −j ( K′r · ∆r + K′y · ∆y )] · exp[−jKr∆σS(η∗, ∆r, ∆y)] (13)
+The first-order exponential term determines the target position in the imaging domain. The second exponential term is wavefront bending, whose form changes after the interpolation. Then, the range inverse Fourier transform (IFT) and azimuth FT are performed to (13), producing a focused image in the slant plane. sc f (r, y) = sin c(r− ∆r)sin c(y− ∆y) · exp{jϕres(∆r, ∆y)} (14)
+(14) represents the outcome of 2-D coarse focusing, and ϕres(∆r, ∆y) is the phase error in the imaging domain. In the CPFA, a 2-D IFT produces a focused image in the ground plane, ignoring the effects of the residual phase errors. Generally, the residual error introduced by the plane-wave assumption [33] limits the DOF greatly. The residual phase errors should be considered in the subsequent compensation. 3.2. space variance phase error compensation As analyzed in the previous section, the wavefront curvature range error can deteriorate the focusing performance for large scenes. After the EPFA processing, a space-variant filter is employed to eliminate the defocus effects induced by ∆σS. Based on the EPFA, a space-variant error compensation method is adopted in this paper, which is a subblock compensation method. Remote Sens. 2023, 15, 456 7 of 14
+3.2.1. Phase Compensation Filter The space-variant phase error after interpolation can be expressed as ϕcur ( K′r, K′y ) in (13), which is obtained by the mapping relation provided by (10) from ϕcur(Kr, η). Substituting (7) into (13), the residual phase after the 2-D interpolation is expressed as:
+ϕcur ( K′r, K ′ y, ∆r, ∆y ) = −Kr ( ∑
+i+j=2
+Ci2∂ 2RN(η∗)
+2∂riN∂y j N ∆ri∆yj + ∑ i+j=3
+Ci3∂ 3RN(η∗)
+6∂riN∂y j N
+∆ri∆yj ) (15)
+Using the 2-D interpolation processing in (12), the original azimuth time η becomes the non-uniform sampling time η∗. The new azimuth time η∗ can be deduced from (12), such that
+K′r K′y = ρr(η∗) ρy(η∗) = |rM| −vη∗ (16)
+Then, η∗ can be obtained as:
+η∗ = − K′y · |rM|
+K′r · v (17)
+Note that η∗ is a function of K′r and K′y. Then, (15) can be rearranged as:
+ϕcur ( Ky ′, ∆r, ∆y ) = −Ky ′
+[ 3
+∑ i=1
+ξi(∆r, ∆y)η∗(i−1) ]
+(18)
+where the coefficient ξi is space-variant and is given as: ξ1(∆r, ∆y) = ∆r2yM |rM |2 + ∆r 3yM |rM |3 − ∆r∆y|rM | − ∆r2∆y |rM |2 ξ2(∆r, ∆y) = − ∆r 2v 2|rM |2 − ∆r3v 2|rM |4 − ∆r 2∆yyMv |rM |4
+ξ3(∆r, ∆y) = ∆r2∆yv2
+2|rM |4
+(19)
+Thus, the space-variant wavenumber domain filter can be expressed as:
+H ( Ky ′ ) = exp { jKy ′ [ 3
+∑ i=1
+ξi(∆r, ∆y)η∗(i−1) ]}
+(20)
+3.2.2. Space-Variant Filter Implementation
+Since the coefficients ξi are space-variant, the computation burden would be enormous if H ( Ky ′ )
+is varied with the target position according to the expression in (20). Processing can be made considerably more efficient by updating the filter function only as rapidly as required to maintain the residual defocus at an acceptable level [37]. Thus, the uncompensated EPFA image must be divided into several subblocks for curvature phase error correction. This method considers the phase error space-invariant in the subblock and the space-variant between subblocks. Then, the spectra of subblocks are multiplied by the compensation filter with the updated parameters corresponding to their central positions. The detailed implementation steps are shown below:
+(1) Partition: The uncompensated EPFA image is divided into Nr × Ny sub-images, which should guarantee that at the edge of the sub-image, the residual defocus can be neglected after filter implementation. Nr and Ny represent the numbers of sub-images in the range and azimuth dimensions, respectively. (2) Filter: A sub-image of the interpolated echo signal in (14) is obtained by windowing, which has a size of Lx × Ly and centers on the pixel grid (rm × yn). According
+Remote Sens. 2023, 15, 456 8 of 14
+to the pixel (rm × yn), the space-variant error compensation factor in the azimuth wavenumber domain can be constructed as follows:
+H(rm ,yn) ( Ky ′ ) = exp { jKy ′ [ 3
+∑ i=1
+ξi(∆r, ∆y)η∗(i−1) ]}
+(21)
+The subblock data are carried out using the azimuth IFT and multiplied by the H(rm ,yn) ( Ky ′ ) . The space-variant error is then eliminated in the azimuth wavenumber domain. Finally, the azimuth FT is used to yield the compensated focused image. (3) Joint: The previous steps are repeated for all the sub-images. Then the whole image can be created by splicing all the compensated output images of the subregions. The entire EPFA flowchart is presented in Figure 5. The EPFA is easy to implement, having simple process flows similar to the CPFA. The only difference between the CPFA and the EPFA is the mapping functions derived from various decompositions. In particular, the mapping functions could be performed using 2-D interpolation. However, in terms of the computational burden, two one-dimensions (1-Ds) [32,33] and NuFFTs [36] are the preferred option. In addition, the EPFA accounts for the space-variant phase error and extends the imaging scene. The filter processing is realized by compensating for the phase error of the central pixel of the sub-image by providing approximate corrections to the surrounding points, thereby reducing computations and ensuring image continuity. Remote Sens. 2023, 15, x FOR PEER REVIEW 9 of 15 phase error of the central pixel of the sub-image by providing approximate corrections to
+the surrounding points, thereby reducing computations and ensuring image continuity. Echos
+Range FT
+Range Compression
+Bulk Compensation
+Mapping Function
+Range IFT
+Azimuth FT
+Uncompensatated
+EPFA Image
+Subblock Partition
+Azimuth IFT
+Space-variant Error
+Compensation
+Azimuth FT
+Subimage Joint
+SAR Slant-range
+Image
+EPFA
+( )
+( ) r r r r y y
+K K
+K K
+ 
+ 
+ →   →
+Space-variant Filter
+( ) ( ),m n yr yH K 
+Figure 5. Flowchart of the EPFA. 3.3. computation analyses. As shown in Figure 5, the EPFA primarily contains two range FT/IFT operations, one
+azimuth FT/IFT operation, two complex multiplications, and one 2-D interpolation. The
+computational loads of EPFA with specific formulas are derived as:
+( )2 22 4 2EPFA MNlog N MNlog M MNO kNM+= + + (22)
+where N and M are the range and azimuth sampling numbers, respectively, and k is the
+kernel length of the 2-D interpolation. The phase compensation filter process contains two
+azimuth FT/IFT operations and one complex multiplication. If the uncompensated image
+is divided into r yN N sub-images, the total computational load of the focusing method
+for the nonparallel sequential execution is:
+( )22 r y yM E r y yPF rA N N L L lO og LO L L+= + (23)
+where rL and yL are the sampling number in the range and azimuth direction of each
+sub-image, respectively. The BPA [24] is then used for comparison. 2
+BO M N= (24)
+To analyze the time complexity conveniently, we assume that the number of azimuth
+and range sampling numbers are M and that the number of image pixels is M M . In the
+proposed algorithm, the order of magnitude of time complexity is ( )2O M , similar to the CPFA, whereas the BPA is ( )3O M . As a result, the order of magnitude of time complexity of the EPFA is less than that of the BPA but is equal to that of the CPFA. Figure 5. Flowchart of the EPFA. i
+, t i t I , i IFT operation, t o co plex lti lications, i l i . t ti l l f it ifi f r l r ri s:
+OEPFA = (2MNlog2N + MNlog2M) + 4kNM + 2MN (22)
+where N and M are the range and azimuth sampling numbers, respectively, and k is the kernel length of the 2-D interpolation. The phase compensation filter process contains two
+Remote Sens. 2023, 15, 456 9 of 14
+azimuth FT/IFT operations and one complex multiplication. If the uncompensated image is divided into Nr × Ny sub-images, the total computational load of the focusing method for the nonparallel sequential execution is:
+OM = OEPFA + Nr Ny ( 2LyLrlog2Ly + LyLr ) (23)
+where Lr and Ly are the sampling number in the range and azimuth direction of each sub-image, respectively. The BPA [24] is then used for comparison. OB = M2N (24)
+To analyze the time complexity conveniently, we assume that the number of azimuth and range sampling numbers are M and that the number of image pixels is M×M. In the proposed algorithm, the order of magnitude of time complexity is O ( M2 ) , similar to the
+CPFA, whereas the BPA is O ( M3 ) . As a result, the order of magnitude of time complexity of the EPFA is less than that of the BPA but is equal to that of the CPFA. 4. simulation results Simulated and real image datasets were used in experiments to evaluate the performance and effectiveness of the proposed approach. 4.1. simulated data analyses Simulated data were used to verify the effectiveness of the proposed approach. A 3 × 3 dot matrix was set in the simulated scene, with central target PT0 as the reference target. A point target PT3, indicated by the red dot, is at a 0.2 km altitude, with the same coordinates in the horizontal plane as PT0. The scene geometry is displayed in Figure 6, with a scene size of 2 km × 2 km, and Table 1 summarizes the simulation parameters. Remote Sens. 2023, 15, x FOR PEER REVIEW 10 of 15
+4. Simulation Results
+Simulated and real image datasets were used in experiments to evaluate the perfor-
+mance and effectiveness of the proposed approach. 4.1. Simulated Data Analyses
+Simulated data were used to verify the effectiveness of the proposed approach. A 3
+× 3 dot matrix was set in the simulated scene, with central target PT0 as the reference
+target. A point target PT3, indicated by the red dot, is at a 0.2 km altitude, with the same
+coordinates in the horizontal plane as PT0. The scene geometry is displayed in Figure 6,
+with a scene size of 2 km × 2 km, and Table 1 summarizes the simulation parameters. Figure 6. The simulated scene for highly squinted SAR. Figure 7 presents the image results for the entire target area using the CPFA and
+EPFA. The focusing results for point targets PT0, PT1, PT2, and PT3 are marked by red
+circles. To further assess the performance of the proposed algorithm, a comparative anal-
+ysis was then carried out. The contour plots for the impulse response function (IRF) of the
+four targets are shown in Figures 8 and 9. (a) (b)
+Figure 7. Imaging result of the whole scene. (a) CPFA; (b) EPFA. Azimuth
+R an
+g e
+Azimuth
+R an
+g e
+PT2
+PT0
+PT1
+PT3
+PT2
+PT3 PT0
+PT1
+Figure 7 presents the image results for the entire target area using the CPFA and EPFA. The foc sing results for po nt target PT0, PT1, PT2, and PT3 are marked by red circles. To further assess the pe formance of the propo ed algorithm, a comparative analysis was then carried ut. The contour plots the impuls response function (IRF) f the four t rgets are shown in Figures 8 and 9. Th contour plots in Figure 7a were refined and are presented in Figure 8. Note that the center point target PT0 is well-focused, while the edge targets PT1 and PT2 are seriously defocused due to large residual phase errors. The 2-D impulse response functions (IRFs) of targets circled in Figure 7b are shown in Figure 9. The imaging results by EPFA are visually well-focused in both the range and azimuth dimensions for the central target and the edge targets PT1 and PT2. Remote Sens. 2023, 15, 456 10 of 14
+Remote Sens. 2023, 15, x FOR PEER REVIEW 10 of 15 4. Simulation Results Simulated and real image datasets were used in experiments to evaluate the performance and effectiveness of the proposed approach. 4.1. Simulated Data Analyses Simulated data were used to verify the effectiveness of the proposed approach. A 3 × 3 dot matrix was set in the simulated scene, with central target PT0 as the reference target. A point target PT3, indicated by the red dot, is at a 0.2 km altitude, with the same coordinates in the horizontal plane as PT0. The scene geometry is displayed in Figure 6, with a scene size of 2 km × 2 km, and Table 1 summarizes the simulation parameters. Z X Y p O PT0PT1 PT3 PT2 Azimuth Figure 6. The simulated scene for highly squinted SAR. Figure 7 presents the image results for the entire target area using the CPFA and EPFA. The focusing results for point targets PT0, PT1, PT2, and PT3 are marked by red circles. To further assess the performance of the proposed algorithm, a comparative analysis was then carried out. The contour plots for the impulse response function (IRF) of the four targets are shown in Figures 8 and 9. (a) (b)
+Figure 7. Imaging result of the whole scene. (a) CPFA; (b) EPFA. Figure 7. Imaging result of the whole scene. (a) CPFA; (b) EPFA. Remote Sens. 2023, 15, x FOR PEER REVIEW 11 of 15
+(a) (b)
+(c) (d)
+Figure 8. 2-D IRF of targets by CPFA. (a) PT0; (b) PT1; (c) PT2; (d) PT3. (a) (b)
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+Figure 8. 2-D IRF of targets by CPFA. (a) PT0; (b) PT1; (c) PT2; (d) PT3. The comparative results for PT3 by CPFA and EPFA are given in Figures 8d and 9d. Note that the imaging result of the EPFA (Figure 9d) can be well-focused, while the CPFA result greatly deteriorated due to the out-of-plane projection. This indicates that the focusing results of the proposed approach will not be affected by height variation, whereas the focusing results of the traditional method are defocused as a result of ignoring the height variation. It is important to point out that the position of the elevated target is still inaccurate in the EPFA since the target is projected into the slant plane with the incorrect position (layover phenomena) [20,21]. The geometric distortion brought by topography variations should be corrected as discussed in [16,17]. To evaluate the performance of the proposed approach, the imaging quality parameters, i.e., the impulse response width (IRW), peak sidelobe ratio (PSLR), and integration sidelobe ratio (ISLR), are calculated and analyzed. The summary of the results is listed in Table 2, which demonstrates the superiority of the proposed method. Remote Sens. 2023, 15, 456 11 of 14
+Remote Sens. 2023, 15, x FOR PEER REVIEW 11 of 15 (a) (b)
+(c) (d)
+Figure 8. 2-D IRF of targets by CPFA. (a) PT0; (b) PT1; (c) PT2; (d) PT3. (a) (b)
+(c) (d)
+Figure 9. 2-D IRF of targets by EPFA. (a) PT0; (b) PT1; (c) PT2; (d) PT3. R an ge (S am pl es ) R an ge (S am pl es ) R an ge (S am pl es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+R an
+ge (S
+am pl
+es )
+Figure 9. 2-D IRF of targets by EPFA. (a) PT0; (b) PT1; (c) PT2; (d) PT3. 4.2. real data experiments Real data from an experimental X-band SAR were processed using the EPFA and CPFA for comparative analysis. The platform speed was 32 m/s, the trajectory height was approximately 1500 m, the squint angle was 49◦, the transmitted signal bandwidth was 800 MHz, and the azimuth resolution was 0.3 m. Figure 10 shows the experimental results for the CPFA and EPFA. In order to facilitate comparison, Figure 10b shows the focused result on the ground plane projected by the slant-plane image. The Hamming windows were also added in both cases. The results show that the processed image of the EPFA is comparatively better focused than the CPFA, particularly in the reflector area (see highlighted regions). Image
+Remote Sens. 2023, 15, 456 12 of 14
+entropy is used to quantitatively evaluate the imaging results of the real data in this paper. For SAR images, it is generally believed that the smaller the image entropy, the better the image focus [46]. In this experiment, the image entropy values, i.e., 2.66 and 2.37 corresponding to CPFA and EPFA, respectively, are computed to show the superiority of the proposed approach. The experimental results suggest that the proposed EPFA provides better focusing effects for HRHS SAR data than the conventional approach. Remote Sens. 2023, 15, x FOR PEER REVIEW 13 of 15
+Figure 10. Experimental results. (a) CPFA; (b) EPFA. In order to facilitate comparison, Figure 10b shows the focused result on the ground plane projected by the slant-plane image. The Hamming windows were also added in both cases. The results show that the processed image of the EPFA is comparatively better focused than the CPFA, particularly in the reflector area (see highlighted regions). Image entropy is used to quantitatively evaluate the imaging results of the real data in this paper. For SAR images, it is generally believed that the smaller the image entropy, the better the image focus [46]. In this experiment, the image entropy values, i.e., 2.66 and 2.37 corresponding to CPFA and EPFA, respectively, are computed to show the superiority of the proposed approach. The experimental results suggest that the proposed EPFA provides better focusing effects for HRHS SAR data than the conventional approach. 5. Conclusions Spatially variant distortions and defocusing effects caused by the wavefront curvature assumption in the CPFA become more pronounced in large scene images. To address this problem, the EPFA was developed for HRHS SAR images, adopting a new range model based on the 2-D Taylor series expansion and accounting for the wavefront curvature error. The 2-D interpolation function is derived in the slant-range plane, and the compensation filter is designed for the space-variant phase errors. In contrast to the CPFA performed in the ground plane, the EPFA is developed using a slant range and an azimuth position in the slant-range plane. The proposed approach has a much larger DOF than the CPFA because of the slant-range decomposition and space-variant correction procedures; the EPFA’s performance is also unaffected by the target height. The experimental results using simulated and real image data show that the proposed method performed well,
+Figure 10. Experimental results. (a) CPFA; (b) EPFA. 5. conclusions Spatially variant distortions and defocusing effects caused by the wavefront curvature assumption in the CPFA become more pronounced in large scene images. To address this problem, the EPFA was developed for HRHS SAR images, adopting a new range model based on the 2-D Taylor series expansion and accounting for the wavefront curvature error. The 2-D interpolation function is derived in the slant-range plane, and the compensation filter is designed for the space-variant phase errors. In contrast to the CPFA performed in the ground plane, the EPFA is developed using a slant range and an azimuth position in the slant-range plane. The proposed approach has a much larger DOF than the CPFA because of the slant-range decomposition and space-variant correction procedures; the EPFA’s performance is also unaffected by the target height. The experimental results using simulated and real image data show that the proposed method performed well, achieving better focusing effects than the CPFA.

@@ -1,0 +1,216 @@
+This research work is devoted to undertaking a dynamical system representing SARS-CoV19 disease under the concept of piecewise fractional-order derivative using the Caputo concept since long-memory and short-memory terms are not well explained by ordinary fractional differential equations . It has been found that for such disruption, piecewise operators of fractional derivatives have been found useful in many cases. Therefore, we study a compartmental model of susceptible and infected individuals under the concept of piecewise derivative. We establish the existence theory of the considered model by using some Banach and Schauder fixed-point theorems. Keeping the importance of stability, a pertinent result related to the said area is also developed. The said concept of stability is based on the concept given by Ulam and Hyers. Further, to derive the numerical results, we use the Euler method to develop a numerical scheme for the considered model. Using real available data, we have presented various graphical presentations of two compartments against different fractional orders and various values of isolation parameters. The crossover behaviors in the dynamics can be clearly observed, which is explained by the piecewise operators, not the usual fractional-order derivative. 1. introduction Mathematical models play a vital role in the analysis, spreading, and predictions of infectious diseases. They are very important in understanding how to analyze efficient control of viruses and also prevention efforts [1–3]. There are various infectious diseases, with compartmental models ranging from the SIR model to some more complicated ones [4]. There are a lot of diseases, such as Dengue fever, Hanta fever, and Leptospirosis, that are widely spreading throughout the world [5,6]. Diseases that spread from one person to another through various are called infectious diseases. Additionally, noninfectious diseases are caused by inherited or environmental factors. Throughout history, infectious diseases have resulted in the loss of a huge number of human lives. The latest epidemic, which originated in China, is known as SARS-CoV-19. It is a serious respiratory infection with a high mortality rate. China gained control over the SARS outbreak because of a combination of restrictions and effective prevention measures. Among other viral diseases, the recent COVID-19 pandemic has produced a worldwide disaster, including over eight million individuals affected and a mortality-to-recovery ratio that looks to be in a favorable proportion. Despite the fact that COVID-19 has been known about and researched for a long time by medical professionals and researchers, many individuals are unaware of the condition. Vaccinations and antiviral
+Axioms 2023, 12, 292. https://doi.org/10.3390/axioms12030292 https://www.mdpi.com/journal/axioms
+medications to prevent or cure the infection are still unavailable [7–9]. In contrast to SARS-CoV 2003, COVID-19 has a considerable and lengthy incubation time. Recently, some remarkable work has been published on the mentioned disease model, such as [10,11]. Here, it should be kept in mind that epidemiology is the branch of science that essentially deals with the mathematical modeling of the spread of diseases. Moreover, mathematical modeling in epidemiology is concerned with describing the spread of disease and its effect on people. During the past 70 years, the study of infectious disease dynamics has matured into a rich interdisciplinary field at the intersection of mathematics, epidemiology, computational physics, ecology, evolutionary biology, immunology, sociology, and public health. Therefore, such and related infectious diseases could be modeled via different mathematical tools. The most common techniques for modeling epidemic diseases include ordinary differential equations, partial differential equations, and stochastic and delay differential equations. There has been a lot of research on the mathematical models for infectious diseases with the consideration of fractional and fractal-fractional operators, for instance, see [12–14]. There are numerous definitions of fractional calculus that were successfully applied to different systems where some nice properties of the underlying systems were derived by the researchers [15–17]. Physical phenomena frequently undergo sudden changes that standard derivatives of either fractional or integer ordering struggle to adequately describe since ordinary fractional differential operators involve long memory and hence cannot accommodate those evolutionary processes that depend upon short memory . The aforesaid property has been discussed in detail in [18,19] by using the concept of piecewise derivative of fractional order. Hence, it has been concluded by the authors that the mentioned aspect of fractional calculus can be used as a powerful tool to describe many real-world variations in their dynamical behaviors. Following the mentioned importance, authors [20] have extended the said concepts of fractional calculus to define other forms of operators involving piecewise form. Comparatively to a conventional fractional derivative, the above-mentioned operators are more commonly able to characterize such phenomena. The authors of [21] established some qualitative results using the aforesaid concept. Coupled systems, due to the wide range of applications, have attracted the attention of many researchers. Because of their extensive applications in many fields, including the synchronization of chaos theory, coupled systems consisting of real order equations have been researched thoroughly. In this regard, various systems involving usual fractional derivatives have been studied in [22–25]. The concept of piecewise has been extended to coupled systems recently. For instance, the authors of [26] studied the existence and stability results of a model involving piecewise derivative using the non-singular derivative concept. The authors of [27] used the piecewise forms of fractional calculus and addressed the qualitative aspects of a coupled problem of blood therapy. These novel operators are quite useful since they allow one to examine a mathematical model using both classical operators as well as fractional operators in a single interval that is separated into two sub-intervals. These operators have provided researchers with a fresh avenue to investigate cross-over behaviors. For some details, we refer to [28–31]. Here, it should be keep in mind that usual fractional order models provide almost identical results up to the peak of the number of infected humans, whereas the later phase of the epidemic is more accurately modeled by the system using the modified parameters. Moreover, we demonstrate that a nonlinear fractional order differential equation model can simulate the dynamics of the epidemic much more accurately than the classical model based on first derivatives. However, the crossover behaviors in the dynamics cannot be well elaborated by using classical or usual fractional order models. The concerned effect can be more precisely described by using the concept of piecewise fractional-order derivatives. Most of the COVID-19 mathematical models have been studied by using the concept of fractional ordinary derivatives with singuler or non-singular kernels. However, the concept of piecewise derivatives has been very rarely used for the aforementioned models. Motivated by these benefits, we investigate the proposed COVID-19 model using classical
+and Caputo piecewise operators. Here, in this work, we intend to use the techniques of [32] and investigate the dynamical aspects of a generalized SI epidemic model. The classical form of the proposed model has been studied in [33] and described as dS dt = a− kSI(1− α)− kαβSI− µS, dI dt = kSI(1− α) + kαβSI− 1 γ I− µI. S(0) = S0 > 0, I(0) = I0 ≥ 0. (1)
+In the above model, S and I represent the susceptible and infected individuals, respectively, at any time period t. We extend the operator to piecewise form and consider the model (1) as PC 0 D δ 0S(t) = a− k(1− α)SI− αkβSI− µS = F1(t, S, I), 0 < δ ≤ 1 PC 0 D δ 0I(t) = k(1− α)SI + αkβSI− 1 γ I− µI = F2(t, S, I), t ∈ [0, T]
+S(0) = S0, I(0) = I0,
+(2)
+where PCDδ represents the piecewise operator with order 1 ≥ δ > 0. The nomenclatures involved in the model (2) are described in Table 1. Additionally, F1, F2 are the continuous functions from [0, T]× R× R to R. The left hand side (2) can be written as
+PC 0 D δ t (S(t)) =
+{ dS dt , i f t ∈ [0, t1],
+cDδS(t), i f t ∈ (t1, T], (3)
+PC 0 D δ t (I(t)) = { dI dt , i f t ∈ [0, t1], cDδ I(t), i f t ∈ (t1, T]. (4)
+Stability is an important consequence of applied analysis. Different concepts about stability analysis have been used in literature. Here, we will use the concepts given by Ulam and Hyers. The mentioned concepts have been used in many research articles, such as [34,35]. We will use the typical fixed-point theorems of Banach, Schauder, and Arzelá and the Ulam–Hyers type of stability results associated with the proposed model to be investigated. We enrich this section by formulating a new model. Additionally, we construct the flow charts of the interaction of different compartments of the model with each other. 2. preliminaries Fundamentals concepts, lemmas, and notions are recollected from frictional differential calculus. This detail is examined in [20,32] . Definition 1. The piecewise version of the Riemann–Liouville integral of a continuous function F ∈ L[0, T], where δ ∈ (0, 1] is defined as
+PRL 0 I δ t F(t) = {∫ t1 0 F(s)ds i f t ∈ [0, t1], 1
+Γ(δ) ∫ t t1 (t− s)δ−1[F(s)]ds, i f t ∈ (t1, T]. (5)
+Definition 2. The piecewise classical and arbitrary order derivative in the sense of Caputo is given by
+PC 0 D δ t (F(t)) =
+{ dF dt , with t1 ≥ t ≥ 0,
+CDδF(t), with t ∈ (t1, T], (6)
+Lemma 1. The solution of
+PC 0 D δ t (F(t)) = X(t), with δ ∈ (0, 1],
+F(0) = F0
+is given by
+F(t) =
+{ F0 + ∫ t1 0 X(s)ds, with t1 ≥ t ≥ 0,
+F(t1) + ∫ t t1 (t−s)δ−1X(s) Γ(δ) ds, with t ∈ (t1, T]. (7) 3. qualitative results To discuss the dynamical properties of the proposed model, we will consider the product and Banach spaces. Let
+Z1 = {S : [0, T]→ R, S ∈ C([0, T])}
+and
+Z2 = {I : [0, T]→ R, I ∈ C([0, T])}
+are the Banach spaces endowed with the norms ‖S‖ = supt∈[0,1] |S(t)| and ‖I‖ = supt∈[0,1] |I(t)|, respectively. In addition, the product space Z1 × Z2 is also a Banach space, with the norm defined by
+‖(S, I)‖ = ‖S‖+ ‖I‖. Corollary 1. Using Lemma 1, the solution of the system (2) is given by S(t) = { S0 + ∫ t1 0 F1(s, S, I)ds, i f t ∈ [0, t1], S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds, i f t ∈ (t1, T], I(t) = { I0 + ∫ t1 0 F2(s, S, I)ds, i f t ∈ [0, t1],
+I(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds, i f t ∈ (t1, T]. (8)
+For the analysis, we must show that the below data-dependence results are true. (A1) : There exist constants LS > 0 and LI > 0 such that for every (S, I), (S, I) ∈ Z1 × Z2
+|F1(t, S, I)− F1(t, S, I)| ≤ LS[S− S|+ |I− I|],
+|F2(t, S, I)− F2(t, S, I)| ≤ LI[S− S|+ |I− I|]. (A2) : For constants CF1 , DF1 , CF2 , DF2 and NF1 , NF2 > 0, the following assertions (also called the growth condition) are satisfied
+|F1(t, S, I)| ≤ CF1 |S|+ DF1 |I|+ NF1 , |F2(t, S, I)| ≤ CF2 |S|+ DF2 |I|+ NF2
+To establish the theory related to the existence of solution, firstly, we need to define
+G = (g1, g2) : Z1 × Z2 −→ Z1 × Z2,
+by G(S, I) = (g1(S, I), g2(S, I)). Furthermore, one can express these operators in extended form as
+g1(S, I) =
+{ S0 + ∫ t1 0 F1(s, S, I)ds, i f t ∈ [0, t1],
+S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds, i f t ∈ (t1, T],
+(9)
+and
+g2(S, I) =
+{ I0 + ∫ t1 0 F2(s, S, I)ds, i f t ∈ [0, t1],
+I(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds, i f t ∈ (t1, T]. (10)
+Theorem 1. Under the assumption (A1), the problem (2) has a unique solution if the condition max{K1, K2} < 1 holds, where K1 = t1(LF1 + LF2), K2 = Tδ Γ(δ+1) [LF1 + LF2 ]. Proof. Consider (S, I), and (S, I) in Z1 × Z2; we prove the results as follow: Cases-I: At t ∈ [0, t1], then from (9)
+|g1(S, I)− g1(S, I)| ≤ ∫ t1
+0 |F1(s, S, I)− F1(s, S, I)|ds. (11)
+Taking the maximum value of both sides of (11), we have
+|g1(S, I)− g1(S, I)| ≤ t1LF1(‖S− S‖+ ‖I − I‖). (12)
+Repeating the above procedure for the operator given in (10) at [0, t1] as
+|g2(S, I)− g1(S, I)| ≤ t1LF2(‖S− S‖+ ‖I − I‖). (13)
+From (12), and (13), we have over t ∈ [0, t1]
+‖G(S, I)− G(S, I)‖ = ‖g1(S, I)− g1(S, I)‖+ ‖g2(S, I)− g2(S, I)‖ ≤ t1(LF1 + LF2 )(‖S− S‖+ ‖I − I‖). (14)
+Hence, using K1 = t1(LF1 + LF2), one has from (14) that
+‖G(S, I)− G(S, I)‖ ≤ K1‖(S, I)− (S, I)‖. (15)
+Next, we prove the results for t ∈ (t1, T]. Cases-II: Let (S, I), (S, I) ∈ Z1 × Z2, then one has
+|g1(S, I)− g1(S, I)| = 1
+Γ(δ) ∫ t t1 (t− s)δ−1 ∣∣F1(s, S, I)− F1(s, S, I)∣∣ds. (16)
+Applying assumption (A1) after simplification, one has from (16)
+|g1(S, I)− g1(S, I)| ≤ ηδ
+Γ(δ + 1) LF1(‖S− S‖+ ‖I− I)‖). (17)
+Repeating the same procedure for second operator on (t1, T], we have
+|g2(S, I)− g2(S, I)| ≤ ηδ
+Γ(δ + 1) LF2(‖S− S‖+ ‖I− I)‖). (18)
+From (17), and (18), we have for t ∈ (t1, T]; one has
+‖G(S, I)− G(S, I)‖ ≤ η δ
+Γ(δ + 1) (LF1 + LF2)‖(S, I)− (S, I)‖. (19)
+Let K2 = ηδ
+Γ(δ+1) [LF1 + LF2 ]; then, (19) yields
+‖G(S, I)− G(S, I)‖ ≤ K2‖(S, I)− (S, I)‖. (20)
+Thus, we have from (20)
+‖G(S, I)− G(S, I)‖ ≤ {
+K1‖(S, I)− (S, I)‖, i f t ∈ [0, t1], K2‖(S, I)− (S, I)‖, i f t ∈ (t1, T]. (21)
+Hence, as a final conclusion for t ∈ [0, T], one has from (15), and (21)
+‖G(S, I)− G(S, I)‖ ≤ max{K1, K2}‖(S, I)− (S, I)‖. (22)
+Hence, if max{K1, K2} < 1, hence all the conditions of Banach theorem hold. Thus, (2) has at most one solution. Theorem 2. The considered system (2) has at least one solution under the hypothesis A2. Proof. If E ⊂ Z1 × Z2 is closed and convex, such that E = {(S, I) ∈ Z1 × Z2 : ‖(S, I)‖ ≤ r}, and there exist two operators as
+H1(S, I) =
+{ S0 + ∫ t1 0 F1(s, S, I)ds, i f t ∈ [0, t1],
+S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds, i f t ∈ (t1, T],
+(23)
+H2(S, I) =
+{ I0 + ∫ t1 0 F2(s, S, I)ds, i f t ∈ [0, t1],
+I(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds, i f t ∈ (t1, T],
+(24)
+then we derive the proof as
+Case-I:At t ∈ [0, t1] : Step-1: If (S, I) ∈ E, at t ∈ [0, t1], one has
+||H1(S, I)|| ≤ |S0|+ supt∈[0,t1] ∫ t1
+0 |F1(s, S, I)| ≤ |S0|+
+( CF1 + DF1 + NF1 ) t1. (25)
+In the same way for t ∈ [0, t1], the second operator, one has
+||H2(S, I)|| ≤ |I0|+ ( CF2 + DF2 + NF2 ) t1 (26)
+From (25) and (26), we obtain
+‖H1(S, I)‖+ ‖H2(S, I)‖ ≤ |S0|+ |I0|+ [ (CF1 + CF2 )‖S‖+ (DF1 + DF2 )‖I‖+ NF1 + NF2 ] t1. (27)
+Let CF1 +CF2 = a, DF1 +DF2 = b and |S0|+ |I0| = λ, max(a, b) = θ, and NF1 +NF2 = N. Then, (27) implies that
+‖H(S, I)‖ ≤ λ + t1θ‖(S, I)‖+ Nt1 ≤ r,
+where r ≥ λ+Nt11−θt1 . Hence, ‖H(S, I)‖ ≤ r. Thus, H is bounded and H(S, I) ∈ E; this implies that H(E) ⊆ E, with t ∈ [0, t1]. Case-II: For t ∈ (t1, T], for (S, I) ∈ E at t ∈ (t1, T], one has
+‖H1(S, I)‖ ≤ [
+sup t∈(t1,T]
+|S(t1)|+ 1
+Γ(δ) ∫ t t1 (t− s)δ−1|F1(s, S, I)|ds
+]
+≤ [
+sup t∈(t1,T]
+|S(t1)|+ 1
+Γ(δ) ∫ t t1 (t− s)δ−1(CF1‖S‖+ DF1‖I‖+ NF1 )ds ] (28)
+≤ |S(t1)|+ 1
+Γ(δ + 1)
+[ (CF1‖S‖+ DF1‖I‖) + NF1 ] (T − t1)
+≤ |S(t1)|+ 1
+Γ(δ + 1)
+[ (CF1‖S‖+ DF1‖I‖) + NF1 ) ] T.
+In the same line, one has also
+‖H2(S, I)‖ ≤ |I(t1)|+ 1
+Γ(δ + 1)
+[ CF2‖S‖+ DF2‖I‖+ NF2 ] T. (29)
+Now using M= |S(t1)|+ |I(t1)|, we have from (28), and (29)
+‖H1(S, I)‖+ ‖H2(S, I)‖ ≤ ∆ + 1
+Γ(δ + 1) (a‖S‖+ b‖I‖+ N)T
+‖H1(S, I)‖+ ‖H2(S, I)|| ≤ ∆ + θT Γ(δ + 1) (‖(S, I)‖) + NT Γ(δ + 1) . Thus one has
+‖H(S, I)‖ ≤ ∆ + θT Γ(δ + 1) r + NT Γ(δ + 1) ≤ r.
+Using for easiness the notions p = θTΓ(δ+1) , and q = T Γ(δ+1) . Then r ≥ ∆+Nq 1−p . Now if max {
+λ+Nt1 1−θt1, ∆+Nq 1−p
+} ≤ r, then ‖H(S, I)‖ ≤ r. Additionally H is bounded. Moreover,
+H(E) ⊆ E, at t ∈ [t1, T]. Step-2: Since F1, F2 ∈ C[0, T]. Hence H1, H2 are continuous in the same domain. Now to show that H = (H1, H2) is equi-continuous, Let t ∈ [0, t1], then tm < tn ∈ [0, t1], one has
+|H1(S, I)(tn)− H1(S, I)(tm)| ≤ (tn − tm) [ CF1 r + DF1 r + NF1 ] → 0 as tm → tn,
+and
+|H2(S, I)(tn)− H2(S, I)(tm)| ≤ (tn − tm) [ CF2 r + DF2 r + NF2 ] → 0 as tm → tn. Since H1, H2 are bounded in [0, t1], H is also bounded, which implies uniformly continuity; hence, we obtain
+|H(S, I)(tn)− H(S, I)(tm)| ≤ (tn − tm) [ CF2 r + DF2 r + NF2 ] → 0 as tm → tn. Now if tm < tn ∈ (t1, T], then
+|H1(S, I)(tn)− H1(S, I)(tm)| ≤ 1
+Γ(δ) ∫ tn tm (tn − s)δ−1F1(s, S, I)ds (30)
+|H1(S, I)(tn)− H1(S, I)(tm)| ≤ 1 Γ(δ + 1) ( (CF1 + DF1)r + NF1 ) ((tn − tm)δ. Hence (30), we see if tm → tn, in the right side, which becomes zero, so
+|H1(S, I)(tn)− H1(S, I)(tm)| → 0 with tm → tn. Additionally, H1 is bounded over (t1, T], so it is uniformly continuous and hence
+‖H1(S, I)(tn)− H1(S, I)(tm)‖ → 0 with tm → tn. (31)
+Similarly, we have
+‖H2(S, I)(tn)− H2(S, I)(tm)‖ → 0 with tm → tn. (32)
+Therefore, one has from (31) and (32)
+‖H(S, I)(tn)− H(S, I)(tm)‖ → 0 with tm → tn. Thus, H is equi-continuous. As a result, all of the requirements for approximately compactness are met, and H has at least one fixed value. Subsequently, a solution to model (2) exists. 4. ulam–hyers stability analysis Stability is an important branch of qualitative analysis. Here, we establish the said aspect using the Ulam–Hyers concept. Definition 3. The solution (S, I) satisfies the given system of inequalities for any e > 0, such that{∣∣PC 0 D δ 0S(t)− F1(t, S, I) ∣∣ ≤ e,∣∣PC 0 D δ 0I(t)− F2(t, S, I)
+∣∣ ≤ e, (33) is said to be Ulam–Hyers stable if there exists a unique solution (S, I), and constant Ω > 0, with
+‖(S, I)− (S, I)‖ ≤ Ωe. Let a function f does not depend upon S, and I, such that f (0) = 0,; then,
+Remark 1. i : | f (t)| ≤ e, t ∈ [0, T]), ii :  PC 0 D δ t (S(t)) = F1(t, S, I) + f (t) PC 0 D δ t (I(t)) = F2(t, S, I) + f (t),
+S(0) = S0, I(0) = I0. (34)
+Lemma 2. The solution of (34) satisfies the following relations:
+|S(t)− ( S0 + ∫ t1
+0 F1(s, S, I)ds
+) | ≤ t1e, t ∈ [0, t1],
+|S(t)− ( S(t1) + 1
+Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds ) | ≤ [ Tδ Γ(δ + 1) ] e, t ∈ (t1, T], (35)
+and
+|I(t)− ( I0 + ∫ t1
+0 F2(s, S, I)ds
+) | ≤ t1e, t ∈ [0, t1],
+|I(t)− ( I(t1) + 1
+Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds ) ≤ [ Tδ Γ(δ + 1) ] e, t ∈ (t1, T]. (36)
+Proof. In view of Corollary 8, a solution to Remark 1 will takes the form
+S(t) =
+{ S0 + ∫ t1 0 F1(s, S, I)ds + ∫ t1 0 f (s)ds, t ∈ [0, t1],
+S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds + 1Γ(δ) ∫ t t1 (t− s)δ−1 f (s)ds t ∈ (t1, T],
+(37)
+and
+I(t) =
+{ I0 + ∫ t1 0 F2(s, S, I)ds + ∫ t1 0 f (s)ds, t ∈ [0, t1],
+I(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds + 1Γ(δ) ∫ t t1 (t− s)δ−1 f (s)ds t ∈ (t1, T]. (38)
+Now from (37) and (38), we have|S(t)− ( S0 + ∫ t1 0 F1(s, S, I)ds ) | ≤ t1e, t ∈ [0, t1], |S(t)− ( S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F1(s, S, I)ds ) | ≤ [ Tδ Γ(δ+1) ] e, t ∈ (t1, T],
+and |S(t)− ( S0 + ∫ t1 0 F2(s, S, I)ds ) | ≤ t1e, t ∈ [0, t1], |S(t)− ( S(t1) + 1Γ(δ) ∫ t t1 (t− s)δ−1F2(s, S, I)ds ) ≤ [ Tδ Γ(δ+1) ] e, t ∈ (t1, T]. Theorem 3. Model (2) is Ulam–Hyers stable if K1 < 1, and K2 < 1, where K1 = t1(LF1 + LF2) < 1, K2 = T δ
+Γ(δ+1) (LF1 + LF2) < 1. Proof. If (S, I) ∈ Z1 × Z2 is the unique solution and (S, I) ∈ Z1 × Z2 is any solution of (2), then for t ∈ [0, t1], and in view of assumption A1, and using Lemma 2, one has
+‖S− S‖ ≤ t1e + t1LF1 ( ‖S− S‖+ ‖I− I‖ ) , (39)
+and
+‖I− I‖ ≤ t1e + t1LF2 ( ‖S− S‖+ ‖I− I‖ ) . (40)
+Adding (39) and (40), we have
+‖S− S‖+ ‖I− I‖ ≤ 2t1e + t1(LF1 + LF2) ( ‖S− S‖+ ‖I− I‖ ) . (41)
+Let us use t1(LF1 + LF2) = K1; then, we have from (41)
+‖(S, I)− (S, I)‖ ≤ 2t1 1− K1 e t ∈ [0, t1]. (42)
+In the same line for t ∈ (t1, T], we have
+‖S− S‖ ≤ T δ
+Γ(δ + 1) e + TδLF1 Γ(δ + 1) (‖(S, I)− (S, I)‖), (43)
+and
+‖I− I‖ ≤ T δ
+Γ(δ + 1) e + TδLF2 Γ(δ + 1) (||(S, I)− (F, I)||). (44)
+Adding (43) and (44), we obtain
+‖(S, I)− (S, I)‖ ≤ 2T δ
+Γ(δ + 1) e +
+Tδ Γ(δ + 1) ( LF1 + LF2 ) (‖(S, I)− (S, I)‖). (45)
+For easiness, we put K2 = T δ Γ(δ+1) (LF1 + LF2), K3 = 2Tδ Γ(δ+1) ; then, (45) yields
+‖(S, I)− (S, I)‖ ≤ K3 1− K2 e, t ∈ (t1, T] (46)
+Since K1 < 1, and K2 < 1. Therefore, 1− K1 6= 0, 1− K2 6= 0; hence, from (42), and (46) with max { 2t1
+1−K1 , K3 1−K2
+} = Ω, one has
+‖(S, I)− (S, I)‖ ≤ Ωe. (47)
+Hence, the solution is Ulam -Hyers stable. Furthermore, whenever a function Θ (constant or increasing) from R+ R+ exists such
+that Θ(e) = e. Then, by using (47), we have
+‖(S, I)− (S, I)‖ ≤ ΩΘ(e), (48)
+with Θ(0) = 0, which proves that considered system is generalized Ulam–Hyers stable. 5. numerical scheme We provide a method for computing answers numerically to our suggested system (2). We create a framework for our simulation solution using the laws of definite integrals. We must build the approach for the first DE of the system (2) and then apply it to the following equations. The scheme (to be developed) has been explained and applied in detail in [36]. We extended the usual RK2 formula for the concept of the piecewise derivative. The classical form of the said scheme has been given in [37]. For the classical order derivative in t ∈ [0, t1], and the fractional order Caputo derivative t ∈ (t1, T]. We write (2) using y = (S, I) with 0 < δ ≤ 1 as PC 0 D δ 0S(t) = F1(t, y), PC 0 D δ 0I(t) = F2(t, y),
+S(0) = S0, I(0) = I0. (49)
+Now, the numerical scheme based on RK2 method can be written for (49) by using first equation as
+S(ti+1)) =  Si−1(ti−1) + ∆t 2 F1 [ ti−1 + ∆t 2 , yi−1(ti−1) + K1 2 ] , t ∈ [0, t1], Si(ti) + hδ
+γ(δ + 1) F1(ti, yi(ti)) +
+(∆t)δ
+2Γ(δ + 1)
+[ K2 + K3 ] , t1 < t ≤ T,
+(50)
+where ∆t = ti+1 − ti, and
+K1 = F1(ti−1, yi−1(ti−1)), K2 = F1(ti, yi(ti)),
+K3 = F1 ( ti +
+2(∆t)δΓ(δ + 1) Γ(2δ + 1) , x(ti) + 2(∆t)δΓ(δ + 1) Γ(2δ + 1) F1(ti, xi(ti))
+) . (51)
+In the same fashion, we can write for the second equation of the system (49) as
+I(ti+1)) =  Ii−1(ti−1) + ∆t 2 F2 [ ti−1 + ∆t 2 , yi−1(ti−1) + K1 2 ] , t ∈ [0, t1], Ii(ti) + (∆t)δ
+γ(δ + 1) F2(ti, yi(ti)) +
+(∆t)δ
+2Γ(δ + 1)
+[ K2 + K3 ] , t1 < t ≤ T.
+(52) 6. results and discussion Here in this section, we present a numerical discussion to the proposed model by using the given values of the Table 2. In addition, take initial values as given in [7] as S(0) = 220 millions, I(0) = 0.142 million. Using Matlab 16, we present the graphical presentation of the considered model for different fractional order in Figures 1–4, respectively. Here, we consider an isolation rate of approximately 30%. Further, we present the graphical presentation of the considered model for different fractional order in Figures 5–8, respectively. Here, we consider an isolation rate of approximately 50%. In addition, to see the effect of greater isolation on the dynamics, we present the graphical presentation of the considered model for different fractional order in Figures 9–12, respectively. Here, we consider isolation rate approximately 70%. From Figures 1–12, we see that at greater fractional order the effect of memory is more clear. Additionally, with the passage of time, the population of susceptible class is decreasing until it becomes stable and the convergent effect can be observed clearly. On the other hand, an infected class population initially increases for less than 100 days and then decreases . Moreover, the dynamical behavior effect has also been investigated by using various rate of isolation. The greater the isolation value, the smaller the spreading of the infection process will be. On the other hand, we see that the effect of memory is decreasing when the fractional order values are decreasing. The dynamical behaviors of both classes are the same as mentioned earlier. Further, the change in dynamical behavior near the point t = 100 can be observed clearly. After the mentioned point, the dynamics assume the multi-behaviors. This multi-behavior can only be clearly and brilliantly detected by using the piecewise derivative concept. 7. conclusions In this research work, we study a dynamical model that predicts COVID-19 disease infection. We have used a piecewise derivative concept to detect the multi-behavior concept and short memory effect in the dynamics of the considered system. We have proved some conditions for the existence of at least one solution and its uniqueness through a fixedpoint approach. Additionally, we have used some numerical tools to study the numerical analysis of the proposed model. Using some real data, we have presented the numerical analysis of the corresponding compartments graphically against various fractional orders. Additionally, the effect of isolation has been verified by using various values of it. The greater the isolation effect, the less will be the chance of spreading of infection. Here, it is remarkable
+that using the Caputo type of fractional derivative, we bring forth a concept of “memorydependent derivative”, which is simply expressed in an integral form of a ordinary and fractional derivative with a kernel function on a slipping interval. In the same way, high-order derivatives can also be accorded with the first-order one. Comparatively, the form of kernel function for the fractional type has been kept fixed, although for the memory-dependent type it can be selected freely corresponding to the necessity of applications. So, this kind of definition is better than the fractional one for reflecting the memory effect (the instantaneous rate of change depends on the past state). The important mathematical model describing the evolution of infectious diseases is called compartmental models. The foundation was built by Kermack and Mckendrick in 1927 for the first time to study the spread of the infectious diseases in community. The fractional derivative epidemic models provide a powerful instrument for the incorporation of memory and the hereditary properties of the systems as opposed to the integer-order models, where such effects are ignored or difficult to incorporate. In addition, when fitting data, the fractional models have one more degree of freedom than the integer-order model. The proposed model is a very simple model that contains two compartments, and many other classes have been ignored. Here, we have established the qualitative analysis of the existence theory of solution and numerical interpretation. However, from present results, we concluded that the piecewise derivative can help to understand the effect of the short memory effect in the dynamical systems, which cannot be explained through an ordinary fractional-order derivative.

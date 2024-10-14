@@ -1,0 +1,222 @@
+In this paper we address the possibility that in a competitive facility location model, one of the existing competing facilities will go out of business. We find the best location for a new facility protecting against such a possibility. Four commonly used decision rules (optimistic, pessimistic, minimax regret, and expected value) are analyzed and optimally solved within a given relative accuracy. The results of extensive computational experiments are reported. Special upper bounds, that may be a basis for other optimization problems, are designed and run time was improved by more than 1,000 times. The largest instance of 10 existing competing facilities and 20,000 demand points was solved in less than one second by each of the four decision criteria. 1 introduction A decision maker is faced with uncertainty about future conditions. There are several possible scenarios that are termed “states of the world”. A list of options is available and the decision maker needs to select one of the options without knowing for sure which state of the world will take place. There are four widely used decision analysis rules (optimistic, pessimistic, minimax regret and expected value). For details see, for example, Goodwin and Wright (2014); Lawrence and Pasternack (2002); Winston and Albright (2016); Winston and Goldberg (2004), and the discussion in Section 2. We apply these decision analysis rules to the location of a new competing facility among p existing competing facilities with future uncertainty. There are p + 1 states of the world: (i) all existing facilities remain in the market, (ii) each one of the existing facilities will no longer exist once the new facility enters the market and its location has already been determined. The same analysis and solution approaches can be applied to possibilities that more than one facility will
+fail. The number of options (selection of the location for the new facility) is infinite. Any point in the area is an option for the location of the new facility. In brick and mortar competing facilities, such as shopping malls, it can be very costly to move the facility to a better location once it is established, and is thus not included in the list of options. Our goal is to find a good location for the new facility that will protect against such uncertainties. Any model for estimating the market share captured at each location can be applied. We selected for demonstration purposes the gravity model (Huff, 1964, 1966; Reilly, 1931) which is commonly used for estimating the market share captured (for example, Aboolian et al., 2007a,b, 2009; Bell et al., 1998; Fernández et al., 2007; Hodgson, 1981; Sáiz et al., 2009). The specific gravity model is detailed in Section 3. For a review of various competitive models see Drezner (2022). There are a few papers that apply decision analysis rules (mainly the minimax regret rule) to location models. For example, Averbakh and Berman (2000) applied the minimax regret rule to the median location problem and Puerto et al. (2009) applied it to the single-facility ordered median location problem. Daskin et al. (1997) investigated a probabilistic minimax regret model. Drezner (2009) incorporated future market conditions, such as changes in future buying power distribution, into the gravity model. Future market conditions were analyzed as a set of possible scenarios. The minimax regret rule is applied. This paper is organized as follows. In Section 2 the four decision analysis rules are reviewed and analyzed, and in Section 3 the gravity model used to estimate the captured market share by facilities is detailed. In Section 4 the solution procedures designed for finding the optimal solution within a given relative accuracy ǫ > 0 for the four decision rules models are constructed. Extensive computational experiments are reported in Section 5, and we summarize and discuss the contribution of the paper in Section 6. 2 decision analysis rules There are three commonly used decision analysis rules that do not require probability estimates for each state of the world, and one (expected value) that does. The three that do not require probability estimates are: (i) hoping for the best possible outcome (optimistic), (ii) protecting against the worst possible outcome (pessimistic), and (iii) minimizing the maximum gap (regret)
+for each state of the world between the profit at the selected option and the maximum possible profit for that state of the world (minimax regret). Optimistic rule: The location that gives the largest market share among all states of the world
+is selected. Pessimistic rule: For each location we find the lowest market share among all states of the world. The location with the highest of these lowest market shares is selected. Minimax Regret: For each state of the world we find the largest market share among all locations. The regret for a particular location and a particular state of the world is the difference between the largest market share for this state of the world and the market share captured by the selected location. The regret value for a specific location is the largest regret among all states of the world for this location. The location with the smallest regret value is selected. Suppose that the probability of each state of the world can be reliably estimated and thus
+assumed given. The expected value rule is based on the given list of probabilities. Expected Value: The expected value for each location is calculated by the given probabilities for
+each state of the world. The location with the highest expected value is selected. 2.1 properties of the decision rules for competitive location models In the computational experiments we applied p + 1 states of the world: no facility failing, or one facility failing. If we also consider the possibility that two competing facilities may go out of business, we get 1 + p+ p(p−1)2 states of the world which will just increase the size of the problem. As long as the market share can be calculated for each state of the world, it can be solved the same way for reasonable size p. Including all possible facility removals, including removal of all p facilities, leads to 2p states of the world which is practically solvable for p ≤ 10. However, considering more than p+ 1 states of the world may complicate the estimation of the probabilities for each state of the world. For example, when removing more than one facility there may be exogenous forces, such as a recession, that lead to a correlation between the probabilities of facilities going out of business. It is also possible that the new facility is part of a chain and some of the existing facilities belong to the same chain. The objective is to maximize the market share captured by the whole chain. Such a situation does not affect the analysis or solution approaches. In the rest of the paper we assume that no facility failing is always a possibility, and there are p̂ additional states of the world (in the computational experiments p̂ = p). The market share at location X, when no facility goes out of business, is defined as M0(X). The maximum market share is captured at location X = X0. When a combination of facilities 1 ≤ j ≤ p̂ go out of business, the market share captured by a new facility at location X is defined as Mj(X) and its best location is X = Xj . All these market share values can be calculated by any of the available competitive location models. The location Xj that maximizes Mj(X) for j = 0, 1, . . . , p̂ can be found within a relative accuracy ǫ > 0 by Big Triangle Small Triangle (BTST, Drezner and Suzuki, 2004), or Big Square Small Square (BSSS, Hansen et al., 1981). See also Section 4.1 for details of the modified BSSS algorithm that was specially designed for the models analyzed and tested in this paper. Lemma 1: M0(X) ≤ Mj(X) for j = 1, . . . , p̂ and any location X. Proof: Removing competing facilities reduces competition and the market share captured by the new facility at location X cannot decrease regardless of the competitive model used. ✷
+Lemma 2: M0(X0) ≤ Mj(Xj) for j = 1, . . . , p̂. Proof: By Lemma 1 and the optimality of Xj : M0(X0) ≤ Mj(X0) ≤ Mj(Xj). ✷
+Property 1: By the optimistic rule the best location is Xk for which Mk(Xk) = max 1≤j≤p̂ {Mj(Xj)}. Proof: By Lemma 2 M0(X0) cannot be the maximum market share (it may tie it). Therefore, the maximum market share is the maximum among Mj(Xj) for j = 1, . . . , p̂. Any location X cannot increase the market share for any Mj(Xj) because Mj(Xj) is the maximum market share for this state of the world. ✷
+Property 2: By the pessimistic rule the best location is X0 with the objective value M0(X0). Proof: At location X0, M0(X0) ≤ Mj(X0) for j = 1, . . . , p̂ by Lemma 1. Therefore, the minimum value of the objective function at X0 for all states of the world is M0(X0). For any location X, by the maximality of X0, M0(X) ≤ M0(X0) so the minimum value of all states of the world cannot exceed M0(X0) for any location X. ✷
+Property 3: By the minimax regret rule the best location X minimizes max 0≤j≤p {Mj(Xj)−Mj(X)}. Proof: The regret of selecting location X when facility j (or several facilities) go out of business (including the case j = 0) is Mj(Xj)−Mj(X). The maximum regret for all the possible states of the world at location X is max 0≤j≤p̂ {Mj(Xj)−Mj(X)}. By the minimax regret rule the objective is to minimize the maximum regret by selecting the best location X. ✷
+In summary, by the optimistic rule we “hope” that the facility (or facilities) that go out of business is the combination that will increase the market share the most for the new facility. By the pessimistic rule we protect against the possibility that no competing facility will fail. These are extreme cases. The minimax regret rule seems to be the most sensible to apply when no probabilities for each state of the world can be reliably determined. For the first three decision rules we do not need an estimate of the probabilities for each state
+of the world. Assume that a set of probabilities π0, π1, . . . , πp̂ is given such that p̂ ∑
+j=0 πj = 1. The
+following property follows directly the definition of the expected value. Property 4: By the expected value rule the best location is the X that maximizes p̂ ∑
+j=0 πjMj(X). 3 the gravity model There are many models for estimating the captured market share M(X) by a new facility at location X (for a review of such models see Drezner, 2022). All the proposed formulations and solution approaches for finding the best location for a new competing facility can be implemented for any model as long as M(X) can be calculated for each location X. There are n demand points in the area, and p existing competing facilities. We opted to apply the commonly used gravity model (Huff, 1964, 1966) which is based on the following definitions. Bi is the buying power at demand point i for i = 1, . . . , n, Aj is the attractiveness level of facility j for j = 1, . . . , p, A is the attractiveness level of the new facility,
+dij is the distance between demand point i and existing facility j, di(X) is the distance between demand point i and location X, f(d, λ) is the distance decay function at distance d,
+λ is the parameter of the distance decay function,
+The estimated market share captured by the new facility located at X when all j facilities
+operate is according to the traditional gravity model:
+M0(X) =
+n ∑
+i=1
+Bi Af(di(X), λ)
+Af(di(X), λ) + p ∑
+k=1
+Akf(dik, λ)
+. (1)
+The gravity model was originally proposed by Reilly (1931). He suggested that a community between two large metropolitan areas will divide their patronage proportionally to the size of the metropolitan area and inversely proportional to the square of the distance from them. This means a power decay of 1 d2 which imitates gravitational force where the size of the metropolitan area is its mass, hence the name the gravity model. In the competitive facilities location literature, the gravity model has been the focus of many research papers (for example, Aboolian et al., 2007a; Bell et al., 1998; Drezner, 1994a,b; Drezner et al., 1998; Huff, 1964, 1966; Jain and Mahajan, 1979, to name a few). The most widely used decay functions are the power decay f(d, λ) = 1 dλ (originally proposed by Huff, 1964, 1966, as a generalization of 1 d2 ), and the exponential decay f(d, λ) = e−λd (proposed by Hodgson, 1981; Wilson, 1976). Drezner (2006) found that the exponential decay function fits real data of shopping malls better than power decay. Some modifications to the basic gravity model were recently proposed. Drezner et al. (2020) suggested to replace the attractiveness multiplier Aj by a facility dependent distance decay parameter λj . Drezner et al. (2018) suggested that attractiveness levels are stochastic and not constants. Not all customers have the same perception of the attractiveness level. Drezner et al. (2022a) observed that ignoring “time spent in facilities” may bias market share estimates in a competitive environment. All distances are modified by adding the same extra distance. 3.1 the gravity model variant used in this paper In the computational experiments we applied the distance decay function f(d, λ) = 1 d2 with the distance modified by the distance correction suggested in Drezner and Drezner (1997). The demand points are actually areas with many customers in each area, not all of them are at the same distance from the facilities. Drezner and Drezner (1997) suggested to replace d2 with d2 + 0.24S where S is the area of a “demand point”. We experimented with demand points distributed in a 10 by 10
+square. We assume that the area of demand point i is proportional to its buying power Bi and they cover the whole square. The area of the square is 100. Therefore, the area of demand point i is 100Bin ∑
+k=1
+Bk
+. We define α = 24n ∑
+k=1
+Bk
+, then for demand point i d2 (d2i (X) or d 2 ij) is replaced by d 2 +αBi. Consequently, formula (1) for the calculation of the market share by a new facility located at X is:
+M0(X) = n ∑
+i=1
+Bi
+A d2i (X)+αBi
+A d2i (X)+αBi
++ p ∑
+k=1
+Ak d2 ik +αBi
+. (2)
+The expression p ∑
+k=1
+Ak d2 ik +αBi does not depend on X and is a constant for each i. We define it as
+γi and the expression for M0(X) is simplified to:
+M0(X) = n ∑
+i=1
+Bi A d2i (X)+αBi A
+d2i (X)+αBi + γi
+=
+n ∑
+i=1
+ABi
+A+ αBiγi + γid2i (X) ≡
+n ∑
+i=1
+fi(d 2 i (X)). (3)
+where the constants γi need to be calculated only once for each demand point when the set of competing facilities is given. If facility j is removed from the set of competing facilities, A and Bi remain the same, and γi is changed to γi − Aj
+d2ij+αBi , and similarly if more than one facility fails. 4 solution procedures Location of one facility by any location model can be optimally solved within a relative accuracy ǫ > 0 by the Big Square Small Square (BSSS, Hansen et al., 1981) or Big Triangle Small Triangle (BTST, Drezner and Suzuki, 2004) two dimensional global optimization algorithms. See also a general approach in Drezner (2007). We opted to apply the BSSS algorithm because in the computational experiments the demand points and facilities are located in a square. The BSSS algorithm searches for the optimal solution in a square. It is a branch and bound algorithm. A list of squares is created and scanned. Branching is creating four “small” squares by partitioning a “big” square with perpendicular lines through its center. The algorithm terminates with a solution within a relative accuracy ǫ > 0 once the upper bound for each square in the list is within the given relative accuracy of the best found solution. 4.1 the solution algorithm We modified the BSSS algorithm along the lines proposed in Drezner et al. (2022b). It is described for a maximization problem but can be easily modified for minimization. A relative accuracy ǫ > 0
+is given. For the relative accuracy to be meaningful, the objective function should be positive. For any square, the algorithm requires an expression for an upper bound for the value of the objective function at any point in that square. Derivation and calculation of the upper bound for each of the decision rules is detailed in Section 4.2. 4.1.1 the modified bsss algorithm 1. Initialization: the list of squares consists of one square that contains the demand points and
+facilities. The objective function is calculated at the four vertices of the square and the best one is defined as F . The point X∗ for which F was obtained is saved. The upper bound in the square, UB, is calculated and saved. 2. The square in the list with the largest UB is selected. If UB < F (1 + ǫ), go to Step 8. 3. The selected square (the “big” one) is removed from the list and four “small” squares by
+perpendicular lines through the “big” square’s center are created. 4. The values of the objective function at five points (the center of the big square and the four
+centers of its sides), are evaluated and the values of F and X∗ are updated if a better solution is found. 5. If the value of F was updated in Step 4, all the squares in the list are scanned and squares
+for which UB < F (1 + ǫ) are removed from the list. 6. For each of the four small squares: an upper bound UB in the square is calculated, and if
+UB ≥ F (1 + ǫ), the small square is added to the list and its UB saved. 7. If the list of squares is not empty, go to Step 2. 8. Stop with X∗ as the solution point, and F as its objective. 4.2 establishing an upper bound The BSSS or BTST algorithms for maximization require an upper bound for the best value in a square or a triangle, referred to in this section as a polygon. Drezner and Drezner (2004) solved optimally the gravity model with a power decay function by BTST. They tested two upper bounds. One simple upper bound, which can be used for any decreasing function of the distance, is to replace each distance di(X) from a demand point to X in the polygon by the shortest possible distance to that polygon. The objective function evaluated by the shortest distances is an upper bound. A more complicated upper bound designed in Drezner and Drezner (2004) was more effective. Drezner (2007) suggested a general upper bound for functions which are a sum of terms. Each term is a function of the distance between a demand point and location X, and each term can be represented as a difference between two convex functions of the distance. Note that functions may not be convex by the coordinates (x, y) but can be convex as functions of the distance. Let ai be the shortest squared distance between demand point i and the polygon, and fi(ai) is defined by (3). We propose two upper bounds. The first upper bound, which applies to any declining function of the distance, (similar to the one proposed in Drezner and Drezner, 2004) is:
+UB1 = n ∑
+i=1
+fi(ai) (4)
+because the captured market share declines by the distance and the maximum possible value for each demand point is at the point with the minimum possible distance. The second upper bound derived below takes longer to calculate, but is much more effective. The solution algorithm runs more than 1,000 times faster. See Section 4.2.2. The function M(X) by (3) is not convex. As a function of the distance z, each term is
+ABi A+αBiγi+γiz2 which can be represented as a difference between two convex functions of z (was actually done in Drezner, 2007). We propose a similar approach by defining the function by the square of the distance rather than the distance: fi(z) = ABi
+A+αBiγi+γiz . This function is convex in
+z in the segment ai ≤ z ≤ bi where ai ≥ 0 is the minimum squared distance to the polygon and bi > ai is the maximum squared distance to it. The formulas for the minimum squared distance to a square centered at (x0, y0) and a side 2s
+is (Drezner et al., 2022b):
+ai = [max {|xi − x0| − s, 0}] 2 + [max {|yi − y0| − s, 0}] 2 . (5)
+and the maximum squared distance is:
+bi = [|xi − x0|+ s] 2 + [|yi − y0|+ s] 2 . (6)
+The line connecting (ai, fi(ai)) and (bi, fi(bi)) is:
+fi(z) = fi(ai) + fi(bi)− fi(ai)
+bi − ai (z − ai) ≡ fi(ai) + αiai − αiz (7)
+where αi = − fi(bi)−fi(ai)
+bi−ai > 0 because fi(bi) < fi(ai). Lemma 3: The line connecting (ai, fi(ai)) and (bi, fi(bi)) is above fi(z) for any ai ≤ z ≤ bi, i.e., fi(z) ≤ fi(ai) + αiai − αiz. Proof: The Lemma follows the convexity of fi(z). ✷
+In conclusion, M(X) by (3) satisfies:
+M(X) ≤ n ∑
+i=1
+[fi(ai) + αiai] − n ∑
+i=1
+αid 2 i (X) . (8)
+The upper bound UB2 is defined by the minimum value of n ∑
+i=1 αid
+2 i (X) in the polygon. To complete
+the derivation for UB2 we find
+min X
+{
+n ∑
+i=1
+αid 2 i (X) =
+n ∑
+i=1
+αi [ (x− xi) 2 + (y − yi) 2 ]
+}
+(9)
+in the polygon. Recall that αi > 0. Problem (9) in the plane not restricted to a polygon is the well known Weber problem (Church, 2019; Weber, 1909) with squared Euclidean distances. The solution point to this problem is the center of gravity (xc, yc) of all weighted points:
+xc =
+n ∑ i=1 αixi
+n ∑ i=1 αi
+; yc =
+n ∑ i=1 αiyi
+n ∑ i=1 αi
+(10)
+Consider the term n ∑
+i=1 αi(x − xi)
+2 = x2 n ∑
+i=1 αi − 2x
+n ∑ i=1 αixi + n ∑ i=1 αix 2 i . For x = x c its value is
+n ∑ i=1 αix 2 i −
+[
+n ∑ i=1 αixi
+]
+2
+n ∑ i=1 αi
+. For xc +∆ the increase in the value of the term is
+2∆xc n ∑
+i=1
+αi +∆ 2
+n ∑
+i=1
+αi − 2∆ n ∑
+i=1
+αixi = ∆ 2
+n ∑
+i=1
+αi
+The value of n ∑
+i=1 αid
+2 i (X) at X = (xc +∆x, yc +∆y) is:
+n ∑
+i=1
+αi(x 2 i + y 2 i )−
+[
+n ∑ i=1 αixi
+]2
++
+[
+n ∑ i=1 αiyi
+]2
+n ∑ i=1 αi
++ (∆x2 +∆y2) n ∑
+i=1
+αi (11)
+In conclusion,
+UB2 =
+n ∑
+i=1
+[fi(ai)+αiai] −
+n ∑
+i=1
+αi(x 2 i + y 2 i )+
+[
+n ∑ i=1 αixi
+]2
++
+[
+n ∑ i=1 αiyi
+]2
+n ∑ i=1 αi
+− (∆x2+∆y2)
+n ∑
+i=1
+αi (12)
+where ∆x2 +∆y2 is the minimum squared distance between the center of gravity (xc, yc) and the polygon. For a triangle a formula for calculating it is available in Drezner and Drezner (2004), and for a square it is calculated by expression (5). 4.2.1 Calculating UB2
+Calculate the five different sums in equation (12) by evaluating all the terms. 1. Set all sums to 0. 2. For each demand point i:
+(a) Calculate ai and bi by equations (5) and (6). (b) Calculate fi(ai) and fi(bi). (c) Calculate αi = fi(ai)−fi(bi)
+bi−ai
+(d) Add the appropriate term to each sum. 3. Find the center of gravity by equation (10). All the required sums are available. 4. Find ∆x2 +∆y2 for the center of gravity by equation (5). 5. Calculate UB2 by (12). Note that there is no need to save any value for each demand point and only one loop over all the demand points is required. If facility j is removed, ai and bi do not change but the functions in Step 2b are calculated with facility j missing, and αi recalculated. We define UB1 and UB2 when facility j is missing as UB1(j) and UB2(j) (j = 0 if no facility is missing). Lemma 4: UB2(j) ≤ UB1(j). Proof: The parameter ai is the shortest squared distance to the polygon. Therefore, d 2 i (X) ≥ ai for any point X in the polygon, and in particular to the solution point of (9). ✷
+It is very unlikely that UB2(j) = UB1(j). It can happen if the shortest squared distance to the polygon for all demand points is to the same point. For example, in case of squares, we can have a large square that contains all demand points, and a little square at the corner of the large square, and no demand point is in the two strips originating at the little square along two sides of the large
+square. All shortest distances are to the vertex of the little square which is in the interior of the large square. In this example, the shortest distance from the center of gravity to the little square is also to the same vertex. 4.2.2 comparing the two upper bounds We compared the two upper bounds for solving the test instances detailed in Section 5. We solved problem (2) without any competing facilities failing, for various values of the number of demand points. The performance of the BSSS algorithm (Section 4.1.1) is summarized in Table 1 applying the two upper bounds. We report the maximum length of the list of squares in the BSSS algorithm, the total number of squares that were evaluated during the procedure (an upper bound calculated for each), and the run time in seconds. The upper bound UB2(0) performed much better than UB1(0). The total run time is about 5,000 times faster and the number of squares is miniscule compared with the numbers for UB1(0). The results for market shares and coordinates (not reported) agree to seven significant digits. We tried ǫ = 10−6 for UB1(0) and the program needed to terminate because we assigned 2,000,000 spaces for the list of squares, and the algorithm reached this list size. On the other hand, we tried UB2(0) with ǫ = 10 −8 and total run time increased to just 0.60 seconds which is about 30% higher. Similar performance was observed for UB1(j) and UB2(j) for j > 0. In the computational
+experiments we applied UB2(j) and do not report the number of squares or the run times because they are negligible. 4.2.3 upper bound for minimax regret In order to evaluate the minimax regret objective we first need to find Xj and Mj(Xj) for 0 ≤ j ≤ p, which is the maximum possible market share captured by the new facility if facility j is removed. The minimax regret objective is to find the location X = (x, y) for the new facility that
+min X
+{
+max 0≤j≤p {Mj(Xj)−Mj(X)}
+}
+(13)
+This is a minimization problem and the BSSS subroutine we programmed deals with a maximization. Rather than re-code the program we converted (13) to a maximization problem. Since the function of the maximization problem has to be positive we define M∗ = max 0≤j≤p {Mj(Xj)}, which is a known constant once all Mj(Xj) are calculated. Problem (13) is equivalent to:
+M∗ −max X
+{
+min 0≤j≤p
+{M∗ −Mj(Xj) +Mj(X)}
+}
+(14)
+and M∗ −Mj(Xj) +Mj(X) ≥ Mj(X) > 0 as required. We find the solution to:
+M̂ = max X
+{
+min 0≤j≤p
+{M∗ −Mj(Xj) +Mj(X)}
+}
+. (15)
+The solution point is the location for the minimax regret problem, and the objective function of the minimax regret is M∗ − M̂ . Replacing Mj(X) by LB2(j) in either (13) or (15) gives the necessary bound. Lower bound for
+(13) and upper bound for (15). 4.2.4 upper bound for expected value The objective for expected value for a list of probabilities π0, π1, . . . , , πp is:
+max X
+ 
+
+p ∑
+j=0
+πjMj(X)
+ 
+
+. (16)
+To obtain the upper bound we simply replace Mj(X) by LB2(j). 5 computational experiments The BSSS procedure was coded in FORTRAN using double precision arithmetic and was compiled by an Intel 11.1 FORTRAN compiler using one thread with no parallel processing. The program was run on a desktop with the Intel i7-6700 3.4GHz CPU processor and 16GB RAM. In the experiments we used a relative accuracy of ǫ = 10−5. 5.1 the test instances Test instances that can be easily replicated for future comparisons are generated by a pseudo random number generator applied in many recent papers (for example, Kalczynski et al., 2022). It is based on the pseudo random number generator proposed by Law and Kelton (1991). Integer starting seed r1 and multiplier λ, which are odd numbers not divisible by 5, are selected. Note that r1 can be an even number not ending with a zero. We used λ = 314, 227. The sequence is generated by the following rule for k ≥ 1:
+rk+1 = λrk − ⌊ λrk
+1, 000, 000 ⌋ × 1, 000, 000
+For demand points with coordinates between 0 and 10, a coordinate is rk100,000 . The x-coordinates were generated by r1 = 105, 673, and the y-coordinates were generated by r1 = 123, 461. Up to n = 20, 000 demand points were generated. The buying powers Bk were generated between 1 and 5 by r1 = 329, 453 and Bk = 1 + 4 rk
+1,000,000 . We also generated 10 competing facilities by
+r1 = 444, 939 and r1 = 526, 987 for the x and y coordinates, respectively. The attractiveness levels
+of competing facilities were generated by r1 = 251, 637, and Ak = 1 + 4 rk
+1,000,000 . The new facility
+has an attractiveness of A = 1. The parameters of the competing facilities are reported in Table 2 and their locations depicted in Figure 1. In Table 2 we report the locations of the competing facilities and their attractiveness levels. The market share captured presently by the competing facilities before the new facility is located are reported for n = 100, 1, 000, 10, 000, and 20,000 demand points. 5.2 summary of results We experimented with nine instances for number of demand points between 100 and 20,000. For each n we solved 11 instances: no competing facility going out of business (j = 0), and facility 1 ≤ j ≤ 10 going out of business. The upper bound UB2(j) is applied. The optimal locations of the new facility in all cases are detailed in Table 3 (reporting also the market share captured by the new facility), and are depicted in Figure 1 for n = 20, 000. We do not report run times because they are negligible, as reported in Table 1. The total run time for solving all 99 instances was only 3.62 seconds. The results do not change much as the value of n increases. This is because the results are governed by the locations of the competing facilities and the demand points are randomly spread in the square with random buying power for each. The
+pessimistic solution is, by Lemma 2, always at the location of the “no-fail” j = 0 solution. When facilities 1, 3, 4, 7, 10 go out of business, the “hole” created between surrounding competing facilities that remain in business attracts the new facility because more buying power becomes available than is available near facility 6 shown in the zoom-in area in Figure 1. Facility 6 belongs
+to this group of facilities. The best location for the new facility is relatively close to the location of the failed facility. On the other hand, the hole generated by removal of facilities 2, 5, 8, 9 does not contain enough buying power and the most buying power is captured near the j = 0 (pessimistic) location. It turns out that the removal of Facility 6 leaves a big “hole” which causes the new facility to locate nearby because there is a significant market share to be captured in that region once facility 6 goes out of business. Consequently, for all nine values of n, the optimistic location is obtained when facility j = 6 goes out of business. The results for the minimax regret problem are reported in Table 4. For each number of demand points, we report the minimax regret optimal location X̂, and the regret value at this location. Note that there are only 9 instances because all values of j are incorporated in the objective function. We also report which of the 11 states of the world, j, had the maximum regret, and the captured market share Mj(X̂) at the minimax regret location. We compare it with Mj(Xj) which is the maximum possible market share when facility j fails, which is also reported in Table 3. Note that the regret value is Mj(Xj) −Mj(X̂). Run times are very short because UB2(j) is applied. Since these values need to be calculated for each state of the world rather than only one state of the world, calculating each value of the objective function or the upper bound takes about 11 times longer than calculating them for a single state of the world reported in tables 2 and 3. However, the total number of squares is 6,529 compared with 8,113 in Table 2, and the effort for managing the list of squares is lower. In Table 5, the results for the expected value criterion are reported for π0 = 0.0, 0.1, . . . , 1.0. For each value of π0 we assumed equal probabilities for each facility failing and applied πj = 1−π0 p for j = 1, . . . , p. Run times are very short so we opted not to report them. All 99 instances were solved in a total time of 17.83 seconds which is an average of 0.18 seconds per instance with a maximum time of 0.66 seconds which means that each of the 99 instances was solved in no more
+than 0.66 seconds. The optimal locations for the facilities do not change by much as π0 increases. For π0 = 1 no facility fails and the location is at the j = 0 location which is the pessimistic location. The trajectory of the locations for n = 20, 000 is depicted in Figure 1 and since it is so short, it is shown only in the zoom-in figure on the right side. 6 conclusions We investigated the competitive facility location problem which is finding the best location of a new competing facility among a set of existing facilities that maximizes the market share captured by the new facility. There exists uncertainty about the future of existing facilities. It is possible that one of the existing competing facilities will go out of business. We find the best location for a new facility which protects against such a possibility. Four commonly used decision rules (optimistic, pessimistic, minimax regret, and expected value) are analyzed and optimally solved within a given relative accuracy by a specially designed branch and bound algorithm based on the Big Square Small Square procedure (Hansen et al., 1981). Special upper bounds that are needed for the branch and bound procedure are designed. Upper bounds based on the same idea may assist in developing upper bounds for other optimization problems. Results of extensive computational experiments are reported and analyzed. The largest instance of 10 existing competing facilities and 20,000 demand points was solved in less than one second of computer time by each of the four decision criteria.

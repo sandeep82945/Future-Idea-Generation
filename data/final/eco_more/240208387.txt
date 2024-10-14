@@ -1,0 +1,752 @@
+The Merton investment-consumption problem is fundamental, both in the field of finance, and in stochastic control. An important extension of the problem adds transaction costs, which is highly relevant from a financial perspective but also challenging from a control perspective because the solution now involves singular control. A further significant extension takes us from additive utility to stochastic differential utility (SDU), which allows time preferences and risk preferences to be disentangled. In this paper, we study this extended version of the Merton problem with proportional transaction costs and Epstein-Zin SDU. We fully characterise all parameter combinations for which the problem is well posed (which may depend on the level of transaction costs) and provide a full verification argument that relies on no additional technical assumptions and uses primal methods only. The case with SDU requires new mathematical techniques as duality methods break down. Even in the special case of (additive) power utility, our arguments are significantly simpler, more elegant and more far-reaching than the ones in the extant literature. This means that we can easily analyse aspects of the problem which previously have been very challenging, including comparative statics, boundary cases which heretofore have required separate treatment and the situation beyond the small transaction cost regime. A key and novel idea is to parametrise consumption and the value function in terms of the shadow fraction of wealth, which may be of much wider applicability. Mathematics Subject Classification (2010): 93E20 , 60H20, 49L20, 91B16, 91G10 1 introduction One of the fundamental problems of economic theory is to determine the optimal consumption and investment behaviour of agents who are endowed with an initial capital, who face a stochastic opportunity set and who are averse to fluctuations of consumption both with respect to time and with respect to stochastic innovations. In a classic formulation of the problem, known as the Merton problem [22, 23], an agent with constant relative risk aversion (CRRA) seeks to maximise the expected, integrated, discounted utility of consumption over the infinite horizon, where consumption is financed from initial wealth and from investments in a risky asset driven by Brownian motion. The important outputs are the optimal instantaneous rate of consumption and the optimal fraction of wealth the agent should invest in the risky asset. ∗University of Warwick, Department of Statistics, Coventry, CV4 7AL, UK. Email: m.herdegen@warwick.ac.uk. †University of Warwick, Department of Statistics, Coventry, CV4 7AL, UK. Email: d.hobson@warwick.ac.uk. ‡University College London, Department of Mathematics, London, WC1H 0AY, UK. Email: alex.tse@ucl.ac.uk. As well as being a key problem in economics, the Merton problem is also a classical problem in stochastic control. Merton [22] showed how to derive the Hamilton-Jacobi-Bellman equation for the problem and found the value function and optimal strategy. Although his arguments are heuristic1, his solution is correct: namely, when the problem is well-posed the agent should consume at a rate which is a constant proportion of wealth and invest a constant fraction of wealth in the risky asset, where these constants can be expressed in terms of the parameters of the financial market and the agent’s preferences. Merton’s solution of the investment-consumption problem is a beautiful application of stochastic control, and was one of the inspirations behind many subsequent developments of the theory, including the use of Hamilton-Jacobi-Bellman equations, verification arguments and the martingale optimality principle, and the dual approach, see, for example, Fleming and Soner [8], and Pham [24]. But, from a practical perspective, the final answer is unsatisfactory in two important ways. First, the suggestion that agents should invest a constant fraction of wealth in the risky asset is infeasible in markets with transaction costs: if the asset price follows a semi-martingale with non-trivial local martingale term, then to keep a constant fraction of wealth in the risky asset involves a trading strategy with infinite variation. Such a strategy would immediately exhaust the wealth of the agent if there are positive transaction costs. Second, the fraction of wealth that Merton proposes that agents should invest in the risky asset does not match the actual fraction that the representative agent invests in the financial market (as taken from US market data) – this is the equity premium puzzle of Mehra and Prescott [20]. The economics and mathematics literature has responded to these issues in two directions, first by adding transaction costs to the model, and second by assigning more sophisticated preferences to the agent in the form of recursive utility, and its continuous-time analogue stochastic differential utility. Magill and Constantinides [19] were the first to introduce transaction costs into the investmentconsumption model and to formulate the intuition which underpins the solution, namely that in (X,Y Φ) = (Cash, Value of investments in the risky asset) space2, instead of trading to be on the Merton line
+Y Φ X+Y Φ = p (where p is a constant) agents should trade to keep the fraction of wealth in the risky asset in an interval (or equivalently to keep (X,Y Φ) in a no-transaction wedge). Davis and Norman [6] formalised the model, and explained that the resulting problem involved singular stochastic control, where the controlled process (Xt, YtΦt)t≥0 is kept in the no-transaction region using local time pushes on the boundary. For some parameter combinations, Davis and Norman [6] showed that the value function could be expressed via the solution of two coupled first order ODEs with free-boundaries, but in terms of understanding the solution, and even of numerically solving the problem, further progress is challenging with this formulation. Shreve and Soner [26] improved on the Davis-Norman solution (in terms of the range of parameter combinations that were covered) using methods from viscosity solutions, but issues with giving a simple, accessible formulation of the value function and optimal strategy remained. Instead efforts turned to using asymptotic methods to give an expansion for the value function (and thence to derive an expansion for the optimal no-transaction region and consumption rate) in the regime of small transaction costs. The small transaction cost literature will be discussed in more detail in Section 7, but includes [25, 26, 16, 9, 3, 15]. Returning to the case of general proportional transaction costs, significant progress was made when Choi et al [5] and Hobson et al [15] separately showed how the problem could be decoupled into first, solving a initial-value problem for a first order ODE (and then adjusting the initial value so that an integral equation is satisfied) and second, solving a further first order ODE. Indeed, very important quantities such as the locations of the boundaries of the no-transaction region can be determined from the solution of the first ODE only. Choi et al [5] took a dual approach based on the shadow price for the asset with transaction costs whereas Hobson et al [15] use the primal approach. Understanding the final form of the problem (including the set of possible behaviours of the first order ODE, and how they relate to the fundamental properties of the financial problem, eg, when is it well-posed) is simpler in the setting used by Hobson et al [15], but both approaches can by criticised for appearing to use ‘magic’ to transform
+1See Herdegen et al [10] for a modern, rigorous treatment of the problem. 2Here Y is the price of the risky asset, and Φ is the number of shares held. the problem into a simpler version — especially in [15] these transformations appear to have no economic motivation. The second response in the literature is to extend the analysis to allow for recursive preferences. Additive preferences can be criticised for the fact that a single parameter is used to describe the agents attitude to fluctuations in consumption due to stochastic risk and their attitude to fluctuations in consumption over time. Recursive preferences postulate that the utility of current consumption depends on the value of future consumption. This makes it possible to separate risk aversion from the elasticity of inter-temporal substitution (EIS). In fact, for notational convenience we express our problem in terms of the elasticity of intertemporal complementarity (EIC) which is the reciprocal of the EIS. The analogue of recursive utility in continuous-time is stochastic differential utility, and in this setting the natural generalisation of the additive CRRA utility is Epstein-Zin stochastic differential utility (EZ-SDU) as proposed in Epstein and Zin [7]. The extension to EZ-SDU brings several challenges. In the finite-horizon setting, for a given consumption the associated value function is the solution of a backward stochastic differential equation (BSDE). But, over the infinite horizon it is not completely clear how to formulate an analogue of the terminal condition. Then, there are significant issues which arise concerning existence and uniqueness of solutions. Indeed, for many parameter combinations for EZ-SDU uniqueness fails for essentially every consumption stream and we must identify which value process we wish to associate to a given consumption stream (using an economic criteria, rather than an ad-hoc selection). Only when these questions have been resolved is it possible to optimise over admissible investment-consumption strategies (i.e. those which keep wealth non-negative). Fortunately these issues have been considered in depth in Herdegen et al [11, 12, 13]. Since the real issue is to define a value process given a consumption process, we can ‘piggyback’ on their analysis – the main impact of the introduction of transaction costs is to change the set of attainable consumption streams, and the value associated to a given consumption stream is unchanged. Although the literature on optimal investment and consumption with recursive utility is growing rapidly (see Chacko and Viceira [1], Kraft et al [18] and Xing [29]) it focuses on the frictionless case. The exception is Melnyk et al [21] who look for an asymptotic expansion of the value function in the case of small transaction costs and derive expressions for the asymptotic expansion for the no-transaction region and the optimal consumption, albeit under a restricted set of parameter combinations. In this article we consider the lifetime investment and consumption problem in a financial market with transaction costs for an agent with recursive preferences. Our main contributions are as follows:
+(a) First, we give a complete solution of the consumption-investment problem in the case of EZ-SDU which is valid for all levels of transaction costs. This includes giving exact conditions for when the problem is well-posed. The methods are an extension of the analysis in the additive case in Hobson et al [15] and the solution involves finding a family of solutions to a first crossing problem for a first order ODE (indexed by its starting point on a curve) and fixing the solution for a given level of transaction costs by choosing the solution which satisfies an integral equation. The start and end point of this solution determine the boundaries of the no-transaction region. Other important quantities, such as the shadow price of the risky asset and the optimal consumption are given by the solutions of a further first order ODE (this time with fixed start and end points). (b) Second, we introduce a new key variable, namely the shadow fraction of wealth. If we make this the underlying variable (in preference, say, to the shadow price) then all other quantities can be expressed in a simple fashion in terms of this single variable. The idea of characterising problems via the shadow fraction of wealth is new and may have implications well beyond the investmentconsumption problem setting, and may lead to significant simplifications in other settings too. One immediate candidate example is maximising the long run rate of portfolio growth under transaction costs. (c) Third, we ‘break the magician’s code’ and give interpretations to many of the quantities which arose
+‘by magic’ in the analysis in [15]. There, the transformations lead to a great simplification due to an act of serendipity; here, we explain where they come from and how they may be interpreted. Thus q, n(q) and m(q) in [15] are here given interpretations as the shadow fraction of wealth, the optimal consumption rate per unit of wealth as a function of the shadow fraction of wealth, and the optimal consumption rate in a frictionless Merton model if the agent invests a constant fraction q of wealth in the risky asset. (d) Fourth, use of the shadow fraction of wealth as a key variable simplifies many of the arguments. At points in the analysis we have to consider a highly non-standard ODE which passes through a singular point (and has multiple solutions to the left of this point, and just one to the right). In our coordinate system this analysis becomes relatively straightforward (whereas in other systems understanding the phase-space of the solutions can be difficult). One implication is that we only need a one-dimensional version of Tanaka’s results to define the underlying processes via a local time, whereas to date much of the literature has been forced to rely on a multidimensional version. Further, we can treat several boundary cases as part of the main analysis, including the case when one of the boundaries of the no-transaction region corresponds to a portfolio with no cash component, and then the leading term in a small-transaction cost expansion for the locations of the boundary of the no-transaction region is of a different order to the standard case. (e) Fifth, we show how risk aversion R mainly governs the optimal investment strategy and the notransaction region (the co-efficient of elasticity of inter-temporal complimentarity S does not appear directly in any of the first three terms of the expansion in small transaction costs for the boundaries of the no-trade interval) and S mainly governs the rate of consumption. Further, (following on from Janeček and Shreve [16] in the additive case R = S and Melnyk et al [21] for EZ-SDU) we show that consumption may increase or decrease with the introduction of small transaction costs, and we give an explanation which shows that the introduction of transaction costs will increase the instantaneous consumption rate if S is small and decrease it if S is large. (f) Sixth, we investigate analytically the comparative statics with respect to the risk aversion parameter R and the elasticity of inter-temporal complimentarity S. One of the advances of this paper is that we do not (only) consider the additive case, and therefore it is possible for the first time to disentangle the impact of risk aversion and the intertemporal substitution. We find that in many circumstances (for example, if R < 1 or R ≥ 2) the boundaries of the no-transaction region are monotonic in the risk aversion parameter in the sense that the agent with higher risk aversion buys and sells the risky asset when the fraction of wealth in the risky asset is at a lower threshold than an agent with lower risk aversion investing and consuming in the same market. However, this is not universal and for R ∈ (1, 2) this monotonic relationship can fail. The dependence of the no transaction wedge on S is less clear cut, and whether the no-transaction region moves towards or away from a cash portfolio depends on a crucial combination of parameters, see Section 8. Along the way we give several other interesting, original and important results:
+(a) We give precise statements for when the problem under EZ-SDU is well posed for all level of transaction costs, when it is ill-posed for all levels of transaction costs, and when it is well-posed for some levels of transaction costs and ill-posed for others. In the latter case we give an expression for the threshold level of transaction costs at which the problem becomes ill-posed. (b) Unlike most other authors we allow for different transaction costs on buying and selling; often the literature assumes that these costs are the same, or that the transaction cost on selling is zero. Whilst there is a straightforward transformation between the various parameterisations of transaction costs, covering the general case facilitates an easy comparison to the individual cases. It also highlights that, for small transaction costs, the individual transaction costs only enter the expansion at a higher order level, and the first few terms only involve the round-trip transaction cost. (c) We show that if the Merton line lies in the first quadrant (i.e. in the case of zero transaction costs the optimal portfolio involves a long position in both the risky asset and the risk-less asset) then it is always inside the no-transaction region; however if the Merton line is not in the first quadrant then it can lie outside the no transaction wedge (and thus becomes a very poor approximation of a reasonable investment strategy). (d) We show that if (for large enough transaction costs) the positions corresponding to all wealth being held in the risky asset lie inside the no-transaction region then (for large transaction costs) the location of the sale-boundary on the no-transaction region is independent of the transaction cost for buying. (e) We give the asymptotic expansion for the value function and other quantities in the small transaction cost regime to a higher order than has been given elsewhere. The remainder of the paper is structured as follows. In Section 2 we introduce stochastic differential utility and discuss the formulation of the investment consumption problem under Epstein-Zin SDU over the infinite horizon. In Section 3 we solve the frictionless investment-consumption problem for EZ-SDU. The arguments are extended to the case with frictions in Sections 4 and 5 with Section 4 focussing on the heuristics and Section 5 concentrating on the rigorous statements. Section 6 gives some illustrative numerical examples and Section 7 covers the asymptotics in the small transaction regime. In Section 8 we consider the comparative statics with the respect to the two key parameters of EZ-SDU, namely the risk aversion R and the elasticity of intertemporal complementarity S. Some of the more technical material is relegated to the appendices. 2 epstein-zin stochastic differential utility Let R,S ∈ (0,∞) \ {1} and δ ∈ R and set V = (1 − R)R+. The Epstein–Zin (EZ) aggregator (Epstein and Zin [7] is the function gEZ : R+ ×R+ ×V → V, given by
+gEZ(t, c, v) := e −δt c
+1−S
+1− S ((1−R)v)
+S−R 1−R . (2.1)
+Here, R ∈ (0,∞) \ {1} denotes the coefficient of relative risk aversion, S ∈ (0,∞) \ {1} denotes the coefficient of elasticity of intertemporal complementarity (the reciprocal of the coefficient of intertemporal substitution) and δ ∈ R denotes some discount parameter. It is convenient to introduce the parameters θ := 1−R1−S and ρ = S−R 1−R = 1− 1 θ , so that (2.1) simplifies to
+gEZ(t, c, v) = e −δt c
+1−S
+1− S ((1−R)v)ρ . Note that θ = 1 (or equivalently, ρ = 0) corresponds to the case R = S, which is additive power utility. Given a nonnegative progressively measurable stochastic process C = (Ct)t≥0, called a consumption stream, we seek to find a utility process V C = (V Ct )t≥0 that solves the equation
+Vt = E
+[ ∫ ∞
+t e−δs C1−Ss 1− S ((1−R)Vs) ρ ds
+∣ ∣ ∣ ∣ Ft ] . (2.2)
+The problem is to find Ĉ ∈ C such that
+V Ĉ0 = sup C∈C V C0 ,
+where V C = (V Ct )t≥0 denotes an appropriate solution of (2.2), and C is an appropriate class of consumption streams. Throughout the paper, we make the following standing assumption
+Standing Assumption 1. We assume θ ∈ (0,∞). The necessity of this standing assumption can be seen from multiplying (2.2) on both sides by (1−R). Then, with Ṽ = (1−R)V , which implicitly must be positive for it to be possible to take arbitrary powers, we have Ṽt = θE[ ∫∞ t e −δsC1−Ss Ṽ ρ s ds|Ft] and we must have θ > 0 for the two sides of this equation to have the same sign. See Herdegen et al [11] for further discussion of this issue. For θ ∈ (0, 1], we have existence and uniqueness of a utility process V C = (V Ct )t≥0 solving (2.2) (in a generalised sense) for all consumption streams, see Herdegen et al [11]. By saying that V C solves (2.2) in a generalised sense we mean that we allow (1 − R)V C to take the value +∞ provided that
+E
+[
+∫∞ t e
+−δs C 1−S s
+1−S
+( (1−R)V Cs )ρ
+ds ∣ ∣
+∣ Ft
+]
+also takes the value +∞. Theorem 2.1 ([12, Theorem 6.9]). Suppose θ ≤ 1. For each C ∈ P+, there exists a unique generalised utility process V C = (V Ct )t≥0 solving (2.2) (in a generalised sense). By contrast, if θ > 1, the situation is more involved because (2.2) has multiple solutions. For example, V ≡ 0 is always a solution to (2.2) when ρ > 0. To get uniqueness we restrict ourselves to so-called proper solutions; see Herdegen et al [13] for a discussion of the issues. Definition 2.2. Suppose C ∈ P+ and suppose that V = (Vt)t≥0 is a solution to (2.2). Then V is called a proper solution if (1−R)Vt > 0 on {E [∫∞ t e −δθsC1−Rs ds ∣ ∣Ft ] > 0} up to null sets for all t ≥ 0. Denote by UP∗ the collection of right-continuous processes C ∈ P+ for which there exists a unique proper utility process V C = (V Ct )t≥0 solving (2.2). The results of Herdegen et al [13] (especially Proposition 4.8) show that is a wide class of processes. When θ > 1 we will optimise over consumption streams in UP∗. 3 frictionless problem We consider a Black–Scholes–Merton market consisting of a risk free asset with interest rate r ∈ R, whose price process Y 0 = (Y 0t )t≥0 is given by Y 0 t = y 0 0e
+rt (for y00 > 0), and a risky asset given by geometric Brownian motion with drift µ ∈ R, volatility σ > 0 and initial value y0 > 0, whose price process Y = (Yt)t≥0 is given by Yt = y0 exp(σBt + (µ− 1 2σ
+2)), for a Brownian motion B = (Bt)t≥0. At each time t ≥ 0, the agent chooses to consume at a rate Ct ∈ R+ per unit time, and to hold Φt ∈ R numbers of shares of the risky asset. If we denote total wealth at time t by Zt, the number of shares invested into the riskless asset is given by Φ0t =
+Zt−ΦtYt Y 0t . Then, by the self-financing condition, the (total)
+wealth process of the agent Z = (Zt)t≥0 satisfies the SDE
+dZt = Φ 0 t dY 0 t +Φt dYt − Ct dt = ΦtYtσ dBt + (Ztr +ΦtYt(µ − r)−Ct) dt, (3.1)
+subject to the initial condition Z0 = z, where z > 0 is the agent’s initial wealth. Remark 3.1. It is customary in the literature to parameterise trading strategies in terms of fractions of wealth (rather than numbers of shares). However, this parametrisation is less suitable for the problem with transaction costs. For this reason, and to make an easy comparison with the frictionless case, we also parameterise trading in the frictionless problem in numbers of shares. Definition 3.2. Given z > 0, an admissible investment-consumption strategy (for z) is a pair (Φ, C) = (Φt, Ct)t≥0 of progressively measurable processes, where Φ is real-valued and C is nonnegative, such that the SDE (3.1) has a unique strong solution Zz,Φ,C = (Zz,Φ,Ct )t≥0 that is P-a.s. nonnegative. We denote the set of admissible investment-consumption strategies for z > 0 by A0(z). Since the utility value associated to an admissible investment-consumption strategy only depends upon consumption, and not upon the amount invested into the risky asset, we also introduce the following definition:
+Definition 3.3. Given z > 0, an attainable consumption stream (for z) is a nonnegative progressively measurable stochastic process C = (Ct)t≥0 for which there exists a progressively measurable process Φ = (Φt)t≥0 such that (Φ, C) ∈ A0(z). Denote the set of attainable consumption streams for z > 0 by C0(z). The frictionless problem is to find Ĉ ∈ C0(z) such that
+V Ĉ0 = sup C∈C ∗0 (z) V C0 , (3.2)
+where, if θ ∈ (0, 1], V C = (V Ct )t≥0 denotes the unique generalised utility process from Theorem 2.1 solving (2.2) (in a generalised sense) and C ∗0 (z) = C0(z), and, if θ ∈ (0, 1], V
+C = (V Ct )t≥0 denotes the unique proper solution of (2.2) and C ∗0 (z) = C0(z) ∩UP ∗. 3.1 solution for constant proportional strategies In order to motivate our solution ansatz in the case with frictions, it is insightful to study the optimisation problem (3.2) for constant proportional strategies only. To this end, consider the investment-consumption strategy (Φ, C), where Φ = q ZY and C = mZ for q ∈ R, m ∈ R++. Then, the wealth process Z
+z,Φ,C = Z = (Zt)t≥0 from (3.1) is given by
+Zt = z exp
+(
+qσBt +
+(
+r + qσλ−m− q2σ2
+2
+)
+t
+)
+,
+where λ := µ−rσ denotes the market price of risk. We make the ansatz
+Vt = ae −bt Z
+1−R t
+1−R (3.3)
+for some constants a, b ∈ R to be determined. Substituting this ansatz into (2.2), and recalling that ρ = S−R1−R yields
+Vt = E
+[ ∫ ∞
+t e−δs
+(mZs) 1−S
+1− S
+(
+ae−bsZ1−Rs
+)ρ ds
+∣ ∣ ∣ ∣ Ft ] = aρ m1−S
+1− S E
+[ ∫ ∞
+t e−(δ+bρ)sZ1−Rs ds
+∣ ∣ ∣ ∣ Ft ] . (3.4)
+A straightforward calculation gives
+E
+[
+e−(δ+bρ)sZ1−Rs
+∣ ∣ ∣ Ft ] = e−(δ+bρ)tZ1−Rt e −θH̃b(q,m)(s−t), s > t,
+where H̃b : R×R++ 7→ R is given by H̃b(q,m) = 1 θ (δ + bρ) + (S − 1)
+(
+r + λσq −m− q 2σ2 2 R ) . Provided
+that H̃b(q,m) > 0, (3.4) simplifies to
+Vt = aρm1−S
+H̃b(q,m) e−(δ+bρ)t Z1−Rt 1−R . Our ansatz (3.3) now implies that a ρm1−S
+H̃b(q,m) = a and δ + bρ = b. We deduce that b = δθ and that
+a = ( m 1−S
+H̃b(q,m) )θ. If we substitute this value of b into H̃b and define H = H̃δθ then we have
+H(q,m) = δ + (S − 1)
+(
+r + λσq −m− q2σ2
+2 R
+)
+. (3.5)
+and provided H(q,m) > 0,
+Vt =
+(
+m1−S
+H(q,m)
+)θ
+e−δθt Z1−Rt 1−R . (3.6)
+If we now maximise (3.6) for fixed q over m, we obtain that the optimal consumption rate expressed per unit of total wealth is given by m = m(q) where
+m(q) = δ
+S −
+1− S
+S
+(
+r + λσq − q2σ2
+2 R
+)
+= α
+S −
+1− S
+S λσq +R
+1− S
+S
+σ2
+2 q2, (3.7)
+where α := δ − r(1− S) denotes the effective impatience rate. Plugging (3.7) into (3.6) yields
+Vt = e −δθt Z
+1−R t
+1−R m(q)−θS (3.8)
+Differentiating (3.8) with respect to q and setting the derivative equal to zero, gives that the turning point of m is at qM = λ Rσ . Clearly, qM is the famous Merton ratio. Thus, in frictionless market the optimal fraction of wealth to invest in the risky asset is independent of the elasticity of intertemporal complimentarity. The above analysis yields a candidate value function and a candidate optimal strategy. It is well known that
+Theorem 3.4 ([21, 12, 13]). Consider the frictionless market. Suppose that mM = m(qM ) = m ( λ σR )
+> 0. Then the optimal-investment consumption problem is well-posed, and the value function is given by
+V0 = sup C∈C ∗0 (z)
+V C0 = z1−R
+1−R m−θSM
+The optimal strategy is (C∗ = mMZ,Φ = λ σR Z Y ). If mM ≤ 0 then the problem is ill-posed. Remark 3.5. The shape of m = m(q) will play a key role in later arguments. The shape of m is determined by the shape of H(q,m) as given in (3.5), and as a function parameterised by R and S, the shape of H is determined by the sign of (S − 1). In particular, when S < 1, H is convex in q, and this property is inherited by m(q) (see Section 8.3 for details of how this inheritance works). Then, m(q) has a minimum over q ∈ R at qM . Conversely, when S > 1, H is concave in q, this property is inherited by m, and m has a maximum (over q ∈ R such that H(q,m) > 0) at qM . Indeed, given the sign of V , this must be the case for V in (3.8) to have an interior maximum in q. Economically, the explanation is as follows. If the agent invests a suboptimal fraction of wealth in the risky asset then this will reduce the certainty equivalent value of their holdings. This will have two opposite implications. First, since they are implicitly less wealthy (in certainty equivalent terms), they will reduce instantaneous consumption, and as a fraction of their current wealth their consumption rate will fall. Second, the primary cause of the reduction of certainty equivalent wealth is a reduction in the valuation of future (rather than current) consumption, and this will encourage them to increase the rate of instantaneous consumption. When the elasticity of inter-temporal complementarity S is small (and the coefficient of inter-temporal substitution is large), the desire to smooth consumption over time is small (see Herdegen et al [11, Section 4.1]) and the second effect dominates. When S is larger, the desire to seek smooth consumption over time is increased and the first effect dominates. We return to this issue in Remark 7.6(c) and Section 8.3. 4 problem with friction: notation and heuristics Now we consider the problem with transaction costs. We assume that in order to buy one unit of the risky asset at time t one has to pay γ↑Yt, and that the receipts from selling one unit of the risky asset at time t are given by 1
+γ↓ Yt. Here γ
+↑, γ↓ ∈ [1,∞) denote the transaction cost parameters for buying and selling. When γ↑γ↓ > 1, we have to restrict ourselves to trading strategies Φ = (Φt)t≥0 (in numbers of shares)
+that are of finite variation. In this case, we denote by Φ↑ = (Φ↑t )t≥0 and Φ ↓ = (Φ↓t )t≥0 the increasing and decreasing part of Φ, respectively, so that Φ = Φ↑ − Φ↓ where Φ↑ and Φ↓ are increasing processes. Moreover, in this case, it is useful not to describe the total wealth process but rather to consider the cash process and the holdings in the risky asset separately. When choosing the investment-consumption strategy (Φ, C), the corresponding cash process X = (Xt)t≥0 satisfies the dynamics
+dXt = rXt dt− Ct dt− γ ↑Yt dΦ ↑ t + Yt γ↓ dΦ↓t . (4.1)
+This is paired with the initial condition
+X0 = x0 − γ ↑y(Φ0 − φ0) + + y
+γ↓ (Φ0 − φ0)
+−, (4.2)
+where x0 ∈ R denotes the initial cash position and φ0 denotes the initial stock position prior to trading at time 0. Note that we allow for an initial block trade just before time zero (i.e. at time 0−) that is not encoded in the strategy Φ = (Φt)t≥0. This allows us to consider Φ to be a right-continuous process. For γ↑, γ↓ ∈ [1,∞), we denote by
+Sγ↑,γ↓ :=
+{
+(x, y, φ) ∈ R× (0,∞) ×R : x+ 1
+γ↓ φ+y − γ↑φ−y ≥ 0
+}
+the solvency region. We denote by S ◦ γ↑,γ↓ its interior, which satisfies
+S ◦ γ↑,γ↓ =
+{
+(x, y, φ) ∈ R× (0,∞)×R : x+ 1
+γ↓ φ+y − γ↑φ−y > 0
+}
+. By analogy with Definitions 3.2 and 3.2 we can define what it means for an investment-consumption strategy (Φ, C) to be admissible for (γ↑, γ↓)-transaction costs, and a consumption stream C to be attainable for (γ↑, γ↓)-transaction costs. Definition 4.1. Given (x, y, φ) ∈ S ◦ γ↑,γ↓ , a (γ↑, γ↓)-admissible investment-consumption strategy is a pair (Φ, C) = (Φt, Ct)t≥0 of progressively measurable processes, where Φ is real-valued and of finite variation and C is nonnegative, such that the SDE (4.1) has a unique strong solution Xx,y,φ,Φ,C = (Xx,y,φ,Φ,Ct )t≥0 such that (Xx,y,φ,Φ,Ct ,Φt, Yt) ∈ Sγ↑,γ↓ P-a.s. for all t ≥ 0. We denote the set of (γ
+↑, γ↓)-admissible investment-consumption strategies for (x, s, φ) ∈ S ◦
+γ↑,γ↓ by Aγ↑,γ↓(x, φ, y). Definition 4.2. Given (x, y, φ) ∈ S ◦ γ↑,γ↓ , a (γ↑, γ↓)-attainable consumption stream (for (x, y, φ)) is a nonnegative progressively measurable stochastic process C = (Ct)t≥0 for which there exists a progressively measurable process Φ = (Φt)t≥0 such that (Φ, C) ∈ Aγ↑,γ↓(x, φ, y). Denote the set of attainable consumption streams for (x, y, φ) ∈ S ◦
+γ↑,γ↓ by Cγ↑,γ↓(x, y, φ). Remark 4.3. It is straightforward to check that for all γ↑, γ↓ ∈ [1,∞), Aγ↑,γ↓(x, φ, y) ⊆ A0(x + φy) and Cγ↑,γ↓(x, φ, y) ⊆ C0(x + φy). More generally, if γ̃ ↑, γ̃↓ are such that γ̃↑ ≥ γ↑ and γ̃↓ ≥ γ̃↓ then Cγ̃↑,γ̃↓(x, φ, y) ⊆ Cγ↑,γ↓(x, φ, y). For (x, y, φ) ∈ S ◦ γ↑,γ↓ , the problem with friction is to find Ĉ ∈ Cγ↑,γ↓(x, φ, y) such that
+V Ĉ0 = sup C∈C ∗
+γ↑,γ↓ (x,φ,y)
+V C0 , (4.3)
+where, if θ ∈ (0, 1], V C = (V Ct )t≥0 denotes the unique generalised utility process from Theorem 2.1 solving (2.2) (in a generalised sense), and C ∗
+γ↑,γ↓ (x, φ, y) = Cγ↑,γ↓(x, φ, y), and if θ > 1, V C = (V Ct )t≥0 denotes
+the unique proper utility process solving (2.2) and C ∗ γ↑,γ↓ (x, φ, y) = Cγ↑,γ↓(x, φ, y) ∩UP ∗. 4.1 shadow fraction of wealth and relative shadow price For a cash process X = (Xt)t≥0 corresponding to some (γ ↑, γ↓)-admissible investment-consumption strategy (Φ, C), define the fraction of wealth P = (Pt)t≥0 invested into the risky asset by
+Pt = ΦtYt
+Xt +ΦtYt . Let Ỹ = (Ỹt)t≥0 denote a shadow stock price process, which takes values in Y [ 1 γ↓ , γ↑]. Then the process Q = (Qt)t≥0 defined by
+Qt = ΦtỸt
+Xt +ΦtỸt ,
+denotes the corresponding shadow fraction of wealth. For future reference, we note that the ratio of shadow wealth to real wealth can be expressed as
+X +ΦỸ X +ΦY =
+X X+ΦY
+X X+ΦỸ
+= 1− P
+1−Q . (4.4)
+We make the ansatz that the relative shadow price Ỹ /Y can be written in terms of the shadow fraction of wealth, and thus is given by
+Ỹ Y = κ(Q)
+for some function κ to be determined later. Note that by (4.4),
+κ(Q) = Ỹ
+Y =
+ΦỸ ΦY = Q(X +ΦỸ ) P (X +ΦY ) = Q/(1−Q) P/(1 − P ) . (4.5)
+We also make the ansatz that Q = q(P )
+for some function q to be determined later. Then (4.5) gives
+κ(q(p)) = q(p)/(1− q(p))
+p/(1− p) (4.6)
+These equations may be inverted to express p in terms of q in which case we find P = p(Q) where
+p(q) = q
+1 + q(1− κ(q))) , κ(q) =
+q
+1− q
+1− p(q)
+p(q) . (4.7)
+Differentiating (4.6) and rearranging yields the key identity
+p(1− p)q′(p) =
+(
+1
+q(p)(1− q(p)) −
+κ′(q(p))
+κ(q(p))
+)−1
+. (4.8) 4.2 solution ansatz Motivated by the structure (3.8) of the frictionless solution, we make the first ansatz that the value process V = (Vt)t≥0 is given by
+Vt := e −δθt (Xt +ΦtỸt)
+1−R
+1−R n (Qt)
+−θS = e−δθt (Xt +ΦtYtκ(Qt))
+1−R
+1−R n (Qt)
+−θS ,
+where the function n is to be determined. Here n represents the rate of consumption per unit of wealth, when wealth is measured using the shadow stock price. Thus, setting p = φyx+φy , we look for a value function of the form V = V (I,X,Φ, Y ) where
+V (t, x, φ, y) = e−δθt (x+ φyκ(q(p)))1−R
+1−R n (q(p))−θS . (4.9)
+Inside the no trade region we make the second ansatz that the value function should be independent of the shadow fraction of wealth. Thus, we assume that
+0 = ∂V
+∂q = (1−R)
+φyκ′(q)
+(x+ φyκ(q)) V − θS
+n′(q) n(q) V,
+which, using φyx+φyκ = q κ , is equivalent to
+κ′(q) κ(q) = S 1− S 1 q n′(q) n(q) . (4.10)
+Using (4.9) together with the second ansatz we can easily compute the first-order partial derivatives of V
+Vt = −δθV, (4.11)
+xVx = (1−R)V x
+(x+ φyκ(q)) = (1−R)V (1− q),
+φVφ = (1−R)V φyκ(q)
+(x+ φyκ(q)) = (1−R)V q,
+yVy = (1−R)V φyκ(q)
+(x+ φyκ(q)) = (1−R)V q, (4.12)
+and then using (4.8) and (4.10),
+y2Vyy = (1−R) 2q2V − (1−R)V q + (1−R)V p(1− p)q′(p)
+= (1−R)V
+(
+(1−R)q2 − q +
+(
+1
+q(1− q) −
+κ′(q)
+κ(q)
+)−1 )
+= (1−R)V
+(
+(1−R)q2 − q +
+(
+1
+q(1− q) −
+S
+1− S
+1
+q
+n′(q)
+n(q)
+)−1 )
+. (4.13) 4.3 martingale optimality principle Define the process M = (Mt)t≥0 by
+Mt :=
+∫ t
+0 e−δs C1−Ss 1− S ((1 −R)V (s,Xs, Ys,Φs)) ρ ds+ V (t,Xt, YtΦt). By the martingale optimality principle, M is a supermartingale for each pair (C,Φ) and a martingale for the optimal pair (C∗,Φ∗). Itô’s formula and (4.11) – (4.12) and (4.13) give
+dMt = C1−St 1− S ((1 −R)V )ρe−δt dt+ Vt dt+ Vx dXt + Vy dYt + Vφ dΦt + 1 2 Vyy d〈Y 〉t
+=
+(
+C1−St 1− S ((1 −R)V )ρe−δt − δθV + r(1−R)V (1− q)− VxCt + µ(1−R)qV
+)
+dt
++ σYtVy dBt + (Vφ − γ ↑VxYt) dΦ ↑ t +
+(
+Vx γ↓ Yt − Vφ
+)
+dΦ↓t
++ σ2
+2 (1−R)V
+(
+(1−R)Q2t −Qt +
+(
+1
+Qt(1−Qt) −
+S
+1− S
+1
+Qt
+n′(Qt) n(Qt)
+)−1 )
+dt
+=
+(
+C1−St 1− S ((1 −R)V )ρe−δt − VxCt
+)
+dt+ σYtVy dBt + (Vφ − γ ↑VxYt) dΦ ↑ t +
+(
+Vx γ↓ Yt − Vφ
+)
+dΦ↓t
+− θSV
+(
+ℓ(Qt)− σ2
+2
+1− S
+S
+(
+1
+Qt(1−Qt) −
+S
+1− S
+1
+Qt
+n′(Qt) n(Qt)
+)−1 )
+dt (4.14)
+where the function ℓ is given by
+ℓ(q) = α
+S −
+1− S
+S
+(
+λσ − σ2
+2
+)
+q − (1−R) 1− S
+S
+σ2
+2 q2. Maximising the first dt-term on the right hand side of (4.14) over Ct shows that the candidate optimal consumption stream C∗ = (C∗t )t≥0 satisfies
+C∗t := ( Xt +ΦtỸt ) n (Qt) = (Xt +ΦtYtκ (Qt))n (Qt) , (4.15)
+This implies in particular that n can be interpreted as the optimal consumption rate in terms of shadow wealth. Then we have
+(
+(C∗t ) 1−S
+1− S (e−δt((1 −R)V )ρ)− VxC ∗ t
+)
+= S
+1− S (Xt +ΦtỸt)n(Qt)Vx = θSV n(Qt)
+Plugging this into (4.14) and using that the dt-term must vanish, after dividing by θSV , we obtain
+0 = n(Qt)− ℓ(Qt) + σ2
+2
+1− S
+S
+(
+1
+Qt(1−Qt) −
+S
+1− S
+1
+Qt
+n′(Qt) n(Qt)
+)−1
+, (4.16)
+Rearranging (4.16) and noting that ℓ(q)−m(q) = 1−SS σ2
+2 q(1− q), we obtain after a rearrangement that κ satisfies the ODE
+κ′(q) = κ(q)
+q(1− q)
+m(q)− n(q)
+ℓ(q)− n(q) . (4.17)
+Combining this with (4.10) we find that n satisfies the autonomous ODE
+n′(q) = O(n, q) where O(n, q) = 1− S
+S
+n
+1− q
+m(q)− n
+ℓ(q)− n . (4.18)
+Plugging (4.17) into (4.8) and noting the simple identify
+m(q(p))− ℓ(q(p))
+m(p)− ℓ(p) =
+q(p)(1− q(p))
+p(1− p)
+we obtain after a rearrangement that q satisfies the ODE
+q′(p) = ℓ(q(p))− n(q(p))
+ℓ(p)−m(p) ,
+which may be re-expressed as
+p′(q) = ℓ(p(q))−m(p(q))
+ℓ(q)− n(q) . (4.19)
+We find a candidate solution therefore by first solving the autonomous first equation (4.18) for n, and then solving (4.17) to determine κ. This then yields an expression for p in terms of q via (4.7) or (4.19). The next issue is to find the initial condition for the ODE (4.18) which will depend on the round-trip transaction cost ξ. 4.4 no-trade region and boundary conditions We assume that the no-trade region in fraction of shadow wealth is given by [q∗, q ∗] for some q∗ < q ∗ ∈ R. This will correspond to a no-trade region in fractions of real wealth of the form [p∗, p ∗] for some p∗ < p ∗ ∈ R.
+Outside the no trade region, the shadow price coincides with the bid or ask price (depending on the side). Hence, we get the following boundary condition for the function κ.
+κ(q) = γ↑, q ≤ q∗, and κ(q) = 1
+γ↓ , q ≥ q∗ (4.20)
+Considering, (4.20) for q = q∗ and q = q ∗, integrating κ′(q)/κ(q) between q∗ and q ∗, and using the ODE (4.17) for κ, we obtain
+γ↑γ↓ = κ(q∗)
+κ(q∗) = exp
+(
+−
+∫ q∗
+q∗
+κ′(q)/κ(q) dq
+)
+= exp
+(
+∫ q∗
+q∗
+1
+q(1− q)
+n(q)−m(q)
+ℓ(q)− n(q) dq
+)
+. (4.21)
+Moreover, assuming smooth fit of κ at q∗ and q ∗, (4.20) implies that κ′(q∗) = 0 = κ ′(q∗). This together with the ODE (4.17) for κ, this implies that
+n(q∗) = m(q∗) and n(q ∗) = m(q∗). (4.22)
+The idea is that the integral condition (4.21) together with the boundary condition (4.22) fixes q∗ and q ∗ and then also the particular solution n = nγ↑γ↓ we want. The boundaries p∗ and p ∗ can then be found by
+p∗ = q∗
+γ↑ + (1− γ↑)q∗ and p∗ =
+γ↓q∗
+1 + (γ↓ − 1)q∗ . It remains to analyse solutions to n′(q) = O(n, q) started from points (z, n(z) = m(z)), and to look for the initial point z = q∗ such that (4.21) holds. Remark 4.4. It will follow from later analysis (see Proposition 5.3) that qM ∈ [q∗, q ∗] so that the Merton ratio lies inside the no-transaction region expressed in terms of fractions of shadow wealth. But this does imply that qM ∈ [p∗, p
+∗], and it is possible that the Merton line lies outside the no-transaction region. This can only happen when qM /∈ [0, 1]. For example, in the case qM > 1, if γ
+↓ > qMqM−1 then the Merton line does
+not even lie in the solvency region Sγ↑,γ↓ . Further, if qM > 1 then there are cases when p ∗ = p∗(γ↑, γ↓) is a non-monotonic function of transaction costs. The fact that it is initially increasing will follow from the small transaction cost results and especially Corollary 7.3; the fact that it must subsequently decrease will follow from the fact that the no-transaction region must lie inside the solvency region. See also Figure 4(d) for a numerical example. 5 problem with friction: rigorous statements We assume henceforth that market price of risk λ := µ−rσ is non-zero. Otherwise the problem is trivial because the solution for the problem with frictions coincides with the one without friction. At t = 0 the agent would re-balance their portfolio to leave a portfolio consisting of investments in the riskless asset only; thereafter they would continue to not invest in the risky asset. Standing Assumption 2. We assume λ 6= 0. Note that Standing Assumption 2 implies in particular that the Merton ratio qM = λ σR is non-zero. For better readability, all proofs and some results of a more technical nature can be found in Appendix A. 5.1 well-posedness conditions We begin our discussion by defining when the problem with friction (4.3) is well posed. It turns out that this does not depend on the transaction cost parameters γ↑ and γ↓ for buying and selling separately but only on their product ξ := γ↑γ↓. Definition 5.1. Define the threshold transaction cost by3
+ξ :=
+{
+1 if m has at most one zero, exp (
+∫ qm+ qm− − 1q(1−q) m(q) ℓ(q) dq ) if m has two distinct zeros qm− < q m + . (5.1)
+Then ξ ∈ (1,∞) is said to be in the well-posedness range of transaction costs if one of the following two conditions is satisfied
+(a) R < 1, m(0),m(1) > 0 and ξ > ξ. (b) R > 1, m(qM ) > 0 and ξ < ξ. To understand Definition 5.1, let us look at the cases R < 1 and R > 1 separately. First, if R < 1, the problem with friction cannot be well posed if either investing nothing (q = 0) or everything (q = 1) in the risky asset leads to infinite wealth in the frictionless problem (which is the case if m(0) ≤ 0 or m(1) ≤ 0, respectively) since these are the two cases where the frictionless strategy is also admissible with friction; the corresponding wealth is either the same if q = 0 or reduced by the factor 1
+γ↓ if
+q = 1. But even if m(0),m(1) > 0, the frictionless Merton problem will be ill-posed if m(qM ) ≤ 0. Hence, the problem with friction is only well-posed if transaction costs are sufficiently large. Next, if R > 1, the problem with friction cannot be well posed if the frictionless Merton problem is not well posed, i.e., if m(qM ) ≤ 0. But even if m(qM ) > 0, the problem with friction is only well-posed if transaction costs are sufficiently small. We shall show in Section 5.6 that if ξ := γ↑γ↓ does not lie in the well-posedness range of transaction costs, the problem (4.3) is ill-posed. Remark 5.2. If m in case (a) of Definition 5.1 has two distinct zeros qm− < q m + , then ξ < ∞ since either qm− < q m + < 0 or 0 < q m − < q m + < 1 or 1 < q m − < q m + by the assumption that m(0),m(1) > 0. In case (b) of Definition 5.1, however, if m(qM ) > 0, then m always has two distinct zeros q m − < q m + . Moreover, ξ = ∞ if and only if m(0) ≥ 0 or m(1) ≥ 0 or there exists q ∈ (0, 1) with ℓ(q) ≥ 0. Using that m(0) = ℓ(0) and m(1) = ℓ(1) the latter three cases can be summarised by the single condition: ξ = ∞ if and only if maxq∈[0,1] ℓ(q) ≥ 0. 3Here, we agree that exp( ∫ qm+ qm − − 1 q(1−q) m(q) ℓ(q) dq) := ∞ in case that ∫ qm+ qm − | 1 q(1−q) m(q) ℓ(q) | dq = ∞. 5.2 the free boundary problem We first establish existence, uniqueness and further properties of the optimal consumption rate n. Mathematically, this is linked to a first-order free-boundary problem, which is additionally delicate due to the fact that the right-hand side of the ODE (5.2) is not defined for q = 1, which may lie inside the free-boundary region. The region between the two free boundaries for n turns out to be the shadow no-trade region. Note that the latter does not depend on the transaction costs parameters γ↑, γ↓ separately but only on their product ξ = γ↑γ↓. Proposition 5.3. Let ξ ∈ (1,∞) be in the well-posedness range of transaction costs. Then there exists unique boundary points q∗(ξ), q ∗(ξ) ∈ R satisfying
+0 < q∗(ξ) < qM < q ∗(ξ) < 1 if qM ∈ (0, 1),
+0 < q∗(ξ) < q ∗(ξ) = 1 if qM = 1,
+0 < q∗(ξ) < qM < q ∗(ξ) < 2qM − 1 if qM > 1,
+2qM < q∗(ξ) < qM < q ∗(ξ) < 0 if qM < 0,
+as well as a unique continuously differentiable function nξ : [q∗(ξ), q ∗(ξ)] → (0,∞) with the following properties:
+(a) nξ(q) 6= ℓ(q) for q 6= 1. (b) nξ is decreasing if R < 1 and increasing if R > 1. (c) On [q∗(ξ), q ∗(ξ)] \ {1}, nξ satisfies the ODE
+n′ξ(q) = 1− S
+S nξ 1− q m(q)− nξ(q) ℓ(q)− nξ(q) . (5.2)
+(d) nξ satisfies the boundary conditions
+nξ(q∗(ξ)) = m(q∗(ξ)) and nξ(q ∗(ξ)) = m(q∗(ξ)),
+n′ξ(q∗(ξ)) = 0 and n ′ ξ(q ∗(ξ)) = 0. (5.3)
+(e) If 1 ∈ [q∗(ξ), q ∗(ξ)], nξ satisfies
+nξ(1) = m(1) and n ′ ξ(1) = m ′(1). (f) nξ satisfies the integral constraint
+ξ = exp
+(
+∫ q∗(ξ)
+q∗(ξ) −
+1
+q(1− q)
+m(q)− nξ(q)
+ℓ(q)− nξ(q) dq
+)
+. (5.4)
+Moreover, q∗(ξ) and q ∗(ξ) satisfy the bounds
+q∗(ξ) < ξq∗(ξ)
+1 + (ξ − 1)q∗(ξ) <
+ξ
+ξ − 1 , (5.5)
+q∗(ξ) > q∗(ξ)
+ξ − q∗(ξ)(ξ − 1) > −
+1
+ξ − 1 . (5.6)
+We next turn to existence, uniqueness and further properties of the relative shadow price κ.
+Corollary 5.4. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. Then there exists a unique continuously differentiable function κγ↑,γ↓ : [q∗(ξ), q
+∗(ξ)] → (0,∞) with the following properties:
+(a) κγ↑,γ↓ is decreasing. (b) On [q∗(ξ), q ∗(ξ)] \ {1}, κγ↑,γ↓ satisfies the ODE
+κ′γ↑,γ↓(q) = κγ↑,γ↓(q)
+q(1− q)
+m(q)− nξ(q)
+ℓ(q)− nξ(q) , (5.7)
+(c) κγ↑,γ↓ satisfies the boundary conditions
+κγ↑,γ↓(q∗(ξ)) = γ ↑ and κγ↑,γ↓(q
+∗(ξ)) = 1
+γ↓ , (5.8)
+κ′γ↑,γ↓(q∗(ξ)) = 0 and κ ′ γ↑,γ↓(q ∗(ξ)) = 0. (5.9)
+Moreover, if γ̃↑, γ̃↓ ∈ [1,∞) are such that γ̃↑γ̃↓ = ξ, then
+κγ̃↑,γ̃↓ = κγ↑,γ↓ × γ̃↑
+γ↑ = κγ↑,γ↓ ×
+γ↓ γ̃↓ . 5.3 no-transaction region We next turn to the no-transaction region in terms of real (as opposed to shadow) quantities. We shall see that the relationship between the real no-transaction region and the shadow no-transaction region is neatly described by real Möbius transformations. Definition 5.5. Denote by R ∪ {∞} the compactified real line. For c ∈ (0,∞), define the real Möbius transformation τc : R ∪ {∞} → R ∪ {∞} by
+τc(q) :=
+
+ 
+ 
+cq 1+(c−1)q if q ∈ R \ { 1 1−c}, ∞ if q = 11−c , c c−1 if q = ∞. Note that the pair ({τc, c ∈ (0,∞)}, ◦) forms an Abelian group with the additional property
+τc ◦ τd = τcd, c, d ∈ (0,∞). Remark 5.6. We write ∞ to distinguish this “point at infinity” from the points −∞ and ∞ of the extended real line. We also agree that any real number x satisfies both x > ∞ and x < ∞, and therefore interpret (∞, x) as (−∞, x) and (x,∞) as (x,∞). We finally agree that c/0 := ∞ for c ∈ R \ {0} so that τ1 = id. With the help of Möbius transformations, we may define the boundary points of the real no-trade region (which depends on the transaction cost parameters γ↑ and γ↓ separately) in term of the boundary points of the shadow no-trade region (which depends on the transaction cost parameters γ↑ and γ↓ only through their product ξ = γ↑γ↓). Definition 5.7. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. Let q∗(ξ), q ∗(ξ) be as in Proposition 5.3. Define p∗(γ ↑, γ↓), p∗(γ↑, γ↓) ∈ R by
+p∗(γ ↑, γ↓) := τ 1
+γ↑ (q∗(ξ)) =
+q∗(ξ)
+γ↑ + (1− γ↑)q∗(ξ) , (5.10)
+p∗(γ↑, γ↓) := τγ↓(q ∗(ξ)) =
+γ↓q∗(ξ)
+1 + (γ↓ − 1)q∗(ξ) . (5.11)
+Note that τγ↑(p ∗(γ↑, γ↓)) = τγ↑ ◦ τ 1
+γ↑ (q∗(ξ)) = τ1(q∗(ξ)) = q∗(ξ) and similarly τ 1 γ↓ (p∗(γ↑, γ↓)) = q∗(ξ). The following result gives some estimates for the lower and upper bound of the no-transaction region. Lemma 5.8. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. Then
+0 < p∗(γ ↑, γ↓) < qM < p ∗(γ↑, γ↓) < 1, if qM ∈ (0, 1) 0 < p∗(γ ↑, γ↓) < p∗(γ↑, γ↓) = 1, if qM = 1 0 < p∗(γ ↑, γ↓) < p∗(γ↑, γ↓) < τγ↓(2qM − 1) if qM > 1,
+τ 1 γ↑ (2qM ) < p∗(γ
+↑, γ↓) < p∗(γ↑, γ↓) < 0, if qM < 0. Moreover, 1 ∈ [p∗(γ ↑, γ↓), p∗(γ↑, γ↓)] if and only if 1 ∈ [q∗(ξ), q ∗(ξ)]. Remark 5.9. (a) It follows from Lemma 5.8 (see also Davis and Norman [6, p704]) that if the Merton line lies in the first quadrant, then the no-transaction region also lies in the first quadrant (i.e., it is never optimal to have a short position in either the riskless asset or the risky asset) and contains the Merton line. A numerical illustration of this case will be given in Section 6.1. However, if qM < 0 or if qM > 1, then it may be the case that qM lies outside the interval [p∗(γ
+↑, γ↓), p∗(γ↑, γ↓)] and that the Merton line lies outside the no-transaction region. As discussed in Remark 4.4 this has to be the case if γ↓ > qMqM−1 . If qM > 1, then Davis and Norman [6, p704] conjectured that the no-transaction region lies in the second quadrant, but this need not be the case (although it must always intersect the second quadrant, and indeed we must have p∗(γ↑, γ↓) > 1). Conversely, Shreve and Soner [26, p675] conjectured that qM > p
+∗(γ↑, γ↓), whenever qM > 1, but this is not true for small transaction costs. (b) If qM > 1 (and mM ,m(1) > 0), a new phenomenon arises. It follows from Proposition 5.3 that if ξ is large enough so that q∗(ξ) < 1, then nξ passes through the singular point (1,m(1)) and on the interval (1, q∗(ξ)), nξ does not depend on ξ (and hence also q
+∗(ξ) does not depend on ξ). It follows that once ξ is sufficiently large, p∗(γ↑, γ↓) is independent of γ↓. In the additive case, Hobson et al [15, Corollary 5.4] give a financial explanation behind this observation, which also applies to the case of stochastic differential utility. In particular, if 1 ∈ (q∗(ξ), q
+∗(ξ)), then it is possible (indeed inevitable) that at some point the agent, who finances consumption from cash wealth, will exhaust holdings of the risk-free asset. At this point they continue consuming, and finance consumption by borrowing. Subsequently they will sell units of the risky asset in order to stop their short position in the riskless asset from getting too large, but they will always have a short position in cash. Put simply the process Q never returns to the set (q∗(ξ), 1] once it has left it; see also Theorem 5.13(a) below. It follows that if the initial holdings involve a short cash position, then the trajectory of the process (Xt,Φt) will be such that Qt never hits the lower threshold q∗(ξ), the agent will never purchase units of the risky asset, and the transaction costs on purchases is irrelevant. We proceed to describe existence, uniqueness and further properties of the shadow fraction of wealth in terms of the real fraction of wealth. Proposition 5.10. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. Then there exists a unique, increasing, continuously differentiable function qγ↑,γ↓ : [p∗(γ ↑, γ↓), p∗(γ↑, γ↓)] → [q∗(ξ), q ∗(ξ)] with the following properties:
+(a) on [p∗(γ ↑, γ↓), p∗(γ↑, γ↓)] \ {1}, qγ↑,γ↓ satisfies the ODE
+q′(p) = ℓ(q(p))− nξ(q(p))
+ℓ(p)−m(p) . (5.12)
+(b) qγ↑,γ↓ satisfies the boundary conditions
+qγ↑,γ↓(p∗(γ ↑, γ↓)) = τγ↑(p∗(γ ↑, γ↓)) = q∗(ξ) and qγ↑,γ↓(p ∗(γ↑, γ↓)) = τ 1 γ↓ (p∗(γ↑, γ↓)) = q∗(ξ),
+q′γ↑,γ↓(p∗(γ ↑, γ↓)) = τ ′γ↑(p∗(γ ↑, γ↓)) and q′γ↑,γ↓(p ∗(γ↑, γ↓)) = τ ′1
+γ↓
+(p∗(γ↑, γ↓)). (c) If 1 ∈ [p∗(γ ↑, γ↓), p∗(γ↑, γ↓)], then qγ↑,γ↓(1) = 1
+Moreover, if γ̃↓, γ̃↑ ∈ [1,∞) are such that γ̃↓γ̃↑ = ξ, then
+qγ̃↓,γ̃↑ = qγ↑,γ↓ ◦ τ γ̃↓ γ↓ = qγ↑,γ↓ ◦ τ γ↑ γ̃↑ . 5.4 the candidate value function and candidate optimal strategy In order define the candidate value function on the whole of S ◦ γ↑,γ↓ (and not just inside the no-trade region), we need to extend n, κ and q. The idea is to extend n and κ so that they are constant outside the no-transaction region. This in turn determines the extension of q. Definition 5.11. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. (a) Define the function nξ : (−∞,∞) → (0,∞) by
+nξ(q) :=
+
+ 
+ 
+nξ(q∗(ξ)) = m(q∗(ξ)) if q ∈ (−∞, q∗(ξ)), nξ(q) if q ∈ [q∗(ξ), q ∗(ξ)], nξ(q ∗(ξ)) = m(q∗(ξ)) if q ∈ (q∗(ξ),∞). (b) Define the function κγ↑,γ↓ : (−∞,∞) → [ 1 γ↓ , γ↑] by
+κγ↑,γ↓(q) :=
+
+ 
+ 
+κγ↑,γ↓(q∗(ξ)) = γ ↑ if q ∈ (−∞, q∗(ξ)), κγ↑,γ↓(q) if q ∈ [q∗(ξ), q ∗(ξ)], κγ↑,γ↓(q ∗(ξ)) = 1 γ↓ if q ∈ (q∗(ξ),∞). (c) Define the function qγ↑,γ↓ : (τ 1 γ↑ (∞), τγ↓(∞)) = (
+−1 γ↑−1
+, γ ↓
+γ↓−1 ) → R by
+qγ↑,γ↓(p) :=
+
+  
+  
+τγ↑(p) if p ∈ (τ 1 γ↑
+(∞), p∗(γ ↑, γ↓)),
+qγ↑,γ↓(p) if p ∈ [p∗(γ ↑, γ↓), p∗(γ↑, γ↓)]. τ 1 γ↓ (p) if p ∈ (p∗(γ↑, γ↓), τγ↓(∞)),
+We can now define candidate value function on the whole of S ◦ γ↑,γ↓ . Definition 5.12. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ lies in the well-posedness range of transaction costs. Define the value function V̂ γ ↑,γ↓ : [0,∞)× S ◦
+γ↑,γ↓ → (1−R)(0,∞) by
+V̂ γ ↑,γ↓(t, x, y, φ) := e−δθt
+( x+ φyκγ↑,γ↓ ( qγ↑,γ↓ ( φy x+φy )))1−R
+1−R nξ
+(
+qγ↑,γ↓
+(
+φy
+x+ φy
+))−θS
+. (5.13)
+We proceed to turn to the candidate optimal strategy. Since we consider all parameter combinations (in particular, 1 ∈ [p∗(γ
+↑, γ↓), p∗(γ↑, γ↓)] is allowed), this is quite delicate. Even in the additive case, the following result is not covered by standard results in the extant literature (see e.g. [26, 21]). For this reason, we provide a self-contained proof in Appendix A.3. Note that our proof only uses results on reflected SDEs in one dimension and is therefore technically substantially easier than the results in the extant literature (including [26, 21]), which rely on reflection result in a two dimensional domain. Theorem 5.13. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ is in the well-posedness range of transaction costs. Let (x, y, φ) ∈ S ◦
+γ↑,γ↓ . (a) There exist unique processes (Q̂,G = G↑ −G↓) with continuous paths and with initial values Q̂0 =
+min(max(q( φyx+φy ), q∗(ξ)), q ∗(ξ)), G↑0 = 0 = G ↓ 0, such that the process Q̂ = (Q̂t)t≥0 defined by
+dQ̂t = 2S
+σ(1− S) (ℓ(Q̂t)−nξ(Q̂t))dBt+ Q̂t
+( nξ(Q̂t)− 2θS{ℓ(Q̂t)− nξ(Q̂t)} ) dt+ dG↑t − dG ↓ t (5.14)
+takes values in [q∗(ξ), q ∗(ξ)], and G↑, G↓ are nondecreasing and increase only when Q̂t = q∗(ξ) and Q̂t = q ∗(ξ) respectively. Moreover, if 1 ∈ [q∗(ξ), q
+∗(ξ)], let τ := inf{t ≥ 0 : Q̂t ≥ 1}. Then Q̂ ∈ [q∗(ξ), 1) on J0, τJ, and Q̂ = 1 on Jτ,∞J if q∗(ξ) = 1 and Q̂ ∈ (1, q∗(ξ)] on Kτ,∞J if q ∗(ξ) > 1. (b) Set
+Φ̂0 :=
+
+  
+  
+q∗(ξ) (
+φ+ x yγ↑
+)
+if φyγ↑(1− q∗(ξ)) < q∗(ξ)x,
+φ if φyγ↑(1− q∗(ξ)) ≥ q∗(ξ)x and φy γ↓ (1− q∗(ξ) ≤ q∗(ξ)x, q∗(ξ) ( φ+ xγ ↓
+y
+)
+if φy γ↓ (1− q∗(ξ)) > q∗(ξ)x,
+and the processes Φ̂ = (Φ̂t)t≥0, Ĉ = (Ĉt)t≥0 and X̂ = (X̂t)t≥0 by
+Φ̂t := Φ̂0 exp
+(
+G↑t q∗ − G↓t q∗
+)
+,
+Ĉt := Ytκ(Q̂t)Φ̂t
+Q̂t nξ(Q̂t),
+X̂t := 1− Q̂t
+Q̂t Ytκ(Q̂t)Φ̂t. (5.15)
+Then
+(i) (Φ̂, Ĉ) ∈ Aγ↑,γ↓(x, y, φ),
+(ii) X̂ = Xx,y,φ,Φ̂,Ĉ and
+(iii) Q̂ satisfies
+Q̂t = Ytκγ↑,γ↓(Q̂t)Φ̂t
+X̂t + Ytκγ↑,γ↓(Q̂t)Φ̂t . (5.16)
+Remark 5.14. (a) The case φyγ↑(1 − q∗(ξ)) < q∗(ξ)x corresponds to starting in the region where the trading process Φ involves an initial purchase of the risky asset, and the case φy
+γ↓ (1 − q∗(ξ)) > q∗(ξ)x
+corresponds to the case where the trading process involves an initial sale of the risky asset, and in each case the expression for X̂0 given by (5.15) evaluated at t = 0 reflects the impact of the trade. Implicit in the statement is the fact that we cannot have both φyγ↑(1− q∗(ξ)) < q∗(ξ)x and φy γ↓ (1− q∗(ξ)) > q∗(ξ)x. (b) We can have 1 ∈ (q∗(ξ), q ∗(ξ)). Then the diffusion coefficient in (5.14) vanishes and the drift coefficient is positive for Q̂ = 1. In particular, the diffusion Q̂ is not regular for the domain (q∗(ξ), q ∗(ξ)). If Q̂s ≥ 1 then Q̂t > 1 for t > s. This is equivalent to the fact that if X̂s ≤ 0 then for t > s, we have X̂t < 0, and the agent always takes a short position in the risky asset, see also Remark 5.9(b). (c) We could instead start with dynamics for the candidate for P = Y ΦX+Y Φ . These are given by:
+dP̂t
+P̂t(1− P̂t) =
+(
+(µ− r)− σ2P̂t + nξ(qγ↑,γ↓(P̂t))
+1− qγ↑,γ↓(P̂t)
+)
+dt+ σ dBt + dGt
+qγ↑,γ↓(P̂t)(1− qγ↑,γ↓(P̂t)) . However, these dynamics are more complicated than those of Q̂, not least because they involves expressions like nξ(qγ↑,γ↓(p)). Moreover, for P̂ = 1, the right hand side of the SDE is not well-defined. We now link the candidate value function with the candidate optimal strategy. Theorem 5.15. Let γ↑, γ↓ ∈ [1,∞) with ξ := γ↑γ↓ > 1 be such that ξ is in the well-posedness range of transaction costs. Let (x, y, φ) ∈ S ◦
+(γ↑,γ↓) and (Φ̂, Ĉ) ∈ A(γ↑,γ↓)(x, y, φ) be the corresponding candidate
+optimal strategy from Theorem 5.13. Then Ĉ is uniquely evaluable if θ ≤ 1 and uniquely proper with right-continuous paths if θ > 1. Moreover,
+V̂ γ ↑,γ↓(t,Xx,y,φ,Φ̂,Φ̂t , Yt, Ĉt) = V Ĉ t P-a.s., t ≥ 0,
+where V Ĉ denotes the unique utility process if θ ≤ 1 and the unique proper utility process if θ > 1. 5.5 verification argument In order to complete the verification, we would like to use something like the martingale optimality principle, which in the additive case (R = S, ρ = 0) says that M given by Mt = ∫ t 0 e −δs C 1−S s 1−S ds + V̂ (t,Xt, Yt,Φt) is always a supermartingale and a martingale for the optimal strategy. In the general case with R 6= S, classical martingale optimality arguments break down due to the fact that the value process enters the integrand. Instead we need a comparison theorem for solutions of BSDEs. To this end, we recall the notions of a subsolution and a supersolution of a BSDE. Definitions of suband supersolutions of BSDEs in the literature can vary slightly depending on the context. The definition we use here is the one used in Herdegen et al [11, Definition 5.3], specialised to the case of Epstein-Zin SDU. Definition 5.16. Let C ∈ P+ be a consumption stream. A (1 − R)R+-valued, làd, optional process V is called
+• a subsolution for C if lim supt→∞ E [Vt+] ≤ 0 and for all bounded stopping times τ1 ≤ τ2,
+Vτ1 ≤ E
+[
+Vτ2+ +
+∫ τ2
+τ1
+e−δs C1−Ss 1− S ((1−R)Vs) ρ ds
+∣ ∣ ∣ ∣ Fτ1 ] . • a supersolution for C if lim inft→∞ E [Vt+] ≥ 0 and for all bounded stopping times τ1 ≤ τ2,
+Vτ1 ≥ E
+[
+Vτ2+ +
+∫ τ2
+τ1
+e−δs C1−Ss 1− S ((1−R)Vs) ρ ds
+∣ ∣ ∣ ∣ Fτ1 ] . • a solution for C if it is both a subsolution and a supersolution and E[ ∫∞ 0 C 1−S s ((1−R)Vs) ρ ds] < ∞. The next result essentially shows that for any (Φ̂, Ĉ) ∈ Aγ↑,γ↓(x, y, φ) the process (V̂ γ↑,γ↓(t,Xt, Yt,Φt))t≥0
+is a supersolution for C. However, for technical reasons, this is more delicate and a stochastic perturbation argument (as in the classical Merton case, see [10]) is needed. Proposition 5.17. Let γ↑, γ↓ ∈ [1,∞) and suppose that ξ := γ↑γ↓ ∈ (1,∞) lies in the well-posedness range of transaction costs. Let (x, y, φ) ∈ S ◦
+γ↑,γ↓ and (Φ̂, Ĉ) ∈ Aγ↑,γ↓(x, y, φ) be the corresponding candidate
+optimal strategy from Theorem 5.13. Let (Φ, C) ∈ Aγ↑,γ↓(x, y, φ) and set X := X x,y,φ,Φ,C and X̂ := Xx,y,φ,Φ̂,Ĉ. Then for every ε > 0, (V̂ γ ↑,γ↓(t,Xt + εX̂t, Yt,Φt + εΦ̂t))t≥0 is a supersolution for C + εĈ. We now can formulate a rigorous verification theorem. Theorem 5.18. Let γ↑, γ↓ ∈ [1,∞) and suppose that ξ := γ↑γ↓ ∈ (1,∞) lies in the well-posedness range of transaction costs. Let (x, y, φ) ∈ S ◦
+γ↑,γ↓ and Ĉ ∈ C ∗ γ↑,γ↓ (x, y, φ) be the corresponding candidate optimal
+strategy. Then
+sup C∈C ∗
+γ↑,γ↓ (x,y,φ)
+V C0 = V Ĉ 0 = V̂ γ↑,γ↓(0, x, y, φ),
+where V̂ γ ↑,γ↓ is the candidate value function from (5.13). 5.6 the ill-posed case We end this section by showing that if γ↑γ↓ ∈ (1,∞) does not lie in the well-posedness rage of transaction costs, the problem (4.3) is ill posed. Proposition 5.19. Fix (x, y, φ) ∈ S ◦ γ↑,γ↓ and let γ↑, γ↓ ∈ [1,∞) be such that ξ := γ↑γ↓ > 1. Suppose that ξ does not lie in the well-posedness range of transaction costs given in Definition 5.1. (a) If S ≤ R < 1 or R < S < 1, then there exists a sequence of consumption streams (Cn)n∈N ∈ C ∗ γ↑,γ↓ (x, φ, y) such that limn→∞ V Cn 0 = +∞. (b) If S ≥ R > 1 or R > S > 1, then V C0 = −∞ for all C ∈ C ∗ γ↑,γ↓ (x, φ, y). 6 diagramatic representations and numerical illustrations In this section, we provide two numerical examples to illustrate some important qualitative properties of the solution, as represented by the function nξ and the limits of the no-transaction region {q∗(ξ), q
+∗(ξ)} (in the shadow-quantity of wealth coordinates) and {p∗(γ
+↑, γ↓), p∗(γ↑, γ↓)} in the original coordinates. The examples are not meant to be exhaustive, and indeed several further canonical cases can arise depending on the signs of {1−R, qM , 1− qM}, and the locations of the quadratics m(q) and ℓ(q). Some of the cases which are omitted here are treated more comprehensively in Hobson et al [15, 14] in the special case of CRRA utility. 6.1 First Numerical Example: R,S < 1 and qM ∈ (0, 1)
+The model parameters are chosen such that R,S < 1, m(0) > 0, m(1) > 0, minq∈(0,1)m(q) < 0 and qM ∈ (0, 1)
+4. See the caption of Figure 1 for the precise values of each parameter used in the numerics. In this case, the problem is only well-posed for sufficiently large transaction costs (recall Definition 5.1). The solutions to the family of ODEs (n(z)(q))q≥z introduced in part (a) of Proposition A.1 are only defined for z ∈ (0, qm− ), where q m − is the smaller root of m(q) = 0. Each solution (n(z)(q))q≥z starts at (z,m(z)) and crosses m again at some (ζ+(z),m(ζ+(z))). Different choices of the left-starting point z correspond to different levels of total transaction costs ξ = γ↑γ↓. The correct choice of z can be identified from the equation Σ+(z) = γ↑γ↓, where Σ+(·) is defined in Proposition A.1. Then the purchase and sale
+4Economically this means that the investement-consumption problem is well-posed when only investment in the risk-free asset is allowed, and also when only investment in the risky-asset is allowed, but the problem is ill-posed when transaction costs are zero and investment in both assets is permitted. Further, in the frictionless case, the optimal investment strategy involves a long position in both the risky asset and in cash. boundaries (in shadow portfolio weight) are given by q∗ = z and q ∗ = ζ+(z). For example, Figure 1a shows two possible solutions to the ODE for n with different left-starting points and in turn different points of crossing with m. (Note, such solutions cannot cross, as they solve a first-order ODE with regular co-efficients, at least away from 1.) They correspond to the total transaction cost levels of ξ = 1.69 and ξ = 2.1125 respectively. Note that if the transaction costs are such that ξ ≤ 1.1057 then the problem is ill-posed. Consider three combinations of transaction costs (γ↑, γ↓) given by (1.3, 1.3), (1.625, 1.3) and (1.625, 1.04) respectively. They are constructed such that Set 1 and Set 3 give the same value of ξ = 1.69 whereas Set 2 gives ξ = 2.1125. Fundamental quantities of the optimal solution under each set of transaction costs are shown in Figure 1. The dotted lines in each plot indicate the extension of the fundamental quantities beyond the no-transaction region (see Definition 5.11). The cross, circle and square markers locate the boundaries of the no-transaction region under Set 1, 2 and 3 of transaction costs respectively. In Figure 1a, the transaction costs parameters of Set 1 and Set 3 yield identical optimal consumption rates per unit shadow wealth since n(·) and q∗∗ only depend on the total transaction costs ξ. Set 2 carries a higher total transaction cost and then it follows that the optimal consumption rate (in shadow wealth terms) is higher (and the no-transaction interval (q∗, q
+∗) is wider). In contrast, Figure 1b and 1c show that the three sets of transaction costs result in different ratios of shadow-to-real price as well as mappings between real and shadow portfolio weights . This is because they are affected by γ↑ and γ↓ individually, not just via the total transaction costs ξ = γ↑γ↓. These two quantities are monotonic with respect to the shadow portfolio weight. Figure 2 shows how the no-transaction region (in both real and shadow portfolio weights) changes with the transaction costs. In this case, p∗ and q∗ (resp. p
+∗ and q∗) are decreasing (resp. increasing) in both γ↑ and γ↓. But notably, Set 1 and 3 of the transaction costs will result in the same levels of q∗ and q
+∗, as indicated by the same levels of the cross and square markers in Figure 2a and 2b. In terms of real portfolio weights, Set 1 has a larger p∗ and p ∗ than Set 3. This is due to the fact that p∗ and p ∗ depend on γ↑ and γ↓ individually. Note as well that in this example (with Merton ratio below one, i.e. qM ∈ (0, 1)) the no-transaction region [p∗, p
+∗] contains the Merton ratio for all level of transaction costs, and is always contained in the first quadrant (i.e. 0 < p∗ < qM < p
+∗ < 1), recall Remark 5.9. Several qualitative features are also apparent from Figures 1 and 2 which may be traced back to the fact that n is decreasing and solutions n with different starting points get closer as q increases. In particular we observe that q∗ varies more than q ∗ as ξ changes, and whilst γ↑ affects both p∗ and p ∗, γ↓ mainly affects p∗. 6.2 Second Numerical Example: R,S > 1 and qM > 1
+In this example, we consider a combination of model parameters5 such that R,S > 1, m(q) > 0 for q ∈ [0, 1] and qM > 1. Specifically, the Merton ratio is larger than one and the problem is well-posed for any level of transaction costs. An interesting feature in the case of the Merton ratio being above one is that all solutions to the family of ODEs in part (c) of Proposition A.2 with left-starting points below one will pass through the singular point (1,m(1)). Consequently, for any z < 1, we must have n[z](q) = n[1](q) on q ∈ (1, ζ+(1)) and they all cross m at the same coordinate (ζ+(1),m(ζ+(1))). In the shadow fraction of wealth coordinates, the sale boundary q∗(ξ) is constant as a function of ξ for sufficiently high transaction costs. See Figure 3a for an example where the two plots of n correspond to ξ = 1.69 and ξ = 2.1125. On q < 1, the solution n corresponding to smaller ξ dominates the solution corresponding to higher ξ, although the magnitude of the difference is very small numerically. The two functions pass through the same singular point (1,m(1)) and coincide on q > 1 until they both cross m(q) again on q > 1 at the point indicated by the markers. 5The parameters are such that the problem is well-posed for any value of transaction costs, and both when only investments in the risk-free asset are allowed and when only investments in the risky asset are allowed. Further, in the frictionless case, the optimal investment strategy involves borrowing to finance a leveraged position in the risky asset. We consider the same three sets of transaction costs as in Example 1. Set 1 and Set 3 again result in identical optimal consumption rates (as functions of shadow wealth) as represented by n because they share the same level of ξ = γ↑γ↓. Furthermore, the shadow consumption rates are the same across all the three sets on q > 1. In Figure 3b, κ(q) is identical on q > 1 under Sets 1 and 2 of transaction costs (whilst the difference is numerically very small on q < 1). This is not surprising since κ(q) over q > 1 only depends on (γ↑, γ↓) via q∗(ξ), (nξ(·))q≤q∗(ξ) and γ
+↓,6 and Set 1 and 2 share the same value of γ↓. Further, when we move to the transaction cost parameters in Set 3 we find that on [1, q∗] the corresponding κ is a multiplicative scaling of the κ from Sets 1 and 2 (and this multiplicative scaling extends to the interval [q∗(ξ), q
+∗(ξ)] when we compare the functions κ that arise in Sets 1 and 3). These properties are inherited by the map between the real and shadow portfolio weight p = p(q), where comparing the results from Sets 1 and 2, the difference in cost of purchase has no impact on the function p(q) on q > 1, and only a numerically small difference below 1), see Figure 3c. The fact that the Merton ratio qM is above 1 brings new phenomena, especially concerning the location of the no-transaction region and how it varies with transaction costs. Figure 4a and 4b confirm that the sale boundary q∗ in shadow fractions of wealth units is totally insensitive to transaction costs (under our baseline setup with sufficiently large ξ), while q∗ is decreasing in transaction costs. Moreover, since p
+∗ only depends on transaction costs via q∗(ξ) and γ↓, p∗ is totally insensitive to γ↑ as shown in Figure 4c (recall Remark 5.9. Note also that p∗ is decreasing in γ↓ and this monotonicity is opposite to that in Example 1. Further, Figure 4c and 4d show that for some parameter values qM /∈ [p∗, p
+∗], i.e. the Merton line is not necessarily contained in the no-transaction region, again recall Remark 5.9. 7 small transaction costs In this section we discus the small transaction cost regime, and how the boundaries of the no-transaction region depend on the transaction costs γ↑ and γ↓ when the transaction costs are small. In particular we look for an expansion in terms of ε↑ = γ↑−1 and ε↓ = 1− 1
+γ↓ . Let ε = γ↑γ↓−1 = ε
+↑+ε↓ 1−ε↓ = ε↑+ε↓+O(ε↓(ε↑+ε↓)). Historically, the Merton investment-consumption problem with transaction costs has proved to be very challenging (even for the case of additive utility), and a natural response is to look for approximate solutions in the case of small transaction costs7. For additive utility,Rogers [25] argued that it is natural to expect the width of the no-transaction region to be of the order of the size of the transcation cost to the power one-third. This result was formalised by Janeček and Shreve [16]. They showed (under an assumption that the transaction costs on buying and selling are identical, or in our setting that γ↓ − 1 = 1− 1
+γ↑ ), and
+under a (almost necessary) assumption that the problem without transaction costs problem is well-posed) that p∗ = qM −∆ 1/3ε1/3 +O(ε2/3) and that p∗ = qM +∆ 1/3ε1/3 +O(ε2/3), where ∆ is defined below in (7.1). In general, further progress was difficult because characterisations of the value function depended on finding a solution to a non-linear second order free-boundary problem, with two free boundaries. One case that is slightly simpler is the case of logarithmic utility (which formally may be considered as the case R = 1 = S in our setting). In the case of logarithmic utility Gerhold et al [9] focus on the dual problem to give an expansion for p∗, p
+∗ to order O(ε2/3) and an expansion for the optimal consumption which is valid up to order O(ε). Still in the additive case, Choi et al [5] and Hobson et al [15], showed how the problem for general transaction costs can be reduced to a first order equation. This facilitated a simpler derivation of the expansion for small transaction costs, see Choi [3] and Hobson et al [15], and these papers calculated the second order term. Choi [3] assumed zero transaction costs on selling (i.e. that γ↓ = 1), but his results can be translated to the more general case. Hobson et al [15] additionally considered the expansion in the
+6We have κ(q) = γ↑ exp (
+S 1−S
+∫ q
+q∗(ξ)
+n′ξ(v) vnξ(v) dv ) = 1 γ↓ exp ( − S 1−S ∫ q∗(ξ) q n′ξ(v) vnξ(v) dv )
+. 7It is important to note that our method gives a solution which is valid for all values of transaction costs, and then we look in the small transaction cost regime. Many other studies in the small transaction cost regime only construct solutions as expansions about the frictionless case. case qM = 1, in which case the width of the no transaction wedge is of order ε 1/2. (We could extend our results to this case similarly). Melynyk et al [21] considered the small transaction cost case for Epstein-Zin SDU. Under some restrictions on the paramaters (which go beyond well-posedness of the problem) and under the assumption that the transaction costs on buying and selling are identical, (i.e. γ↓ − 1 = 1 − 1
+γ↑ ) they derived an
+expansion to order ε2/3 for the value function and thence find expansions (again accurate to order ε2/3) for the boundaries of the optimal no-transaction region and the optimal consumption. Define
+∆ = 3q2M (1− qM) 2
+4R ; (7.1)
+Σ = 4mM
+3σ2qM(1− qM )2 = mMqM Rσ2∆ ;
+Ψ = 1
+5 Σ2 +
+1
+5
+(5qM − 3)
+qM(1− qM ) Σ−
+(3− 10qM + 10q 2 M ) + 4RqM (1− qM )
+15q2M (1− qM ) 2
+. Proposition 7.1. Suppose that R,S < 1 and mM ≥ 0 or R,S > 1 and mM > 0, and suppose that qM /∈ {0, 1}. Then for all ε > 0 sufficiently small
+q∗(1 + ε) = qM −∆ 1 3 ε 1 3 − Σ∆ 2 3 ε 2 3 −Ψ∆ε+O
+(
+ε 4 3
+)
+q∗(1 + ε) = qM +∆ 1 3 ε 1 3 − Σ∆ 2 3 ε 2 3 +Ψ∆ε+O
+(
+ε 4 3
+)
+Remark 7.2. (a) The assumption of Proposition 7.1 that either R,S < 1 and mM ≥ 0 or R,S > 1 and mM > 0 is equivalent to an assumption that the problem (4.3) is well-posed for all sufficiently small transaction cots. (b) In the shadow-fraction of wealth co-ordinates, the width of no-transaction region is O(ε1/3) and is symmetric about the Merton proportion qM . To order ε
+1/3 the width of the no-transaction region depends on risk aversion R (both directly, and indirectly through qM = λ σR ), but not on the elasticity of inter-temporal complementarity S.
+(c) The O(ε2/3) term is same for both q∗ and q ∗ and moves the no-transaction region in the direction
+of smaller positions in the risky asset. This term does not depend directly on S, although it does depend indirectly on S via m̂. (d) The O(ε2/3) term is same for both q∗ and q ∗, except that the signs are opposite, so that rather than
+moving the no-transaction region it makes it wider or narrower. This term does not depend directly on S, although it does depend indirectly on S via m̂. (e) It is the straightforward to extend the arguments to higher order as required, or to the case qM = 1. If λ = 0 = qM then the problem is degenerate and optimal strategy for the agent is to instantly eliminate any position (long or short) in the risky asset, and thereafter to keep all wealth in the bank account. Corollary 7.3. Suppose that R,S < 1 and mM ≥ 0 or R,S > 1 and mM > 0, and suppose that qm /∈ {0, 1}. Then for all ε ↑, ε↓ > 0 sufficiently small
+p∗(1 + ε ↑, 1 + ε↓) = qM −∆ 1 3 (ε↑ + ε↓) 1 3 − Σ∆ 2 3 (ε↑ + ε↓) 2 3 −Ψ∆(ε↑ + ε↓)− ε↑qM(1− qM ) +O(ε 4 3 ) p∗(1 + ε↑, 1 + ε↓) = qM +∆ 1 3 (ε↑ + ε↓) 1 3 − Σ∆ 2 3 (ε↑ + ε↓) 2 3 +Ψ∆(ε↑ + ε↓) + ε↓qM(1− qM ) +O(ε 4 3 )
+Remark 7.4. (a) In the original coordinates, the width of the no-trade region is O(ε1/3) and to leading order is symmetric about the Merton proportion qM . Also to leading order, the width of the notransaction region depends on risk aversion R (both directly, and indirectly through qM = λ σR ), but
+not on the elasticity of inter-temporal complementarity S. See also Janeček and Shreve [16, Remark 1] in the additive case, and Melnyk et al [21] for the corresponding result under EZ-SDU. (b) The O(ε2/3) term is same for both p∗ and p ∗ and moves the no-transaction region in the direction
+of smaller positions in the risky asset. This term does not depend directly on S, although it does depend indirectly on S via m̂. See also [16, 21]. (c) The individual transaction costs ε↑ and ε↓ only enter at linear order. The linear order term does not depend on the elasticity of inter-temporal complementarity S, except indirectly through mM . This is the final term with this property. Proposition 7.5. Suppose that R,S < 1 and mM ≥ 0 or R,S > 1 and mM > 0, and suppose that qM /∈ {0, 1}. Let h3(v) = (1 + v) 2(2− v). Then for all ε↑, ε↓ > 0 sufficiently small
+C∗1+ε↑,1+ε↓(t, x, y, φ) = C ∗ 1,1(t, x, y, φ)
+(
+1 + R(1− S)
+S
+σ2
+2mM ∆2/3(ε↑ + ε↓)2/3
++ qM 2S
+(
+1− 1
+2 h3
+(
+p− qM
+∆1/3ε1/3
+))
+(ε↑ + ε↓) + qM 2 (ε↑ − ε↓)
+)
++O(ε4/3)
+where p = yφx+yφ and C ∗ 1,1(t, x, y, φ) := (x + yφ)mM is the optimal consumption under zero transaction costs. Remark 7.6. (a) To zeroth order consumption is equal to optimal consumption without transaction costs, and there is no term of order ε1/3. (See also Janeček and Shreve [16, Remark 2] in the additive case and Melnyk et al [21, Corollary 6.1] in the case of EZ-SDU.) (b) The first non-zero correction term is independent of p = yφx+yφ and is of order ε 2/3, ([16] and [21] make
+a similar observation.) It does not depend on the individual transaction costs. Mathematically, the fact that the consumption is constant arises from the fact that solutions n+(qM−u) are (approximately) horizontal for small u, (since n+(qM−u) has zero derivative at both endpoints where it intersects with m). Here n+(qM−u) is the solution to n = O(n, q) started at (qM − u, n(qM − u) = m(qM − u)), and is defined fully in Appendix A.1. (c) The sign of the first non-zero correction term depends on the sign of (1 − S). If S < 1 then the agent consumes more than in the zero-transaction case; if S > 1 then the agent consume less8. At its heart, the explanation for this relationship is that given in Remark 3.5 about the impact of investing a sub-optimal fraction of wealth in the risky asset, and the effect this has on the certainty equivalent wealth of the agent. The impact of transaction costs is to cause the agent to invest a sub-optimal
+8Janeček and Shreve [16, Remark 2] and Melnyk et al [21] also make this observation. Janeček and Shreve write ‘. . . the existence of transaction costs increases the size of consumption for R ∈ (0, 1), while the consumption is decreased for R > 1. This is explained by the fact that the index of inter-temporal substitution, 1/R, is high for small R’ – note that in their additive model R ≡ S. However, whilst the two facts (existence of transaction costs increases (respectively decreases) consumption for R ∈ (0, 1) (respectively R ∈ (1,∞)), and the index of inter-temporal substitution 1/R is high for small R) are correct, no evidence is offered as to why the second fact is an explanation of the first, or why the sign of R− 1 is critical. In the case of zero-transaction costs (and therefore also, approximately in the case of small transaction costs) the optimal consumption is mM = ( r + λ 2
+2R
+)
++ 1 S
+(
+δ − r − λ 2
+2R
+)
+. Assuming that δ−r− λ 2
+2R > 0, the primary effect of increasing S is to reduce the optimal
+consumption, but this does not give an explanation of why the sign of consumption changes relative to the zero-transaction cost case depend on the sign of (1 − S). For this a more subtle argument is needed. Melnyk et al [21, Page 1147] point out that in the case of stochastic differential utility the elasticity of intertemporal complementarity is captured by S (and is separate to the risk aversion R) but defer to Janeček and Shreve for an explanation. We return to this issue in Section 8.3.
+fraction of wealth in the risky asset. If S < 1 the fact that the certainty equivalent value of the agent’s holdings goes down (relative to the zero transaction cost case) leads the agent to increase their instantaneous consumption. When S > 1, again the presence of transaction costs causes the agent to invest a sub-optimal fraction of wealth in the risky asset. This time this leads the agent to reduce instantaneous consumption. See Section 8.3 for further development of this argument. (d) We expect that when R = S = 1 we recover the expansion for logarithmic utility, as studied by Gerhold et al [9]. Indeed, in this case Gerhold et al argue that the leading order correction to the optimal consumption is of order ε (and not of order ε2/3). Our results are consistent with this claim. (e) Individual transaction costs enter at O(ε). This is also the first term at which the fraction p of wealth invested in the risky asset affects the consumption. 8 comparative statics  8.1 comparative statics of the boundaries in s Proposition 8.1. Fix all the model parameters except S. Suppose Ŝ > S̃ and the problems under S = Ŝ and S = S̃ are well-posed where the optimal purchase and sale boundaries are (p̂∗, p̂ ∗) and (p̃∗, p̃ ∗) respectively. (a) If
+δ − r − λ2
+2R ≥ 0, (8.1)
+then p̂∗ ≥ p̃∗ and p̂ ∗ ≥ p̃∗. (b) Suppose instead
+δ − r − λ2
+2R < 0. (8.2)
+If the problems under S = Ŝ and S = S̃ are well-posed for all sufficiently small transaction costs, then there exists ε > 0 (which may depend on Ŝ, S̃) such that p̂∗ ≤ p̃∗ and p̂
+∗ ≤ p̃∗ for all ξ = γ↑γ↓ ∈ [1, 1 + ε]. The proof of Proposition 8.1 is given in Appendix C.1. Note that although we have made no assumptions about the sign of r it is natural to assume that
+r > 0 and then r + λ 2
+2R > 0. Then it is easily seen that the condition for the problem with (sufficiently)
+small transaction costs to be well-posed, namely S ( r + λ 2
+2R
+)
+> r+ λ 2 2R − δ, is equivalent to S > 1− δ
+r+ λ 2
+2R
+. Corollary 8.2. Fix all the model parameters except S. Suppose that δ ≥ r + λ 2
+2R > 0. Suppose S < 1. Then the problem is always well-posed and p∗ and p ∗
+are increasing in S for all levels of transaction costs. Conversely, suppose S > 1. Then p∗ and p ∗ are increasing in S over the range of transaction costs for which the problem is well-posed. In particular p∗ and p∗ are increasing in S for small transaction costs. Suppose that r + λ 2
+2R > max{δ, 0}. Then the problem is well-posed for small transaction costs for
+S > max{1 − δ r+ λ 2
+2R
+, 0} and then, still for small transaction costs, p∗ and p ∗ are decreasing in S over this
+range. Each of Figure 5 and 6 shows the two cases described in Proposition 8.1 where the monotonicity behaviours of p∗, p
+∗ can be different. To understand why different cases can arise, recall that in the frictionless case the optimal consumption rate is given by
+mM = m(qM ) = r + λ2
+2R +
+δ − r − λ 2
+2R
+S . The sign of δ − r − λ 2
+2R therefore governs whether, in the absence of transaction costs, the (constant)
+optimal consumption rate increases or decreases in S. Suppose δ− r− λ 2
+2R is positive. Then the agent with lower S wants to consume at a higher rate whilst maintaining a constant fraction of wealth invested in the risky asset given by the Merton ratio. As trading does not incur transaction costs, the higher level of consumption can be supported interchangeably by sale of the risky asset and/or withdrawal of cash from the risk-free account. With transaction costs, we expect that the sign of δ − r − λ 2
+2R affects the monotonicity of the optimal
+consumption rate with S in a similar fashion (at least when transaction costs are small). If δ − r − λ 2
+2R is positive, the agent with lower S again wants to consume more, but now such an agent will prefer to finance consumption from cash wealth rather than from sales of the risky asset because of the market frictions. Hence the agent with lower S in general has a stronger incentive to hold cash in anticipation of the need to consume more, resulting in a downward shift of the no-transaction wedge [p∗, p ∗]. The opposite will happen when δ − r − λ 2
+2R is negative. 8.2 comparative statics of the boundaries in r The proof of Proposition 8.3 is given in Appendix C.2. Proposition 8.3. Suppose λ > 0. Fix all the model parameters except R. Let R̂ > R̃ be such that the problems under R = R̂ and R = R̃ are well-posed where the optimal purchase and sale boundaries are (p̂∗, p̂ ∗) and (p̃∗, p̃ ∗) respectively. If any of the conditions in Lemma C.1 holds for R ∈ {R̂, R̃}, then p̂∗ ≤ p̃∗ and p̂ ∗ ≤ p̃∗. Consequently, subject to the well-posedness of the problem:
+(a) If S < 1 then p∗ and p ∗ are decreasing in R for any R ∈ (0, 1). (b) If S > 1 and m(0) > 0 then p∗ and p ∗ are decreasing in R for R ∈ [2,∞). If also λ ≥ σ2 then p∗ and
+p∗ are decreasing in R for R ∈ (1,∞). The main conclusion from Proposition 8.3 is that in the typical case p∗ and p ∗ are decreasing in R. This result is proven to hold over the regime where the problem is well-posed whenever R < 1 and also when R > 1 unless either m(0) ≤ 0 or R ∈ (1, 2) and λ < σ2 . The condition m(0) > 0 is equivalent to δ + r(S − 1) < 0, which is automatically satisfied if R,S > 1 and δ, r > 0. Such monotonicity behaviour of p∗ and p
+∗ in R is perhaps not too surprising in view of the fact that the Merton ratio qM = λ/(Rσ) is decreasing in R. Nonetheless, it is useful to stress that the consumption motive will also affect p∗ and p ∗ as R varies. Note that the optimal consumption rate in the frictionless case can be rewritten as
+mM = m(qM ) = r + δ − r
+S +
+λ2
+2R
+S − 1
+S . (8.3)
+Then for a fixed S < 1, the (frictionless) consumption rate is increasing in R. Following similar intuition to that used in Section 8.1, in the case with frictions we expect that the elevated consumption due to an increase in R will make the agent more inclined to hold cash (i.e. a smaller fraction of wealth is invested in the risky asset). This effect is in the same direction as the impact of R on the Merton ratio (when S < 1). However, if S > 1 then (8.3) suggests the optimal frictionless consumption rate is decreasing in R. The (lack of) consumption motive will then encourage the agent to hold less cash and hence the fraction of wealth invested in the risky asset becomes larger. The effect of R on the investment level through the consumption motive is therefore opposite in sign to the direct effect of R on the Merton ratio, and the net effect on the investment level becomes ambiguous. This is the reason why in the case S > 1 we require further conditions in Proposition 8.3 to be able to conclude that p∗ and p
+∗ are decreasing in R. Indeed, there exist counterexamples such that the boundaries are not decreasing in R, although usually they require somewhat extreme model parameters such as a negative discount rate in conjunction with very high transaction costs. See Figure 8. 8.3 what determines whether consumption increases or decreases with the introduction of transaction costs? In this section we give three related arguments which together justify the comments made in Remarks 3.5 and 7.6(c). Consider the continuous-time investment-consumption problem for EZ-SDU in the frictionless case. Suppose the agent uses constant proportional strategies so that the value function is as given in (3.6) where H is as given in (3.5), i.e. H(q,m) = δ + (S − 1)
+(
+r −m+ λσq − 1
+2 q2σ2R
+)
+. Then, provided H(q,m) > 0, and with z = x+ yθ denoting initial wealth, V0 = z1−R
+1−R
+(
+m1−S
+H(q,m)
+)θ . Maximis-
+ing V0 is equivalent to maximising ((1 −R)V0) 1
+1−R = z m H(q,m) 1 1−S . Note that this quantity is expressed in
+economically meaningful units as it represents the certainty equivalent value. As in Section 3.1, suppose that the fraction of wealth invested in the risky asset is constrained to be equal to q, where q is fixed and given, and possibly suboptimal, and consider choosing the optimal consumption rate. The maximum certainty equivalent can be found by differentiation and we get that the optimal consumption rate m is given by m = m(q) and solves 1m = Hm(q,m) (1−S)H(q,m) . Since Hm(q,m) = (1−S) this simplifies to m(q) = H(q,m(q)), so that m(q) is the root of the decreasing (in m) function hq where hq(m) = H(q,m)−m. Suppose S < 1. Then H(q,m) has a minimum in q at qM (independent of the value of m). In particular, for q 6= qM , 0 = hq(m(q)) = H(q,m(q)) −m(q) > H(qM ,m(q)) −m(q) = hqM (m(q)) (where the strict inequality follows from the strict convexity of H in q). Then, since hqM is decreasing we must
+have m(qM ) < m(q). In particular, m(·) has a minimum at qM . Conversely, suppose S > 1 so that H(q,m) has a maximum in q at qM . Then, 0 = hq(m(q)) = H(q,m(q))−m(q) ≥ H(qM ,m(q))−m(q) = hqM (m(q)) and since hqM is decreasing we must have m(qM ) ≥ m(q). In particular, m(·) has a maximum at qM (and the uniqueness of the minimiser follows from the uniqueness of the maximiser of H in q as before). It follows that (in the zero-transaction cost case) when S < 1 the impact of using a non-optimal investment strategy, and then optimising over consumption is to increase the immediate consumption rate relative to the optimal consumption rate under an optimal investment strategy. When S > 1, the impact of using a non-optimal investment strategy, and then optimising over consumption is to decrease the immediate consumption rate. One impact of transaction costs is to force the agent to use a suboptimal investment strategy when compared with the frictionless world. The above analysis then explains whether the impact of transaction costs on the consumption rate is to increase or decrease instantaneous consumption (relative to the frictionless case) and why this depends exactly on the shape of H(q,m(q)) (does it have a minimum or a maximum at qM) which in turn is directly related to the sign of (S − 1). The above argument might be considered a mathematical justification of the role of (S − 1) in determining the impact of the introduction of transaction costs on consumption, but it does not directly relate to the economic explanation of the fundamental role of S−1 given in Remark 3.5 in terms of the interplay between two impacts of reducing the certainty equivalent value of future consumption. To understand what is happening at a more fundamental level, we consider recursive utility over one time period. Consider an agent in a one-period economy (with times 0 and 1) containing a risk-less asset and a risky asset. The agent has initial wealth x and recursive preferences. The time-0 controls available to the agent are to decide the amount c ∈ (0, 1) to consume at t = 0, and the number of units φ of the risky asset to hold between times 0 and 1. We assume that the price of the risk-less asset is normalised so that it is constant over time, that the initial price of the risky asset is 1 and that the return on the risky asset is given by the time-1 measurable random variable Z (so that 1 invested in the risky asset at time 0 yields (1+Z) at time-1). It follows that the wealth of the agent at time 1 (we assume no frictions) is x− c+φZ. We assume that all wealth at time 1 is consumed at time 1. Under quasi-arithmetic recursive preferences, the aim of the agent is to maximise the certainty equivalent value
+f−1 ( f(c) + f ◦ g−1 (E[g(x− c+ φZ)]) )
+(8.4)
+where f and g are increasing, concave functions. The example to consider is f(z) = z 1−S 1−S and g(z) = z1−R 1−R in which case the recursive utility is precisely the discrete-time (one-period) analogue of the EZ-SDU we are considering in the main body of the paper. We specialise to the case of g(z) = z 1−R 1−R , but leave f general. Then, with w = φ x−c we find
+g−1 (E[g(x− c+ φZ)]) = (x− c)D(w) where D(w) = g−1(E[g(1 + wZ)]) = ( E [ (1 + wZ)1−R ]) 1 1−R . Then maximising (8.4) simplifies to first maximising D with respect to w, and then with ŵ = argmaxD(w), maximising
+f−1 (f(c) + f ((x− c)D(ŵ)))
+We can also consider the problem of maximising the certainty equivalent value for a given investment strategy. Suppose w (and therefore D = D(w)) is fixed. Then, since f is increasing, it is sufficient to maximise f(c) + f(D(x − c)). Assuming differentiability of f (and an interior maximum, for which a sufficient condition is f ′(0) = ∞) the maximiser ĉ = ĉ(x,D) solves
+f ′(c) = Df ′(D(x− c)) = 1
+(x− c) [yf ′(y)]
+∣ ∣
+y=D(x−c) . (8.5)
+We want to consider the impact of changing D, and it is clear that this depends on whether yf ′(y) is increasing or decreasing in y. By the concavity of f , the left expression of (8.5) is decreasing in c and the middle expression is increasing in c. Therefore, if yf ′(y) is increasing in y then ĉ(x,D) is decreasing
+in D; conversely, if yf ′(y) is decreasing in y then ĉ(x,D) is increasing in D. For f(z) = z 1−S
+1−S , zf ′(z) is
+decreasing precisely when S > 1, so that ĉ(x,D) is increasing in D if and only if S > 19. Finally we combine this argument with the impact of using a sub-optimal investment strategy as in the continuous-time case: if w∗ is optimal then D(w) < D(w∗) and optimal consumption in markets with frictions is lower than in the frictionless case if and only if S > 1. The third argument is related to Remark 3.5 and connects the above analysis to the impact of 1/S as a measure of the inter-temporal substitutability of consumption – high S indicates a strong preference for smooth consumption over time. Consider the first equality in (8.5). D enters into the expression Df ′(D(x − c)) twice. First, the factor D means that decreasing D lowers the expression, resulting in higher optimal consumption. This role for D is related to the impact of changes of future wealth on consumption and is independent of the preferences expressed via f . Second D is an argument of the factor f ′(D(x− c)) – here lowering D increases the marginal time-1 utility and therefore, in isolation, decreases time-0 consumption. This factor depends on the preferences via f ′ and is strongest when S is large. Thus, when S is small, the first effect dominates and using suboptimal investment strategies leads to increased consumption. When S is large, the desire for smooth consumption increases, the second effect dominates, and time-0 consumption falls. 9 concluding remarks In this paper we studied the optimal investment-consumption problem over the infinite horizon in a Black–Scholes–Merton financial market. Relative to the standard frictionless case first investigated by Merton [22, 23], the innovations are that we consider proportional transaction costs and non-additive preferences, as captured by Epstein–Zin stochastic differential utility. Our results determine when the problem is well-posed, and in this case, we give a complete description of the optimal investment and consumption strategies. A major innovation is our focus on the shadow fraction of wealth in the risky asset: it turns out that with this as the primary variable, the problem reduces to the study of a freeboundary problem for one-dimensional, singular ODE. Even for additive (CRRA) preferences (studied first by Magill and Constantinides [19] and Davis and Norman [6]) our approach brings substantial simplifications and insights, and we are able give new (financial) interpretations to many of the quantities which arise. The non-additive case brings extra technical challenges (especially as regards existence and uniqueness of the utility process associated with a given consumption stream, and the comparison theorem used to facilitate the verification lemma); we overcome these challenges by making use of previous results in the frictionless case, see [12]. Study of the non-additive case is increasingly important as there is mounting evidence that the additive case fails to accurately describe investor behaviour. This paper is the first to give a full solution of the problem in the non-additive case (previous results only covered the small transaction cost case and only for an incomplete set of parameter combinations) and therefore is the first to make it possible to properly study the comparative statics of the problem and to distinguish the separate roles played by the risk aversion (which primarily affects the width and location of the no-transaction wedge), and the elasticity of intertemporal complementarity (which primarily affects the consumption rate). The methods of this paper rely crucially on scaling properties of the problem (including the dynamics of the price process, the proportional transaction costs and the form of the recursive utility) to reduce the dimensionality, and it looks difficult to extend them beyond this case. Notwithstanding, looking at the extant literature in the additive case, it seems that there are at least two natural extensions which would become tractable for SDU using the methods of this paper. 9Alternatively for f(z) = z 1−S
+1−S of power law form, ĉ solves c−S = D1−S(x − c)1−S . It follows that ĉ = D1− 1 S x which is
+increasing in D if and only if S > 1.

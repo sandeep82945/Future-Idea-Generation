@@ -1,0 +1,541 @@
+Methods: The tripartite evolutionary game model is proposed in the paper, which composed of local governments, private elderly care institutions and the public. Furthermore, three mechanisms, i.e. dynamic penalty and static subsidy, static penalty and dynamic subsidy, dynamic penalty and dynamic subsidy, are designed. Under these different mechanisms, the stability of each subject’s strategy choice is analyzed by using system dynamics simulation. open access  edited by  angie shafei, flinders university, australia  reviewed by Hao Zhang, Chongqing Medical University, China Milena Lopreite, University of Calabria, Italy Simon Grima, University of Malta, Malta
+*CORRESPONDENCE Yue Zheng zywhu@whu.edu.cn
+RECEIVED 06 May 2023 ACCEPTED 03 August 2023 PUBLISHED 22 August 2023 citation Wang Q, Liu J and Zheng Y (2023) Evolutionary game and stability analysis of elderly care service quality supervision from the perspective of government governance. Front. Public Health 11:1218301. doi: 10.3389/fpubh.2023.1218301 copyright © 2023 Wang, Liu and Zheng. This is an openaccess article distributed under the terms of the Creative Commons Attribution License (CC BY). The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms. TYPE Original Research PUBLISHED 22 August 2023 DOI 10.3389/fpubh.2023.1218301
+Frontiers in Public Health 02 frontiersin.org
+(5, 6), and meet the diversified, personalized, and hierarchical service needs of the older adult (7, 8). The role of social capital in the elderly service system cannot be ignored. In 2013, the Chinese government issued “Several Opinions on Accelerating the Development of the Elderly Service Industry,” proposing to improve the market mechanism and support social forces to run elderly institutions (9). In 2016, the Chinese government released “Several Opinions on Comprehensively Liberalizing the Elderly Care Service Market and Improving the Quality of Elderly Care Services,” which proposed to further relax the access conditions and optimize the market environment (10). In 2021, the Chinese government released the “14th Five-Year Plan for the Development of National Aging Cause and Elderly Care Service System,” which once again emphasized the need to fully mobilize the participation of social forces (11). However, as the role of social capital in the elderly service system gradually changes from “supplement” to “support,” the corresponding service quality problems also gradually appear. The late formation of China’s pension service market makes a series of top-level policy design relatively lagging behind, and the basic support for social capital is also insufficient. This makes it difficult to fundamentally improve the service quality of the elderly service market, and the problem of imperfect regulatory mechanisms still exists (12). As is well-known, service quality is the necessary basis for the survival and development of elderly care institutions. The government supervision is an important guarantee for elderly care institutions to improve their service quality level. However, over the years, the high construction investment and low returns of private elderly care institutions have put the private elderly care institutions under greater operational pressure (13). This encourages them to pursue low-quality services that may reduce costs. For example, in 2015, a private elderly care institution in Henan Province cut corners in the construction of firefighting infrastructure to save costs, leading to a major fire (14). In 2020, another private elderly care institution in Sichuan Province did not provide services for the older adult according to the contracted content (15). In 2022, some private elderly care institutions in Shandong Province failed the sampling inspection of food service (16). The speculative operation of private elderly care institutions not only infringed on the legitimate rights and interests of the older adult, but also increased the difficulty of government supervision. On the one hand, due to the particularity of service, the speculative operation of private elderly care institutions is not easy to be observed directly. On the other hand, the existing government supervision mechanism is also difficult to fundamentally eliminate the speculative operation of private elderly care institutions. Therefore, it is urgent for the government to establish an effective regulatory mechanism to promote the healthy and sustainable development of the elderly service industry. Previous studies are mainly focused on the supervision of the elderly care service market and the coping strategies of various elderly care service problems. Based on the background of “Internet and community elderly care,” Wang et al. (17) constructed a four-party evolutionary game model. The research results showed that the collaborative supervision of government and seniors has a greater impact on the behavior strategy of suppliers and platforms. Krings et al. (18) analyzed China’s aging dilemma and aging policies, noted that the Chinese government’s aging policies are similar to those of Western countries and are converge toward home care, informal care, and healthy aging. Hung (19) assessed the gaps in smart home care technology and policy formulation that Chinese policymakers need to
+address. Lopreite et al. (20, 21) studied the relationship between aging and health expenditure, and proposed that government policies should balance economic, social, and health in order to improve the quality of life of older adults in their later years and achieve sustainable economic development. Pförtner et al. (22) and Hower et al. (23) pointed out that nursing facilities are facing challenges such as rising costs and staff shortages during the COVID-19 epidemic, and timely actions should be taken to ensure the provision of long-term care services. Song et al. (24) studied the market-based transformation of elderly care services and founded that active government response to public needs and preferences and the establishment of market regulation measures can be effective in improving social welfare. Lim (25) concluded that government supervision and education are necessary to strengthen the professionalism of nursing staff through in-depth interviews with 10 nursing staff. The above studies are from the perspective of government, and less consideration is given to other stakeholders in the supply of elderly care services. Furthermore, most of the studies on regulation focus on the supervision objectives with the best results, but lack of consideration of supervision objectives such as improving market robustness and speeding up market stability. The static reward and static punishment mechanism are used to discuss the impact of government penalties and rewards on the market. For example, Li et al. (26) developed a game model of the evolution of the governance mechanism of the recycling industry and analyzed the effect of government penalty intensity on the behavioral strategies of recycling firms. Zhu et al. (27) introduced the random punishment mechanism into the treatment of kitchen waste. The results verified that the random punishment mechanism is more conducive to the system to reach a stable state. Wang et al. (28) designed a penalty linkage mechanism and founded that the penalty linkage mechanism can promote the development of the electronic recycling industry in the initial stage. In addition, the dynamic reward and dynamic punishment mechanism are also established. For example, Sun et al. (29) analyzed the impact of pure reward and rewarddominated penalty-supplemented schemes on the behavior choices of game subjects. Based on the background of carbon emission reduction. He  et al. (30) proposed an evolutionary game model to study the government’s regulatory strategy on straw biomass energy supply chain, in which that the dynamic penalty strategy is conducive to the sustainable development of biomass energy supply chain. The reward and punishment, as the intervention means often used by the government to regulate the market, have good incentive and restraint effects, but the proposed dynamic reward and dynamic punishment mechanism are mainly based on the government and the private sector. Also, they are lack of discussion on the dynamic reward and dynamic punishment mechanism under the participation of multiple agents, and consideration on the non-linear dynamic reward or punishment mechanism. This is not conducive to the depiction of the reality of the market. As the end consumers of various products and services, the supervision behavior of the public is undoubtedly an important factor affecting the quality of products and services, and also another important topic related to this study. Through analysis, Zhou et al. (31) found that the establishment of a supervision mechanism with public participation can control the non-green behavior of enterprises and increase their demand for renewable energy. Feng et al. (32) introduced the public monitoring into the railroad transportation safety regulation model, and the results showed that the increase in the proportion of public monitoring was beneficial to improve the proportion of railroad safety production. Liu et al. (33) argued that
+Frontiers in Public Health 03 frontiersin.org
+the public’s negative participation in monitoring is not conducive to government monitoring of the green building supply market. Dong et al. (34) explored the impact of public supervision on industrial pollution control from the perspective of the government. Yang et al. (35) constructed an evolutionary game model consisting of regulators, energy companies and whistleblowers in which each party’s strategy choice is analyzed. Note that, the existing literature on the supervision of pension services are mainly focused on the regulatory role of the government and the older adult, which ignores that the public is an indispensable participant. As is well-known, evolutionary game theory (EGT) (36) is often used to quantify the government’s intervention measures. Some scholars have discussed the relationship among the actors in the senior care service market by building evolutionary game model. For example, Sun et al. (37) developed an evolutionary game model to analyze the effect of government subsidies on the cooperation strategies of health care organizations and elderly social care organizations. Zhang and Yao (38) took the government as one of the game subjects to explore the inhibitory effect of government regulation on the speculative behavior of health-care PPP project operators. Yue and Lin (39) constructed a two-party game model to analyze the impact of punishment and operation subsidy on the quality supervision of pension PPP projects. Wang and Cui (40) used the EGT to analyze the different reward and punishment mechanisms between local governments and elderly care institutions, and pointed out that the dynamic reward mechanism is more conducive to the elderly care institutions to adopt self-discipline management behavior. Therefore, EGT is also suitable for the study of elderly care service quality supervision under multi-subject supervision. In summary, the existing literature mainly discusses the government participation in the supervision of the pension service market and the game relationship among the main bodies in the pension service market. There is a lack of in-depth discussion on the differences of different combinations of subsidies and penalties under the public participate in supervision. On the other hand, the literature analyzing the government’s intervention behavior on the service supply behavior of private elderly care institutions mostly focuses on static reward and static penalty mechanism, with little consideration of non-linear dynamic reward and dynamic penalty mechanism. What is more, there is no consideration of the study of the relevant parameters adjustment priorities from the different regulatory objectives of the government. Therefore, the contributions of this paper are summarized as follows. Firstly, considering the supervision behavior of the public, the dynamic reward and penalty mechanism is proposed, which is more appropriate to the actual situation. Secondly, from the different regulatory objectives of the government, the priorities of the relevant parameters of adjustment are studied to facilitate the government to prescribe the right medicine. Thirdly, a non-linear dynamic subsidy method is proposed, in which there is a parabolic relationship between subsidy and self-discipline management willingness of private elderly care institutions. This can more truly reflect the government’s subsidy behavior. Note that, the nonlinear dynamic subsidy method is similar to literature (41). However, there are differences in the following three aspects. (i) Our paper presents the static penalty and dynamic subsidy mechanism which is compared with other mechanisms (for details, see Section 4). (ii) In this paper, the public monitoring behavior is introduced. Furthermore, the impacts of different behavior strategies of private elderly care institutions on the older adult are quantified. (iii)
+This paper examines the priority of adjustment of relevant parameters from different regulatory objectives of the government. It may provide a decision-making reference for the government’s policy regulation. 2. model assumptions and construction  2.1. model assumptions  2.1.1. hypothesis 1: subject assumption The local governments, the private elderly care institutions and the public are the subjects of the game. Assume that they are bounded rationality. Both the private elderly care institutions and the public pursue the maximization of their own interests, while local governments pursue the maximization of comprehensive social benefits. 2.1.2. hypothesis 2: strategy assumption In the supply process of elderly care services, the probability of private elderly care institutions supplying high-quality service (HQ) or low-quality service (LQ) is e e, 1−( ). The probability of local governments enforcing positive supervision (PS) or negative supervision (NS) is g g, 1−( ) . The probability of the public choosing to participate in supervision (IS) or not to participate in supervision (OS) is p p, 1−( ) . Here, e g p, , ∈[ ]0 1, . 2.1.3. hypothesis 3: parameter assumption for private elderly care institutions The profit of private elderly care institutions supplying HQ is Rh, and the profit of supplying LQ is Rl. When the private elderly care institutions supply HQ or LQ, they will face reputation gains Re or losses Le respectively. Moreover, the action of supplying HQ will bring welfare Wg to the society, and on the contrary, it will cause losses Dg to the society. 2.1.4. hypothesis 4: parameter assumption for local governments The cost of PS by local governments is Cg. When the local governments enforce PS or NS, they will face credibility gains Rg or losses Lg, respectively. Moreover, the local governments will subsidize private elderly care institutions that supply HQ and punish private elderly care institutions that supply LQ, with values of S and Fe, respectively. 2.1.5. hypothesis 5: parameter assumption for public The cost of public choose IS is Cp, and there is no cost if they choose OS. The public choose IS will be rewarded Rp by the local governments. The change of social welfare and social loss will have an impact on the older adult who need elderly care services in the public. Therefore, the public will feel social welfare or social loss with a probability of α . The parameter symbols and their meanings are shown in Table 1. 2.2. model construction According to the aforementioned hypotheses, the payment matrix of private elderly care institutions, local governments and the public is constructed, which is shown in Table 2. Frontiers in Public Health 04 frontiersin.org
+It follows from payment matrix that, when private elderly care institutions choose to supply high-quality services (low-quality services), their expected revenue is Ue (U1−e):
+U R R gSe h e= + + (1)
+U R L gF g pFe l e e e1 1− = − − − −( ) (2)
+The average expected revenue of the private elderly care institutions is proposed as follows:
+U eU e Ue e e= + −( ) −1 1 (3)
+From (1)–(3), it can be seen that the replicator dynamic equation of the private elderly care institutions can be formulated as follows: table 1 parameter symbols and meanings. Meaning Parameter Meaning Parameter
+Probability of private elderly care institutions supply high-quality
+service
+e The cost of local governments enforce positive supervision Cg
+Probability of local governments enforce positive supervision g The credibility gains of local governments’ implementation of
+positive supervision
+Rg
+Probability of public choose to participate in supervision p The credibility losses of local governments’ implementation of
+negative supervision
+Lg
+The profit of private elderly care institutions supply high-quality
+service
+Rh Government subsidies to private elderly care institutions that
+provide high-quality service
+S
+The profit of private elderly care institutions supply low-quality
+service
+Rl Government penalties to private elderly care institutions that
+provide low-quality service
+Fe
+Reputation gains of private elderly care institutions supply high-
+quality service
+Re The cost of public choose to participate in supervision Cp
+Reputation losses of private elderly care institutions supply low-
+quality service
+Le Government rewards to the public who participate in
+supervision
+Rp
+Social welfare brought by private elderly care institutions
+supplying high-quality service
+Wg Probability of public feel social welfare or social loss α
+Social loss brought by private elderly care institutions supplying
+low-quality service
+Dg table 2 payment matrix for all players. Local governments
+Public
+IS (p) OS (1 − p)
+Private elderly care institutions HQ e( ) PS g( ) R R Sh e+ + R R Sh e+ +
+W R C Sg g g+ − − W R C Sg g g+ − −
+αW Cg p− αWg
+NS 1−( )g R Rh e+ R Rh e+
+W Lg g− W Lg g−
+αW Cg p− αWg
+LQ 1−( )e PS g( ) R L Fl e e− − R L Fl e e− −
+F R D C Re g g g p+ − − − F R D Ce g g g+ − −
+R D Cp g p− −α −αDg
+NS 1−( )g R L Fl e e− − R Ll e−
+F D L Re g g p− − − − −D Lg g
+R D Cp g p− −α −αDg
+Frontiers in Public Health 05 frontiersin.org
+F e de dt e U
+e e R R gS R L gF g pF
+Ue e
+h e l e e e ( ) = = −( ) = −( ) + + − + + + −( )  / 1 1 (4)
+Similarly, the replicator dynamic equation of the local governments can be written:
+F g dg dt g g R C eS L e p Fg g g e ( ) = = −( ) − − + + −( ) −( )  / 1 1 1 (5)
+The replicator dynamic equation of the public can be formulated as follows:
+F p dp dt p p e R Cp p( ) = = −( ) −( ) − / 1 1 (6)
+It follows from the equations (4)–(6) that, a three-dimensional replicator dynamic system (I) can be obtained as follows:
+F e e e R R gS R L gF g pF F g g g R C h e l e e e
+g g ( ) = −( ) + + − + + + −( )  ( ) = −( ) − 1 1 1 − + + −( ) −( )  ( ) = −( ) −( ) −        eS L e p F F p p p e R C g e p p 1 1 1 1 (7) 3. model analysis  3.1. model stability Let all equations in the replicator dynamic system (I) be equal to 0. The following nine potential equilibrium points E1(0, 0, 0), E2(0, 0, 1), E3(0, 1, 0), E4(1, 0, 0), E5(0, 1, 1), E6(1, 0, 1), E7(1, 1, 0), E8(1, 1, 1), and E9(e*, g*, p*) can be obtained. Note that the equilibrium point of a game system is not always stable. Therefore, this paper will use the Lyapunov’s first method and the Jacobian matrix to analyze the
+stability of each equilibrium point. The corresponding Jacobian matrix is stated as follows:
+J F e e F e g F e p F g e F g g F g p F p e = ∂ ( ) ∂ ∂ ( ) ∂ ∂ ( ) ∂ ∂ ( ) ∂ ∂ ( ) ∂ ∂ ( ) ∂ ∂ ( ) ∂ / / / / / / / ∂ ( ) ∂ ∂ ( ) ∂ 
+
+  
+
+
+  F p g F p p/ /
+(8)
+According to Lyapunov’s first method, if all eigenvalues of the Jacobian matrix have negative real parts, the equilibrium point is an evolutionary stable strategy (ESS); if the eigenvalues of the Jacobian matrix have at least one positive real part, then the equilibrium point is an instability point; if some real parts of the eigenvalues of the Jacobi matrix are 0 and the rest are negative, then the equilibrium point is in a critical state and stability cannot be  judged. Stability analysis of all equilibrium points is shown in Table 3. It can be seen from Table 3 that, the equilibrium points E6(1, 0, 1) and E8(1, 1, 1) are not the stable strategies of the evolutionary game, and the stability of the remaining seven equilibrium points cannot be directly judged. Therefore, further research will be  carried out via system dynamics method. 3.2. system dynamics model construction System dynamics (42) is a scientific method which is often used to analyze the dynamic relationships among system function, structure, feedback, and behavioral strategies. It also can effectively depict the strategic choice of stakeholders from the perspective of system. Recently, some scholars have combined the evolutionary game theory with the system dynamics theory, and achieved good results (43–48) Referring to the model assumptions and replicated dynamic equations in the previous section, a system dynamics model is constructed which consists of three parties, i.e., local governments, private elderly care institutions, and the public, as shown in Figure 1. The initial conditions of the system dynamics model are set as: INITIAL TIME = 0, FINAL TIME =100, TIME STEP = 0 05. (41). In 2021, the number of elderly care institutions in Beijing increased
+TABLE 3 Stability analysis of all equilibrium points. Equilibrium point Eigenvalue λ1, λ2, λ3 Symbol judgment Results
+E1(0, 0, 0) R R R Lh e l e+ − + , R C L Fg g g e− + + , R Cp p− ××× Uncertainty
+E2(0, 0, 1) R R R L Fh e l e e+ − + + , R C Lg g g− + , C Rp p− ××× Uncertainty
+E3(0, 1, 0) R R S R L Fh e l e e+ + − + + , C R L Fg g g e− − − , R Cp p− ××× Uncertainty
+E4(1, 0, 0) R R R Ll h e e− − − , R C S Lg g g− − + , −Cp ×× − Uncertainty
+E5(0, 1, 1) R R S R L Fh e l e e+ + − + + , C R Lg g g− − , C Rp p− ××× Uncertainty
+E6(1, 0, 1) R R R L Fl h e e e− − − − , R C S Lg g g− − + , Cp ×× + Instability
+E7(1, 1, 0) R R R S L Fl h e e e− − − − − , C S R Lg g g+ − − , −Cp ×× − Uncertainty
+E8(1, 1, 1) R R R S L Fl h e e e− − − − − , C S R Lg g g+ − − , Cp ×× + Instability
+E9(e*, g*, p*) λ1*, λ2*, λ3* ××× Uncertainty
+×, Uncertainty of positive or negative; +, Eigenvalues are positive; and −, Eigenvalues are negative. Frontiers in Public Health 06 frontiersin.org
+to 579  in which 458 elderly care institutions have obtained star qualifications. Thus, the initial value of e is set to 0.79. The values of g and p are, respectively, set to 0.20 and 0.10 with reference to literature (49). According to the “Measures for the Management of Operating Subsidies for Elderly Care Institutions in Beijing,” elderly care institutions that meet the star rating standards can receive subsidies ranging from 600, 1,200, and 1,800 yuan per bed per year. In particular, two-star elderly care institutions, which account for nearly 70% of all star-qualified pension institutions, can receive a subsidy of 600 yuan per bed per year. Therefore, taking two-star elderly care institutions as an example, based on a single elderly care institution with 300 beds and a bed utilization rate of 46.71% (50). The total annual subsidy received by all elderly care institutions in Beijing is RMB 38.51 million, i.e., S = 0 385. . The average annual profit of a single elderly care institutions in Beijing is RMB 0.9151 million, so the total annual profit of all elderly care institutions in Beijing is RMB 52984 million. Then, Rh is about 5.298. In general, the speculative profits is higher than self-regulated profits. With reference to the literature (41), set Rl = 6.248. According to the “Report on the Development of Aging in Beijing (2021),” the registered population aged 60 and above in Beijing is 3.883 million, accounting for 27.5% of the total registered population. Taking the proportion of the older adult in the total population as the probability of social welfare or loss felt by the public, it is easily obtained that α = 0 275. . The specific parameters and initial value are shown in Table 4. Under the initial parameters, Lyapunov’s first method is used again to judge the stability of each equilibrium point, and the results are shown in Table 5. From Table 5, it can be seen that, under the static penalty and static subsidy mechanism, all equilibrium points of the system are not ESS. Taking the pure strategy equilibrium point E1(0, 0, 0) and the mixed strategy equilibrium point E10(0.6131, 0.6533, 0) as examples, the simulation results are shown in Figure 2. As can be seen from Figures 2A,C, the tripartite game players have
+Positive supervision by local governments: g
+Offer high quality services by private elderly care institutions: e
+Participate in supervision by publics: p
+Rate of change in supervision by local governments: Δg
+Rate of change in provision by private elderly care institutions: Δe
+Rate of change in supervision by publics: Δp
+Profits of offer high quality services by
+institutions: Rh
+Profits of offer low quality services by
+institutions: Rl
+Reputation gains of offer high quality services by
+institutions: Re
+Reputation losses of offer low quality services by
+institutions: Le
+Social welfare from the provision of high quality services: Wg
+Social loss from the provision of low quality services: Dg
+Cost of positive supervision by local governments: Cg
+Credibility gains of positive supervision by local governments: Rg
+Credibility losses of negative supervision by local governments: Lg
+Subsidies for high quality services: S
+Penalties for low quality services: Fe
+Cost of participate in supervision by
+publics: Cp
+Reward of participate in supervision: Rp
+Probability of publics felt social welfare or
+loss: α
+Expected revenue of positive supervision by local governments: Ug
+Expected revenue of negative supervision by local governments: U1-g
+Expected revenue of offer high quality services
+by institutions: Ue
+Expected revenue of offer low quality services
+by institutions: U1-e
+Expected revenue of participate in supervision
+by publics: Up Expected revenue of
+non-participate in supervision by publics: U1-p
+<Positive supervision by local
+governments: g>
+<Participate in supervision by
+publics: p>
+<Offer high quality services by private elderly care
+institutions: e>
+FIGURE 1 System dynamics model of elderly service market supervision. table 4 parameter assignment. Parameter Initial value
+Parameter Initial value
+e 0.79 Cg 0.6
+g 0.20 Rg 0.3
+p 0.10 Lg 0.3
+Rh 5.298 S 0.385
+Rl 6.248 Fe 0.61
+Re 0.1 Cp 0.2
+Le 0.2 Rp 0.18
+Wg 0.3 α 0.275
+Dg 0.4
+TABLE 5 Stability analysis of all equilibrium points. Equilibrium point Eigenvalue λ1, λ2, λ3 Results
+E1(0, 0, 0) (−0.65, 0.61, −0.02) Saddle point
+E2(0, 0, 1) (−0.04, 0, 0.02) Saddle point
+E3(0, 1, 0) (0.345, −0.61, −0.02) Saddle point
+E4(1, 0, 0) (0.65, −0.385, −0.2) Saddle point
+E5(0, 1, 1) (0.345, 0, 0.02) Saddle point
+E6(1, 0, 1) (0.04, −0.385, 0.2) Saddle point
+E7(1, 1, 0) (−0.345, 0.385, −0.2) Saddle point
+E8(1, 1, 1) (−0.345, 0.385, 0.2) Saddle point
+E9(0, 0.1039, 1) (0.000002, 0, 0.02) Saddle point
+E10(0.6131, 0.6533, 0) (0.000001 + 0.0769i, 0.000001–
+0.0769i, −0.130358)
+Saddle point
+Frontiers in Public Health 07 frontiersin.org
+reached a relatively balanced state under the corresponding initial strategies. However, this does not imply that the state is stable. As long as one or more players in the system fine-tune their strategies, the system will lose its original equilibrium state. For example, if the strategy proportion of the local governments in Figures  2B,D is adjusted to 0.1 and 0.68, respectively, the equilibrium state of the original system will be broken. Similarly, equilibrium points E2, E3, E4, E5, E6, E7, E8, and E9, are also unstable. 4. regulatory mechanism optimization and stability analysis Inspired by literature (41), three regulatory mechanisms, i.e., dynamic penalty and static subsidy, static penalty and dynamic subsidy, and dynamic penalty and dynamic subsidy, are proposed. Furthermore, both the advantages and disadvantages of them are discussed in the context of specific scenarios. 4.1. stability analysis of dynamic penalty and static subsidy mechanism In the supervision of the elderly service market, the service supply behavior of private elderly care institutions often depends on
+the corresponding consequences that speculative operation may face. Therefore, the amount of government penalties should be adjusted according to the willingness of private elderly care institutions to operate in a self-disciplined manner. Assuming that the dynamic penalty function is P e F ee( ) = −( ) +1 ε , where ε is a constant. The optimal value of ε can be  obtained by simulation debugging as ε = 0 82. . The system dynamics model under the dynamic penalty and static subsidy mechanism is shown in Figure 3. Under the initial simulation parameters, the initial willingness of the three parties is (0.79, 0.2, 0.1), and FINAL TIME = 500 is set at the same time to observe the convergence results of the system more clearly. The simulation result is shown in Figure 4A, which shows that the system is stable at point (0.7201, 0.4725, 0). Changing the initial willingness of the three parties, with other conditions keep constant, the ESS of the system can also be  obtained as (0.7201, 0.4725, 0;
+Figure  4B). It implies that, under the dynamic penalty and static subsidy mechanism, the strategy selection of the tripartite game subjects will gradually stabilize, and eventually stabilize at point (0.7201, 0.4725, 0). 4.1.1. proposition 1 The dynamic penalty and static subsidy mechanism can bring the strategy choice of each subject in the regulation of the elderly service market to a steady state and stabilize at point (0.7201, 0.4725, 0). 1
+0,75
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 32 2 2 2 2 2 2 2 2 2 2 2 2 2 21 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+0 10 20 30 40 50 60 70 80 90 100 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by publics: p" : current 3 3 3 3 3 3 3 3 3 3
+1
+0,75
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 10 20 30 40 50 60 70 80 90 100
+Time (Day) "Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by publics: p" : current 3 3 3 3 3 3 3 3 3 3
+1
+0,75
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+0 10 20 30 40 50 60 70 80 90 100 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by publics: p" : current 3 3 3 3 3 3 3 3 3 3
+1
+0,75
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 21 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+0 10 20 30 40 50 60 70 80 90 100 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by publics: p" : current 3 3 3 3 3 3 3 3 3 3
+A
+C D
+B
+FIGURE 2 Evolutionary trajectories of equilibrium points for pure and mixed strategies. (A) Simulation result of pure strategy equilibrium point E1; (B) Simulation result of E1 mutation (g = 0 → 0.1); (C) Simulation result of mixed strategy equilibrium point E10; (D) Simulation result of E10 mutation (g = 0.6533 → 0.68). Frontiers in Public Health 08 frontiersin.org 4.1.1.1. proof Substituting P e( ) into the three-dimensional replicator dynamic system (I), we can get a new three-dimensional replicator dynamic system (II):
+F e e e Rh Re gS Rl Le gP e g pP e
+F g g g R ( ) = −( ) + + − + + ( ) + −( ) ( )  ( ) = −( ) 1 1
+1 g Cg eS Lg e p P e
+F p p p e Rp Cp − − + + −( ) −( ) ( )  ( ) = −( ) −( ) − 
+
+
+ 1 1
+1 1
+
+
+ 
+(9)
+Let all equations in the three-dimensional replicator dynamic system (II) be equal to 0. Then, nine new equilibrium points, i.e., E1a(0, 0, 0), E2a(0, 0, 1), E3a(0, 1, 0), E4a(1, 0, 0), E5a(0, 1, 1), E6a(1, 0, 1), E7a(1, 1, 0), E8a(1, 1, 1), and E9a(0.7201, 0.4725, 0) can be obtained. The equilibrium points E1a ~ E8a are substituted into the Jacobian matrix ′J in turn, and
+the eigenvalues obtained contain the situation greater than 0. So the equilibrium points E1a ~ E8a are not ESS. Substituting the mixed equilibrium point E9a into the Jacobian matrix, it can be obtained that:
+′ = − − −
+− J
+0 058110 0 277288 0 105336
+0 385450 0 000004 0 053456
+0 0 0
+. . . . . . .149618
+
+
+  
+
+
+  
+(10)
+It is easily calculate that the eigenvalues of the mixed equilibrium point E9a are λ1 0 0291 0 3256= − +. . ,i λ2 0 0291 0 3256= − −. . ,i and λ3 0 1496= − . respectively. These eigenvalues are all less than 0, so the ESS of the system under the dynamic penalty and static subsidy mechanism is E9a(0.7201, 0.4725, 0). Proposition 1 suggests that, the dynamic penalty and static subsidy mechanism adopted by the local governments can restrain the fluctuation
+Positive supervision by local governments: g
+Offer high quality services by private elderly care institutions: e
+Participate in supervision by public: p
+Rate of change in supervision by local governments: Δg
+Rate of change in provision by private elderly care institutions: Δe
+Rate of change in supervision by public: Δp
+Profits of offer high quality services by
+institutions: Rh
+Profits of offer low quality services by
+institutions: Rl
+Reputation gains of offer high quality services by
+institutions: Re
+Reputation losses of offer low quality services by
+institutions: Le
+Social welfare from the provision of high quality services: Wg
+Social loss from the provision of low quality services: Dg
+Cost of positive supervision by local governments: Cg
+Credibility gains of positive supervision by local governments: Rg
+Credibility losses of negative supervision by local governments: Lg
+Subsidies for high quality services: S
+Penalties for low quality services: P(e)
+Cost of participate in supervision by public: Cp
+Reward of participate in supervision: Rp
+Probability of public felt social welfare or loss: α
+Expected revenue of positive supervision by local governments: Ug
+Expected revenue of negative supervision by local governments: U1-g
+Expected revenue of offer high quality services
+by institutions: Ue
+Expected revenue of offer low quality services
+by institutions: U1-e
+Expected revenue of participate in supervision by
+public: Up Expected revenue of
+non-participate in supervision by public: U1-p
+<Positive supervision by local
+governments: g>
+<Participate in supervision by public: p>
+<Offer high quality services by private elderly care
+institutions: e>
+FIGURE 3 System dynamics model under dynamic penalty and static subsidy mechanism. 1
+0,75
+A B
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 50 100 150 200 250 300 350 400 450 500 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by public: p" : current 3 3 3 3 3 3 3 3 3 3
+FIGURE 4 Simulation results under dynamic penalty and static subsidy mechanism. (A) (e, g, p) = (0.79, 0.2, 0.1); (B) Different initial willingness. Frontiers in Public Health 09 frontiersin.org
+of the strategy choice of the relevant game subjects and make the system reach a stable state. However, there are still some shortcomings in this mechanism, and private elderly care institutions still have a certain probability of choosing to provide low-quality services. 4.2. stability analysis of static penalty and dynamic subsidy mechanism In general, penalty and subsidy are two main ways for local governments to restrain the elderly service market. China’s policy stipulates that all elderly care institutions that meet the quality standards can enjoy subsidies. Then the dynamic subsidy function can also be designed according to the supply willingness of private elderly care institutions. However, unlike dynamic penalty, local governments are constrained by costs and tend to relax incentives after achieving the desired goals. Therefore, the dynamic subsidy function can be designed as S e e e( ) = − + +2 θ ω, where θ and ω are constants. The system dynamics model under the static penalty and dynamic subsidy mechanism is shown in Figure 5. Assume that the initial willingness of the three game subjects is (0.79, 0.2, 0.1), and set θ = 0 8. , ω = 0 1. , FINAL TIME = 200. The simulation results of specific willingness and different initial willingness are shown in Figure 6. From Figure 6, it can be seen that, under the static penalty and dynamic subsidy mechanism, the strategy evolution trajectory of each game subject will change as the initial willingness of the relevant game subjects is adjusted, but the system will eventually stabilize at (0.869, 1, 0). 4.2.1. proposition 2 The static penalty and dynamic subsidy mechanism can bring the strategy choice of each subject in the regulation of the elderly service market to a steady state and stabilize at point (0.869, 1, 0). 4.2.1.1. proof Replacing S with S e( ) and substituting it into the threedimensional replicator dynamic system (I), we can obtain the threedimensional replicator dynamic system (III) as follows:
+F e e e R R gS e R L gF g pF F g g g R h e l e e e
+g
+( ) = −( ) + + ( ) − + + + −( )  ( ) = −( ) 1 1
+1 − − ( ) + + −( ) −( )  ( ) = −( ) −( ) − 
+  
+C eS e L e p F
+F p p p e R C
+g g e
+p p
+1 1
+1 1
+
+  
+(11)
+It follows from the three-dimensional replicator dynamic system (III) that, nine new equilibrium points can be obtained. These new equilibrium points are E1b(0, 0, 0), E2b(0, 0, 1), E3b(0, 1, 0), E4b(1, 0, 0), E5b(0, 1, 1), E6b(1, 0, 1), E7b(1, 1, 0), E8b(1, 1, 1), and E9b(0.869, 1, 0). Substituting the equilibrium point E9b into the Jacobian matrix ′′J , the equation (12) can be E9b obtained. According to equation (12), the eigenvalues corresponding to equilibrium point can be calculated as λ1 0 1068= − . , λ2 0 0451= − . , λ3 0 1764= − . respectively. Because of λ λ λ1 2 3 0, , < , so equilibrium point E9b is ESS. Similarly, equilibrium points E1b ~ E8b are not ESS. ′′ = −
+− −
+
+
+  
+
+
+  
+J 0 10681 0 074 0 0 0 045116 0
+0 0 0 17642
+. . . . (12)
+Proposition 2 suggests that, local governments can also make the system reach a stable state by adopting static penalty and dynamic subsidy mechanism. However, under this mechanism, private elderly care institutions still have a certain probability of choosing to provide low-quality services. Therefore, further optimization of the government regulatory mechanism is needed. Positive supervision by local governments: g
+Offer high quality services by private elderly care institutions: e
+Participate in supervision by public: p
+Rate of change in supervision by local governments: Δg
+Rate of change in provision by private elderly care institutions: Δe
+Rate of change in supervision by public: Δp
+Profits of offer high quality services by
+institutions: Rh
+Profits of offer low quality services by
+institutions: Rl
+Reputation gains of offer high quality services by
+institutions: Re
+Reputation losses of offer low quality services by
+institutions: Le
+Social welfare from the provision of high quality services: Wg
+Social loss from the provision of low quality services: Dg
+Cost of positive supervision by local governments: Cg
+Credibility gains of positive supervision by local governments: Rg
+Credibility losses of negative supervision by local governments: Lg
+Subsidies for high quality services: S(e)
+Penalties for low quality services: Fe
+Cost of participate in supervision by public: Cp
+Reward of participate in supervision: Rp
+Probability of public felt social welfare or loss: α
+Expected revenue of positive supervision by local governments: Ug
+Expected revenue of negative supervision by local governments: U1-g
+Expected revenue of offer high quality services
+by institutions: Ue
+Expected revenue of offer low quality services
+by institutions: U1-e
+Expected revenue of participate in supervision by
+public: Up Expected revenue of
+non-participate in supervision by public: U1-p
+<Positive supervision by local
+governments: g>
+<Participate in supervision by public: p>
+<Offer high quality services by private elderly care
+institutions: e>
+FIGURE 5 System dynamics model under static penalty and dynamic subsidy mechanism. Frontiers in Public Health 10 frontiersin.org 4.3. stability analysis of dynamic penalty and dynamic subsidy mechanism Clearly, both the dynamic penalty and static subsidy mechanism and the static penalty and dynamic subsidy mechanism are conducive to local government’s supervision of the elderly service market. However, these two mechanisms cannot completely eliminate the speculative operation of private elderly care institutions. Therefore, a dynamic penalty and dynamic subsidy mechanism is further designed. It consists of the dynamic penalty function P e F ee( ) = −( ) +1 0 82. and the dynamic subsidy function S e e e( ) = − + +2 0 8 0 1. . . The system dynamics model under the dynamic penalty and dynamic subsidy mechanism is shown in Figure 7. Let the initial willingness of the three game subjects be (0.79, 0.2, 0.1), and set FINAL TIME = 200. The simulation results are
+shown in Figure 8. From Figure 8, it can be seen that, under the dynamic penalty and dynamic subsidy mechanism, the strategy choices of private elderly care institutions, local governments and the public will stabilize at (1, 1, 0). The evolutionary trajectory of private elderly care institutions and local governments is relatively smooth, with no long-term recurring fluctuations. The private elderly care institutions reach a stable state on day 58 and there is no possibility of supplying low-quality services. 4.3.1. proposition 3 The dynamic penalty and dynamic subsidy mechanism can bring the strategy choice of each subject in the regulation of the elderly service market to a steady state and stabilize at the ideal stability point (1, 1, 0). 1
+0,75
+A B
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by public: p" : current 3 3 3 3 3 3 3 3 3 3
+FIGURE 6 Simulation results under static penalty and dynamic subsidy mechanism. (A) (e, g, p) = (0.79, 0.2, 0.1); (B) Different initial willingness. Positive supervision by local governments: g
+Offer high quality services by private elderly care institutions: e
+Participate in supervision by public: p
+Rate of change in supervision by local governments: Δg
+Rate of change in provision by private elderly care institutions: Δe
+Rate of change in supervision by public: Δp
+Profits of offer high quality services by
+institutions: Rh
+Profits of offer low quality services by
+institutions: Rl
+Reputation gains of offer high quality services by
+institutions: Re
+Reputation losses of offer low quality services by
+institutions: Le
+Social welfare from the provision of high quality services: Wg
+Social loss from the provision of low quality services: Dg
+Cost of positive supervision by local governments: Cg
+Credibility gains of positive supervision by local governments: Rg
+Credibility losses of negative supervision by local governments: Lg
+Subsidies for high quality services: S(e)
+Penalties for low quality services: P(e)
+Cost of participate in supervision by public: Cp
+Reward of participate in supervision: Rp
+Probability of public felt social welfare or loss: α
+Expected revenue of positive supervision by local governments: Ug
+Expected revenue of negative supervision by local governments: U1-g
+Expected revenue of offer high quality services
+by institutions: Ue
+Expected revenue of offer low quality services
+by institutions: U1-e
+Expected revenue of participate in supervision by
+public: Up Expected revenue of
+non-participate in supervision by public: U1-p
+<Positive supervision by local
+governments: g>
+<Participate in supervision by public: p>
+<Offer high quality services by private elderly care
+institutions: e>
+FIGURE 7 System dynamics model under dynamic penalty and dynamic subsidy mechanism. Frontiers in Public Health 11 frontiersin.org 4.3.1.1. proof Replacing Fe and S in the three-dimensional replicator dynamic system (I) by P e( ) and S e( ) respectively, the three-dimensional replicator dynamic system (IV) is obtained as follows:
+F e e e R R gS e R L gP e g pP e
+F g g g h e l e( ) = −( ) + + ( ) − + + ( ) + −( ) ( )  ( ) = − 1 1
+1( ) − − ( ) + + −( ) −( ) ( )  ( ) = −( ) −( ) − R C eS e L e p P e F p p p e R C g g g
+p p
+1 1
+1 1 
+      
+(13)
+It follows from the three-dimensional replicator dynamic system (IV) that, eight new equilibrium points E1c(0, 0, 0), E2c(0, 0, 1), E3c(0, 1, 0), E4c(1, 0, 0), E5c(0, 1, 1), E6c(1, 0, 1), E7c(1, 1, 0), and E8c(1, 1, 1) can be calculated. Substituting the equilibrium point E7c into the Jacobian matrix ′′′J , the equation (14) can be  obtained. According to equation (14), the eigenvalues corresponding to equilibrium point E7c can be  calculated as λ1 0 07= − . , λ2 0 1= − . , and λ3 0 2= − . respectively. Because of λ λ λ1 2 3 0, , ,< so equilibrium point E7c is ESS. Similarly, equilibrium points E1c ~ E6c and E8c are not ESS. ′′′ = −
+− −
+
+
+  
+
+
+  
+J 0.07 0.1
+0.2
+0 0
+0 0
+0 0
+(14)
+Proposition 3 suggests that, the dynamic penalty and dynamic subsidy mechanism not only restrains the fluctuation of the strategy selection of the three game subjects, but also speeds up the strategy evolution of the three game subjects and makes the system reach a more ideal stable state. The above results suggest that the three regulatory mechanisms proposed can effectively compensate for the shortcomings of the static penalty and static subsidy mechanism. Comparing these regulatory mechanisms in Table 6 and Figure 9, we can find that the system cannot reach a stable state under the static supervision mechanism, while the system can stabilize at a certain point under the dynamic supervision mechanism. Furthermore, whether from the perspective of accelerating the evolution of the system to a stable state or from the perspective of improving the willingness of self-discipline management of private elderly care institutions, the dynamic penalty and dynamic subsidy mechanism is better than the static penalty and dynamic subsidy mechanism, and the static penalty and static subsidy mechanism is better than the dynamic penalty and static subsidy mechanism. That is to say, local government’s governance of the elderly services market is best under the dynamic penalty and dynamic subsidy mechanism. Therefore, on the one hand, local governments need to adopt dynamic penalty policies to effectively restrain speculation in the elderly service market; On the other hand, they need to adopt dynamic subsidy policies to reduce the operating costs of private elderly care institutions and fundamentally solve the problem of low-quality of the elderly services. 5. sensitivity analyses In order to discuss the impact of changes in the main parameters on the strategic choice of private elderly care institutions, the
+1
+0,75
+A B
+0,5
+0,25
+0 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : current 1 1 1 1 1 1 1 "Positive supervision by local governments: g" : current 2 2 2 2 2 2 2 2 2 "Participate in supervision by public: p" : current 3 3 3 3 3 3 3 3 3 3
+FIGURE 8 Simulation results under dynamic penalty and dynamic subsidy mechanism. (A) (e, g, p) = (0.79, 0.2, 0.1); (B) Different initial willingness. TABLE 6 Comparison of four supervision mechanisms. Mechanism Stable state Time to reach steady state Evolutionary stable strategy
+Static penalty and static
+subsidy
+Unstable _ _
+Dynamic penalty and static
+subsidy
+Stable 180 (0.7201, 0.4725, 0)
+Static penalty and dynamic
+subsidy
+Stable 58 (0.869, 1, 0)
+Dynamic penalty and
+dynamic subsidy
+Stable 50 (1, 1, 0)
+Frontiers in Public Health 12 frontiersin.org
+sensitivity analysis based on dynamic penalty and dynamic subsidy mechanism will be  conducted. Furthermore, the priority of government policy adjustment in each scenario will also be analyzed. The simulation of the main parameters is shown in Figure 10. As can be seen in Figure 10, as penalties and reputational gainslosses increase, private elderly care institutions will more actively choose to provide high-quality services. When the subsidies increase, the enthusiasm of private elderly care institutions to supply highquality services will wane. This is because of that, the increased penalties and reputational gains-losses can increase the cost of speculation for private elderly care institutions and deter them from operating speculatively. The increase of subsidies will make the elderly service market which is not fully self-discipline get more subsidies. In this case, private elderly care institutions will collude. Some of them will choose to speculate, and others will continue to maintain selfdiscipline, in order to maximize the total subsidies received by the pension service market. The local governments’ rewards for the public supervision basically has little impact on the strategy choice of private elderly care institutions. That is, under the current public supervision willingness, the role of public supervision is limited. For further study, the main parameters are compared in Table 7. 1. It can be seen from Table 7 that, under different parameter values, the minimum willingness of private elderly care institutions to provide high-quality services is lower than the initial willingness. Compared with subsidies and reputation gains-losses, the increase of penalties makes the minimum value of strategy choice of private elderly care institutions significantly increase. This implies that, increasing penalties can significantly improve the stability of the strategy evolution of private elderly care institutions. Therefore, if local governments are committed to improving market robustness, adjusting the penalties should be first considered. 2. It follows from Table 7 that, the speed of private elderly care institutions to reach a stable state is the fastest when the penalties and reputation gains-losses take a larger value, reaching a stable state on the 21st and 38th day, respectively. FIGURE 9 Evolutionary stability of three proposed mechanisms. 1
+0,75
+A B
+C D
+0,5
+0,25
+0
+3
+3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : P(e)-50% 1 1 1 1 1 1 "Offer high quality services by private elderly care institutions: e" : P(e) 2 2 2 2 2 2 2 "Offer high quality services by private elderly care institutions: e" : P(e)+50% 3 3 3 3 3 3 3
+1
+0,85
+0,7
+0,55
+0,4
+3
+3
+3 3 3 3 3 3 3 3 3 3 3 3
+2
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : S(e)-50% 1 1 1 1 1 1 "Offer high quality services by private elderly care institutions: e" : S(e) 2 2 2 2 2 2 2 "Offer high quality services by private elderly care institutions: e" : S(e)+50% 3 3 3 3 3 3 3
+1
+0,75
+0,5
+0,25
+0
+3
+3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : Re,Le-50% 1 1 1 1 1 1 "Offer high quality services by private elderly care institutions: e" : Re,Le 2 2 2 2 2 2 2 "Offer high quality services by private elderly care institutions: e" : Re,Le+50% 3 3 3 3 3 3 3
+1
+0,85
+0,7
+0,55
+0,4
+3
+3 3 3 3 3 3 3 3 3 3 3 3 3
+2
+2
+2 2 2 2 2 2 2 2 2 2 2 2 2
+1
+1
+1 1 1 1 1 1 1 1 1 1 1 1 1
+0 20 40 60 80 100 120 140 160 180 200 Time (Day)
+"Offer high quality services by private elderly care institutions: e" : Rp-50% 1 1 1 1 1 1 1 "Offer high quality services by private elderly care institutions: e" : Rp 2 2 2 2 2 2 2 2 "Offer high quality services by private elderly care institutions: e" : Rp+50% 3 3 3 3 3 3 3
+FIGURE 10 Simulation of the main parameters. (A) P(e); (B) S(e); (C) Re, Le and (D) Rp. Frontiers in Public Health 13 frontiersin.org
+Moreover, the changes of penalties have the most obvious impact on the speed of private elderly care institutions to reach a stable state. The corresponding time difference is 61 days. Therefore, if the local governments are committed to speeding up market stability, adjusting the penalties should be first considered. 3. According to the difference between the final strategy choice ratio and the initial strategy choice ratio of private elderly care institutions in Table 7, both subsidies and supervision rewards can cause a large change in the strategy choice of private elderly care institutions when they take different values. When the supervision rewards apply different values, the evolutionary trajectory of private elderly care institutions does not change, and thus will not be  considered. When the penalties and reputation gains-losses are small, the change of strategy choice of private elderly care institutions is also small, which are 0.0713 and 0.1631, respectively. Therefore, if local governments are committed to making the policy achieve better results, adjusting subsidies should be first considered. 6. discussion In order to optimize the government’s supervision mechanism and improve the stability of the elderly service regulatory system, three supervision mechanisms, i.e., dynamic penalty and static subsidy, static penalty and dynamic subsidy, and dynamic penalty and dynamic subsidy, are proposed based on the tripartite evolutionary game model of private elderly care institutions, local governments, public. Using
+system dynamics theory, the evolutionary trajectories and steady states of the corresponding evolutionary equilibrium points under various mechanisms are then analyzed. The main suggestions are proposed as follows:
+Firstly, the local governments’ policies on penalties and subsidies should be dynamically adjusted according to the behavior of private elderly care institutions. Under the static penalty and static subsidy mechanism adopted by the government, the service supply behavior of private elderly care institutions is uncertain. This mechanism will not only increase the financial burden of local governments, but also is not conducive to the healthy development of the elderly service market. Dynamic penalty and static subsidy mechanism, and static penalty and dynamic subsidy mechanism can make the strategy choice of private elderly care institutions reach a stable state, but private elderly care institutions still have a certain probability to choose to provide low-quality services. Only when the government adopts the dynamic penalty and dynamic subsidy mechanism, the behavioral evolution of private elderly care institutions can reach the most ideal state. Therefore, the government should pay close attention to the behavior of private elderly care institutions and make dynamic adjustments to the punishment and subsidy policies according to the behavior of private elderly care institutions. Secondly, appropriately increase penalties, reduce subsidies, encourage media participation in reporting, and publicize assessment results. When the local governments adopt the dynamic penalty and dynamic subsidy mechanism, the self-discipline behavior of private elderly care institutions is positively correlated with the penalties and reputation gains-losses, and negatively correlated with the subsidies. Specifically, increasing penalties can restrain the speculation of private elderly care institutions, but excessive penalties are not conducive to table 7 comparison of main parameters. Parameter Value Minimum value (time)
+Time to reach steady state
+Difference in time to reach steady state Range of strategy changes
+P e( ) P e( ) − 50% e = ( )0 1719 9. 82 61∗∗∗ 0 0713. ∗
+P e( ) e = ( )∗0 5313 5. 57 ∗
+0 21. ∗∗∗
+P e( ) + 50% e = ( )∗∗∗0 7188 3. 21 ∗∗∗
+0 21. ∗∗∗
+S e( ) S e( ) − 50% e = ( )∗0 5391 5. 43 ∗∗
+45 ∗∗
+0 21. ∗∗∗
+S e( ) e = ( )∗0 5313 5. 57 ∗
+0 21. ∗∗∗
+S e( ) + 50% e = ( )∗0 5156 6. 88
+0 21. ∗∗∗
+Re, Le R Le e, %− 50 e = ( )0 4297 5. 69 31∗ 0 1631. ∗∗
+R Le e, e = ( )∗0 5313 5. 57 ∗
+0 21. ∗∗∗
+R Le e, %+ 50 e = ( )∗∗0 6563 5. 38 ∗∗∗
+0 21. ∗∗∗
+Rp Rp − 50% e = ( )∗0 5313 5. 57 ∗ 0
+0 21. ∗∗∗
+Rp e = ( )∗0 5313 5. 57 ∗
+0 21. ∗∗∗
+Rp + 50% e = ( )∗0 5313 5. 57 ∗
+0 21. ∗∗∗
+*, **, and *** be used to denote the priority of parameter regulation. ① For the minimum value, *: 0.5 ≤ e ≤ 0.6, **: 0.6 < e < 0.7, ***: e ≥ 0.7, other intervals are not marked. ② For the time to reach steady state, *: 50 ≤ d ≤ 60, **: 40 < d < 50, ***: d ≤ 40, other intervals are not marked. ③ For the difference in time to reach steady state, *: 30 ≤ d ≤ 40, **: 40 < d < 60, ***: d ≥ 60, other intervals are not marked. ④ For the range of strategy changes, *: ∆e ≤ 0 1. , **: 0 1 0 2. . ,< <∆e ***: ∆e ≥ 0 2. . Frontiers in Public Health 14 frontiersin.org
+market participants entering the elderly service industry. Increasing subsidies may make private elderly care institutions conspire to defraud the government of subsidies, which is not conducive to the improvement of the quality of elderly services. Therefore, penalties should be appropriately increased, subsidies should be reduced, and the level of reputational gains-losses should be  increased through media engagement and publicity. Finally, select appropriate parameters to adjust according to the government’s objectives. The government’s regulation of the elderly service market is often based on certain objectives, such as improving market robustness, speeding up market stability, or making the policy achieve better results. If the government’s regulatory goal is to improve market robustness or speed up market stability, the government should first adjust the punitive measures. If the government’s regulatory goal is to make the policy achieve better results, it will be an appropriate choice for the government to adjust the subsidies first. The aforementioned statements are significantly different from the conclusions obtained by Ren et al. (51). In their paper, increased penalties are more conducive to the evolution of the system to the desired steady state when the government takes strict supervision as a long-term strategy, but they fail to consider that overly harsh regulation may not be conducive to the entry of market players. In addition, they neglect the influence of collusive behavior of service providers on subsidy strategy formulation, and thus they argue that subsidies help the system achieve the desired state under the cyclical subsidy mechanism. Also, the punishment and subsidy mechanism they proposed is static, which cannot be  dynamically adjusted according to the behavior choice of service providers. 7. conclusion Using evolutionary game theory and system dynamics theory, the supervision of local governments on private elderly care institutions is discussed in this paper. The results show that: First of all, when the local governments adopt the static supervision mechanism, the game behaviors of private elderly care institutions, local governments, and the public cannot reach a stable state, while when the local governments adopt the dynamic supervision mechanism, the strategy choices of the three parties’ game subjects will reach a stable state. Secondly, among these dynamic supervision mechanisms, although the dynamic penalty and static subsidy mechanism, as well as the static penalty and dynamic subsidy mechanism can make the strategy choice of private elderly care institutions reach a stable state, private elderly care institutions still have a certain probability to choose to provide low-quality services. Only when the local governments adopt the dynamic penalty and dynamic subsidy mechanism, will the private elderly care institutions choose to operate with complete selfdiscipline. Moreover, under the dynamic penalty and dynamic subsidy mechanism, the willingness of self-discipline management of private elderly care institutions is positively related to penalties and reputation gains-losses, negatively related to subsidies, and not related to supervision rewards. Reasonable adjustment of these
+parameters can further optimize the dynamic penalty and dynamic subsidy mechanism. Thirdly, the government can first adjust penalties so that private elderly care institutions have greater stability in their strategic choices and reach stability more quickly. The government can also adjust the subsidies first to make the stability strategy of private elderly care institutions the most ideal. Although the results of this paper are reasonable and meaningful, there are still some deficiencies in parameters design. In fact, taxation and consumer guidance are also important regulatory tools of government. For future research, therefore, the punishment, subsidy, taxation, and consumption guidance will be  comprehensively considered, and the impact of the cross effects of various regulatory tools on the supervision of elderly care services will be analyzed. data availability statement The original contributions presented in the study are included in the article/supplementary material, further inquiries can be directed to the corresponding author. author contributions YZ and QW: conceptualization and methodology. QW: software, validation, formal analysis, writing—original draft, and visualization. YZ and JL: resources, writing—review and editing, and supervision. YZ: funding acquisition. All authors contributed to the article and approved the submitted version. funding This research was funded by the Anhui Provincial Education Department of China (Grant Number: SK2021ZD0049) and The Optimization Theory, Algorithms, and Applications (Grant Number: 2023SK104). conflict of interest The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest. publisher’s note All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.

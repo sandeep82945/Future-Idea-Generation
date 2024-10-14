@@ -1,0 +1,993 @@
+Background Environmental risk awareness is a key concept to raise awareness and plan future programs for environmental protection. A cross-sectional household survey aimed to find out the presence of environmental hazards next to living area and the mother’s knowledge levels about environmental risk factors with their related factors according to district development ranking, and Western and Central Anatolian regions with sampling from rural and urban residence. Method The study was designed with household sampling weighted according to population density in 2008. Data on the demography and health status, dwelling characteristics of the residents are also collected in 2009. In addition, open-ended questions "What does environmental risk/hazard mean?" and "Which environmental risks/hazards are present in your environment?" were asked. The data collected from the survey were analyzed using multivariate binary logistic regression. Results The sample included 3489 mothers living either in urban or rural areas. Of the mothers, 19.3% did not know what an environmental risk is and 75.7% stated that there was at least one environmental pollutant in their environment. The most commonly perceived risk factor was air pollution (23.0%), which was reported to be present in their living areas by 12.4%. Regions, residence, settlement features of the house, and health status of family members were associated with the perception of environmental risk at a statistically significant level. Conclusion The neighborhood conditions and health status of family associated with the mother’s awareness for environmental risk factors. Communication and cooperation between local governments, health institutions, nongovernmental organizations and other stakeholders should be strengthened to increase risk awareness. introduction Chemical and physical environmental hazards such as air pollution, toxic chemicals (toxic elements, polycyclic aromatic hydrocarbons, pesticides, polychlorinated biphenyls, phthalates, bisphenols etc. ), radiation, and stress during perinatal and childhood period are shown to be associated with fetal, childhood and adulthood disorders including birth defects, developmental disabilities, behavioral problems, metabolic disorders (obesity, endocrine disruption), and malignancies [1–12]. Notably, the foundation for these health impacts is laid during fetal and early childhood period, signifying the criticality of this developmental window. These effects can occur at doses much lower than those that affect adult health [3, 7]. As mothers serve as the primary conduits between their offspring and the external environment, their exposures to various chemicals and pollutants prior to or during pregnancy can significantly impact fetal and infant development [4, 7]. In addition, after the pregnancy period, the role of motherhood becomes important as mothers take on the responsibility of protecting their children from the potential negative effects of environmental hazards [13–16]. Herein, their actions, awareness, and protective measures during pregnancy and childhood can profoundly shape the health trajectories of their offspring [13]. Similarly, mothers having neither food safety-related risk perceptions nor protective behaviors showed significantly higher children’ hair Hg concentrations compared to counterparts [17]. Thus, recognizing the role of mothers as custodians of their children’s well-being underscores the urgency of empowering them with information and resources to make informed choices that can ameliorate the potential long-term health consequences of environmental exposure [13]. On the other hand, the perceptual acuity and conscientious awareness of parents regarding the intricate landscape of environmental pollution, and their cognitive grasp of environmental challenges carry a pivotal role, resonating far beyond the boundaries of their immediate progeny and personal health with broader societal dimensions. This nuanced awareness engenders a proactive stance, wherein parents become instrumental agents in the preservation of ecological integrity and the mitigation of adverse anthropogenic impacts. Understanding and promoting maternal environmental risk awareness holds paramount significance in safeguarding the optimal development of the fetus, infant and young children. Moreover, as parents serve as the nucleus of foundational societal units, their informed decisions and conscientious behaviors permeate through social strata, initiating a ripple effect that reverberates throughout the community [14]. Risk perception is a fundamental cognitive process that influences how individuals perceive and respond to potential hazards and uncertainties in their environment. It plays a crucial role in shaping the decisions, behaviors, and attitudes towards various aspects of life and in comprehending how the public evaluates risks, shapes behaviors, and facilitates effective risk communication [18]. The perception and tolerance of risk are reported to be influenced by various factors, including individual characteristics, cultural and social influences, and the context in which risks are encountered [19]. The factors that influence individuals’ risk perception are wide-ranging, encompassing not only their knowledge and comprehension of risk characteristics but also personal experiences, emotions, and the cultural, economic, and political contexts in which they exist [20, 21]. Also experts’ objective assessment of risk differs significantly from the subjective judgment of non-experts [22]. The acceptance of risk by individuals is directly influenced by their intuitive perception. The first step in taking precautions for risk is to increase risk awareness by conducting risk perception studies specific to regions by evaluating the situations that relate this perception, such as environmental exposure, socioeconomic status, education level, previous expressions, etc. In a study on risk perception of food additives in China, considering consumers’ cognitive rules and concerns, enhanced the effectiveness of knowledge dissemination about food additives compared to a traditional comprehensive-knowledge-based approach [22]. Risk perception refers to an individual’s capability to recognize and evaluate the presence of a particular risk, while risk tolerance refers to a person’s willingness to accept a specific level of risk. Although distinct, these concepts are closely interconnected. Several theories suggest that an inaccurate perception of risk can contribute to elevated levels of risk tolerance, potentially leading individuals to engage in high-risk behaviors [19]. According to protection motivation theory, the risk perception and use of personal protective measures increase when person has the reason of consern, oftentimes due to previous experiences [19]. Understanding and determining people’s risk perception is the first step in raising public awareness and enabling people to make the right decision [23–25]. There is only one study evaluating risk perception of mothers in one province of Türkiye [26]. In that study, risk perception of mothers was found to be associated with rural–urban residence and presence of health problem. Mothers are a very important group since their knowledge and attitude are important to preserve the well-being and the environment for the future generations [14, 26–29]. When considering in national aspect, risk perception might change with district
+developmental index, regional living area and dwelling environmental characteristics. There is no study evaluating environmental risk perceptions in national level in world. From this point, we aimed to investigate the presence of environmental risk factors in living areas of families and the knowledge of mothers about environmental risks and the factors associated with risk awareness of mothers in West Anatolia and Central Anatolia, and in rural and urban residences, and district development ranking in Türkiye. With the results of the study, understanding the risk perception according to both the living area and presence of health problem will guide to inform the mothers about the protection of their children against environmental threats. methods  study design This population-based cross-sectional household survey was conducted in two Nomenclature of Territorial Units for Statistics (NUTS) regions of Türkiye, consisting 11 provinces; Ankara, Konya, Karaman in West Anatolia region, Kayseri, Kırşehir, Nevşehir, Niğde, Sivas, Yozgat, Aksaray and Kırıkkale in Central Anatolia region (Fig. 1) [30]. Data collection was carried out between November 2008 and December 2009. eligibility criteria Mothers with at least one child aged 8-years were included in the study. Mothers will be the most knowledgeable when children in this age group are in primary school 2–3, positive health habits are taught in classes, children are dependent on their mothers for both their lessons and care, and mothers are counselled about risks during health follow-ups from pregnancy to childhood [31]. permissions Hacettepe University Ethics Board of Non-Interventional Clinical Research approved the protocol. General permission for the survey was obtained from the Ministry of Health in Türkiye. The permission of the Public Security Department of the General Directorate of Security for providing safety to the interviewers and nurses working during the data collection period was obtained. The mothers were informed about the study and their written consent was obtained. study size and household selection The sample size was determined as 3142 participants in order to detect a condition with a prevalence of 5% (problems in terms of public health) with a 99% confidence interval, and a sampling error of d = 0.01 [32]. Considering 15% proportion of incomplete forms, ultimately, it was planned to reach 3613 households. Household sample, weighted according to population density and rural–urban residence, was obtained from the Turkish Statistical Institute. Local Provincial Health Directorates and Health Centers / Community Health Centers were also informed about the study. survey The survey was carried out through face-to-face interviews with the mothers. The "Environmental History Form” was used to assess the environmental impact of the child’s health problems [26, 33]. With this form, data related to the variables such as; 1) parental age, parental job, parental illness, sibling death history, smoking exposure, any ill person in the household, 2) house characteristics; heating source, domestic chemical use (pesticide, paint, hobbies, etc. ), 3) the proximity of living area to the environmental risk factors including main roads, agricultural areas, animal shelters, construction sites, dumpster areas, swamps or puddles, rivers, streams, high voltage areas, base station, transformer sites, and factory or industrial zones. Following The "Environmental History Form", two open-ended questions were asked: "What does environmental risk/hazard mean?" and "Which environmental risks/hazards are present in your environment?". The answers were classified by four researchers independently and cross checked afterwards as in the previous study [26]. The risks were classified as “security”, “air pollution”, “environmental pollution”, “municipality service problems”, “risk of accidents”, “contagious diseases”, “radiation- electromagnetic field (EMF)”, “illness/death”, “disasters”, “food-water pollution”, “chemicals”, “future anxiety”, “noise pollution” and “global warming”. Professionals possessing specialized training in the field of survey administration were deployed to the residences of the mothers to execute the survey protocol. These trained personnel were equipped with the requisite expertise to proficiently administer the survey instruments and gather data in a meticulous manner. This approach underscores the meticulousness and precision with which the data collection process was undertaken, thereby enhancing the credibility and robustness of the ensuing dataset. The areas where the families live was classified according to the district development ranking in 2022 [34]. The "District Development Ranking Survey (SEGE) 2022" conducted by the Ministry of Industry and Technology in Türkiye includes a comprehensive assessment of the socio-economic status of 973 districts. This assessment is based on the analysis of 56 variables covering critical dimensions such as demographics, employment, education, health, finance, competitiveness, innovation and quality of life. Each region was given a score based on
+composite variables to reflect relevant socio-economic progress. A total of six different levels of development have been created, including regions with superior scores in the premier tier, while relegating districts with lesser scores to subsequent tiers. This multidimensional assessment provides both a comprehensive understanding of regional developmental disparities and a fundamental framework for the formulation of targeted policies and informed decision-making processes [34]. In the present survey, 1555 households were found to be in the first rank, 1325 in the second rank, and 599 in the third rank or higher. As a result, the district development index was categorized into three groups: rank-1, rank-2, and rank-3 (index ≥ 3). statistical analysis Data were evaluated using IBM-SPSS version 26. The distribution of mother characteristics by region, residence, district developmental index, and risk awareness status were compared with Chi-square test. When there was a significant difference in a parameter in three district developmental index groups, adjusted residuals were calculated to find the group that makes the difference. Multivariate binary logistic regression revealed determinants of presence of environmental risk perception in three models. Model 1 included mother-family-regionresidence characteristics (region, residence, district developmental index, and mother related variables having a p value < 0.1 in bivariate analysis), Model 2 took dwelling environmental characteristics of home, and Model 3 covered both Model 1 and Model 2. Adjusted odds ratio (AOR) and 95% confidence intervals (CI) were calculated. Analysis where a p value was below 0.05 were considered statistically significant. results  household characteristics and demographic information A total of 3549 mothers were interviewed and 3489 mothers with complete information were included in the study. More than two thirds of mothers (69.7%) were from urban area. The frequency of working mothers was found higher in West Anatolia (p < 0.001, Table 1). The presence of more crowded families, defined as those with five or more people, and a higher number of children, defined as four or more, was observed in Central Anatolia (p < 0.001; Table 1). The proportion of maternal education exceeding eight years was higher in urban areas compared to rural. Similarly, working mothers were found to be more prevalent in urban areas, as indicated by p-values of 0.001 and
+0.008, respectively. Moreover, crowded household size was more frequently observed in rural areas compared to urban (p = 0.003, Table 1). dwelling environmental characteristics When the proximity to the factors that can be considered as environmental risk factors were questioned, dumpster areas, swamps or puddles, high voltage areas, transformer sites, and factory or industrial zones were stated as more prevalent in Central Anatolia. Construction sites, and  rivers, streams are reported to be more common by mothers in West Anatolia (p < 0.05, Table 2). Dwelling characteristics such as proximity to main roads, agricultural areas, animal shelters, swamps or puddles, rivers, streams, and high voltage areas were more commonly observed in rural areas (p < 0.05). Proximity to construction areas, base stations, transformer areas, factory or industrial zones, and smoking indoors were among the environmental features described more frequently by urban area dwellers (p < 0.05, Table 2). When compared according to the district developmental index, all characteristics had statistically
+significant differences except living near dumpster areas (p < 0.05, Table 2). The presence of a person with any health problem in the household was also related to the environmental characteristics of the place of residence. The presence of a smoker in the house, closeness to main roads, construction areas, garbage areas, and industrial areas were more frequent if there was a person with any disease in the house and this difference was significant (p < 0.05). On the other hand, the presence of a person with any disease was statistically less frequent in houses close to agricultural areas and animal shelters (p < 0.05, Table 2). Indoor smoking was present in 48.0% (n = 1687) of the households; more in the urban residences, and district developmental index rank-1 and rank-2, family members having a disease than others (Table 2). environmental risk knowledge of the mothers Overall, 19.3% of the mothers stated that they did not know “what an environmental risk was”. Furthermore, 5.0% stated that there was no environmental risk. Those
+Ta bl
+e 2
+D w
+el lin
+g en
+vi ro
+nm en
+t ch
+ar ac
+te ris
+tic s
+of h
+om e
+ac co
+rd in
+g to
+r eg
+io n,
+r es
+id en
+ce , d
+is tr
+ic t
+de ve
+lo pm
+en ta
+l i nd
+ex , a
+nd h
+ea lth
+p ro
+bl em
+in W
+es t
+an d
+Ce nt
+ra l A
+na to
+lia -T
+ür ki
+ye ,
+20 08
+–2 00
+9, %
+*
+* c ol
+um n
+pe rc
+en ta ge ** T he re w er e 10 a
+dr es
+se s
+as m
+is si
+ng d
+at a
+in d
+is tin
+ct  d
+ev el
+op m
+en ta
+l i nd ex ab c V al ue s ha vi ng d iff er en t l et te rs  in th e sa m e ro w a re d iff er en t i n th ei r s
+ub gr
+ou p 
+an al
+ys is
+, p <
+0 .0
+5
+Re gi
+on Re
+si de
+nc e
+D is
+tr ic
+t d ev
+el op
+m en
+ta l
+in de
+x* *
+A ny
+h ea
+lth
+pr ob
+le m
+in fa
+m ily
+Ch ar
+ac te
+ri st
+ic s
+O ve
+ra ll
+W es
+t A na
+to lia
+Ce nt
+ra l A
+na to
+lia p
+U rb
+an Ru
+ra l
+p Ra
+nk -1
+Ra nk
+- 2 Ra
+nk -3
+p no
+ne pr
+es en
+ce p
+n 34
+89 20
+13 14
+76 24
+32 10
+57 15
+55 13
+25 59
+9 28
+13 67
+6
+In do
+or s
+m ok
+in g
+48 .4
+49 .0
+47 .4
+0. 34
+8 49
+.7 45
+.2 0. 01 5
+49 .1
+a 49
+.6 a
+43 .6
+b 0. 03 7
+47 .1
+53 .6
+0. 00
+3
+N ex
+t t o
+ho m
+e
+M ai
+n ro
+ad s
+48 .7
+49 .8
+47 .2
+0. 12
+6 53
+.5 37
+.6 <
+0 .0
+1 58
+.2 a
+44 .3
+b 33
+.2 c
+< 0
+.0 01
+46 .2
+58 .9
+< 0
+.0 01
+A
+gr ic
+ul tu
+ra l a
+re as
+6. 6
+5. 8
+7. 8
+0. 01
+9 1. 0 19
+.5 <
+0 .0
+1 2. 2a 2. 9a 26
+.5 b
+< 0
+.0 01
+7. 2
+4. 3
+0. 00
+7
+A
+ni m
+al s
+he lte
+rs 9. 3 6. 4 13
+.4 <
+0 .0
+01 1. 8 26
+.7 <
+0 .0
+01 3. 2a 4. 5a 36
+.1 b
+< 0
+.0 01
+9. 9
+7. 1
+0. 02
+6
+Co
+ns tr
+uc tio
+n si
+te s
+9. 7
+11 .1
+7. 9
+0. 00
+1 11
+.7 5. 2 <
+0 .0
+01 8. 9a 12
+.4 b
+6. 2c
+< 0
+.0 01
+9. 0
+12 .7
+0. 00
+4
+D
+um ps
+te r a
+re as
+7. 3
+6. 1
+9. 1
+0. 00
+1 7. 7 6. 5 0. 22 7
+6. 9
+7. 3
+8. 2
+0. 61
+4 6. 9 9. 2 0. 04 2
+Sw
+am ps
+o r p
+ud dl
+es 2. 3 1. 3 3. 6 <
+0 .0
+01 1. 9 3. 0 0. 04 8
+1. 5a
+2. 8b
+3. 0b
+0. 03
+4 2. 1 2. 8 0. 28 8
+Ri
+ve rs
+, s tr
+ea m
+s 5
+8. 2
+4. 1
+0. 03
+5 3. 5 8. 5 <
+0 .0
+01 4. 4a 3. 2a 10
+.5 b
+< 0
+.0 01
+4. 8
+6. 2
+0. 12
+2
+H
+ig h
+vo lta
+ge a
+re as
+6. 8
+3. 8
+10 .9
+< 0
+.0 01
+6. 0
+8. 5
+0. 01
+0 4. 2a 6. 7b 13
+.2 a
+< 0
+.0 01
+6. 5
+7. 8
+0. 22
+8
+Ba
+se s
+ta tio
+n 18
+.8 18
+.2 19
+.6 0. 31 3
+20 .3
+15 .3
+0. 00
+1 21
+.7 a
+12 .4
+b 24
+.9 a
+< 0
+.0 01
+18 .2
+21 .3
+0. 06
+1
+Tr
+an sf
+or m
+er s
+ite s
+17 .6
+15 .4
+20 .7
+< 0
+.0 01
+19 .2
+14 .1
+< 0
+.0 01
+19 .7
+a 16
+.9 ab
+13 .7
+b 0. 00 3
+16 .4
+22 .6
+< 0
+.0 01
+Fa
+ct or
+y or
+in du
+st ria
+l z on
+es 6. 6 5. 5 8. 3 0. 00 1
+7. 6
+4. 4
+< 0
+.0 01
+11 .4
+a 3. 5b 1. 2c <
+0 .0
+01 5. 8 10
+.1 <
+0 .0
+01
+living in the Central Anatolia, living in rural areas and living in less developed areas were not aware of any risk factors, and it was statistically significant (p < 0.05). On average, one out of 5 mothers stated air pollution as an environmental risk (23%) which was the most frequent one, one out of 10 people stated municipal problems (12.4%), nonspecific environmental pollution (10.3%), radiation and electromagnetic field (9.9%) and accident risk (9.7%) as environmental risks (Table  3). Few mothers (< 1%) also stated disasters (n = 31), future anxiety (n = 33), and global warming (n = 24) as risks. Mothers living in West Anatolia listed air pollution, municipal problems, accident risk, and safety issues as environmental risk factors more frequently (p < 0.05). On the other hand, mothers living in Central Anatolia stated general environmental pollution, radiation, illness-death, communicable diseases, noise, chemicals, and disasters as environmental risk factors at a higher rate (p < 0.05, Table 3). The mothers living in the urban residences stated all environmental risk factors except noise more than the those living in rural residence. A statistically significant difference was found between rural and urban groups in terms of air pollution, accident risk, safety, and foodwater pollution (p < 0.05, Table 3). As the level of the district development status changed from rank-1 to rank-3, the frequency of mentioning air pollution, radiation, accident  risk, and safety issues as environmental risks decreased significantly (p < 0.05). The environmental risks stated were changed with the presence of a family member with a chronic health problem. Air pollution, municipality problems, general environmental pollution, accident risk,  safety, and communicable diseases were mentioned more frequently by the families having a chronic health problem (p < 0.05, Table 3). the self-evaluation of the risks present in mothers’ environment Of the total, 75.7% mentioned the existence of at least one risk factor in their environment. The number of mothers reporting risk factors was significantly higher in those living in West Anatolia and urban areas (p < 0.001). In less developed areas and in households with a family member with a health problem present, more mothers stated a risk factor, the difference was statistically significant (p < 0.05, Table 4). In addition, very few mothers reported the presence of illness/death (n = 25), chemicals (n = 9), disasters (n = 3), future anxiety (n = 1), and global warming (n = 1) in their neighborhood. Overall, the most frequently mentioned risk factor was air pollution (14.9%) and the second was radiationEMF (8.7%). Both were more frequently mentioned in West Anatolia, urban areas, and  more developed
+areas (p < 0.05). Municipality problems was in the 3rd line (7.5%), and accident risk was in the 4th line (6.9%) (Table 4). Security (including  stray animals) (3.1%), nonspecific environmental pollution (3.7%), food-water pollution (2.9%), and noise pollution (1.4%) were the other environmental risks stated by the mothers in their environment. Most of  the risk factors were mentioned more in West Anatolia region and in urban areas. Only one person mentioned future anxiety and one person mentioned global warming as an environmental risk factor. When compared according to the district developmental index; risk of accidents, nonspecific pollution, stray animals and food-water pollution was mentioned more frequently in more developed areas (p < 0.05, Table 4). As a note, there were 802 mothers who reported air pollution as an environmental risk. Of them, 5% stated that they smoked actively (n = 42). However, only 12 out of 1687 mothers with free indoor smoking reported “exposure to smoke” as a risk for their environment (0.7%) (p > 0.05). conditions that related with risk awareness of mothers Environmental risk perception status was evaluated according to mother characteristics. Regions, type of residences, environmental status of the house (living near highways or main roads, construction sites, dumping sites, swaps or puddles, stream or rivers, high voltage areas, base stations, transformer sites, factory or industrial centers), demographic characteristics (mothers’ and fathers’ education level, mothers’ working status, family type and household size) and the presence of an ill person in the family (any disease, asthma and goitre) associated with the perception of environmental risk at a statistically significant level (p < 0.05, Table 5). Surprisingly, tobacco exposure at home had not related to risk awareness status. Multiple logistic regression analysis regarding mothers’ environmental risk perception Multiple logistic regression analysis revealed that the proportion of specifying at least one environmental risk factor is found to be more by 5.17 times for those who live in proximity to factory or industrial areas (95% CI 2.67– 10.03), 2.63 times for those who live close to the swamps or puddles (95% CI 1.14–6.09), and 2.47 times for those who live near a base station (95% CI 1.86–3.29, p < 0.05, Table  6). As the maternal education increased, environmental risk factor awareness also increased by 1.44 times (95% CI 1.17–1.77). Compared to nuclear families, other family types have 1.29 times more environmental risks (95% CI 1.05–1.58), having a family member with a disease shows 1.28 times more risk (95% CI 1.02–1.61),
+Ta bl
+e 3
+En vi
+ro nm
+en ta
+l r is
+k kn
+ow le
+dg e
+of th
+e m
+ot he
+rs in
+W es
+t a nd
+C en
+tr al
+A na
+to lia
+-T ür
+ki ye
+, 2 00
+8– 20
+09 , %
+*
+EM F
+El ec
+tr om
+ag ne
+tic fi
+el d
+* c ol
+um n
+pe rc
+en ta ge ** T he re w er e 10 a
+dr es
+se s
+as m
+is si
+ng d
+at a
+in d
+is tin
+ct d
+ev el
+op m
+en ta
+l i nd ex ab c V al ue s ha vi ng d iff er en t l et te rs in th e sa m e ro w  a re d iff er en t i n th ei r s
+ub gr
+ou p 
+an al
+ys is
+, p <
+0 .0
+5
+Re gi
+on Re
+si de
+nc e
+D is
+tr ic
+t d ev
+el op
+m en
+ta l
+in de
+x* *
+A ny
+h ea
+lth
+pr ob
+le m
+in fa
+m ily
+O ve
+ra ll
+W es
+t A na
+to lia
+Ce nt
+ra l A
+na to
+lia p
+U rb
+an Ru
+ra l
+p Ra
+nk -1
+Ra nk
+- 2 Ra
+nk -3
+p no
+ne pr
+es en
+ce p
+n 34
+89 20
+13 14
+76 24
+32 10
+57 15
+55 13
+25 59
+9 28
+13 67
+6
+A ir
+po llu
+tio n
+23 .0
+27 .0
+17 .4
+< 0
+.0 01
+27 13
+.7 <
+0 .0
+01 26
+.4 a
+24 .9
+a 9. 7b <
+0 .0
+01 21
+.6 28
+.4 <
+0 .0
+01
+M un
+ic ip
+al ity
+, i nf
+ra st
+uc tu
+ra l p
+ro bl
+em s
+(c on
+st ru
+ct io
+n, s
+ew ag
+e sy
+st em
+e tc
+.) 12
+.4 14
+10 .2
+0. 00
+1 12
+.5 12
+.2 0. 80 8
+12 .6
+11 .3
+14 .2
+0. 19
+7 11
+.7 15
+.2 0. 01 3
+N on
+sp ec
+ifi c
+en vi
+ro nm
+en ta
+l p ol
+lu tio
+n 10
+.3 9. 9 10
+.7 0. 45 9
+10 .5
+9. 6
+0. 43
+3 11
+.3 9. 3 10
+.0 0. 21 6
+9. 0
+15 .4
+< 0
+.0 01
+Ra di
+at io
+nEM
+F 9. 9 9
+11 .2
+0. 03
+3 10
+.4 8. 9 0. 18 2
+11 .3
+a 8. 9b 8. 2b 0. 03 0
+9. 6
+11 .1
+0. 25
+4
+A cc
+id en
+t r is
+k 9. 7 10
+.7 8. 3 0. 01 8
+10 .6
+7. 7
+0. 00
+7 10
+.5 a
+11 .4
+a 4. 2b <
+0 .0
+01 8. 5 14
+.6 <
+0 .0
+01
+Ill ne
+ss /d
+ea th
+7. 1
+4. 5
+10 .6
+< 0
+.0 01
+7. 5
+6. 1
+0. 12
+0 6. 8a 9. 5b 2. 3c <
+0 .0
+01 7. 2 6. 7 0. 63 3
+Sa fe
+ty 6. 6 7. 5 5. 4 <
+0 .0
+01 7. 7 4
+0. 01
+3 7. 1 7. 5 3. 3 0. 00 2
+5. 5
+10 .9
+< 0
+.0 01
+Fo od
+-w at
+er p
+ol lu
+tio n
+5. 3
+5. 2
+5. 5
+0. 72
+4 6. 3 3. 1 <
+0 .0
+01 5. 9 4. 7 5. 3 0. 33 9
+5. 1
+6. 4
+0. 18
+4
+Co m
+m un
+ic ab
+le d
+is ea
+se s
+3. 3
+2. 7
+4. 1
+0. 02
+9 3. 3 3. 3 0. 97 4
+2. 8
+4. 2
+2. 5
+0. 05
+4 2. 7 5. 8 <
+0 .0
+01
+N oi
+se 2. 2 0. 7 4. 2 <
+0 .0
+01 2. 1 2. 4 0. 70 7
+2. 7
+1. 8
+1. 7
+0. 17
+0 2. 3 1. 8 0. 39 5
+C he
+m ic
+al p
+ol lu
+tio n
+1. 4
+0. 9
+2 0. 00 8
+1. 5
+1. 2
+0. 64
+0 1. 2 1. 8 1. 0 0. 22 2
+1. 4
+1. 6
+0. 58
+4
+N o
+da ng
+er 5. 0 6. 9 2. 4 <
+0 .0
+01 2. 5 10
+.8 <
+0 .0
+01 4. 2a 6. 6b 3. 5a 0. 00 2
+5. 2
+4. 1
+0. 26
+1
+D oe
+s no
+t k no
+w 19
+.3 13
+.5 27
+.4 <
+0 .0
+01 17
+.9 22
+.6 0. 00 1
+15 .6
+a 19
+.5 b
+29 .0
+c <
+0 .0
+01 20
+.5 14
+.3 <
+0 .0
+01
+Ta bl
+e 4
+Th e
+se lf-
+ev al
+ua tio
+n of
+th e
+ris ks
+p re
+se nt
+in m
+ot he
+rs ’ e
+nv iro
+nm en
+t i n
+W es
+t a nd
+C en
+tr al
+A na
+to lia
+-T ür
+ki ye
+, 2 00
+8– 20
+09 , %
+*
+EM F
+El ec
+tr om
+ag ne
+tic fi
+el d
+* c ol
+um n
+pe rc
+en ta ge ** 1 0 ad re ss es w er e  m
+is si
+ng fo
+r d is
+tin ct
+d ev
+el op
+m en
+ta l i
+nd ex
+ab c V
+al ue
+s ha
+vi ng
+d iff
+er en
+t l et
+te rs
+in th
+e sa
+m e
+ro w
+ a re
+d iff
+er en
+t i n
+th ei
+r s ub
+gr ou
+ps ’ a
+na ly
+si s,
+p <
+0. 05
+Re gi
+on Re
+si de
+nc e
+D is
+tr ic
+t d ev
+el op
+m en
+ta l
+in de
+x* *
+A ny
+h ea
+lth
+pr ob
+le m
+in fa
+m ily
+O ve
+ra ll
+W es
+t A na
+to lia
+Ce nt
+ra l A
+na to
+lia p
+U rb
+an Ru
+ra l
+p Ra
+nk -1
+Ra nk
+- 2 Ra
+nk -3
+p no
+ne pr
+es en
+ce
+n 34
+89 20
+13 14
+76 24
+32 10
+57 15
+55 13
+25 59
+9 28
+13 67
+6
+A ir
+po llu
+tio n
+14 .9
+19 .4
+8. 8
+< 0
+.0 01
+17 .5
+8. 9
+< 0. 00 1
+20 .5
+a 13
+.9 b
+3. 0c
+< 0
+.0 01
+13 .7
+19 .8
+< 0
+.0 01
+Ra di
+at io
+nEM
+F 8. 7 9
+8. 2
+0. 41
+0 9. 5 6. 8 0. 01 1
+10 .5
+a 6. 3b 8. 7a b
+< 0
+.0 01
+8. 3
+10 .1
+0. 14
+8
+M un
+ic ip
+al ity
+p ro
+bl em
+s 7. 5 9
+5. 4
+< 0
+.0 01
+8. 3
+5. 6
+0. 00
+4 8. 4 6. 9 6. 8 0. 24 9
+6. 6
+11 .2
+< 0
+.0 01
+Ri sk
+o f a
+cc id
+en t
+6. 9
+7. 2
+6. 4
+0. 33
+5 7. 6 5. 1 0. 00 7
+9. 8a
+6. 2b
+0. 7c
+< 0
+.0 01
+5. 8
+11 .1
+< 0
+.0 01
+N on
+sp ec
+ifi c
+en vi
+ro nm
+en ta
+l p ol
+lu tio
+n 3. 7 4. 5 2. 6 0. 00 3
+4. 2
+2. 6
+0. 03
+1 5. 2a 2. 3b 2. 7b <
+0 .0
+01 3. 0 6. 5 <
+0 .0
+01
+Sa fe
+ty , s
+tr ay
+a ni
+m al
+s 3. 1 3. 8 2
+0. 00
+2 3. 9 1. 1 <
+0. 00
+1 2. 8a 4. 2a 1. 3b 0. 00 3
+2. 6
+5. 0
+0. 00
+1
+Fo od
+-w at
+er p
+ol lu
+tio n
+2. 9
+3. 6
+1. 9
+0. 00
+3 3. 7 1. 0 <
+0. 00
+1 4. 1 2. 2 1. 5 0. 00 1
+3. 0
+2. 4
+0. 36
+2
+N oi
+se p
+ol lu
+tio n
+1. 4
+0. 8
+2. 3
+< 0
+.0 01
+1. 4
+1. 5
+0. 75
+9 1. 4 1. 6 1. 2 0. 77 3
+1. 4
+1. 5
+0. 91
+0
+Co m
+m un
+ic ab
+le d
+is ea
+se s
+1. 1
+0. 9
+1. 4
+0. 14
+6 1. 4 0. 5 0. 01 4
+1. 0a
+1. 6b
+0. 3a
+0. 04
+9 0. 9 1. 9 0. 02 7
+A ny
+ri sk
+s ta
+te d
+75 .7
+79 .7
+70 .2
+< 0
+.0 01
+79 .6
+66 .6
+< 0. 00 1
+19 .7
+a 26
+.1 b
+32 .6
+c <
+0 .0
+01 74
+.3 81
+.5 <
+0 .0
+01
+dwelling near main roads displays 1.54 times more risk (95% CI 1.30–1.84), construction sites 1.50 (95% CI 1.05– 2.14), or dumpster areas 1.87 times (95% CI 1.25–2.82). discussion In the current study, some of the key factors that can shape risk perception and tolerance of mothers were explored. Most mothers mentioned at least one risk factor indicating that the concept of environmental risk is prevalent among them. However, upon examining these risk factors individually, it is apparent that the importance of environmental exposure has not been fully comprehended yet. Air pollution is the most frequently mentioned environmental risk by the mothers especially by the urban residents, contrarily, awareness about chemical exposure, water pollution and general environmental pollution is much lower. This findings align with
+previous studies [29, 35–37]. A cross-sectional study from south-eastern France in 2017 showed that indoor/ outdoor air quality and endocrine disruptors were the best-mastered topics for perinatal health professionals (962 participants) [38]. Although air pollution was the most frequent mentioned environmental risk in the present study, tobacco exposure was mentioned seldom as stated in the results. In the previous study, tobacco exposure was not associated with environmental pollution awareness [26]. There is a need to increase awareness of mothers on tobacco exposure and indoor air pollution especially for children. In a randomized controlled study conducted in Israel, it was observed that the smoking exposure perception of families was raised after they are informed about tobacco exposure and following air quality measurements was increased significantly [39]. In contrast to the present study, in another study conducted in the Sakarya
+province of Türkiye in 2014, 98.6% of participating parents identified smoking as an environmental risk factor [29]. It is important to note that this study employed a survey format with yes/no responses. The present study with open-ended questions, may provide a better reflection of risk perception with less bias. However, it is worth considering that regional factors could also contribute to these differences. Previous study in South Korea revealed that perceived educational needs of pregnant women included particulate matter (23.7%), electromagnetic waves (11.7%), instant food (food additives) (9.0%) and endocrine disrupting chemicals (8.3%) [40]. Therefore, there is a need for studies encompassing the entirety of Türkiye to further investigate this issue. Present study showed higher risk perception among mothers living in urban residence, West Anatolia, educated 8 or more years. The study suggested that in West Anatolia, an increase in the education level of residents, as well as the proportion of working mothers were associated with a higher awareness of environmental risk factors in the region. A previous study suggested environmental pollution could be reduced by educating individuals and spreading information [41]. Similarly, education level and socioeconomic status were reported to constitute an important basis on the environmental risk awareness of families [15, 37, 42]. In addition, the socio-economic development level of the living environment were shown to be related with people’s awareness [43]. This may be related to the level of education, as well as the fact that fewer people are included in the studies from regions with low socioeconomic status. On the other hand, the association between district developmental index and risk perception was disappeared in multivariate logistic regression analysis. This suggests that economic development alone might not significantly associated with risk perception. However, it is worth noting that when the level of economic development reaches a certain threshold, it can facilitate the implementation of new environmental remediation technologies and methods. These advanced technologies and methods have the potential to accelerate the restoration of the environment and mitigate environmental risks. In other words, economic development can create opportunities for adopting effective measures and practices to address environmental challenges and improve overall environmental conditions [44]. A Korean study showed age, perceived severity, and response efficacy of pregnant women affected pro-environmental behaviour [40]. In the present study, multivariate analysis showed that mothers living in near risky places like garbage dumps, factories, industrial areas, swamps, where environmental pollutants can be intense, have a higher risk awareness. As in line with this study, having a family member with
+asthma increases awareness and the support for precautionary measures [28]. There are many reports showing a positive correlation between environmental exposure and risk awareness [39, 45, 46]. However, it’s important to note that risk awareness does not always translate into effective risk management. Some studies have found that despite having a high level of risk awareness, individuals may not necessarily engage in appropriate risk management practices [43, 47]. One study recruited in three heavily contaminated areas of Southern Italy revealed that risk perception index changed with studied site, besides, no association between risk perception and lifestyle during pregnancy was detected [48]. Another crosssectional survey in the Amiata area on 2029 subjects aged 18–77 showed higher risk perception was among women and young people, associated with higher education [49]. This highlights the need for further research to better understand the risk management strategies employed by these individuals. By investigating the factors influencing risk perception and the barriers to effective risk management, future studies can contribute to the development of targeted interventions and policies aimed at reducing environmental risks and promoting healthier living environments. Also naturalist and social scientists’collaboration might play an important role in developing awareness about environmental risk factors [50]. Confirming our hypothesis, a previous quasi-experimental study in Korea showed that pregnant women having the pro-environmental prenatal education program including motivational education on eco-environmental protection had positive changes in environmental health perceptions and behaviors [51]. Similarly, the PREVED (PREgnancy, preVention, Endocrine Disruptors) project in France was developed to improve knowledge, to enhance risk perception, and to change exposure behavior by sharing know-how/experience in a positive nonalarmist approach [52]. strengths and limitations This study is the most comprehensive study ever done in terms of being a survey including open-ended questions, the number of participants involved, inquiring relationship with their own health problems, and evaluating information about environmental risks in Türkiye. In a similar study environmental risk perception assessment was carried out in a smaller population in Adana, one province of Türkiye using a similar method [26], but the present study was done both by two NUTS regions and by using the district development index in a much larger population. The study’s strength lies in its differentiation according to NUTS regions and the inclusion of each province
+based on the rural–urban population proportion, which enhances its representativeness. In parallel, the use of random and impartial sample selection from the population records also minimized the possibility of selection bias. This study has the power to represent the sampled West Anatolia and Central Anatolia. There is a need for more comprehensive studies that can represent the whole of Türkiye. In the studies, where the data were collected via selfstatements, there is always a possibility that respondents may not fully express their true thoughts or may intentionally hide certain information. This can introduce a bias in the data collected and affect the accuracy of the findings. Moreover, since the present study employed a cross-sectional design, it is important to note that it does not establish a causal relationship between the factors examined. Due to the large sample size, some unrelated factors may seem correlated. The temporal gap between the execution of the study in 2008–2009 and the subsequent submission of the article in the current year (2023) indeed raises a pertinent consideration regarding the potential impact of this delay on the validity and relevance of the study’s results and findings. The extended interval between data collection and article submission could introduce certain limitations, such as changes in technological advancements, policy shifts, or other external factors that might have influenced the context in which the study’s outcomes are situated. However, it’s important to recognize that certain types of research possess enduring relevance beyond their initial timeframe. Moreover, in our research, where outcomes are significantly influenced by socio-economic impacts, certain fundamental patterns and relationships may remain relatively stable over time, even as specific contextual elements evolve. Being the first study on this subject in the national field is also important in order to observe the changes in environmental pollutants in the society and to make perceptual awareness plans in the society. conclusion In order to take precautions against environmental risk factors and influence policy decisions, it is crucial to increase environmental risk awareness of society. The present study showed that characteristics of the area, in which mothers reside affects environmental risk factor comprehension. It is very important to create environmental awareness proactively in order to protect the well-being of the children, society and environmental health. Health authorities need to prioritize raise public awareness on this issue. There is a need for a more
+comprehensive evaluation with studies to be carried out by taking samples from all segments of the society in the future. Acknowledgements The authors are grateful to all mothers for participating in this study. 

@@ -1,0 +1,540 @@
+While analogies are a common way to evaluate
+word embeddings in NLP, it is also of interest
+to investigate whether or not analogical reasoning is a task in itself that can be learned. In
+this paper, we test several ways to learn basic
+analogical reasoning, specifically focusing on
+analogies that are more typical of what is used
+to evaluate analogical reasoning in humans than
+those in commonly used NLP benchmarks. Our
+experiments find that models are able to learn
+analogical reasoning, even with a small amount
+of data. We additionally compare our models
+to a dataset with a human baseline, and find
+that after training, models approach human performanceSolving proportional analogies a : b :: c : d
+(ex. Paris:France::Tokyo:Japan) (Mikolov et al.,
+2013a,b; Rogers et al., 2017) with embeddings has
+become an iconic way to demonstrate that they encode semantic information regarding the relationships between word pairs. Proportional analogies
+have been formalized with word embeddings by
+means of a simple arithmetic equation (often referred to as the vector offset method) b−a+c = d
+where the choice of d is solved by maximizing
+cos(b−a+c, d), or other slightly more complicated
+similarity measures (Mikolov et al., 2013a; Rogers
+et al., 2017; Levy and Goldberg, 2014; Ushio et al.,
+2021b).
+This task has developed into many datasets such
+as the Google Analogy Test Set and the Bigger
+Analogy Test Set (BATS) (Mikolov et al., 2013a;
+Gladkova et al., 2016). Examples of relation types
+included in these datasets are morphological in
+nature (entertain : entertainer :: examine :
+examiner), based on encyclopedic knowledge
+(P aris : F rance :: Lima : P eru), or lexicographic relations, such as hypernyms and hyponyms (candy : lollipop :: color : white). Notably, the relations between entities that form each
+analogy are explicitly verbalized for each example,
+and are grouped into collections of many pairs with
+equivalent relations. While the ability of word embeddings to solve these sorts of analogies is interesting, the analogies contained in these datasets are
+different from what is typically used to test analogical reasoning in humans. Many would be trivially
+easy to solve, as is the case with morphological relations and a lot of encyclopedic knowledge (Ushio
+et al., 2021b). Even the task of completing an analogy by filling in a correct d term is perhaps not
+well suited to humans. Rogers et al. (2017) noted
+that analogy questions are often given to people as
+multiple choice questions, as people would likely
+fill in d with a variety of words where a single correct answer is not always the case. It has also been
+pointed out that model performance on analogy
+tests tend to rely on how semantically related all
+the entities in the analogies are to each other, suggesting these tests might in fact not be measuring
+analogical reasoning (Rogers et al., 2017). When
+using the vector offset method, the a, b, and c terms
+are generally excluded from candidates for d. If
+they are not excluded b or c is often the closest
+neighbor to the estimate of d and will be selected
+(Rogers et al., 2017; Linzen, 2016).
+Analogical reasoning has the potential to extend
+beyond just solving proportional analogies. Analogies and analogical reasoning have value regarding
+scientific discovery, problem solving, human creative endeavors such as metaphor generation, as
+well as in the field of education (Boger et al., 2019;
+Gentner, 2002; Gentner et al., 2016; Clement, 1988;
+Gick and Holyoak, 1980; Gentner and Markman,
+1997). In this work, we do not focus on the semantic/morphological analogies in datasets such as
+BATS, but on more "complex" analogies that are
+closer to what is used to test analogical reasoning
+in humans, what Ushio et al. (2021b) referred to as
+"Psychometric Analogy Tests". Most of the data we
+use has been developed precisely to test humans.Furthermore, many of these analogies will have
+no verbalized relation between entities available,
+and there are likely no ways to group instances
+by type of relation without over-generalizing the
+relation. Unlike most previous studies, we want
+to go beyond just exploring what pretrained language models know about analogical reasoning.
+Our main contributions are as follows: we propose
+a training objective that allows language models to
+learn analogies. We find that learning is effective
+even with a fairly small amount of data, and approaches human performance on an unseen test set
+constructed for testing human analogical reasoning.
+Lastly, we find that fine-tuning models with this
+training objective does not deteriorate performance
+on external, but related tasks.
+2 Related Work
+While a lot of work tends to focus on performance
+on datasets such as BATS, there exist some datasets
+which were developed to test humans. Ushio et al.
+(2021b) explored the ability of word embeddings
+from various transformer models as well as some
+pretrained word embeddings (such as GloVe) to
+solve a variety of analogies originally designed to
+test humans in addition to the BATS and Google
+analogy test set. They tested three different scoring
+methods that aggregated across all valid analogy
+permutations. Their experiments found that the
+analogies designed for humans were much harder
+for all word embeddings to solve, with the better
+performing models’ accuracy being less than 60%
+on datasets designed for humans, while the highest
+accuracy attained on Google and BATS was 96.6%
+and 81.2% respectively.
+Czinczoll et al. (2022) introduced a dataset composed of scientific and metaphorical analogies,
+called SCAN, also testing performance on transformer based embeddings by using a natural language prompt, and filling in an ending [MASK]
+token. They experimented with a zero and oneshot learning setting, and additionally fine-tuned
+models on the BATS dataset. Overall they found
+that performance on the SCAN was low, and that
+models which had been fine-tuned on BATS lead
+to a decreased performance on the SCAN dataset,
+which the authors attribute to the types of analogies
+being inherently different and that datasets such
+as the BATS did not well represent how humans
+utilize analogies.
+In this work, we test a novel training objective
+to explore whether analogical reasoning in itself
+is a task that can be learned, and later test to unseen analogies with non-equivalent relation types.
+There have been a few works in addition to Czinczoll et al. (2022) that attempted at actively learning analogies or relations between words (Ushio
+et al., 2021a; Drozd et al., 2016) using language
+models. Czinczoll et al. (2022) and Drozd et al.
+(2016), handle the analogy problem in the more
+common way of predicting a word to complete the
+analogy. Our training focuses more on similarity in
+relations between entities, as opposed to similarity
+between entities in the analogy themselves, and
+uses this objective to fine-tune a pretrained BERTbase model to solve analogies as a classification
+problem. Ushio et al. (2021a) proposed RelBERT,
+whose motivation and training scheme is most similar to our set up in that they are focused on relations
+and relational similarity, even if their training task
+is not formulated as an analogy problem specifically. However their methods involve prompting
+and their training data was much larger (SemEval
+2012 Task 2) and involved only lexical relations.
+Our work involves an arguably simpler training
+scheme, with a much smaller training dataset that
+includes a wider variety of analogical relations.
+Additionally, there has been a lot of work in
+knowledge graph representation to learn embeddings for relations between entities, some of these
+which explicitly utilize analogical structure to learn
+embeddings (Liu et al., 2017). However, this area
+of research is out of scope as we are focusing specifically on learning to represent knowledge and relations in contextual language models.
+3 Methods
+All our experiments used a pretrained BERT-base
+uncased model (110M parameters)1
+(Devlin et al.,
+2019) unless stated otherwise. Models are trained
+on a binary classification task- when given an analogy, they must label it as either positive or negative.
+We evaluate our models in three ways: 1) We
+evaluate the models’ ability to learn analogy classification using two variants of a classification task,
+the binary classification task used during training
+and a ranking task, where we present them with
+both a positive analogy and its negative counterpart
+(how these are created is described in the Datasets
+section below), much like a multiple choice question with two possible answers. Whichever pair themodel scores as more likely an analogy is the one
+the model "chooses". We chose to include this task
+as this is how it was formulated for the human baseline we use to compare our models, and is closer to
+how analogy tasks are often presented to humans
+(Rogers et al., 2017; Jones et al., 2022). Unlike the
+binary classification task, which will rely on a cutoff chosen to differentiate positive from negative,
+the decision made using ranking is relative to what
+a specific analogy is being compared to. 2) We
+compare the models’ ability to solve analogies to
+a human baseline on an unseen dataset (also using
+ranking as described in the previous paragraph).
+3) We evaluate performance on some external but
+related semantic similarity tasks. Statistical significance was determined using a two-sided z-test for
+proportions2
+.
+3.1 SBERT-modifications
+Many of our experiments are a modification of the
+SBERT3
+architecture presented by Reimers and
+Gurevych (2019). SBERT creates sentence level
+embeddings, using the sentence representations- as
+opposed to token level representations- to solve
+a variety of tasks such as sentence similarity.
+Sentence-level representations are created by feeding the full sentence through a BERT or BERTvariant model, then pooling the embeddings from
+the final hidden layer.
+In the original SBERT setup, sentences are fed
+through a model and the token embeddings are
+pooled to create a single representation. The
+main modification we do is that instead of feeding
+SBERT sentences to create a single sentence-level
+embedding, we feed SBERT word pairs and create two word-level embeddings- one for each word
+in the pair. In case a word is separated into word
+pieces, this still requires a pooling layer. We meanpool over the token level embeddings to create each
+word embedding.
+Additionally, in the original paper, sentences
+were fed through individually. So, for example, in
+a sentence similarity task which rates the similarity between two individual sentences (no attending
+between the sentences), the representations are determined separately. Their two individual representations are then compared. In our specific case with
+the a : b :: c : d analogy structure, the meaning
+of a is dependent on b and vice versa. Howeverthe meaning of c is not necessarily related to a, as
+they are just related to each other by their relation
+to their partner in their pair. Therefore we send
+through "a [SEP] b" separately from "c [SEP] d".
+This is only the case when the SBERT architecture
+is used. In the case that it is not, it will be explicitly
+stated.
+3.2 Models
+All models are trained4
+for three epochs, with a
+batch size of 32, and were trained using the Adam
+optimizer with an initial learning rate of 2e
+−5
+(Loshchilov and Hutter, 2019). Each model took
+between 2.5-5 hours to train on a single CPU. We
+use BERT-base in our main experiments, however
+reproduce several experiments with other BERT
+architectures in the appendix.
+3.2.1 Model 1: Simple Classifier
+As a first model, we trained BERT (not SBERT) to
+classify a proportional analogy as being an analogy
+or not. The model is fed the analogy in the form
+’a [SEP] b [SEP] c [SEP] d’, and outputs a 0 for
+not analogy or a 1 for true analogy. We chose to
+include one experiment with a simple classification
+head as this is the generic classification training
+paradigm for transformer models.
+3.2.2 Model 2: BERT a-b
+The rest of our models maintained formulating the
+task as a binary classification task, however instead
+of having a final classification head, we incorporated a novel training objective. We base our training off the idea that in a proportional analogy, the
+relationship between a and b can be framed as a-b
+(Mikolov et al., 2013a). Given that the pairs that
+make up an analogy should have the same relation
+expressed between the entities, it means (a-b)=(cd). We train our model to maximize the cosine similarity cos((a-b),(c-d)) for positive examples and
+minimize for negative. We use a cosine embedding
+loss to train the model, with a margin of 0.
+3.2.3 Model 3: BERT a-c
+Since the above experiments using cosine distance
+as a similarity measure do not take into account
+sim((a − c),(b − d)), we test the model using
+cos((a−c),(b−d)) as the training objective. This
+reordering is of interest because in these analogypairs, a and b are semantically related to each other
+in some way (ex: nucleus and electron), but a and c
+are generally not (ex: nucleus and sun). This means
+that, in theory, a-c is a much larger distance in
+semantic space. Previous studies have shown that
+when it comes to analogies, word embeddings often
+fail to capture more long-distance relations (Rogers
+et al., 2017). Long-distance relations (connecting
+two seemingly unrelated concepts) is of interest to
+the topic of computational creativity.
+3.2.4 Baselines: No fine-tuning and FastText
+We have three non-finetuned baselines, which we
+use to test the impact of our model training. The
+first is FastText5
+, which was used because of its
+large vocabulary and ability to handle out of vocabulary words (Bojanowski et al., 2017). Given
+an analogy pair a : b :: c : d, the cosine similarity cos((a-b),(c-d)) was calculated. In addition
+to FastText, we also used two pretrained SBERT
+baselines: BERT a-b non-tuned and BERT a-c nontuned. These last two use the same cosine similarity
+measures as BERT a-b and BERT a-c, which will
+allow a more direct comparison to evaluate learning
+capabilities.
+3.3 Datasets
+For fine-tuning, we use a combination of four
+datasets (described below). This data was balanced,
+with half of the data points being true analogies
+and half false. We generated one negative analogy
+from every positive analogy, where for every true
+a : b :: c : d, a negative analogy a : b :: c
+′
+: d
+′ was
+created, which resultsed in a total of 4930 analogies. The choice of c’,d’ depended on the dataset
+and is described in their respective subsections. Examples of analogies contained in the datasets used,
+as well as other characteristics of the data, are in
+Table 7 in appendix A. The data was split into ten
+parts (each equal to ≈10% of the data). When creating each test set, we randomly selected positive
+analogies, and included their negative counterpart
+so that the model would not see either. Each model
+was trained ten times with one of the portions held
+out. Results shown are averaged across all ten runs.
+3.3.1 SAT Dataset
+The first dataset is composed of 374 analogies taken
+from a portion of the SAT college entrance exam in
+the US (this section has since been discontinued),
+5
+gensim library: https://radimrehurek.com/gensim/index.html
+and has been used in several NLP publications (Turney et al., 2003; Ushio et al., 2021a,b). The original
+format was multiple choice, where, given a pair of
+words, the student had to choose another pair of
+words out of five provided that best formed an analogy with the given pair. Each question has one
+valid pair. One incorrect pair from the remaining
+four incorrect choices was chosen for each analogy
+to create negative samples, creating a total of 748
+SAT analogies. One beneficial quality about these
+negative edges is that the questions were originally
+developed to be challenging to humans, therefore
+the incorrect option is not a pair of two random
+entities, but instead two entities that likely were
+chosen to be tricky.
+3.3.2 U2 and U4
+These analogies come from an English language
+learning website6
+, used in some previous NLP analogy publications (Ushio et al., 2021a,b; Boteanu
+and Chernova, 2015). They were made for approximately ages 9-18, therefore comprising of a range
+of difficulty for humans. These questions were
+originally formatted as multiple choice as well, so
+negative instances were created in the same way as
+with the SAT data. The U2 dataset is a subset of the
+U4 dataset, so we removed all analogies that were
+present in the U2 from the U4. These two datasets
+contributed a total of 1208 analogies.
+3.3.3 Scientific and Creative Analogy dataset
+(SCAN)
+The final dataset used in training is the Scientific
+and Creative Analogy dataset (SCAN), and is made
+up of analogies found in science, as well as commonly used metaphors in English literature (Czinczoll et al., 2022). Instead of forming pairs of pairs
+(with 4 entities), each analogy pair is composed
+of multi-entity relations. For example, in the analogy comparing the solar system to an atom, solar
+system includes the entities, sun, planet, gravity,
+while atom includes the analogous entities
+nucleus, electron, electromagnetism. Each
+analogy pair provides C(n, 2) total analogies in
+the format a : b :: c : d, where n is the number of
+entities in a topic. So, for example, in an analogy
+where each topic in a pair contains four entities,
+there are C(4, 2) = 6 total analogies. While analogies that make up the evaluation test were not seen
+during training, the entities in the pairs that make
+up the evaluation analogies may have been seen,given the multi-entity nature of this dataset. This
+allows us to test the model’s ability to learn to infer
+analogical relations when it is given other relations
+the entities do and do not have. Negative edges
+were created by randomly shuffling the c,d terms in
+the dataset. Given that the analogies were formed
+from combinations, random shuffling may accidentally result in a true analogy. All negative analogies
+were checked to make sure that they were not actually present in the positive analogy group. This
+created a total of 3102 analogies from this dataset -
+this represents about 63% of the total data.
+3.3.4 Human Baseline Comparison:
+Distractor Dataset
+These analogies were compiled by researchers in
+a university psychology department, where they
+tested whether semantic similarity affected an adult
+human’s ability to correctly solve analogies (Jones
+et al., 2022). This dataset was not used in our
+model training, and recently has been used to probe
+large language model for analogical reasoning ability (Webb et al., 2023). In the original paper, the
+human subjects are presented with an incomplete
+analogy a : b :: c :?, where they must choose
+between two options for the d term. There are
+two levels of semantic similarity the authors explored. First they test human’s abilities to solve
+analogies with regards to how related the c,d term
+is to the a,b term. Analogies are grouped into near
+analogies, where the a,b entities are semantically
+similar to the c,d entities, and far analogies, where
+the a,b entities are not semantically similar to the
+c,d pair. Then within each of these groups, they
+come up with two incorrect d options, which they
+refer to as distractors (the incorrect choices for d).
+One of the incorrect d entities is more semantically similar to the c term than the true d term is
+to the c term, which they refer to as a high distractor salience. For example, a true analogy they
+use is tarantula : spider :: bee : insect. They
+replace insect with hive as it is more related to bee.
+They measured semantic distance using LSA. The
+second incorrect d term that was chosen was less
+semantically similar (ex: replacing insect with yellow), which they refer to as low distractor salience.
+They also test three types of analogical relations:
+categorical, compositional and causal. Definitions
+and examples of these relations can be found in
+Jones et al. (2022).
+3.3.5 External Tasks: Semantic Similarity
+In order to see if our training scheme affects performance on external tasks, as can be the casewith catastrophic forgetting, we test our models on
+three word-level, non-contextual semantic similarity datasets: SimLex-999, MEN, and WordSim353
+(WS353) (Goodfellow et al., 2014; Kirkpatrick
+et al., 2017; Hill et al., 2015; Bruni et al., 2014;
+Finkelstein et al., 2001; Kemker et al., 2018)
+7
+.
+All these datasets contain words pairs with a similarity measure, however Hill et al. (2015) details
+some key features of how these dataset differ when
+they introduced SimLex-999; namely that both the
+MEN and WS353 tended to measure word relatedness/association as opposed to word similarity
+(not that these are mutually exclusive), and MEN’s
+tendency to focus on less abstract concepts, such as
+nouns. The similarity measure within these datasets
+range from 0 to 10, while we use cosine similarity
+(details described in the next section), which gives
+a similarity measure in the range -1 to 1. We chose
+these tasks because it is a word level similarity task,
+which is related to our analogy task. Ideally the
+performance on these tasks would improve with
+our training, or minimally not decrease.
+4 Results
+4.1 Proportional Analogies as a Learnable
+Objective for Neural Networks
+Table 1 shows accuracy on classifying the testset
+with both the baselines and trained models. FastText has a tendency to label all analogies as negative given the cosine similarity measure, while
+BERT models have a tendency to classify all analogies as positive. This is perhaps unsurprising, as
+it has been demonstrated that word embeddings
+7We used some code from
+https://github.com/kudkudak/word-embeddings-benchmarks
+exhibit anisotropy, and that anisotropy is higher
+with contextual word embeddings, resulting in any
+two random words having high cosine similarity to
+each other, perhaps translating into the distances
+between words being similar to each other (Ethayarajh, 2019). BERT a-b seems to be less likely
+to be biased towards one label as compared to the
+other baselines, with the relatively large SCAN
+dataset having the greatest tendency to be classified as positive.
+The a-b training scheme improved overall accuracy on analogy classification over the previously
+discussed baseline, with most positive changes in
+accuracy being statistically significant. The largest
+gains were with the SCAN dataset, mostly due to
+an increased ability to correctly classify negative
+analogies. Performance was generally better with
+the metaphor analogies than science, with the a-b
+model reaching 0.86 accuracy overall. Czinczoll
+et al. (2022) found that models performed better
+on science analogies than on metaphor analogies,
+which they attributed to metaphors being more
+abstract. As mentioned before, while the model
+would have never seen the examples from the evaluation set, it would have seen the entities in the
+pairs that make up the samples in the evaluation set
+as parts of other analogies. There was improvement
+on the other datasets with the a-b model, however
+the overall improvements were less dramatic, ranging from +0.07 when compared to BERT a-b nontuned. We cannot directly compare our results to
+Czinczoll et al. (2022) and Ushio et al. (2021b), as
+Czinczoll et al. (2022) does not use a classification
+or ranking multiple choice task while Ushio et al.
+(2021b) used the entire list of negative analogies
+for the ranking task. Moreover, the main goals ofthese papers were not to test training schemes.
+The fine-tuned and non-fine-tuned models were
+generally able to perform an analogy ranking task
+better than the classification task, as shown in Table 2. The performance of each model between
+SCAN and the other datasets was less variable
+with the ranking task as opposed to the classification task. Again, the fine-tuned models outperformed their respective baselines with statistically
+significant improvements, with improvements being much greater with the a-b scheme.
+4.2 Exploring Accuracy in Relation to Word
+Frequency and Subwords
+Inspired by Zhou et al. (2022a,b), we explored
+whether there were any trends in classification associated with entity frequency in BERT’s pre-training
+data, as well as subword tokenization. They found
+that cosine similarity between BERT embeddings
+tends to be under-estimated among frequent words
+(Zhou et al., 2022a). They also found that countries
+who were out-of vocabulary (OOV) in BERT’s vocabulary were more likely to be judged as similar
+to other countries, and being OOV was related to
+being mentioned less in BERT’s pre-training data
+(Zhou et al., 2022b). Keep in mind that we classified analogies using the cosine similarity between
+the distances between entities, and not the cosine
+between the entities themselves, which differentiates our results from theirs.
+In order to approximate word frequency in the
+training data for our experiments, we use the estimates released by (Zhou et al., 2022a). Like Zhou
+et al. (2022b) found, the less common a word in
+the training data is, the more likely it is to be outof vocabulary (OOV) (Figure 1 in appendix A).
+Words tokenized into two or more subwords have
+generally been seen <10,000 times in the training
+data. Table 8 in appendix A shows the percent of
+each dataset that contains OOV words, as well as
+average times an entity is seen in the training data.
+The SCAN dataset contained < 10% OOV entities,
+while the SAT dataset contained almost 30% OOV
+words. Entities in the SCAN were seen on average
+twice as much in the pre-training data as entities in
+the SAT dataset.
+Table 3 shows average word frequency by true
+and predicted label, while Table 4 shows classification accuracy by whether an analogy had at least
+one OOV entity. The entities contained in false
+analogies tended to be observed in the pre-training
+data more frequently than those in true analogies.
+However, analogies predicted as being true analogies contained entities that were seen a little over
+60% more on average than those contained in analogies predicted as false before training. Additionally,
+analogies that contained no OOV entities were almost always predicted as true before training (Table
+4). After training, the average frequency among
+predicted labels closely matches that among the
+true labels, and accuracy improved greatly among
+negative analogies with no OOV entities, as well
+as among analogies with OOV entities. It appears
+that before fine-tuning, the model overestimated
+the similarity in relations between analogy pairs
+with in-vocabulary words, and a bulk of the learning affected the ability to correctly identify lack of
+analogy. Similar trends can be seen when lookingwithin each dataset.
+4.3 Neural Networks as Compared to Humans
+Table 5 shows the results of testing our methods
+on an unseen testset that was previously tested on
+college students in the US by Jones et al. (2022).
+As a summary of what the original paper found -
+humans overall did well on solving these analogies
+(≈84% accuracy overall). They found that humans
+were better at solving near analogies than far analogies, and that humans had a harder time correctly
+choosing d then when there was high distractor
+salience as compared to a low distractor salience.
+When looking at relation categories, human performance was highest on the categorical analogies,
+and lowest on the causal analogies. To see results
+in detail please refer to Jones et al. (2022).
+In our experiments, the best performing model
+was BERT a-b, with a 0.69 overall accuracy, up
+from 0.53 with BERT a-b non-tuned, and ≈0.15
+worse than human performance. Accuracy for
+BERT a-b mostly increased with training over the
+baseline, however most increases among subgroups
+were not statistically significant, although notably
+the sample size was small. When looking at subgroups, the same trends observed in humans were
+not present, nor were there any obvious trends
+among subgroups between the models, with the
+exception that near analogies were easier to solve
+than far analogies for our best model.
+4.4 Performance on External Tasks
+Finally, we tested on an external task to find out
+whether fine-tuning on the task of analogical reasoning might have a (negative) effect on semantic
+similarity tasks. Table 6 shows the Spearman’s
+rank-order correlation coefficient for the three Semantic Similarity tasks. BERT a-b improved over
+BERT non-tuned, showing that training actually improved performance, even if performance is still
+overall low compared to FastText. FastText outperformed all transformer models on the externalasks, which is unsurprising. Ethayarajh (2019)
+found that FastText and embeddings from lower
+layers of BERT outperformed final layer hidden
+representations from BERT, although they used
+the first principal component of the embeddings
+so the results are not directly comparable. Given
+the tasks are non-contextual, perhaps the contextual nature of BERT that allows it to perform well
+on certain tasks hinders it in others. Interestingly
+BERT a-b performed better on the SimLex-999
+task than the other two tasks, unlike the baseline
+models presented. Hill et al. (2015) had found
+the SimLex-999 task was harder for neural embeddings to solve than MEN or WS353, which they
+attributed to these models being better at identifying word association than similarity. However they
+did not test BERT-like models.In this paper, we aimed to move from testing relatively simple analogical relations in pretrained
+language models to testing the ability to learn more
+complex relations used for testing human analogical reasoning, with a tailored training objective.
+We found that overall, analogies are something that
+can be learned. We reach an accuracy of 0.69 up
+from 0.53 while being 0.15 below the human upper bound, on an unseen test set constructed to test
+human analogical reasoning. Lastly, we find that
+fine-tuning models with certain training objectives
+generally does not deteriorate their performance on
+external, but related tasks. In fact, on some tasks
+we observed improved accuracy.
+Our experiments involve several limitations. For
+one, the dataset is small, making claims that analogical reasoning is something that for sure can or cannot be learned with language models is not possible.
+Another important consideration is that analogies
+are permutable (Ushio et al., 2021b; Marquer et al.,
+2022). Given an analogy (1) a : b :: c : d, the
+following analogies also hold: (2) b : a :: d : c, (3)
+c : d :: a : b, (4) d : c :: b : a, (5) a : c :: b : d,
+(6) c : a :: d : b, (7) b : d :: a : c, (8)
+d : b :: c : a. Our a-b models account for 1-
+4, while our a-c models account for 5-8. These
+permutations are not without criticism - specifically (5) a : c :: b : d and all its derivatives (6-
+8) (Marquer et al., 2022). Consider the analogy
+(electron : nucleus :: planet : sun). In our a-b
+models, we are making the assumption cos((a-b),(cd)). In natural language, the relation on either side
+could be verbalized as revolves around. In the measure cos((a-c),(b-d)), there is no verbalizer that can
+describe both the a,c and b,d equivalently. The
+question is if that corresponds to no vector transformation that is equivalent between the two pairs.
+Lastly, Czinczoll et al. (2022) mentioned some of
+the metaphorical analogies contained antiquated
+gender roles, which could be potentially harmful

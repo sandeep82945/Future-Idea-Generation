@@ -1,0 +1,306 @@
+Tsuyoshi Mizohata, ∗ Tetsuya J. Kobayashi, † Louis-S. Bouchard, 4, 5, ‡ and Hideyuki Miyahara § Graduate School of Information Science and Technology, Hokkaido University, Sapporo, Hokkaido, 060-0814, Japan Institute of Industrial Science, The University of Tokyo, 4-6-1, Komaba, Meguro-ku, Tokyo 153-8505 Japan Center for Quantum Science and Engineering, University of California, Los Angeles, CA 90095, USA Department of Chemistry and Biochemistry, University of California, Los Angeles, CA 90095, USA California NanoSystems Institute, University of California, Los Angeles, CA 90095, USA (Dated: September 20, 2023) ii. chemical reaction networks In this section, the primary aim is to formulate the geometric representation of the dynamical equations governing CRNs, as delineated in [20, 21]. We commence by presenting the standard notation for hypergraphs and CRNs. Subsequently, we elucidate the dynamics intrinsic to CRNs, as well as concepts of Legendre duality and detailed balance. These elements are then combined to construct the geometric expression of CRN dynamics. a. definition of crns We begin with a hypergraph (V,E) where V := {vi}Nvi=1 and E := {ee}Nee=1 as a hypergraph provides a mathematical framework to describe a chemical reaction. Suppose that a CRN of interest involves NX chemicals, denoted as X1,X2, . . . ,XNX . In the case of a CRN, each hypervertex vi is composed of a combination of chemicals X1,X2, . . . ,XNX and given by
+vi := γ1,iX1 + γ2,iX2 + · · ·+ γNX,iXNX . (2.1)
+Each hyperedge ee corresponds to a chemical reaction and is defined by a directed pair of two hypervertices ee := (v+e , v − e ), which can be expressed as
+α1,eX1 + α2,eX2 + · · ·+ αNX,eXNX ee−→ β1,eX1 + β2,eX2 + · · ·+ βNX,eXNX . (2.2)
+Here, v±e are chosen from {vi}Nvi=1, and in Eq. (2.2), v+e = α1,eX1 + α2,eX2 + · · · + αNX,eXNX and v−e = β1,eX1 + β2,eX2 + · · · + βNX,eXNX . We also define the order of reaction as follows:
+m := max i,e
+{αi,e, βi,e}. (2.3)
+To characterize CRNs, m in Eq. (2.3) will play an important role. When a CRN involves multiple chemical reactions, the description provided above may be inadequate. To describe a complex CRN, the stoichiometric matrix plays a crucial role. The stoichiometric matrix S is defined as an NX ×Ne matrix and is given by
+S := [s1, s2, . . . , sNe ], (2.4)
+where, for e = 1, 2, . . . , Ne,
+se :=  β1,e − α1,e β2,e − α2,e
+... βNX,e − αNX,e  . (2.5) That is, the (j, e)-th element of S is given by sj,e = βj,e− αj,e for j = 1, 2, . . . , NX and e = 1, 2, . . . , Ne. In general, when a CRN involves multiple chemical reactions, the
+stoichiometric matrix provides a concise representation of the relationships between the reactants and products. The stoichiometric matrix S is also expressed as S = −ΓB. Here, B ∈ {1, 0,−1}Nv×Ne is the incidence matrix whose (i, e)-th element is given for i = 1, 2, . . . , Nv and e = 1, 2, . . . , Ne by
+bi,e :=  1 (vi is the head of hyperedge ee: vi = v+e ), −1 (vi is the tail of hyperedge ee: vi = v−e ), 0 (otherwise),
+(2.6)
+and Γ ∈ ZNX×Nv≥0 is given by
+Γ := [γ1,γ2, . . . ,γNv ], (2.7)
+where, using γ1,i, γ2,i, . . . , γNX,i in Eq. (2.1), γi is defined as
+γi := [γ1,i, γ2,i, . . . , γNX,i] ⊺, (2.8)
+for i = 1, 2, . . . , Nv. Having defined the necessary variables to describe CRNs, we will now derive the equation that characterizes the dynamics of CRNs in the remainder of this section. b. dynamics of crns To analyze the dynamics of a CRN, we introduce fluxes associated with each hyperedge. Let j+e (x) and j−e (x) denote the currents from the head to the tail and from the tail to the head of hyperedge ee, respectively, where x is the chemical concentration vector. We define j+(x) := [j+1 (x), j + 2 (x), . . . , j + Ne (x)]⊺ and j−(x) := [j−1 (x), j − 2 (x), . . . , j − Ne
+(x)]⊺. The law of mass action is widely observed to hold for CRNs and is considered one of the fundamental characteristics that differentiate CRNs from nonchemical hypergraphs. Based on this, we make the assumption of mass action kinetics for the forward and reverse reaction fluxes on hyperedge ee in Eq. (2.2):
+j±e (x) = k ± e Nv∑ i=1 b±i,e NX∏ j=1 x γj,i j , (2.9)
+where, for i = 1, 2, . . . , NX and e = 1, 2, . . . , Ne,
+b+i,e := max(bi,e, 0), (2.10) b−i,e := −min(bi,e, 0), (2.11)
+and k±e are the reaction rate coefficients for the forward and backward currents on ee. Expressed in vector notation, Eq. (2.9) can be written as
+j±(x) = k± ◦ (B±)⊺xΓ⊺ (2.12) = k± ◦ x(ΓB±) ⊺ , (2.13)
+3 where
+B+ := max(B, 0), (2.14)
+B− := −min(B, 0), (2.15) xΓ ⊺ := [xγ1 ,xγ2 , . . . ,xγNv ]⊺, (2.16)
+xγi := NX∏ j=1 x γj,i j , (2.17) k± := [k±1 , k ± 2 , . . . , k ± Ne ]. (2.18)
+Here, 0 represents the zero matrix, which has the same size as matrix B. The functions max(·, ·) and min(·, ·) are applied elementwise, meaning that for each element [A]i,j and [B]i,j , we have [max(A,B)]i,j = max([A]i,j , [B]i,j) and [min(A,B)]i,j = min([A]i,j , [B]i,j), respectively. The notation [·]i,j represents the element located at the i-th row and j-th column. Moreover, the symbol ◦ denotes the element-wise product, which is defined as follows:
+x ◦ y :=  x1y1 x2y2 ...
+xNXyNX  , (2.19) where x := [x1, x2, . . . , xNX ] ⊺, y := [y1, y2, . . . , yNX ] ⊺. The chemical concentration vector xt at time t satisfies the chemical rate equation (CRE) given by [32–34]
+ẋt = Sj(xt), (2.20)
+where j(x) := j+(x)− j−(x). c. legendre duality of fluxes and forces In the realm of physics, the relationship between fluxes and forces is commonly expressed through Legendre duality, a concept that describes how forces and fluxes are dual aspects of the same system. Their product results in entropy production, denoted as ⟨j,f⟩. In the context of chemical thermodynamics, we define the force on a hyperedge ee in a manner consistent with entropy production:
+fe(x) := 1
+2 ln
+j+e (x) j−e (x) , (2.21)
+for e = 1, 2, . . . , Ne. The corresponding vector form is given by Eq. (2.21), denoted as
+f(x) := [f1(x), f2(x), . . . , fNe(x)] ⊺,
+can be expressed as
+f(x) = 1
+2 ln
+j+(x) j−(x) , (2.22)
+where the division and the logarithmic function are computed elementwise. We introduce a quantity called “frenetic activity,” particularly on hyperedge ee, to describe the rate of change in the state of the system ee [20, 21] as
+ωe(x) := 2 √ j+e (x)j − e (x), (2.23)
+for e = 1, 2, . . . , Ne. The vector form of Eq. (2.23), denoted as ω(x) := [ω1(x), ω2(x), . . . , ωNe(x)]
+⊺, can be expressed as
+ω(x) = 2 √ j+(x) ◦ j−(x). (2.24)
+Then, the following strictly convex smooth function Ψ∗ω(x)(f(x)), which is called the dissipation function, establishes the Legendre duality between force f(x), Eq. (2.22) and flux j(x), Eq. (2.24):
+Ψ∗ω(x)(f(x)) := ω(x) ⊺[cosh(f(x))− 1], (2.25)
+where
+cosh(f(x)) :=  cosh(f1(x)) cosh(f2(x))
+... cosh(fNe(x))  , (2.26) f(x) := [f1(x), f2(x), . . . , fNe(x)] ⊺, (2.27)
+1 := [1, 1, . . . , 1︸ ︷︷ ︸ Ne ]⊺. (2.28)
+As a result we have 1
+j(x) = ∂fΨ ∗ ω(x)(f(x)). (2.29)
+Note that
+∂fΨ ∗ ω(x)(f(x)) = ω(x) ◦ sinh(f(x)) (2.30)
+=  ω1(x) sinh(f1(x)) ω2(x) sinh(f2(x))
+... ωNe(x) sinh(fNe(x))  . (2.31) Combining Eqs. (2.20) and (2.29), we get
+ẋt = S∂fΨ ∗ ω(xt) (f(xt)). (2.32)
+While Eq. (2.32) is a well-defined differential equation, it lacks an explicit functional form for f(x), thus limiting its predictive capability. The functional form of f(x) based on thermodynamics and kinetics will be elaborated in the subsequent subsection. 1 We have used the following notation: ∂fΨ ∗ ω(x) (f(x)) =
+∂fΨ ∗ ω(x) (f)|f=f(x). 4 d. chemical reaction dynamics Until this point, the discussion has centered on the general description of dynamics on hypergraphs. Going forward, the focus will be exclusively on CRNs. In the realm of chemical thermodynamics, it is a common assumption to employ mass action kinetics to describe reaction rates. Within this framework, a specific definition of force is accepted and widely used [20, 21, 32, 33]:
+f(x) = −1 2
+( S⊺ lnx− ln k +
+k−
+) . (2.33)
+To clarify the geometric meaning of Eq. (2.33), we introduce the Bregman divergence Dϕ(x∥y) associated with potential ϕ(·) 2:
+Dϕ(x∥y) := ϕ(x)− ϕ(y)− ⟨x− y, ∂xϕ(y)⟩. (2.34)
+The derivative of Eq. (2.34) is given by
+∂xDϕ(x∥y) = ∂xϕ(x)− ∂xϕ(y). (2.35)
+The KL divergence is Eq. (2.34) with the following potential 3:
+ϕKL(x) := NX∑ i=1 xi lnxi. (2.36)
+Then, the KL divergence is defined by DϕKL(·∥·) := DKL(·∥·) and it reads
+DKL(x∥y) = NX∑ i=1 xi ln xi yi − NX∑ i=1 xi + NX∑ i=1 yi, (2.37)
+and its derivative takes the following form:
+∂xDKL(x∥y) =  lnx1 − ln y1 lnx2 − ln y2
+... lnxNX − ln yNX  . (2.38) Then, Eq. (2.33) is rewritten as
+f(x) = −1 2 S⊺∂xDKL(x∥x̂) + fne. (2.39)
+The definition of x̂ will be given in the following subsection, and fne ̸∈ Im[S⊺] represents the nonequilibrium force incurred to the system [19]. Mass action kinetics also offers the following definitions of the flux and activity [20, 21, 32, 33]:
+j(x) = (k+ ◦ (B+)⊺ − k− ◦ (B−)⊺)xΓ⊺. (2.40)
+2 We have used the notation: ∂xϕ(y) = ∂xϕ(x)|x=y . 3 See Appendix A for detail. Substituting Eq. (2.40) into Eq. (2.24), we also get the activity for CRNs:
+ω(x) = 2 √ k+ ◦ k− ◦ xR⊺/2. (2.41)
+where
+R := Γ(B+ +B−). (2.42)
+In the remaining part of this section, we will present the geometric expression of the equation for CRNs. e. geometric expression of an equilibrium cre Up to this point, the discussion has centered on the geometric relationships that exist among the chemical concentration, potential, force, and flux in a CRN. Subsequently, the CRE specified in Eq. (2.20) can be reformulated into a geometric expression [32–34]. To accomplish this, the detailed balance condition (DBC) must be taken into account. The DBC, a criterion for the dynamic stability of a system at equilibrium, is described in the following section [20, 21]:
+ln k+
+k− = S⊺ lnxeq, (2.43)
+Here, xeq represents the equilibrium chemical concentration vector, which is dependent on both the initial concentration vector xini and the specific CRE under consideration. Additionally, if Eq. (2.43) is met, then fne = 0. Generally, at equilibrium, net fluxes cease (j = 0), allowing us to define a set of equilibrium chemical concentration vectors as follows:
+Veq := {x > 0|j(x) = 0}. (2.44)
+From Eq. (2.43), Eq. (2.44) is transformed into
+Veq = {x > 0|∃η ∈ R|ker(S ⊺)|, lnx = lnxeq + Uη}. (2.45)
+where U := [u1, u2, . . . , u|ker(S⊺)|] and {ui}|ker(S ⊺)|
+i=1 are the bases of ker(S⊺). We have introduced x̂ in Eq. (2.39). We here impose the following relation to x̂:
+x̂ ∈ Veq. (2.46)
+Then Eq. (2.39) describes dynamics of gradient flow to Veq. Equation (2.46) is equivalently written as
+ln k+
+k− = S⊺ ln x̂. (2.47)
+Note that using x̂ instead of xeq provides us with a generalized expression of the dynamical system. Finally, we have arrived at the geometric expression of a CRE. Namely, combining Eqs. (2.32), (2.39), (2.41),
+5 and (2.43), we get 4
+ẋt = S∂fΨ ∗ ω(xt)
+( − 1
+2 S⊺∂xDKL(xt∥x̂)
+) , (2.48)
+where x̂ ∈ Veq. Note that in Eq. (2.48), replacing x̂ with xeq does not affect the dynamics of CRNs because SUη = 0. iii. difficulty of constructing an upper bound on the reaction rates of crns In this section, we briefly revisit Newton’s method and present a counterexample illustrating its limitations in establishing an upper bound on the reaction rates of CRNs. a. newton’s method As stated in Sec. I, the objective of this paper is to determine an upper bound on the reaction rates of CRNs. One might assume that straightforward optimization methods could achieve this. However, before discussing NG, we elucidate the challenges of using Newton’s method [35] as an optimization technique for this purpose. While the gradient method is another elementary optimization technique, its indeterminate step size precludes its consideration in this study. We now turn to a specific optimization problem:
+min x f(x). (3.1)
+Letting xt be the state at the t-th iteration for t ∈ Z≥0, Newton’s method for Eq. (3.1) is given by
+xt+1 = xt − [∂2xf(xt)]−1∂xf(xt). (3.2)
+In the case of CRNs, we have f(x) = Dϕ(x∥x̂); then Eq. (3.2) reads
+xt+1 = xt −G−1ϕ (xt)∂xDϕ(xt∥x̂), (3.3)
+where Gϕ is the Hessian of ϕ(·). b. counterexample We will demonstrate a counterexample to show that Eq. (3.3) does not yield an upper bound for a CRN. We consider the following CRN with NX = 2, m = 3, and Ne = 1:
+2X1 ⇌ 3X2. (3.4)
+4 We have used the following notation: ∂xDKL(xt∥x̂) = ∂xDKL(x∥x̂)|x=xt . 0
+0.02
+0.04
+0.06
+0.08
+0.1
+0 0.5 1 1.5 2 2.5 3
+D K L (x
+‖x̂ )
+time t
+2X1 3X2 Newton’s method
+FIG. 1. Dependence of DKL(xt∥x̂) on t for the CRN in Eq. (3.4) and their upper bound in the case of xeq = x̂. For the simulations of Eq. (2.48), we set k±e = 1, ∆t = 1.0×10−4, xini = [3/4, 11/8]⊺, and x̂ = [1, 1]⊺. In Fig. 1, we plot the dynamics of Eq. (3.4) as well as the dynamics obtained using Newton’s method. At t = 1, the divergence of Newton’s method is greater than that of the CRN, indicating that Newton’s method fails to bound the dynamics. This observation is illustrated in the figure. The reason for this discrepancy lies in the nonlinearity of Eq. (3.4). iv. natural gradient In this section, we explore the NG method and its applicability to the problem of constraining reaction rates in CRNs. As our proposed methodology hinges on NG, understanding its theoretical underpinnings and its distinction from Newton’s method is crucial. a. derivation of ng In this section, we outline the derivation of the NG method, which is grounded in information geometry. Specifically, we will elucidate how the dynamics of a given vector xt at time t are updated within the framework of NG:
+xt+∆t = xt +∆xt(ϵ), (4.1)
+where ∆xt(ϵ) is defined as 5
+∆xt(ϵ) = argmin ∆x:Dϕ′ (xt+∆x∥xt)≤ϵ
+[f(xt +∆x)− f(xt)]
+(4.2)
+≈ argmin ∆x: 12∆x ⊺Gϕ′ (xt)∆x≤ϵ ∂xf(xt) ⊺∆x. (4.3)
+5 We have used the following notation: ∂xf(xt) = ∂xf(x)|x=xt . 6 Here, Gϕ′(xt) is the Hessian given by
+[Gϕ′(xt)]i,j := ∂2
+∂xi∂xj ϕ′(xt), (4.4)
+where [·]i,j is the (i, j)-th element. In the case of Eq. (2.36), Eq. (4.4) reads
+[Gϕ′(xt)]i,j = δi,j 1
+[xt]i , (4.5)
+where δi,j is the Kronecker delta function and [·]i is the i-th element. To derive Eq. (4.3), we have used the following expansion of the Bregman divergence:
+Dϕ′(xt +∆x∥xt) = ϕ′(xt +∆x)− ϕ′(xt)− ⟨(xt +∆x)− xt, ∂xϕ′(xt)⟩
+(4.6)
+≈ ϕ′(xt) + ∂xϕ(xt)⊺∆x+ 1
+2 ∆x⊺Gϕ′(xt)∆x
+− ϕ′(xt)− ⟨(xt +∆x)− xt, ∂xϕ′(xt)⟩ (4.7)
+= 1
+2 ∆x⊺Gϕ′(xt)∆x. (4.8)
+Note that ∆t in Eq. (4.1) is set to unity in the conventional formulation of NG; in the following section, we will impose a specific relationship between ∆t and ϵ in Eq. (4.1) to connect NG and CRNs. To find the solution of Eq. (4.3), we employ the method of Lagrange multipliers where the Lagrange function reads
+L(∆x, λ) := ∂xf(xt) ⊺∆x− λ
+2 (∆x⊺Gϕ′(xt)∆x− ϵ). (4.9)
+The derivative of Eq. (4.9) with respect to ∆x takes the following form:
+∂
+∂∆x L(∆x, λ) = ∂xf(xt)− λGϕ′(xt)∆x. (4.10)
+Then, the solution of Eq. (4.10) is given by
+∆x = 1
+λ G−1ϕ′ (xt)∂xf(xt). (4.11)
+The derivative of Eq. (4.9) with respect to λ has the following form:
+∂ ∂λ L(∆x, λ) = −1 2 (∆x⊺Gϕ′(xt)∆x− ϵ) (4.12)
+= 0. (4.13)
+Taking Eq. (4.11) into account, the solution of Eq. (4.13) is written as
+λ2 = ∂xf(xt)
+⊺G−1ϕ′ (xt)∂xf(xt)
+ϵ . (4.14)
+Combining Eqs. (4.11) and (4.14) and taking account of the nature of the minimization problems, the solution of Eq. (4.3) takes the following form:
+∆xt(ϵ) = − √
+ϵ
+∂xf(xt)⊺G −1 ϕ′ (xt)∂xf(xt)
+G−1ϕ′ (xt)∂xf(xt). (4.15)
+Note that ϕ′(·) in Eq. (4.15) may be different from ϕ(·) appearing in Sec. II. In the case of CRNs, f(xt) in Eq. (4.15) representsDKL(xt∥x̂). As shown in Eq. (4.15), ϵ is a key parameter in NG. From the perspective of applying NG to CRNs, the relationship between ϵ in NG and ∆t in CRNs, when discretized, is still missing. Therefore, NG cannot be directly applied to CRNs. In the following section, we will explain how to address this challenge and develop a general upper bound on the dynamics of CRNs. b. comparison with newton’s method In this section, we compare NG with Newton’s method. Newton’s method is a special case of NG when Eq. (4.15) is adjusted according to certain conditions. Specifically, the conditions are ϕ(·) = ϕ′(·) and ϵ = ∂xf(xt) ⊺G−1ϕ′ (xt)∂xf(xt). The equation thus becomes equivalent to Eq. (3.3). This equivalency leads us to introduce a systematic NG-based method to determine the direction and step size for a gradient system that bounds CRNs of a specific class. v. upper bound on reaction rates In this section, we construct a nonlinear system that gives an upper bound on reaction rates of CRNs in a given class. The class is characterized by several topological numbers of CRNs: Nv, Ne, and m. a. upper bound system Comparing discretized CRE dynamics with NG dynamics, represented by Eq. (4.1), presents a challenge. The difficulty arises from the absence of an established relationship between ϵ, the constraint parameter in NG, and ∆t, the time step in the discretized CRE. To address this issue, we propose the following relationship between ϵ and ∆t:
+ϵ = Dϕ′(xt + ∥ẋt∥Fet∆t∥xt), (5.1) where ∥ · ∥F is the Frobenius norm and et is a vector that satisfies ∥et∥F = 1. Then, we try to compute the maximum value of ϵ in Eq. (5.1). Note that S : RNe → RNX and S is a NX ×Ne matrix. From Eq. (2.48), we get ∥ẋt∥F
+7 = ∥∥∥∥S∂fΨ∗ω(xt)(− 12S⊺∂xDϕ(xt∥x̂) )∥∥∥∥
+F
+(5.2) ≤ ∥S∥F ∥∥∥∥∂fΨ∗ω(xt)(− 12S⊺∂xDϕ(xt∥x̂) )∥∥∥∥ F (5.3)
+≤ ∥S∥F ∥∥∥∥∂fΨ∗ω(xt)(∥∥∥∥− 12S⊺∂xDϕ(xt∥x̂) ∥∥∥∥ abs )∥∥∥∥ F
+(5.4) ≤ ∥S∥F ∥∥∥∥∂fΨ∗ω(xt)(12∥S⊺∥F∥∂xDϕ(xt∥x̂)∥NX→NeF )∥∥∥∥ F . (5.5)
+Here, ∥ · ∥abs and ∥ · ∥NX→NeF are defined as, respectively,
+∥v∥abs := [|v1|, |v2|, . . . , |vNX |]⊺, (5.6) ∥v∥NX→NeF := [∥v∥F, ∥v∥F, . . . , ∥v∥F︸ ︷︷ ︸
+Ne
+]⊺, (5.7)
+for v := [v1, v2, . . . , vNX ] ⊺. From Eq. (2.31), we have
+∂fΨ ∗ ω(x)(∥f(x)∥abs) = ω(x) ◦ sinh(∥f(x)∥abs),
+(5.8)
+∂fΨ ∗ ω(x)(∥f(x)∥NX→NeF ) = ω(x) ◦ sinh(∥f(x)∥NX→NeF ). (5.9)
+Given S : RNe → RNX and v ∈ RNX , we have the following inequality for e = 1, 2, . . . , Ne:
+[∥S⊺v∥abs]e ≤ ∥S⊺∥F∥v∥F (5.10) = [∥S⊺∥F∥v∥NX→NeF ]e, (5.11)
+where [·]e is the e-th element. Then, we have finished computing the bound on ∥ẋt∥F within a given class of CRNs. Next, we compute et as follows:
+et = argmax e:∥e∥F=1
+Dϕ′(xt + ∥ẋt∥Fe∆t∥xt) (5.12)
+≈ argmax e:∥e∥F=1
+( 1
+2 ∥ẋt∥2F(∆t)2e⊺Gϕ′(xt)e
+) (5.13)
+= argmax e:∥e∥F=1
+e⊺Gϕ′(xt)e. (5.14)
+Thus, et is the eigenvector associated with the maximum eigenvalue of Gϕ′(xt). Substituting Eq. (5.5) and the solution of Eq. (5.14) into Eq. (5.1), we can calculate the maximum value of ϵ within a given class of CRNs. b. s and r of an upper bound system To identify the upper bound described by Eq. (5.5) for CRNs under certain constraints, both S in Eq. (2.4) and R in Eq. (2.42) must be carefully designed. We introduce a method for determining Sub and Rub specific to a class of CRNs characterized by NX as the number of chemicals, m as the highest coefficient in chemical reactions, and Ne
+as the number of reactions. The Sub and Rub matrices are of dimensions NX × Ne, and their elements at the (i, e)-th position are defined as follows:
+[Sub]i,e := m, (5.15) [Rub]i,e := 1[xi ≤ 1]min i ([R]i,e) + 1[xi > 1]max i ([R]i,e). (5.16)
+Here, 1[·] denotes the indicator function, and [·]i,e represents the (i, e)-th element. The reader may think that 1[·] is not necessary. This reflects the fact that xn ≥ xm for x ∈ [1,∞) and n ≥ m but xn ≤ xm for x ∈ (0, 1] and n ≥ m. By solving Eq. (4.15) with Eqs. (5.1), (5.5), (5.14), (5.15), and (5.16), we can compute the upper bound for a given class. In other words, we use the following inequality to construct an upper bound system:
+∥ẋt∥F ≤ ∥Sub∥F
+× ∥∥∥∥∂fΨ∗ωub(xt)(12∥S⊺ub∥F∥∂xDϕ(xt∥x̂)∥NX→NeF )∥∥∥∥ F ,
+(5.17)
+where
+ωub(x) := 2 √ k+ ◦ k− ◦ xR⊺ub/2. (5.18) c. upper bound system with the kl constraint We utilize Eq. (2.36), represented as ϕ′(·) = ϕKL(·), as the potential function for the Bregman divergence in the constraint of NG 6. Subsequently, by substituting ∥∂xDKL(xt∥x̂)∥NX→NeF into Eq. (5.5), we can determine the maximum value of ∥ẋt∥F as stated in Eq. (5.5). vi. numerical simulations In this section, numerical simulations are conducted to elucidate the upper-bound dynamics for a specified class of CRNs. The parameters are set as follows: NX = 4, m = 4, and Ne = 1. The initial condition is chosen as x̂ = [1, 1, 1, 1]⊺ and the time step as ∆t = 1.0×10−5. The rate constants k±e are fixed at 1 for all e ranging from 1 to Ne. Simulations are executed for a total of 3.0 × 104 steps. The initial chemical concentration vector at time t = 0 is denoted as xini. 6 While there are many different candidates for ϕ′(·), the L2 constraint is often used. Then, we explain the case of the L2 constraint in Appendix B. 8 0 0.05 0.1 0.15 0.2
+0 0.05 0.1 0.15 0.2 0.25 0.3
+D K L (x
+‖x̂ )
+time t
+4X1 + 4X2 4X3 + 4X4 X1 + 2X2 X3 + 3X4 X1 + 4X2 4X3 + 4X4 X1 4X2 + 4X3 + 4X4 X1 2X2 + 2X3 + 3X4 2X1 3X2 + 2X3 + 3X4
+upper bound
+FIG. 2. Dependence of DKL(xt∥x̂) on time t for several CRNs in Eq. (6.1) and their upper bound in the case of xeq ̸= x̂. a. case where crns have different equilibrium state We introduce CRNs that satisfy the same conditions and compare them from the viewpoint of reaction rate. Here we consider the following six different reactions, which have the same topological quantities (NX = 4, m = 4, and Ne = 1):
+X1 + 4X2 ⇌ 4X3 + 4X4, (6.1a) 4X1 + 4X2 ⇌ 4X3 + 4X4, (6.1b) X1 + 2X2 ⇌ X3 + 3X4, (6.1c)
+4X1 ⇌ 4X2 + 4X3 + 4X4, (6.1d) X1 ⇌ 2X2 + 2X3 + 3X4, (6.1e) 2X1 ⇌ 3X2 + 2X3 + 3X4. (6.1f)
+We set xini = [9/8, 87/80, 27/20, 27/20] ⊺, x̂ = [1, 1, 1, 1]⊺, and ∆t = 1.0 × 10−5. In Fig. 2, we plot the dynamics of Eq. (6.1) and that of the system constructed in Sec. V. It clearly shows that the system constructed in Sec. V gives an upper bound on CRNs. The CRNs in Eq. (6.1) have equilibrium states different from x̂ because of ker(S⊺); then the gap in DKL(xt∥x̂) remains for t ≫ 0 and the upper bound is relatively loose. b. case where crns do not have different equilibrium state Next, we consider Eq. (6.1b) and set xini = [1/2, 1/2, 3/2, 3/2]⊺, x̂ = [1, 1, 1, 1]⊺, and ∆t = 1.0×10−5. In this case, we have xeq = x̂. In Fig. 3, we plot the dynamics of Eq. (6.1) and that of the system constructed in Sec. V. The system constructed in Sec. V provides a tighter bound. In Fig. 4, we show the timedifference of the KL divergence −∆DKL(xt∥x̂) per ∆t. We have used xt on the solution of Eq. (6.1b) with xini = [1/2, 1/2, 3/2, 3/2]
+⊺; that is, −∆DKL(xt∥x̂) of the CRN in Eq. (6.1b) and the system constructed in Sec. V on the orbit of the CRN in Eq. (6.1b). As shown in Fig. 4, the system constructed in Sec. V shows faster convergence at each xt. 0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0 0.02 0.04 0.06 0.08 0.1
+D K L (x
+‖x̂ )
+time t
+4X1 + 4X2 4X3 + 4X4 upper bound
+FIG. 3. Dependence of DKL(xt∥x̂) on time t for the CRN in Eq. (6.1b) and its upper bound in the case of xeq = x̂. −0.02
+0
+0.02
+0.04
+0.06
+0.08
+0.1
+0.12
+0.14
+0 0.1 0.2 0.3 0.4 0.5
+− ∆ D K
+L (x
+t ‖x̂ ) DKL(xt‖x̂)
+4X1 + 4X2 4X3 + 4X4 upper bound
+FIG. 4. Relationship between DKL(xt∥x̂) and −∆DKL(xt∥x̂) for the CRN in Eq. (6.1b) and its upper bound in the case of xeq = x̂. We have used xt on the solution of Eq. (6.1b). c. case of ne > 1 We consider the fully-connected CRNs whose hypervertices are given by
+V1 = {X1 + X2,X2 + X3,X3 + X4,X4 + X1}, (6.2a) V2 = {X1 + 3X2 + 4X3,X2 + 2X3, 4X1 + X3 + X4,X1 + 3X2 + X4}, (6.2b) V3 = {4X1 + 3X2 + 4X3, 4X2 + 2X3 + 4X4,
+4X1 + 4X3 + X4, 2X1 + 3X2 + 4X4}. (6.2c)
+The CRNs in Eq. (6.2) belong to the class of CRNs labeled by NX = 4, Ne = 6, and m = 4. We call the CRNs in Eq. (6.2) type 1, type 2, and type 3 from above. We plot the dynamics of the CRNs in Eq. (6.2) and its upper bound in the case of xeq ̸= x̂. In Fig. 5, we set xini = [9/8, 87/80, 27/20, 27/20]
+⊺, x̂ = [1, 1, 1, 1]⊺, k±e = 1, and ∆t = 1.0 × 10−5. Figure 5 clearly demonstrates the upper bound holds for Ne > 1. We show the dependence of DKL(xt∥x̂) on time t for the CRN in Eq. (6.2c) and its upper bound in the case of xeq = x̂. In Fig. 6, we set x̂ = [1.2547, 1.1021, 1.1951, 1.3388]⊺. In Fig. 7, we also show the dependence of DKL(xt∥x̂) on time t for the CRN in Eq. (6.2c) and its upper bound in the case of xeq = x̂. 9 0 0.05 0.1 0.15 0.2
+0 0.01 0.02 0.03 0.04 0.05
+D K L (x
+‖x̂ )
+time t
+type 1 type 2 type 3 upper bound
+FIG. 5. Dependence of DKL(xt∥x̂) on time t for the CRNs in Eq. (6.2) and its upper bound in the case of xeq ̸= x̂. 0
+0.005
+0.01
+0.015
+0.02
+0 0.005 0.01 0.015 0.02
+D K L (x
+‖x̂ )
+time t
+type 3 upper bound
+FIG. 6. Dependence of DKL(xt∥x̂) on time t for the CRN in Eq. (6.2c) and its upper bound in the case of xeq = x̂. d. comparison of the upper bounds In this section, we examine the behavior of the upper bound under varying parameters. The parameters are NX = 4, Ne = 1, xini = [3/4, 3/4, 5/4, 5/4]
+⊺, and xeq = [1, 1, 1, 1]
+⊺. Figure 8 depicts the dependence of DKL(xt∥x̂) on t for m = 1, 2, 3, 4. Figure 9 portrays the relationship between DKL(xt∥x̂) and −∆DKL(xt∥x̂) for NX = 4 and Ne = 1. The figures indicate that higher values of m are associated with increased rates of convergence. This behavior is consistent with the expectation that nonlinearity in CRNs tends to influence reaction rates. The relationship between the KL divergence and the entropy production was pointed out in Ref. [36]. Letting Σtot(xt) be the total entropy, the following relationship holds:
+Σtot(xt)− Σtot(xt′) = − V
+T [DKL(xt∥x̂)−DKL(xt′∥x̂)],
+(6.3)
+where V is the volume of the system and T is the temperature of the environment. In NG, the right-hand side of Eq. (7.1) is maximized under Dϕ′(xt +∆x∥xt) ≤ ϵ as written in Eq. (4.3). Furthermore, ϵ in the optimization problem to find the upper bound in Sec. V is equal to or larger than the time-difference of the KL divergence
+0
+0.001
+0.002
+0.003
+0.004
+0.005
+0 0.002 0.004 0.006 0.008 0.01 0.012 0.014 0.016
+− ∆ D K
+L (x ‖x̂
+)
+DKL(x‖x̂)
+type 3 upper bound
+FIG. 7. Dependence of DKL(xt∥x̂) on time t for the CRN in Eq. (6.2c) and its upper bound in the case of xeq = x̂. −0.02
+0
+0.02
+0.04
+0.06
+0.08
+0.1
+0.12
+0.14
+0 0.1 0.2 0.3 0.4 0.5
+D K L (x ‖x̂ ) time t
+m = 1 m = 2 m = 3 m = 4
+FIG. 8. Dependence of DKL(xt∥x̂) for t for m = 1, 2, 3, 4. We set NX = 4 and Ne = 1.
+of CRNs in a given class. Thus, the entropy production of the system designed in Sec. V is larger than those of CRNs in a given class and it shows faster convergence toward x̂. vii. discussion The relationship between the KL divergence and the entropy production was pointed out in Ref. [36]. Letting Σtot(xt) be the total entropy, the following relationship holds:
+Σtot(xt)− Σtot(xt′) = − V
+T [DKL(xt∥x̂)−DKL(xt′∥x̂)],
+(7.1)
+where V is the volume of the system and T is the temperature of the environment. In NG, the right-hand side of Eq. (7.1) is maximized under Dϕ′(xt +∆x∥xt) ≤ ϵ as written in Eq. (4.3). Furthermore, ϵ in the optimization problem to find the upper bound in Sec. V is equal to or larger than the time-difference of the KL divergence of CRNs in a given class. Thus, the entropy production of the system designed in Sec. V is larger than those of CRNs in a given class and it shows faster convergence toward x̂. 10 viii. conclusions In this study, we developed a framework based on NG to establish an upper bound on the dynamics of a specific subset of CRNs. The physical meaning of this bound relates to the concept of entropy production, which in turn is related to the speed of convergence of the chemical reaction. The nonlinearity commonly present in CRNs presents a challenge, which is addressed here. The optimization problem in the NG derivation was found to be related to entropy production, enriching the understanding of NG within a thermodynamic context. While the primary focus has been on CRNs, the methods and discussions are applicable to a wider range of hypergraph dynamics. acknowledgments H.M. was supported by JSPS KAKENHI Grant Number 23H04489. T. J. K was supported by JST (Grants No. JPMJCR2011 and No. JPMJCR1927) and JSPS (Grant No. 19H05799). L.-S.B. was partially funded by NSF award CHE-2002313. appendix a: derivation of the kl divergence from the bregman divergence In this section, we show that the Bregman divergence, Eq. (2.34), with Eq. (2.36) is equivalent to the KL divergence, Eq. (2.37). Let us define the following potential for α ∈ R:
+ϕ (α) KL(x) := NX∑ i=1 xi(lnxi − α) (A.1)
+The Bregman divergence, Eq. (2.34), with Eq. (A.1) is computed as follows:
+D ϕ (α) KL (x∥y) = ϕ(α)KL(x)− ϕ (α) KL(y)− ⟨(x− y),∇ϕ (α) KL(y)⟩
+(A.2)
+= NX∑ i=1 xi(lnxi − α)− NX∑ i=1 yi(ln yi − α)
+− NX∑ i=1 (xi − yi)(ln yi − α+ 1) (A.3)
+= NX∑ i=1 xi lnxi − NX∑ i=1 yi ln yi
+− NX∑ i=1 (xi − yi) ln yi − NX∑ i=1 (xi − yi) (A.4)
+= NX∑ i=1 xi ln xi yi − NX∑ i=1 (xi − yi) (A.5) = DKL(x∥y) (A.6)
+Thus, the Bregman divergence, Eq. (2.34), with Eq. (A.1) is equivalent to the KL divergence, Eq. (2.37), independently from α. Furthermore, Eq. (2.36) is the special case of Eq. (A.1) with α = 0. appendix b: upper bound system with the l2 constraint In Sec. V, we have considered ϕKL(·), Eq. (2.36), as the potential of the Bregman divergence in the constraint term since the KL divergence is minimized in CRNs. However, we are not limited to this choice, and it is expected that a different potential in the constraint may give us a different bound. Another simple candidate for the potential of the Bregman divergence in the constraint is the L2 norm given by
+ϕL2(x) := NX∑ i=1 |xi|2. (B.1)
+In this case, DKL(xt + ∥ẋt∥Fet∆t∥xt) does not depend on et and the Hessian GϕL2 (xt) becomes the identity matrix: GϕL2 (xt) = 1. [1] U. Seifert, Stochastic thermodynamics, fluctuation theorems and molecular machines, 

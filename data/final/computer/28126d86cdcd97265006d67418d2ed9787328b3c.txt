@@ -1,0 +1,296 @@
+Cardiac image segmentation is a critical step in the early detection of cardiovascular disease. The segmentation of the biventricular is a prerequisite for evaluating cardiac function in cardiac magnetic resonance imaging (CMRI). In this paper, a cascaded model CAT-Seg is proposed for segmentation of 3D-CMRI volumes. CAT-Seg addresses the problem of biventricular confusion with other regions and localized the region of interest (ROI) to reduce the scope of processing. A modified DeepLabv3+ variant integrating SqueezeNet (SqueezeDeepLabv3+) is proposed as a part of CAT-Seg. SqueezeDeepLabv3+ handles the different shapes of the biventricular through the different cardiac phases, as the biventricular only accounts for small portion of the volume slices. Also, CAT-Seg presents a segmentation approach that integrates attention mechanisms into 3D Residual UNet architecture (3D-ResUNet) called 3D-ARU to improve the segmentation results of the three major structures (left ventricle (LV), Myocardium (Myo), and right ventricle (RV)). The integration of the spatial attention mechanism into ResUNet handles the fuzzy edges of the three structures. The proposed model achieves promising results in training and testing with the Automatic Cardiac Diagnosis Challenge (ACDC 2017) dataset and the external validation using MyoPs. CAT-Seg demonstrates competitive performance with state-of-the-art models. On ACDC 2017, CAT-Seg is able to segment LV, Myo, and RV with an average minimum dice symmetry coefficient (DSC) performance gap of 1.165%, 4.36%, and 3.115% respectively. The average maximum improvement in terms of DSC in segmenting LV, Myo and RV is 4.395%, 6.84% and 7.315% respectively. On MyoPs external validation, CAT-Seg outperformed the state-of-theart in segmenting LV, Myo, and RV with an average minimum performance gap of 6.13%, 5.44%, and 2.912% respectively. introduction Cardiovascular diseases (CVDs) are one of the top three causes of death globally, posing a serious threat to human health [1]. Early detection and evaluation of cardiovascular disease are critical to improving human life [1, 2]. Diagnosis of CVDs involves an extensive examination of the cardiac system [2]. In clinical practice, cardiac radiologist traces the biventricular contours during the end-systolic (ES) and enddiastolic (ED) phases, which typically requires a lot of time
+for skilled cardiac radiologists to analyze the MRI slices of a single patient [3]. The physiological shape of the biventricular substructures (left ventricle (LV), myocardium (Myo), and right ventricle (RV)) is affected by most cardiovascular diseases [4]. It is possible to significantly reduce the risk of developing CVDs like heart failure and ischemic heart disease by detecting biventricular morphological structure changes over an extended period of time with repetitive contouring of cardiac structure ratios or dysfunction [2]. Hence, automated biventricular segmentation has a significant impact on the detection and treatment of CVDs [3]. Moreover, the development of fast, robust, precise, and clinicianfriendly segmentation tools is essential in order to increase clinician productivity and enhance patient care because the current delineation methods are very time-consuming [4]. In the era of deep learning in health care management [5, 6], classification [7, 8] and segmentation of cardiac MR images (CMRI) has drawn a lot of attention [9–22]. * Doaa A. Shoieb doaa.shoieb@aast.edu
+1 Computer Engineering Department, Arab Academy for Science, Technology and Maritime Transport (AASTMT), Alexandria 1029, Egypt
+2 Department of Mathematics and Computer Science, Faculty of Science, Alexandria University, Alexandria, Egypt
+Various semi-automatic and automatic cardiac segmentation methods have been developed. Early segmentation methods employed semi-automatic segmentation approaches such as those presented in the work of Ding et al. [9], Sharan et al. [10] and Decourt et al. [11]. Semiautomatic methods necessitate significant user intervention, as a result, they are unsuitable for applications requiring rapid segmentation. Therefore, recent studies focused on automatic CMRI segmentation. Some are focused on LV segmentation, while others consider biventricular, performing this task in one or more stages. Lately, end-toend deep learning segmentation models have frequently been used in conjunction with traditional methods. Table 1 summarizes the recent approaches developed to address cardiac segmentation. Some of the recent approaches lost the generalization of the model by removing patients with complex congenital intra-cardiac anatomies such as patients with univentricular hearts and patients following surgical correction of transposition of great vessels [14, 16]. The majority of current segmentation models require biventricular prepositioning and redundant learning parameters, which results in poor segmentation performance. Moreover, some of the mentioned models [15, 17] don’t consider the ES phase. The difficulty of considering the ES phase is the need to handle different portions of the biventricular with varying scales. In addition, the biventricular suffers from distorted unclear borderline. To address these shortcomings, the proposed framework in this paper is inspired by ResNet and UNet of the aforementioned methods, which breaks down the segmentation process into two steps: localization and segmentation [2, 10, 14, 15, 17]. However, unlike previous methods, each step is designed with specific techniques capable of producing promising results while considering the segmentation time. An approach based on DeepLabv3+ and SqueezeNet is proposed for ROI localization. In addition, 3D-ARU architecture is proposed that combines UNet, ResNet with a spatial attention mechanism for the segmentation process. As a result, CAT-Seg, the proposed framework, can achieve efficient segmentation results,
+1 3
+considering both the ES and ED phases in terms of DSC and Intersection over Union (IoU). The proposed deep learning framework is motivated by the depicted challenges, which impose limitations on the performance of the available cardiac segmentation frameworks. The contributions can be summarized as follows:
+1. A fully automatic two-stage framework for biventricular segmentation of cardiac MRI, which eliminates the need for manual prepositioning and delineation saving cardioradiologists time and effort. The framework surpassed the performance of cascaded detection and segmentation counterparts. 2. An enhanced version of DeepLabv3+ called SqueezeDeepLabv3+ with varying atrous rates to automatically localize the three structures of different shapes, scales, and locations within the slice, reducing learning parameters. 3. A 3D attention ResUNet architecture called 3D-ARU for cardiac segmentation. The network incorporated the attention mechanism to solve the problem of the fuzzy blurred edges of cardiac substructures. 4. A comparative analysis of the performances of established architectures in cardiac MRI segmentation with the proposed framework CAT-Seg. methodology In this section, we introduce the details of the data source used for biventricular segmentation in advance. Then, the architecture of the proposed framework for segmenting the three cardiac substructures is introduced. dataset Two datasets are used to validate the performance of our proposed framework CAT-Seg. The datasets used are the Automated Cardiac Diagnostic Challenge Dataset (ACDC 2017) [23] from the 2017 MICCAI challenge and the MyoPS dataset from the 2020 MICCAI challenge [24]. The ACDC 2017 dataset includes clinical data from 150 patients’ cardiac magnetic resonance imaging (CMRI), which included 12–35 frames of short-axis MRI in both the ED and ES cardiac phases. There were every 30 patients fell into one of the five categories: normal (NOR), dilated cardiomyopathy (DCM), hypertrophic cardiomyopathy (HCM), Myocardial infarction (MINF), and abnormal right ventricle (RV). The dataset was collected at the University Hospital of Dijon over a 6-year period using two MRI scanners with different magnetic strengths [1.5 T (Siemens Area, Siemens Medical Solutions, Germany) and 3.0 T (Siemens Trio Tim, Siemens Medical Solutions,
+Germany)]. The biventricular short-axis slices have thicknesses ranging from 5 to 8 mm and a spatial resolution of 1.37 1.68 mm2/pixel. Additional information about the subjects is also included in the dataset such as (ages, weights, heights, and diastolic-systolic phase instants). Samples of the dataset are depicted in Fig. 1. The biventricular contours, as previously stated, change shape and size throughout the cardiac phases. It varies according to the severity of the cardiac condition as well. The ACDC dataset provided as the training dataset consists of 100 patients and the testing dataset consists of 50 patients. For the experiments, the training dataset is randomly divided into training and validation sets. The training set consists of 80 patients, while the validation set consists of 20 patients. The test dataset consists of 50 patients. Second, the MyoPS dataset from the 2020 MICCAI challenge is used to externally validate the performance of our proposed framework CAT-Seg without training on the dataset. It is used for external validation to investigate the robustness and the generalization performance of CATSeg. The MyoPS dataset includes data from 45 patients as paired three-sequence CMR images (bSSFP, LGE, and T2 CMR) and each sequence typically contains 2–6 slices. MyoPS 2020 contains 25 (102 slices) multi-sequence CMR images as a training set and 20 (72 slices) images as a testing set and it was collected using Philips Achieva 1.5T. The three CMR sequences' short-axis slices were all breath-hold, multi-slice. All patients are males suffering from myocardial infarction (MI). Three observers were used to manually label the LV, RV, and Myo from each of the three CMR sequences in order to create the ground truth segmentation. Before being employed in the creation of the ground truth segmentation, three experts in cardiac anatomy approved all of the manual segmentation results. The numerous hand delineations were averaged using a shape-based method to produce the final segmentation. model The proposed framework consists of two stages to segment the three biventricular substructures (LV, Myo, and RV) in both cardiac phases (ED and ES). The first stage focuses on reducing the image's scope by roughly extracting the initial region of interest (ROI) using SqueezeDeepLabv3+ to overcome the problem of class imbalance as the biventricular system only accounts for a small portion of MRI slices. The second stage comprises the generation of the final LV, Myo and RV segmentations by 3D ARU and overcoming the problem of fuzzy edges due to heart movements. The details of the proposed segmentation framework are shown in Fig. 2. 1 3 roi localization For the first stage of the proposed framework, SqueezeDeepLabv3+ is proposed to extract the initial contours for LV, Myo, and RV. A relatively small region of interest (ROI) that includes LV, Myo, and RV is extracted. This step is used to reduce the scope of each volume by removing background
+regions that could impede the segmentation model's learning. Also, it reduces the computations performed by the proposed framework through reducing the slice size, as it focuses on the ROI only. Another advantage is the alleviation of pixel class imbalance, a prevalent issue in medical image processing [25]. In the ROI localization step, each volume is input to SqueezeDeepLabv3+, which is based on
+DeepLabv3+ [21] semantic segmentation network with its encoder-decoder structure. SqueezeDeepLabv3+ is used to generate masks that will be used as a guide to locate the most appropriate segments for ROI. The details of the architecture are described in more depth below. SqueezeDeepLabv3+ enriches the encoder by incorporating the SqueezeNet to capture essential information from the image as shown in Fig. 3. To overcome the problem of detecting small objects with a limited number of parameters, the proposed architecture’s encoder employs a squeeze network rather than Xception in the original DeepLabv3+. Han et al. [22] proposed SqueezeNet, which is a lightweight and efficient CNN model. It has fewer parameters than Xception, and a single model’s accuracy comparable to Xception. The SqueezeNet is primarily optimized and compressed as it uses CNN microstructure optimization. It employs many 1 × 1 small convolution kernels in place of 3 × 3 convolution kernels to optimize the design of a single convolution layer, resulting in a ninefold reduction in parameters count. It also employs CNN macrostructure optimization by reducing the 3 × 3 convolution kernel's input channel count and convolution kernel parameters, splitting the convolution layer into the squeeze layer and expand layer, and encapsulating it in the fire module. The fire module is the basic unit of the SqueezeNet network that uses modular convolution. The fire module primarily consists of two layers of convolution operations, each of which connects to a ReLU activation layer: the squeeze layer which contains all 1 × 1 convolution kernels; and the expanding layer with 1 × 1 and 3 × 3 convolution kernels. The SqueezeNet model consists of nine layers of fire modules, and three levels of maximum pooling that are interspersed throughout. Furthermore, it enlarges the convolution layer perception field of vision. The high-level semantic characteristics are then merged by an atrous spatial pyramid pooling (ASPP) module to
+better capture the overall semantic information of the image before the low-level features of the backbone network are fed into the decoder. The ASSP technique was inspired by the success of atrous convolutional operations and spatial pyramid pooling. (SPP) [19]. ASPP resamples feature maps produced by the encoder at various atrous rates. The results of applying a parallel convolution filter to the feature maps at various atrous rates are then concatenated in order to precisely and efficiently capture large multiscale information, as shown in Fig. 3. In this study, the ASPP module, which comprises of 1 × 1 convolution followed by 3 × 3 convolutions with different dilation rates and a max-pooling layer in parallel. The suitable dilation rates for the problem under study are determined experimentally and found to be d = 4, 8, and 12. Biventricular irregularities of different densities and sizes have been attempted to be segmented with high sensitivity using depth-wise convolution rather than standard convolution. segmentation In the second stage, the proposed 3D-multiple attention ResUNet is used to segment the three cardiac structures (LV, Myo and RV) from the localized slices by SqueezeDeepLabv3+ . Because the LV, Myo, and RV have distinct characteristics, primarily in terms of shape and size, the ROI localization step was able to extract the area where all three structures are located. However, it occasionally failed to capture each shape, particularly in the ES cardiac cycle. To improve the segmentation process and contour each of the three structures (LV, RV and Myo), just the extracted ROI portion of the original slice will be sent to 3D-ARU in this phase. The proposed 3D-ARU architecture, as illustrated in Fig. 4, integrates both the spatial attention mechanism and
+1 3
+the residual module with full pre-activation. The residual module improves the channel inter-dependencies, while at the same time reducing the computational cost. It also facilitates network training. Furthermore, the rich skip connections in the ResUNet [26] contribute to the better flow of information between different layers, which enhances gradient flow during training. Due to these benefits, we use ResUNet as the foundational architecture. The encoder feature maps and the decoder feature maps are directly concatenated in the combined U-Net [30] and ResNet methods. Despite the effectiveness of ResUNet, the fuzzy boundaries in cardiac images present a challenge to the model. Therefore, the attention module is incorporated to allow focusing on the crucial regions of the feature maps. We incorporated the attention block in the decoder portion of our architecture in order to be able to concentrate on the crucial regions of the feature maps, which is motivated by the success of the attention mechanism. The attention mechanism narrows its focus to a subset of its input. It focuses on a specific area of the image while ignoring the others [31] similar to human visual perception, in which they can focus on a specific point or area
+while suppressing the surrounding areas. By suppressing feature activations in irrelevant areas of the image, attention gates can reduce false positives [31]. In Fig. 5, the attention gate shows how the skip connection connects the encoder to the associated decoder. Two inputs are provided to the attention gate, the first of which comes from the skip connection of the associated encoder and contains all the contextual and spatial information in that layer. The second input is the gating signal from the decoder layer underneath it, and because it originates from a deeper area of the network, it has a better feature representation. It improves the learning of target regions relevant to the segmentation task while suppressing nontarget regions. First, both inputs are passed through the convolution operation and added. Following that, the first activation function, ReLU, is used, followed by the convolution operation. Furthermore, the output is resampled and passed through the second activation function Sigmoid to obtain the attention map, after which the encoder feature is multiplied pixel by pixel by the attention map to obtain the output. Figure 5 depicts a representation of the attention gate's structure. 1 3
+Figure 6 depicts sample slices, and their ground truth together with the output of CAT-Seg. As shown in Fig. 6, the final segmentation phase identifies the contours of each of the three structures and solves the problem of fuzzy boundaries. Also, it doesn’t include other cardiac subsections as the attention module gives more attention to the boundaries and the intensities of the three structures. training Each model (SqueezeDeepLabv3+ and 3D-ARU) was trained for 100 epochs using the Adam optimizer with a learning rate of 10–3, a decay factor of 0.1 per epoch, and the weight decay (L2 regularization) was set to 1xe−4. The training set used in this case is composed of all classes of slices. The proposed 3D-ARU has 97,831,734 trainable parameters and the proposed SqueezeDeepLabv3+ has 7,051,556 trainable parameters. evaluation and statistical analysis In biventricular segmentation from MRI, the region of interest (ROI), represented by true positives (TP), is too small compared to the entire slice. True negatives represent the background. Therefore, it is necessary to focus on the Dice similarity coefficient (DSC) and intersection over union (IoU) that robustly and reliably reflect model performance [28]. The metrics used to evaluate the similarity
+between the proposed model’s segmentation masks and the ground truth. In this study, the performance of the proposed CAT-Seg framework was evaluated in terms of the following metrics. The Dice similarity coefficient (DSC) is a measurement of the overlap between the foreground pixels and the ground truth foreground pixel region of the segmented image. It is the metric commonly used to gauge how effectively the medical image segmentation method works. The formula is as follows:
+Another metric is the Intersection over Union (IoU), indicates the degree of dissimilarity between the segmented image's foreground pixels and the ground truth foreground pixel region. It is determined as follows:
+R indicates the real predicted results, and G indicates the ground truth. The true positive (TP): is the number of pixels correctly associated with the ROI, the false positive (FP): is the pixels indicated as ROI by the proposed model but as background by the ground truth, and the false negative (FN): is the pixels associated with the ROI by the ground truth but missed by the proposed model. All these values are used to determine the DSC and IoU. (1)DSC(R,G) = 2 ∗ R ∩ G
+R + G = 2 ∗
+TP
+TP + FP + TP + FN
+(2)IoU(R,G) = R ∩ G
+R + G − R ∩ G =
+TP
+TP + FP + FN results In this section, the performance of the proposed architectures is verified for single-stage and multi-stage segmentation. The performance of the proposed architectures: SqueezeDeepLabv3+ and 3D-ARU variants are tested individually as single-stage segmentation models. They are compared to available architectures depicted in Table 2. The architectures in Table 2 are chosen to present the direct counterparts of the proposed models as they can be considered as components of the proposed architectures. The obtained results are shown in Table 3. The results validate the positive effect of the proposed modification on the standard 3D-ResUNet and DeepLabv3+. As shown in Table 3, the proposed 3D-ARU improved the mean DSC of the ResUNet by 1.060, attention UNet by 2.180%, and the original UNet by 3.405%. Moreover, the proposed 3D-ARU improves the mIoU of the ResUNet by 2.050%, attention UNet by 7.080%, and the original UNet by 13.815%. In addition, the proposed SqueezeDeepLabv3+ improved the mean DSC and mIoU of the original DeepLabv3+ by 1.235% and 6.180% respectively. Figure 7 depicts sample segmentation results of existing architecture and the two proposed variants SqueezeDeeplabv3+ and 3D-ARU to allow visual inspection. The ground
+truth shows that the thickness of the myocardium wall is uneven, and the edge contour of the biventricular is fuzzy and difficult to extract along with irregularity in the biventricular shape. With the use of an attention mechanism, the proposed 3D-ARU model is able to extract the edge information effectively, and the reconstructed LV and Myo contours were significantly better than those of the UNet, attention UNet, and ResUNet models. It demonstrates that the incorporation of the attention mechanism solves the problem of the fuzzy edges but still the problem of segmenting the small object such as RV persists. In the lower bottom row, the role of the modified SqueezeDeepLabv3+ with different atrous rates is elucidated in detecting small objects such as RV. DeepLabv3+ misses segmenting some tissues as Myo and LV due to its larger atrous rate. Moreover, ResUNet was unable to segment Myo and RV due to fuzzy boundaries. In addition, UNet was able to segment Myo and LV but with an enlargement of LV and thinner Myo contour. ARU solve some of the UNet, attention UNet and ResUNet such as fuzzy boundaries but failed to extract the RV. Hence, it can be seen ARU and SquzzeDeepLab3+ complement the functionality of each other so a two-stage segmentation model would be expected to yield better results. CAT-Seg output is shown in the proposed framework column, which depicts the favorable effect of their combination. Model Phase DSC Mean DSC IoU mIoU
+LV Myo RV LV Myo RV
+1 3
+In the following, the effectiveness of CAT-Seg is experimentally verified against various two-level segmentation. The ROI localization is performed by either 3D-ARU or SqueezeDeepLabv3+, followed by fine segmentation. The localized ROIs are input to four architectures namely: 3D-UNet, Attention 3D-UNet, 3D-ARU, and SqueezeDeepLabv3+ for segmentation. 3D-UNet, and Attention 3D-UNet are selected for the coming experiment as they are frequently used in similar studies [14, 17–20, 30, 31]. All sets comprise the volumes of the same patients. Table 4 presents the segmentation results (DSC and IoU) of the different combinations for multistage ROI extraction and segmentation. First, 3D object detector frameworks namely Mask R-CNN [27], and Retina U-Net [28] have been deployed to automatically detect a bounding box encompassing the heart in CMRI. The detected bounding box is then used for cropping the full images. Object detection performance is the contrasted to multigrain segmentation. Mask R-CNN is an extension of the Faster R-CNN [29] architecture that adds a branch for predicting object masks in parallel with the existing branch for bounding box recognition. This allows it to provide more precise object localization and instance segmentation. Retina U-Net 3D is a 3D extension of the RetinaNet architecture that is designed for volumetric medical image analysis. It uses a U-Net-like architecture with a feature pyramid network to
+detect 3D objects in medical images. CAT-Seg outperforms the usage of Mask R-CNN as a 3D detection framework instead of SqueezeDeepLabv3+ in segmenting LV, and Myo by 0.8909%, and 0.3526% respectively. Also, it outperforms the combination of using Mask R-CNN with SqueezeDeepLabv3+ in segmenting LV, Myo, and RV 0.9775%, 0.8515 and 0.558% respectively. Despite the usage of Mask R-CNN instead of SqueezeDeepLabv3+ in segmenting RV outperforms the CAT-Seg framework by 0.0528%, it increases testing time by 0.4210%. Moreover, the CAT-Seg framework outperforms the combination of using Retina U-Net with 3D-ARU in segmenting all the substructures. Also, for localization, the cascading of two consecutive 3D-ARU presents higher DSC in cases of segmenting Myo and RV in ES phase. However, the differences when compared to CAT-Seg is limited to 0.24% and 0.04% in case of Myo and RV respectively. In addition, the cascaded 3D-ARU testing time is 2.4 × higher than the proposed CAT-Seg. In addition, the testing time of using 3D-ARU as localization and then segmenting by squeezeDeepLabv3+ is 1.2368 × higher than the CAT-Seg. The CAT-Seg outperforms the cascaded SqeezeDeepLabv3+ by 0.11% and 0.46% in terms of mean DSC and mIoU respectively. The proposed CAT-Seg presents a performance gap of 4.87% and 15.78% compared to using 3D-ARU in localization and UNet in segmentation in terms of mean DSC and mIoU respectively. Although the
+1 3
+Ta bl
+e 4
+E va
+lu at
+io n
+of th
+e di
+ffe re
+nt e
+xp er
+im en
+ta l s
+ce na
+rio s
+in te
+rm s
+of D
+SC , I
+oU a
+nd te
+sti ng
+ti m
+e by
+e xt
+ra ct
+in g
+RO I b
+y ap
+pl yi
+ng 3
+D D
+et ec
+tio n
+fr am
+ew or
+ks (M
+as k
+RC
+N N
+a nd
+R et
+in a
+U -N
+et )
+RO I
+an d
+th e
+tw o
+pr op
+os ed
+m od
+el s
+in s
+eg m
+en ta
+tio n.
+E xt
+ra ct
+in g
+RO I
+by a
+pp ly
+in g
+ea ch
+o f
+th e
+pr op
+os ed
+m od
+el s
+at th
+e lo
+ca liz
+at io
+n ph
+as e
+an d
+ap pl
+yi ng
+a ll
+fo ur
+m od
+el s
+(U N
+et , a
+tte nt
+io n
+U ne t, 3D -A RU , a nd S qu ee ze D ee pL ab v3 + ) i n se gm en ta tio n
+To e
+m ph
+as is
+th e
+hi gh
+es t D
+ic e,
+Io U
+, M ea
+n D
+ic e
+an d
+M Io
+U fo
+r e ac
+h co
+m bi
+na tio
+n of
+d iff
+er nt
+lo ca
+liz at
+io n
+an d
+sg em
+en ta
+tio n
+m od
+el s
+M od
+el C
+ar di
+ac p
+ha se
+D SC
+M ea
+n D
+SC Io
+U m
+Io U
+Te sti
+ng
+Ti m
+e in
+m
+in s
+RO I e
+xt ra
+ct io
+n Se
+gm en
+ta tio
+n LV
+M yo
+RV LV
+M yo
+RV
+D et
+ec tio
+n M
+as k
+RC
+N N
+3D -A
+RU
+ED 0. 96 32
+0. 95
+00 0. 95 16
+0. 95
+14 0. 93 07
+0. 88
+95 0. 85 42
+0. 87
+83 5. 4 ES 0. 96 14 0. 94 07 0. 94 17 0. 91 05 0. 87 21 0. 81 30
+Sq ue
+ez eD
+ee pL
+ab v3
++ ED
+0. 96
+27 0. 95 00
+0. 95
+08 0. 95 12
+0. 93
+32 0. 88 46
+0. 84
+81 0. 87 54
+4. 4
+ES 0. 96 04
+0. 94
+07 0. 93 10
+0. 91
+25 0. 86 21
+0. 81 21 Re tin a U -N et 3D -A RU ED 0. 96 83 0. 95 01 0. 94 02 0. 94 95 0. 92 81 0. 89 08 0. 84
+35 0. 87 64
+4. 4
+ES 0. 95 77
+0. 94
+42 0. 93 69
+0. 90
+99 0. 87 46
+0. 81 16 Sq ue ez eD ee pL ab v3 + ED 0. 96 13 0. 94 86 0. 94 01 0. 94 58 0. 93 72 0. 89 18 0. 84 69
+0. 87
+95 4. 1 ES 0. 95 41 0. 93 94 0. 93 16 0. 91 07 0. 87 06 0. 81 98
+Lo ca
+liz at
+io n
+3D -A
+RU
+3D -U
+N et
+ED 0. 93 90
+0. 93
+48 0. 88 05
+0. 90
+81 0. 78 82
+0. 75
+91 0. 68 05
+0. 72
+67 4. 7 ES 0. 92 05 0. 93 02 0. 84 41 0. 74 85 0. 71 81 0. 66 62
+A tte
+nt io
+n 3D
+-U N
+et ED
+0. 94
+81 0. 92 10
+0. 90
+51 0. 91 42
+0. 82
+64 0. 80 24
+0. 77
+92 0. 78 81
+5. 1
+ES 0. 92 98
+0. 91
+84 0. 86 32
+0. 79
+90 0. 77 19
+0. 75 01 3D -A RU ED 0. 97 29 0. 95 34 0. 95 19 0. 95 73 0. 94 21 0. 90 02 0. 84 54
+0. 88
+17 8. 5 ES 0. 96 96 0. 95 52 0. 94 12 0. 91 91 0. 88 14 0. 81 06
+Sq ue
+ez eD
+ee pL
+ab v3
++ ED
+0. 97
+13 0. 95 21
+0. 95 46
+0. 95
+57 0. 93 57
+0. 90
+00 0. 84 90
+0. 87
+99 4. 7 ES 0. 97 51 0. 94 78 0. 93 37 0. 91 15 0. 88 11 0. 80 25 Sq ue ez eD ee pL ab v3 + 3D -U N et ED 0. 93 82 0. 93 60 0. 87 90 0. 90 80 0. 78 75 0. 75 94 0. 68 00 0. 72 65 3. 1 ES 0. 9 20 1 0. 93 12 0. 84 39 0. 74 77 0. 71 86 0. 66 60 A tte nt io n 3D -U N et ED 0. 94 72 0. 92 10 0. 90 52 0. 91 39 0. 82 44 0. 80 24 0. 77 93 0. 78 79 3. 7 ES 0. 92 84 0. 91 88 0. 86 33 0. 79 87 0. 77 20 0. 75 09 Sq ue ez eD ee pL ab v3 + ED 0. 95 13 0. 92 21 0. 91 38 0. 92 39 0. 90 57 0. 88 71 0. 82 06 0. 86 23 3. 5 ES 0. 94 51 0. 91 07 0. 90 09 0. 89 25 0. 87 80 0. 79 04 3D -A RU : C A TSe g ED 0. 97 32 0. 95 40 0. 95 15 0. 95 68 0. 94 18 0. 90 06 0. 85 10 0. 88 45 3. 8 ES 0. 96 87 0. 95 28 0. 94 08 0. 91 96 0. 88 15 0. 81 27
+1 3
+combination of using SqueezeDeepLabv3+ for localization and UNet for segmentation has the lowest testing time, CATSeg outperforms it by 4.88% and 15.8% in terms of mean DSC and mIoU respectively. Moreover, CAT-Seg, approximately, has testing time as the combination of squeezeDeeppLabv3+ and attention UNet but CAT-Seg draws a performance gap of 4.29% and 9.66% in terms of mean DSC and mIoU respectively. While the testing time of the cascaded squeezeDeepLabv3+ is 0.9210 × the testing time of the CATSeg, the mean DSC and the mIoU of the CAT-Seg are 3.29% and 2.22% better than the cascaded squeezeDeepLabv3+. Therefore, CAT-Seg is elected as the proposed model rather than any other cascaded approach. Figure 8 shows the training and validation learning curves for both cardiac phases (ES and ED) using CAT-Seg. It demonstrates that both cardiac cycles have a similar trend in the training and validation stage with small performance gap diminishing the possibility of overfitting. In addition, to make full use of the limited training data and show the performance stability and robustness, the training and testing set has been combined to apply fivefold cross-validation where each fold consists of 30 patients such as 6 patients from each pathology. The experimental results
+show that the DSC and IoU of the segmentation results of the biventricular regions on the test set increase significantly by using cross-validation for both stages of the CAT-Seg framework and the overall pipeline. Table 5 illustrates the improvement in each of the cardiac structures when fivefold cross-validation has been applied. Another aspect is investigated to show the stability in CAT-Seg performance, the mean and range of the results are shown by boxplot in Fig. 9. It demonstrates that the range of segmentation results in terms of both DSC and IoU is compact and consistent for all three substructures. In Fig. 9a, the segmentation results of ACDC 2017 are presented. The LV segmentation results show that the DSC results are symmetric in both cardiac cycles. Also, the LV segmentation results are symmetric in terms of IoU results in the ES phase, but it has negative skew in the ED phase. Moreover, for both cardiac phases, the myocardium shows positive skew in DSC results, but it has a negative skew in IoU results. Additionally, the RV shows a spread in both cardiac phases but most of the results are symmetric. It has segmentation results that are consistent in terms of IoU than DSC. It is notable that the results in all cases are consistent with no outliers shown. The Mean IoU result in the ED cardiac phase is 0.8946 ± 0.0190
+1 3
+and 0.8554 ± 0.0201 in the ES cardiac phase. In the ED cardiac phase, the mean DSC is 0.9298  ±  0.0270 and 0.9216 ± 0.0256 in ES cardiac phase. The shown results covey the stable performance of CAT-Seg with minimal fluctuation in performance. Moreover, the CAT-Seg is tested using an external test set from MyoPs 2020 dataset to show the robustness of the framework, the mean and range of the results are shown by boxplot in Fig. 9b. It demonstrates that the range of segmentation results in terms of both DSC and IoU is compact and consistent for all three
+substructures. It is notable that the results in all cases are consistent with no outliers shown. The LV DSC and IoU results are 0.967395 ± 0.015953 and 0.924215 ± 0.021997 respectively with a small standard deviation that doesn’t exceed 2.2%. Also, Myo segmentation has a small standard deviation account to 1.6156% in DSC measure and 3.0739% in the IoU measure with average DSC and IoU of 0.911325 and 0.832885 respectively. While RV has the highest standard deviation due to the variation between RV in the ACDC 2017 and the MyoPs 2020. The DSC and the
+Table 5 Evaluation of the CAT-Seg Framework and each stage separately in terms of DSC, IoU for fivefold cross-validation on ACDC dataset
+Model Phase DSC IoU
+LV Myo RV LV Myo RV
+3D-ARU ED 0.9539 ± 0.0057 0.9400 ± 0.0061 0.9112 ± 0.0204 0.9121 ± 0.0085 0.8806 ± 0.0098 0.8213 ± 0.0209 ES 0.9508 ± 0.0081 0.9279 ± 0.00674 0.8986 ± 0.0218 0.8903 ± 0.0099 0.8589 ± 0.0110 0.7915 ± 0.0218
+SqueezeDeepLabv3+ ED 0.9467 ± 0.0066 0.9241 ± 0.0075 0.9201 ± 0.0092 0.9002 ± 0.0101 0.8896 ± 0.0108 0.8214 ± 0.0175 ES 0.9381 ± 0.0084 0.9023 ± 0.0081 0.9063 ± 0.0140 0.8698 ± 0.0109 0.8517 ± 0.0112 0.7901 ± 0.0183
+CAT-Seg ED 0.9808 ± 0.0041 0.9602 ± 0.0045 0.9590 ± 0.0089 0.9489 ± 0.0056 0.9101 ± 0.0071 0.8604 ± 0.0104 ES 0.9707 ± 0.0045 0.9588 ± 0.0058 0.9466 ± 0.0097 0.9204 ± 0.0078 0.8899 ± 0.0073 0.8211 ± 0.0110
+Fig. 9 Box plots of the CAT-Seg framework results in terms of DSC and IoU a on ACDC dataset for the three cardiac substructures (LV, Myo, and RV) and the mean IoU and DSC in both cardiac phases (ED and ES), b on MyoPs 2020 dataset for external validation
+1 3
+IoU results for segmenting RV are 0.870285 ± 0.041033 and 0.817455 ± 0.055544 respectively. Figure 10 depicts the importance of the localization phase as it compares the using the 3D-ARU in segmenting different types of slices in terms of mean DSC and mIoU. First, it uses the full slice without any localization or annotation and thus it results in relatively low segmentation results due to the complex structure of the cardiac MRI and surrounding objects. Then, the manually cropped slices were extracted as 128*128 blocks taken from the center following the standard used in the literature [14], 16. These slices are input to the proposed 3D-ARU model, but it also reflects a low segmentation evaluation. Moreover, cascaded 3D-ARU and the proposed model compete in the evaluation of the segmentation as both show approximately the same results in terms of mean DSC and mIoU. However, the proposed model takes roughly less than half of the testing time of the cascaded 3D-ARU. discussion The performance of CAT-Seg is compared to existing approaches on the ACDC and MyoPs 2020 datasets for further validation. The comparison between the results for biventricular segmentation on ACDC dataset is shown in Table 6. CAT-Seg significantly outperformed all other methods in terms of the DSC and IoU on the ACDC test dataset. Since most of the state-of-the-art methods used DSC to evaluate the segmentation results, Table 6 details the evaluation comparison in terms of DSC. It is worth noting that the segmentation effect is particularly good for the more difficult segmentation of the ES of the heart. CATSeg is able to segment LV, Myo, and RV with an average minimum performance gap of 1.165%, 4.36% and 3.115% respectively. While the average maximum improvement in
+segmenting LV, Myo and RV is 4.395%, 6.84% and 7.315% respectively. The proposed model outperforms Li et al. [30] in LV, Myo and RV segmentation by 0.32%, 6.40%, and 1.15% respectively in ED cardiac phase. Also, in ES cardiac phase compared to Li et al. [30] the proposed model shows an outstanding performance in segmenting LV, Myo and RV by a performance gap of around 3.87%, 4.28%, and 5.08%. Furthermore, the proposed model is able to segment LV with a DSC that is 1.295% higher than that of the Yang et. al [13] work. Also, it is able to segment RV with a DSC that is 4.065% higher than that of the Yang et. al [13] model. Furthermore, the improvement in segmentation Myo is 4.36% in DSC compared to Yang et. al [13] model. Moreover, the CAT-Seg outperforms Silva et al. [32]’s model in segmenting the three substructures in both ED and ES phases. It is able to segment LV with a DSC that is 1.3% and 3.5% higher than that of the Silva et al. [32] model in the ED and ES phases. Also, the improvement in segmentation Myo in DSC is 6.38% for ED and 6.57% for ES compared to Silva et al. [32] model. Additionally, it is able to segment RV with a DSC that is 2.58% and 8.65% higher than that of the Silva et al. [32] model in the ED and ES phases respectively. Although the proposed model shows low average
+1 3
+improvement in segmenting LV in ED, it draws an average improvement of 4.5316% in segmenting the three cardiac substructures in the ES cardiac phase. Moreover, the outstanding performance of the proposed model in segmenting Myo and RV in ES cardiac phase improvement in the ES phase. Additionally, it reflects the strength of the proposed model to solve the mentioned challenge of ES segmentation especially for RV. The performance of CAT-Seg is compared to existing approaches on the MyoPs dataset for further validation. The comparison between the results for biventricular segmentation is shown in Table 7. CAT-Seg significantly outperformed all other methods in terms of the DSC on the MyoPs test dataset. CAT-Seg is able to segment LV, Myo, and RV with an average minimum performance gap of 6.13%, 5.44% and 2.912% respectively. While the average maximum improvement in segmenting LV, Myo and RV is 14.26%, 10.37%, and 8.544% respectively. It is worth emphasis that the results shown in Table 7 for CAT-Seg are without training on the training set of MyoPs 2020 and succeeded to surpass the performance of the state of the art. Hence, elucidate the generalization and robustness of the framework. CAT-Seg attempts to provide a balance between the number of parameters and the accuracy, as the proposed SqueezeDeepLabv3+ uses SqueezeNet which is a lightweight and efficient CNN model. Also, it has fewer parameters than Xception so the SqueezeDeepLabv3+ decreases the number of parameters by 40.1173% and improves the accuracy by 1.3623% over the original DeepLabv3+. While the proposed 3D-ARU increases the number of parameters by 23.9719% over the original ResUNet but it improves the accuracy by 1.1615% compared to the original architecture. So, CAT-Seg framework compromises the number of parameters by using SqueezeNet for decreasing number of parameters and Attention mechanism which improves the accuracy, but it has greater number of parameters. conclusion In this study, a fully automatic multi-stage segmentation framework CAT-Seg is proposed. The proposed framework is composed of two proposed architectures. In the first, ROI is localized by the modified variant SqueezeDeepLabv3+, to minimize processing and address the issue of pixel class
+imbalance. The proposed architecture for SqueezeDeepLabv3+ uses SqueezeNet to enrich the encoder path. Also, SqueezeDeepLabv3+ modifies the atrous rate to localize the small structures like RV in ES. The second step involves submitting the ROI to 3D-ARU for segmentation. The proposed 3D-ARU uses ResUNet incorporating a spatial attention mechanism. The results of the experiments show that the proposed method produces a mean DSC of 0.9595 in ED and 0.9541 in ES. In comparison to the single-stage segmentation process, the division into steps performed better. This is supported by the evaluation of the performance using the ACDC 2017 test dataset, where the proposed method achieves higher performance compared to state-of-the-art approaches in segmentation. CAT-Seg achieved an average maximum improvement in segmenting LV, Myo and RV of 4.395%, 6.84% and 7.315% respectively. Similar results are achieved when applied on the test set only of MyoPs 2020, producing a mean DSC of 0.9163 and mIoU of 0.8581. In conclusion, CAT-Seg offers a useful assistive tool to aid the early detection and treatment planning of cardiovascular diseases, which is critical for a better prognosis. Acknowledgements We want to thank Dr. Noha Hesham for her generous assistance, valuable discussion and feedback that refine this work throughout. 

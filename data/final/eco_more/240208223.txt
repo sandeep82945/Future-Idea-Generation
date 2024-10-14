@@ -1,0 +1,771 @@
+We consider a producer’s problem of selling a product to a continuum of privacyconscious consumers, where the producer can implement third-degree price discrimination, offering different prices to different market segments. In the absence of privacy constraints, Bergemann, Brooks, and Morris [2015] characterize the set of all possible consumer-producer utilities, showing that it is a triangle. We consider a privacy mechanism that provides a degree of protection by probabilistically masking each market segment, and we establish that the resultant set of all consumer-producer utilities forms a convex polygon, characterized explicitly as a linear mapping of a certain high-dimensional convex polytope into R. This characterization enables us to investigate the impact of the privacy mechanism on both producer and consumer utilities. In particular, we establish that the privacy constraint always hurts the producer by reducing both the maximum and minimum utility achievable. From the consumer’s perspective, although the privacy mechanism ensures an increase in the minimum utility compared to the non-private scenario, interestingly, it may reduce the maximum utility. Finally, we demonstrate that increasing the privacy level does not necessarily intensify these effects. For instance, the maximum utility for the producer or the minimum utility for the consumer may exhibit nonmonotonic behavior in response to an increase of the privacy level. 1 introduction Price discrimination has long been a topic of considerable interest in economics and computer science. At its core, price discrimination involves a seller’s ability to charge different prices to different consumers for the same product or service. This strategy, underpinned by the seller’s understanding of consumer preferences, can lead to maximized profits and a more efficient allocation of resources. While economically rational from a business perspective, price discrimination raises complex questions regarding fairness, market power, and consumer welfare. Simultaneously, consumer privacy has become a growing concern in the digital age. With the increasing ability of companies to collect, analyze, and utilize vast amounts of personal data,
+*University of California, Berkeley. afallah@berkeley.edu †University of California, Berkeley. jordan@cs.berkeley.edu ‡Fuqua School of Business, Duke University. ali.makhdoumi@duke.edu §Rotman School of Management, University of Toronto. azarakhsh.malekian@rotman.utoronto.ca
+the protection of consumer privacy has become a major issue for consumers, companies, and regulators. Privacy concerns are not just limited to the safeguarding of personal information but also encompass how this information is used in market practices, including pricing strategies. Thus, the intersection of price discrimination and consumer privacy is a timely and intriguing topic. One might initially assume that these two concepts are at odds. Price discrimination, by its very nature, relies on detailed information about consumers to tailor prices effectively. In contrast, an emphasis on consumer privacy could limit the ability of sellers to implement price discrimination strategies. However, consumers can benefit from price discrimination, and thus, this intersection warrants a more nuanced examination. Understanding how privacy constraints affect the ability of firms to engage in price discrimination helps in understanding existing market dynamics and also aids in shaping policies that protect consumer interests. 1.1 main results Our study of the intersection of price discrimination and privacy builds on prior work of Bergemann et al. [2015]. Let us first describe their model and then explain how things change if we consider consumers’ privacy concerns. Consider a monopolist who is selling a product to a continuum of consumers. If the producer knows the values of consumers, then they could engage in first-degree price discrimination to maximize their utility, while the utility of consumers would be reduced to zero. On the other hand, if the producer has no information besides a prior distribution about the value of consumers, then they can only enact uniform pricing. This leads to two pairs of producer utilities and consumer utilities. Bergemann et al. [2015] delineate the set of all possible pairs by using different segmentations. Let us clarify this approach with an example. Imagine a producer aiming to set a product’s price for its customers across the United States. In this context, the aggregated market is defined as the entire US market, meaning the distribution of consumers’ valuations nationwide. Each zip code within the US represents its own market, which is basically the distribution of the consumers’ values in that zip code. Segmentation, in this case, refers to the division of the aggregated US market into these specific markets. Generally speaking, a segmentation involves breaking down the aggregated market into smaller markets, under the condition that these smaller markets must add up to the aggregated market. Bergemann et al. [2015] establish that the set of all possible pairs of consumer and producer utilities is a triangle as depicted in Figure 1. The point Q corresponds to the first-degree price discrimination, and the line TR represents all possible consumer utilities when the producer utility is at its minimum, equating to the utility derived from optimal uniform pricing. For a given market, knowing the underlying distribution of consumers’ values reveals information about the consumers in that market. Take, for instance, the consumers residing in a certain zip code. Knowing the distribution of the consumers in that zip code induces privacy costs for a multitude of reasons, including potential profiling, harmful targeting, potential manipulation, and unfair business practices. Therefore, we would like to maintain some level of privacy to protect consumers. More precisely, we require that the distribution of consumer values in each market
+must go through a privacy mechanism that masks the true market and outputs a uniformly sampled market with some probability β and outputs the true market with the complementary probability 1 − β. Our privacy mechanism is motivated by a market-level randomized response mechanism— where randomized response is a well-known technique in the privacy literature, commonly utilized for the privatization of discrete-valued data [see, e.g., Warner, 1965, Greenberg et al., 1969, Dwork et al., 2014]. Given this framing, we ask the following question:
+Given the privacy constraint, what set of consumer and producer utility pairs can be attained through all possible market segmentations? Notice that for β = 0, our setting reduces to the non-private case, and by increasing β, we strengthen the privacy guarantees. However, as we now discuss, both our analysis and our results for the setting with privacy constraints are different from those of the non-private case. Specifically, our results allow us to resolve the question of whether the privacy constraint always benefits the consumer. Our main results and insights are as follows. Main Result 1: Our point of departure is a setting with two consumer values, a setting in which we are able to fully characterize the space of all consumer and producer utilities. Moreover, this setting allows us to identify nuances that we later explore in a more general setting. In particular, we establish that the set of all consumer and producer utilities is a triangle, similar to the nonprivate case. However, the triangle takes different shapes depending on the consumer values, the aggregate market distribution, and the privacy parameter. Figure 2 illustrates our characterization for two cases and how it differs from the setting without privacy constraints. In this figure, the set of possible producer and consumer utilities under the privacy mechanism is depicted by the blue triangle ABC . The triangle TQR, marked by red dashed lines, represents the non-private case for the corresponding set of values and the aggregated market. We identify that the privacy mechanism impacts the limits of price discrimination through a direct effect and an indirect effect. Let us describe these effects and explain how they shape the set of all possible consumer and producer utilities. The direct effect arises because the producer observes a random market instead of the true market, with probability β, as a consequence of the privacy mechanism. This means that with probability β, the consumer and producer utilities are independent of the segment’s markets. The direct effect implies a shift in the space of consumer and producer utilities. Considering Figure 2, the direct effect implies that the minimum consumer utility, as opposed to the non-private case, is no longer zero; instead, there is a non-zero lower bound on the consumer utility (line AB versus line QT). It also implies that the sum of consumer and producer utilities is smaller than that of the non-private case (line BC versus line QR). To understand the indirect effect, notice that with probability 1− β, the producer observes the true market. However, the producer does not know whether or not this observed market is the truth and, therefore, adopts a different pricing strategy compared to the non-private case. The indirect effect refers to this change in the producer pricing strategy. Notably, the producer’s pricing strategy is optimal from their perspective, taking into account the privacy mechanism, but it does not correspond to the optimal pricing strategy in the non-private case. To better illustrate the impact of this indirect effect, let us revisit the non-private case (as depicted by the triangle TQR in Figure 2). Imagine a segmentation for which the producer is indifferent between several prices for certain segments. In such a case, although different price choices do not alter the producer’s utility, they can lead to different consumer utility. For example, every point along the line TR represents the same level of utility for the producer. However, selecting various prices can minimize or maximize the consumer utilities (corresponding to points T and R, respectively). In the private setting, however, various pricing options that make the producer indifferent ex-ante (i.e., yielding the same expected utility when considering the privacy mechanism) might actually result in different ex-post producer utilities. Consequently, opting for different prices alters both the consumer and producer utilities. This is the reason why, with privacy constraints, the line AC is no longer parallel to the x-axis. This difference is more pronounced as we consider K > 2 values (see Figure 3) where the lower limit of the set of all possible consumer and producer utilities, in sharp contrast to the non-private case, is not a straight line. The above effects and the corresponding set of all possible consumer and producer utilities are visualized in Figure 2: the triangle ABD represents the non-private triangle TQR after undergoing the scaling and shifting attributable to the direct impact of privacy. The discrepancy between triangles ABC and ABD thus precisely indicates the indirect effect that arises from the change in the producer’s pricing policy due to the privacy mechanism. Main Result 2: Our characterization yields the following insights. Insight 1: Imposing the privacy constraint hurts the producer by decreasing both its minimum and maximum utility across all segmentations. This is intuitive because after adopting the privacy mechanism, the producer knows less about the consumer’s values and, therefore, cannot extract
+as much surplus as in the non-private case. Insight 2: Imposing the privacy constraint helps the consumers by increasing their minimum utility. However, interestingly, it can hurt consumers by decreasing their maximum utility (compare, for example, the consumer utility in points C and R in the two panels of Figure 2). This first phenomenon aligns with the direct impact of the privacy mechanism, as previously elaborated. Because the producer does not always observe the true market, they may sometimes choose a suboptimal price, resulting in a positive expected utility for consumers. The second phenomenon is more nuanced. We observe that the introduction of a privacy mechanism can influence the producer’s market pricing strategy, leading to more conservative or riskier decisions depending on the consumers’ values. This effect arises because the privacy mechanism reduces the informativeness of the market observed by the producer. On one hand, in cases where there is a significant gap between high and low consumer values, the producer finds the risk of setting higher prices justified. This shift towards riskier pricing strategies is the indirect impact of privacy we discussed earlier. Under such circumstances, if the actual market includes many low-value consumers, selecting higher prices could detrimentally affect consumer utility. On the other hand, when consumer values are relatively similar, the producer might opt for a lower, safer pricing strategy, avoiding “unnecessary” risks. Now, if the true market is composed largely of high-value consumers, this conservative approach can lead to increased utility for consumers compared to the non-private case, thereby increasing maximum consumer utility. Insight 3: As we discussed above, imposing a privacy constraint decreases both the minimum and maximum producer utility while it increases the minimum consumer utility. One may con-
+jecture that these changes amplify as the privacy parameter increases. However, interestingly, we prove that an increase in the privacy parameter β does not necessarily decrease the producer’s maximum utility and, similarly, does not necessarily increase the minimum consumer utility. Put differently, while imposing the privacy constraint always reduces the maximum producer utility, more privacy does not necessarily lead to a more reduction in this utility. Similarly, although the privacy mechanism ensures a non-zero minimum utility for the consumer, this minimum does not always increase with a higher privacy parameter. The intuition behind these nuanced nonmonotonicities is similar to Insight 2, discussed above. Main Result 3: We establish that our main insights carry over to the general setting with K > 2 consumer values. Notably, the set of all consumer and producer utilities pairs is no longer a triangle, in sharp contrast to that of the non-private case. Instead, it is a convex polygon (see Figure 3 illustration for one example and how it differs from the non-private case). Similar to the case of K = 2, we identify that the privacy mechanism introduces both direct and indirect effects on the set of possible consumer and producer utilities. The direct impact implies a combination of scaling and shifting, transforming the triangle TQR into triangle ABD as depicted in Figure 3. The indirect effect of privacy, however, changes the shape of the utility set from a triangle to a convex polygon. More precisely, we illustrate that this set can be represented as a linear mapping of a convex polytope in RK 2 into a 2-dimensional space. This representation enables us to extend all the insights above from the case with K = 2 to the general case with K ≥ 2. Our analysis also provides the construction of a segmentation to achieve any feasible point for consumer and producer utilities. Furthermore, our characterization allows us to identify several key properties of the polygon that delineate the limits of price discrimination under privacy constraints. One that we highlight here is regarding the impact of privacy on first-degree price discrimination. In the non-private
+scenario, point Q in Figure 3 represents perfect discrimination utilities, where each segment contains consumers of identical value. Now, let us consider the same segmentation and see how the privacy mechanism impacts the producer’s utility (i.e., point B in Figure 3). First, notice that because of the direct impact of the privacy mechanism (that masks segments with probability β), the producer’s utility decreases to another point. The question arises: does the indirect effect of privacy further decrease the producer’s utility? In other words, the question is whether the privacy mechanism can influence the producer’s pricing strategy to such an extent that, even when they observe a market comprising consumers with similar values, they set a different price for that market. Interestingly, we show that this scenario is indeed possible. We specifically identify a threshold for the privacy parameter β. Once this threshold is surpassed, it prompts the producer to avoid using certain values for market pricing, as other values yield higher expected utility. Below this threshold, however, the indirect effect of privacy does not further decrease the producer’s utility. From a technical point of view, to characterize the set of all possible consumer and producer utilities under privacy constraints, we need novel techniques and analysis compared to the existing ones in the literature. Notably, the analysis in Bergemann et al. [2015] relies heavily on the premise that producer utility is bounded below by optimal uniform pricing. This assumption, however, does not hold under privacy constraints since the aggregated market remains undisclosed to the producer. Furthermore, their argument is built on characterizing extremal markets—markets wherein the producer is indifferent between choosing any value within the support of the distribution of the consumer values. In contrast, our argument employs a merging technique, effectively simplifying the problem to an examination of segmentations where, for each value, no more than one segment is priced at that value. This approach not only makes our analysis applicable to the private case but also builds a framework that easily extends to the general setting with multiple consumer values. 1.2 related work Our paper relates to the literature on price discrimination. Earlier works on this topic include Robinson [1969], Schmalensee [1981], Varian [1985], Aguirre et al. [2010], Cowan [2016]. More recent papers on this topic include Roesler and Szentes [2017] who characterize the buyer-optimal signaling, Bergemann et al. [2015] who prove that it is possible to achieve any total surplus and its division between consumers and the producer through segmentation, Haghpapanah and Siegel [2019] who characterize the consumer optimal segmentation, and Elliott et al. [2021] who study how a platform’s information design can enable the division of surplus between the consumer and the seller. The closest paper to ours is Bergemann et al. [2015], which characterizes the set of all possible consumer and producer utilities achievable by segmentations. We build on the setting of this paper by asking what happens if we impose privacy constraints. As discussed above, this fundamentally changes the results and also requires different analyses. This work has moti-
+vated several follow-up works that consider either extensions or variations of it. For instance, a similar problem in multiproduct settings has been studied in Haghpanah and Hartline [2021], Haghpanah and Siegel [2022], and Haghpanah and Siegel [2023]. Consumer profiling via information design has been studied in Fainmesser et al. [2023]. Robust price discrimination has been studied in Arieli et al. [2024]. A unified approach to second and third degree price discrimination has been studied in Bergemann et al. [2024]. Extension to randomized auctions (possibly over a menu of large size) has been studied in Ko and Munagala [2022], and price discrimination with fairness considerations has been studied in Banerjee et al. [2024]. To the best of our knowledge, the limits of price discrimination under privacy constraints have not been studied in the literature.1
+Our paper also relates to the literature on privacy in markets and platforms. Acquisti et al. [2016] survey the empirical and theoretical works that study the economic value and consequences of protecting and disclosing personal information on consumers and producers. More recently, Posner and Weyl [2018] explore the consequences of consumers sharing data with online platforms, and Jones and Tonetti [2020] study the consequences of data non-rivalry (i.e., consumer data can be used by many producers simultaneously) for the consumers and the producers. Acemoglu et al. [2022], Bergemann et al. [2020], and Ichihashi [2020] study the privacy consequences of data externality, whereby a user’s data reveals information about others, Acemoglu et al. [2023a] study the platform’s optimal architecture that achieves the Pareto frontier of user privacy level and platform estimation error, and Acemoglu et al. [2023b] develop an experimentation game to study the harms of the platform’s information advantage in product offering. Finally, privacy and personal data in financial markets have been studied in Farboodi and Veldkamp [2023]. More closely related to ours are the works at the intersection of privacy and price discrimination. In this regard, Ali et al. [2020] study the implications of giving consumers control over their data and the ability to choose how producers access their data. They investigate whether such regulations improve consumer utility and find that consumer control can guarantee gains for every consumer type relative to both perfect price discrimination and no personalized pricing. Hidir and Vellodi [2021] characterize the consumer optimal market segmentation compatible with the consumer’s incentives to reveal their preferences voluntarily. They further investigate the implication of their results for consumer privacy and price discrimination in online retail. We depart from this literature by characterizing the set of all possible consumer and producer utilities achievable by market segmentations under privacy constraints.2
+The rest of the paper proceeds as follows. In Section 2, we present our model and introduce the problem formulation. In Section 3, we focus on a setting with K = 2 consumer values and characterize the set of all possible consumer and producer utilities that can be achieved by seg-
+1Segmentation can be viewed as a Bayesian persuasion problem as introduced by Kamenica and Gentzkow [2011]. We refer to Bergemann et al. [2015] for a detailed description of this connection. 2Our paper is also related to the literature on differential privacy introduced in Dwork et al. [2006a] and Dwork et al. [2006b] (see Dwork et al. [2014] for a survey). In particular, our privacy mechanism can be viewed as a variation of the randomized response that is used to guarantee differential privacy for discrete value data points (see, e.g., Erlingsson et al. [2014]). mentation. We then discuss the insights we obtain from our analysis and, in particular, whether imposing privacy constraints helps or hurts the producer and the consumer. In Section 4, we show how our main results and insights continue to hold for the general case of K > 2 consumer values. Section 5 concludes while the Appendix presents the omitted proofs from the text. 2 model We build our model upon the one proposed by Bergemann et al. [2015]. In particular, we consider a producer’s problem of pricing a product for a continuum of consumers represented by the interval Ω := [0, 1]. We normalize the cost of production to zero and assume that each consumer’s value for the product belongs to the set V := {v1, v2, · · · , vK} for some K ∈ N, where vK > · · · > v2 > v1 > 0. The value of a consumer is denoted by a random variable V : Ω → V . We assume that a consumer purchases the product if the offered price is lower than or equal to their value. Markets: A market x is a distribution over V , and hence, the set of all markets is the simplex over V , given by
+X := ∆(V) =
+{
+x : V → R≥0 ∣ ∣
+K ∑
+k=1
+x(vk) = 1
+}
+. (1)
+We denote the aggregated market, which corresponds to the distribution of V , by x∗. Segmentation: A segmentation is a partitioning of the aggregated market x∗ into different markets. We illustrate a segmentation using a distribution σ over the space of all markets, X = ∆(V), as defined in equation (1). For any x ∈ X within the support of σ, we have a segment in the partitioning of the aggregated market which its corresponding market is x and its population size is σ(x). The set of all segmentations is given by3
+Σ :=
+ 
+
+σ ∈ ∆(X ) ∣ ∣
+∑
+x∈supp(σ)
+σ(x).x = x∗, |supp(σ)| < ∞
+ 
+
+. (2)
+Privacy mechanism: A privacy mechanism M is a mapping from the set of all markets to itself, i.e., M : X → X . More specifically, let x ∈ supp(σ) for some segmentation σ ∈ Σ. To take the privacy considerations into account, we assume the producer observes M(x) (instead of the true x), which is a private version of the market x. In particular, we focus on the following class of
+3As our proofs show, we can limit our attention to partitions comprising finitely many segments, i.e., distributions σ with finite support, without loss of generality. mechanisms, parameterized by β ∈ [0, 1]:
+Mβ(x) :=
+ 
+
+x with probability 1− β unif(X ) with probability β, (3)
+where unif(X ) represents drawing a market from X uniformly at random. One can interpret Mβ(·) as a mechanism that returns the true market with probability 1 − β but masks it with the complimentary probability β (and outputs a uniform noise instead). Notice that for β = 0, our problem becomes identical to that of Bergemann et al. [2015], which does not consider privacy. Moreover, as β increases, one can learn less about the distribution of consumer values in a market. Our privacy mechanism can be linked to the randomized response mechanism, albeit applied at the market level. The randomized response is a well-known technique in the privacy literature, commonly utilized for making a variable with discrete values private [Warner, 1965, Greenberg et al., 1969]. This mechanism maintains the true value of the variable with a certain probability while substituting it with a uniformly chosen random variable from the variable’s finite range with the complementary probability. Our approach is similar, with the distinction being that the market space is infinite. Moreover, applying definitions from the privacy literature, we can quantify the privacy-leakage associated with the mechanism Mβ(·). Let us formalize this connection next. Definition 1. [Rassouli and Gündüz [2019]] The privacy-leakage about random variable X by revealing Y is
+EY
+[ TV ( pX|Y (·|Y ), pX(·) )] ,
+where pX(·) and pX|Y (·|Y ) are the probability density function and the conditional probability density function of X, respectively, and TV(·, ·) denotes the total variation distance between two random variables. Proposition 1. The privacy-leakage (defined in Definition 1) of our masking mechanism Mβ(·) is equal to 1− β. This privacy-leakage of our masking mechanism is maximized when β = 0 and is reduced to zero when β = 1, where the mechanism returns pure noise (see Rassouli and Gündüz [2019] for further discussion on the relationship between this measure and other definitions of privacy loss). It is also worth emphasizing that our privacy mechanism perturbs markets as a whole rather than the values of individual consumers. This means we modify the aggregated data of consumers, not the data of a single consumer. For instance, consider a scenario where market segmentation is based on the zip codes, with each segment representing the market of a single zip code. In this context, our privacy mechanism perturbs the market data for each zip code before it is disclosed to the producer. This approach is particularly fitting in our setting because pricing decisions for a market are based on the distribution of values within that market. Therefore, to ensure a degree of privacy protection, we need to alter the distribution, or essentially, the market
+itself. Alternatively, if we were to implement a randomized response mechanism at the consumer level, randomly changing each consumer’s value, the continuum of consumers would lead to a deterministic mapping from the actual market to another market.4 This mapping could be reverseengineered to the original market, making it ineffective for the pricing problem. Utility functions: If we set the product’s price for a market x equal to some p ∈ [0,∞), the producer’s utility and the consumers’ utility are given by
+Up(p, x) := p
+K ∑
+k=1
+x(vk)1(p ≤ vk),
+Uc(p, x) := K ∑
+k=1
+x(vk)(vk − p)1(p ≤ vk). (4)
+Optimal pricing rules: As we discussed above, the producer does not observe the market x and observes a private version x̂. Next, we define the optimal pricing of a market given an observation x̂ through Mβ(·). The producer holds a uniform prior over X and then observes x̂ = Mβ(x). We denote the posterior distribution by πβ(·|x̂). It is straightforward to verify that this posterior distribution has a mass of size 1 − β over x̂, and the remaining β mass is uniformly distributed over X . The producer’s expected revenue from a market conditional on observing x̂ and under some
+price p ∈ R≥0 is given by
+Up(p|x̂) := E x∼πβ(x|x̂) [Up(p, x)] (5)
+A price p is called optimal for a market given observation x̂ if its corresponding expected revenue is at least as great as that of any other price, i.e.,
+Up(p|x̂) ≥ Up(p ′|x̂) for any p′ ≥ 0. (6)
+It is evident that the optimal price always belongs to the set V ; therefore, we will limit our
+search for the optimal prices to this set. A pricing rule φ : X → ∆(V) is a function where, for any observation x̂, φ(x̂) specifies a distribution over prices. Specifically, a pricing rule φ is considered optimal if, for each x̂, the support of φ(x̂) consists solely of prices that are optimal given the observation x̂. Formulating our goal: We now formalize our main question. Given an optimal pricing rule φ(·), we denote the expected utility of the producer and consumer from a market x ∈ X by Uφp (x) and Uφc (x), respectively. This expectation accounts for the randomness arising from the producer observing the private version Mβ(x) instead of x and applying the (potentially random) optimal
+4Even with finite number of consumers, this phenomenon will hold as the number of consumers grows because of the concentration of the realized distribution around its mean. pricing rule φ(·) based on this observation. More formally, we have
+Uφp (x) := Ex̂∼Mβ(x) [ Ep∼φ(x̂)[ Up(p, x)] ] and Uφc (x) := Ex̂∼Mβ(x) [ Ep∼φ(x̂)[ Uc(p, x)] ] . (7)
+Formally, our goal is to characterize the set of all possible pairs of expected utilities for both the producer and consumer across all potential segmentations and optimal pricing rules. In other words, we would like to characterize the following set
+S :=
+ 
+
+[
+∑
+x∈supp(σ)
+σ(x)Uφc (x), ∑
+x∈supp(σ)
+σ(x)Uφp (x) ]⊤ ∣ ∣ ∣ σ ∈ Σ and φ is an optimal pricing rule
+ 
+
+. (8) 3 price discrimination limits under privacy: the case of k = 2 We first focus on the case K = 2 to gain insights into the limits of price discrimination under privacy constraints. In this scenario, the set of all markets, X , is, in fact, the set of Bernoulli distributions, which can be parameterized by the probability of the high value, v2, denoted by α ∈ [0, 1]. Throughout this section, we use x and α interchangeably to represent the market. In particular, α∗ denotes the probability of the high value for the aggregated market x∗. We also define η as the ratio of the lower value to the higher value, i.e.,
+η := v1 v2 . (9)
+We first characterize the optimal price condition on observing x̂. Lemma 1. Suppose the producer observes x̂ = (1 − α̂, α̂), where α̂ denotes the observed probability of the high value v2. Let
+t∗ := η − β/2
+1− β . (10)
+Then, v1 is the optimal price if and only if α̂ ≤ t ∗, and v2 is the optimal price if and only if α̂ ≥ t ∗. Note that when β ≥ 2η, this lemma implies that the optimal price becomes v2, regardless of the observation x̂. Similarly, when β ≥ 2(1 − η), the optimal price is v1. Therefore, if β ≥ 2η, then we have
+S = { [0, v2α ∗]T }
+and if β ≥ 2(1− η), then we have
+S = { [(v2 − v1)α ∗, v1] T } . Hence, in what follows, we consider a setting for which the following assumption holds. Assumption 1. We suppose β ≤ min{2η, 2(1 − η)}. In this case, as Lemma 1 establishes, any optimal pricing rule assigns price v1 to any market given observation α̂ < t∗ and price v2 to any market after observing α̂ > t ∗. Next, the subsequent proposition breaks down the impact of the privacy mechanism on the set S , distinguishing between the direct and the indirect effects of privacy. Proposition 2. Suppose Assumption 1 holds. Then, S is given by
+S =
+{
+β [ t∗α∗(v2 − v1), t ∗v1 + (1− t ∗)α∗v2 ]⊤ + (1− β)s′ ∣ ∣ ∣ s′ ∈ S ′ } , (11)
+where S ′ is defined as
+S ′ :=
+{
+[
+γ1α1(v2 − v1), γ1v1 + γ2α2v2
+]⊤ ∣ ∣
+∣ (12)
+α1 ∈ [0,min{t ∗, α∗}], α2 ∈ [max{t ∗, α∗}, 1], γ1 and γ2 ∈ [0, 1], γ1 + γ2 = 1, γ1α1 + γ2α2 = α ∗
+}
+. This result shows that the set S undergoes three distinct changes as β varies. First, the set S ′ is scaled by a factor 1 − β. Second, its location in the plane shifts due to the vector β [ t∗α∗(v2 − v1), t ∗v1 + (1 − t ∗)α∗v2 ]⊤ added to it. These two changes are because the producer observes a completely random market with probability β and sets the price based on this random market, resulting in a constant expected utility that is independent of the true market. Lastly, the shape of S evolves due to the corresponding changes in the shape of S ′. Notice that the shape of S ′ is influenced by t∗, which represents the producer’s threshold for the proportion of highvalue customers in order to choose the higher price. In fact, substituting t∗ in the definition of S ′ with η (the optimal threshold in the non-private case) aligns S ′ precisely with the set S in the absence of privacy constraints. This last change can be interpreted as the indirect impact of the privacy mechanism, which is rooted in the producer adjusting its pricing strategy due to the noisy observation. Also, notice that Proposition 2 suggests that it suffices to focus only on segmentations with two markets (1− α1, α1) and (1− α2, α2) with probabilities γ1 and γ2, respectively. Moreover, the first segment’s fraction of high values, i.e., α1, is less than or equal to t ∗, and the other’s (i.e., α2) is greater than or equal to t∗. In the appendix, we characterize the set S ′ and show that it takes the form of a triangle, with its shape changing as β varies. That said, we next formally characterize the set S , taking into account all these three factors. Theorem 1. Suppose Assumption 1 holds. Then, the set S is the triangle ABC , given by
+A = βc+ (1− β)A′ with A′ :=
+[
+0, α∗v2 + v1 (t∗ − α∗)+
+t∗
+]⊤
+,
+B = βc+ (1− β)B′ with B′ :=
+[
+0, α∗v2 + (1− α ∗)v1
+]⊤
+,
+C = βc+ (1− β)C ′ with C ′ :=
+[
+α∗(v2 − v1)− (v2 − v1) (α∗ − t∗)+
+1− t∗ , v1 + (v2 − v1) (α∗ − t∗)+ 1− t∗
+]⊤
+,
+(13)
+where
+c = [ t∗α∗(v2 − v1), t ∗v1 + (1− t ∗)α∗v2 ]⊤ . (14)
+To better understand this characterization, recall that, as we discussed earlier, the effect of the privacy mechanism can be decomposed into two components: a direct one and an indirect one. The direct effect is due to the market being masked with probability β and the producer choosing the price based on pure noise observation. This results in a constant term in utilities that is independent of the true market, captured by the term βc in Equation (13). The indirect effect of privacy arises from changes in the producer’s pricing strategy and is represented by the difference between triangle A′B′C ′ and the non-private case TQR in Figure 1. Specifically, the lines A′B′ and B′C ′ are analogous to the corresponding lines QT and QR in the non-private case, where the first represents the condition that consumer utility is non-negative, and the second shows that the sum of consumer and producer utilities is less than the maximum possible surplus. However, line A′C ′ is where the indirect effect of privacy is observed. In the non-private case, the line TR is parallel to the x-axis, since the producer utility is lower bounded by the utility obtained from uniform pricing. In the presence of a privacy constraint, this line is no longer parallel to the x-axis. Moreover, this indirect effect of privacy becomes more pronounced when considering K > 2 values, as this lower boundary of the set S is no longer a straight line but becomes piece-wise linear. 3.1 illustration of the set s As equation (13) in Theorem 1 suggests, there are two main regimes in characterizing the triangle S : t∗ ≥ α∗ and t∗ ≤ α∗, where t∗ itself depends on η and β. We next discuss how the set S evolves with varying β, for the two cases of α∗ ≥ η and α∗ ≤ η. Figure 4 depicts S for the case α∗ ≥ η. In particular, Figure 4d illustrates the non-private case where the triangle ABC coincides with the triangle TQR that we introduced in the Introduction (see Figure 1). In the presence of privacy mechanism, triangle TQR maps to triangle T̃BR̃ after going through the shifting and scaling operators, meaning that the difference between triangles ABC and T̃BR̃ is purely attributed to the indirect effect of privacy. Figure 4a illustrates the case η ≤ 1/2 which implies α∗ ≥ η ≥ t∗. In this case, as β decreases
+from 2η to 0, t∗ increases from 0 to η which implies C moving down from B to R̃. Figures 4b and 4c correspond to the case α∗ ≥ η ≥ 1/2. Notice that η ≥ 1/2 implies t∗ ≥ η, and hence in this case, we could have either α∗ ≥ t∗ or α∗ ≤ t∗, depending on the value of β. Let β̃ be the value of β for which t∗ = α∗, i.e., η − β̃/2
+1− β̃ = α∗. (15)
+Figure 4b illustrates the case β ≥ β̃ which implies t∗ ≥ α∗ ≥ η. As β decreases from 2(1 − η) to β̃, t∗ decreases from 1 to α∗ which implies A moving from B down towards T̃ . Finally, Figure 4d illustrates the case β ≤ β̃ which implies α∗ ≥ t∗ ≥ η. In this case, as β decreases from β̃ to 0, t∗ decreases from α∗ to η which implies C moving up towards R̃. Similarly, Figure 5 illustrates the triangle ABC for the case α∗ ≤ η and for different values of η and β. The primary distinction in this scenario is that, in the non-private case, the optimal uniform price is v1 instead of v2. In Figure 5a, as β decreases from 2η to β̃, t∗ increases from 0 to α∗ which implies C moving down towards R̃. In Figure 5b, as β decreases from β̃ to 0, t∗ increases from α∗ to η which implies
+A moving up towards T̃ . In Figure 5c, as β decreases from 2(1 − η) to 0, t∗ decreases from 1 to η and hence A moves down from B to T̃ . 3.2 does imposing privacy hurt or help the producer and the consumers? We next discuss that imposing privacy always hurts the producer but, interestingly, may hurt or help consumers. We do so by comparing the set S with the non-private case in Figures 4d and 5d, studied in Bergemann et al. [2015]. Imposing privacy helps consumers to increase their minimum utility. In the non-private case, the consumer’s utility can be as low as zero. However, in the private case, a minimum utility of βt∗α∗(v2 − v1) is ensured for the consumer. Imposing privacy hurts the producer by decreasing its minimum utility. In the non-private case, the line TR represents the optimal uniform pricing, which constitutes the minimum utility
+for the producer. However, in the private case, the producer’s utility falls below this value for two reasons. One reason is that the triangle ABC always intersects with the line T̃ R̃, and the producer’s utility at line T̃ R̃ is already (weakly) smaller than the utility corresponding to line TR. To see the latter, observe that the producer’s utility corresponding to line T̃ R̃ is given by
+β ( t∗v1 + (1− t ∗)α∗v2 ) + (1− β) ( producer utility at line TR ) . (16)
+Notice that this term is a convex combination of two components: the first component is an average of α∗v2 and v1, and the second component is the maximum of these two terms. Hence, the utility expressed in the equation above is less than the maximum of α∗v2 and v1, i.e., the producer utility at line TR. Moreover, as demonstrated by Figures 4 and 5, when α∗ ≥ η ≥ 12 or α ∗ ≤ η ≤ 12 , certain segmentations may yield a producer’s utility even lower than that at the line T̃ R̃. In the next section, when we explore the case with K values, we precisely characterize when this phenomenon occurs in the general case. Imposing privacy hurts the producer by decreasing its maximum utility. In the non-private case, the maximum utility corresponds to first-degree price discrimination (i.e., point Q) is given by α∗v2 + (1− α ∗)v1. In the private case, the maximum producer utility aligns with point B in all cases and is equal to
+β ( t∗v1 + (1− t ∗)α∗v2 ) + (1− β) ( α∗v2 + (1− α ∗)v1 ) , (17)
+which is lower than in the non-private case. Imposing privacy can hurt consumers by decreasing their maximum utility. For consumers, the maximum utility could either increase or decrease. In the non-private case, the highest utility the consumer can achieve is at point R. This could approach zero as α∗ nears one. However, as mentioned earlier, the consumers’ utility in the private case has a minimum of βt∗α∗(v2 − v1), which does not diminish to zero as α∗ increases to one. Thus, the maximum possible utility for consumers could be higher in the private case. To illustrate a potential decrease, consider η ≤ 1/2 ≤ α∗, where consumers’ maximum utility corresponds to point C in Figure 4a. As β increases to 2η, C converges to B, and B itself moves towards a point on the y-axis, leading to consumers’ utility approaching zero. 3.3 the indirect effect of privacy Next, we shift our focus to the shape of S compared to the triangle T̃BR̃. As we mentioned earlier, this comparison captures the indirect effect due to the change in the producer’s pricing strategy and illustrates how various segmentations can lead to different utilities for the producer
+and consumer. For example, as discussed before Assumption 1, when β is sufficiently large, S reduces to a single point, indicating no advantage in price discrimination. The case α∗ ≥ η : First, when η ≤ 1/2, indicating that the difference between the high and low values is significant, the set S loses the ACR̃ portion due to the indirect effect of privacy. In other words, the change in pricing strategy primarily eliminates segmentations beneficial to the consumer while retaining those favorable to the producer. To see why this occurs, notice that the consumer gains utility when their value for the product is high (i.e., v2), but the market is priced low (i.e., v1). However, with a small η, the threshold t ∗ decreases, implying that the high value’s gain is substantial enough for the producer to risk setting the market price at v2. This shift adversely affects the consumers’ utility. Second, when η ≥ 1/2, as discussed earlier, the threshold t∗ becomes larger than η. In other words, the difference between the high and low values is not significant, and hence, the producer is more inclined to use the lower price v1. This effect intensifies when β is very large, as t ∗ then exceeds both α∗ and η. It implies that even the aggregated market, priced at v2 in the non-private case, is now priced at v1 with a probability of (1 − β) + βt ∗ (illustrated by point C in Figure 4b). Roughly speaking, in this scenario, a segment is more likely to be priced at v1, unless it has a very high proportion of consumers with value v2, which corresponds to point B and nearby points where first-degree price discrimination occurs with two completely separate segments. This is why, in this case, S predominantly encompasses the area near the line BC and loses out on the area around A, which corresponds to segments of a more mixed nature priced at v2. Finally, when η ≥ 1/2 but β is small, the previously described situation mitigates, and hence the whole triangle ABR̃ is recovered. However, the producer still remains slightly inclined to price markets at v1, which is why points like C fall below the uniform pricing line AR̃. However, as β decreases, C moves towards R̃, indicating that Figure 4c gradually aligns with Figure 4d. The case α∗ ≤ η : With η ≥ 1/2, as illustrated in Figure 5c, we observe that the triangle ACT̃ is eliminated due to the privacy mechanism. This leads to two intuitions: first, the privacy mechanism benefits the consumer by eliminating segmentations that yield low utility for them. Second, it does not significantly affect segmentations that distinctly separate high and low value consumers. The reason for these phenomena lies in the fact that η ≥ 1/2 suggests a small difference between high and low values, prompting the producer to favor pricing the market at v1 over v2. This inclination minimally impacts segmentations that effectively distinguish between high and low value consumers (represented by point B and its neighboring points). Additionally, incorrectly setting the price to v1 increases the consumer’s utility. With η ≤ 1/2, the producer is more inclined to set the market price at v2. However, the assumption α∗ ≤ η indicates a scarcity of high-value customers, making v1 the optimal uniform price. This is why in Figures 5a and 5b, we observe points below the uniform pricing line T̃ R̃. This effect is particularly intensified when β is high, i.e., Figure 5a, as the threshold for setting
+the price high (i.e., t∗) approaches zero. This adversely impacts consumers since consumers gain utility only when they have a high value and the marker is priced at the low value v1. 3.4 varying the privacy parameter So far, we have shown that implementing the privacy mechanism reduces both the minimum and maximum possible utility of the producer, in contrast to the non-private case, while increasing the minimum utility for the consumer. A natural question arises: do these changes amplify as the privacy parameter increases? For instance, does an increase in the privacy parameter β lead to a further decrease in the producer’s maximum utility and an increase in the minimum consumer utility? Interestingly, this is not always the case! In other words, while the privacy constraint always reduces the maximum producer utility, more privacy does not necessarily equate to a more significant reduction in this utility. Similarly, although the privacy mechanism ensures a non-zero minimum utility for the consumer, this minimum does not always increase with a higher privacy parameter. We next formalize this observation. The impact of increasing the privacy parameter on the producer utility: Let us start with the maximum possible producer utility. Notice that the maximum producer utility corresponds with the point B in Figures 4 and 5. Lemma 2. The maximum producer utility across all segmentations is a decreasing function of β over the interval [0,min{2η, 2(1 − η)}] if and only if α∗, η ≥ 1/2 or α∗, η ≤ 1/2. We defer the proof to the appendix. This result suggests that when α∗ ≥ 1/2 ≥ η or when α∗ ≤ 1/2 ≤ η, we could see an increase in the maximum producer utility by increasing the privacy parameter. Next, we provide an intuition for this result and explain why increasing the privacy parameter might actually lead to an increase in the producer’s utility in these cases. The maximum utility for a producer aligns with first-degree price discrimination, where consumers with identical values are grouped into a single segment. With privacy implemented, each segment is subject to potential alteration with a certain probability, possibly resulting in suboptimal pricing by the producer. As β increases, the likelihood of such occurrences also rises. Consider the scenario where η is close to one, i.e., the high and low values are relatively close. In this case, the cost of mistakenly pricing a segment of high-value customers at a lower price is not that severe. However, the suboptimal pricing of a segment of low-value consumers at a higher price can be considerably costly, as the revenue will be completely lost. This especially intensifies when the aggregated market is predominantly composed of low-value consumers, i.e., when α∗ is small. This scenario, where η is large and α∗ is small, is one of the two cases where the nonmonotonicity occurs. In this context, mistakingly offering a low price to high-value consumers is not detrimental. However, mistakingly offering a high price to low-value consumers can significantly reduce the producer’s utility. Why might increasing privacy potentially enhance the producer’s
+maximum utility in this scenario? Because higher β induces a more conservative pricing strategy, making the producer more inclined to opt for the lower price. Specifically, for η > 1/2, the pricing threshold t∗ shifts from η towards 1 as β increases, implying that producers are less likely to select the higher price as the privacy parameter grows. Consequently, the risk of mistakingly offering a low price to high-value consumers diminishes, potentially boosting the producer’s maximum utility. The other instance of nonmonotonicity arises when η is small and α∗ is large. In this scenario, there is a substantial difference between high and low values. In such cases, mistakenly offering a low price to high-value consumers can be particularly detrimental, leading to a significant reduction in maximum producer utility as β increases. Consequently, with the increase of β, and as the observed market becomes less informative, the producer becomes more inclined to take the risk of selecting the higher price. In such circumstances, and when the market is mainly composed of high-value customers, this riskier pricing strategy might lead to an increase in producer utility. The impact of increasing the privacy parameter on the consumer utility:
+Lemma 3. The minimum consumer utility across all segmentations is an increasing function of β over the interval the interval [0,min{2η, 2(1 − η)}] if and only if η ≥ 1/2. This result suggests that, for any η < 1/2, the minimum consumer utility exhibits nonmonotonic behavior as β varies within the interval [0, 2η]. For producer utility, as we noted, an increase in β when η is small leads to a preference for the higher price. Now, it is important to note that the consumer utility is non-zero only when their value is higher than the chosen price, an occurrence that becomes less frequent if the producer is more willing to select the higher price. Consequently, an increase in the privacy parameter could lead to a decrease in the minimum consumer utility in such scenarios. 4 price discrimination limits under privacy: the general case Here, we turn our focus to the general case with K > 2 values. As we establish, once we consider the general case, the fundamental difference between our characterization and that of Bergemann et al. [2015] without privacy becomes more apparent. In particular, the set of possible consumer and producer utilities is no longer a triangle and instead is a more nuanced polytope that we will characterize. However, we establish that many of the insights that we derived in the special case of K = 2 continue to hold in the general setting as well. We make use of the following notation that enables driving the analogue of Lemma 1 in the general case. For any i ∈ [K], let X βi ⊆ X be the set of (observed) markets for which vi is an optimal price, i.e.,
+X βi = { x̂ ∣ ∣ ∣ Up(vi|x̂) ≥ Up(vj |x̂) for any j ∈ [K] } , (18)
+where Up(·|x̂) is defined in (5). Going back to the case K = 2, X β 1 and X β 2 corresponds to α ∈ [0, t ∗] and α ∈ [t∗, 1], respectively. The following result establishes the necessary and sufficient condition for X βk to be non-empty. Lemma 4. For any i ∈ [K], the set X βi is non-empty if and only if β ≤ β̄i, where β̄i is the unique solution of the following equation 5:
+β̄i 1− β̄i := max j
+K (
+vi − 1(j < i)vj
+)
+[
+(K + 1− j)vj − (K + 1− i)vi
+]
++
+. (19)
+Note that β ≥ β̄i implies that price vi is not optimal for any observed market, thereby precluding the producer from choosing vi. To better understand this, recall that the expected utility of the producer, given an observed market x̂ and upon choosing price vi, denoted as Up(vi|x̂), is given by
+Up(vi|x̂) = (1− β) Up(vi, x̂) + β Ex∼unif(X ) [Up(vi, x)] . (20)
+Essentially, the expected utility of the producer can be viewed as a convex combination of their utility in the fully observed market scenario (analogous to the non-private case) and their utility under complete uncertainty, where they rely on a uniform prior over markets. As β increases, indicating a noisier observed market, the weight the producer places on their utility from a uniform prior grows. Consequently, they may opt not to select certain prices that would result in lower utility when the market is drawn from a uniform distribution. Specifically, for the case when K = 2, one can verify β̄1 = 2(1 − η) and β̄2 = 2η. This is the rationale behind imposing Assumption 1 in the previous section, which guarantees that in the scenario where K = 2, both prices are viable options. If this were not the case, only one pricing option would remain, causing the set S to reduce to a single point. Our next result extends Proposition 2 to this general case. Proposition 3. The set S can be represented as
+S = βc+ (1− β)S ′, (21)
+where c ∈ R2 is a constant vector, given by
+c =
+[
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗),
+K ∑
+k=1
+P(X βk ) Up(vk, x ∗)
+]⊤
+, (22)
+where P(·) denotes the uniform distribution over X , and Uc(·, ·) and Up(·, ·) are as defined in (4). Moreover,
+5[z]+ denotes max{z, 0}. the set S ′ is given by
+S ′ =
+{
+[ K ∑
+k=1
+γk Uc(vk, xk),
+K ∑
+k=1
+γk Up(vk, xk) ]⊤ ∣ ∣ ∣ xk ∈ X β k , γk ∈ [0, 1],
+K ∑
+k=1
+γkxk = x ∗,
+K ∑
+k=1
+γk = 1
+}
+. (23)
+This result shows that, in the general case, and similar to the case when K = 2, the set S , which depicts the limits of price discrimination under privacy mechanisms, is influenced by three factors: a constant shift βc, a scaling factor 1−β, and the set S ′ that determines its shape. Consequently, the insights derived for K = 2 based on this characterization extend to the general case. In particular, the shift βc indicates that, in contrast to the non-private case, the consumers’ minimum utility is not zero. Moreover, the scaling factor 1− β suggests that market segmentation generally becomes less impactful as the privacy factor β increases. Our primary goal now is to specify the set S ′. As we discussed in the case of K = 2, the set S ′ captures the indirect impact of privacy, as it illustrates the effects of the change in the producer’s pricing strategy, given that they know the privacy mechanism is applied. More specifically, S ′ is the set of potential pairs of utilities for the consumer and producer when the producer accurately perceives the segmented markets (as in the non-private case) but adopts the pricing rule from the private case (associated with sets {X βk }k) rather than the optimal pricing rule for the non-private scenario. In fact, in the non-private case with β = 0, this set aligns with S . Proposition 3 also suggests that our analysis can be limited to segmentations where, for any value vk, there is at most one segment whose optimal corresponding price is vk. This effectively broadens the insights of Proposition 2 from the case of K = 2 and simplifies the characterization of S ′. As we stated in the previous section, the set S ′ is a triangle for K = 2. In general, we next establish that it is a convex polygon. Theorem 2. Let P denote a convex polytope in RK 2 , represented by the variables {z(i, j)}Ki,j=1 and the following equations:
+z(i, 1) ≥ · · · ≥ z(i,K) ≥ 0 for all i ∈ [K], (24a) z(i, i)vi − z(i, j)vj ≥ β
+K(1− β) z(i, 1)
+(
+(K + 1− j)vj − (K + 1− i)vi
+)
+for all i, j ∈ [K], (24b)
+K ∑
+i=1
+z(i, j) =
+K ∑
+k=j
+x∗(vk) for all j ∈ [K]. (24c)
+Then, the set S ′, given in (23), can be cast as a linear transformation of P from RK 2 to R2, given by
+S ′ =
+ 
+
+K−1 ∑
+i=1
+K ∑
+j=i+1
+(vj − vj−1)z(i, j),
+K ∑
+i=1
+viz(i, i)
+ 
+
+. (25)
+Proof sketch: To understand how this result is established, recall the definition of S ′, which in-
+volves K markets x1, · · · , xK , with each market xi ∈ X β i . This implies that vi is an optimal price for xi. Now, let y(i, ·) represent the complementary cumulative distribution function of market xi, defined as:
+y(i, j) :=
+K ∑
+k=j
+xi(vk). It is evident that:
+1 = y(i, 1) ≥ · · · ≥ y(i,K) ≥ 0 for all i ∈ [K]. Furthermore, we verify that vi being the optimal price for xi necessitates:
+y(i, i)vi − y(i, j)vj ≥ β
+K(1− β)
+(
+(K + 1− j)vj − (K + 1− i)vi
+)
+for all i, j ∈ [K]. (26)
+Therefore, conditions (24a) and (24b) are satisfied if we substitute z(·, ·) with y(·, ·). Additionally, the aggregated market imposes the condition ∑K
+k=1 γkxk = x ∗. Using y(·, ·), this condition can be
+represented as: K ∑
+i=1
+γiy(i, j) = K ∑
+k=j
+x∗(vk) for all j ∈ [K]. (27)
+By defining z(i, j) = γiy(i, j), we immediately see that (24c) is valid. The other two conditions, (24a) and (24b), are also satisfied since all y(i, ·) terms are multiplied by the same variable γi. Therefore (24) provide a representation for the space of segmentations in the definition S ′, i.e., (γk) K k=1 and (xk) K k=1, in form of a convex polytope. It remains to show that the linear mapping (25) is equal to the consumer and producer utilities. We defer this part to the appendix. We should highlight that the proof outlined above provides a construction for a segmentation
+to achieve any feasible point for the consumer and producer utilities. Before proceeding, let us highlight that in the special of β = 0, the polytope characterized in Theorem 2 simplifies to a triangle as characterized in Bergemann et al. [2015]. However, in our setting, with privacy, it takes a more nuanced form. Let us present an example illustrating some potential shapes of S ′. This example will serve as a basis to introduce and motivate several results concerning S ′ and, consequently, the set S . Example 1. Consider the case K = 5 with values [vk] 5 k=1 = [0.8, 2, 3, 4.2, 5] and β = 0.3. Figure 6 illustrates S ′ for three distinct aggregated market values x∗. Specifically, the aggregated markets associated with Figures 6a, 6b, and 6c are (0.2, 0.1, 0.4, 0.2, 0.1), (0.2, 0.3, 0.2, 0.2, 0.1), and (0.2, 0.1, 0.1, 0.05, 0.55), respectively. The dashed triangle TQR in the figures represents the nonprivate case, in which, as previously stated, the set S ′ coincides with the set S . Notice that the point Q in Figure 6 corresponds to the first-degree price discrimination and is
+given by (
+0, K ∑
+k=1
+x∗(vk)vk
+)
+. We next list a number of results regarding S and S ′. The first one is a straightforward consequence of Theorem 2:
+Corollary 1. The set S ′ forms a polygon and is situated to the right of the y-axis and to the left of the line passing through points Q and R, which represents the total surplus equal to the maximum possible surplus, i.e., ∑K
+k=1 x ∗(vk)vk. The figures in Figure 6 suggest that the set S ′ includes the point Q. This observation holds true when β is sufficiently small, ensuring that all values within the support of x∗ remain viable as optimal prices. In such scenarios, a segmentation that groups all consumers with the same value into the same segment can attain point Q. However, if β is so large that, for some k, the value vk is never selected by the producer while x∗(vk) > 0, the producer cannot achieve the maximum utility as the consumers with value vk will never be priced at vk. We formalize this observation in the following corollary:
+Corollary 2. The set S ′ includes the point Q if and only if
+β ≤ min k:x∗(vk)>0 β̄k. Returning to Example 1, we calculate that (β̄k) 5 k=1 equals (0.44, 0.91, 1, 0.91, 0.54). Therefore, with β = 0.5, for instance, one of the values (v1) becomes infeasible as optimal market prices. Figure 7 displays S ′ using the parameters from Example 1, but with β = 0.5 instead of β = 0.3. As anticipated, the point Q is no longer included in the set S ′. Now, let us consider what these two facts imply for the set S , i.e., the constraints on price
+discrimination under privacy considerations. Fact 1. The maximum possible utility of the producer from market segmentation is always weakly smaller when a privacy mechanism is applied compared to the non-private case. To understand this, note that the maximum utility of the producer in the non-private case
+corresponds to point Q, which is expressed by
+K ∑
+k=1
+x∗(vk)vk. (28)
+However, in the private case, as Proposition 3 demonstrates, the utility is bounded by
+β
+(
+max vk
+Up(vk, x ∗)
+)
++ (1− β) ( maximum producer utility in S ′ ) . (29)
+This term is a convex combination of two components, where the second component is at most equal to (28) (when Q is included in S ′), and the first component corresponds to the optimal uniform pricing (line TR) and is weakly smaller than (28). This confirms the reduction in the maximum producer utility under privacy. Furthermore, when β is sufficiently large such that Q is not included in S ′, the second component in (29) also becomes strictly smaller than (28). Now, let us focus on the impact of the privacy mechanism on the minimum producer utility. In the non-private case, the minimum producer’s utility is represented by the line TR. To compare this with the private case, we need to examine the lower boundary of S ′. Observing Figures 6 and 7, it appears that S ′ consistently intersects with line TR and sometimes even crosses this line. We formalize this observation in the following result:
+Proposition 4. Suppose β > 0 and x∗(vk) > 0 for all k ∈ [K]. The lowest point of the set S ′ lies on or beneath the line that represents optimal uniform pricing in the non-private case, i.e., line TR. Moreover, it is below this line if and only if the optimal pricing for the non-private case and the fully private case differ, i.e., there exists i such that
+(K + 1− i)
+K vi >
+(K + 1− j)
+K vj for all j ∈ argmax k∈[K] Up(vk, x
+∗). (30)
+We defer the proof of this proposition to the appendix. Revisiting Example 1, we find that while the condition (30) is not met for x∗ corresponding to Figure 6a, it is fulfilled for the aggregated markets associated with Figures 6b and 6c. Consequently, the set S ′ intersects with line TR in the former case without crossing it, whereas in the latter two cases, it extends below this line. For the case K = 2, the condition (30) translates into either α∗ ≥ η ≥ 1/2 or α∗ ≤ η ≤ 1/2. The former condition, α∗ ≥ η ≥ 1/2, corresponds to Figures 4b and 4c. It is important to note that these figures depict the set S , which is derived from the set S ′ after applying the scaling and shift described in Proposition 3. Specifically, line TR in S ′ corresponds to line T̃ R̃ in these figures. Consequently, the lowest point of S ′ maps to point C that is located below the line T̃ R̃ in both cases. In contrast, for Figure 4a, where the condition (30) is not met, the lowest point of S ′ maps to point A, which lies precisely on the line T̃ R̃. Similarly, for the case α∗ ≤ η ≤ 1/2, as illustrated in Figures 5a and 5b, the lowest point of S ′ maps to point A which is situated below the line T̃ R̃. It is worth emphasizing that condition (30) can indicate the ambiguity that a privacy mechanism introduces into the producer’s pricing strategy. Note that when this condition is not met, it implies that the optimal pricing strategy remains constant, regardless of the privacy level. This makes the privacy mechanism less detrimental to the producer’s utility. Conversely, when this condition is satisfied, it indicates that the optimal strategy varies with the level of privacy, thereby diminishing the producer’s utility due to suboptimal pricing decisions. Corollary 3. The minimum utility of the producer across all segmentations is always weakly smaller when a privacy mechanism is applied compared to the non-private case. To see why this result holds, notice that, according to Proposition 3, the minimum utility of the
+producer is given by
+β
+(
+K ∑
+k=1
+P(X βk ) Up(vk, x ∗)
+)
++ (1− β) ( minimum producer utility in S ′ ) , (31)
+which is a convex combination of two terms. The first one is upper bounded by maxvk Up(vk, x ∗), i.e., the minimum utility of the producer in the non-private case (corresponding to line TR). Proposition 4 implies that the minimum producer utility in S ′ is (weakly) smaller than this term which establishes Corollary 3. We now shift our attention to the consumer’s utility. As previously discussed following Proposition 3, the privacy mechanism guarantees a non-zero minimum utility for the consumer, a stark contrast to the non-private case where the consumer’s minimum utility can be zero. In the following result, we explore another phenomenon that contributes to consumer’s minimum utility. Fact 2. The set S ′ is distanced from the y-axis by a minimum of x∗(vK)(vK − vK−1) when β > β̄K . The main point to note is that for sufficiently large values of β, the set S ′ has a positive distance from the y-axis. This results in a guaranteed additional positive minimum utility term for the consumer within the set S . An illustration of this phenomenon is provided in Figure 8, which
+displays the set S ′ for the values specified in Example 1, but with β = 0.6. As stated earlier, in Example 1, β̄5 equals 0.54. Finally, as we discussed following Theorem 1 through examples with K = 2, the maximum utility for consumers, in general, could either increase or decrease under the privacy mechanism. The following result better highlights why both cases are possible. Proposition 5. Suppose β < mink β̄k. (i) Assume v1 is the optimal uniform price in the non-private case, and the values satisfy the condition:
+vi+1 ≥ K − i
+K + 1− i vi for all i ∈ [K − 1]. (32)
+Then, the maximum utility for the consumer is a decreasing function of β. (ii) Assume vK is the optimal uniform price in the non-private case, and the values satisfy the condition:
+vi+1 ≤ K − i
+K + 1− i vi for all i ∈ [K − 1]. (33)
+Then, there exists α̃ and β̃ > 0 such that the maximum utility for the consumer is an increasing function over the interval [0, β̃] when x∗(vK) ≥ α̃. The proof is provided in the appendix. In particular, for the case when K = 2, the conditions outlined in part (i), which lead to a decrease in maximum consumer utility under privacy, translate to α∗ ≤ η ≤ 1/2. On the other hand, the conditions of part (ii), which implies an increase in maximum consumer utility in the presence of the privacy mechanism, correspond to α∗ ≥ η ≥ 1/2 (also, as established in the proof, we can set α̃ = 12−η in this case). But what differentiates these two cases? Why does privacy help consumer utility in one scenario while hurting it in another? The rationale here is similar to the explanations provided in Section 3.4. The condition (32) indicates that under a uniform market prior, the highest price vK
+leads to the maximum expected utility for the producer, while the lowest price v1 yields the minimum. Consequently, when privacy introduces ambiguity, the producer has more incentive to prefer higher prices. However, the assumption that v1 is the optimal uniform price suggests that the market is mainly composed of low-value customers. Therefore, a tendency to set higher prices due to privacy considerations adversely affects consumer utility. In other words, privacy prompts the producer to risk setting higher prices, resulting in diminished consumer utility. Conversely, the condition (33) means that under a uniform market prior, the lowest price v1 leads to the highest expected utility for the producer, while the highest price vK offers the least. Thus, with privacy in play, the producer is likely to adopt a more conservative stance and favor lower prices. That said, given that vK is the optimal uniform price and x ∗(vK) ≥ α̃, we have a market with a majority of high-value customers who benefit more when the market price is set lower. In summary, applying the privacy mechanism makes the producer to take a more conservative pricing approach, resulting in more consumers purchasing the product at a lower price than their value. 5 conclusion This paper explores the intersection of price discrimination and consumer privacy. Building upon the framework of Bergemann et al. [2015], we first introduce a privacy mechanism that adds a layer of uncertainty regarding consumer values, thereby directly impacting both consumer and producer utilities in a market setting. We use a novel analysis based on a merging technique to characterize the set of all pairs of consumer and producer utilities and establish that, unlike the existing results, it is not necessarily a triangle. Instead, it can be viewed as the linear mapping of a high-dimensional polytope into R2. We used our characterization to derive several insights. In particular, we prove that imposing a privacy constraint does not necessarily help the consumers and, in fact, can reduce their utility. We view our paper as a first attempt to understand how user privacy impacts the limits of price discrimination. There are several exciting directions to explore in this vein. For instance, an interesting future direction is to extend our results to a setting with a multiproduct seller (similar to that of Haghpanah and Siegel [2022]). 6 acknowledgment Alireza Fallah acknowledges support from the European Research Council Synergy Program, the National Science Foundation under grant number DMS-1928930, and the Alfred P. Sloan Foundation under grant G-2021-16778. The latter two grants correspond to his residency at the Simons Laufer Mathematical Sciences Institute (formerly known as MSRI) in Berkeley, California, during the Fall 2023 semester. Michael Jordan acknowledges support from the Mathematical Data Science program of the Office of Naval Research under grant number N00014-21-1-2840 and the European
+Research Council Synergy Program. a deferred proofs  a.1 proof of proposition 1 In our case, the prior distribution is uniform, and the posterior distribution after observing the output of the privacy mechanism is uniform only with probability β. Therefore, for Y = Mβ(X), we have
+TV(pX|Y (·|Y ), pX(·)) = 1− β
+and therefore the privacy-leakage defined in Definition 1 becomes 1− β. a.2 proof of lemma 1 Notice that the producer’s utility by setting the price equal to v1 is given by Up(v1|x̂) = v1 as all the consumer will buy the product at this price. For price v2, the expected utility is given by
+Up(v2|x̂) = v2
+(
+(1− β)α̂+ β
+∫ 1
+0 α dα
+)
+= v2
+(
+(1− β)α̂ + β
+2
+)
+. (34)
+Comparing this with Up(v1|x̂) = v1 completes the proof. a.3 proof of proposition 2 First, notice that different optimal pricing rules only differ in how they price a market upon observing α̂ = t∗, since in this situation both prices v2 and v1 are optimal. Therefore, we can parameterize the optimal pricing rules by the probability of setting the price to v2 given α̂ = t ∗. This probability is denoted by δ ∈ [0, 1] and its corresponding optimal pricing rule is represented by φδ(·). Next, we characterize the expected utilities of consumer and the producer from a market α. Given the above discussion, and with a slight abuse of notation, we denote these expected utilities by U δp (·) and U δ c (·), respectively. Lemma 5. Consider a market x = (1−α,α) and a pricing rule φ(·) that sets the price of a market v2 with probability δ in the case of observing α̂ = t∗. (i) If α < t∗, then U δp (x) = f1(α) and U δ c (x) = g1(α), where f1(·) and g1(·) are given by
+f1(α) = (1− β + βt ∗)v1 + β(1− t ∗)αv2, g1(α) = (1− β + βt ∗)α(v2 − v1). (ii) If α > t∗, then U δp (x) = f2(α) and U δ c (x) = g2(α), where f2(·) and g2(·) are given by
+f2(α) = βt ∗v1 + (1− β + β(1− t ∗))αv2, g2(α) = βt ∗α(v2 − v1). (iii) If α = t∗, then U δp (x) and U δ c (x) are given by
+U δp (x) = (1− δ)f1(t ∗) + δf2(t ∗), U δc (x) = (1− δ)g1(t ∗) + δg2(t ∗). Proof. Suppose α < t∗. Then, with probability 1 − β + βt∗, the realized α̂ falls within the interval [0, t∗), and hence the optimal price is v1 as per Lemma 1. In this scenario, the producer’s utility would be v1 and the consumer’ utility would be α(v2−v1). Also, with probability β(1− t ∗), α̂ falls into the interval (t∗, 1], and the market would be priced at v2. Here, the producer’s utility is αv2 and the consumer’ utility is zero. Summing these scenarios gives the expected utilities. It is also worth noting that the probability of α̂ = t∗ is zero in this case. The case α > t∗ can be argued similarly. Finally, for the case α = t∗, with probability 1 − β we have α̂ = t∗ which leads to choosing price v2 with probability δ and price v1 with probability 1− δ. This observation establishes the final result. Now, we turn back to our goal of characterizing the set of utility pairs (8). In general, searching over the entire set of segmentations and pricing rules can be challenging. However, the following lemma enables us to narrow our search without loss of generality. Lemma 6. Suppose Assumption 1 holds. Then,
+S =
+{
+[ γ1g1(α1) + γ2g2(α2), γ1f1(α1) + γ2f2(α2) ]⊤ ∣ ∣ ∣ (35)
+α1 ∈ [0,min{t ∗, α∗}], α2 ∈ [max{t ∗, α∗}, 1], γ1 and γ2 ∈ [0, 1], γ1 + γ2 = 1, γ1α1 + γ2α2 = α ∗
+}
+Proof. We first prove that for any segmentation σ ∈ Σ and optimal pricing rule φδ(·), there is a representation in the form of right hand side of (35) such that
+∑
+x∈supp(σ)
+σ(x)U δp (x) = γ1f1(α1) + γ2f2(α2) and ∑
+x∈supp(σ)
+σ(x)U δc (x) = γ1g1(α1) + γ2g2(α2). (36)
+To simplify the notation, we use σ(α) and U δp (α) to denote σ(x) and U δ p (x) when x = (1 − α,α). Notice that
+∑
+α:σ(α)>0
+σ(α)U δp (α) = ∑
+α<t∗&σ(α)>0
+σ(α)U δp (α) + ∑
+α>t∗&σ(α)>0
+σ(α)U δp (α) + σ(t ∗)U δp (t ∗)
+= ∑
+α<t∗&σ(α)>0
+σ(α)f1(α) + ∑
+α>t∗&σ(α)>0
+σ(α)f2(α) + σ(t ∗) ((1− δ)f1(t ∗) + δf2(t ∗)) , (37)
+where the last equation uses Lemma 5. Now, notice that f1(·) and f2(·) are linear functions. Therefore, we can cast (37) as
+γ1f1(α1) + γ2f2(α2)
+with
+γ1 = ∑
+α<t∗&σ(α)>0
+σ(α) + (1− δ)σ(t∗),
+α1 = 1
+γ1
+
+
+∑
+α<t∗&σ(α)>0
+σ(α)α + (1− δ)σ(t∗)t∗
+
+ ,
+γ2 = ∑
+α>t∗&σ(α)>0
+σ(α) + δσ(t∗),
+α2 = 1
+γ2
+
+
+∑
+α>t∗&σ(α)>0
+σ(α)α + δσ(t∗)t∗
+
+ . Notice that a similar representation can also be shown for the consumer’ utility. We next verify that the conditions in (35) are met. Firstly, as σ(·) is a segmentation within Σ, it can be verified that γ1 and γ2 are nonnegative and together sum up to one. Furthermore, the condition ∑
+α:σ(α)>0 σ(α)α = α ∗ ensures that γ1α1 + γ2α2 = α ∗. Given that α1 is effectively a weighted average of t ∗ and several values of α < t∗, it follows
+that α1 ≤ t ∗. Similarly, it can be established that α2 ≥ t ∗. Moreover, a weighted average of α1 and α2 equates to α ∗. Consequently, we should have α1 ≤ α ∗ ≤ α2. All these considerations imply that α1 ∈ [0,min{t ∗, α∗}] and α2 ∈ [max{t ∗, α∗}, 1]. Now we establish the converse. Suppose α1, α2, γ1, and γ2 are given, satisfying the conditions on the right-hand side of (35). We will show that there exists a segmentation σ ∈ Σ and an optimal pricing rule φδ(·) such that (36) is satisfied. If α1 < t ∗ and α2 > t ∗, we can consider a segmentation with two markets (1 − α1, α1) and (1 − α2, α2), assigned probabilities γ1 and γ2 respectively, and apply any optimal pricing rule to satisfy (36). If α1 = t ∗ and α2 > t ∗, then φ0(·) should be taken as the optimal pricing rule. Conversely, if α1 < t ∗ and α2 = t ∗, φ1(·) becomes the optimal pricing rule. The only remaining scenario is α1 = α2 = t ∗∗, where we take φδ(·) with δ = γ2 as the optimal pricing rule. This completes the proof. Next, note that we can cast γ1f1(α1) + γ2f2(α2) in the right hand side of (35) in the following
+way:
+γ1f1(α1) + γ2f2(α2) = β (t ∗v1 + (1− t ∗)α∗v2) + (1− β) (γ1v1 + γ2α2v2) , (38)
+where we used the fact that γ1α1 + γ2α2 = α ∗ and γ1 + γ2 = 1. Similarly, we have
+γ1g1(α1) + γ2g2(α2) = βt ∗α∗(v2 − v1) + (1− β)γ1α1(v2 − v1). (39)
+Notice that the terms β (t∗v1 + (1− t ∗)α∗v2) and βt ∗α∗(v2 − v1) in (38) and (39), respectively, are constants. Thus, it suffices to characterize the set S ′. a.4 proof of theorem 1 We first identify the set S ′, doing so by separately considering the cases α∗ ≥ t∗ and α∗ ≤ t∗. Case (I): α∗ ≥ t∗
+Lemma 7. Suppose β ≤ min{2η, 2(1 − η)} and α∗ ≥ t∗. Then S ′ is in the form of a triangle with three vertices E = [0, α∗v2 + (1− α ∗)v1] ⊤, F = [0, α∗v2] ⊤, and G = E + [ξ,−ξ]⊤ with
+ξ := (1− α∗) t∗
+1− t∗ (v2 − v1). Proof. First, note that, the two conditions γ1 + γ2 = 1 and γ1α1 + γ2α2 = α ∗ together imply that
+γ1 = α2 − α
+∗
+α2 − α1 , γ2 = α∗ − α1 α2 − α1 . (40)
+Next, let us define z1 := γ1(1 − α1). Using α2 ∈ [α ∗, 1] along with (40) implies that, for any α1, z1 spans the interval [0, 1 − α∗] as α2 varies over [α ∗, 1]. Additionally, let us define z2 :=
+α1 1−α1 . Note
+that as α1 spans the interval [0, t ∗], z2 spans the interval [0, t∗
+1−t∗ ]. Now, notice that we can rewrite γ1v1 + γ2α2v2 as
+γ1v1 + γ2α2v2 = γ1α1v2 − γ1α1(v2 − v1) + γ1(1− α1)v1 + γ2α2v2
+= α∗v2 + γ1(1− α1)v1 − γ1α1(v2 − v1) = α∗v2 + z1v1 − z1z2(v2 − v1), (41)
+where the second equality used the fact that γ1α1 + γ2α2 = α ∗. Therefore, we can cast S ′ as
+S ′ =
+{
+[
+z1z2(v2 − v1), α ∗v2 + z1v1 − z1z2(v2 − v1)
+]⊤ ∣ ∣
+∣ z1 ∈ [0, 1 − α ∗], z2 ∈ [0, t∗
+1− t∗ ]
+}
+. (42)
+It is straightforward to verify that this set is indeed the triangle EFG. Figure 9 illustrates this triangle for the two cases of t∗ ≤ η and t∗ ≥ η. Notice that the triangle formed by points A, B, and D corresponds with the non-private case where β = 0, implying t∗ = η and S ′ = S . Case (II): α∗ ≤ t∗
+Lemma 8. Suppose β ≤ min{2η, 2(1 − η)} and α∗ ≤ t∗. Then S ′ is in the form of a triangle with three vertices E = [0, α∗v2 + (1− α ∗)v1] ⊤, F = [α∗(v2 − v1), v1] ⊤, and G = [0, κ]⊤ with
+κ := v1 + α ∗v2(1−
+η t∗ ). Proof. The proof technique is similar to the ones used in the proof of Lemma 7. Here, we define w1 := γ2α2 and w2 := 1 α2 . Using (40), we can see that α1 and α2 sweeping over [0, α ∗] and [t∗, 1], respectively, imply w1 and w2 spanning over [0, α ∗] and [1, 1
+t∗ ], respectively. We next represent S ′ using w1 and w2. Particularly, we can rewrite S ′ as
+S ′ =
+{
+[
+(α∗ − w1)(v2 − v1), v1 +w1v2 − w1w2v1
+]⊤ ∣ ∣
+∣ w1 ∈ [0, α ∗], w2 ∈ [1, 1
+t∗ ]
+}
+. (43)
+We can see that this is the triangle given in the lemma’s statement. Figure 10 illustrates this triangle for the two cases of t∗ ≤ η and t∗ ≥ η. Here, the triangle formed by points A, E, and G corresponds with the non-private case where β = 0, implying t∗ = η and S ′ = S . Now, using Proposition 2 along with Lemmas 7 and 8 completes the proof. a.5 proof of lemma 2 Recall by (17) that the maximum producer utility is given by
+umax(β) := α ∗v2 + (1− α ∗)v1 − β (t ∗(α∗v2 − v1) + (1− α ∗)v1) , (44)
+where t∗ is given by Lemma 1. Taking the derivative with respect to β, we have
+d
+dβ umax(β) = −
+(η + α∗ − 2α∗η)(β2 − 2β) + 2η − 2η2
+2η(1 − β)2
+= − η + α∗ − 2α∗η
+2η(1− β)2
+(
+(1− β)2 + (α∗ − η)(2η − 1)
+η + α∗ − 2α∗η
+)
+. (45)
+Notice that α∗ + η − 2α∗η ≥ 0 as α∗, η ≤ 1. Now, to see whether the maximum producer utility is monotone or not, we need to check whether the sign of
+h(β) := (1− β)2 + (α∗ − η)(2η − 1)
+η + α∗ − 2α∗η (46)
+changes as β varies over [0,min{2η, 2(1 − η)}]. Note that h(β) is decreasing over this interval. We also know that the maximum utility under privacy is (weakly) lower than the non-private case, meaning that (45) is nonpositive at β = 0 which implies h(0) ≥ 0 (we could also simplify verify this by setting β = 0 at (46)). Consequently, the maximum producer utility is monotone in β if and only if
+h (min{2η, 2(1 − η)}) ≥ 0. Notice that
+h (min{2η, 2(1 − η)}) = (1− 2η)2 + (α∗ − η)(2η − 1)
+η + α∗ − 2α∗η =
+(1− 2η)2η(1 − η)(1− 2α∗)
+η + α∗ − 2α∗η , (47)
+which is nonnegative if and only if (1− 2η)(1 − 2α∗) ≥ 0. This completes the proof. a.6 proof of lemma 3 Recall that, by Theorem 1, the minimum consumer utility is given by
+βt∗α∗(v2 − v1). (48)
+To understand when this is a monotone function of β, we need to look into the derivative of βt∗ as a function of β. This derivative is given by
+2η − β(2− β)
+2(1− β)2 =
+(β − 1)2 − (1− 2η)
+2(1 − β)2 . (49)
+We know that this derivative is nonnegative at β = 0. Hence, the minimum consumer utility is monotone if and only if the above derivative is nonnegative at β = min{2η, 2(1 − η)}. Plugging this value for β into (49), we have
+(1− 2η)2 − (1− 2η)
+2(1− β)2 =
+−2η(1 − 2η)
+2(1 − β)2 ,
+which is nonnegative if and only if η ≥ 1/2. This completes the proof. a.7 proof of lemma 4 Recall that Up(vi|x̂), is given by
+Up(vi|x̂) = (1− β) Up(vi, x̂) + β Ex∼unif(X ) [Up(vi, x)] . (50)
+Also, recall that
+Up(vi, x) = vi
+K ∑
+k=i
+x(vk),
+and therefore, we have
+Ex∼unif(X ) [Up(vi, x)] = vi
+K ∑
+k=i
+Ex∼unif(X ) [x(vk)] = vi(K + 1− i) 1
+K , (51)
+where the last argument follows from the fact that the expectation of x(v1), · · · , x(vK) are all equal and equal to 1/K when x is drawn uniformly at random. Thus, we can rewrite Up(vi|x̂) as
+Up(vi|x̂) = vi
+(
+(1− β)
+K ∑
+k=i
+x̂(vk) + β K + 1− i
+K
+)
+. (52)
+Now, if x̂ ∈ X βi , then we have
+Up(vi|x̂) ≥ Up(vj |x̂) for all j ∈ [K]. (53)
+Plugging (52) into this equation implies
+vi
+K ∑
+k=i
+x̂(vk) + β 1− β · vi(K + 1− i) K ≥ vj
+K ∑
+k=j
+x̂(vk) + β 1− β · vj(K + 1− j) K . (54)
+First, suppose j < i. In this case, ∑K k=j x̂(vk) ≥ ∑K k=i x̂(vk), and hence, we have
+(vi − vj) K ∑
+k=i
+x̂(vk) + β 1− β · vi(K + 1− i) K ≥ β 1− β · vj(K + 1− j) K . (55)
+Furthermore, using 1 ≥ ∑K
+k=i x̂(vk), we obtain
+β
+1− β ≥
+K(vi − vj) [
+(K + 1− j)vj − (K + 1− i)vi
+]
++
+. (56)
+Next, consider the case j > i. In this case, we use the bounds 1 ≥ ∑K k=i x̂(vk) and ∑K k=j x̂(vk) ≥ 0 along with (54) to obtain
+β
+1− β ≥
+Kvi [
+(K + 1− j)vj − (K + 1− i)vi
+]
++
+. (57)
+Notice that (56) and (57) together completes the proof of the fact that if X βi is non-empty, then β ≥ β̄i. To see why the reverse is also true, notice the all the inequalities that we used would change to equality for the case that the market only consists of consumers with value vi, i.e., x̂(vi) = 1. So this market is indeed in X β i as long as β ≥ β̄i. a.8 proof of proposition 3 First, note that Mβ(x) is equal to x itself with probability 1−β and is equal to a uniformly random market with probability β. In the latter case, the market falls into X βk with probability P(X β k ) and hence is priced at vk (the boundary of X β k ’s is measure-zero). Therefore, we have
+Uφp (x) = β
+K ∑
+k=1
+P(X βk ) Up(vk, x) + (1− β) Ep∼φ(x)[ Up(p, x)]
+Uφc (x) = β K ∑
+k=1
+P(X βk ) Uc(vk, x) + (1− β) Ep∼φ(x)[ Uc(p, x)]. Hence, S in (8) can be written as
+β
+ 
+
+[
+∑
+x∈supp(σ)
+σ(x)
+K ∑
+k=1
+P(X βk ) Uc(vk, x), ∑
+x∈supp(σ)
+σ(x)
+K ∑
+k=1
+P(X βk ) Up(vk, x) ]⊤ ∣ ∣ ∣ σ ∈ Σ
+ 
+
++ (1− β)S1,
+(58)
+where S1 is given by
+ 
+
+[
+∑
+x∈supp(σ)
+σ(x)Ep∼φ(x)[ Uc(p, x)], ∑
+x∈supp(σ)
+σ(x)Ep∼φ(x)[ Uc(p, x)] ]⊤ ∣ ∣ ∣ σ ∈ Σ and φ optimal pricing
+ 
+
+(59)
+Now, note that Uc(vk, x) is linear in x, and thus, we have
+∑
+x∈supp(σ)
+σ(x) K ∑
+k=1
+P(X βk ) Uc(vk, x) = K ∑
+k=1
+P(X βk ) ∑
+x∈supp(σ)
+σ(x)Uc(vk, x) = K ∑
+k=1
+P(X βk ) Uc(vk, x ∗). We can similarly simplify the other term corresponding the produce utility and hence the first term in (58) is β . Now, it remains to show that S1 is same as the set S ′, defined in the statement of the proposition. Next, we argue that each market segment in S1 can be subdivided into smaller segments, each priced at a single value, by allowing multiple versions of the same market priced at different, yet optimal, values. Formally, considering a σ ∈ Σ and an optimal pricing rule φ(·), for any x ∈ supp(σ), let V(x) ⊆ V be the support of φ(x). All values in V(x) are optimal prices for x. For each x ∈ supp(σ), we create |V(x)| replicas of x. Specifically, for each v ∈ V(x), we replicate market x, corresponding to a segment of the consumer continuum σ(x)P(φ(x) = v), and price it at v. Notice that this segmentation breakdown maintains identical consumer and producer utilities. We can formally express this as:
+S1 =
+ 
+
+[ K ∑
+k=1
+ℓk ∑
+i=1
+γik Uc(vk, x i k),
+K ∑
+k=1
+ℓk ∑
+i=1
+γik Up(vk, x i k) ]⊤∣ ∣ ∣ γik ≥ 0, ∑
+i,k
+γik = 1, x i k ∈ X β k , ∑
+i,k
+γikx i k = x ∗
+ 
+
+. Finally, once again using the fact that Uc(vk, x) and Up(vk, x) are linear in x, we can simplify the above term to
+{
+[ K ∑
+k=1
+γk Uc(vk, xk),
+K ∑
+k=1
+γk Up(vk, xk) ]⊤ ∣ ∣ ∣ γk ≥ 0, ∑
+k
+γk = 1, xk ∈ X β k , ∑
+k
+γkxk = x ∗
+}
+, (60)
+with
+γk =
+ℓk ∑
+i=1
+γik, and xk =
+ℓk ∑
+i=1
+γikx i k. (61)
+Notice that (60) is the set S ′ and hence the proof is complete. a.9 proof of theorem 2 Here, we provide the details of the proof sketch provided in the main text. Before computing the utilities, it is worth noting that the proof of inequality (26) is similar to the derivation of (54) in the proof of Lemma 4. We start with the producer utility corresponding to the set S ′. We have
+K ∑
+i=1
+γi Up(vi, xi) =
+K ∑
+i=1
+γivi
+K ∑
+j=i
+xi(vj) =
+K ∑
+i=1
+γiviy(i, i) =
+K ∑
+i=1
+viz(i, i). (62)
+Next, regarding the consumer’s side, notice that we have
+K ∑
+i=1
+γi Uc(vi, xi) = K ∑
+i=1
+γi
+K ∑
+j=i
+(vj − vi)(y(i, j) − y(i, j + 1)), (63)
+with the convenience that y(i,K + 1) := 0. Notice that we could start the index j from i + 1 and adjust the range of index i to end at K − 1. By making these changes, we obtain
+K−1 ∑
+i=1
+γi
+K ∑
+j=i+1
+(vj − vi)(y(i, j) − y(i, j + 1)). (64)
+Notice that we can rewrite this as
+K−1 ∑
+i=1
+K ∑
+j=i+1
+γi y(i, j)(vj − vi − (vj−1 − vi)) (65)
+which is equal to K−1 ∑
+i=1
+K ∑
+j=i+1
+z(i, j)(vj − vj−1). (66)
+This completes the proof. a.10 proof of proposition 4 Let y∗ denote the complementary cumulative distribution function of market x∗, i.e.,
+y∗(i) :=
+K ∑
+k=i
+x∗(vk). (67)
+First, we establish that the lowest point of the set S ′ always lies on or beneath the line TR. To see this, note that there exists an ℓ∗ for which x∗ ∈ X βℓ∗ . Consequently, there exists one point in S ′ corresponding to uniformly pricing the market at vℓ∗ . Since the line TR represents the optimal uniform pricing, this point either resides on TR (if ℓ∗ is the optimal uniform price for the nonprivate case) or falls beneath it in other cases. This substantiates the first claim. Next, we show that if the condition (30) does not hold, the set S ′ will not cross the line TR. To prove this, we use the polytope representation in Theorem 2. Summing up both sides of (24b) over i (for a fixed j), we obtain
+K ∑
+i=1
+z(i, i)vi ≥
+K ∑
+i=1
+z(i, j)vj + β
+K(1− β)
+K ∑
+i=1
+z(i, 1) (
+(K + 1− j)vj − (K + 1− i)vi
+)
+. (68)
+Notice that, by (24c), ∑K i=1 z(i, j) = y ∗(j). In particular, ∑K i=1 z(i, 1) = y ∗(1) = 1. Hence, we can
+rewrite (68) as
+K ∑
+i=1
+z(i, i)vi ≥ y ∗(j)vj +
+β
+K(1− β)
+(
+(K + 1− j)vj −
+K ∑
+i=1
+z(i, 1)(K + 1− i)vi
+)
+. (69)
+Now, notice that the left hand side is the producer utility in S ′. Choose j such that vj be the optimal uniform pricing (if there are multiple of them, choose the one with the highest (K+1−j)vj value). Hence, y∗(j)vj represents the producer utility corresponding to the line TR. Now, recall that ∑K
+i=1 z(i, 1) = y ∗(1) = 1, and therefore, the term
+K ∑
+i=1
+z(i, 1)(K + 1− i)vi (70)
+is a weighted average of ((K + 1 − i)vi) K i=1. Since the condition (30) does not hold, each term (K+1−i)vi, and hence the weighted average (70), are weakly smaller than (K+1−j)vj . Plugging this into (69) shows that when the condition (30) does not hold, the term ∑K
+i=1 z(i, i)vi is always
+weakly larger than the producer utility at the optimal uniform price, and hence the set S ′ does not go below the line TR. Now, suppose the condition (30) holds. Let Iβ be the set of optimal uniform prices when we observe the market x∗ but use the pricing strategy corresponding to the privacy parameter β, i.e.,
+Iβ := argmax k
+[ y∗(k)vk + β
+K(1− β) (K + 1− k)k
+]
+. In particular, I0 represents the set of optimal uniform prices in the non-private case and the set I0 includes those i’s that maximize (K + 1− i)i. Now, we only need to consider the case Iβ ⊆ I0, as otherwise the segmentation corresponding to that value that is in Iβ but not in I0 would be below the line TR. Also, the condition (30) implies that the sets I0 and I1 are disjoint, and hence, the sets Iβ and I1 are also disjoint. We define the market x̃ in the following way:
+K ∑
+k=i
+x̃(vi) =
+ 
+
+Z vi
+if i /∈ I1,
+Z vi
+− ǫ if i ∈ I1, (71)
+where Z is chosen such that x̃ becomes a distribution. It is clear that such x̃ exists for sufficiently small ǫ given that (vi) K i=1 is a strictly ascending sequence. Notice that, given the way that x̃ is defined, Up(vi, x̃) is equal to its maximum if and only if i /∈ I1. In other words, a price vi maximizes the producer utility for this market if and only if i /∈ I1. However, in the definition of S ′, we use the pricing strategy corresponding to the private case, i.e., we look at the sets X βk ’s. Now, we claim that, for sufficiently small ǫ, x̃ ∈ X β i for some i ∈ I1. In other words, for sufficiently small ǫ, we end up choosing a price vi with i ∈ I1 for the
+market x̃, although it would lead to a lower utility compared to any price vj with j /∈ I1. To show this claim holds, it suffices to establish the following claim and then use the continuity
+of utilities in ǫ. Claim 1. For ǫ = 0, any price vi with i ∈ I1 is strictly preferred over any price vj with j /∈ I1 if we use the pricing strategy corresponding to parameter β > 0. Proof. To prove this, we need to show that
+(1− β)
+K ∑
+k=i
+x̃(vk)vi + β K + 1− i
+K vi > (1− β)
+K ∑
+k=j
+x̃(vk)vj + β K + 1− j
+K vj
+Note that the first term on the left and right hand side are equal when ǫ = 0. Now the second term on the left hand side is bigger than the second term on the right hand side given that i ∈ I1 and j /∈ I1. Now, consider a segmentation with two segments: the first segment’s market is x̃ and it consists δ fraction of consumers and the second segment’s market is x ∗−δx̃ 1−δ which consists the remaining 1− δ fraction of consumers. For sufficiently small δ, the optimal price for the second segment would be sill in Iβ given that the market is perturbed minimally. Let us denote that optimal price as vj∗ with j ∗ ∈ Iβ. This implies j∗ /∈ I1. Therefore, as we elaborated above, this would mean that the price picked for the first segment would lead to a lower utility compared to the case that we would have picked vj∗ . Given that we pick vj∗ for the second segment, the overall producer utility corresponding to this segmentation would be strictly lower than Up(vj∗ , x ∗). Recall that, as we discussed above, we can assume Iβ ⊆ I0 and hence j ∗ ∈ I0 as well. Thus, Up(vj∗, x ∗) is in fact the utility corresponding to the line TR. Hence, the segmentation above corresponds to a point in the set S ′ which falls below the line TR. This completes the proof. a.11 proof of fact 2 Notice that β > β̄K implies that no segment’s price is going to be set equal to vK . Hence, the consumers with value vk will face a a price upper bounded by vK−1. As a result, the consumer utility is lower bounded by
+x∗(vK)(vK − vK−1). a.12 proof of proposition 5 For any β, let ρ(β) denote the maximum consumer utility in the set S ′. Using Theorem 2, we have
+ρ(β) = max z
+K−1 ∑
+i=1
+K ∑
+j=i+1
+(vj − vj−1)z(i, j) (72a)
+s.t. z(i, 1) ≥ · · · ≥ z(i,K) ≥ 0 for all i ∈ [K], (72b)
+z(i, i)vi − z(i, j)vj ≥ β
+K(1− β) z(i, 1)
+(
+(K + 1− j)vj − (K + 1− i)vi
+)
+for all i, j ∈ [K],
+(72c)
+K ∑
+i=1
+z(i, j) = K ∑
+k=j
+x∗(vk) for all j ∈ [K]. (72d)
+Notice that, as long as β < mink β̄k, all the constraints (72c) are strict when the vector z is set equal to the segmentation in which all consumers with the same value go into one segment. Therefore, we can use Corollary 5 from Milgrom and Segal [2002] to deduce that the function ρ(·) is absolutely continuous (and hence differentiable almost everywhere). Therefore, we have
+ρ(β) = ρ(0) +
+∫ β
+0 ρ′(ζ)dζ, (73)
+where ρ′(·) denotes the derivative of ρ(·) (when it exists). Next, we make the following claim:
+Claim 2. Suppose ρ(·) is differentiable at some β. Then, condition (32) implies ρ′(β) ≤ 0 and condition (33) implies ρ′(β) ≥ 0. Proof. We use the Envelope theorem to characterize the derivative of ρ(·). Let λi,j denote the Lagrangian multiplier corresponding to the condition (72c). Then, we have
+ρ′(β) = − d
+dβ
+β
+1− β
+[
+∑
+i,j
+λi,j
+(
+(K + 1− j)vj − (K + 1− i)vi
+) z∗β(i, 1) ] , (74)
+where z∗β is the solution of (72). Next, using the Karush–Kuhn–Tucker conditions Bertsekas [1997], we know that (i) λi,j ≥ 0, and (ii) λi,j > 0 if and only if the condition (72c) is active, i.e.,
+z∗β(i, i)vi − z ∗ β(i, j)vj =
+β
+K(1− β) z∗β(i, 1)
+(
+(K + 1− j)vj − (K + 1− i)vi
+)
+. (75)
+Next, recall from the proof of Theorem 2 that z∗β(i, ·) corresponds to a market that is priced vi. Now, if (75) holds for some i and j, it means that producer has been indifferent between vi or vj as the market price, but vi has been chosen. Since z ∗ β is the solution to the consumer maximization problem, this would mean that vi < vj , or equivalently, i < j. Therefore, λi,j is either positive or zero, and we have λi,j > 0 only if j > i. Notice that condition (32) implies (K + 1− j)vj ≥ (K + 1− i)vi when j ≥ i. Using this result, along with (74) and the fact that β/(1 − β) is an increasing function of β, we obtain ρ′(β) ≤ 0. Similarly, we can see that, under condition (33), we have ρ′(β) ≥ 0. This completes the proof of the claim. Let us turn our focus to the maximum consumer utility. As Proposition 3 establishes, for a
+given β, the maximum consumer utility is given by
+β (
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗) ) + (1− β)ρ(β). (76)
+In particular, for the non-private case, this is equal to ρ(0). Claim 2 along with (73) implies that, under condition (32) we have ρ(β) ≤ ρ(0) and under condition (33) we have ρ(β) ≥ ρ(0). Therefore, to establish Proposition 5, it suffices to compare ∑K
+k=1 P(X β k ) Uc(vk, x ∗) with ρ(0). The following
+claim does this, and therefore, completes the proof. Claim 3. (i) Assume v1 is the optimal uniform price in the non-private case. Then, we have
+ρ(0) ≥
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗). (ii) Assume vK is the optimal uniform price in the non-private case. Then, there exists α̃ and β̃ > 0 such
+that, if x∗(vK) ≥ α̃ and β ≤ β̃, then we have
+ρ(0) ≤ K ∑
+k=1
+P(X βk ) Uc(vk, x ∗). Proof. Let us denote the maximum producer utility (corresponding to the first-degree price discrimination) by M . We know that the maximum consumer utility in the non-private case lies on the line that sets the sum of consumer and producer utilities equal to M . Therefore, when v1 is the optimal uniform price, we have ρ(0) = M − v1. Also, notice that for any value vk, we have
+Uc(vk, x ∗) =
+K ∑
+i=k
+x∗(vi)(vi − vk) ≤ K ∑
+i=k
+x∗(vi)(vi − v1) ≤ K ∑
+i=1
+x∗(vi)(vi − v1) = M − v1. (77)
+Thus, and given that ∑K k=1 P(X β k ) = 1, we deduce that
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗) ≤ M − v1
+which completes the proof of part (i). Next we prove part (ii). Given that, in this part, vK is the optimal uniform price in the non-private case, we have
+ρ(0) = M − x∗(vK)vK ≤ (1− x ∗(vK))vK−1. (78)
+Also, note that, for any k ≤ K − 1 we have
+Uc(vk, x ∗) ≥ x∗(vK)(vK − vk), (79)
+which implies
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗) ≥ x∗(vK)
+[ K−1 ∑
+k=1
+P(X βk )(vK − vk) ] . (80)
+The term ∑K−1 k=1 P(X β k )(vK−vk) is positive for β = 0, and since it is continuous in β, we can choose β̃ > 0 such that
+inf β≤β̃
+[ K−1 ∑
+k=1
+P(X βk )(vK − vk) ] ≥ ǫ, (81)
+for some ǫ > 0. Therefore, for any β ≤ β̃, we have
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗) ≥ ǫ x∗(vK). (82)
+Now, notice that the right-hand side of (78) goes to zero as x∗(vK) increases to one. On the other hand, the right-hand side of (82) is an increasing and positive function of x∗(vK). Therefore, there exists α̃ such that, if x∗(vK) ≥ α̃, we have
+K ∑
+k=1
+P(X βk ) Uc(vk, x ∗) ≥ ρ(0), (83)
+for any β ≤ β̃. This completes the proof.

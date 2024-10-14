@@ -1,0 +1,294 @@
+Department of Biotechnology, Dr B. R. Am Jalandhar, Punjab-144011, India. E-mail: sa Department of Microbiology, University of C India Department of Biosciences and Bioengin Guwahati, Assam-781039, India Center for Innovation in Molecular and Pha Institute of Life Sciences, University of Hyd 500046, India. E-mail: sandipanchakraborty † Electronic supplementary informa https://doi.org/10.1039/d2ra03703c Cite this: RSC Adv., 2022, 12, 31004 1. introduction MCM7, a vital component of the Minichromosomal Maintenance (MCM) complex, exists as a hexameric (MCM2-7) protein.1 MCM7 is an essential constituent of the prereplication complex, which develops at the DNA replication origin site and leads to replication fork formation and the regulation of DNA helicase activity.2 The helicase activity of the MCM7 protein subsequently regulates the longitudinal growth of eukaryotic cells.3 Thus, the helicase activity of the MCM2-7 hexameric assembly regulates the DNA replication during cell cycle stages.4,5 During the G1 phase of the cell cycle, a dimerized MCM7 complex latches onto the origin of replication of the double-stranded DNA (dsDNA).6 In normal cells, the CMG
+bedkar National Institute of Technology, hmk@nitj.ac.in alcutta, 35 Ballygunge, Kolkata, 700 019,
+eering, Indian Institute of Technology,
+rmaceutical Sciences (CIMPS), Dr Reddy's erabad Campus, Gachibowli, Hyderabad .13@gmail.com; sandipanc@drils.org tion (ESI) available. See DOI:
+1015
+(Cdc45-Mcm2-7-GINS) complex, as depicted in Fig. 1, blocks the hexamer formation before initiation of the S phase, to stop further DNA replication.7 In cancer cells, however, MCM7 phosphorylation mediated by tyrosine kinase Lyn (p53 and p56 Lyn) spliced isoforms promote the MCM complex formation and subsequent chromatin loading, leading to unrestricted DNA replication in mutated cancer cells.8 An overabundance of the MCM7 protein has been reported to be a prognostic factor for lung, breast, colorectal, and ovarian cancer and a reliable diagnostic marker for cervical cancer and ovarian cancer.9–11
+Cancer originating from MCM7 overexpression necessitates discovering appropriate control measures.12 In this direction, few selected small-molecule antagonists have been studied in vitro against MCM7.9,13–15 Till now, only heliquinomycin (antibiotic), ciprooxacin (antibiotic), and simvastatin (anticholesterol drug) have shown positive responses against cancer cells in vitro, indicating their therapeutic potential as MCM7 inhibitors.9,13–15 Heliquinomycin has been shown to inhibit the DNA helicase activity of MCM 4–6–7 complex at an IC50 value of 2.4 mm.13 Ciprooxacin showed inhibitory activity towards MCM 2–7 complex with an IC50 value of 632 mm, while simvastatin has demonstrated an inhibitory activity towards MCM7 at 5 mm and inhibited cell proliferation in Hep3B cells by inducing endoplasmic reticulum stress and activating autophagy signaling pathway.14,15 Even though these few studies
+© 2022 The Author(s). Published by the Royal Society of Chemistry
+Fig. 1 Illustration of the role of MCM7 in DNA replication. MCM7 forms a hexameric ring with the other MCM complexmembers that bind to DNA and assist the replication pathway. GINS and CDC45 collectively form the CMG complex that helps to catalyze the helicase activity of the complex. The origin of replication forks in the double-stranded DNA at origin, and synthesis by DNA polymerases occurs upon DNA unwinding. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . have shown promising results in vitro, exploring potential MCM7 inhibitors with high specicity is necessary. Further, the current cancer therapies are non-specic, with frequent resistance to chemotherapeutic drugs and recurrence of cancer. Such impediment to cytotoxic chemotherapy with adverse clinical side effects warrants the development of novel chemotherapeutic agents.16 The recent developments in the process of drug discovery have uncovered the potential of many non-cytotoxic drugs in targeted cancer therapy.17 Even though phytochemicals as lead compounds for chemotherapy have gained widespread interest in the scientic community, signicant challenges still exist. It lies in identifying, extracting, and characterizing natural phytochemicals, determining their potential target sites, and formulating effective workows for evaluating drug potency, toxicity, and pharmacokinetic properties (PK).18 In experiments involving de novo drug design or phytochemicals, the lead compounds from virtual screening undergo ADMET (absorption, distribution, metabolism, excretion, toxicity) trials to assess their potential for adverse clinical side effects. In the case of drug repurposing using FDAapproved commercial drugs, no additional pharmacokinetics or toxicity testing is required.19 This exponentially reduces the timeline for applying these drugs to treat new diseases, with the most contemporary example being remdesivir (a drug developed for the Ebola virus) being employed to treat COVID-19.20,21
+The recent advances in drug designing methods enable efficient compound screening, identify probable target sites, and repurpose drugs against a specic molecule.22,23 The application of molecular docking in virtual screening platforms aided by molecular dynamics (MD) simulations enables identifying new leads with reasonable accuracy against a particular target.24,25 A previous study by our research team discovered the
+© 2022 The Author(s). Published by the Royal Society of Chemistry
+role of MCM7 in promoting cancer using gene expression analysis and protein–protein interaction data.26 Therefore, the current study aims to further elucidate the investigation by decoding the complete tertiary structure of the MCM7 protein and identifying promising FDA-approved pharmaceutical drugs that can inhibit MCM7 for effective cancer therapy. 2. materials and methods  2.1 protein structure preparation, analysis, and validation The amino acid sequence of MCM7 was obtained from UniProt (Uniprot ID: P33993). The secondary structure of the sequence was analyzed using the SOPMA webserver (https://www.npsaprabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=/NPSA/ npsa_sopma.html). The 3Dmodel of MCM7 was predicted from the sequence utilizing homology modeling and threading methodology using the SWISS-MODEL (https:// www.swissmodel.expasy.org/)27 and I-TASSER molecular threading web server (https://www.zhanggroup.org/ITASSER/).28,29 The 3D structure was validated with PROCHECK on the SAVES v6.0 server (https://www.saves.mbi.ucla.edu/).30,31 The pre-processing of the predicted model for molecular docking was performed in AutoDock MGLTools 1.5.6.32 2.2 ligand retrieval and preparation To search and retrieve structures of clinically approved FDA drugs common in use without side effects, the two largest known repositories for chemical structures of pharmaceutical ligands, viz. PubChem (https://www.pubchem.ncbi.nlm.nih.gov/) and DrugBank (https://www.go.drugbank.com/) were screened. Then atom types and atomic charges were assigned aer merging
+RSC Adv., 2022, 12, 31004–31015 | 31005
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . non-polar hydrogen. The aromatic carbons were detected, and then the ‘torsion tree’ was set in AutoDock MGLTools 1.5.6. 2.3 active site identication and receptor grid generation The identication of active site (AS) and generation of receptor grid coordinates for MCM7 was performed using the BIOVIA Discovery Studio Visualizer v21.1.0.20298 (DSV).33 2.4 molecular docking The molecular docking for each ligand was performed with the help of the Lamarckian Genetic Algorithm (LGA) in AutoDock Vina v1.2 (ref. 32 and 33) with 10 000 energy evaluations for twenty runs. Further, the protein–ligands complex's binding interactions were analyzed using BIOVIA DSV. 2.5 molecular dynamics simulations of the mcm7-ligand complexes Conformational dynamics of the free and ligand-bound MCM7 complexes were studied using the GROMACS 2018 simulation package.34 AMBER99SB-ILDN forceeld in combination with the TIP3P water model was used. We considered ve different systems: MCM7, MCM7-cholecalciferol, MCM7-ergosterol, MCM7-ergocalciferol, and MCM7-menaquinone. Parameters for all ligands were generated according to the general Amber force eld (GAFF), and atomic charges for ligands were computed with the help of the AM1-BCC method using ANTECHAMBER tools. Parameters for ligands compatible with GROMACS were then generated using the ACPYPE program. Each systemwas solvated in a triclinic box such that at least 10 A was the minimum distance maintained between box walls and any protein atom. The initial box dimensions of all the systems were 93.4 × 145.8 × 108 A3. Charges in the simulated system were neutralized by the addition of six Na+ ions. The solvated systems were subjected to 500 steps of energy minimization using the steepest descent algorithm. The energy minimized systems were subjected to position restrained simulation for 1 ns in the NVT ensemble. The protein backbone atoms were restrained, but solvent molecules could move freely. Each system was equilibrated initially for 2 ns in the NVT ensemble at 298 K, followed by another 2 ns simulation in the NPT ensemble (298 K, 1 bar). The nal production runs were carried out for 300 ns in the NPT ensemble. A Nose–Hoover thermostat with a coupling time constant of 0.1 ps. was used to keep the temperature xed at 298 K. Parrinello–Rahman isotropic barostat with a coupling time constant of 2 ps was used to maintain a constant pressure of 1 bar. The particle mesh Ewald summation method was used to calculate the electrostatic interactions. The trajectories were stored at every 20 ps. The trajectories were analyzed with the trajectory analysis tools implemented in GROMACS. Principal component analysis (PCA) was carried out on a 300 ns trajectory for each system. The Ca atomic positional uctuations retrieved from the trajectory were used to generate a mass-weighted covariance matrix. Then the essential subspace was analyzed in terms of the calculated eigenvectors. The present study's overall experimental procedure and
+31006 | RSC Adv., 2022, 12, 31004–31015
+methodology have been elucidated in a concise owchart, as shown in Fig. S1.† 3. result and discussions  3.1 protein structure preparation, analysis, and validation Secondary structure prediction is an essential step in the accurate prediction of the tertiary structure of a protein which is required for molecular docking.35 The amino acid sequence of MCM7was extracted fromUniProt in FASTA format (UniProt ID: P33993). The secondary structure of MCM7 protein was analyzed by SOPMA (Fig. S2†). The secondary structure of MCM7 is primarily helical, with 49.65% a-helix followed by random coils (32.27%) and extended strands (13.77%). It also showed the presence of 4.31% of beta-turns. The prediction of the 3D model for MCM7 started with a sequence similarity search using NCBI protein BLAST (https:// blast.ncbi.nlm.nih.gov/Blast.cgi),36 keeping PDB (Protein Data Bank) as the template database.37 Based on a 100% sequence identity score for the input query sequence, the PDB crystal structure 6XTX was selected for further evaluation38 (Fig. 2A). The crystal structure is of human MCM7 protein as Chain F in conjunction with the hexameric MCM–CMG complex. Therefore, chain F from the complex was isolated from the rest of the complex using BIOVIA DSV (Fig. 2B). The MCM7 protein structure contains 4 large missing sections, which were modelled using the SWISS-MODEL and the I-TASSER molecular threading webserver (Fig. 2C).27,29 The nal structure thus retrieved was further processed in AutoDock MGL Tools 1.5.6 to remove water molecules and add polar hydrogen groups for molecular docking. The validation of the predicted MCM7 3D structure ensured the correctness of the predicted model. The 3D model showed no error that could lead to steric hindrance. The validation of the predicted MCM7 model is rst performed by the superposition or alignment of the predicted model with the experimentally resolved structure obtained from the PDB, depicted in Fig. 2D. The resulting alignment or RMSD (Root Mean Square Deviation) score was 0.77 A, signicantly less than the 2 A threshold value. The low RMSD score indicates the close resemblance of MCM7 predicted complete structure with its experimentally validated structure with the missing region. The revalidation of the predicted model by analyzing its Ramachandran plot using PROCHECK on the SAVES V6.0 server revealed that 82% of the amino acid residues are present in the most favorable regions, 15% in the allowed regions, 1.9% in the generously allowed regions, and 1.1% in the disallowed regions. Therefore, out of a total of 719 residues, 711 residues (98.9%) were found present in the allowed regions, while only 8 residues (1.1%) were located within the disallowed regions (Fig. S3†). None of these residues present in the disallowed regions are in the modelled loop regions or in the active sites of MCM7. Thus, it cannot impart any severe error during the molecular docking process. These results conrmed the accuracy of the predicted 3D model, and thus it was selected for the molecular docking procedure. The nal structure was uploaded to the PMDB database39 with the accession number PM0084198. © 2022 The Author(s). Published by the Royal Society of Chemistry
+Fig. 2 3D structure prediction of MCM7 (A) crystal structure of MCM–CMG complex (6XTX) retrieved from PDB; (B) MCM7 chain isolated from the PDB complex (6XTX: chain F); (C) complete structure prediction by I-TASSER after gap correction for unmodelled residues; (D) validation of the predicted structure by superimposition on 6XTX: chain F.
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 3.2 ligand retrieval and preparation PubChem and DrugBank were screened to curate a ligand library of FDA-approved drugs with minimal side effects consisting of 1100 pharmaceutical ligands. These compounds were retrieved in a 3D (.sdf) le format and converted into the pdbqt le format for further molecular docking. 3.3 as identication and receptor grid generation The active site of an enzyme is constituted from a diverse portfolio of amino acids located within a specic region, known as the binding site, that establishes non-covalent interactions with the substrate. It allows ligand binding and promotes catalysis of biochemical reactions. The present study identied the active site of MCM7 and retrieved the coordinates of the binding site. The results revealed CYS184, CYS187, CYS206, CYS211, GLU343, ILE344, TYR345, MET369, PRO383, GLY384, VAL385, ALA386, LYS387, SER388, GLN389, ASN489, ARG514, LEU533, ARG604, LEU607 as the residues present in the active site of MCM7 that frames the ligand binding cavity (Fig. 3). A receptor grid of MCM7 was generated based on the spatial coordinates of its binding site residues. The molecular docking grid box was set to the dimensions of 60 A × 80 A × 60 A with a spacing of 0.375 A such that it covers the entire active site. © 2022 The Author(s). Published by the Royal Society of Chemistry 3.4 molecular docking AutoDock Vina was utilized for carrying out molecular docking between the selected ligands (1100) and theMCM7 binding site. The binding affinities obtained aer molecular docking of these ligands were observed to be in the range of −3.4 to −9.2 kcal mol−1. Aer a knowledge-based screening procedure, the top four compounds were selected, viz. ergocalciferol (vitamin D2), cholecalciferol (vitamin D3), ergosterol (precursor of vitamin D2), and menaquinone (vitamin K2). These compounds satised (a) the criteria of having a binding affinity better than for a designated control drug; (b) and the absence of any reported lethal clinical side effects. The designated control drug was ciprooxacin for this screening protocol due to its inhibitory activity against MCM7 previously reported in vitro.14 During the molecular docking, ciprooxacin showed a binding affinity of −7.6 kcal mol−1. Therefore, any lead compounds needed to have a binding affinity better than−7.6 kcal mol−1 and no lethal side effects. The selected compounds and their binding affinity to MCM7 are shown in Table 1. The preliminary results from the molecular docking study direct us to an essential discovery of the potential of vitamins D (specically D2 and D3) and K2 as oncoprotein inhibitors for cancer therapy. Although previous studies have reported the anti-proliferative action of vitamin D analogs and vitamin K2,
+RSC Adv., 2022, 12, 31004–31015 | 31007
+Table 1 Results of molecular docking
+Compound ID Chemical name (common name) 2D conformer 3D conformer
+Binding affinity (kcal mol−1)
+PubChem CID: 5280793
+Ergocalciferol (vitamin D2) −9.2
+PubChem CID: 5280795
+Cholecalciferol (vitamin D3) −8.5
+PubChem CID: 444679
+Ergosterol (pre-vitamin D2) −8.3
+PubChem CID: 5287554
+Menaquinone (vitamin K2) −8.0
+PubChem CID: 2764 Ciprooxacin (control) −7.6
+Fig. 3 Identification of the amino acid residues constituting the active site of MCM7. 31008 | RSC Adv., 2022, 12, 31004–31015 © 2022 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . either independently or as an adjuvant, on cancer cell lines in vitro,40–43 the molecular mechanism for the same remains unexplained.44–47 The potential target (MCM7) of vitamins to
+Fig. 4 3D interaction diagrams for MCM7-ligand docked complexes. (A) M (D) MCM7-menaquinone. Fig. 5 2D interaction diagrams for the protein–ligand docked comple ergosterol; (D) MCM7-menaquinone. © 2022 The Author(s). Published by the Royal Society of Chemistry
+exhibit anti-cancer activity is rst reported here. Thus, the ndings from the present study may provide valuable insights into the role of vitamins as potential anti-cancer agents. CM7-ergocalciferol; (B) MCM7-cholecalciferol; (C) MCM7-ergosterol;
+xes: (A) MCM7-ergocalciferol; (B) MCM7-cholecalciferol; (C) MCM7-
+RSC Adv., 2022, 12, 31004–31015 | 31009
+Table 2 Protein–ligand interactions of selected ligands with MCM7
+Compound name Residues Distance ( A) Bond category Bond type
+Ergocalciferol Ile 344 2.83 Hydrogen Conventional hydrogen bond
+Tyr 345 5.06 Alkyl Alkyl Lys 351 6.24 Hydrogen Conventional hydrogen bond Tyr 539 4.12 Pi–alkyl Pi–alkyl Pro 548 5.04 Pi–alkyl Pi–alkyl
+Cholecalciferol Ile 344 2.67 Hydrogen Conventional hydrogen bond
+Lys 351 6.28 Hydrogen Conventional hydrogen bond Tyr 539 4.10, 4.48 Alkyl Alkyl Pro 548 4.64, 4.73 Pi–alkyl Pi–alkyl
+Ergosterol Glu 334 2.39 Hydrogen Conventional hydrogen bond
+Ala 338 3.87 Alkyl Alkyl Tyr 345 4.94 Pi–alkyl Pi–alkyl Arg 532 5.32 Pi–alkyl Pi–alkyl
+Menaquinone Ala 338 4.52 Alkyl Alkyl Pro 547 5.03 Alkyl Alkyl Pro 548 5.05 Alkyl Alkyl Phe 551 4.07, 3.69 Pi–sigma Pi–sigma
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . The analysis of protein–ligand interaction of the selected four ligands with the MCM7 was performed with BIOVIA DSV, as depicted in Fig. 4 and 5 respectively. Ergocalciferol was found to form a couple of conventional hydrogen bonds with MCM7 protein with Lys351 (6.24 A) and Ile344 (2.83 A). An alkyl–alkyl interaction was observed with Tyr345 (5.06 A). Two p–alkyl interactions were also observed with Tyr539 (4.12 A) and Pro548 (5.04 A) (Fig. 5A and Table 2). For cholecalciferol, two conventional hydrogen bonds were observed with Lys351 (6.28 A) and Ile344 (2.67 A); two alkyl–alkyl interactions with Tyr539 (4.10 A, 4.48 A); and two pi–alkyl interactions with Pro548 (4.64 A, 4.73 A) were discovered (Fig. 5B and Table 2). Ergosterol formed
+31010 | RSC Adv., 2022, 12, 31004–31015
+a conventional hydrogen bond with Glu334 (2.39 A) and three pi–alkyl interactions with Ala338 (3.87 A), Tyr345 (4.94 A), and Arg532 (5.32 A) of MCM7 (Fig. 5C and Table 2). Finally, for menaquinone, three alkyl–alkyl interactions were detected with Ala338 (4.52 A), Pro547 (5.03 A), and Pro548 (5.05 A), along with two p–s interactions with Phe551 (4.07 A, 3.69 A) (Fig. 5D and Table 2). 3.5 md simulations of mcm7–ligand complexes 3.5.1 RMSD. The effect of ligand-binding on the structure and dynamics of MCM7 is explored using molecular dynamics
+plexes over the entire simulation timescale. (B) The radius of gyration of n timescale. © 2022 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . simulation. Root mean square deviation (RMSD) highlights the conformational changes of the protein aer ligand binding. The effect of different ligand binding on the conformational changes of the MCM7 over the entire simulation timescale is shown in Fig. 6A. The RMSD of the Ca atoms reects the stability of the system. The free and ligand-bound MCM7 changes during the initial 100 ns timescale. Aer that, all the systems attend stability. The average Ca RMSD uctuations of the protein over the simulation timescale are 0.838 0.154 nm, 0.964 0.175 nm, 0.892 0.11 nm, 0.929 0.148 nm, 0.75 0.066 nm for MCM7, MCM7-ergosterol, MCM7-ergocalciferol, MCM7-cholecalciferol and MCM7-menaquinone, respectively. As apparent from the gure, the binding of menaquinone signicantly stabilizes the protein. 3.5.2 Radius of gyration. The shape and compactness of a structure are determined by the radius of gyration (Rg). MCM7 had an average Rg of 3.428 0.04 nm (Fig. 6B). The binding of ergosterol to MCM7 does not alter the size and shape of the protein (average Rg of 3.417 0.035 nm), which indicates that the shape of the protein remains the same aer ergosterol binding. However, the binding of ergocalciferol increases the size and shape of MCM7. The average Rg value obtained from the equilibrium simulation for MCM7-ergocalciferol is 3.599 0.07 nm. MCM7-menaquinone complex also shows a signicantly higher Rg of 3.552 0.054 nm. The higher Rg values indicate the uncoiling of some regions of the protein. MCM7cholecalciferol complex had slightly lower Rg values than the free protein, 3.396 0.06 nm (Fig. 6B). This indicates decreased protein uctuation upon cholecalciferol binding. 3.5.3 RMSF. The effect of individual ligand binding to the MCM7 protein on the uctuation of each residue has been analyzed using the root mean square uctuation (RMSF) analysis (Fig. 7A). RMSF plot shows that the free protein has some regions of high residue uctuations apart from the terminal ends. The complexes had lower RMSF values than the protein, except for a few exible regions like 300–350 and 480–700. Interestingly, ligands bind to these regions. MCM7-
+© 2022 The Author(s). Published by the Royal Society of Chemistry
+ergocalciferol and MCM7-cholecalciferol show higher uctuation than the free protein. Complex with a high Rg value also showed the highest residue uctuation, particularly in the Cterminal region. MCM7-ergosterol complex displays the most increased uctuations in this region. 3.5.4 Principal component analysis. Principal component analysis (PCA) is an efficient data reduction technique that can effectively mine large-scale functional motions from complex simulation trajectories. The atomic position uctuation matrix was then computed from the trajectories. Eigenvectors with associated eigenvalues were obtained through matrix diagonalization. The essential subspace is then computed by projecting the simulation trajectory along each principal component. 2157 eigenvectors are used to dene the observed variance from the simulated trajectories. The trace of the diagonalized covariance matrix indicates the overall exibility of the protein. Of the four MCM7–ligand complexes, only the MCM7-menaquinone shows a lower trace value indicating reduced exibility. It is noteworthy that this complex had the lowest Ca RMSD. As the rst two principal components (PC1 and PC2) explain most of the variance observed from the simulation, each trajectory is projected on the 2-D subspace computed by the rst two PCs. The results are shown in Fig. 7B. Conformational dynamics of the apo MCM7 and MCM7-cholecalciferol complex are very similar, as they occupy very similar spaces in the 2-D subspace (Fig. 7B). This indicates that the binding of cholecalciferol does not alter the functional dynamics of the protein. The conformational cluster occupied by the MCMmenaquinone and MCM7-ergocalciferol complexes partly overlap with the apo-protein conformational cluster. This indicates that the binding of these two ligands alters the functional motion of the protein. The most signicant impact has been observed when ergosterol binds to the MCM7. MCM7-ergosterol complex displays a wide distribution of the conformational ensemble, which does not overlap with the conformational landscape of the apo-protein. Thus,
+ed from the MD simulation. (B) 2-D essential subspace constructed by ein–ligand complexes obtained using results from the MD simulation. RSC Adv., 2022, 12, 31004–31015 | 31011
+Fig. 8 The solvent accessible surface area (SASA) distribution of the protein and different protein–ligand complexes obtained from the simulation is shown. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . the binding of ergosterol distinctly alters the functional motions of the protein. 3.5.5 Solvent accessible surface area. Solvent accessible surface area (SASA) is the surface area of a molecule exposed to the solvent. It is used for determining the stability of the free and bound protein. The total SASA of the unbound protein was
+Fig. 9 (A) Hydrogen bond interaction patterns for each of the four MCM7 Variations of coulomb (B) and LJ (C) interaction energies between prote obtained from the simulations. 31012 | RSC Adv., 2022, 12, 31004–31015
+381 nm2 (Fig. 8). Upon binding to ergocalciferol the SASA changes signicantly which indicates an alteration of the structure of the protein. In the case of MCM7-cholecalciferol binding, the SASA almost remained the same as the free protein (Fig. 8). MCM7-menaquinone complex and MCM7ergosterol complex show higher SASA values implying alteration of protein structure to some extent upon ligand binding. 3.5.6 Hydrogen bonding, p–alkyl and alkyl–alkyl interactions. We then analyzed interactions between MCM7 with four different ligands from the simulation trajectories. All the ligands form hydrogen bonds with MCM7, apart from menaquinone (Fig. 9A). MCM7-ergosterol complex displayed two hydrogen bonds until 150 ns, but only one hydrogen bond later became stable. Hydrogen bonding interaction between MCM7 and ergocalciferol is strongly evident from the simulation data. One hydrogen bonding interaction is almost unperturbed throughout the simulation timescale. A second hydrogen bond between Lys351 and ergocalciferol is observed during the latter half of the simulation. Cholecalciferol primarily forms a single hydrogen bond with MCM7. Notably, docking studies also reveal a single hydrogen bond between Ile344 of MCM7 and cholecalciferol. In comparison, ergocalciferol forms two hydrogen bonds with Lys351 and Ile344 of MCM7, respectively. Interestingly, most of the weak interactions, p–alkyl and alkyl–alkyl, observed in all the ligand-MCM7 docked complexes are stable throughout the simulation trajectories. The average
+-ligand complexes observed from themolecular dynamics simulations. in and each of the ligands for different MCM7–ligand complexes were
+© 2022 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 3
+1 O
+ct ob
+er 2
+02 2. D ow
+nl oa
+de d
+on 1
+/2 5/
+20 24
+1 0:
+11 :0
+2 PM . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . distance between the ligand atom and the side chain of the protein residue involved in each of the observed p–alkyl and alkyl–alkyl interactions obtained from the MD simulation is tabulated in Table S1 (ESI†). 3.5.7 Interaction energies. The coulomb interaction energy pattern also follows the number and stability of hydrogen bonds. The most favorable coulomb interactions have been observed for the MCM7-ergocalciferol complex (−24 kJ mol−1). This complex exhibits the most stable MCM7– ligand hydrogen-bonding pattern. Consequently, the least favorable hydrogen bonding interactions have been observed for menaquinone, which does not form any hydrogen bond with MCM7. Short-range LJ interactions primarily dictate the binding of ergosterol, menaquinone, and cholecalciferol to MCM7 (Fig. 9B and C). 4. conclusions Overexpression of the MCM7 gene responsible for cancer progression can be restricted with chemotherapy targeting to inhibit its action. The presented study utilized molecular docking and MD simulation to identify four compounds (vitamins) as potential drug candidates: ergocalciferol, ergosterol, cholecalciferol, and menaquinone, which can inhibit MCM7 activity. A detailed analysis has been performed to delineate the mechanism of action of the identied hits. Ergocalciferol binds with MCM7 with the highest affinity and the MCM7-ergocalciferol complex is stabilized by electrostatic interactions. The hydrogen bonding interactions are the most stable among all the four studied compounds, evident from the simulation. RMSD, Rg and SASA calculation shows that the binding of ergocalciferol induces structural alteration of the protein, MCM7. Cholecalciferol and ergosterol bind with MCM7 with comparable affinities. Both of them share a very similar moderately stable hydrogen bonding prole. Their interaction energy proles are also very similar. The binding of both the compounds induces structural uctuations in the MCM7, evident from the high RMSD values. RMSF indicates binding of these two compounds induces uctuations in several loop regions. However, the overall shape and size of the protein remain unaltered, evident from similar Rg and SASA proles of these two ligand-bound complexes and free protein obtained from MD simulation. Menaquinone, on the other hand, shows the least binding affinity among the identied hits which is accounted for its inability to form hydrogen bonds. Its binding is primarily contributed by van der Waals interactions. It forms several weak alkyl–alkyl interactions with the protein which are highly stable during the entire simulation timescale. Rg and SASA show that the binding of menaquinone to MCM7 altered the structural organization of the protein which leads to a change in functional motion of MCM7 (evident from the PCA analysis) which could lead to an altered MCM7 activity.

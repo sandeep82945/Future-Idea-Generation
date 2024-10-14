@@ -1,0 +1,1880 @@
+A Decentralized Market Mechanism for Energy
+Communities under Operating Envelopes
+
+Abstract—We propose an operating envelopes (OEs) aware
+community market mechanism that dynamically
+energy
+charges/rewards its members based on two-part pricing. The
+OEs are imposed exogenously by a regulated distribution system
+operator (DSO) on the energy community’s revenue meter that is
+subject to a generalized net energy metering (NEM) tariff design.
+By formulating the interaction of the community manager and
+its members as a Stackelberg game, we show that the proposed
+two-part pricing achieves a Nash equilibrium and maximizes
+the community’s social welfare in a decentralized fashion while
+ensuring that the community’s operation abides by the OEs. The
+market mechanism conforms with the cost-causation principle
+and guarantees community members a surplus level no less than
+their maximum surplus when they autonomously face the DSO.
+The dynamic and uniform community price is a monotonically
+decreasing function of the community’s aggregate renewable
+generation. We also analyze the impact of exogenous parameters
+such as NEM rates and OEs on the value of
+joining the
+community. Lastly, through numerical studies, we showcase the
+community’s welfare, pricing, and compare its members’ surplus
+to customers under the DSO and other OEs arrangements.
+
+Index Terms—Dynamic pricing, energy community, net meter-
+ing, operating envelopes, Stackelberg game, transactive energy
+system, two-part pricing.
+
+I. INTRODUCTION AND BACKGROUND
+
+Primarily driven by sustainability and economic incentives,
+distribution networks have experienced a massive deploy-
+ment of behind-the-meter (BTM) distributed energy resources
+(DER). This introduces a paradigm shift in distribution net-
+works, where the nodes can be referred to as prosumers,
+i.e., nodes both able to produce and consume energy. The
+DERs’ uncoordinated power injections could pose challenges
+to system stability and power quality [1] given also that the
+DER outputs cannot be directly measured (because of load
+masking) or controlled (due to deregulated electricity markets
+unbundled model) by the DSO. To ensure that the net power
+injections do not compromise the network’s operation, the
+DSO announces dynamic OEs, i.e., upper and lower bounds
+on the net power injections for each bus. OEs vary spatially
+and temporally depending on the network’s conditions and
+provide higher ﬂexibility than the ﬁxed export limits (e.g., 5kW
+or 3.5kW [1]), which, as the level of penetration increases,
+quickly become obsolete. OEs are essentially conservative
+inner approximation of the power injections feasible region
+where a solution for the power ﬂow equations is guaranteed to
+exist and meet the operational constraints. Though inner hyper-
+rectangle approximations are widely adopted, e.g., see [2], more advanced solutions propose ellipsoidal [3] inner approx-
+imations or convex restrictions of the feasibility sets [4], [5].
+Rather than directly facing the DSO, prosumers can orga-
+nize themself into energy communities, i.e., a group of spatially
+co-located nodes that perform energy and monetary transac-
+tions as a single entity behind the DSO’s revenue meter that
+measures the community’s net consumption [6], [7]. Under
+the widely adopted NEM tariff design, when the community
+is net-importing, it faces a buy (retail) rate; whereas when it
+is net-exporting, it faces a sell (export) rate [8], [9]. Energy
+communities are appealing also to nodes without BTM DERs,
+that can own quotes of a shared central PV or take advantage
+of other members’ generation capabilities.
+
+This paper proposes a novel pricing mechanism for energy
+communities. First, the pricing mechanism is threshold-based
+with the energy price being a function of the community’s
+aggregate supply. Second, the mechanism is OEs-aware, as it
+induces a collective member response that does not violate
+the OEs on the community’s aggregate net consumption.
+Third, the mechanism aligns each member’s incentive with
+that of the community such that each member maximizing
+its individual surplus results in maximum community welfare.
+Fourth, the market mechanism obeys a cost-causation principle
+which, roughly speaking, means that joining the community
+is advantageous over autonomously facing the DSO.
+
+Despite the abundant literature on energy communities, the
+majority of literature that considered pricing-based energy
+management market mechanisms neglected network and grid
+constraints [6], [10]–[14].On the other hand, the literature on
+OEs largely ignored incorporating them into a price-driven
+mechanism design that induces community members to col-
+lectively react to ensure a safe community operation [15]–[18].
+Rather, it focuses on methods to compute OEs, e.g., see [19].
+Alternatively, works in the literature treat OEs as constraints
+that need to be ensured while controlling or optimizing the
+network performance. A model predictive control scheme
+for building management is devised in [20]; whereas [21]
+proposes a method to control thermostatic loads to provide
+frequency regulation. In [22], the authors consider an energy
+community with operator-designed OEs to maximize energy
+transactions between its members without compromising net-
+work constraints and is perhaps the closest to our work. The
+authors adopt an ex-post allocation rule (Shapley value) to
+distribute the coalition welfare, whereas, in our case, ex-ante
+and resource-aware pricing and allocation mechanisms are
+designed to distribute the coalition welfare and incentivize
+joining the coalition.
+
+the
+Under the proposed OEs-aware pricing mechanism,
+proﬁt-neutral operator charges/compensates its members via
+
+ 
+ 
+ 
+ 
+ 
+ 
+2
+
+a two-part pricing,1 consisting of a threshold-based dynamic
+price and a ﬁxed reward both of which are functions of the
+aggregate DER in the community. The dynamic, yet uniform,
+price is used to charge the net-consumption of members; the
+ﬁxed reward is applied only when the community is congested,
+i.e., when one of the OEs binds.2 Both the community price
+and ﬁxed rewards are endogenously determined, based on
+community members’ ﬂexibility and aggregate DER. The price
+monotonically decreases as the community aggregate genera-
+tion/load ratio increases, indicating that the excess generation
+from net-producing members is ﬁrst pooled to net-consuming
+members before it is exported back to the grid.
+
+The paper contributions with respect to our prior work
+on the Dynamic NEM (D-NEM) mechanism [24], [25] are
+fourfold. First, we incorporate community-level-OEs, which
+give rise to a two-part-pricing-based mechanism that invites
+generalizing the cost-causation principle. Second, unlike D-
+NEM, the community prices may not lie within the DSO
+NEM X rates. Third, the pricing mechanism obeys a four-
+threshold policy that takes into account the community’s OEs.
+Fourth, this work analyzes the value of joining the community
+over facing the DSO in a standalone setting, in addition to
+comparing the surplus of members when the OEs are at the
+member-level or the PCC-level.
+
+The notations used here are standard. When necessary, bold-
+face letters indicate column vectors as in x = (x1, . . . , xn). In
+particular, 1 is a column vector of all ones. For a vector x, x⊤
+is the transpose of x. For a multivariate function f of x, we
+use interchangeably f (x) and f (x1, . . . , xn). For vectors x, y,
+x (cid:22) y is the element-wise inequality xi ≤ yi for all i, and
+[x]+, [x]− are the element-wise positive and negative parts of
+vector x, i.e., [xi]+ := max{0, xi}, [xi]− := − min{0, xi} for
+all i, and x = [x]+ − [x]−. Also, [x]x
+x denotes the projection
+of x into the closed and convex set [x, x] as per the rule
+[x]x
+x := max{x, min{x, x}}. The notation is also used for
+x. Lastly, we denote by R+:= {x ∈ R : x ≥ 0}
+vectors, i.e., [x]x
+and R−:= {x ∈ R : x ≤ 0} the set of non-negative and non-
+positive real numbers, respectively.
+
+In §II, we model the OEs-constrained energy community
+and its DER in addition to delineating the community pricing
+axioms and Stackelberg game. In §III, we present the OEs-
+aware pricing policy and Stackelberg equilibrium. In §IV, we
+deﬁne and analyze the value of joining the community. Lastly,
+we present a numerical study to showcase the community
+performance compared to the benchmark in §V, followed by
+a summary of our ﬁndings in §VI. All proofs and additional
+theoretical results are relegated to the appendix.
+
+II. OES-AWARE ENERGY SHARING: MODELS, PRICING
+AXIOMS, AND STACKELBERG GAME
+
+We describe the energy community structure, resources,
+payment and surplus functions, and the cost-causation prin-
+ciple in §II-A-§II-D, followed by introducing a bi-level op-
+
+1A two-part pricing comprises of a volumetric charge, that depends on the
+customer’s net consumption, and a non-volumetric charge, which is a lump
+sum that does not vary with the customer’s usage [23].
+
+Fig. 1. N -members energy community with aggregate-level OEs (top),
+and member-level OEs (bottom). Member consumption, renewables, and net
+consumption are denoted by di ∈ R+, ri ∈ R+, zi ∈ R, respectively,
+whereas zN ∈ R denotes the community aggregate net consumption.
+zi ∈ R+, zi ∈ R− (zN ∈ R+, zN ∈ R−) are the member-level (aggregate-
+level) import and export envelopes, respectively. The arrow direction indicates
+positive quantities.
+
+timization, in §II-E, that models the interaction between the
+community operator and its members as a Stackelberg game.
+
+A. Energy Community Structure
+
+The proﬁt-neutral operator receives a single bill on behalf
+of its N energy-sharing members, represented by the set
+N := {1, . . . , N }, who are subject to the operator’s market
+mechanism that determines the pricing and payment rules
+(Fig.1). As depicted in Fig.1, two DSO-imposed OEs models
+might be practiced. The ﬁrst, studied in [25],3 is when OEs
+must be imposed at the members’ revenue meters (bottom
+panel) to ensure safe network operation, whereas,
+in the
+second, it is adequate to impose OEs at the community revenue
+meter (top panel). The ﬁrst model may be more prevalent in
+large communities with non-adjacent loads and resources. The
+second model is more applicable to small to medium-sized
+communities such as apartment buildings, schools, farms,
+and medical complexes. Additionally, the aggregate-level OEs
+model is suitable for networks where the DSO lacks full
+observability of customer loads and BTM DER or ﬁnds it
+difﬁcult to impose OEs at the community members’ meters.
+Under both models, the operator’s goal is to devise a market
+mechanism that maximizes the community’s welfare given
+the DSO-imposed OEs. Community members respond to the
+operator’s pricing by maximizing their own surplus through
+scheduling their local DER subject to their ﬂexibility limits.
+
+B. Community Member DER, Payment, and Surplus
+
+1) Community DER: Every community member may have
+ﬂexible loads and solar. The ﬂexible loads are represented
+by K ∈ K := {1, . . . , K} devices whose load consumption
+bundle is denoted by the vector di ∈ RK
++ , which is bounded
+by the ﬂexibility limits of the devices, i.e.,
+
+di ∈ Di := [di, di],
+
+∀i ∈ N ,
+
+(1)
+
+where di and di are the device bundle’s lower and upper con-
+sumption limits of i ∈ N , respectively. For a critical inﬂexible
+
+2This is analogous to uplifts in wholesale electricity markets.
+
+3The pricing policy under member-level OEs is in appendix.
+
+load k ∈ K, prosumer i sets dik = dik. The community
+aggregate consumption is deﬁned as dN :=
+
+1⊤di.
+
+Every i ∈ N member may have a random solar PV whose
+output is denoted by ri ∈ R+, which may also include the
+member’s share4 from the central solar PV.5 The community
+aggregate generation is deﬁned as rN :=
+
+P
+
+i∈N ri.
+
+Given members’ consumption and generation, the net con-
+sumption of every i ∈ N member and their aggregate net
+consumption are deﬁned as
+
+P
+
+i∈N
+
+zi := 1⊤di − ri, zN :=
+
+zi = dN − rN ,
+
+(2)
+
+where zi > 0 (zi < 0) indicates a net-consuming (net-
+producing) member.
+
+i∈N
+X
+
+3
+
+C. Benchmark Prosumer DER, Payment, and Surplus
+
+The benchmark to the energy community prosumer is a
+standalone prosumer who faces the DSO’s NEM tariff. To
+ensure fairness when comparing the surplus of community
+members under the community pricing policy χ to their
+benchmark surplus under the DSO’s regime, we consider
+that prosumer resources (BTM DER, and share from central
+generation) are the same with and without the community.
+The DSO ensures the distribution network’s safe operation by
+imposing OEs at the benchmark customers’ revenue meters,
+which constrain their net consumption zi as in (4).
+
+The benchmark payment, for every i ∈ N , is given by the
+
+DSO’s NEM X tariff, introduced in [26], as
+
+Under the aggregate-level OEs community model (Fig.1),
+
+the aggregate net consumption is constrained as
+
+πNEM(zi) =
+
+π+, zi ≥ 0
+π−, zi < 0
+
+(
+
+, P NEM(zi) = π+[zi]+ − π−[zi]−,
+
+zN ∈ ZN := [zN , zN ]
+
+(3)
+
+where zN ≤ 0 and zN ≥ 0 are the export and import en-
+velopes at the PCC, respectively. Whereas, under the member-
+level OEs community model (Fig.1) studied in [25], the net
+consumption of every member is constrained, therefore,
+
+zi ∈ Zi := [zi, zi]
+
+(4)
+
+where zi ≤ 0 and zi ≥ 0 are the export and import
+envelopes at the members’ meters, respectively.6 We assume
+the following natural relationship between prosumer-level and
+aggregate-level OEs
+
+zi ≤ zN ,
+
+zi ≥ zN .
+
+(5)
+
+i∈N
+X
+
+i∈N
+X
+
+1 (z1), . . . , P χ
+
+2) Community Members Surplus: The proﬁt-neutral com-
+its
+a pricing policy χ for
+munity operator designs
+function P χ(z)
+:=
+members that deﬁnes the payment
+(P χ
+is the payment function
+for member i under χ, and z := (z1, . . . , zN ). The payment
+function may be a one-part pricing, i.e., a volumetric charge,
+or a two-part pricing, i.e., a combination of volumetric and
+non-volumetric (lump-sum) charges.
+
+N (zN )), where P χ
+
+i
+
+The surplus of every i ∈ N community member is
+characterized by comfort/satisfaction from consumption and
+economics (payment) metrics as
+
+Sχ
+i (di, ri) := Ui(di)
+
+− P χ
+
+i (zi)
+
+(6)
+
+utility of consumption
+
+payment under χ
+
+| {z }
+
+where ri appears through (2) and, for every i ∈ N , the utility
+| {z }
+of consumption function Ui(di) is assumed to be additive,
+concave, non-decreasing, and continuously differentiable with
+a marginal utility function Li
+:= ∇Ui = (Li1, . . . , LiK).
+We denote the inverse marginal utility vector by fi
+:=
+(fi1, . . . , fiK) with fik := L−1
+
+ik , ∀i ∈ N , k ∈ K.
+
+4Utilizing the concept of virtual NEM (VNEM), the community operator
+assigns the solar farm’s output to its members through shares, and virtually
+accounts for the share’s output as if it was a BTM DER.
+
+5A central storage can be incorporated too, as described in [24].
+6The members’ OEs are non-uniform because the DSO might discrimina-
+tively assign OEs within a customer class (e.g, residential), or because the
+community members do not all belong to a single customer class.
+
+(7)
+
+where π+, π− ≥ 0 are the buy (retail) and sell (export) rates.7
+Consistent with the practice under NEM, we assume π+ ≥
+π−, which also avoids risk-free price arbitrage, given that the
+retail and export rates are deterministic and known apriori. A
+NEM tariff with π− = π+ is referred to as NEM 1.0.
+
+Similar to community members, the surplus of the bench-
+
+mark prosumer, for every i ∈ N , is
+
+S NEM
+i
+
+(di, ri) := Ui(di) − P NEM(zi), zi := 1⊤di − ri.
+
+(8)
+
+The surplus-maximizing benchmark prosumer solves
+
+P NEM
+i
+
+: maximize
+di
+
+S NEM
+i
+
+(di, ri) := Ui(di) − P NEM(zi)
+
+subject to zi = 1⊤di − ri
+
+(9)
+
+di ∈ Di, zi ∈ Zi.
+
+To ensure that a feasible solution to (9) always exists, we
+the OEs (zi, zi) satisfy
+assume that, for every i ∈ N ,
+zi ≥ 1⊤di − ri and zi ≤ 1⊤di − ri. Given this assumption,
+Lemma 3 in the appendix characterizes the benchmark’s
+maximum surplus S NEM
+(ri) and shows that it is a function
+i
+of the prosumer’s renewable generation.
+
+∗
+
+D. Axiomatic Community Pricing
+
+To ensure that the community pricing rule χ is fair and just
+for all members, we require it to satisfy Axioms 1–4 below
+that constitute the cost-causation principle. Before describing
+the axioms, we introduce ˜P χ
+i , which denotes the volumetric
+part of the payment function, i.e., only a volumetric charge.
+
+Axiom 1 (Uniform volumetric charge). The pricing rule has a
+uniform volumetric charge if, for any two community members
+i, j ∈ N , i 6= j, having zi = zj results in ˜P χ
+
+i = ˜P χ
+j .
+
+For the community pricing problem under consideration, the
+uniform volumetric charge corresponds to the coalition cost
+allocation axiom’s broader equal treatment of equals premise.
+
+7Here, we do not include possible ﬁxed connection charges in the NEM X
+
+tariff, assuming that such charges are matched by membership fees.
+
+4
+
+Axiom 2 (Monotonicity and cost-causation). For every i ∈ N ,
+the volumetric part of the payment function ˜P χ
+is monotonic
+i
+and ˜P χ
+
+i (0) = 0.
+
+Note that the consumption schedule of member i schedules is
+based on its DER ri, which comprises both private and shared
+resources and is stochastic.
+
+The monotonicity in axiom 2 ensures that when any two
+members i, j ∈ N , i 6= j have zizj ≥ 0 and |zi| ≥ |zj|, then
+the member with higher net consumption (production) should
+get higher payment (compensation), i.e., | ˜P χ
+j (zj)|.
+Requiring ˜P χ
+i (0) = 0 in addition to monotonicity ensures that
+a member i ∈ N who causes cost, i.e., zi > 0, is penalized for
+it, hence ˜P χ
+i (zi) ≥ 0, whereas if it mitigates cost, i.e., zi < 0,
+then it is rewarded for it, hence ˜P χ
+
+i (zi)| ≥ | ˜P χ
+
+i (zi) ≤ 0.
+
+The next axiom ensures the competitiveness of the commu-
+nity over receiving service under the DSO’s NEM X regime.
+
+Axiom 3 (Individual rationality). The surplus of every member
+i ∈ N should be no less than its benchmark, i.e., Sχ
+.
+i ≥ S NEM
+
+i
+
+Lastly, and consistent with the citizen energy community
+deﬁnition under [27], we require the community operator to
+be budget-balanced.
+
+Axiom 4 (Proﬁt neutrality). The community pricing rule must
+ensure the operator’s proﬁt neutrality, i.e.,
+
+P χ
+i (zi) = P NEM(
+
+zi).
+
+i∈N
+X
+
+i∈N
+X
+
+The four axioms are used next in Deﬁnition 1.
+
+Deﬁnition 1 (Cost-causation principle). A community payment
+function P χ conforms with the cost-causation principle if
+P χ ∈ A := {P : Axioms 1–4 are satisﬁed}.
+
+Worth mentioning is that some of the celebrated ex-post
+allocation mechanisms such as the proportional rule and
+Shapley value violate the cost-causation principle [28]; they
+do not meet Axioms 1–2.
+
+E. Bi-level Optimization
+
+We model the interaction between the community operator
+(leader) and its members (followers) as a Stackelberg game.
+The goal of the operator is to devise a pricing policy χ that
+achieves the maximum social welfare in a distributed fashion
+while satisfying the DSO’s OEs and the generalized cost-
+causation principle. Every member responds to the pricing
+policy by maximizing their own surplus subject to their local
+constraints via choosing a consumption scheduling policy ψ.
+1) Lower Level – Members’ Optimal Consumption Policy:
+Denote member’s i consumption policy given the pricing
+policy χ by ψi,χ. Formally,
+
+ψi,χ : R+ → Di, ri
+
+P χ
+i7→ ψi,χ(ri).
+
+Assuming that all members are price-takers and surplus max-
+imizers, the optimal consumption policy for the ith member
+i,χ (given χ) is such that ψ♯
+ψ♯
+
+i,χ(ri) = d♯
+
+i, with
+
+d♯
+i := argmax
+di∈Di
+subject to
+
+i (di, ri) := Ui(di) − P χ
+Sχ
+
+i (zi)
+
+zi = 1⊤di − ri.
+
+(10)
+
+2) Upper Level – Operator’s Optimal Pricing Policy:
+The operator’s pricing objective is to maximize the expected
+community welfare deﬁned by the total surplus of its members
+
+W χ,ψχ :=
+
+E[Sχ
+
+i (ψi,χ(ri), ri)],
+
+i∈N
+X
+
+where the expectation is taken over member DERs (ri), and
+ψχ := {ψ1,χ, . . . , ψN,χ}. Under Axiom 4, the (conditional)
+welfare maximizing pricing policy χ♯
+ψ (given ψ) is deﬁned
+by χ♯
++ → R+, r 7→ P χ, where
+
+ψ : RN
+
+P χ := argmax
+
+P (·)∈A  
+
+W χψ = E
+
+Ui(ψ♯
+
+i,χ(ri)) − P NEM(zN )
+!
+i
+(11)
+
+i∈N
+h X
+ψ♯
+
+i,χ(ri) − ri
+
+subject to
+
+zN =
+
+i∈N
+X
+zN ∈ ZN .
+
+(cid:0)
+
+(cid:1)
+
+The inﬁnite-dimensional program in (11) cannot be solved
+easily without exploiting the NEM tariff structure.
+
+3) Stackelberg Equilibrium: The bi-level optimization
+above deﬁnes the so-called Stackelberg equilibrium (or Stack-
+elberg strategy). Speciﬁcally, (χ∗, ψ∗) is a Stackelberg equi-
+librium since (a) for all χ ∈ X and i ∈ N , Sχ
+i (ri), ri) ≥
+i (ψi(ri), ri) for all ψ ∈ Ψ; (b) for all ψ ∈ Ψ, W χ∗,ψ∗
+Sχ
+≥
+E[
+the Stackelberg equilib-
+rium is the optimal community pricing when community
+members optimally respond to the community pricing.
+
+i (ri), ri)]. Speciﬁcally,
+
+i (ψ∗
+
+i (ψ∗
+
+i Sχ
+
+P
+
+III. TWO-PART PRICING AND STACKELBERG
+EQUILIBRIUM
+
+In this section, we present the community pricing policy and
+its structural properties, followed by showing the optimal re-
+sponse of members, and the corresponding community market
+equilibrium to the bi-level optimization in (10)-(11).
+
+A. OEs-Aware Pricing Policy
+
+The operator announces the community pricing policy given
+
+the aggregate renewable DG rN as shown next.
+
+OEs-aware pricing policy. For every i ∈ N , the OEs-aware
+energy community pricing policy is
+
+χ∗ : r 7→ P χ∗
+
+i
+
+(zi) = π∗(rN ) · zi
+
+−
+
+A∗
+
+i (rN )
+
+,
+
+volumetric charge
+
+non-volumetric charge
+
+|
+
+{z
+
+}
+
+| {z }
+
+with threshold-based volumetric and non-volumetric charges
+
+5
+
+(12)
+
+, rN ≤ σ1
+, rN ∈ (σ1, σ2)
+, rN ∈ [σ2, σ3]
+, rN ∈ (σ3, σ4)
+, rN ≥ σ4,
+
+
+
+χ+(rN )
+π+
+χz(rN )
+π−
+χ−(rN )
+
+π∗(rN ) =
+
+
+
+(χ+(rN ) − π+)
+i (rN ) = 
+(χ−(rN ) − π−)
+
+0
+
+
+A∗
+
+zi +
+
+(cid:16)
+
+zi +
+
+zN −Pi∈N zi
+N
+zN −Pi∈N zi
+N
+
+, rN ≤ σ1
+
+(cid:17)
+
+, rN ≥ σ4
+
+(cid:16)
+
+(cid:17)
+, otherwise,
+(13)
+
+where the four thresholds σ1 ≤ σ2 ≤ σ3 ≤ σ4 are deﬁned as
+
+σ1 := σ2 − zN ,
+
+σ2 :=
+
+1⊤[fi(1π+)]di
+di
+
+σ3 :=
+
+1⊤[fi(1π−)]di
+di
+
+i∈N
+X
+σ4 := σ3 − zN ,
+1(rN ), χz(rN ) := µ∗
+3(rN ) are, respectively, the solutions of:
+
+and the prices χ+(rN ) := µ∗
+χ−(rN ) := µ∗
+
+i∈N
+X
+
+2(rN ),
+
+i∈N
+X
+
+i∈N
+X
+
+1⊤[fi(1µ1)]di
+di
+
+= rN + zN
+
+1⊤[fi(1µ2)]di
+di
+
+= rN
+
+1⊤[fi(1µ3)]di
+di
+
+= rN + zN .
+
+(14)
+
+(15)
+
+(16)
+
+i∈N
+X
+
+The prices have the following order
+
+χ+(rN ) ≥ π+ ≥ χz(rN ) ≥ π− ≥ χ−(rN ) ≥ 0.
+
+Fundamentally,
+
+the price π∗(rN ) is used to induce a
+welfare-maximizing members’ response. A two-part pricing is
+necessary because when the OEs bind, the community operator
+accrues a proﬁt due to the difference between πNEM(zN ) and
+π∗(rN ), given by
+
+i∈N
+X
+
+A∗
+
+(χ+(rN ) − π+)zN , rN ≤ σ1
+(χ−(rN ) − π−)zN , rN ≥ σ4
+i (rN ) = 
+
+, otherwise.
+0
+
+
+This proﬁt is re-distributed to the members using the propor-
+tional allocation in (13), which, as shown in Lemma 2, is
+crucial in achieving proﬁt-neutrality (Axiom 4) and individ-
+ual rationality (Axiom 3). Given that there might be other
+allocation rules to distribute the proﬁt, while not violating the
+pricing axioms, one could use the price in (12) and construct a
+proﬁt-sharing coalitional game to distribute the operator proﬁt
+to the coalition (community) members.
+
+We discuss next the structural properties and intuitions of
+the OEs-aware pricing policy, depicted in Fig.2, and show how
+it differs from the pricing policy when there are no OEs [24]
+and when the OEs are at the member-level [25].
+a) Two-part pricing: The pricing rule P χ∗
+
+(·) charges or
+compensates members based on a two-part pricing. The volu-
+metric charge is the product of the dynamic price in (12) and
+the member’s net consumption zi. The non-volumetric part
+
+i
+
+Fig. 2. Community pricing policy with OEs (blue) and without OEs [24] (yel-
+low), compared to the DSO NEM X (red) under optimal community members’
+response shown in Lemma 1, all with respect to aggregate renewables rN .
+
+P
+
+(13) is a reward (A∗
+i ≥ 0) paid to each member whenever
+rN /∈ (σ1, σ4). The reward each member gets is proportional
+to their benchmark’s OEs zi, zi plus any beneﬁt due to
+aggregation (zN −
+
+i∈N zi, zN −
+
+i∈N zi).
+
+b) Four-thresholds and resource-aware policy: The structure
+of the dynamic price π∗ obeys four renewable-independent
+thresholds that depend only on the DSO’s NEM X rates, OEs,
+and members’ willingness to consume. The price and non-
+volumetric rewards are both announced based on rN (Fig.2),
+with the price π∗(rN ) being a monotonically decreasing
+function of rN . The payment transitions from two-part to one-
+part and then to two-part again, as rN increases. The payment
+function is two-part only when one of the OEs binds.
+
+P
+
+c) Privacy-preserving mechanism: The four thresholds σ1 −
+σ4 can be computed without compromising members’ privacy.
+In particular, the values [fi(1π+)]di
+are
+di
+provided apriori by the members, given the public NEM rates,
+from which the operator can compute σ1 − σ4. The key to
+compute the dynamic prices χ+(rN ), χz(rN ), χ−(rN ) is that
+they are bounded. The operator asks members to provide a
+value for each price sample, which are then employed by the
+operator to compute (14)-(16) using rN and the OEs.
+
+and [fi(1π−)]di
+di
+
+d) Non-discriminatory volumetric charge: The price π∗ is
+uniform to all members, and it is always within NEM X price
+range except when rN /∈ (σ1, σ4). Also, unlike the DSO’s
+NEM tariff in (7), the operator charges its members a price
+that is not contingent on the member’s net consumption zi.
+
+If the DSO’s OEs are non-discriminatory, i.e., zi = z, zi =
+z, ∀i ∈ N , then the community’s non-volumetric charge also
+becomes non-discriminatory (uniform), as
+
+A∗
+
+(χ+(rN ) − π+)zN /N , rN ≤ σ1
+(χ−(rN ) − π−)zN /N , rN ≥ σ4
+, otherwise.
+0
+
+i (rN ) = 
+
+
+The distribution of the accrued proﬁt above is simply based
+on the equal division allocation.
+
+e) Endogenously-determined market roles: Unlike conven-
+tional electricity markets, where the roles of buyers and sellers
+are predetermined, the proposed pricing policy allows the
+members to determine their roles (see §III-B).
+
+6
+
+As shown in Fig.2, the price lies between the DSO’s NEM
+X retail π+ and export π− rates when rN ∈ (σ1, σ4). In
+particular, the community directly passes the DSO prices π+
+and π− when rN ∈ (σ1, σ2) and rN ∈ (σ3, σ4), respectively,
+and charge a price that dynamically varies between π+ and
+π− depending on rN when rN ∈ [σ2, σ3] (similar to D-NEM
+without OEs [24], yellow curve in Fig.2), and with OEs [25],
+see the appendix). When rN is relatively low (rN ≤ σ1)
+and the import OE is binding, the operator charges a price
+higher than π+ to induce its members to reduce consumption,
+ensuring that zN = zN . On the other hand, when rN is
+relatively high (rN ≥ σ4) and the export OE is binding, the
+operator charges a price below π− to behoove its members to
+increase consumption, ensuring that zN = zN .
+
+The intuition of the non-volumetric reward A∗
+i
+
+is that be-
+cause the operator charges a higher price χ+(rN ) ≥ π+ when
+rN is low rN ≤ σ1, and charges a lower price χ−(rN ) ≤ π−
+when rN is high rN ≥ σ4, it compensates its members for
+the losses in the volumetric charge through the non-volumetric
+rewards. The reward each customer gets A∗
+i is proportional to
+their benchmark’s OEs zi, zi because the operator needs to
+better reward customers with less restrictive OEs to ensure
+that they have enough incentive to join the community, which
+is required to satisfy the individual rationality axiom.
+
+1) Comparison to Member-Level OEs: We highlight two
+key differences between the pricing mechanism of a commu-
+nity with aggregate-level and member-level OEs (§A). First,
+under the aggregate-level OEs framework, the pricing policy
+induces the members toward a collective response that abides
+by the OEs, whereas under member-level OEs,
+the price
+(πDNEM(r) in 22) is announced and members must account
+for their local OEs when scheduling their consumption. This
+fundamental difference resulted in a rather simpler policy
+in the member-level OEs framework, which abides by one-
+part pricing with a two-threshold (Θ1(r), Θ2(r)) price that is
+bounded between the NEM X prices, i.e., πDNEM(r) ∈ [π−, π+].
+Second, to compute the price, the member-level OEs commu-
+nity operator needs full information about community renew-
+able DG r, whereas in the aggregate-level OEs framework,
+only the aggregate DG rN is needed.
+
+B. Community Member Problem and Optimal Decisions
+
+Given rN , the community price is announced, and accord-
+ingly every member i ∈ N solves for the optimal consumption
+P χ
+i7→ dψ∗
+
+i,χ∗ : R+ → Di, ri
+
+i (ri), where
+
+:= ψ∗
+
+∗
+
+i
+
+policy ψ∗
+dψ∗
+i =argmax
+di∈Di
+subject to
+
+Sχ∗
+i (di, ri) := Ui (di) − P χ∗
+
+i
+
+(zi)
+
+zi = 1⊤di − ri
+
+(17)
+
+The following lemma characterizes the optimal consumption
+and net consumption of the members, and the community.
+
+Lemma 1 (Member optimal consumption). For every member
+i ∈ N , given the pricing policy,
+the maximum surplus
+Sχ∗
+i (ψ∗
+i (ri), ri) is achieved by the optimal consumption and
+net consumption given, respectively, by
+dψ∗
+i (π∗) = [fi(1π∗)]di
+di
+
+i (π∗) − ri, (18)
+
+(π∗) = 1⊤dψ∗
+
+, zψ∗
+
+i
+
+Fig. 3. Optimal aggregate consumption (brown), net consumption (red), and
+the OEs-aware pricing policy (blue) with respect to aggregate renewables rN .
+
+Proof: See the appendix.
+(cid:3)
+Given rN , and the optimal schedule of every member in
+Lemma 1, the community aggregate consumption is dψ∗
+N (π∗)=
+i (π∗) and aggregate net consumption is
+
+i∈N dψ∗
+
+P
+
+zψ∗
+N (π∗) =
+
+zψ∗
+
+i
+
+(π∗)=
+
+i∈N
+X
+
+
+
+
+
+
+, rN ≤ σ1
+
+zN
+dψ∗
+N (π+) − rN , rN ∈ (σ1, σ2)
+, rN ∈ [σ2, σ3]
+0
+dψ∗
+N (π−) − rN , rN ∈ (σ3, σ4)
+zN
+
+, rN ≥ σ4.
+
+(19)
+
+Fig.3 depicts the optimal aggregate consumption dψ∗
+
+N and
+net consumption zψ∗
+N , which deﬁne the community operational
+zones. One can see the monotonicity of zψ∗
+N in rN and that
+the prices χ+(rN ), χ−(rN ) are essentially dual variables of
+the import, and export OE constraints, respectively. χz(rN )
+is the dual variable of energy balancing the community. The
+community is net-consuming when rN ≤ σ2, net-producing
+when rN ≥ σ4, and energy-balanced when rN ∈ [σ2, σ3].
+
+C. Stackelberg Equilibrium and Properties
+
+Given the optimal response of the benchmark (Lemma 3)
+and the community member (Lemma 1), and the pricing policy
+in §III-A, the following Lemma 2 establishes cost causation
+conformity of the OEs-aware pricing policy.
+
+Lemma 2 (Cost-causation conformity). The OEs-aware pric-
+ing policy χ∗ conforms with the cost-causation principle, i.e.,
+P χ∗
+
+∈ A.
+
+Proof: See the appendix.
+(cid:3)
+A major result from Lemma 2 is that every member i ∈ N
+under the proposed pricing policy achieves a surplus no less
+than its benchmark, i.e., Sχ∗
+i (ψ∗
+(ri), where
+(ri) is the optimal surplus of the benchmark (Lemma 3).
+S NEM
+i
+Theorem 1 below establishes the Stackelberg equilibrium
+
+i (ri), ri) ≥ S NEM
+
+i
+
+∗
+
+∗
+
+under the proposed OEs-aware pricing policy.
+
+Theorem 1 (Equilibrium and welfare optimality). The solution
+(χ∗, ψ∗) is an equilibrium to (10)-(11). Also, the equilibrium
+
+solution achieves the community maximum social welfare
+under centralized operation, i.e.,
+(dψ∗
+
+Ui(di) − P NEM(zN )
+
+1 , . . . , dψ∗
+
+E
+
+N ) = argmax
+(di,...,dN )
+
+i∈N
+(cid:2) X
+subject to zN =
+
+1⊤di − ri
+
+(cid:3)
+
+i∈N
+X
+
+(cid:0)
+
+zN ∈ ZN , di ∈ Di ∀i ∈ N .
+
+(cid:1)
+
+Proof: See the appendix.
+(cid:3)
+The proof of Theorem 1 leverages Lemmas 1–2 above, Lemma
+3 in the appendix that characterizes the maximum surplus of
+the benchmark and Lemma 4 in the appendix that solves for
+the community maximum welfare under centralized operation.
+Theorem 1 also implies that the maximum community welfare
+is wholly distributed to the members.
+
+IV. VALUE OF COMMUNITY
+
+We showed in Lemma 2 that for every member under the
+OEs-aware pricing policy, joining the community is advanta-
+geous, as it achieves surplus levels no less than the maximum
+surplus of the benchmark. To quantify and analyze this added
+beneﬁt after joining the community, we introduce the value
+of community (VoC) metric, deﬁned as the aggregate expected
+difference between community members’ surplus under the
+OEs-aware pricing policy and the benchmark surplus8
+VoCχ∗,NEM:=
+
+VoCχ∗,NEM
+
+i (ri), ri)− S NEM
+
+Sχ∗
+i (ψ∗
+
+(ri)
+
+:=
+
+E
+
+i
+
+i
+
+∗
+
+,
+
+i
+
+h
+
+i∈N
+X
+
+i∈N
+i
+X
+(20)
+where VoCχ∗,NEM
+is the value gained by member i after joining
+the community,9 and the expectation is taken over ri. From
+Lemma 2, we know that VoCχ∗,NEM
+≥ 0. Corollary 1 below
+i
+compares the benchmark prosumer’s surplus given in Lemma
+3 in the appendix to the member surplus under equilibrium.
+
+Corollary 1 (Member and community net-consumption com-
+plementarity). For every member i ∈ N under the OEs-
+aware pricing policy, if π− < π+,
+i∈N zi < zN and
+i∈N zi > zN , then VoCχ∗,NEM
+> 0 except in the following
+
+i
+
+P
+
+three cases
+P
+(i) rN ∈ [σ1, σ2], ri ≤ ∆i
+(ii) rN ∈ [σ3, σ4], ri ≥ ∆i
+(iii) rN ∈ [σ2, σ3], 1⊤dψ∗
+i (π∗) = ri,
+under which VoCχ∗,NEM
+= 0.
+
+2 := [fi(1π+)]di
+di
+3 := [fi(1π−)]di
+di
+
+i
+
+Proof: See the appendix.
+
+(cid:3)
+Dually, Corollary 1 (depicted in Fig.4) gives the conditions for
+strict individual rationality. As shown in Fig.4, the corollary
+indicates that whenever the community OEs constraints are
+binding, all members achieve a strictly positive beneﬁt over
+their benchmark. Also, if neither the community OEs nor the
+benchmark OEs are binding, whenever the benchmark’s opti-
+mal net consumption sign sgn{z NEM
+(ri)} (derived in Lemma
+3) opposes the community’s aggregate net consumption sign
+
+i
+
+∗
+
+8VoC deﬁnition is analogous to the value of storage deﬁnition in [29].
+9There are still un-captured values for joining an energy community, such
+
+as wider DER accessibility and improved economies of scale.
+
+7
+
+1 − ∆i
+Fig. 4. VoC of every member (Corollary 1). ∆i
+prosumer’s i benchmark optimal consumption policy.
+
+4 are the thresholds of
+
+TABLE I
+VOC COMPARATIVE STATICS (PROPOSITION 1).
+
+rN ≤ σ1
+
+rN ∈ (σ1, σ2)
+
+rN ∈ [σ2, σ3]
+
+rN ∈ (σ3, σ4)
+
+rN ≥ σ4
+
+↓↓↓ 0 ↑↑↑ 0
+↓↓↓ 0 ↑↑↑ 0
+↓↓↓ 0 ↑↑↑ 0
+↓↓↓ ↓↓↓ ↑↑↑ 0
+↓↓↓ ↓↓↓ ↑↑↑ 0
+
+↓↓↓ 0 0 0
+0 0 0 0
+↑↑↑ 0 0 0
+↑↑↑ ↓↓↓ 0 0
+↑↑↑ ↓↓↓ 0 0
+
+↑↑↑ 0 0 0
+↑↑↑ 0 0 0
+0 0 0 0
+0 ↓↓↓ 0 0
+0 ↓↓↓ 0 0
+
+↑↑↑ ↓↓↓ 0 0
+↑↑↑ ↓↓↓ 0 0
+0 ↓↓↓ 0 0
+0 0 0 0
+0 ↑↑↑ 0 0
+
+↑↑↑ ↑↑↑ 0 ↓↓↓
+↑↑↑ ↑↑↑ 0 ↓↓↓
+0 ↑↑↑ 0 ↓↓↓
+0 ↑↑↑ 0 ↓↓↓
+0 ↑↑↑ 0 ↓↓↓
+
+—–
+ri ≤ ∆i
+1
+
+ri ∈ (∆i
+ri ∈ [∆i
+ri ∈ (∆i
+
+1, ∆i
+2)
+2, ∆i
+3]
+3, ∆i
+4)
+
+ri ≥ ∆i
+4
+
+‡Each color represents ǫ-increases of one exogenous parameter
+(π+, π−, zN , zN ) while ﬁxing all others.
+
+π+: retail rate, π−: export rate, zN : import OE, zN : export OE.
+↑↑↑: increasing, ↓↓↓: decreasing, 0: unchanged.
+
+N (rN )},
+
+sgn{zψ∗
+N (rN )} the
+member is strictly better than its benchmark. The yellow point
+in Fig.4 represents condition (iii) in Corollary 1.
+
+(ri)} 6= sgn{zψ∗
+
+i.e., sgn{z NEM
+
+i
+
+∗
+
+The following proposition shows the monotonicity of the
+
+VoC of every member with the OEs.
+
+Proposition 1 (VoC comparative statics analysis). For every
+member i ∈ N under the OEs-aware pricing policy, the value
+of joining the community VoCχ∗,NEM
+monotonically increases
+i
+with the import OE zN and monotonically decreases with the
+export OE zN .
+
+Furthermore, VoCχ∗,NEM
+
+monotonically increases with π+,
+except rN ≤ σ1, ∀ri ∈ R+ and when rN ∈ (σ1, σ2), ri ≤ ∆i
+1,
+under which the VoCχ∗,NEM
+
+monotonically decreases.
+i
+monotonically decreases with π−, except
+when rN ≥ σ4, ∀ri ∈ R+ and when rN ∈ (σ3, σ4), ri ≤ ∆i
+4
+under which the VoCχ∗,NEM
+
+monotonically increases.
+
+Lastly, VoCχ∗,NEM
+
+i
+
+i
+
+i
+
+Proof: See the appendix.
+
+(cid:3)
+Table I summarizes the detailed comparative static analysis in
+Proposition 1 by considering ǫ-increases of the exogenous pa-
+rameters (π+, π−, zN , zN ). The monotonicity with (zN , zN )
+indicates the increased willingness of DSO prosumers to
+join the community when the community’s OEs become less
+restrictive than their aggregate individual OEs, which is a
+straightforward beneﬁt of aggregation. From Table I, increas-
+ing π+ increases the VoC when the community price is < π+
+and when the community price is π+, but the benchmark’s
+import OE does not bind. Conversely, increasing π− decreases
+the VoC decreases whenever the community price is > π− and
+when the community price is π−, but the benchmark’s export
+OE does not bind.
+
+Lastly, we draw a stronger statement about the optimality
+
+8
+
+of member surplus under a community with aggregate-level
+OEs compared to a community with member-level OEs (see
+Fig.1).
+
+Theorem 2 (Surplus optimality). Give ri, and rN ,
+if an
+aggregate-level OEs and a member-level OEs communities
+are both in the net-consuming or net-producing zones then
+the surplus of a prosumer in the former community is no less
+than its surplus in the latter, i.e., if rN < σ2 and rN < Θ1(r)
+or rN > σ3 and rN > Θ2(r) then
+Sχ∗
+i (ψ∗
+
+i (ri), ri) ≥ S∗,DNEM
+
+(ri),
+
+i
+
+i
+
+where S∗,DNEM
+(ri) is the maximum member surplus under D-
+NEM with member-level OEs, and (Θ1(r), Θ2(r)) are D-NEM
+thresholds [25].
+
+Proof: See the appendix.
+
+(cid:3)
+Whereas the welfare sub-optimality of a community with
+member-level OEs to a community with aggregate-level OEs
+is straightforward, as the former has a smaller feasible solution
+space, the surplus sub-optimality of members in the member-
+level OEs community to members in the aggregate-level OEs
+is less obvious. Roughly speaking, the reason for this surplus
+sub-optimality is that enforcing OEs at the members’ meters
+rather than at the community’s revenue meter, restricted energy
+sharing. Indeed, when the member-level OEs are binding,
+members who were buyers under aggregate-level OEs are now
+forced to reduce their consumption, and members who were
+sellers are now forced to increase their self-consumption in-
+stead. This prevented both buyers and sellers from transacting
+at the community price, which is always better than the DSO’s
+NEM price. A direct result of Lemma 2, Theorem 1 in [25],
+and Theorem 2 is the following surplus order
+
+Sχ∗
+i (ψ∗
+
+i (ri), ri) ≥ S∗,DNEM
+
+i
+
+(ri) ≥ S NEM
+
+i
+
+∗
+
+(ri),
+
+where the ﬁrst inequality holds only under the conditions in
+Theorem 2.
+
+V. NUMERICAL STUDY
+
+We constructed hypothetical energy community with N =
+20 residential customers (4 of which do not have BTM
+generation), whereby the 20 households pool and aggregate
+their resources behind a DSO revenue meter under a NEM
+tariff. A one-year DER data10 was used. The DSO’s NEM
+tariff has a ToU-based (retail rate π+) with π+
+ON = $0.40/kWh
+and π+
+OFF = $0.20/kWh as on- and off-peak prices, respectively,
+and an (export rate π−) that
+is based on the wholesale
+market price.11 The DSO OEs are varied, but we assumed
+
+i∈N zi = zN = −zN = −
+We assumed a quadratic concave and non-decreasing utility
+
+i∈N zi.
+
+P
+function for every i ∈ N , given by
+2 βid2
+
+P
+
+Ui(di) =
+
+αidi − 1
+α2
+,
+i
+2βi
+
+(
+
+i , 0 ≤ di ≤ αi
+βi
+di > αi
+βi
+
+,
+
+10We used 2018 PecanStreet data for households in Austin, TX with 15-
+
+minute granularity.
+
+11We used the averaged 2018 real-time wholesale prices in Texas. The data
+
+is accessible at ERCOT.
+
+where αi, βi are parameters that were learned and calibrated
+using historical retail prices12 and consumption,13 and by
+assuming an elasticity of 0.21 taken from [30] (see appendix
+D in [9]).
+
+A. Community Members’ Payments and Surpluses
+
+Figure 5 shows the average monthly community member’s
+payment, percentage surplus difference over the benchmark,
+and the absolute value of the percentage ratio of volumetric
+to ﬁxed charge under three different OEs settings. It also
+shows the surplus difference of members in a community with
+member-level OEs.
+
+indicates that
+
+Four main observations on the surplus difference (red as-
+terisks and squares) are in order. First, members under com-
+munities with aggregate-level and member-level OEs achieved
+a higher surplus than their benchmark (Theorem 1 and The-
+orem 1 in [25]). For members who achieved higher surplus
+differences, it
+their benchmarks experienced
+high surplus loss due to standalone customer OEs. Second,
+tightening the OEs, made it, in general, more advantageous
+to join the community. The average surplus difference of
+the 20 customers under 120kW, 60kW, and 54kW OEs was
+approximately 5%, 8%, and 12%, respectively. Third, com-
+munity members under aggregate-level OEs achieved a higher
+surplus than community members under member-level OEs
+(Theorem 2), and the difference was higher when the OEs were
+tighter. The average difference between the gain of members
+under communities with aggregate-level and member-level
+OEs was 0.03%, 2.91%, and 6.14% for 120kW, 60kW, and
+54kW OEs, respectively. Fourth, non-solar adopters (members
+with asterisks) suffered the most as the OEs became tighter,
+which is because when they operate in standalone settings they
+were highly vulnerable to the import rate. One can see that
+although customers 11∗, 16∗, and 17∗ were the highest surplus
+their performance
+difference achievers under 120kW OEs,
+signiﬁcantly degraded when the OEs were tightened to 54kW.
+Additionally, one can see that the average monthly payment
+(blue dots) of aggregate-level OEs framework’s community
+members did not change much when the OEs were tightened,
+because the ﬁxed reward compensated customers when they
+faced > π+ buy rates (when the import OE was binding)
+and < π− sell rates (when the export OE was binding).
+The volumetric to ﬁxed reward ratio (bar chart) helps in
+understanding this phenomenon. When OEs were relaxed (i.e.,
+in the 120kW case), the ratio was effectively ∞ as the OEs
+were never binding. As the OEs were further constrained
+to 60kW and 54kW,
+the average ratio reduced to 39.4%
+and 19.55%, respectively, which shows that ﬁxed rewards
+increased to compensate for the loss in volumetric charge,
+keeping the overall payment only slightly changed.
+
+(21)
+
+B. Daily Community Price
+
+Figure 6 shows the aggregate-level OEs community’s daily
+price over a year (dotted curves) and the average daily price
+
+12We used Data.AustinTexas.gov historical residential rates in Austin, TX.
+13We used pre-2018 PecanStreet data for households in Austin, TX.
+
+9
+
+Fig. 5. Aggregate-level OEs community members’ average monthly payments (blue dots), surplus percentage difference over benchmark (red asterisk), and
+the absolute value of the percentage ratio of volumetric to ﬁxed charge (bar chart). The surplus difference of member-level OEs community members is
+represented by the red square. Black asterisks indicate that the member has no BTM generation.
+
+0.7
+
+0.6
+
+0.5
+
+0.4
+
+0.3
+
+0.2
+
+0.1
+
+)
+h
+W
+k
+/
+$
+(
+
+e
+c
+i
+r
+P
+
+0
+
+0
+
+0.7
+
+0.6
+
+0.5
+
+0.4
+
+0.3
+
+0.2
+
+0.1
+
+)
+h
+W
+k
+/
+$
+(
+
+e
+c
+i
+r
+P
+
+0
+
+0
+
+!! " #!! " ++’(
+,"
+,$-.!/
+,#
+
+5
+
+10
+
+15
+
+Time (Hour)
+
+20
+
+!! " #!! " )&’(
+
+5
+
+10
+
+15
+
+Time (Hour)
+
+20
+
+0.7
+
+0.6
+
+0.5
+
+0.4
+
+0.3
+
+0.2
+
+0.1
+
+)
+h
+W
+k
+/
+$
+(
+
+e
+c
+i
+r
+P
+
+0
+
+0
+
+0.7
+
+0.6
+
+0.5
+
+0.4
+
+0.3
+
+0.2
+
+0.1
+
+)
+h
+W
+k
+/
+$
+(
+
+e
+c
+i
+r
+P
+
+0
+
+0
+
+!! " #!! " *+’(
+
+5
+
+10
+
+15
+
+Time (Hour)
+
+20
+
+!! " #!! " $%&’(
+
+5
+
+10
+
+15
+
+Time (Hour)
+
+20
+
+Fig. 6. Average community price under different OEs.
+
+(yellow curves) under different OEs. For this particular ﬁgure,
+we set the sell rate at π− = $0.1/kWh. In hours with binding
+import OE, the community price became higher than π+, as
+the operator charges a higher price to reduce consumption.
+Whereas, when the export OE was binding, the price be-
+came less than π−, as the operator charges a lower price to
+encourage higher consumption, hence locally consuming the
+excess renewables. Therefore, when the OEs were set at 44kW,
+the community price exceeded the NEM X rates in many
+instances, as the OEs were binding more often. The same goes
+for 54kW OEs. By further relaxing the OEs, the community
+price stayed within the NEM X rates, as it dynamically ranged
+between π+ and π− passing by χz. Indeed, at 120kW OEs,
+the daily price never oscillated between and never exceeded
+π+ and π−, mimicking the community pricing policy without
+OEs, i.e., Dynamic NEM in [24].
+
+C. Community Price and Aggregate Net Consumption
+
+Figure 7 shows histograms of the hourly aggregate-level
+OEs community price (left column) and aggregate net con-
+sumption (right column), over the studied year, under OEs
+zN = −zN = 54kW (top), zN = −zN = 60kW
+
+(middle), and zN = −zN = 120kW (bottom). First, note
+that
+the frequency of the prices $0.4/kWh and $0.2/kWh
+was high because the ToU retail rate π+ can only take
+these values, whereas the sell rate π− can take any value
+between $0.04/kWh to $0.15/kWh. When the OEs were high,
+zN = −zN = 120kW, the community price never exceeded
+π+, as the import OE was never binding. When the OE
+decreased to zN = −zN = 60kW, the frequency of $0.4/kWh
+and $0.2/kWh decreased as the community price crossed π+
+(note the higher frequency of prices χ+
+ON > $0.4/kWh and
+χ+
+OFF > $0.2/kWh) whenever the import rate was binding. This
+phenomenon was even clearer when the OEs were decreased
+to zN = −zN = 54kW, under which χ+
+ON exceeded $0.7/kWh
+in some hours. The same observation can be extended to
+the export side, under which the community is charged with
+χ− < π−, whenever the export OE was binding. This
+however was not clear from the plots, because the community’s
+generation was relatively low compared to consumption.
+
+The dynamic aggregate net consumption plots (right col-
+umn) show how the community price managed the com-
+munity’s operation at the PCC, by inducing its members to
+consume more when the export OE was binding and consume
+less when the import OE was binding.
+
+VI. CONCLUSION
+
+This work proposes an energy community market mech-
+anism that
+incorporates the DSO’s dynamic OEs into its
+pricing structure. The mechanism induces a collective member
+response that not only satisﬁes the community operational
+limits but also decentrally maximizes the community social
+welfare while meeting the pricing axioms for equitable welfare
+allocations. The market mechanism charges its members via
+a two-part dynamic and resource-aware pricing, whereby, the
+OEs-awareness and welfare optimality are achieved through
+the dynamic price, and the non-volumetric part of the pricing
+is designed to ensure proﬁt-neutrality, and member rationality,
+characterized by achieving beneﬁts higher than possible out-
+side the community. The community price is a monotonically
+decreasing function of the aggregate renewable generation in
+the community. The two-part pricing is threshold-based, with
+
+
+Fig. 7. Histogram of hourly community price (left column) and aggregate
+net-consumption (right column) under OEs zN = −zN = 54kW (top),
+zN = −zN = 60kW (middle), and zN = −zN = 120kW (bottom).
+
+thresholds that can be computed apriori and in a privacy-
+preserving way. We analyzed the value of joining the com-
+munity for each member and discovered multiple properties,
+including net-consumption complementarity and comparative
+statics with parameters like the DSO’s NEM rates and OEs.
+

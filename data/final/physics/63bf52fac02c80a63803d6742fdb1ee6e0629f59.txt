@@ -1,0 +1,514 @@
+Although lithium–sulfur batteries possess the highest theoretical capacity and lowest cost among all known rechargeable batteries, their commercialization is still hampered by the intrinsic disadvantages of low conductivity of sulfur and polysulfide shuttle effect, which is most critical. Considerable research efforts have been dedicated to solving these difficulties for every part of Li–S batteries. Separator modification with metal electrocatalysts is a promising approach to overcome the major part of these disadvantages. This work focuses on the development of Ni nanoparticles encapsulated in a few-layer nitrogen-doped graphene supported by nitrogen-doped graphitic carbon (Ni@NGC) with different metal loadings as separator modifications. The effect of metal loading on the Li–S electrochemical reaction kinetics and performance of Li–S batteries was investigated. Controlling the Ni loading allowed for the modulation of the surface area-to-metal content ratio, which influenced the reaction kinetics and cycling performance of Li–S cells. Among the separators with different Ni loadings, the one with 9 wt% Ni exhibited the most efficient acceleration of the polysulfide redox reaction and minimized the polysulfide shuttling effect. Batteries with this separator retained 77.2% capacity after 200 cycles at 0.5C, with a high sulfur loading of ∼4.0 mg cm−2, while a bare separator showed 51.3% capacity retention after 200 cycles under the same conditions. This work reveals that there is a vast utility space for carbon-encapsulated Ni nanoparticles in electrochemical energy storage devices with optimal selection and rational design. 1 introduction Lithium–sulfur (Li–S) batteries have been extensively studied over the past few decades due to the extremely high theoretical specic capacity of sulfur (1675 mA h g−1) and appropriate operating potential, as well as low cost, non-toxicity, abundance and environmental friendliness of sulfur resources.1,2 However, the commercialization of Li–S batteries is severely hampered by the difficulties associated with poor conductivity, large volume variations (80%) of sulfur upon charge–discharge cycling, and complicated redox reactions.3 The complexity of the redox reaction is associated with the formation of lithium polysuldes (LiPSs) that readily dissolve in the electrolyte and shuttle from the cathode to the anode to produce non-reusable solid Li2S2/ Li2S.4 This process is accompanied by a constant loss of active
+gineering, Nazarbayev University, Astana .edu.kz niversity, Astana 010000, Kazakhstan g, State Key Laboratory of Reliability and
+niversity of Technology, Tianjin 300130,
+tion (ESI) available. See DOI:
+40
+material and passivation of the anode surface, and it is regarded to be one of the most critical issues that limits the practical use of Li–S batteries. Moreover, a multiphase solid–liquid–solid sulfur/LiPSs/sulde conversion is sluggish at the electrode/ electrolyte interface due to the insulating nature of sulfur and lithium sulde.5 In this regard, it is crucial to develop advanced sulfur-based cathode materials to accelerate the sulfur redox reaction, inhibit the dissolution of LiPSs and restrict their shuttle/diffusion. Tremendous efforts have been made to enhance the LiPS conversion reaction kinetics and affinity of the conductive host material to LiPSs (physical blocking and chemical adsorption). Because of their high conductivity and large surface area, carbon materials including graphenes, carbon nanotubes (CNTs), carbon nanobers (CNFs), and porous carbon materials are frequently employed in Li–S batteries.2,6,7 However, physical adsorption is frequently ineffective at suppressing LiPS dissolution, but chemical interaction can efficiently anchor polar LiPS and inhibit their diffusion in the electrochemical processes of Li–S batteries.8 Active materials such as transition metal compounds (-oxides,9–11 -suldes,12–14 -nitrides,15–17 etc.) exhibit strong chemical attraction to polar LiPS and enhance the reversible redox kinetics of sulfur compounds. Nevertheless, the poor conductivity of these active materials would adversely
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+affect the connement of the LiPS. Moreover, the sluggish redox kinetics of the immobilized LiPS on these active materials would result in low utilization of sulfur and poor electrochemical performance of Li–S batteries.18 In this regard, combination of a conductive carbon matrix with chemical/ physical adsorption ability and a metal with catalytic effects towards the reaction of solid–liquid, liquid–liquid and liquid– solid conversion of sulfur species is of great value for the construction of high-rate Li–S batteries.19–22
+Increasing attention has recently been paid to the use of conductive metal electrocatalysts to boost the rate of electrochemical reactions in Li–S batteries. The promising electrocatalytic activity of single atoms and metal nanoparticles has been studied extensively as effective modication for host materials, interlayer membranes and separators.23–25 Among them, the separator modication is considered as a relative simple method that also eliminates direct mixing of sulfur and the material to avoid oxidation, which may affect the conductivity of carbon materials.26,27 Recently, due to their promising electrocatalytic activity, Ni nanoparticles and single atoms have been extensively studied for the separator modication. Yang et al. reported that Ni nanoparticles and Ni3Fe in nitrogendoped carbon nanotubes (Ni@NCNTs and Ni3Fe@NCNTs) can increase the reaction rate of liquid–liquid and liquid–solid conversion compared with the bare NCNT material, from the results of symmetric cells and Li2S nucleation.19 Xie et al. reported that graphene-impregnated Ni, Fe, and Co single atoms efficiently modied separators, reduced the potential gap and improved the cycle life of Li–S batteries.21 Niu et al. reported that Ni single atoms are partially oxidized and formed a Ni–N4 structure, which can act as a polysulde trap.28 In this regard, efficient immobilization of metal electrocatalysts and understanding the role of metal content/loading within a carbon matrix on the electrochemical reaction kinetics are critically important. However, such studies have rarely been reported in the literature up to date. Herein, Ni nanoparticles encapsulated in a few-layer Ndoped graphene supported by nitrogen-doped graphitic carbon (Ni@NGC) with different metal loadings were designed as separator modicators. Ni@NGC with different metal loadings of 18, 12, 9 and 7 wt%, denoted further as Ni@NGC_18, Ni@NGC_12, Ni@NGC_9 and Ni@NGC_7, respectively, were synthesized via carbonization and hot acidic treatment of a mixture of urea and Ni acetylacetonate taken in different molar ratios. With the increase in the molar ratio of urea, the formation of nanotubes on the surface of stacked sheets increased, which, in turn, favored the development of porous structures with a large active surface area. N-doped graphitic carbon and Ni nanoparticles, dispersed in the matrix, form a highly conductive network, which is benecial for a rapid electron transfer between LiPSs and the carbon matrix. The encapsulation of Ni nanoparticles with several layers of Ndoped graphenes eliminates the direct contact of metal nanoparticles with LiPSs, and thus suppresses their oxidization by LiPSs. The effect of Ni@NGC modication with 18, 12, 9 and 7 wt% Ni loadings on the reaction kinetics and their interaction with LiPSs were investigated. Modied separators with 9 wt% Ni
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+(Ni@NGC_9) demonstrated improved reaction kinetics and cycling performance due to the optimized surface area-to-Ni content ratio. 2 experimental section  2.1 preparation of ni@ngc-coated separators Nickel acetylacetonate (Ni(acac)2) and urea were carefully mixed in different molar ratios (1 : 7.5, 1 : 9, 1 : 12 and 1 : 15) and heated at 900 °C for one hour in an argon atmosphere at a ramp rate of 3 °C min−1. The resulting black powder was treated with 0.5 M H2SO4 at 130 °C for 12 h. The nal product was washed with DI water until the pH reached 7 and dried at 40 °C for 24 h under vacuum. The NGC compound preparation involves treating Ni@NGC (in 1 : 15 molar ratio) with concentrated hydrochloric acid (HCl) at 70 °C for 24 hours with continuous stirring.19 Modied separators were prepared by a vacuum ltrationmethod.29 Shortly, 90 mg active materials and 10mg of polyvinylidene uoride (PVDF) were added into a N-methylpyrrolidone solvent and ball-milled at 400 rpm for 4 h to form a homogeneous dispersion. Aerward, the dispersion was coated onto a commercial polypropylene (PP, Celgard-2400) separator and dried in a vacuum oven. Aer drying, the modied separator was punched into disks with a diameter of 19 mm. The areal mass loading of Ni@NGC was controlled to be ∼0.1 mg cm−2. 2.2 materials characterization The nanostructure and morphology were analyzed by scanning electron microscopy (SEM, Zeiss Crossbeam 540, 5 kV) and transmission electron microscopy (TEM, JEOL JEM-1400PLUS, 200 kV). The crystal structure was studied by X-ray diffraction (XRD, Rigaku Smartlab) in the 2q range of 15° to 90° with Cu Ka radiation (l = 1.54056 Å). Raman spectra were recorded using a spectrometer (Horiba LabRam Evolution). Thermal gravimetric analysis of the samples was carried out using a Simultaneous Thermal Analyzer (STA 6000, PerkinElmer). The measurements of specic surface area and pore volumes were conducted via N2 adsorption and desorption isotherms (nitrogen porosimeter, Quantachrome Instruments), while the pore size distribution was determined by the Barrett–Joyner– Halenda (BJH) method. The oxidation state changes were investigated by X-ray photoelectron spectroscopy (XPS, NEXSA, Thermo Scientic). 2.3 lips permeability test The LiPS permeability of the Ni@NGC-modied separator was studied using a UV-vis spectrophotometer. The sample preparation was carried out by placing modied separators into a blue screw cap with a hole vial (2 mL) lled with 5 mM solution of Li2S6 dissolved in 1,2-dimetoxyethane (DME) and 1,3- dioxolane (DOL) (1 : 1, v/v) and letting small vials stay inside a larger vial lled with a DOL/DME (1 : 1, v/v) solvent for 12 hours. Fully adsorbed samples were recovered and dried for further XPS analysis. RSC Adv., 2023, 13, 9428–9440 | 9429
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce 2.4 symmetric cell test In order to prepare the electrodes for a symmetrical cell, a slurry of the active materials (Ni@NGC with different Ni wt% loadings) uniformly mixed and dispersed in NMP was dropped onto a circular carbon paper current collector and dried in a vacuum oven at 60 °C for 6 hours. Symmetric cells were assembled from two identical electrodes separated by a commercial Celgard® 2400 separator. A solution of 0.3 M Li2S6 in DOL/DME (1 : 1, v/v) was used as an electrolyte with 50 mL of it dropped between the electrodes. The CV investigation of the polysulde behaviour was conducted using a Biologic VMP3 potentiostat/galvanostat at a scan rate of 10 mV s−1 in the potential range from −1.0 V to 1.0 V vs. Li/Li+. 2.5 nucleation test The prepared material loaded onto carbon paper was used as a working electrode with a metallic Li counter/reference electrode, 20 mL of 0.5 M Li2S8 in tetraglyme as a catholyte and 20 mL 1 M (lithium bis(triuoromethanesulfonyl)imide) LiTFSI with 2 wt% of LiNO3 in DOL/DME (1 : 1, v/v) as an anolyte. Assembled CR 2032 coin cells were galvanostatically discharged up to 2.06 V and further kept at 2.05 V until the current dropped below 10−5 A for Li2S nucleation. 2.6 electrochemical characterization The Li–S coin cells were assembled using Li metal as the counter/reference electrode, the Li2S6 catholyte as the active material, carbon paper as the cathode current collector, and commercial or the modied separator. The sulfur content, calculated based on the sulfur content in the Li2S6 solution, was ∼4.0 mg cm−2, for which 16 mL of 1 M Li2S6 solution was used in each cell. Then, 10 mL of the electrolyte in the cathode (sulfur) side and 20 mL in the anode (lithium) side were added. Thus, the ratio of the electrolyte and sulfur was controlled as 10 : 1. The 1 M LiTFSI electrolyte was prepared by dissolving LiTFSI in DOL/DME (1 : 1, v/v) with the 0.1 M LiNO3 additive. The galvanostatic charge–discharge tests were carried out within the potential range of 1.7–2.8 V vs. Li/Li+ using a Neware battery
+9430 | RSC Adv., 2023, 13, 9428–9440
+tester (Neware Co.). Cyclic voltammetry (CV) curves were obtained using a Biologic VMP3 potentiostat/galvanostat in the potential range of 1.7–2.8 V, and electrochemical impedance spectroscopy (EIS) was performed in the frequency range from 100 kHz to 1 MHz at an amplitude of 5 mV. 2.7 In situ Raman measurements
+The Raman spectra were recorded in a CR2032 cell with a hole on the cathode side of the cell sealed by a piece of glass using a spectrometer (Horiba LabRam Evolution) and a 532 nm laser and a microscope objective of ×10 K magnication under ambient conditions. The cell was rst charged to 2.8 V and then the Raman signals were recorded every 5 minutes throughout the discharging–charging cycling of the Li–S cell. 3 results and discussion  3.1 characterization of ni@ngc The Ni NPs encapsulated in a few-layer N-doped graphene supported by N-doped graphitic carbon with different metal loadings were synthesized by pyrolysis of a Ni(acac)2 precursor in the presence of urea followed by hot acidic treatment. Fig. 1a shows the XRD patterns of Ni@NGC with different Ni loadings. The diffraction peaks at 2q 44.5°, 51.8°, and 76.3° can be assigned to the (111), (200), and (220) planes of the Ni NPs (JCPDS 04-0850), respectively, where the peak centered at 26.2° corresponds to the (002) plane of graphitic carbon (JCPDS 75- 1621). TGA analysis demonstrated that the Ni contents in the Ni@NGC samples with the initial precursors' ratio equal to 1 : 7.5, 1 : 9, 1 : 12 and 1 : 15 in the nal samples corresponded to 18, 12, 9 and 7 wt% Ni, respectively (denoted as Ni@NGC_18, Ni@NGC_12, Ni@NGC_9 and Ni@NGC_7) (Fig. 1b). Fig. 2a–d presents the SEM images of Ni@NGC with different Ni contents, and shows that they have stacked sheet-like morphology in the presence of nitrogen-doped carbon nanotubes (CNTs) that originate from the decomposition of urea with the aid of nickel catalysts.30 Uniformly distributed Ni nanoparticles with a diameter of 20–25 nm can be observed from a low-magnication TEM image of Ni@NGC_9 (Fig. 2e). 1 : 15 molar ratios. © 2023 The Author(s). Published by the Royal Society of Chemistry
+Fig. 2 SEM images of Ni@NGC with (a) Ni@NGC_18; (b) Ni@NGC_12; (c) Ni@NGC_9; (d) Ni@NGC_7; (e) low-resolution TEM image of Ni@NGC_9; (f) HRTEM image of Ni@NGC_9; (g) d-spacing; (h) TEM image of onion-like NGC. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+High-resolution TEM images indicate that the Ni NPs are encapsulated in several layers of the graphene shell (Fig. 2f). In the graphene shell region, the interlayer distance is around
+Fig. 3 (a) Raman spectra, (b) nitrogen adsorption desorption isotherms,
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+0.36 nm, conrming that the Ni NPs are coated by the graphene layers (Fig. 1g). The well-resolved lattice fringes with a d-spacing of 0.210 in the Ni core region can be clearly observed by
+and (c) pore size distribution of Ni@NGC with different Ni loadings. RSC Adv., 2023, 13, 9428–9440 | 9431
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+HRTEM, which corresponds to the (111) plane of Ni NPs (Fig. 1b). Fig. 2h shows the TEM image of the NGC material, where the formation of onion-like nanostructures can be observed, which are formed due to the removal of the Ni NPs from the N-doped graphene shells aer the HCl acidic treatment. The NGCmaterial showed amorphology similar to that of Ni@NGC, with the thickness of the coating of commercial separator (Celgard 2400) around 6 mm. Fig. 3a displays the Raman spectra of NGC and Ni@NGC samples in the Raman shi ranging from 900 cm−1 to 2800 cm−1. Two peaks at about 1350 cm−1 and 1580 cm−1 found in all spectra are the characteristic features of carbonaceous materials. The peak at 1350 cm−1 (D band) corresponds to the defect in the carbon structure, whereas the peak at 1580 cm−1 (G band) has risen due to the graphitic carbon. The intensity ratio of the D and G bands (ID/IG) is increasing with the increase in the molar ratio of urea precursor, suggesting a higher degree of disorder and formation of carbon nanotubes in Ni@NGC, which is consistent with the XRD and SEM results. The porous structure of the samples was further investigated by nitrogen adsorption–desorption measurements (Fig. 3b). Ni@NGC exhibited a type IV hysteresis in the relative pressure region of 0.4–0.9 P/P0 andmoderately smooth adsorption curves throughout the whole relative pressure region, indicating the presence of mesopores.31,32 The respective pore size distribution is also shown in Fig. 3c, which was calculated by the Barrett– Joyner–Halenda (BJH) method. According to BJH, the average pore size of Ni@NGC materials was about 3.8 nm, and the corresponding BJH desorption cumulative pore volume was found to be equal to 0.101, 0.127, 0.144, 0.162 and 0.197 cm3 nm−1 g−1, while the specic surface area was calculated to be
+Fig. 4 Surface XPS spectra of modified separators; (a) the general XPS sur
+9432 | RSC Adv., 2023, 13, 9428–9440
+93.5, 104.4, 117.1, 123.6 and 131.4 m2 g−1, for Ni@NGC_18, Ni@NGC_12, Ni@NGC_9, Ni@NGC_7 and NGC, respectively. Thus, controlling the molar ratio of Ni precursor to urea followed by hot acidic solution treatment is a key approach to increase the cumulative pore volume and surface area of Ni@NGC materials. The surface composition and oxidation states of the Ni@NGC-modied separators were retrieved from the XPS analysis. The general survey spectrum (Fig. 4a) conrmed the presence of Ni, C, O, and N elements in the Ni@NGC samples with different Ni wt% loadings. The C 1s XPS spectrum (Fig. 4b) was deconvoluted into three peaks at 284.5, 285.8, and 288.5 eV, which corresponded to those of the C–C, C–N, and C–O groups, respectively, among which the C–C bonds were more dominant than others and nitrogen-doping of graphene layers was conrmed by the presence of the C–N bonds.33 Highresolution N 1s spectrum (Fig. 4c) revealed different N-doping structures including pyridinic N at 398.4 eV, pyrrolic N at 399.4 eV, graphitic N at 400.5.0 eV and oxidized N at 403.8 eV. The contribution of each nitrogen structure was in the enhancement of the electronic conductivity and facilitating the surface adsorption ability of the carbon matrix by acting as a Lewis base substrate for polysulde species.34,35 The Ni 2p region showed the presence of peaks of 2p3/2, 2p1/2 and satellites, which could be assigned to the binding energies of metallic nickel (Fig. S1†). 3.2 kinetic behavior of modied separators The effect of Ni@NGC-modied separators on the sulfur cathode redox reaction kinetics in Li–S cells was investigated. vey; (b) C 1s core-level XPS spectrum; (c) N 1s core-level XPS spectrum. © 2023 The Author(s). Published by the Royal Society of Chemistry
+Fig. 5 Cyclic voltammetry at different scanning rates; (a) Ni@NGC_18, (b) Ni@NGC_12, (c) Ni@NGC_9 (d) Ni@NGC_7, (e) NGC and (f) bare separator, and (g) linear fits of the peak currents. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+Fig. 5 shows the representative CV proles of Li–S cells employing the modied separator with Ni@NGC at different scanning rates from 0.1 to 0.5 mV s−1 between 1.7 and 2.8 V vs. Li/Li+. According to the Randles–Sevcik equation, there is a linear relationship between the redox peak current and the square root of the scan rate, which allows us to evaluate the diffusion of lithium ions within the electrodes:36
+Ip = 2.69 × 10 5 × n1.5 × A × DLi+ 0.5 × CLi+ × v 0.5 (1)
+where Ip is the peak current, n the number of electrons, A the electrode area (0.785 cm2), DLi+ the Li
++ diffusion coefficient, CLi+ the concentration of lithium ions in the electrolyte and v the scanning rate. The tted slope values of the A, B and C redox peaks of the CV plots of Ni@NGC and unmodied separators (Fig. 5) were linear with the square root of scanning rates, indicative of the
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+diffusion-limited process. The diffusion coefficient DLi+ was calculated from the slope of the curve (Ip/v
+0.5), which represented the lithium ion diffusion rate, while other parameters such as the area of electrode, number of electrons and the concentration of lithium ions in the electrolyte remained unchanged (Table 1).22 It can clearly be seen that the Ni@NGC_9
+Fig. 6 Kinetics investigation of Ni@NGC materials; (a) CV curves of Li2S6 symmetric cells with different electrodes; (b) EIS profiles of the Li2S6 symmetric cells with different electrodes; potentiostatic discharge curves at 2.05 V of (c) Ni@NGC_18, (d) Ni@NGC_12, (e) Ni@NGC_9 and (f) Ni@NGC_7. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+sample exhibited the highest lithium ion diffusivity at the peaks A and C, which mainly arose from improved lithium polysulde adsorption and enhanced LiPS-to-Li2S conversion capability. The cells were further investigated to analyze the inuence of the nickel content (Ni wt%) in the Ni@NGC material on the electrochemical kinetics. Symmetric Li2S6 cells were assembled with identical electrodes prepared from Ni@NGC, NGC-loaded CFP or bare CFP. The CV proles in Fig. 6a show that the peak current of the Ni@NGC_9 cell is higher than that of other counterparts, Ni@NGC, NGC or bare CFP. This phenomenon suggests the faster liquid–liquid conversion of LiPSs on the electrode surface, as previously reported by Koratkar et al. for the kinetics study of symmetric cells.19 It is consistent with the
+9434 | RSC Adv., 2023, 13, 9428–9440
+EIS results, where the Ni@NGC_9 sample has the lowest resistance compared to other samples showing a lower chargetransfer resistance (Fig. 6b). To evaluate the Li2S nucleation on the Ni@NGC electrode surface, the potentiostatic discharge at 2.05 V was performed using a Li2S6 catholyte. As shown in Fig. 6c–f, the cells with Ni@NGC_9 and Ni@NGC_12 reached the highest current aer approximately 10 000 seconds, indicating accelerated Li2S growth compared with Ni@NGC_18 and Ni@NGC_7, which achieved the same currents aer ∼17 000 and ∼16 000 seconds, respectively. Specically, the Li2S nucleation capacities on Ni@NGC were calculated as 64, 121.3, 128.7 and 118.2 mA h g−1 for Ni@NGC with 18, 12, 9 and 7 wt% Ni, respectively. Ni@NGC_9 showed the higher activity toward Li2S
+e permeation tests with Ni@NGC-modified separators; (b) comparison
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+precipitation, indicating its improved catalytic effect for the liquid–solid redox reaction. The SEM images of Ni@NGC_9loaded carbon paper before and aer discharge are illustrated in Fig. S3.† The SEM image before the test shows the even distribution of the Ni@NGC_9 material within the carbon bers (Fig. S3a†). In addition, the post cycling morphology clearly shows the deposition of Li2S on the surface of carbon bers and Ni@NGC_9. Moreover, there is a higher deposition of Li2S on the surface of Ni@NGC, further conrming the catalytic effect of Ni@NGC_9. 3.3 interaction between polysuldes and ni@ngc Impermeability to soluble polysuldes is a key requirement for a separator in the Li–S battery. In the case of the Ni@NGCmodied separators, a lower diffusion of polysuldes across the separator was detected aer 12 h, as shown in Fig. 7, exhibiting effective blocking. The visual adsorption studies clearly showed that lithium polysulde impermeability was noticeably improved on the Ni@NGC-modied separators. The modied separators' adsorption capacity towards lithium polysulde was further analyzed by ultraviolet-visible (UV-vis) absorption tests (Fig. 7b). The results indicated that polysulde ions contributed to an adsorption peak between 200 and 350 nm, while the Ni@NGC_9 cell displayed a reduced intensity of this peak, suggesting increased impermeability. The surface composition and oxidation states of the Ni@NGC-modied separators before and aer full adsorption of LiPSs were characterized by XPS analysis (Fig. 8) to investigate the interaction between LiPSs and Ni@NGC. The high-
+Fig. 8 Illustration of the anchoring mechanism of polysulfides. Ni 2p reg Ni@NGC-modified separators after adsorption. © 2023 The Author(s). Published by the Royal Society of Chemistry
+resolution Ni 2p XPS spectrum of the Ni 2p3/2 region before adsorption tests revealed several peaks corresponding to the binding energies of metallic Ni (852.3 eV), Ni2+ (855.5 eV), Ni3+ (862.0 eV) and the satellite peak (858.7 eV), indicating that Ni nanoparticles were present in the form of Ni0, Ni2+, and Ni3+ in the composites. The peak tting results demonstrated a decrease in the Ni3+ content as the content of Ni wt% decreased as Ni3+ was reduced to Ni2+ with the increase in carbon amount.35 Nevertheless, the appearance of Ni2+ might be attributed to surface oxidation because of the exposure to the air. In contrast, the Ni 2p3/2 spectrum of Ni@NGC-Li2S6 showed characteristic peaks upshied to higher binding energies and an increased intensity in the Ni2+ region, indicating the electron transfer from surface-exposed nickel atoms to electron-rich sulfur atoms in Li2S6 (Fig. 8b and c).19 Moreover, Ni@NGC_9 demonstrated higher generation of thiosulfate species (S2O3
+2−) and a polythionate complex (SxO6
+2−) used as a polysulde shuttle suppressing the transfer mediator.35 Likewise, the Li2S2 peak was formed with a higher intensity with Ni@NGC_9 pointing at a more efficient lithium polysulde conversion into lithium suldes in contrast to other samples.37 3.4 cycling performance of functional ni@ngc-modied separators To study the performance of the cells with the modied separators, Li–S cells were assembled using standard CR2032 coin cells with a high sulfur loading of ∼4.0 mg cm−2. The cell with the Ni@NGC_9 sample showed lower polarization in the charge–discharge operation at 0.2 and 0.5C rates and exhibited
+ion (a) before and (b) after adsorption of Li2S6; (c) S 2p XPS spectra of
+RSC Adv., 2023, 13, 9428–9440 | 9435
+Fig. 9 Electrochemical performance of Ni@NGC-modified separators; voltage profiles of Li–S cells at (a) 0.2 and (b) 0.5; (c) rate capability test and (d) voltage profile of cells at 3C; cycling performance of Li–S cells at (e) 0.2C and (f) 0.5C. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+specic capacities of 1028.3, 887.7, 800.1, 747.8, 651.2, and 598.0 mA h g−1 at 0.2, 0.5, 1, 2, and 3C rates, respectively, which exceeded those of other samples of Ni@NGC, NGC, and pristine PP separator (Fig. 9a–c). Fig. 9a shows that the cells with Ni@NGC_9, Ni@NGC_12 and NGC show a similar initial capacity at a lower current density, which can be explained with the effects of specic surface area and Ni content. Despite having a lower Ni content, the cell with Ni@NGC_9 demonstrated a similar capacity to the cell with Ni@NGC_12, which could be attributed to a higher specic surface area (117.1 and 104.4 m2 g−1, respectively). In contrast, the capacity of the cell with NGC was comparable to that of the cells with Ni@NGC_9 and Ni@NGC_12 due to the increased specic surface area
+9436 | RSC Adv., 2023, 13, 9428–9440
+(131.4 m2 g−1). At a higher current density, the cells with Ni@NGC_9 and Ni@NGC_12 exhibited a higher capacity than NGC, which can be explained by an improved reaction kinetics for the cells with Ni@NGC_9 and Ni@NGC_12 (Fig. 9b). Even at a high 3C rate, Ni@NGC_9 maintained a smaller polarization between the charge and discharge potential plateaus than the cells with other, Ni@NGC and NGC, modications, and bare PP separators at 3C rate (Fig. 9d). Longer plateaus at 3C in charge– discharge curves for Ni@NGC_9 indicate an increased polysulde adsorption capability and a stronger catalytic effect for the conversion of insoluble Li2S into polysuldes, and vice versa, in the cell. Moreover, the Ni@NGC_9 sample showed a better cycling stability with a high initial capacity of about 1127 and
+© 2023 The Author(s). Published by the Royal Society of Chemistry
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+1005 mA h g−1 at 0.2 and 0.5C rates, with a capacity retention of 83% and 77% aer 100 and 200 cycles, respectively (Fig. 9e and f). In contrast, the Ni@NGC_12 sample, despite the higher initial capacities (1148 mA h g−1 at 0.2C and 1012 mA h g−1 at 0.5C), showed a lower capacity retention aer 100 cycles at 0.2C (78.9%) and 200 cycles at 0.5C (69.9%). This might be explained by a lower specic surface area and a smaller cumulative pore volume of Ni@NGC_18 and Ni@NGC_12 compared to that of Ni@NGC_9, conrming that the pore size and surface area are one of the most important aspects in enhancing the performance of lithium sulfur batteries.38
+Fig. 10 Spectra of in situ Raman scattering acquired from a Li–S battery w to cyclic voltammetry at a scan rate of 0.1 mV s−1. © 2023 The Author(s). Published by the Royal Society of Chemistry
+3.5 In situ Raman measurements
+The impact of Ni@NGC_9 on polysulde conversion was investigated by in situ Raman spectroscopy as a function of discharge/charge potential. The potential points of the cell with the Ni@NGC-modied separator and the bare PP separator at a potential scan rate of 0.1 mV s−1 are displayed in Fig. 10. At a starting potential of 2.8 V, both cells showed sharp Raman signals at 150, 219, and 475 cm−1 that were related to the asymmetric bending, symmetric bending, and symmetric stretching of S8 species.39 The transformation of S8 species into
+ith (a) Ni@NGC_9-modified and (b) polypropylene separator subjected
+RSC Adv., 2023, 13, 9428–9440 | 9437
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 2
+2 M
+ar ch
+2 02
+3. D
+ow nl
+oa de
+d on
+1 /1
+2/ 20
+24 7
+:0 9:
+35 P
+M . T hi
+s ar
+tic le
+is li
+ce ns
+ed u
+nd er
+a C
+re at
+iv e
+C om
+m on
+s A
+ttr ib
+ut io
+nN
+on C
+om m
+er ci
+al 3
+.0 U
+np or
+te d
+L ic
+en ce
+S8 2− (453.8 cm−1), S6 2− (397.0 cm−1), and S4 2− (202.1 and 445.3 cm−1) occurred at a discharge potential of 2.40 V for the cell with the Ni@NGC-modied separator, while for the cell with the bare PP separator, the potential was shied to 2.30 V. The Li2S peak at ∼375.0 cm−1 for the cell with the Ni@NGCmodied separator became dominant during the second reduction stage (polysuldes to Li2S) from 1.95 V and was present up to 1.93 V of the charge process. In contrast, the cell with an unmodied separator displayed the Li2S peaks with a lower intensity. The lower intensity can be explained by the incomplete reduction of sulfur at the endpoint. The complete sulfur conversion in the cell with the modied separator guarantees a better utilization of the active material, which is important for both capacity and cycling performance. Raman signals S4 2−, S6 2−, and S8
+2−, as well as S8, reappeared when the potential increased up to 2.69 V in a subsequent charging process. Hence, in situ Raman measurements were able to demonstrate the acceleration of intermediate product generation (LiPSs), reaction kinetics, and improved utilization of active materials using a Ni@NGC-modied separator. 4 conclusion This work presented the application of Ni@NGC with different amounts of metal loadings as an effective separator modication approach to enhance the performance of Li–S batteries. The efficient one-step carbonization and the following hot acidic treatment enabled the formation of a highly ordered Ndoped graphitic structure with encapsulated Ni nanoparticles. The separators modied with Ni@NGC with different Ni loadings performed benecially in all perspectives of battery electrochemistry towards stable cyclability and low polarization. The samples with a Ni loading of 9 wt% resulted in an effective ratio of surface area to the Ni content, which improved the reaction kinetics and cycling performance of Li–S cells. Batteries with Ni@NGC_9 retained 77% capacity aer 200 cycles at 0.5C at a high sulfur loading of ∼4.0 mg cm−2, while the cell with a bare separator retained only 51% of its capacity.

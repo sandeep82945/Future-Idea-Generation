@@ -1,0 +1,367 @@
+I provide a model of rational inattention with heterogeneity and prove it is observationally equivalent to a state-dependent stochastic choice model subject to attention costs. I demonstrate that additive separability of unobservable heterogeneity, together with an independence assumption, suffice for the empirical model to admit a representative agent. Using conditional probabilities, I show how to identify: how covariates affect the desirability of goods, (a measure of) welfare, factual changes in welfare, and bounds on counterfactual market shares. 1 introduction Seemingly mistaken decisions are sometimes rational. Often times, choice situations involve uncertainty about the payoffs to different alternatives. In principle individuals can gather information to learn about outcomes. Regardless of the abundance of available information, the extent to which uncertainty can be reduced is constrained when information acquisition is costly. Information costs can arise due to a variety of reasons, such as the cognitive effort to pay attention and the opportunity cost of the time needed to attend to the environment. Rationally inattention (RI) models incorporate attention as a scarce resource. There is a trade-off between accuracy of information and attention costs: on the one hand, the decision maker (DM) wants to learn as much as she can so as to make better informed deicisons; on the other hand, learning is costly in terms of attention effort. Rationally inattentive behavior involves a two-step optimization problem: first, the individual decides how to allocate her attention (i.e. how much and what to learn about the true state of the world -the true payoffs); then, she decides her choice given what was learned. Recent evidence suggests attention costs play a key role in rejecting the standard random utility model at describing aggregate behavior (Aguiar, Boccardi, Kashaev, and Kim, 2023). Moreover, RI models have been shown to have empirical content (Matějka and McKay, 2015; Caplin, Dean, and Leahy, 2019) and nonparametric test for rationally inattentive behavior have been provided (Caplin and Dean, 2015; Caplin, Dean, and Leahy, 2022). Recent papers have proposed ways to estimate demand that account for costly information acquisition when the characteristics of the different alternatives are complex (Brown and Jeon, 2020) or not directly observable (Joo, 2023), reaching to conclusions, such that limiting the number of options available increases welfare, that contradict standard discrete-choice models. ∗University of Western Ontario. Email: mbustos3@uwo.ca
+In this paper, I aim at contributing to bridge the gap between the theory of rational inattention and empirical work. Taking RI models to the data is challenging. First, most of the literature is restricted to individual behavior, not accounting for heterogeneity. Notable exceptions that include heterogeneity are recent papers proposing ways to estimate these models (Brown and Jeon, 2023; Joo, 2023; Liao, 2024). Second, the standard cost function used in the literature, the Shannon entropy, is too empirically restrictive. As shown in Matějka and McKay (2015), in RI models with Shannon entropy, choice probabilities follow a multinomial logit form. Albeit conveniently tractable, this modeling choice comes at the cost of imposing the condition of independence of irrelevant alternatives (IIA) on observable behavior, hence resulting in unrealistic substitution patterns (i.e. the ratio of choice frequencies between two alternatives does not change when adding or substracting a third item from the menu). Recent efforts have been made to keep tractability without harming empirical relevance. Caplin and Dean (2015) use a generic cost function. Fosgerau, Melo, De Palma, and Shum (2020) use Bregmann information costs, a generalized entropy that allows for more realistic substitution patterns. Caplin et al. (2022) propose two classes of posterior-separable cost functions that allow for the use of standard Lagrangian methods to solve the model, while relaxing the restrictions placed by the Shannon entropy. To prevent undesirable behavioral restrictions, I present a theoretical model that generalizes Caplin et al. (2022) by including additively separable latent heterogeneity in both preferences and attention costs. By introducing unobservable heterogeneity, I am able to describe the population of rationally inattentive DMs. To my best knowkledge, this is the first paper using RI for identifying demand that does not make use of an entropy cost. Third, most features of RI models cannot be directly observable. For instance, attention allocations are modeled either as information structures (e.g. Caplin and Dean, 2015) or Bayes-consistent mixtures of posterior distributions (Caplin et al., 2022). For this reason, the literature has provided an equivalent empirical counterpart: a state-dependent stochastic choice (SDSC) model subject to information costs (Matějka and McKay, 2015; Caplin et al., 2019; Caplin et al., 2022). SDSC data consists of choice frequencies at each possible (discrete) state of the world. I present a constrained SDSC model with additively separable heterogeneity and prove it is equivalent to my theoretical model. Fourth, most papers in the literature assume that the utilities are known. Moreover, in these models, it is usually not possible to separately identify preferences and attention costs. I address this issue by adding observable covariates (i.e. alternativespecific attributes) in the alternative-specific utility indices. Due to additive separability of latent heterogeneity and an independence assumption, I show that my model admits a representative agent and belongs to the class of perturbed utility models (PUMs), thus allowing me to use the identification results in Allen and Rehbeck (2019). Using conditional probabilities of choice given observed covariates and states, I recover utility indices, (a measure of) welfare, factual changes in welfare, and counterfactual bounds on choice probabilities. Furthermore, by assuming that alternative-specific utility indices are additively separable in states, I am able to extend the identification results to stochastic choice data, that is, assuming the econometrician observes conditional probabilities of choice given observed covariates only. This latter result is of interest to practitioners of demand estimation since the requirement on observables is only market-level data. More generally, my paper is related to models of costly information acquisition. A strand of this literature studies models of motivated cognition, where decision makers form beliefs and make choices under uncertainty in the presence of a trade-
+off between accuracy and desirability of information. Individuals with motivated cognition typically either have preferences over beliefs or derive anticipatory utility from the flow of expected returns that investment in beliefs yield (Bénabou and Tirole, 2016). Within the theory of motivated cognition, models of wishful thinking predict that individuals manipulate their beliefs to maximize their subjective expected utility net of belief-distorsion costs (Caplin and Leahy, 2019; Kovach, 2020). The types of behavior explained by wishful thinking span procrastination, confirmation bias, and polarization. One of the most relevant applications of these models is the market for assets as the behavior predicted by the theory explains the occurrence of price bubbles. The RI model with heterogeneity I provide is of general interest since it might be extended to cover models of costly information acquisition other than rational inattention, such as wishful thinking. Moreover, it could be used to develop a statistical test for the null hypothesis that a dataset of conditional distributions was generated by a population of rationally inattentive consumers. The rest of the paper proceeds as follows. Section 2 introduces my RI model. Section 3 shows equivalence between this model and an empirical counterpart. Section 4 covers the properties of the latter, which are exploited for establishing identification with conditional mean state-dependent stochastic choice data in Section 5. Section 6 imposes additional structure to the model that enables identification with conditional mean stochastic choice data. Section 7 concludes and discusses future research. 2 model Consider a population of decision makers (DMs) who choose among a finite set of alternatives A whose payoffs vary with the occurrence of different states of the world. The set of conceivable states of the world Ω is finite and known to them, and at the moment of making a decision, it is uncertain what the actual realization of the state is. γ ∈ ∆(Ω) is a belief about the true state, where ∆(Ω) denotes the set of probability distributions on Ω. DMs want to pick the alternative that gives the highest perturbed expected utility,
+γ · ua(ω) +E(a),
+where ua(ω) is a |Ω|-dimensional vector whose j th component is the utility index ua(ωj) representing the desirability of item a in state ωj , and the disturbance function E : A 7→ R ∪ {−∞} denotes unobservable heterogeneity in preferences, independent of the state.1 The distrubance function can be interpreted as heterogeneity across individuals in the population and across choice instances, i.e. a preference shock. Importantly, at the moment of decision-making, the realization of this disturbance function is known to the individual. In this environment, DMs are endowed with a prior belief µ ∈ ∆(Ω), which they can update by gathering information about the state. A DM is said to learn something when the posterior belief γ she forms differs from the prior. Learning, however, comes at a cost. Let T ∈ T be the posterior-specific attention cost function, where T is the space of convex functions T : ∆(Ω) 7→ R+ ∪{+∞} that satisfy T (µ) = 0. Intuitively, learning nothing is costless and learning something is weakly costly. This function represents latent heterogeneity in disutility from attention
+1Throughout the paper, I use boldface to refer to random objects. effort. One may think of these attention costs as cognitive effort from paying attention or the opportunity cost of the time spent on learning. The realization of the attention costs is also known to the individual at the moment of deciding. Define
+Na(γ;ω,E,T) := γ · ua(ω) +E(a)−T(γ),
+the net expected utility of choosing a at γ. Note the trade-off between accuracy of information and attention effort. Whereas in principle, individuals would like to learn as much as possible about the true state to make better informed decisions that lead to higher payoffs, acquiring information is costly. DMs face a two-step decision problem. The first step is deciding the attention allocation: how much to learn from the environment. An attention allocation Q ∈ ∆(∆(Ω)) is a probability distribution over beliefs, where Q(γ) denotes the probability of a posterior γ. Intuitively, the extent to which the formed posterior belief γ differs from the prior µ indicates how much is learned. Let
+Q :=
+
+
+
+Q ∈ ∆(∆(Ω)) ∣ ∣
+∣
+∑
+γ∈Supp(Q)
+Q(γ)γ = µ
+
+
+
+be the set of feasible attention allocations, that is, the set of distributions in ∆(∆(Ω)) that satisfy Bayes’ rule.2 The second step is selecting a stochastic choice function q : Supp(Q) 7→ ∆(A) which, for each realized posterior, gives a probability distribution over alternatives in the choice set. Let
+Λ := {Q ∈ Q, q : Supp(Q) 7→ ∆(A)}
+be the set of feasible posterior-based policies. The perturbed expected utility of a given feasible posterior-based policy (Q, q) ∈ Λ is given by
+∑
+γ∈Supp(Q)
+∑
+a∈A
+Q(γ)q(a|γ) (γ · ua(ω) +E(a)) . The expression
+∑
+γ∈Supp(Q)
+Q(γ)T(γ)
+denotes the attention cost at a Bayes-consistent attention allocation Q ∈ Q. A DM is said to be rationally inattentive if she chooses a pair (Q,q) in the subset of feasible posterior-based policies Λ ⊂ Λ that majorize the perturbed expected utility net of attention costs,
+sup (Q,q)∈Λ
+∑
+γ∈Supp(Q)
+∑
+a∈A
+Q(γ)q(a|γ) (γ · ua(ω) +E(a)−T(γ)) . (1)
+Write (1) as a two-step optimization problem:
+sup Q∈Q
+∑
+γ∈Supp(Q)
+Q(γ) sup q(γ)∈∆(A)
+∑
+a∈A
+q(a|γ)Na(γ;ω,E,T). Fix any γ ∈ SuppQ. Then the second-stage problem satisfies:
+2The notation SuppQ refers to the support of distribution Q.
+sup q(γ)∈∆(A)
+∑
+a∈A
+q(a|γ)Na(γ, ω,E,T) = Na(γ;ω,E,T),
+for each a ∈ A with q(a|γ) > 0. Define the value of a posterior γ as the maximized net expected utility at γ,
+N(γ;ω,E,T) := max a∈A
+{Na(γ;ω,E,T)} . Note that the maximized value attained in (1) can then be written as the optimization of posterior-specific values over Bayes-consistent attention policies,
+sup Q∈Q
+∑
+γ∈Supp(Q)
+Q(γ)N(γ;ω,E,T). (2)
+Before stating my first assumption, I introduce some concepts that are necessary to characterize the solution to the model. Fix any (E, T ) in the support. In the interest of compactness in the notation, below I will not explicitly write (E, T ) in the functions parametrized by this tuple (e.g. N(γ) ≡ N(γ;ω,E, T )). Define the supporting function of the hypograph of N in the direction λ ∈ R|Ω|,
+δ∗(λ|hypN) := sup γ∈∆(Ω),r≤N(γ) λ1r + λ2 · γ,
+and denote by Γ (λ) the set of posteriors supported by the supporting hyperplane in the direction λ,
+Γ (λ) := { γ ∈ ∆(Ω) ∣ ∣
+∣ λ1N(γ)− λ2 · γ = δ
+∗(λ|hypN) } ,
+which generates the matrix
+Γλ := [γ (1) ... γ(N)], where
+{ γ(1) ... γ(N) } = Γ (λ),
+with arbitrary order n = 1, ..., N .3
+Example 1. Consider A = {a, b}, Ω = {ω1, ω2}, ua(ω1) = 10, ua(ω2) = 5, ub(ω1) = 12, ub(ω2) = 3, E(a) = 1, E(b) = 2, and T (γ) = 4(γ − 1 2 )
+2. In Figure 1, see the plots for the net expected utility functions Na, N b, the objective function N , the hypograph of the objective function hypN , and examples of supporting hyperplanes of hypN . Assumption 1. Suppose the following: (i) Q, q, E, and T satisfy (1); (ii) E(a) 6= −∞ for some a ∈ A, T is strictly convex in γ; (iii) the joint distribution of (E,T) satisfies
+P
+({ (E, T ) ∈ E × T ∣ ∣
+∣ rankΓλ(E, T ) = |Γ (λ,E, T )|
+})
+= 1,
+for all directions λ ∈ R|Ω|; and (iv) for any arbitrary order j = 1, ..., J = |Ω|,
+(ua,ω1 − ua,ωJ , ..., ua,ωJ−1 − ua,ωJ ) T 6= (ub,ω1 − ua,ωJ , ..., ub,ωJ − ua,ωJ ) T
+for each a ∈ A, b ∈ A\{b}. 3See Section 13 in Rockafellar (1970) for a more thorough explanation of the support function. In Assumption 1, condition (i) means that the model in (1) is the data-generating process. Condition (ii) ensures that the disturbance function is such that there is always at least one alternative a whose perturbed expected utility is a real number. Since the attention cost function evaluated at the prior is 0, then the feasible strategy (Q, q) with Q(µ) = 1 and q(a|µ) = 1 gives always a real value. Therefore, the model has at least one maximizer. Condition (iii) implies that for any direction, the number of posteriors on the supporting hyperplane is at most as large as the number of possible states. This condition prevents the model from having mutiple optimal attention allocations. Finally, condition (iv), imposes that for each pair of alternatives a and b, their corresponding net expected utilities Na(γ) and N b(γ) have different slopes at each posterior belief γ. This condition precludes optimal stochastic choice functions from giving nondegenerate distributions at any posterior supported by the optimal attention allocation. In other words, indifference among alternatives is ruled out at each optimal posterior, thus resulting in a unique optimal choice function. Overall, the conditions stated in this assumption suffice for an optimizer of the model to exist and to be unique. Proposition 1. (Uniqueness). Let Assumption 1 hold. Then for any fixed (D,T ) in the support, (Q̂, q̂) ∈ Λ that solves (1) exists and is unique. In particular, the optimal attention policy Q̂ is the fully-supported distribution over posteriors supported by the hyperplane tangent to the lower concave envelope of the function N at the prior µ, and the optimal choice q̂ maps each optimal posterior γ̂ ∈ Supp(Q̂) to a degenerate distribution on A. For any (D,T ) in the support, an optimal posterior γ̂ is said to be uniquely associated with an alternative a in the choice set if at γ̂, a is chosen with probability 1 and a is not chosen with positive probability at any other optimal posterior. Due to functions (Na) a∈A being strictly concave in γ and since at each optimal posterior, there are no ties among alternatives, then it follows that the supporting hyperplane that characterizes optimal posteriors can be tangent to any function Na at most at one point. As a result, each optimal posterior is uniquely associated with one alternative in the choice set, i.e. if (Q̂, q̂) is optimal, then it follows that for each γ̂ ∈ Supp(Q̂) there is a ∈ A such that q̂(a|γ̂) = 1 and q̂(a|γ̂′) = 0 for each γ̂′ ∈ Supp(Q̂)\{γ̂}. I formalize this result below. Define the set of posteriors at which, the optimal choice is a,
+γa := {γ ∈ Supp(Q)|q(a|γ) = 1} . Corollary 1. Under Assumption 1, for any fixed (E, T ), the solution (Q̂, q̂) to (1) is such that each γ̂ ∈ Supp(Q̂) is such that γa = {γ̂} for a unique a ∈ A. If an optimal posterior γ̂ is uniquely associated with an alternative a in the choice set, it is known that when γ̂ is realized, a is picked with probability 1, and that the only optimal posterior at which a is chosen is γ̂. This property will be crucial to map the model to observables in the next section. Finally, note that (1) can be further reexpressed as
+sup Q∈Q
+∑
+{a∈A|∃γ∈SuppQ:γ=γa}
+Q(γa)Na(γa;ω,E,T). (3) 3 state-dependent stochastic choice In this section, I explore the link between my model with heterogeneity and statedependent stochastic choice data, the empirical primitive in the literature. Such datasets comprise choice frequencies at each possible state. Define P := {P : Ω 7→ ∆(A)}, the set of state-dependent stochastic choice (SDSC) functions. While attention allocations and choice functions are not directly observable, SDSC functions might be in principle observed by the analyst. I then study how, according to my model, decisions by rationally inattentive individuals relate to SDSC data. Definition 1. (Generated State-Dependent Stochastic Choice Data) Let P ∈ P be the SDSC data generated by (Q, q) ∈ Λ, where for each ω ∈ Ω, a ∈ A,
+P (a|ω) := µ(ω)−1 ∑
+γ∈Supp(Q)
+Q(γ)q(a|γ)γ(ω),
+is the conditional probability of picking item a at state ω, and for each a ∈ A,
+P (a) := ∑
+γ∈Supp(Q)
+Q(γ)q(a|γ)
+denotes the unconditional probability of choosing a.
+Uniqueness of the maximizer in the rational inattention model entails that, for any given realization of heterogeneity (D,T ), the pair consisting of the optimal attention allocation and the optimal choice function (Q, q) unequivocally induces a unique SDSC function P . I formalize this result below. Lemma 1. Let Assumption 1 hold. Then the SDSC function P generated by (Q,q) that solves (1) is unique and such that for each a ∈ A, it satisfies
+P(a|ω) =
+{
+µ(ω)−1Q(γ)γa(ω), if γa ∈ Supp(Q)
+0, otherwise,
+for each ω ∈ Ω, and consequently,
+P(a) =
+{
+Q(γa), if γa ∈ Supp(Q)
+0 otherwise. Proof. By Proposition 1, (Q,q) solving (1) is unique and such that at each γ ∈ Supp(Q), q(γ) is a degenerate distribution over A. Moreover, by Corollary 1, each γ ∈ Supp(Q) satisfies γ = γa for some a ∈ A.
+Corollary 2. Under Assumption 1, the optimal posterior uniquely associated with a is such that satisfies
+γ a(ω) =
+P(a|ω)µ(ω)
+P(a) , for each ω ∈ Ω. Next, I show what plausibly observable SDSC data reveals from rationally inattentive behavior and provide a state-dependent stochastic choice model subject to attention costs with latent heterogeneity. Definition 2. Define the following objects revealed by a SDSC function ρ ∈ P : (Revealed posteriors) γ̄a(ω) := ρ(a|ω)µ(ω) ρ(a) , for each a ∈ Supp(ρ), ω ∈ Ω; (Revealed attention) Q̄(γ) := ∑
+{a∈A|γ=γ̄a} ρ(a), for each γ ∈ ∆(Ω); and (Revealed choice)
+q̄(a|γ̄a) := ρ(a) Q̄(γ̄a) , for each a ∈ Supp(ρ) and 0 otherwise. Now consider an alternative model where the choice set, uncertainty about payoffs, prior beliefs, and latent heterogeneity, all remain the same as in (1), but where, instead of solving a two-step problem, DMs make a single-step decision. In other words, given a choice set A and an endowment of utility indices u and prior belief µ, individuals drawing latent functions E and T choose a SDSC function ρ ∈ P that gives a probability distribution over alternatives in A at each state ω ∈ Ω. In this model, the perturbed expected utility of an item a is
+J ∑
+j=1
+ρ(a|ωj)µ(ωj)
+ρ(a) ua(ωj) +E(a). Let f be a vector-valued function f : P × A 7→ ∆(Ω) where for ρ ∈ P , a ∈ A, the jth entry of f(ρ; a) is defined as fj (ρ; a) := ρ(a|ωj)µ(ωj)
+ρ(a) for a ∈ Supp(ρ), ωj ∈ Ω,
+and f (ρ; a) = 0|Ω|−1 for a ∈ A\{Supp(ρ)}. Interpret the function f evaluated at (ρ; a) as the posterior belief resulting from ρ(a). The net expected utility of a at f(ρ; a) is
+Na (f(ρ; a);ω,E,T) := f(ρ; a) · ua(ω) +E(a)−T (f(ρ; a)) . ρ ∈ P is chosen to solve
+sup ρ∈P
+∑
+a∈A
+ρ(a) [f(ρ; a) · ua(ω) +E(a)−T (f(ρ; a))] . (4)
+Note that by definition of Na, the model can be equivalently expressed as
+sup ρ∈P
+∑
+a∈A
+ρ(a)Na (f(ρ; a);ω,E,T) . Notice further that under Assumption 1 (iv), a ∈ Supp(ρ) implies that for any (E, T ) in the support, na (f(ρ; a);ω,e, t ) > n b (f(ρ; a);ω,e, t ) , for each b ∈ a. Hence, by definition of N , the model can be further reexpressed as
+sup ρ∈P
+∑
+a∈A
+ρ(a)N (f(ρ; a);ω,E,T) . (5)
+Under my assumptions, this model too has a unique maximizer. As a result, fixing any latent functions (E, T ) in the support, revealed posteriors, revealed attention and revealed choice functions may be recovered from SDSC data. Proposition 2. Let Assumption 1 hold. Then there exists a unique ρ ∈ P that solves (4). Moreover, for each a ∈ Supp(ρ) the following conditions are met: the revealed posterior satisfies γ̄a(ωj) = ρ(b|ωj)µ(ωj)
+ρ(b) for each ωj ∈ Ω only if b = a; the
+revealed attention satisfies Q̄(γ̄a) = ρ(a); and the revealed choice is such that
+q̄(b|γ̄a) =
+{
+1, for b = a 0, otherwise, for each b ∈ A.
+Uniqueness in both models allows me to enunciate the main result of the paper. Theorem 1. (Equivalence) Let Assumption 1 hold. Then, the following propositions are equivalent:
+(i) The posterior-based policy (Q,q) ∈ Λ is the maximizer of (1); (ii) The SDSC function P ∈ P generated by (Q,q) ∈ Λ is the maximizer of (4). (iii) The SDSC function ρ ∈ P is the maximizer of (4); and (iv) The pair consisting of an attention and choice distribution (Q̄, q̄) ∈ Λ re-
+vealed by ρ ∈ P is the maximizer of (1). Under Assumption 1, the optimizer of each version of the model satisfies the one-to-one mapping property with respect to the other. If a pair of an attention allocation and a choice function is the optimizer (1), then it follows that its empirical counterpart, its generated SDSC function, is the maximizer of (4). On the other hand, if a SDSC function is the maximizer (4), then its theoretical counterpart, the pair consisting of its revealed attention and revealed choice function, is the optimizer of (1). One of the reasons why this result is critical to learn about aggregate demand of a population of rationally inattentive individuals is because it implies the theoretical model and its empirical counterpart, the constrained SDSC model, can be used interchangeably. This is useful as mean SDSC data might in principle be observable. 4 properties of the sdsc model The SDSC model presented before is a perturbed utility model (PUM). In the interest of identifying structural and counterfactual parameters related to changes in prices and other attributes, I extend the model to incorporate covariates. I then impose assumptions sufficient to derive desirable aggregation properties of the model and features of its optimization structure that enable identification with conditional mean SDSC data. For each alternative a ∈ A, let xa ∈ Xa ⊆ R La be a random vector listing attributes of a. For each a ∈ A, ωj ∈ Ω, let ua(., ωj) : Xa 7→ R be a utility index that represents how attributes affect the desirability of item a at state ω. Denote ua(xa, ω) := (ua(xa, ω1), ..., ua,(xa, ωJ)) T , the vector of utilities of item a evaluated at xa at each possible state ω1, ..., ωJ ∈ Ω. Assumption 2. Suppose the following: (i) Q, q, x, E, and T satisfy
+sup (Q,q)∈Λ
+∑
+γ∈Supp(Q)
+∑
+a∈A
+Q(γ)q(a|γ) (γ · ua(xa, ω) +E(a)−T(γ)) ;
+and (ii) x and (E,T) are independent. 4.1 aggregation For the purpose of identification of structural and counterfactual parameters, the SDSC model is useful, not only due to being the observable counterpart of the theoretical model, but also because it keeps the additively separability property of latent heterogeneity. This condition together with the independence assumption allow me to link my rational inattention model with latent heterogeneity to the identification framework in Allen and Rehbeck (2019). Concretely, additively separable latent heterogeneity and independence are the key conditions that suffice for the model to admit a representative agent, which is key for establishing identification under the assumption that conditional mean SDSC data is observable. Lemma 2. (Theorem 1 in Allen and Rehbeck [2019]). Let Assumption 1 hold except (i). Let Assumption 2 hold. Let x ∈ Supp(x) and suppose P is (x,E,T)-measurable, and both E[P|x = x] and
+E
+[
+∑
+a∈A
+P(a) (E(a)−T(γa))
+]
+exist and are finite, where the expectations are over the joint distribution of (E,T). Then it follows that (i) E[P|x = x] is an optimizer of the representative agent problem,
+sup P∈P
+∑
+ω∈Ω
+∑
+a∈A
+P (a|ω)µ(ω)ua(xa, ω) + D̄(P ),
+with
+D̄(P ) = sup {P ′∈P(E,T)|E[P ′]=P} E
+[
+∑
+a∈A
+P ′(a) (E(a)−T (f(P ′, a)))
+]
+,
+where P(E,T) is the set of (E,T)-measurable functions that map to P. (ii) Define the indirect utility function of the representative agent problem,
+V (v) := sup P∈P
+∑
+ω∈Ω
+∑
+a∈A
+P (a|ω)µ(ω)va,ω + D̄(P ). Thus, V satisfies
+V (u(x, ω)) = E
+[
+sup P∈P
+∑
+ω∈Ω
+∑
+a∈A
+P (a|ω)µ(ω)ua(xa, ω) + ∑
+a∈A
+P (a) (E(a)−T (f(P, a)))
+]
+. This aggregation result renders identification of the distribution of unobservable heterogeneity unnecessary to identify utility indices or mean indirect utility, as well as specifies the data requirements for identification. Specifically, it is sufficient to observe conditional mean SDSC functions (E[P|ω,x = x])ω∈Ω. Note that in both the problem of the representative agent and the average indirect utility V , optimization is over function in P . According to the original theorem in Allen and Rehbeck (2019), optimization in both cases is over the convex hull of the set P . However, the convex hull of P is the set P itself. As the aggregation theorem requires the convex hull of the feasibility set, using the SDSC model is necessary for measure-theoretic reasons. If one considers the theoretical model, the convex hull of Λ is Λ itself. It is clear that, in contrast to P , Q is an infinite-dimensional set, and hence, does not fit in the theorem proposed by Allen and Rehbeck (2019). 4.2 structure Building upon the aggregation result, I am able to exploit the optimization structure of the model for identification. Concretely, I apply an envelope theorem to the representative agent model and leverage asymmetries of cross-parital derivatives of the conditional mean SDSC function. Below, I derive the properties that follow from the optimization structure of the model and leave the identification results for the next section. Remark 1. ConvP is a nonempty, closed and convex set. Assumption 3. Suppose the following: (i) E[P|x = x] is the unique optimizer of
+sup P∈P
+∑
+ω∈Ω
+∑
+a∈A
+P (a|ω)µ(ω)ua(xa, ω) + D̄(P ),
+for each x ∈ Supp(x); (ii) D̄ : P 7→ R∪{−∞} is concave, upper semi–continuous, and finite at some P ∈ P.
+Lemma 3. (Roy’s identity [Lemma 2 in Allen and Rehbeck (2019)] Let Assumption 3 hold. Then, for each a ∈ A, ωj ∈ Ω,
+E[P(a|ωj)|x = x]µ(ωj) = ∂
+∂va,j V (~v)
+∣ ∣ ∣ ∣ ∣
+v=u(x,ω)
+. Lemma 4. (Slutsky conditions [Lemma 2 in Allen and Rehbeck (2019)]). Let Assumption 3 hold and let V be twice continuously differentiable in a neighbourhood of v ∈ R|A|×|Ω|. Then, the following conditions are satisfied: (i) (Positive semi-definitiness) λT∇2V (v)λ ≥ 0, for all λ ∈ R|A|×|Ω|; and (ii) (Symmetry)
+∂2
+∂va,j∂vb,j V (v) = ∂
+2
+∂vb,j∂va,j V (v) for all a, b ∈ A and j = 1, ..., J . Lemma 5. [Lemma 3 in Allen and Rehbeck (2019)] Let Assumption 3 hold. Define
+D̄P(P ) :=
+{
+D̄(P ), if P ∈ P
+−∞, otherwise. If D̄P(P ) is differentiable at E[P|x = x], then for each a ∈ A, ωj ∈ Ω,
+µ(ωj)ua(xa, ωj) = − ∂
+∂P (a|ωj) D̄P(P )
+∣ ∣ ∣ ∣ ∣
+P=E[P|x=x]
+. 5 identification with sdsc data The fact that the model admits a representative agent indicates that observing the conditional mean SDSC function is the only data requirement for identification. This is to say, it is enough for the analyst to observe the conditional probability distribution of choice at each possible state. Assumption 4. Suppose the following: (i) (Observables) the econometrician observes (can consistently estimate) the mean generated SDSC data
+{P(a|ωj,x = x)}a∈A,ωj∈Ω ,
+for each x ∈ Supp(x), where P(a|ωj ,x = x) = E[P(a|ωj)|x = x] and the expectation is over the joint distribution of (E,T); and (ii) (Full support) for each ωj ∈ Ω, x ∈ Supp(x), E[P(a|ωj)|x = x] > 0 for each a ∈ A. 5.1 identification of good-state-specific utility indices Using assymmetry of the cross-partial derivatives of the conditional mean SDSC function and an exclusion restriction (i.e. covariates are exclusive to one alternative), I identify the utility indices up to location and scale without having to recover the distribution of latent heterogeneity. Definition 3. ∂ ∂xa,p ua(xa, ωj)|xa=x∗a and ∂ ∂xb,q ub(xb, ωj)|xb=x∗b are said to be paired if they exist and the following conditions holds: (i) There exists a known value x∗ ∈ Supp(x) whose ath and bth components are x∗a and x ∗ b , respectively; (ii)
+∂ ∂xa,p E[P(a|ωj)|x = x]|x=x∗ and ∂ ∂xb,q E[P(b|ωj)|x = x]|x=x∗ exist; (iii) V is twice continuously differentiable in a neighbourhood of u(x∗); and ∂ 2
+∂va,j∂vb,j V (v)|v=u(x∗,ω) 6=
+0. If, in addition, ∂ ∂xa,p ua(xa, ωj)|xa=x∗a 6= 0 and ∂ ∂xb,q ub(xb, ωj)|xb=x∗b 6= 0, then they are said to be strictly paired. Lemma 6. [Proposition 1 in Allen and Rehbeck (2019)] Let Assumption 3 hold and assume xa,p and xb,q are regresssors specific to a and b, respectively. If the points
+∂ ∂xa,p ua(xa, ωj)|xa=x∗a and ∂ ∂xb,q ub(xb, ωj)|xb=x∗b are paired and ∂ ∂xb,p ub(xb, ωj)|xb=x∗b 6= 0, then there is some known x∗ ∈ Supp(x) such that
+∂ ∂xa,p
+E[P(b|ωj)|x = x] ∣ ∣ ∣
+x=x∗
+∂ ∂xb,q
+E[P(a|ωj)|x = x] ∣ ∣ ∣
+x=x∗
+=
+∂ ∂xa,p
+ua(xa, ωj) ∣ ∣ ∣
+xa=x∗a
+∂ ∂xb,q
+ub(xb, ωj) ∣ ∣ ∣
+xb=x∗b
+. (6)
+Suppose further that Assumption 4 holds, then the right-hand side of (3) is identified. Lemma 7. [Proposition 2 in Allen and Rehbeck (2019)] Let Assumptions 3 and 4 hold. Assume that all regressors are good-specific and |A|, |Ω| ≥ 2. Assume x has a rectangular support; u is differentiable and u (Supp(x)) contains an open ball; and V is twice continuously differentiable with nonzero second-order mixed partial derivatives. Then it follows that u := (ua, ..., uK)
+T , with K = |A|, is identified over Supp(x) under the following normalization: (i) (Scale) ∂
+∂xb,q ub(xb, ωj)|xb=x∗b ∈
+{−1, 1} for each tuple (b, q, x∗b , j) J j=1 such that x ∗ b ∈ Supp(xb); and (ii) (Location) for each a ∈ A,~ua(0La) = 0, where 0La ∈ Supp(xa). 5.2 identification of mean indirect utility Lemma 8. [Theorem 4 in Allen and Rehbeck (2019)] Let Assumptions 3 and 4 hold. Assume ~u is known, V is everywhere finite, and let x, x′ ∈ Supp(x). Suppose there is a vector-valued function x(t) such that, for each a ∈ A, ωj ∈ Ω, ua (x(t), ωj) = tua(x
+′, ωj) + (1− t)ua(x, ωj) and x(t) ∈ Supp(x) for t ∈ [0, 1]. Then it follows that V (u(x′, ω))− V (u(x, ω)) and D̄ (E [P|x = x′])− D̄ (E [P|x = x]) are identified. In particular,
+V (u(x′, ω))−V (u(x, ω)) =
+1 ˆ
+0
+J ∑
+j=1
+∑
+a∈A
+E[P(a|ωj)|x = x]µ(ωj) (ua(x ′ a, ωj)− ua(xa, ωj)) dt. Corollary 3. Let Assumptions 3 and 4 hold. Suppose ~u is known, V is finite everywhere, and the set u (Supp(x)) is convex. It follows that for each x, x′ ∈ Supp(x), V (u(x′, ω))− V (u(x, ω)) and D̄ (E [P|x = x′])− D̄ (E [P|x = x]) are identified. By Lemma 3,
+∂
+∂xa,p V (u(x, ω)) = E[P(a|ωj)|x = x]µ(ωj)
+∂
+∂xa,p ua(xa, ωj)
+By Lemma 6,
+∂ ∂xa,p E[P(b|ω)|x = x]
+∂ ∂xb,q
+E[P(a|ω)|x = x] =
+∂ ∂xa,p ua(xa, ωj)
+∂ ∂xb,q
+ub(xb, ωj) . Then,
+∂
+∂xa,p V (u(x, ω)) = E[P(a|ωj)|x = x]µ(ωj)
+∂ ∂xa,p E[P(b|ωj)|x = x]
+∂ ∂xb,q E[P(a|ωj)|x = x]
+∂
+∂xb,q ub(xb, ωj)
+Consider x′, x′′ ∈ Supp(x). Let x′′ be identical to x′ except for the (a, p)th
+component, then
+V (u(x′, ω))− V (u(x, ω))
+= ´ x′′a,p x′a,p E[P(a|ω)|x = x]µ(ωj)
+∂ ∂xa,p E[P(b|ωj)|x = x]
+∂ ∂xb,q
+E[P(a|ωj)|x = x] dxa,p
+∂ ∂xb,q ub(xb, ωj). Recall ∂ ∂xb,q ub(xb, ωj) is the scale term at a fixed value xb. If xb is the price of
+good b and ∂ ∂xb,q ub(xb, ωj) = −1, then V (u(x ′, ω))− V (u(x, ω)) can be interpreted as the change in mean indirect utility in terms of dollars. 5.3 identification of counterfactual bounds Lemma 9. (Counterfactual bounds [Theorem 5 in Allen and Rehbeck (2019)] Let Assumptions 3 and 4 hold and assume u is known. Let x0 6∈ Supp(x) and assume E[P|x = x0] solves
+sup P∈ConvP
+J ∑
+j=1
+∑
+a∈A
+P (a|ωj)µ(ωj)ua(x 0 a, ωj) + D̄(P ). Then, for every integer S and every sequence x1, ..., xS ∈ Supp(x),
+J ∑
+j=1
+∑
+a∈A
+E[P(a|ωj)|x = x 0]µ(ωj)
+(
+ua(x 0 a, ωj)− ua(x S−1 a , ωj)
+)
+≥ J ∑
+j=1
+∑
+a∈A
+µ(ω)
+[
+E[P(a|ωj)|x = x 1]ua(x 0, ωj)− E[P(a|ωj)|x = x S−1]ua(x S−1, ωj)
+− S−2 ∑
+s=1,
+(
+E[P(a|ωj)|x = x s]− E[P(a|ωj)|x = x s+1] ) µ(ωj)ua(x s, ωj)
+]
+. 6 additive separability in latent states Define ua(xa, ωj) := ua(xa) +G a(ωj), where G a : Ω 7→ R. Treat ω as a latent variable with known support Ω. Importantly, both the support of ω and the functions {Ga}a∈A are known to the decision maker at the moment of deciding. Assumption 5. Suppose the following: (i) Q, q, x, ω, D, and T satisfy:
+sup (Q,q)∈Λ
+∑
+γ∈Supp(Q)
+∑
+a∈A
+Q(γ)q(a|γ) (ua(xa) + γ ·G a(ω) +E(a)−T(γ)) ; (7)
+(ii) x and (ω,E,T) are independent; (iii) E(a) 6= −∞ for some a ∈ A and T is strictly convex in γ and T(γ) < ∞ on some γ ∈ int (∆(Ω)); (iv) given G, the joint probability distribution of (ω,E,T) satisfies
+P
+({
+(ω,E, T ) ∈ Ω× E × T
+∣ ∣ ∣ ∣ ∣ rankΓλ(x, ω,E, T ) = ∣ ∣ ∣ Γ(x, λ, ω,E, T ) ∣ ∣ ∣ }) = 1,
+for each point x ∈ X and each direction λ ∈ R|Ω|; and (v) for each a ∈ A, b ∈ A\{a}, G satisfies Ga(ω) 6= Gb(ω). Lemma 10. Let Assumption 5 hold. Then for any fixed (ω,E, T ) in the support, (7) has a unique optimizer (Q̂, q̂), where at each γ̂ ∈ Supp(Q̂), q̂ gives a degenerate distribution over A. Consider the alternative model where ρ ∈ P is chosen to satisfy
+sup ρ∈P
+∑
+a∈A
+ρ(a) [ua(xa) + f(ρ, a) ·G a(ω) +E(a)−T (f(ρ, a))] . (8)
+Proposition 3. (Equivalence) Let Assumption 4 hold. Then, the following propositions are equivalent:
+(i) The posterior-based policy (Q,q) ∈ Λ is the maximizer of (7); (ii) The SDSC function P ∈ P generated by (Q,q) is the maximizer of (8); (iii) The SDSC function ρ ∈ P is the unique maximizer of (8); and (iv) The pair consisting of the attention and choice distribution (Q̄, q̄) revealed
+by ρ is the maximizer of (7). 6.1 properties of the model Additive separability in states and the independence of covariates and unobservable heterogeneity ensure the model with latent states too admits a representative agent. 6.1.1 aggregation Lemma 11. (Theorem 1 in Allen and Rehbeck [2019]). Let Assumption 5 hold. Let x ∈ Supp(x) and suppose P is (x,ω,E,T)-measurable, and both E[P|x = x] and
+E
+[
+∑
+a∈A
+P(a) (f(P, a) ·Ga(ω) +E(a)−T (f(P, a)))
+]
+exist and are finite, where the expectations are over the joint distribution of (ω,E,T). Then it follows that (i) E[P|x = x] is an optimizer of the representative agent problem,
+sup P∈P
+∑
+a∈A
+P (a)ua(xa) + D̄(P ),
+with
+D̄(P ) = sup {P ′ ∈ P(ω,E,T)| E[P ′] = P} E
+[
+∑
+a∈A
+P ′(a) (f(P ′, a) ·Ga(ω) +E(a)−T (f(P ′, a)))
+]
+,
+where P(ω,E,T) is the set of (ω,E,T)-measurable functions that map to P. (ii) Define the indirect utility function of the representative agent problem,
+V (v) := sup P∈P
+∑
+a∈A
+P (a)va + D̄(P ). Thus, V satisfies
+V (u(x)) = E
+[
+sup P∈P
+∑
+a∈A
+P (a) (ua(xa) + f(P, a) ·G a(ω) +E(a)−T (f(P, a)))
+]
+. This aggregation property of the model indicates that only conditional mean stochastic choice data E[P|x = x] is the only data requirement for identification. The fact that the actual realization of the state needs not to be observed suggests that market-level data might be used, thus broadening the scope of the empirical applications of the model. 6.1.2 structure I enunciate the envelope theorem below and leave the identification results for the Appendix. Assumption 6. Suppose the following: (i) for each x ∈ Supp(x), E [P|x = x] is the unique optimizer of
+sup P∈P
+{
+∑
+a∈A
+P (a)ua(xa) + D̄(P )
+}
+;
+and (ii) D̄ : P 7→ R ∪ {−∞} is concave, upper semi-continuous, and finite at some P ∈ P.
+Lemma 12. Let Assumption 6 hold. Then,
+E[P|x = x] = ∇V (u(x)) . Lemma 13. Let Assumption 6 hold and let V be twice continuously differentiable in a neighbourhood of v ∈ R|A|. Then, the following conditions are satisfied: (i) λT∇2V (v)λ ≥ 0, for all λ ∈ R|A|; and (ii) ∂ 2
+∂va∂vb V (v) = ∂
+2
+∂vb∂va V (v), for all
+a, b ∈ A.
+Lemma 14. Let Assumption 6 hold. Define
+D̄P(P ) :=
+{
+D̄(P ), if P ∈ P
+−∞, otherwise. If D̄P is differentiable at E[P|x = x], then for each a ∈ A,
+ua(xa) = − ∂
+∂Pa D̄ (E[P|x = x]) . 7 concluding remarks I present a theoretical model with additively separable latent heterogeneity that describes the behavior of a population of rationally inattentive decision makers. Under some regularity conditions, I show that this model is observationally equivalent to a state-dependent stochastic choice model constrained by attention costs. In the interest of learning how demand responds to changes in attributes, I include covariates as arguments in the utility indices. Assuming regressors and unobservable heterogeneity are independent, I show that my model admits a representative agent. This aggregation property, together with the structure of the model, allows me to to identify structural and counterfactual parameters when the conditional mean SDSC function is observable, that is, when the econometrician observes conditional probabilities given states and covariates. In particular, I identify how attributes shift the desirability of different goods, (a measure of) welfare, factual changes in welfare, and bounds on counterfactual probabilities of choice. Further assuming utility indices are additively separable in (latent) states, I establish identification with conditional mean stochastic choice data. In the latter case, as the analyst does not need to observe the realization of the state, the model can be used for empirical applications using market-level data.

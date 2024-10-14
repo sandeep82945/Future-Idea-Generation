@@ -1,0 +1,627 @@
+In this work, we show that learning the output distributions of brickwork random quantum circuits is average-case hard in the statistical query model. This learning model is widely used as an abstract computational model for most generic learning algorithms. In particular, for brickwork random quantum circuits on n qubits of depth d , we show three main results: • At super logarithmic circuit depth d = ! (log(n)), any learning algorithm requires super polynomially many queries to achieve a constant probability of success over the randomly drawn instance. • There exists a d = O(n), such that any learning algorithm requires Ω(2n) queries to achieve a O(2−n) probability of success over the randomly drawn instance. • At in nite circuit depth d → ∞, any learning algorithm requires 22 many queries to achieve a 2−2 probability of success over the randomly drawn instance. As an auxiliary result of independent interest, we show that the output distribution of a brickwork random quantum circuit is constantly far from any xed distribution in total variation distance with probability 1 − O(2−n), which con rms a variant of a conjecture by Aaronson and Chen. ∗Author list in pseudorandom order. All authors contributed equally. Corresponding authors: a.nietner@fu-berlin.de, marios.ioannou@fu-berlin.de, m.hinsche@fu-berlin.de 1 ar X iv :2 30 5. 05 76 5v 1 [ qu an tph ] 9 M ay 2 02 3 1 introduction 3 1.1 Set-up . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4 1.2 Our results . . . . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . . . . . . 5 1.3 Related work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 1.4 Proof overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.4.1 Bounding f . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10 1.4.2 Bounding the far from uniform probability . . . . . . . . . . . . . . . . . . 10
+1.5 Discussion and future work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11 2 notation and preliminaries 12 2.1 Statistical query learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12 2.2 Random quantum circuits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 2.3 Unitary designs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 3 haar random unitaries 16 3.1 Maximally distinguishable fraction . . . . . . . . . . . . . . . . . . . . . . . . . . 18 3.2 Far from uniform probability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19 4 random quantum circuits of linear depth 20 4.1 Maximally distinguishable fraction . . . . . . . . . . . . . . . . . . . . . . . . . . 21 4.2 Far from uniformity via unitary designs . . . . . . . . . . . . . . . . . . . . . . . . 22 5 random quantum circuits of sub-linear depth 27 5.1 Maximally distinguishable fraction via restricted depth moments . . . . . . . . . . 27 5.2 Far from uniformity for constant-depth circuits . . . . . . . . . . . . . . . . . . . 28 a omitted proofs for haar random unitaries 29 A.1 Haar random state averages via Gaussian integration . . . . . . . . . . . . . . . . 29 A.2 Lipschitz constants for function evaluations and TV distances . . . . . . . . . . . 35 b unitary designs 37  c moment calculations 39 C.1 Haar moments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39 C.2 Restricted depth moments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40 d random cli ord unitaries 41  e deterministic algorithms 42  f quantum and probabilistic algorithms 46 G Far from any xed distribution 49 1 introduction Quantum circuits are of central importance in quantum computing and serve as a discrete toy model for the physical world. Understanding the intrinsic properties of quantum circuits is thus of fundamental interest. One such property is quantum circuit complexity, which corresponds to the minimum number of elementary gates necessary to implement a given quantum circuit. Another such property is the complexity of simulating quantum circuits, which is the basis for many quantum advantage proposals. There, one asks what computational resources are required for sampling from the output distribution of a given quantum circuit when applied to a xed input product state and when measured in the computational basis. In this work, we take the perspective of learning theory, and study the complexity of learning the output distribution of quantum circuits. At a high level, this amounts to the resources required to reproduce samples according to the output distribution of a quantum circuit when given black-box access to the corresponding output distribution. More speci cally, we study the average case complexity of learning the output distributions of quantum circuits. This amounts to the cost of learning when the quantum circuit is drawn randomly according to some measure. We note that in the setting of quantum circuit complexity the average-case setting has been the subject of intense work, due to connections between randomly drawn quantum circuits and holographic models in high-energy physics [BCH+21]. Similarly, the established average case hardness of classically simulating quantum circuits has been fundamental to proposals for quantum advantage [HE22]. In our setting, we ask the following question:
+What is the complexity of learning generic quantum circuit output distributions? We answer this question within the statistical query (SQ) framework by proving lower bounds on the query complexity required to learn only a fraction of the output distributions of random quantum circuits. Apart from being a natural question from the perspective of learning theory, it also has a physical interpretation. On a high level, the learning problem we consider corresponds to the setting where an observer living in a world governed by quantum physics is to learn a model of its environment with respect to the outcomes of measurements in a xed basis. We note that this contrasts the setting often considered in quantum learning theory where the learner is granted access to the quantum state on which measurements are made [AW17]. Our results also have implications in the context of quantum machine learning. Firstly, many quantum machine learning proposals today operate within the setting of classical data, and therefore such a restriction is motivated not only from a theoretical but also from a practical perspective. Secondly, the output distributions of parameterized local quantum circuits are often used as a model class for probabilistic modelling, and are referred to as quantum circuit Born machines (QCBMs). Understanding the extent to which learning algorithms for QCBMs may o er advantages over purely classical approaches, such as those based on deep neural networks, is currently the subject of much interest [HIN+22; CMD+20]. By investigating the average-case learnability of the model class of QCBMs, our work can be seen as a rigorous rst step towards characterizing the limitations of QCBM based algorithms. Additionally, a core technical ingredient of our results has rami cations for quantum advantage proposals based on sampling from the output distributions of random quantum circuits. We
+prove that with overwhelming probability, the output distribution of a random quantum circuit will have at least some constant total-variation distance from the uniform distribution. This resembles a conjecture by Aaronson and Chen [AC17] where they conject the same statement with di erent constants. They required and proved a weaker form of this statement for establishing the complexity theoretic foundations of quantum advantage proposals. We provide more details on the connections between our work and the variety of related works in Section 1.3. 1.1 set-up General framework: We say that a class  of distributions can be learned by an algorithm  if, when given access to any P ∈ , the algorithm returns a description of some close distribution Q. In particular, for an accuracy > 0 we say that  -learns P if it returns a description of a Q which is -close in total variation distance. An algorithm is said to be a statistical query algorithm if it has access to P only via approximate expectation values instead of individual samples, where the approximation is promised to be within a tolerance . This is not only a handy restriction on the algorithm that makes analysis simpler, but also practically inspired since most heuristic algorithms are of this form [FGR+17]. In particular, for = Ω(1/poly(n)) the statistical query oracle can be simulated from polynomially many samples. Formal de nitions are given in Section 2. Average case complexity: The average case complexity of an algorithm characterizes the cost to achieve a certain probability of success with respect to a measure over the instances1. The (deterministic) average case query complexity with respect to and corresponds to the minimal number of queries any algorithm must make in order to have at least a success probability of with respect to P ∼ . The randomized average case query complexity is de ned in the same manner, though introducing another parameter capturing the success probability over the internal (classical or quantum) randomness of the algorithm. Quantum and probabilistic algorithms: As explained in more detail in Appendix F the bounds for deterministic algorithms apply almost exactly to random, i.e., probabilistic or quantum, algorithms. In particular, the randomized average case complexity for -learning is lower bounded by the deterministic average case complexity of -learning up to a prefactor of 2( − 1/2) (c.f. Lemma 1 in comparison with Theorem 34), where we denote by the success probability with respect to the internal randomness of the algorithm. Thus, for the sake of ease of presentation, throughout this work we focus on the deterministic case. We refer to Appendix F for the extension to probabilistic and quantum algorithms. Randomquantum circuits: The distribution class  we consider is given by QCBMs, the set of Born distributions corresponding to brickwork quantum circuits at depth d and with gates from a gate set . In particular, we consider distributions of the form
+PU (x) = | ⟨x |U |0n⟩|2 , (1)
+with U being some unitary brickwork circuit composed of gates from the gate-set . While our 1Thus, we work in the Monte Carlo framework of random algorithms. One can likewise characterize the average case complexity by the expectation of success, which then corresponds to the Las Vegas framework. The Monte Carlo framework is more general in our case as the task we consider can in general not be veri ed e ciently. main focus is on  = U(4), the set of unitary two qubit gates, our techniques will carry over and give similar results for discrete approximations of U(4). Average case bounds and their interpretation depend on the choice of the underlying measure. In this work, we consider the measure over distributions PU that is induced by sampling a random quantum circuit U . This is, each gate is sampled individually from the the uniform measure over the gate set . For  = U(4) this measure is well studied and known as the unitary Haar measure. One practical aspect of this measure is that it corresponds to a natural notion of a generic distribution that would potentially be sampled in the lab by individually sampling each local gate. Other interesting measures would be the uniform distribution over the actual distribution class . However, in case of  = U(4), this class is continuous. Hence, de ning the uniform measure would require a suitable discretization, e.g., by means of an -net. On the other hand, as we will show, the measure induced by random quantum circuits will be bias free in the sense that for any distribution P ∈ , the probability of sampling some distribution close to P is exponentially small. Thus, similar to the uniform distribution, the measure we consider does not introduce any bias towards any distribution. 1.2 our results The main contribution of this work consists in characterizing the average-case complexity of learning the output-distributions of random quantum circuits for di erent circuit depths. Here we provide an informal overview of these results. Our main focus is on the scaling of the average case complexity with respect to both circuit depth d and the success probability over the randomly drawn instance :
+1. Circuit depth d : As the circuit depth increases, the expressivity of the set of distributions we consider increases as well. At d = 1 all output distributions of local quantum circuit are product distributions and hence, can be learned trivially. At in nite depth, in contrast, local quantum circuit output distributions can represent any distribution. Thus, they are not learnable in the worst case. As such, the complexity of learning must scale with the circuit depth. We we are interested in understanding this dependence. Probability over instances : Intuitively the larger , the harder we expect the averagecase learning task to be. Speci cally, setting = 1 recovers the worst-case setting, where we require the learning algorithm to succeed on all instances. Setting < 1 implies that we only require the learning algorithm to succeed on a fraction of instances, which makes the average-case learning problem easier. In this work we investigate how small can be made, while still guaranteeing hardness of average-case learning. In addition to the dependency of average-case query-complexity on d and , we also investigate the dependence on both the tolerance of the statistical queries and the desired accuracy . For ease of presentation, in the informal results below we suppress the dependencies on and and focus on the case where = Ω(1/poly(n)) and is a su ciently small constant. We refer to the formal statements for details. Finally, we stress again that while the results given below are stated for deterministic algorithms, they immediately translate to both probabilistic and quantum algorithms. This correspondence
+is sketched in Section 1.1 while the details can be found in Appendix F. With this in mind, we state the main results of this work as follows:
+Informal Theorem 1: Let small and n large enough and let = Ω(1/poly(n)). Let  be an algorithm for -learning the output distributions of brickwork random quantum circuits of depth d from q many -accurate statistical queries. Then it holds
+1. In nite depth:When d → ∞, q = 22Ω(n) queries are necessary for any > 2 exp(−2n−2/9 3) = 2−2Ω(n) (c.f. Theorem 2). Linear depth: There is a d ′ = O(n) such that for any d ≥ d ′, q = Ω(2n) queries are necessary for any > 3200 ⋅ 2−n = O(2−n) (c.f. Theorem 6). Sublinear depth: for any c log n ≤ d ≤ c(n+log n), q = 2Ω(d) = 2! (log(n)) queries are necessary for any > 4/5 + + = O(1), where c = 1/ log(5/4) (c.f. Theorem 12). In particular, we nd that the average case problem at superlogarithmic depth is hard with constant probability over the random instance. Moreover, at linear depth we nd hardness with probability exponentially close to one. At in nite depth, the problem becomes hard with probability double exponentially close to one. As a side result we show that the output distribution of a random quantum circuit is, with overwhelming probability, at least constantly far in total variation distance from any xed distribution. This resolves a variant of Aaronson and Chen’s [AC17, Conjecture 1], made with the goal of clarifying the hardness of verifying random circuit sampling procedures. As such we believe this auxiliary result to be of independent interest. Informal Theorem 2: (Informal version of Theorem 36) There exists some d ′ = O(n) such that for any depth d ≥ d ′, for any ≤ 1/450 and for any distribution Q we have
+Pr U∼
+[dTV(PU , Q) > ] ≥ 1 − O (2−n) , (2)
+where is the measure induced by random brickwork quantum circuits. 1.3 related work Our work touches on and combines a variety of well studied elds. In order to provide further context and motivation, we provide below a discussion of relevant related work. Statistical queries: We work in the statistical query (SQ) framework which was introduced by Kearns [Kea93] as a restriction of Valiants theory of learning [Val84]. Kearns original motivation was the intrinsic robustness of SQ learners with respect to random classi cation noise. However, the SQ model is also highly relevant in the context of statistical problems [FGR+17], which includes distribution learning, as originally formulated by Kearns et al. [KMR+94]. In this context, SQ algorithms are those which only have access to coarse statistical properties of the data generating distribution. While this is a restriction of the oracle access it turns out, with the famous
+exception of Gaussian elimination, that almost all known learning algorithms can be recast as SQ algorithm [Kea93; Fel17]. The SQ framework is particularly interesting in the context of variational quantum machine learning, such as QCBM based algorithms. To see this we note that all current methods for optimizing the QCBM’s parameters use noisy evaluations of gradients, or gradient-like quantities, along individual directions. Examples for this include stochastic gradient descent via the parameter shift rule [MNK+18; SBG+19] and simultaneous perturbations and stochastic approximation [Spa98]. Thus, the update in QCBM based algorithms can be directly implemented via statistical queries. Equivalences to other statistical oracles, such as the “honest SQ” oracle and the statistical query oracle with respect to Bernoulli noise are worked out in [FGR+17; Fel17]. Interestingly, SQ learning has been shown to be equivalent to learning with restricted memory [SVW16; FPV18], as well as di erentially private learning [DMN+06; KLN+11]. Evolutionary algorithms can be recast as SQ algorithms and in fact were shown to be equivalent to “correlational statistical query” (CSQ) algorithms [Val09; Fel08]. A particularly nice feature of the SQ framework is that it allows for unconditional lower bounds. As such, SQ lower bounds are often taken as evidence for computational hardness if the underlying problem does not admit a linear structure, as is the case for parities. Additionally, many statistical query lower bounds asymptotically match complexity theoretic upper bounds, such as learning DNFs [BFJ+94], learning mixtures of Gaussians [DKS17] and the planted clique problem [FGR+17]. Other results via the SQ framework contain positive results for k-means clustering, principle component analysis and the perceptron algorithm [BDM+05] and manifold estimation [AK21], negative results for learning simple neural networks [CLL22], average case hardness for learning neural networks at super-logarithmic depth [AAK21], as well as lower and upper bounds for optimization and distributional search problems [FGV16; FGR+17; FPV18]. Complexity of quantum circuits and computational learning theory: A circuit class is a collection of quantum circuits. A well-established way to assess the complexity of such a circuit class from the viewpoint of classical computing is to study the resources required to classically simulate the circuit class. Examples of circuit classes that have been studied in this regard include Cli ord circuits, Cli ord+T circuits, matchgate circuits and IQP circuits [Got98; AG04; Val12; TD02; BJS11; BMS17]. Note that in all these examples the description of the circuit class includes a speci cation of the input state and a xed measurement basis as the simulatability may crucially depend on these choices. In this work, we analogously assess the complexity of a quantum circuit class from the viewpoint of computational learning theory. Indeed, a long line of research has been aimed at characterizing the complexity of learning classical circuit classes, in various learning models [LMN93; Kha93; KMR+94; AGS21]. This complexity is indeed a fundamental property of such circuit classes. Our work provides insight into this fundamental property of quantum circuits. We stress here that, analogous to the case of classical simulation, we consider learning with respect to a xed input state and xed measurement basis. In that sense, our learning model di ers from those employed in other works on learning quantum states [Aar07; Mon17] as we require learning the action of the circuit only with respects to measurements in a xed product basis. Heuristic algorithms for distribution learning: Recent years have seen major advances in the
+development of heuristic neural-network based methods for probabilistic modelling. Generative adversarial networks [GPM+14] and generative transformer models [BMR+20] have managed to achieve impressive results ranging from predicting protein structure to atomic accuracy [JEP+21] to achieving human-level language comprehension [HBM+22]. Learning the underlying model classes is known to be worst case hard [CLL22]. This inspired a series of works in order to better understand these successes from a theoretical perspective (see for example [ABG+; LSS14; CHM+15; JSA16; Dan17; Sha17; AS20; DV20; AAK21]). Our results can be seen in a similar light for QCBM based algorithms. In particular, our average case hardness results for learning super logarithmic depth quantum circuit distributions is the QCBM equivalent to [AAK21, Contribution 3]. “Far fromuniform” property and quantum advantage In [AC17], the authors propose heavy output generation as a particularly natural task for separating classical and quantum computers. More precisely, quantum computers can be used to output sets of bit strings z1,… , zk such that more than 2/3 of them have probability larger than the median of the output probabilities. This can be achieved by a subroutine, which uses a conditional probability distribution that samples instances of random quantum circuits as long as necessary for a su ciently non-uniform probability distribution to appear. A key result is that far-from-uniform output distributions are not rare for random quantum circuits. We adapted the resulting bound as Corollary 16. Aaronson and Chen moreover conjectured that this far from uniform conjecture not only holds with constant probability but with probability exponentially close to one. This would imply that it su ces to directly sample from a random quantum circuit instance without the subroutine. While we prove that a far from uniform property holds with exponential probability in Theorem 9, the constants in our result do not imply Conjecture 1 in [AC17]. At the same time, it is possible to de ne a weaker version of heavy output generation, for which our bounds su ce. From average-case complexity in learning to cryptography: There is a rich correspondence between computational learning theory and cryptography. On the one hand, cryptographic assumptions are often used to prove conditional lower bounds for learning problems [KV94]. On the other hand, the assumed hardness of learning problems can sometimes be used for the construction of cryptographic primitives. For this latter direction, it is well known that the existence of cryptographic primitives such as one-way functions require the existence of learning problems which are average-case hard [IL90; Bar17]. As concrete examples, Blum, Furst, Kearns and Lipton [BFK+94] have shown that an e cient average case learner for polynomial size circuits in the distribution speci c PAC model, would imply the non-existence of one-way functions. This result has been recently extended by Nanashima [Nan21] to give a characterization of auxillary-input one way functions, based on the hardness of PAC learning polynomial size circuits in a modi ed average-case variant of PAC learning. In light of these results, it is natural to ask whether one can characterize either classical or quantum cryptographic primitives in terms of the complexity of average-case learners for quantum circuit output distributions in the distribution learning setting. While we do not address this question in this work, and while our restriction to the SQ model is a major restriction in this regard, we believe that the connection to cryptography merits further study and hope that the insights gained from our results can be helpful in this regard. 1.4 proof overview For ease of presentation, we use the notation P[ ] to denote Ex∼P [ (x)] and denote by  the uniform distribution. The starting point of all our results is a lower bound on the average case query complexity in terms of properties of the measure . Suppose there is a deterministic algorithm  that -learns a fraction of  with respect to from q many -accurate statistical queries. Then, it holds (c.f. Lemma 1)
+q + 1 ≥ − PrP∼ [dTV(P, ) ≤ + ] max PrP∼ [|P[ ] − [ ]| > ] , (3)
+where the max is over all bounded functions | (x)| ≤ 1. The above bound is obtained by rst reducing a suitable worst-case uniformity test to the averagecase learning problem, and then lower bounding the complexity of the uniformity test. Given some set of distributions ̃ ⊆ , we consider the decision problem of testing ̃ versus  de ned via:
+Given statistical query access to some P ∈ ̃ ∪ { } decide whether “P =  ” or “P ∈ ̃”. We then note:
+1. An average-case learner for  which succeeds on a fraction of instances with respect to , implies the existence of a worst-case learning algorithm for some ′ ⊆  with (′) = . This trivially implies a worst-case learning algorithm for ̃ = ′/B + ( ). A worst-case learning algorithm for ̃ using at most q queries implies an algorithm for deciding ̃ versus  using q + 1 queries. As such, it is su cient for us to lower bound the complexity the uniformity test. To this end, we use a counting argument to show that for any measure over ̃ it holds that the number of queries necessary to decide ̃ versus  satis es
+q ≥ (max PrP∼ [|P[ ] − [ ]| > ])
+−1
+. (4)
+We then obtain Equation (3) by considering the measure de ned by conditioning on ̃. Given this, from Equation (3) it is clear that in our context, in order to obtain the desired lower bounds we require:
+• An upper bound on the maximal fraction distinguishable from uniform f = max PrU [|PU [ i]−  [ i]| ≥ ]. • An upper bound on the mass of the -ball around the reference distribution. The complement of this probability is often referred to as the probability of being far from uniform. In this work we give bounds on both quantities for random quantum circuits of various depths. We begin in the limit of in nitely deep circuits, and thus of Haar-random unitaries and then partially derandomize our results using concentration inequalities based on higher moments of the
+Haar measure. This will allow us to prove results about random quantum circuits of comparably low depth, which are far from the Haar measure but quickly generate the same moments. 1.4.1 bounding f For Haar random unitaries, the concentration of measure phenomenon in the form of Levy’s lemma produces tight bounds on tails, which implies bounds on f.
+For linear depth circuits we can use Chebyshev’s inequality in order to bound f
+max Pr U [|PU [ i] − [ i]| ≥ ] ≤ VarU [PU [ ]] 2
+(5)
+where we have used EU [PU [ ]] =  [ ] since for any depth d ≥ 1 is a 1-design. The variance is a second moment and can be exactly computed for the Haar measure via standard symmetry arguments or from the Weingarten calculus. For sublinear circuits, the distribution over unitaries does not form a unitary design, however, we can still bound the second moments involved in the variance by adapting the statistical physics mapping from [Hun19] in a similar way as in [BCG21]. Many of our bounds will depend on such moment bounds over the Haar measure that we detail in Appendix C. 1.4.2 bounding the far from uniform probability To obtain a lower bound on the far from uniform probability (or equivalently an upper bound on the probability mass of an -ball around the uniform distribution), we start by writing the total variation distance in terms of the 1-norm. In the in nite circuit depth regime we make use of Gaussian integration in order to obtain upper and lower bounds on the expected distance between a random output distribution PU and the uniform distribution. Then we use Levy’s Lemma once again to obtain a bound on the probability of PU being far from the uniform distribution. In the linear depth regime we apply a variant of Berger’s inequality for p-norms, c.f. Lemma 8, in order to obtain
+Pr U [‖PU − ‖1 < 2 ] ≤ PrU [ ‖PU − ‖32 ‖PU − ‖24 < 2 ] . (6)
+Treating the numerator and denominator separately we can thus apply the union bound and obtain
+Pr U [‖PU − ‖1 < 2 ] ≤ PrU [‖PU − ‖ 3 2 < 2 1] + PrU [‖PU − ‖ 2 4 > 2 2] , (7)
+for suitable 1 2 ≥ . Both terms can be bounded separately with the same strategy. Using Chebyshev’s inequality for the random variable X (p, q) = ‖PU − ‖qp we can bound the deviation of X (p, q) from its mean E [X (p, q)]. In particular, due to the variance term in Chebyshev’s inequality we nd that an (approximate) 2p-design is su cient for an exponential concentration of X (p, q). Since E[X (2, 3)] is exponentially small it is thus crucial, that X (4, 2) itself is su ciently small and sharply concentrated such that we can nd 1 and 2 that cancel to a constant. Again, we con rm this ingredient via a variance bound provided that our measure is induced by an 8-design. We conclude from [BHH16; Haf22] that random linear depth Born distributions are far from uniform. In the sublinear depth regime we use a result by Aaronson and Chen [AC17] which lower bounds the expected distance between a randomly drawn PU and the uniform distribution even for d = 1. We then use Markov’s inequality to translate this to a bound the probability of PU being far from the uniform distribution. 1.5 discussion and future work In this work we give lower bounds for the average case query complexity of learning the output distributions of random quantum circuits in di erent depth regimes. In particular, we show that the problem of learning the output distribution of random quantum circuits is hard with constant probability over the instance already at super logarithmic depth. Moreover, we prove that the problem becomes hard with probability exponentially close to one over the instance at linear depth. Our analysis is accompanied by the corresponding results for both Haar random unitary output distributions and Haar random Cli ord output distributions. While the former gives hardness with probability doubly exponentially close to 1, the latter only gives hardness with a constant probability over the instance. There are multiple natural avenues to continue this work:
+1. There are at least two promising approaches to lowering this constant and consequently making our bound more directly applicable to a practial regime. Alternatively, extensive numerical calculations of nite-size spectral gaps in combination with Knabe bounds might lower the explicit depth at which unitary designs are generated [HH21]. We expect that such a calculation implies average-case hardness with probability 1 − o(1) over the instances for any depth d = ! In this work, we rule out e cient algorithms at super logarithmic depth. For example, are the output distributions of constant depth quantum circuits e cient to learn? 2 notation and preliminaries  2.1 statistical query learning Let  be a class of distributions over a domain X . For two distributions P, Q ∈  we denote by dTV(P, Q) ∶= 12 ∑x∈X |P (x) − Q(x)| the total variation distance between them. The open -ball B (P ) around any distribution P over the domain X is given by the set of all distributions Q over X such that dTV(P, Q) < . For a distribution P over X and a function ∶ X → [−1, 1] we use the short hand notation
+P[ ] ∶= E x∼P [ (x)] (8)
+to refer to the expectation value of with respect to P . We denote by X the set of distributions over X and by n the set of all distributions over the domain {0, 1}n. The uniform distribution is denoted by  . A well studied model in learning theory is the statistical query learning model. Here we assume that the learner has access to expectation values of functions with respect to the underlying probability distribution. This can be formalized by considering access to a statistical query oracle. De nition 1: (Statistical query oracle) For > 0 and a distribution P over X we denote by Stat (P ) the statistical query (SQ) oracle of P with tolerance . When queried with some function ∶ X → [−1, 1] the oracle returns some v such that |v − P[ ]| ≤ . Remark 1: On immediate consequence of De nition 1 which is useful for the interpretation of our formal result statements is as follows: For any < , any SQ oracle Stat (P ) is also a valid SQ oracle Stat (P ). Thus, lower bounds for SQ algorithms with respect to trivially imply the same lower bound for SQ algorithms with respect to . A prominent special case is to consider to be lower bounded by an inverse polynomial, since this re ects the scenario where the statistical query oracle can be run e ciently with a polynomial number of samples. Up to polynomial corrections, the complexity of the oracle is then given by the complexity of computing the query function . In order to learn a distribution it is crucial to x the representation of the distribution to be learned. Here, a representation can be thought of as an algorithm that speci es the distribution. For the sake of clarity typical representations are generators and evaluators. • A generator of a probability distribution P is a probabilistic algorithm that produces samples
+according to x ∼ P . • An evaluator of a probability distribution P ∈ n is an algorithm EvalP ∶ {0, 1}n → [0, 1] that outputs the probability amplitude EvalP [x] = P (x). We will refer to a representation (e.g. a generator or an evaluator) of a distribution Q as an -approximate representation of P if dTV(P, Q) < . We would like to stress that, due to fundamental limitations, our results hold for any -approximate representation even if we allow the corresponding algorithms to be computationally ine cient. Distribution learning in the statistical query framework is made formal by the following de nition. Problem 1: ( -learning of  from statistical queries) Let ∈ (0, 1) be an accuracy parameter, ∈ (0, 1) be the tolerance and let  be a distribution class. For a xed representation of the distribution, the task of -learning  from statistical queries with tolerance is de ned as given access to Stat for any unknown P ∈ , output an -representation of P . In [HIN+22] the authors have studied the worst case query complexity of Problem 1 for  being the class of output distributions of local quantum circuits. Here we want to consider the average case query complexity for the same distribution class. This is a strictly easier task as we do not require the learner to succeed for each and every distribution in the class. Rather, we want to characterize the number of statistical queries needed to succeed in solving Problem 1 on a fraction of distributions in  with respect to a measure over the distributions in . Similarly, when one considers a quantum or probabilistic learner one can ask about the number of statistical queries needed to succeed in the aforementioned task with some xed probability with respect to the algorithm’s randomness. Thus, the randomized average case complexity is de ned with respect to a measure and the two parameters and . By we denote the success probability of the algorithm and by the size, with respect to , of the fraction on which the algorithm is successful. De nition 2: (Average case complexity) Let be a class of distributions, a probability measure over  and , ∈ (0, 1). The deterministic average case query complexity of Problem 1 is de ned as the minimal number q of queries any learning algorithm  must make in order to achieve
+Pr P∼ [“ Stat(P ) -learns P from q queries”] ≥ . (9)
+Likewise, the randomized average case query complexity is de ned as the minimal number q of queries any random learning algorithm  must make in order to achieve
+Pr P∼ [Pr [“ Stat(P ) -learns P from q queries”] ≥ ] ≥ , (10)
+where Pr denotes the probability over the internal randomness of . The deterministic and randomized average case complexities in the framework of statistical query learning are closely related. As advertised in Section 1.1, one can directly translate our lower
+bounds for deterministic learning to lower bounds of randomized learning by means of a global prefactor 2( − 1/2). Thus, for the sake of ease we focus on the deterministic average case complexity throughout the main text and refer to Appendix F for the details about random algorithms. As discussed in Section 1.4 the average case query complexity of deterministic algorithms for learning in the SQ framework can now be lower bounded as follows. Lemma 1: (Deterministic average case complexity) Suppose there is a deterministic algorithm that -learns a fraction of with respect to from q many -accurate statistical queries. Then for any Q it holds
+q + 1 ≥ − PrP∼ [dTV(P, Q) ≤ + ] max PrP∼ [|P[ ] − Q[ ]| > ] , (11)
+where again, the max is over all functions ∶ X → [−1, 1]. We refer to Appendix E for the proof of Lemma 1. To provide a simpli ed expression we make the following remark. Remark 2: Note that without loss of generality we can take ≤ which leads to the bound
+q + 1 ≥ − PrP∼ [dTV(P, Q) ≤ 2 ]
+max PrP∼ [|P[ ] − Q[ ]| > ] . (12)
+To see why we can do so, consider instead the case > . Given P, Q such that > dTV(P, Q) > we can see that these distributions are indistinguishable with respect to -accurate queries and thus there cannot exist an -learner. From Lemma 1 it is clear that a crucial gure of merit is the fraction of distributions that can be distinguished from a single query. Following [Fel17] we de ne. De nition 3: (Maximally distinguishable fraction) Let  be a distribution class over the domain X and let be some probability measure over . The maximally distinguishable fraction with tolerance parameter and with respect to the measure and the reference distribution Q is de ned as
+frac( , Q, ) ∶= max Pr P∼ [|P[ ] − Q[ ]| > ] , (13)
+where the maximum is over all functions ∶ X → [−1, 1]. In the special case that the reference distribution is the uniform distribution, as is the case in the remainder of this paper,  we will refer to this by the short hand
+f = frac( , , ) , (14)
+where the measure and the tolerance will be clear from context. Summary: A lower bound for average case query complexity for learning in the statistical query model is determined by:
+• The size of the + -ball of any xed reference distribution PrP∼ [dTV(P, Q) ≤ + ]. • The maximally distinguishable fraction with respect to the same reference distribution frac( , Q, ). Note 1: For the sake of ease of presentation we give the derivation of bounds on the weights of the ball around the reference distribution in terms of . We then translate the corresponding result to Lemma 1 substituting by + . 2.2 random quantum circuits Given some n-qubit unitary U ∈ U(2n), we denote by PU (x) = | ⟨x |U |0n⟩|2 the quantum circuit output, or Born distribution. We denote by U the unitary Haar measure, or simply the uniform measure, over U(D). Similarly, we denote by S the spherical Haar measure, or likewise the uniform measure, over the complex unit sphere SD−1, where in both cases the dimensionality D will be clear from context. De nition 4: (Brickwork architecture) An n-qubit brickwork quantum circuit of depth d (with periodic boundary conditions) is a quantum circuit that is of the form
+U = (U (d)2,3 ⊗⋯ ⊗ U (d) n,1 ) ⋅ (U (d−1) 1,2 ⊗⋯ ⊗ U (d−1) n−1,n )⋯ (U (2) 2,3 ⊗⋯ ⊗ U (2) n,1 ) ⋅ (U (1) 1,2 ⊗⋯ ⊗ U (1) n−1,n) (15)
+where U (k)i,j ∈ U(4) is the unitary in the k’th layer acting on neighboring qubits i and j. For the sake of ease we have assumed d and n to be even. While we give de nitions and analysis only for periodic boundary conditions, we note that all our results will carry over to open boundary conditions at the price of slightly worse prefactors. De nition 5: (Random quantum circuits) A random brickwork quantum circuit of depth d on n qubits is formed by drawing ⌊n/2⌋ ⋅ d many 2-qubit unitaries U (k)i,j i.i.d. Haar randomly and contracting them. We denote the resulting probability distribution on U(2n) by C , where n and d will be clear from context. Given a two-qubit gate set  ⊆ U(4). We denote by (n, d) the set of Born distributions which can be realized by brickwork quantum circuits on n qubits of depth d . 2.3 unitary designs Unitaries generated by random quantum circuits quickly mimic Haar random unitaries for many practical purposes. The reason for this is that they generate unitary t-designs. These are "evenly"
+spread probability distributions over the unitary group that have the same t’th moments as the Haar measure [Dan05; GAE07]. This is often expressed in terms of t-fold twirls: Let be a probability measure on the unitary group U(D). Then we de ne for any matrix A ∈ CDt×Dt . Φ(t)( )(A) ∶= ∫ U ⊗tA(U †)⊗td (U ) . (16)
+We call an approximate unitary t-design if, for U being the Haar measure. Φ(t)( ) ≈ Φ(t)( U ) . (17)
+We provide a detailed de nition in Appendix B. Moreover, see Appendix B for the relation to state designs and bounds on the generation of approximate designs by random quantum circuits. 3 haar random unitaries In this section, we bound the two key quantities, namely f and the far from uniform probability, for random quantum circuits of in nite depth, corresponding to Haar random unitaries. Plugging these bounds into Lemma 1, we obtain the following lower bound on the average case query complexity. Theorem 2: (Formal version of in nite depth part of Informal Theorem 1) Let > 0, ≤ 1/e − 2−n/2−1 − and set = 1/e − 2−n/2−1 − − . Any algorithm that succeeds in -learning a fraction of the output distributions of in nitely deep random brickwork quantum circuits requires q many -accurate statistical queries, with
+q + 1 ≥ − 2 exp(−
+2n+2 2 9 3 )
+2 exp (− 2 n 2 9 3 )
+. (18)
+Remark 3: Note that, for any
+≥ 2−n/4 and any ≤ 1 e − 2−n/2−1 − 2−n/4+2
+which corresponds to ≥ 2−n/4+2, we nd by Theorem 2 the query complexity for learning any fraction > 2 exp(−2n/2+4/9 3) = 2−2
+Ω(n) requires q = 22Ω(n) many queries. In words: learning a doubly exponentially small fraction takes doubly exponentially many, inverse exponentially accurate statistical queries. In the case of in nitely deep circuits, it is known that the distribution of circuit unitaries converges to the unique, rotationally invariant Haar measure on the full unitary group in D = 2n dimensions U . If we apply such a Haar-random unitary to a designated (arbitrary) pure starting state, say | 0⟩ = |0,… , 0⟩, we obtain a pure state | ⟩ that is sampled from the spherical Haar
+measure S , i.e. uniformly from the set of all pure states in D dimensions:
+| ⟩ = U | 0⟩ unif∼ { |u⟩ ∈ CD ∶ ⟨u|u⟩ = 1 } ⊂ CD (and D = 2n for n qubits). Such (Haar) uniform distributions of pure states have two remarkable features: (i) we can use powerful frameworks like Weingarten calculus and Gaussian integration to compute complicated expectation values and (ii) concentration of measure (Levy’s lemma) asserts that concrete realizations concentrate very sharply around this expected behavior. These two features can be combined into a powerful strategy to obtain very sharp bounds on deviation probabilities, like the two essential ingredients in Lemma 1:
+Pr U∼ U [dTV(PU , ) ≥ ] and Pr U∼ U [|PU [ ] − [ ]| > ]
+for any xed function ∶ {0, 1}n → [−1, 1]. To apply this formalism, our strategy will be to rst reformulate the arguments in both probabilities as functions in the (Haar) random pure state | ⟩ = U | 0⟩. Then we will use Levy’s lemma to obtain bounds on both probabilities. Let’s focus on this last step as it applies to both probabilities. Levy’s lemma asserts that every reasonably well-behaved function concentrates very sharply around its expectation value if we choose a random vector uniformly from a (real- or complexvalued) unit sphere SD−1 in D ≫ 1 dimensions. Note that Haar-random state | ⟩ = U | 0⟩ with U ∼ U meet this sampling requirement by de nition. The well-behavedness of functions is measured by their Lipschitz constant. A function f ∶ SD−1 → R is Lipschitz with respect to the 2-norm in CD with constant L ≥ 0 if
+|f (| ⟩) − f (| ⟩)| ≤ L ‖| ⟩ − | ⟩‖2 for all | ⟩ , | ⟩ ∈ S D−1. Here is a variant of Levi’s Lemma (concentration of measure) that directly applies to pure quantum states inD dimensions. It readily follows from identifying the complex unit sphere SD−1 ⊂ CD with a real-valued unit sphere in 2D dimensions isometric embedding, see, e.g. [BCH+21, proof of Proposition 29]. Theorem 3: (Levy’s lemma for Haar-random pure states) Let f ∶ SD−1 → R be a function from D-dimensional pure states to the real numbers that is Lipschitz with Lipschitz constant L. Then,
+Pr | ⟩∼ S [ |||| f (| ⟩) − E | ⟩∼ S [f (| ⟩)] |||| > ] ≤ 2 exp(− 4D 2 9 3L2) for any > 0. In words, Levy’s lemma suppresses the probability of a -deviation from the expectation value. This bound diminishes exponentially in Hilbert space dimensionD = 2n, i.e. doubly exponentially in qubit size n. In the following two sections we will use theorem 3 to obtain bounds on the maximally distinguishable fraction and the probability of being far from uniform. We do so by explicitly upper bounding the Lipschitz constants of the involved functions and computing the Haar expectation values. 3.1 maximally distinguishable fraction Let us start with PrU∼ U [|PU [ ]− [ ]| > ]. We will use the short-hand notation x = (x1,… , xn) ∈ {0, 1}n to enumerate all possible outcome strings of n parallel computational basis measurements:
+PU [ ] = ∑ x∈{0,1}n (x0,… , xn) |⟨x | ⟩|2 = ⟨ |( ∑ x∈{0,1}n (x) |x⟩⟨x | ) | ⟩ = ⟨ |Φ| ⟩,
+where we have introduced the diagonal matrix Φ = ∑x (x)|x⟩⟨x | ∈ CD×D whose spectral norm obeys ‖Φ‖∞ = maxx∈{0,1}n | (x)| ≤ 1 regardless of the underlying function in question. This is a very simple and highly structured quadratic form in | ⟩ = U | 0⟩. Its expectation value over all Haar-random states produces the uniform distribution  [ ], in formulas
+E U∼ U [PU [ ]] = ∑ x∈{0,1}n
+1 2n (x) =  [ ] . (19)
+To see this, note that the uniform average over all pure states in D dimensions produces the maximally mixed state, i.e. E| ⟩∼ S [| ⟩⟨ |] = 1/D. Linearity of the expectation value then ensures
+E U∼ U [PU [ ]] = E | ⟩∼ S [⟨ |Φ| ⟩] = Tr( E| ⟩∼ S [| ⟩⟨ |] Φ) = tr (1/D Φ) = 1 D tr (Φ)
+=∑ x
+1 2n (x) =  [ ],
+as claimed. We also provide an alternative derivation based on Gaussian integration in the Appendix (Theorem 18). We can now obtain an explicit bound on the maximally distinguishable fraction by theorem 3. Theorem 4: Consider n-qubit Haar-random unitaries U ∼ U (D = 2n) and x a function ∶ {0, 1}n → [−1, 1]. Then,
+Pr U∼ U [|PU [ ] − [ ]| > ] ≤ 2 exp(− 2n 2 9 3 ) for any > 0. In words: for each xed function , its evaluation PU [ ] concentrates very sharply doublyexponentially in qubit size n around the uniform average. Hence, it is extremely unlikely to distinguish PU from  with only a single . Proof. Rewrite PU [ ] = ⟨ |Φ| ⟩ =∶ fΦ(| ⟩) with | ⟩ = U | 0⟩ (Haar random state) and diagonal matrix Φ that obeys ‖Φ‖∞ ≤ 1. This reformulation highlights that the quadratic form function fΦ ∶ SD−1 → R is Lipschitz with constant L ≤ 2‖Φ‖∞ ≤ 2, we refer to Lemma 22 in the appendix for a detailed statement and proof. Next, recall from Equation (19) that E| ⟩∼ S [fΦ(| ⟩)] = EU∼ U [PU [ ]] =  [ ] and apply Theorem 3 to deduce the claim. 3.2 far from uniform probability Moving now to the quantity PrU∼ U [dTV(PU , ) ≥ ], we note that the expectation value required is a bit more involved by comparison. Let us start by reformulating the total variation distance between PU and  as
+dTV(PU , ) = 1 2
+∑ x∈{0,1}n
+|PU (x) − (x)| = 1 2
+∑ x∈{0,1}n |||| |⟨x ∣ U | 0⟩|2 − 1 D |||| = 1 2D ∑ x∈{0,1}n ||||D⟨x ∣ ⟩| 2 − 1||| ,
+where D = 2n and | ⟩ = U | 0⟩. Linearity of the expectation value and unitary invariance of the spherical Haar measure then implies
+E U∼ U [dTV(PU , )] = 1 2D
+∑ x∈{0,1}n E | ⟩∼ S
+[||D |⟨x | ⟩| 2 − 1||] = 1 2 E | ⟩∼ S [||D |⟨0,… , 0| ⟩| 2 − 1||] . The expression on the right hand side is not a polynomial in the overlap |⟨0,… , 0| ⟩|2 which prevents us from using Weingarten calculus to compute it. Another averaging technique, known as Gaussian integration, does the job, however. The key idea is to view the uniform expectation over pure states as a uniform integral over all points that are contained in the complex-valued unit sphere in D dimensions. Up to a normalization factor (scaling), this integral can then be re-cast as an expectation value over the directional degrees of freedom in a 2n-dimensional complexvalued Gaussian random vector with independent entries gj + iℎj , 1 ≤ j ≤ 2n and gj , ℎj
+iid∼  (0, 1). A detailed argument is provided in the appendix and yields
+1 e − 1 2n/2+1 ≤ E U∼ U [dTV(PU , )] ≤ 1 e + 1 2n/2+1 , (20)
+where e denotes Euler’s constant. Note that the approximation errors on the left and right decay exponentially in qubit size n. This is the content of Theorem 19 in the appendix and the proof uses a precise version of the approximate identity
+1 2 E | ⟩∼ S [|D⟨0,… , 0| ⟩ − 1|] ≈ 1 4 E gj ,ℎj iid∼ (0,1) [|||g1 + iℎ1| 2 − 2||] = 1 4 E g1,ℎ1 iid∼ (0,1) [||g 2 1 + ℎ 2 1 − 2||]
+= 1 4 ∬
+∞
+∞
+||g 2 1 + ℎ 2 1 − 2|| exp (−(g21 + ℎ21)/2) 2 dg1dg2 = 1 e . The nal equality follows from switching into polar coordinates and solving the resulting integral analytically – this is why the technique is called Gaussian integration. The exponentially small o sets ±1/2n/2+1 in Rel. (20) bound the approximation error that is incurred in the rst step of this argument. As before, we can now obtain a bound on the probability of a Haar randomly drawn unitary giving rise to a distribution that is far from uniform by use of Theorem 3. Theorem 5: Consider n-qubit Haar-random unitaries U ∼ U (D = 2n). Then, the TV distance
+between PU and the uniform distribution  is guaranteed to obey
+Pr U∼ U [ |||| dTV(PU , ) − 1 e |||| ≥ + 1 2n/2+1 ] ≤ 2 exp(− 2n+2 2 9 3 ) for any > 0. In words: this TV distance concentrates very sharply (doubly-exponentially in qubit size n) around the remarkable value 1/e ≥ 0.367. The exponentially small in n additive correction term 1/2n/2+1 is a consequence of the slight mismatches in Rel. (20). Note, however, that this does not qualitatively change the concentration statement. The mismatch is of the same order as the smallest for which the exponential tail bound still provides meaningful results: 2n+2 2 ≳ 1 requires ≳ 1/2n/2+1. Proof. The proof is conceptually very similar to the proof of Theorem 4. We rst recast the expectation over Haar-random unitaries U as an expectation value over Haar-random state | ⟩ = U | 0⟩. The function dTV(PU , ) in question becomes g(| ⟩) = (2D)−1∑x∈{0,1}n ||D |⟨x | ⟩|
+2 − 1|| and can be shown to be Lipschitz with constant L ≤ 1. Again, we refer to Lemma 23 in the appendix for a precise statement and proof. Next, we use Rel. (20) to infer
+Pr [ |||| dTV(PU , ) − 1 e |||| ≥ + 1 2n/2+1 ] ≤ Pr [ |||| dTV(PU , ) − E U∼ U [dTV(PU , )] |||| ≥ ]
+and apply Levy’s Lemma (Theorem 3) with Lipschitz constant L = 1 to the right hand side of this display. 4 random quantum circuits of linear depth In this section, we bound the two key quantities, namely f and the far from uniform probability, for random quantum circuits of linear depth. We will nd that the strong convergence of these circuit ensembles to unitary t-designs su ces to show exponentially small upper bounds on both quantities. Plugging these bounds into Lemma 1, we obtain the following lower bound on the average case query complexity. Theorem 6: (Formal version of linear depth part of Informal Theorem 1) Let > 0. Further, let d ≥ 1.2 × 1020n, let ≤ 1/150 − and let n be large enough. Then, the average case query complexity q of -learning any -fraction of brickwork random quantum circuit output distributions is lower bounded by
+q + 1 ≥ ( − 3200 × 2−n) 2n−2 2 . (21)
+Remark 4: Note that for any ≥ 2−n/4 and, say any ≤ 1/160 by Theorem 6 learning a fraction > 3200 ⋅ 2−n = O(2−n) requires at least q = 2Ω(n) many queries. Moreover, in the practically inspired regime 1/poly(n) ≤ ≤ 1/150 − , we obtain q = Ω(2n). 4.1 maximally distinguishable fraction We begin with bounding the maximally distinguishable fraction. Lemma 7: Let > 0, n ≥ 2 and d ≥ 3.2((2 + ln(2))n + ln(n) + ln(1/ )). Then for all ∶ {0, 1}n → [−1, 1] it holds
+Pr U∼ C [|PU [ ] − [ ]| > ] ≤ (2 + ) 2n 2 . (22)
+Proof. First, we show the result for an exact unitary 2-design. Using the rst moment from Equation (75), we nd that
+E U∼ U [PU [ ]] = ∑ x∈{0,1}n ( EU∼ U [PU (x)] (x)) =  [ ]. (23)
+Thus, by Chebyshev’s inequality, for any > 0,
+Pr U∼ U
+[|PU [ ] − [ ]| > ] ≤ Var [PU [ ]]
+2 . (24)
+The variance is given by
+Var U∼ U [PU [ ]] = E U∼ U [PU [ ]2] −( EU∼ U [PU [ ]])
+2
+= ∑ x ∑ y (x) (y)( EU∼ U
+[PU (x)PU (y)] − 1 22n) . (25)
+Inserting the second moment from Equation (76) and bounding (x) (y) ≤ 1, we nd
+Var U∼ U [PU [ ]] = ∑ x ∑ y (x) (y)(
+1 2n(2n + 1) [1 + x,y] − 1 22n) ≤ 1 2n−1 = O(2−n) (26)
+which holds for any exact unitary 2-design. Let us now turn back to random quantum circuits. At depth d ≥ 3.2((2 + ln(2))n + ln(n) + ln(1/ )), the measure C forms an ⋅2−n-approximate 2-design [HH21]. Notice that by Hölder’s inequality and Equation (68), it holds
+E U∼ C [PU (x)PU (y)] − E U∼ U [PU (x)PU (y)]
+≤ ||||| Tr [|x⟩⟨x | ⊗ |y⟩⟨y | ( EU∼ C [ U |0n⟩⟨0n|U †] ⊗2 − E U∼ U [U |0n⟩⟨0n|U †] ⊗2 )] ||||| ≤ ‖‖‖‖ E U∼ C [U |0n⟩⟨0n|U †] ⊗2 − E U∼ U [U |0n⟩⟨0n|U †] ⊗2‖‖‖‖1
+≤ 23n . (27)
+Then, as in Equation (26), we arrive at
+Var U∼ C [PU [ ]] = ∑ x ∑ y (x) (y)( EU∼ C
+[PU (x)PU (y)] − 1 22n)
+≤ ∑ x ∑ y (x) (y)( EU∼ U [PU (x)PU (y)] + 23n
+− 1 22n) ≤ 1 2n−1 + 2n = 2 + 2n
+, (28)
+which completes the proof. 4.2 far from uniformity via unitary designs In this section, we will use higher moments to show a far from uniform property that holds with probability 1 − exp(−Ω(n)). Notice, that third moments cannot su ce to prove such a statement as the Cli ord group is a 3-design but a constant fraction (≈ 0.4) of stabilizer states yield uniform output distributions as shown in Appendix D.
+A standard technique for lower bounding expectation values of 1-norms is Berger’s inequality [Ber97]
+E [|S|] ≥ ( E [S2])
+3 2
+(E [S4]) 1 2 , (29)
+for a random variable S. However, applying this to the expected total variation distance yields another constant lower bound on the expectation value, which is not su cient to prove a bound with probability 1 − o(1). Instead, we will use that, very similarly, we have:
+Lemma 8:
+‖f ‖1 ≥ ‖f ‖32 ‖f ‖24
+(30)
+for functions f ∶ {0, 1}n → R.
+Proof. This follows from Hölder’s inequality
+‖f ‖22 = ⟨f a, f b⟩ ≤ ( ∑ x f pa(x) )
+1 p
+( ∑ x f qb(x) )
+1 q
+, (31)
+for a + b = 2 and 1p + 1 q = 1. Choosing a = 4 3 , b = 2 3 , p = 3 and q = 3 2 , yields the result. We will prove concentration inequalities both for the numerator and the denominator using eighth moments and then apply a union bound to show that both scale as desired with high probability. This will allow us to prove a qualitative version of the conjecture by Aaronson and Chen [AC17] in the a rmative. Theorem 9: Let be a 110002 −10n-approximate unitary 8-design and n ≥ 2, then:
+Pr U∼ [dTV (PU , ) ≥ 1 150] ≥ 1 − 3200 × 2−n. (32)
+Applications of the 8-design property are rare and we pose it as an open problem whether Theorem 9 can be further derandomized. We know that 3-designs are not su cient as the Cli ord group is one. Can the same scaling be shown using only the (approximate) 4-design property? To this end, we prove the following theorem, which does not yield exponential concentration, but a weaker trade-o between the probability and the total variation distance. This property therefore still allows for meaningful average-case hardness statements with probability 1 − o(1), which separates 4-designs from the Cli ord group. Moreover, far better constants are known for the generation of approximate 4- designs [HH21]. Theorem 10: Let be a 110002 −10n-approximate unitary 4-design and n ≥ 2, then for any c > 0 we have:
+Pr U∼ [dTV (PU , ) ≥ 1 20 √ c + 18] ≥ 1 − 100 × 2−n − 25 c . (33)
+Before we prove Theorem 9 and Theorem 10, we state the following corollary of Theorem 9 which is due to the bounds from [HH21]:
+Corollary 11: Denote by C the distribution on U(2n) obtained from brickwork random quantum circuits of depth d . For d ≥ 1.2 × 1020n and n ≥ 2, we have
+Pr U∼ C [ dTV (PU , ) ≥ 1 150] ≥ 1 − 3200 × 2−n. (34)
+Proof of Theorem 9. Applying Lemma 8 to the function f (x) = PU (x) − (x) we get
+‖PU − ‖1 ≥ ‖PU − ‖32 ‖PU − ‖24 . (35)
+The proof strategy is to show concentration inequalities for the numerator and the denominator, independently. Then, we apply the union bound to show that both events are realized simultaneously with high probability. We apply Chebyshev’s inequality to the collision probability Z ∶= ∑x PU (x)2 in order to estimate ‖PU − ‖22 = Z − 1/D. We will use the notation D = 2n. In the following, we will make an error of size 10−3D−10, compared to the Haar value when evaluating monomials E [PU (x1) 1 … PU (xk) k] with ∑k k ≤ 8. In the following calculations, we denote by Ei ∈ R with i = 1, 2, 3, 4 error terms with |Ei | ≤ 10−3D−10. We have chosen this error such that it is negligible for any of the below calculations. The reader may ignore it, but needs to keep in mind that it mildly a ects the constants. Using Lemma 25, we compute the rst and second moment of Z by
+E U∼
+[Z ] = 2
+D + 1 + DE1 (36)
+and
+E U∼ [Z 2] = EU∼ [ ∑ x≠y PU (x)2PU (y)2 +∑ x PU (x)4]
+= 4(D − 1)
+(D + 1)(D + 2)(D + 3) + 24 (D + 1)(D + 2)(D + 3) + D2E2
+= 4
+(D + 1)(D + 2) + 8 (D + 1)(D + 2)(D + 3) + D2E2
+≤ 4D−2 + 8D−3 . (37)
+We readily compute the variance 2 of Z:
+2 = E U∼ [Z 2] −( EU∼ [Z ])
+2
+≤ 4D−2 + 8D−3 − 4 1
+(D + 1)2 + 2D|E1| + D2|E1|2
+≤ 17 × D−3 ,
+(38)
+where we have used in the last inequality that 1 − x2 < 1 for x > 0 implies 11+x > 1 − x and hence
+( 1 D + 1) 2 = ( 1 1 + D−1) 2 D−2 ≥ (1 − D−1) 2 D−2 ≥ (1 − 2 × D−1)D−2 , (39)
+where again the last step is Bernoulli’s inequality. Plugging this into Chebyshev’s inequality, we nd
+Pr U∼ [ ||||| ‖PU − ‖22 −( D − 1 D + 1) D−1 − DE1 ||||| ≥ k ] = Pr U∼ [ |||| Z − 2 D + 1 − DE1 |||| ≥ k] = 2 k2 ≤ 17D−3 k2 (40)
+for the probability of Z being outside an interval of radius k centered at its mean Choosing
+k = 12 D−1 D+1 ⋅ D −1 − DE1, this implies
+Pr U∼ [‖PU − ‖ 2 2 ≤ 1 2 D − 1 D + 1 D−1] ≤ 17 ×( D − 1 D + 1 D−1 − DE1)
+−2
+× D−3
+≤ 18 ×( D + 1 D − 1)
+2
+D−1
+≤ 18 ×( 21 + 1 21 − 1)
+2
+D−1
+≤ 50D−1 . (41)
+Here we used in the second inequality that 11−x ≤ 1 + 2x for 0 ≤ x ≤ 1 2 , which, after multiplying it with 1 − x is equivalent to 0 ≤ x(1 − 2x). This bound will be su cient to bound the numerator of Equation (35). Next, we will nd a concentration inequality for the denominator of Equation (35) by essentially the same strategy. We nd
+‖PU − ‖44 = ∑ x (PU (x) − D−1) 4 = ∑ x (PU (x)4 − 4PU (x)3D−1 + 6PU (x)2D−2 − 4PU (x)D−3 + D−4)
+≤ ∑ x PU (x)4
+⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟ =∶X
++6D−2∑ x PU (x)2
+⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟ =Z
+,
+(42)
+where we have used ∑x (D−4 − 4PU (x)D−3) ≤ 0. We will prove probability inequalities for the two terms in Equation (42) independently. In fact, the second term can be handled similarly to Equation (41). We apply Equation (40) with k = 1 D+1 − DE1 to obtain
+Pr U∼ [Z ≥ 3 D + 1 × D−1] ≤ 18(D + 1) 2D−3 ≤ 30D−1. (43)
+For the rst term in Equation (42) we use Lemma 25 to compute the rst
+E U∼ [X ] = ∑ x E U∼ [PU (x)
+4] = 4! D⋯ (D + 3) + DE3 = 24 (D + 1)(D + 2)(D + 3) + DE3 , (44)
+and second moments
+E U∼ [X 2] = ∑ x E U∼ [PU (x) 8] +∑ x≠y E U∼ [PU (x) 4PU (y)4]
+= 8! (D + 1)⋯ (D + 7) + 242(D − 1) (D + 1)⋯ (D + 7) + D2E4
+= 8! − 2 × 242
+(D + 1)⋯ (D + 7) +
+242
+(D + 2)⋯ (D + 7) + D2E4 . (45)
+For the variance this implies
+2X ≤ 8! (D + 1)⋯ (D + 7) +
+242
+(D + 2)⋯ (D + 7) + D2E4
+− 242
+(D + 1)2(D + 2)2(D + 3)2 + 2
+242
+(D + 1)2(D + 2)2(D + 3)2 D|E3| + D2E23
+≤ 41000D−7 + 242( 1 (D + 2)⋯ (D + 7) − 1 (D + 1)2(D + 2)2(D + 3)2)
+⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏞⏟ <0
+≤ 41000D−7. (46)
+Via Chebyshev’s inequality, we obtain
+Pr U∼ [ |||| X − 24 (D + 1)(D + 2)(D + 3) + DE3 |||| ≥ k] ≤ 41000D−7 k2 . (47)
+Choosing k = 12(D+1)(D+2)(D+3) − DE3, this implies
+Pr U∼ [X ≥ 36 (D + 1)(D + 2)(D + 3)] ≤ 41001 122 D−7(D + 1)2(D + 2)2(D + 3)2 ≤ 3100D−1 , (48)
+for n ≥ 2. We can now put these bounds together via a union bound applied twice: For any 1, 2 > 0 such that 1 2 ≥ , we nd
+Pr U∼ [‖PU − ‖1 ≤ ] ≤ PrU∼ [ ‖PU − ‖32 ‖PU − ‖24 ≤ ]
+≤ Pr U∼ [(‖PU − ‖ 3 2 ≤ 1) ∨ (‖PU − ‖ 2 4 ≥ 2)]
+≤ Pr U∼ [‖PU − ‖ 3 2 ≤ 1] + PrU∼ [‖PU − ‖ 2 4 ≥ 2]
+= Pr U∼ [‖PU − ‖ 2 2 ≤ 2 3 1 ] + PrU∼ [‖PU − ‖ 4 4 ≥ 2 2]
+≤ Pr U∼ [‖PU − ‖ 2 2 ≤ 2 3 1 ] + PrU∼ [X + 6D 2(Z + 2−n) ≥ 22]
+≤ Pr U∼ [‖PU − ‖ 2 2 ≤ 2 3 1 ] + PrU∼ [X ≥ a1] + PrU∼ [6D −2Z ≥ a2] ,
+(49)
+with a1 + a2 = 22 . These probabilities are bounded in Equations (41), (43) and (48). Choosing 2 3 1 = 12 D−1 D+1D
+−1 ≥ 10− 23D−1 (for n ≥ 2), a1 = 36 ×D−3 and a2 = 18 ×D−3 implies 22 = 54 ×D−3. Plugging this into Equation (49) yields Theorem 9, where dTV (PU , ) = 12 ||PU − ||1. Proof of Theorem 10. The proof of Theorem 10 follows analogously to the proof of Theorem 9. However, instead of proving concentration of the random variable X = ∑x PU (x)4 to bound
+Pr[X ≥ a1] as in Equation (49), we instead apply Markov’s inequality, to get
+Pr U∼ [X ≥ a1] ≤ EU∼ [X ] a1 ≤ 24 (D + 1)(D + 2)(D + 3) ⋅ 1 a1 + DE3 ≤ 25D−3 a1 . (50)
+Therefore, the result follows by choosing a1 = cD−3 for c > 0. 5 random quantum circuits of sub-linear depth In this section, we bound the two key quantities, namely f and the far from uniform probability, for random quantum circuits in the regime of sub-linear depth. This regime of circuit depth includes the shortest circuits for which we can still show super-polynomial query complexity lower bounds and hence hardness of learning. Note that in this regime, the random circuit ensembles that we consider do not yet form even a unitary 2-design requiring di erent techniques to obtain these bounds. Plugging these bounds into Lemma 1, we obtain the following lower bound on the average case query complexity. Theorem 12: (Formal version of sub-linear depth part of Informal Theorem 1) Let c = 1/ log(5/4). Further, let c log n ≤ d ≤ c(n+log n), > 0 and ≤ 1/4− . Then, for su ciently large n, the average case query complexity q of -learning any -fraction of brickwork random quantum circuits is lower bounded by
+q + 1 ≥ ( − 3/4 − − ) 2 3n ⋅ ( 4 5) d , (51)
+Moreover, if d > c(n + log n) then it holds
+q + 1 ≥ ( − 3/4 − − ) 2n−2 2 . (52)
+Remark 5: Note that Theorem 12 implies that in the practically relevant regime of = 1/poly(n), learning circuits of depth ! (log(n)) to some constant precision requires a super-polynomial number of queries. In particular, already for any constant fraction slightly greater than 3/4 there exists no e cient statistical query algorithm for any accuracy = Ω(1/poly(n)). 5.1 maximally distinguishable fraction via restricted depth moments We begin with bounding the maximally distinguishable fraction. Lemma 13: For all d ≥ log nlog 5/4 and for all ∶ {0, 1} n → [−1, 1] it holds
+Pr U∼ C [|PU [ ] − [ ]| > ] ≤ 1 2 [ n ( 4 5)
+d
+(1 + 1 2n) + 1 2n ] . (53)
+Remark 6: Note that Equation (53) can be simpli ed as follows, which lead to the two cases in
+Theorem 12:
+Pr U∼ C [|PU [ ] − [ ]| > ] ≤
+{ 3n 2 ⋅ ( 4 5)
+d , for d ≤ n+log(n)log(5/4) 3
+2n 2 , for d > n+log(n) log(5/4) . (54)
+Proof of Lemma 13: The proof strategy is essentially identical to the rst part of the proof of Lemma 7 bounding the same quantity for linear depth circuits. However, one replaces the moments over the Haar measure with the moments of restricted depth models obtained in Lemma 26. In particular, the second moment in Equation (25) gets replaced by the one given in Equation (78). The moments in Lemma 26 hold for restricted depth circuits in 1D. They are obtained via a mapping to a statistical mechanics model [Hun19] also used in [BCG21] to bound a similar quantity, for more details see Appendix C. 5.2 far from uniformity for constant-depth circuits A direct approach to bound Pr [dTV(PU , ) ≥ ] is to lower bound the expectation E [dTV(PU , )]. Then, using Markov’s inequality, a far-from-uniform-bound follows immediately as made explicit by the following lemma:
+Lemma 14: For any random variable 0 ≤ Y ≤ 1 and any 0 < < 1 we have
+Pr (Y ≥ ) ≥ E [Y ] − 1 − . (55)
+In [AC17], Aaronson and Chen show the following lower bound on EU∼ C [dTV(PU , )]. Lemma 15: (Section 3.5, [AC17]) For any n ≥ 2, d ≥ 1, it holds that
+E U∼ C [dTV(PU , )] ≥ 1 4 . (56)
+Curiously, their proof only takes into account the randomness in drawing the very last two-qubit gate which is why the bound holds already at depth d = 1. By Lemma 14, we immediately nd:
+Corollary 16: For any n ≥ 2, d ≥ 1, ∈ [0, 1/4], it holds that
+Pr U∼ C [dTV(PU , ) ≥ ] ≥ 1 4 − 1 − ≥ 1 4 − . (57) acknowledgements We thank Yihui Quek, Dominik Hangleiter, Jean-Pierre Seifert, Scott Aaronson, and Lijie Chen for many helpful discussions and insights. J. H. acknowledges funding from the Harvard Quantum Initiative. The work of R. K. is supported by the SFB BeyondC (Grant No. F7107- N38), the Project
+QuantumReady (FFG 896217) and the BMWK (ProvideQ). The Berlin team thanks the BMWK (PlanQK, EniQmA), the BMBF (Hybrid), and the Munich Quantum Valley (K-8). This work has also been funded by the Deutsche Forschungsgemeinschaft (DFG) under Germany’s Excellence Strategy – The Berlin Mathematics Research Center MATH+ (EXC-2046/1, project ID: 390685689) as well as CRC 183 (B1). a omitted proofs for haar random unitaries In this appendix section, we provide the technical details for studying the Haar random case. We rst introduce Gaussian integration – a powerful way to compute expectation values of functions over uniformly random pure states Haar random states. This technique is complementary to the more widely used Weingarten formalism. The two approaches have di erent strengths and weaknesses. One core advantage of Gaussian integration is that it can be readily applied to functions that are not well approximated by homogeneous polynomials. The expected TV distance between a Haar random outcome distribution and the uniform distribution is one such function which features prominently in this work. Subsequently, we will also provide tight bounds on the Lipschitz constants of these functions. This is the only missing ingredient to show exponentially strong concentration around the previously computed expectation values by means of Levy’s lemma. We emphasize that this appendix section covers the extreme case of global Haar-random unitaries. Such evolutions scramble information across all subsystems and we therefore present our results directly in terms of total Hilbert space dimension D, an abstract computational basis {|1⟩,… , |D⟩} and global (pure) states | ⟩ = U | 0⟩ ∈ CD , where | 0⟩ is a designated (simple) starting state, e.g., a product state. For n-qubit systems, this would amount to setting D = 2n and equating the d-th basis state |d⟩ with the n-bit string xdy = x1(d) … xn(d) ∈ {0, 1}n that corresponds to the binary representation of d ∈ N.
+A.1 Haar random state averages via Gaussian integration Gaussian integration is a standard technique in mathematical signal processing and data science that allows us to recast an expectation value over the unit sphere as an expectation value over standard Gaussian random vectors. The latter has the distinct advantage that individual vector components become statistically independent from each other and follow the very simple normal distribution. These features are very useful for computing non-polynomial functions that only depend on comparatively few vector entries. We will showcase this technique based on two exemplary expectation values that feature prominently in this work:
+(i) the function value PU [ ] = ∑Dd=1 (d) |⟨d |U | 0⟩| 2 averaged uniformly over all unitaries U ,
+see Theorem 18 below and
+(ii) the expected TV distance between the outcome distribution of a Haar random pure state | ⟩ = U | 0⟩ and the uniform distribution, see Theorem 19 below. At the heart of both computations is the following powerful meta-theorem, known as Gaussian integration. Theorem 17: (Gaussian integration) Let f ∶ CD → C be a homogeneous function with even degree 2k ∈ 2N, i.e., f (ax) = |a|2kf (x) for x ∈ CD and a ∈ C. Then, we can rewrite the Haar expectation value as
+E | ⟩∼ S
+[f (| ⟩)] = 1 k!2k( D + k − 1 k )
+−1
+E gi ,ℎi iid∼ (0,1) [f (g1 + iℎ1,… , gD + iℎD)] , (58)
+where gi , ℎi iid∼  (0, 1) denote independent standard Gaussian random variables ( = 0, 2 = 1). In words: the left hand side features the Haar average over all pure states (complex unit vectors), while the right hand side features an expectation value over 2D statistically independent standard Gaussian random variables gj , ℎj ∼  (0, 1) with probability density function exp (−x2/2) / √ 2 . This reformulation can be extremely helpful in concrete calculations, because the individual vector components on the right hand side are all statistically independent. Proof. Let us start by considering the complex-valued standard Gaussian vector g + ih ∈ CD with g = (g1,… , gD), h = (ℎ1,… , ℎD) ∈ RD and gj , ℎj
+iid∼  (0, 1). Switching to polar coordinates allows us to rewrite this vector as
+g + ih = r(g, h)|ĝ + ih⟩ with |ĝ + ih⟩ ∈ SD−1 (direction) and r(g, h)2 = D
+∑ j=1 (g2j + ℎ 2 j ) (radius). We can now use homogeneity of the function f ∶ CD → C to rewrite the Gaussian expectation value on the right hand side of Equation (58) as
+E g,h∼ (0,I) [f (g + ih)] = E g,h [f (r(g, h)|ĝ + ih⟩)] = Eg,h [r(g, h) 2kf (|ĝ + ih⟩)] ,
+where we have succinctly accumulated all Gaussian random variables into two vectors g and h. Now, something interesting happens. The particular form of the standard Gaussian probability density ensures that radius (r(g, h)) and direction (|ĝ + ih⟩) can be decomposed into two statistically independent random variables/vectors. The square r2 of the former follows a 22Ddistribution with 2D degrees of freedom while the latter must be a unit vector that is sampled uniformly from the complex unit sphere SD−1. The latter is a consequence of the fact that the distribution of standard Gaussian vectors g + ih is invariant under unitary transformations. Statistical independence, on the other hand, can be deduced from transforming the probability density function (pdf) of a Gaussian random vector into generalized spherical coordinates. Under such a transformation, the pdf decomposes into a product of a radial part (the radius) and an angular part. We can now use these insights to decompose the original expectation value into a product of two expectation values:
+E g,hiid∼ (0,I) [r(g, h) 2kf (|ĝ + ih⟩)] = Er2∼ 22D , ĝ+ih∼ S [ r2kf (|ĝ + ih⟩)]
+= E r2∼ 22D [r2k] Ê g+ih∼ S [f (ĝ + ih⟩)] . The second expression describes a uniform integral of f over the complex unit sphere in D dimensions. This is exactly the Haar expectation value on the left hand side of Equation (58). The other expression is the k-th moment of a 2 random variable with 2D degrees of freedom. These are well-known and amount to
+E r2∼ 22D [r2k] = Γ(2D + k/2) Γ(k/2) = (2D)(2D + 2)⋯ (2D + 2(k − 1)) = k!2k( D + k − 1 k ) . Putting everything together, allows us to conclude
+E g,hiid∼ (0,I) [f (g + ih)] = E gi ,ℎi iid∼ (0,1) [f (g1 + iℎ1,… , gD + iℎD)]
+= E r2∼ 22D [r2k] E | ⟩∼ S [f (| ⟩)] =k!2k( D + k − 1 k ) E | ⟩∼ S [f (| ⟩)] . The claim in Equation (58) is an immediate reformulation of this equality. We now have the essential tool at hand to compute the Haar expectation values that matter for this work. Theorem 18: (Haar average of bounded function expectation values) Let ∶ {1,… , D} → [−1, 1] be a function and de ne PU [ ] = ∑Dd=1 (d) |⟨d |U | 0⟩|
+2. Then, the expectation value of PU [ ] over Haar random unitaries becomes
+E U∼ U [PU [ ]] = E | ⟩∼ S [
+D
+∑ d=1 (d) |⟨d | ⟩|2 ] =
+D
+∑ d=1
+1 D (d) =  [ ] . This is a standard result that readily follows from Haar integration via Weingarten calculus and the representation theory of the unitary group. Let us now show how to achieve the same result with Gaussian integration (Theorem 17). Proof. Let us start by using linearity to rewrite the desired expectation value as
+E U∼ U
+[PU [ ]] = D
+∑ d=1 (d) E | ⟩∼ S
+[|⟨d | ⟩|2] . The claim then follows from the following equality:
+E | ⟩∼ S [|⟨d | ⟩|2] = 1 D for all d = 1,… , D. (59)
+which we now prove for any basis vector d . Once d is xed, we can interpret this as the expectation value of the function fd (| ⟩) = |⟨d | ⟩|2 which selects the d’th vector entry (amplitude) and outputs its magnitude squared. Every such function is homogeneous with even degree 2 (k = 1)
+and we can use Theorem 17 to rewrite the expectation value as
+E | ⟩∼ S [|⟨d | ⟩|2] = E | ⟩∼ S [fd (| ⟩)] = 1 1!21( D 1)
+−1
+E gi ,ℎi iid∼ (0,1) [fd (g1 + iℎ1,… , gD + iℎD)]
+= 1 2D E gi ,ℎi iid∼ (0,1) [|gd + iℎd |2] = 1 2D ( E gd∼ (0,1) [g2d] + E ℎd∼ (0,1) [ℎ2d]) = 1 2D (1 + 1) = 1 D . Here, we have used statistical independence (we can forget all Gaussian random variables which do not feature in the expression), as well as the fact that Gaussian standard variables obey E [g2d] = E [ℎ2d] = 1 (unit variance). The next expectation value is more intricate by comparison. There, Weingarten calculus would not work, because the function involved is not a well-behaved polynomial. Gaussian integration, however, can handle such non-polynomial expectation values and yields the following elegant display. Theorem 19: (Haar expectation of the TV distance) Let PU (d) = | ⟨d |U | 0⟩|2 be the output distribution of a D level quantum system in the computational basis and  the D dimensional uniform distribution. The expectation value of the total variation distance dTV(PU , ) over Haar random unitaries U obeys
+1 e − 1 2 √ D ≤ E U∼ U [dTV (PU , )] ≤ 1 e + 1 2 √ D . The approximation error is controlled by 1/(2 √ D)which diminishes exponentially for n-qubit systems (D = 2n). Proof. Let us once more start by using linearity of the expectation value to rewrite the desired expression as
+E U∼ U [dTV (PU , )] = 1 2
+D
+∑ d=1 E | ⟩∼ S [
+1 2
+D
+∑ d=1 |||| |⟨d | ⟩|2 − 1 D ||||] = 1 2D
+D
+∑ d=1 E | ⟩∼ S
+[||D |⟨d | ⟩| 2 − 1||] . Next, note that unitary invariance of | ⟩ ∼ S ensures that each of the summands on the right hand side must yield the same expectation value. This allows us to simplify further and obtain
+E U∼ U [dTV (PU , )] = 1 2D
+D
+∑ d=1 E | ⟩∼ S
+[||D |⟨d | ⟩| 2 − 1||] = 1 2 E | ⟩∼ S [||D |⟨1| ⟩| 2 − 1||] . Note that this is not a polynomial function, but we can still use Gaussian integration to accurately bound this expression. To this end, we rst use ⟨ | ⟩ = 1 to rewrite the expression of interest as
+the uniform average over a homogeneous function with even degree 2 (k = 1):
+f (| ⟩) = 1 2 ||D |⟨1| ⟩| 2 − ⟨ | ⟩|| 2 . We can now use Theorem 17 to conclude
+E U∼ U [dTV (PU , )] = E | ⟩∼ S [ 1 2 ||D |⟨1| ⟩| 2 − ⟨ | ⟩||] = E| ⟩∼ S [f (| ⟩)]
+= 1 1!21( D 1)
+−1
+E gi ,ℎi iid∼ (0,1) [f (g1 + iℎ1,… , gd + iℎd )]
+= 1 2D E gj ,ℎj iid∼ (0,1) [ 1 2 |||D⟨1|g + ih⟩| 2 − ⟨g + ih|g + ih⟩||]
+= 1 4D E gj ,ℎj iid∼ (0,1) [ ||||| D (g21 + ℎ 2 1) − D ∑ j=1 (g2j + ℎ 2 j ) |||||]
+= 1 2 E gj ,ℎj iid∼ (0,1) [ ||||| 1 2 ( g21 + ℎ 2 1) − 1 + 1 − 1 2D D ∑ j=1 (g2j + ℎ 2 j ) |||||] . (60)
+It seems possible to compute this expectation value directly by rewriting each expectation value as an integral weighted by the Gaussian probability density function exp (−g2j /2), but doing so would incur a total of 2D nested integrations. Here, we instead simplify the derivation considerably by providing reasonably tight upper and lower bounds. We have already suggestively decomposed the expression within the absolute value into two terms that are easier to control individually:
+M = 1 2 E g1,ℎ1 iid∼ (0,1) [ |||| 1 2 ( g21 + ℎ 2 1) − 1 ||||] (asymptotic mean value),
+Δ = 1 2 E gj ,ℎj iid∼ (0,1) [ ||||| 1 − 1 2D D ∑ j=1 (g2j + ℎ 2 j ) |||||]
+(approximation error). Applying the triangle inequality to Equation (60) readily allows us to infer
+M − Δ ≤ E U∼ U [dTV (PU , )] ≤ M + Δ (61)
+and the two remaining parameters can now be computed independently. We defer the actual calculations to the end of this subsection and only state the results here:
+M =1/e (see Lemma 21 below),
+Δ ≤1/ (2 √ D) (see Lemma 20 below). Inserting these numerical values into Equation (61) yields the claim. Let us now supply the technical calculations that are essential for completing the proof of Theorem 19. Lemma 20: Let g1,… , gd , ℎ1,… , ℎd be 2D independent standard Gaussian random variables. Then,
+Δ = 1 2 E gi ,ℎi iid∼ (0,1) [ ||||| 1 − 1 2D D ∑ j=1 (g2j + ℎ 2 j ) |||||] ≤ 1 2 √ D . Proof. There is no conceptual di erence between the gj and ℎj random variables. So, we may replace them with 2D independent standard Gaussian random variables g̃1,… , g̃2D
+iid∼  (0, 1). This reformulation yields
+Δ = 1 4D E g̃i iid∼ (0,1) [ ||||| 2D − 2D ∑ j=1 g̃2j |||||] ≤ 1 4D E g̃i iid∼ (0,1) [( 2D − 2D ∑ j=1 g̃2j )
+2
+]
+1/2
+, (62)
+where the last inequality is Jensen’s. The remaining expectation value is the variance of a 2 random variable with 2D degrees of freedom. Standard textbooks tell us that this variance is equal to 2(2D) = 4D. We do, however, believe that it is instructive to compute this variance directly, because it showcases an important subroutine when computing Haar integrals via Gaussian integration. Note that the random variables involved obey
+E g̃j ,g̃k iid∼ (0,1) [g̃2j g̃ 2 k] = ⎧⎪⎪ ⎨⎪⎪⎩ Eg̃j∼ (0,1) [g̃ 2 j ]Eg̃k∼ (0,1) [g̃ 2 k] = 1 , whenever j ≠ k and E [g̃4j ] = 3 , else if j = k.
+Combining them yields Eg̃j ,g̃k iid∼ (0,1) [g̃ 2 j g̃2k] = 1 + 2 j,k . If we also recall Eg̃j∼ (0,1) [g̃ 2 j ] = 1, we can readily conclude
+E g̃i iid∼ (0,1) [( 2D −
+2D
+∑ j=1 g̃2j )
+2
+] =4D2 − 4D
+2D
+∑ j=1 E g̃j∼ (0,1)
+[g̃2j ] + 2D
+∑ j=1
+2D
+∑ k=1 E g̃j ,g̃k iid∼ (0,1) [g̃2j g̃ 2 k]
+=4D2 − 4D 2D
+∑ j=1 1 +
+2D
+∑ j=1
+2D
+∑ k=1 (1 + 2 j,k)
+=4D2 − 8D2 + 4D2 + 4D = 4D. Inserting this variance expression into Equation (62) yields the claim. Lemma 21: Let g, ℎ be two independent standard Gaussian random variables. Then
+M = 1 2 E g,ℎiid∼ (0,1) [ |||| 1 2 ( g2 + ℎ2) − 1 ||||] = 1 e . Proof. This is the one location in our derivation, where we really utilize the power of Gaussian integration. We start by rewriting the expectation value as an integral over two independent standard Gaussian random variables with (standard Gaussian) probability density functions
+exp (−g2/2) / √ 2 and exp (−ℎ2/2) / √ 2 , respectively:
+M = 1 2 E g,ℎiid∼ (0,1) [ |||| 1 2 ( g2 + ℎ2) − 1 ||||] = 1 4 ∬ ∞ −∞ ||g 2 + ℎ2 − 2|| exp (−(g2 + ℎ2)/2) 2 dgdℎ. Next, we view (g, ℎ) ∈ R2 as a 2-dimensional vector and switch into polar coordinates: (r cos( ), r sin( )). Note that g2 +ℎ2 = r2 and there is no angle dependence in the integral. Accordingly the volume element changes from dgdℎ to rdrd and we obtain
+M = 1 8 ∫
+2
+0 ∫
+∞
+0
+||r 2 − 2|| e −r2/2rdrd = 1 4 ∫
+∞
+0
+||r 2 − 2|| re −r2/2rdr ,
+where we have carried out the integral over the angle which cancels the 1/(2 )-term in front of the expression. Next, we note that the sign of the absolute value changes as we change the integration range. For r ∈ [0, √ 2], we have ||r 2 − 2|| = (2−r 2)while ||r 2 − 2|| = (r 2−2) for r ∈ [ √ 2,∞). This implies
+M = 1 4 ∫
+∞
+0
+||r 2 − 2|| re −r2/2rdr = 1 4 (∫
+√ 2
+0 (2 − r2) re−r
+2/2dr + ∫ ∞
+√ 2 (r2 − 2) re−r 2/2dr )
+= 1 4 ( 2 ∫
+√ 2
+0 re−r 2/2dr − ∫
+√ 2
+0 r3e−r
+2/2dr + ∫ ∞
+√ 2 r3e−r
+2/2 − 2 ∫ ∞
+√ 2 re−r 2/2dr ) . (63)
+These four remaining integrals can be determined from the following well-known Gaussian integration formulas for a ≤ b:
+∫ b
+a rer 2/2 = e−a 2/2 − e−b
+2/2 and ∫ b
+a r3e−r 2/2dr = (a2 + 2)e−a 2/2 − (b2 + 2)e−b 2/2. The limit b → ∞ produces a vanishing contributions, because limb→∞ e−b 2/2 = 0 and limb→∞(b2 + 2)e−b2/2 = 0 Inserting these values into Equation (63) yields
+M = 1 4 ( 2 (e−0 − e−1) − ((2 + 0)e−0 − (2 + 2)e−1) + ((2 + 2)e−1 − 0) − 2 (e−1 − 0))
+= 1 4 (2 − 2/e − 2 + 4/e + 4/e − 2/e) = 1 e . A.2 Lipschitz constants for function evaluations and TV distances In this appendix section, we derive Lipschitz constants for the functions whose expectation value value we computed in the previous subsection. We will see that these Lipschitz constants are small (L = 2 and L = 1, respectively) which is the only requirement we need to invoke Levy’s lemma to show exponential concentration around these expectation values. Lemma 22: Fix ∶ {1,… , D} → [−1, 1] and reinterpret PU [ ] = ∑Dd=1 (d) |⟨d |U | 0⟩| 2 as a function in the pure state | ⟩ = U | 0⟩, namely P (| ⟩) = ∑Dd=1 (d) |⟨d | ⟩| 2. This function has Lipschitz constant L = 2, namely
+||P (| ⟩) − P (| ⟩)|| ≤ 2 ‖| ⟩ − | ⟩‖ 2 for all pure states | ⟩, | ⟩ ∈ C D . Proof. Let us start by rewriting P (| ⟩) as a linear function in the (pure) density matrix | ⟩⟨ |:
+P (| ⟩) = D
+∑ d=1 (d) |⟨d | ⟩|2 = ⟨ | (
+D
+∑ d=1 (d)|d⟩⟨d | ) | ⟩ = tr (Φ | ⟩⟨ |) ,
+where we have introduced the diagonal D × D matrix Φ = ∑Dd=1 (d)|d⟩⟨d |. Note that this matrix has operator norm ‖Φ‖∞ = max1≤d≤D | (d)| ≤ 1, because the function values (d) are con ned to [−1, 1] by assumption. The matrix Hoelder inequality then implies
+||P (| ⟩) − P (| ⟩)|| = |tr (Φ | ⟩⟨ |) − tr (Φ | ⟩⟨ |)| = |tr (Φ (| ⟩⟨ | − | ⟩⟨ |))| ≤ ‖Φ‖∞ || ⟩⟨ | − | ⟩⟨ |‖1 ,
+where ‖ ⋅ ‖1 denotes the trace norm. Since ‖Φ‖∞ ≤ 1, the claim – Lipschitz constant L = 2 – then follows from the following relation between trace distance of pure states and Euclidean distance of the state vectors involved:
+1 2 ‖| ⟩⟨ | − | ⟩⟨ |‖1 ≤ ‖| ⟩ − | ⟩‖2 for pure states | ⟩, | ⟩ ∈ C D . (64)
+Let us now derive this useful relation. One way is to use the Fuchs-van de Graaf inequalities (which are tight for pure states) to relate the trace distance to a pure state delity:
+1 2 ‖| ⟩⟨ | − | ⟩⟨ |‖1 = √ 1 − F (| ⟩, | ⟩) = √ 1 − |⟨ | ⟩|2. Finally, we can use |⟨ | ⟩| ≤ 1, as well as ⟨ | ⟩ = ⟨ | ⟩ = 1 and 2 |⟨ | ⟩| ≥ 2Re (⟨ | ⟩) = ⟨ | ⟩ + ⟨ | ⟩ to obtain
+√ 1 − |⟨ | ⟩|2 = √ 1 + |⟨ | ⟩| √ 1 − |⟨ | ⟩| ≤ √ 1 + 1 √ 1 − Re (⟨ | ⟩) = √ 1 − ⟨ | ⟩ − ⟨ | ⟩ + 1
+= √ ⟨ | ⟩ − ⟨ | ⟩ − ⟨ | ⟩ + ⟨ | ⟩ = √ (⟨ | − ⟨ |) (| ⟩ − | ⟩) = ‖| ⟩ − | ⟩‖2. Lemma 23: Let PU (d) = | ⟨d |U | 0⟩|2 be the output distribution of a D level quantum system in the computational basis and let  be the D dimensional uniform distribution. The total variation distance between both distributions de nes a function in the pure state | ⟩ = U | 0⟩, namely fTV(| ⟩) = 12 ∑d |||⟨d | ⟩| 2 − 1/D||. This function has Lipschitz constant L = 1, i.e.,
+|fTV (| ⟩) − fTV (| ⟩)| ≤ ‖| ⟩ − | ⟩‖2 for all pure states | ⟩, | ⟩ ∈ C D . Proof. Let us start by rewriting the absolute value of the di erence of di erent function values as
+|fTV (| ⟩) − fTV (| ⟩)| = 1 2 ||||| D ∑ d=1 (|||⟨d | ⟩| 2 − 1/D|| − |||⟨d | ⟩| 2 − 1/D||) |||||
+= 1 2 ||||| D ∑ d=1 ( ||| ||(⟨d | ⟩| 2 − 1/D) + (|⟨d | ⟩|2 − |⟨d | ⟩|2) ||| − |||⟨d | ⟩| 2 − 1/D|| 2 ) |||||
+≤ 1 2
+D
+∑ d=1
+|||⟨d | ⟩| 2 − |⟨d | ⟩|2|| ,
+where the last inequality follows from applying the triangle inequality to each summand in order to break up the two contributions in the rst absolute value of the second line. The rst contribution then cancels with the nal term and we obtain the advertised display. We can now rewrite this new expression as
+1 2
+D
+∑ d=1
+|||⟨d | ⟩| 2 − |⟨d | ⟩|2|| = 1 2
+D
+∑ d=1 |⟨d | (| ⟩⟨ | − | ⟩⟨ |) |d⟩| ,
+which accumulates the sum of the absolute values of the diagonal entries of the (pure) state di erence (| ⟩⟨ | − | ⟩⟨ |). This sum of absolute diagonal entries is always smaller than the trace norm of the matrix in question2. This relation implies
+|fTV (| ⟩) − fTV (| ⟩)| ≤ 1 2
+D
+∑ d=1
+|⟨d | (| ⟩⟨ | − | ⟩⟨ |) |d⟩| ≤ 1 2 ‖| ⟩⟨ | − | ⟩⟨ |‖1 ,
+and the claim – Lipschitz constant L = 1 – now follows from reusing Equation (64) to convert this trace norm distance into a Euclidean distance of the state vectors involved. b unitary designs In this appendix we provide context for approximate unitary designs; a key tool for the results in this work. Moreover, we discuss recent bounds on the generation of designs by random quantum circuits. Recall the de nition of the moment operator:
+Φ(t)( )(A) ∶= ∫ U ⊗tA(U †)⊗td (U ). (65)
+De nition 6: ("-Approximate Design) A probability distribution overU(D) is an "-approximate unitary design if
+‖‖‖Φ (t)( ) − Φ(t)( U ) ‖‖‖◊ ≤ " Dt , (66)
+where ‖∙‖◊ denotes the diamond norm, or channel distinguishability, de ned as the stabilized 1→ 1 norm. 2This relation is well known in matrix analysis and follows, for instance, from Helstrom’s theorem. In this work we will only be concerned with averages over states, that is the case A = (| ⟩⟨ |)⊗t . In this case we have the standard formula (see e.g. [Har13]). Φ(t)( U )(A) = ∫ U ⊗t (| ⟩⟨ |)⊗t (U †)⊗td U (U ) = Psym,t (D+t−1t ) , (67)
+where Psym,t we denote the projector onto the symmetric subspace St(CD). With the above de - nition of an approximate unitary design, we obtain that for an "-approximate unitary design, we have
+‖‖‖‖‖ Φ(t)( ) ((| ⟩⟨ |)⊗t) − Psym,t (D+t−1t ) ‖‖‖‖‖1 ≤ " Dt , (68)
+where ‖∙‖1 denotes the Schatten 1-norm, or trace norm. The key result for the following is that random quantum circuits are in fact approximate unitary t-designs in polynomial depth [BHH16; HL09; Haf22]. These bounds come with large explicit constants. For small values of t = 2, 4, we even have good explicit constants. We present the bound from Haferkamp [Haf22]:
+Theorem 24: For n ≥ ⌈2 log2(4t) + 1.5 √ log2(4t) ⌉, random quantum circuits in a brickwork architecture are "-approximate unitary t-designs in depth
+T ≥ C ln5(t)t4+3 1√
+log2(t) (2nt + log2(1/")), (69)
+where C can be taken to be 1013. Note that the large constants are likely an artefact of the proof technique based on the martingale technique [Nac96] in [BHH16; Haf22], which focus on the scaling in t . Using instead nite-size criteria [Kna88] combined with numerics, one can greatly improve these constants for t ≤ 5. Compare [HH21, Table I]. It is likely that we could obtain comparable constants for t = 8 as well. Unfortunately, this seems to require numerics for daunting system sizes. c moment calculations C.1 Haar moments To begin we give explicit formulas for Haar random moments. We will make use of the following standard formula repeatedly:
+E ∼ S [|⟨ | ⟩|2t] = E ∼ S [Tr [(| ⟩⟨ |)⊗t (| ⟩⟨ |)⊗t]]
+= Tr [ E ∼ S [| ⟩⟨ |]⊗t (| ⟩⟨ |)⊗t]
+= Tr [ Psym,t ,D (D+t−1t ) (| ⟩⟨ |)⊗t ]
+= ( D + t − 1 t )
+−1
+. In fact, we will need a more general formula for the proof of Theorem 9, which we state as the following lemma. Lemma 25: Let |i1⟩,… , |ik⟩ with i1,… , D ∈ {1,… , D} be mutually orthogonal state vectors and = ( 1,… , k) a partition of t for t ≤ D. Then, we nd the formula
+E | ⟩∼ S [
+k
+∏ l=1 |⟨ |il⟩|2 l] = ∏kl=1 l! D⋯ (D + t − 1) . (70)
+Proof. The proof follows directly from the following calculation:
+E | ⟩∼ S
+k
+∏ l=1 |⟨ |il⟩|2 l = E ∼ S [ Tr [ (| ⟩⟨ |)⊗t
+k
+⨂ l=1 (|il⟩⟨il |)⊗ l]]
+= ( D + t − 1 t )
+−1
+Tr [ Psym,t ,D
+k
+⨂ l=1 (|il⟩⟨il |)⊗ l]
+= 1
+D⋯ (D + t − 1) ∑ ∈St Tr [ r( )
+k
+⨂ l=1 (|il⟩⟨il |)⊗ l] ,
+(71)
+where we used the notation r for the representation of St that, for each permutation ∈ St , permutes the t tensor factors according to :
+r( )|i1⟩ ⊗⋯ ⊗ |it⟩ ∶= |i −1(1)⟩ ⊗⋯ ⊗ |i −1(t)⟩. (72)
+Moreover, we used the formula Psym,t ,D = 1t! ∑ r( ). Notice that
+Tr [ r( )
+k
+⨂ l=1 (|il⟩⟨il |)⊗ l] = { 1 if ∈ S 1 × … × S k 0 else. (73)
+Hence, we nd
+E | ⟩∼ S
+k
+∏ l=1
+|⟨ |il⟩|2 l = 1
+D⋯ (D + t − 1) |S 1 |⋯ |S k |
+= ∏kl=1 l! D⋯ (D + t − 1) . (74)
+In the special case D = 2n we thus obtain the explicit formulas for the rst and second moment:
+E U∼ U [PU (x)] = 1 2n , (75)
+E U∼ U
+[PU (x)PU (y)] = 1
+2n(2n + 1) [1 + x,y] . (76)
+C.2 Restricted depth moments Next, we state bounds on the rst two moments over brickwork random quantum circuits of depth d :
+Lemma 26: (Moments over circuits of restricted depth – adapted from [BCG21]) For C the measure over brickwork random quantum circuits on n qubits of depth d , it holds
+E U∼ C [PU (x)] = 1 2n , (77)
+E U∼ C [PU (x)PU (y)] ≤ 1 22n (1 + x,y) [1 + n ( 4 5)
+d
+] . (78)
+where the bound in Equation (78) holds for d ≥ log nlog 5/4 . Proof. We note that C is an exact 1-design at any depth d3. Hence, the rst moment is the same as in Equation (75) i.e. E U∼ C [PU (x)] = E U∼ U [PU (x)] = 1 2n . (79)
+3In fact, already a single layer of randomly drawn unitary gates forms an exact 1-design. This is because this layer contains as a subgroup the Pauli group which is known to form an exact 1-design. It follows from the invariance of the Haar measure under left multiplication that random unitary circuits form an exact 1-design also for d ≥ 1. To obtain the second moment given in Equation (78), we adapt and modify a calculation presented in Section 6.3 of [BCG21]. Speci cally, using a mapping to a statistical mechanics model, the second moment with respect to the random circuit, E C [PU (x)PU (y)], can be expressed as a partition function. The value of this partition function can then be bounded by counting domain walls. In Section 6.3 of Ref. [BCG21], this technique was already used to obtain an upper bound on E C [PU (x)2], for random circuits of depth d ≥ log n log 5/4 . More speci cally, Ref. [BCG21] has obtained the upper bound
+E U∼ C [PU (x)2] ≤ (1 + ( 4 5)
+d
+)
+n/2
+E U∼ U [PU (x)2] , (80)
+which is given in terms of the Haar expectation value E U [PU (x)2], and indeed converges to this Haar value in the in nite circuit depth-limit d → ∞. A similar analysis allows us to obtain the following bound on the expectation value of the cross terms PU (x)PU (y),
+E U∼ C [PU (x)PU (y)] ≤ (1 + ( 4 5)
+d
+)
+n/2
+E U∼ U [PU (x)PU (y)] . (81)
+Note that this upper bound is also given in terms of the corresponding Haar valueE U [PU (x)PU (y)]. We use the second moment already calculated in Equation (76). Finally, we bound the prefactor: By Bernoulli’s inequality, we have that (1+xd )n ≤ enxd . For d ≥ log nlog 5/4 and x < 1we can then use the convexity of the exponential function ey ≤ (1−y)e0+ye1 to obtain enxd ≤ 1−nxd +enxd ≤ 1+2nxd . This allows us to show that
+(1 + ( 4 5)
+d
+)
+n/2
+≤ 1 + n ( 4 5) d . (82)
+Substituting Equations (76) and (82) into Equation (81) then yields Equation (78). d random cli ord unitaries The Cli ord group forms a 3-design. Therefore, we can carry over the bounds on f obtained via Chebychev and hence second moments from the global Haar measure to the uniform measure over global Cli ord operations. The same analogy holds for local Haar random unitaries and local Cli ord unitaries. Thus, the bounds on f from the restricted depth moments from Appendix C.2 also hold for restricted depth Cli ord circuits. The key di erence between the case of Cli ord and Haar random unitaries lies thus in the far from uniform behavior. This is emphasized in the following lemma. Lemma 27: The probability that the output distribution of a uniformly random global Cli ord circuit on n qubits is the uniform distribution is given by
+Pr U∼Cl(2n)
+(PU =  ) = 1
+∏ni=1 (1 + 1 2i )
+. (83) in particular, it asymptotically approaches Pr U∼Cl(2n)
+(PU =  ) n→∞ → 0.41942244... (84)
+from above and for any number of qubits n, the probability is larger than 0.41. Thus, even though “non-trivial” learning is hard for random Cli ord unitary output distributions as characterized by f, the trivial learning algorithm, which always returns  , will succeed with probability larger than 0.41 over the uniformly drawn U ∼ Cl(2n). Proof. The result of drawing a uniformly random Cli ord unitary U ∼ Cl(2n) and applying to |0⟩⊗n is a uniformly random stabilizer state. The number of n-qubit stabilizer states is given by [AG04]
+|n| = 2n n
+∏ i=i
+(2i + 1) = 2n+n(n+1)/2 n
+∏ i=1
+(1 + 1 2i)
+(85)
+The number of n-qubit stabilizer states giving rise to the uniform distribution is given by
+|nn | = 2n ⋅ 2n(n + 1)/2 = 2n+n(n+1)/2 (86)
+This follows from [KG15]. In particular, Corollary 2 in Ref. [KG15] gives a formula for the number of stabilizer states with pre-described inner product with respect to a xed reference stabilizer state. For our purposes, it su ces to take as reference state the all-zero state |0n⟩ and nd the number of stabilizer states | ⟩ such that | ⟨ |0n⟩ | = 2−n. Such states are precisely the n-qubit stabilizer states giving rise to the uniform distribution. Hence,
+Pr U∼Cl(2n)
+(PU =  ) = 2n+n(n+1)/2
+2n+n(n+1)/2∏ni=1 (1 + 1 2i )
+= 1
+∏ni=1 (1 + 1 2i )
+(87)
+The asymptotic behavior of this product for n → ∞ is found in [Ben21]. e deterministic algorithms The aim of this appendix is to give a detailed proof of Lemma 1 which is restated as Theorem 30. We follow a similar strategy as Feldman in [Fel17] by proving the result for learning via a reduction to a suitably chosen decision problem. Problem 2: (Decide  versus Q) Let  be some distribution class and Q some xed reference distribution. The task decide  versus Q is de ned as, given access to an unknown P ∈  ∪ {Q} to decide whether “P = Q” or “P ∈ ”. We connect the query complexity of learning with the query complexity of deciding by the following lemma. . Lemma 28: (Learning is as hard as deciding) Let  be a distribution class and let Q be such that dTV(P, Q) > + for all P ∈ . Let 0 < ≤ ≤ 1. Let be a deterministic algorithm that -learns from q many accurate statistical queries. Then there exists a deterministic algorithm that decides  versus Q from q + 1 many accurate statistical queries. Proof. We run  on the unknown distribution P ∈  ∪ {Q} and obtain either
+• a representation of some P ′ which is close to P if P ∈ , or
+• anything if P = Q. In case we do not receive a representation of any distribution return “P = Q”. Now, assume we receive a representation of some distribution P ′. Using this representation compute whether P ′ is close to any distribution in . While this step is computationally costly, it does not require any further queries to Stat(P ). If there does not exists such a distribution in  which is -close to P ′, return “P = Q”. Now assume there exists an H ∈  such that dTV(P ′, H ) < . To assure, that  is not biased towards returning distributions close to  if it fails, compute the set S that maximizes the total variation distance between Q and P ′, |P ′(S) − Q(S)| = dTV(P ′, Q). Denote by = 1S the characteristic function on S and query v ← Stat (P )[ ]. If ||Q[ ] − v || ≤ return “P = Q”, else return “P ∈ ”. We analyze the algorithm for each case separately. Common to both is that the algorithm makes, by de nition, at most q + 1 statistical queries. To begin with assume P ∈ . By the correctness of  we receive a representation of some P ′ that is at most far from P . By assumption, for any H ∈  it holds dTV(H,Q) > + . Then, by the de nition of S using the reverse triangle inequality we nd
+||Q[ ] − v || ≥ |||Q[ ] − P[ ]| − ||P[ ] − v |||| > | + − | = ≥ . (88)
+Hence, we correctly decide “P ∈ ”. For the other case assume P = Q. If  does not return a valid representation or, if  returns a representation of some P ′ that is more than far away from any distribution in , we know, by the correctness of , that it must hold P = Q. It remains to show the last step. Assume there is an H ∈  which is at most far from P ′. Then, by assumption, for every it must hold ||Q[ ] − v || ≤ . Hence, we correctly decide “P = Q”. Using Lemma 28 it will be su cient to bound the query complexity of deciding. This is achieved by the next lemma. Lemma 29: (Hardness of deciding, deterministic version) Let be a deterministic algorithm that
+decides versusQ from qmany -accurate statistical queries, then for anymeasure over it holds
+q ≥ (max PrP∼ [|P[ ] − Q[ ]| > ])
+−1
+. (89)
+Proof. Assume we run  and answer every query by Q[ ]. Denote by 1,… , q the queries made. Assume for a contradiction, that for some P ∈  there does not exist any distinguishing query. Then, the responses Q[ i] for i = 1,… , q would be valid responses for some Stat (P ) contradicting the assumption that  successfully decides whether P = Q. Thus, for any P ∈  there must exist at least one i that distinguishes Q from P . In particular,
+1 = Pr P∼ [∃i, |P[ i] − Q[ i]| > ] (90)
+≤ q
+∑ i=1 Pr P∼ [|P[ i] − Q[ i]| > ] (91)
+≤ qmax Pr P∼ [|P[ i] − Q[ i]| > ] , (92)
+which completes the proof. We are now set to prove our bound for the deterministic average case query complexity. Note, that Lemma 28 holds for learners that learn all of . Thus, the core of the remaining proof will be to translate the implications on worst to average case learners. Theorem 30: (Lemma 1 restated) Suppose there is a deterministic algorithm  that -learns a fraction of  with respect to from q many -accurate statistical queries. Then for any Q it holds
+q + 1 ≥ − PrP∼ [dTV(P, Q) ≤ + ] max PrP∼ [|P[ ] − Q[ ]| > ] , (93)
+where again, the max is over all functions ∶ X → [−1, 1]. Proof. Let ′ ⊆  with (′) = be a set on which  is successful. De ne
+Q = { P ∈ ′ ∶ dTV(P, Q) > + }
+and let Q be the measure conditioned on Q , such that Q(P ) = (P ∣ P ∈ Q). Then, by the de nition of the conditional probability,
+− Pr P∼ [dTV(P, Q) ≤ + ] ≤ (Q) . (94)
+Therefore, for any it holds
+Pr P∼ Q [|P[ ] − Q[ ]| > ] = Pr P∼ [|P[ ] − Q[ ]| > ∣ P ∈ Q] ≤ PrP∼ [|P[ ] − Q[ ]| > ] − PrP∼ [dTV(P, Q) ≤ + ] (95)
+where we used the de nition of the conditional probability. The claim then follows from the observation that the average learner  for  implies a learner for Q , the complexity of which can be bounded by the complexity of deciding Q vs Q via the reduction Lemma 32. We obtain a bound for the latter from Lemma 33 applying the measure Q . Before we end this section we state a variant of this bound due to Feldman to discuss the connection to Theorem 30. We restate his proof adapted to our notation for the sake of completeness. Lemma 31: (Variation of Lemma C.2 from [Fel17] for deterministic algorithms) Suppose there is a deterministic algorithm that -learns a fraction ofwith respect to from q many -accurate statistical queries. Then for any Q it holds
+q ≥ − supD PrP∼ [dTV(P, D) < ] max PrP∼ [|P[ ] − Q[ ]| > ] , (96)
+where the max is over all functions ∶ X → [−1, 1] and the sup is over all distributions D over the domain X . Proof. Denote by ′ ⊆  the subset of size (′) = on which  successfully -learns from q queries. We run and answer every query byQ[ ]. By assumptionmakes q queries 1,… , q to Q and, without loss of generality, we assume that the algorithm returns some distribution D. Now, let P be any distribution in ′ at least -far from D. Exactly as in the proof of Lemma 29, there must exists at least one query function i that distinguishes Q from P . In particular, it must hold
+− Pr P∼ [dTV(P, D) < ] ≤ Pr P∼ [∃i ∶ |P[ i] − Q[ i]| > ]
+≤ q
+∑ i=1 Pr P∼ [|P i] − Q[ i] > |]
+≤ qmax Pr P∼ [|P[ ] − Q[ ]| > ] . (97)
+Now assume that, after interacting with Q, the algorithm does not return any valid distribution. Then, again by ’s determinism, for any P ∈ ′ there must exist a distinguishing query i that distinguishes Q from P . The claim then follows by taking the supremum over D ∈ X to bound the -ball around the unknown D.
+Note 2: We want to highlight that Lemma 31 is tight with respect to : The trivial algorithm, which makes zero queries and always outputs that D which maximizes the open -ball will, with probability (B (D)) over P ∼ be correct. Note 3: As stated above, Lemma 31 gives the optimal lower bound with respect to . However, in some cases directly bounding the weight of all -balls may not be convenient. In Appendix G we give a general recipe for obtaining bounds for all -balls just from the two ingredients used in Theorem 30: The maximally distinguishable fraction and the mass of the ball around the reference distribution. While this strategy is straight forward, the bounds obtained are slightly worse than
+those obtained by directly invoking Theorem 30, which is why we stick to the latter result in this work. f quantum and probabilistic algorithms In this appendix we will detail the connection between statistical query learning via deterministic and random algorithms. Throughout the section we will refer by random algorithm to both classical probabilistic as well as quantum algorithms. The randomized average case query complexity for -learning  with respect to the probability measure depends on the two parameters and , where
+• denotes the success probability with respect to the internal randomness of the learning algorithm and
+• denotes the fraction of distributions in  measured with respect to on which the learning algorithm must be successful. The aim of this appendix is to bound the randomized average case query complexity for -learning  by (c.f. Theorem 34)
+q ≥ 2 ⋅ ( − 12) ⋅ ( − PrP∼ [dTV(P, Q) ≤ + ])
+max PrP∼ [|P[ ] − Q[ ]| > ] . (98)
+Thus, the randomized average case query complexity of -learning is bounded by the same bounds as the deterministic average case query complexity up to a prefactor 2( − 1/2), which becomes trivial for ≤ 1/2. We will follow the same strategy as in the deterministic case laid out in Appendix E. The main di erence is that we need a bound on the decision problem Problem 2 for random algorithms. The subtlety, why the arguments from Lemma 29 fail, is that a random algorithm does not need to make a distinguishing query to solve the problem. Rather, it may guess the correct solution using its internal randomness. The main technical ingredient of this Appendix is thus a result by Feldman which, rst bounding the probability of guessing correctly, bounds the statistical query complexity for Problem 2 which is stated as Lemma 33. To begin with, we can follow the same strategy as before to reduce deciding to learning, also in the random setting. Lemma 32: (Learning is as hard as deciding) Let  be a distribution class and let Q be such that dTV(P, Q) > + for all P ∈ . Let 0 < ≤ ≤ 1. Let  be an algorithm that -learns  from q many accurate statistical queries with probability over its internal randomness. Then there exists an algorithm that, with probability over its internal randomness, decides  versus Q from q + 1 many accurate statistical queries. Proof. The proof is identical to that of Lemma 28. The only di erence is that the learner  only succeeds with probability , which leads to the decider only succeeding with probability . The
+reduction itself however is deterministic and, as such, does not change the statistics. We now state the result by Feldman on the randomized statistical query complexity of Problem 2. For the sake of self consistency we provide the proof adapted to our notation. Lemma 33: (Hardness of deciding. Taken from Theorem 3.9 from [Fel17]) Let  be a random algorithm that decides  versus Q with probability at least from q many accurate statistical queries. Then, for any measure over  it holds
+q ≥ 2 ⋅ ( − 12 )
+max PrP∼ [|P[ ] − Q[ ]| > ] . (99)
+Proof. Let be an algorithm that decides vs. Q with probability over its internal randomness. We run  and, on every query return Q[ ] . Denote by 1,… , q the queries made. These queries then can be interpreted as random variables with respect to ’s randomness. Let P ∈  and denote by
+p(P ) = Pr  [∃i ∶ |P[ i] − Q[ i]| > ] . (100)
+We now show that p(P ) ≥ 2( − 1/2): By the correctness of  the corresponding output will be “P ∈ ” with probability at most 1 − . For the sake of contradiction assume p(P ) < 2( − 1/2). Thus, when run on P , for some valid answers  will still return “P = Q” with probability at least > 1 − p(P ) − (1 − ) > 1 − 2 + 1 − 1 + = 1 − . Since this probability is bounded by 1 − we nd a contradiction < . Thus p(P ) ≥ 2( − 1/2). The remainder now follows from the union bound as in Lemma 29:
+2( − 1/2) ≤ p(P ) = Pr ,P∼ [∃i ∶ |P[ i] − Q[ i]| > ]
+≤ q
+∑ i=1 Pr ,P∼ [|P[ i] − Q[ i]| > ]
+≤ qmax Pr P∼ [|P[ ] − Q[ ]| > ] . (101)
+Thus, following Appendix E, we can state the main theorem of this appendix. Theorem 34: (Randomized average case query complexity of learning) Let  be a random algorithm for average case -learning  with respect to with parameters and from q many accurate statistical queries. Then for any Q it holds
+q + 1 ≥ 2 ⋅ ( − 12 ) ⋅ ( − PrP∼ [dTV(P, Q) ≤ + ])
+max PrP∼ [|P[ ] − Q[ ]| > ] . (102)
+Proof. The proof is identically to that of Theorem 30 using Lemma 32 and Lemma 33 instead of Lemma 28 and Lemma 29. For the sake of context relating to the discussion in the end of Appendix E and [Fel17, Lemma C.2], we nish this appendix with two additional insights. Note 4: If we restrict the result to probabilistic algorithms we can follow the argument from [Fel17, Lemma C.2]: One can make the randomness explicit by writing the random algorithm  as an ensemble of deterministic algorithms {x} with x ∼  the internal randomness. Then the randomized average case query complexity can be bounded by the deterministic average case query complexity replacing by ⋅ . This yields
+q ≥ ⋅ − supD PrP∼ [dTV(P, D) < ] max PrP∼ [|P[ ] − Q[ ]| > ] , (103)
+where, for the sake of transparency, we used Feldmans bound stated as Lemma 31 for the deterministic reference bound. Note that Equation (103) is tight with respect to ⋅ and the joint measure ×. However, it has two disadvantages for our usecase. First, it only holds for classical probabilistic algorithms, but not for other random algorithms such as quantum algorithms. Second, we are interested in the average case hardness as in De nition 2. This means, we would like a statement that is tight with respect to with respect to only. Thus, to obtain the corresponding tight bound for quantum algorithms, we add the following lemma. Lemma 35: Let  be a random algorithm for average case -learning  with respect to with parameters and from q many -accurate statistical queries. Then for any Q it holds
+q ≥ 2 ⋅ ( − 12 ) ⋅ ( − supD PrP∼ [dTV(P, D) < ])
+max PrP∼ [|P[ ] − Q[ ]| > ] , (104)
+where the sup is over all distributions with the same domain X and the max is over all functions ∶ X → [−1, 1]. Proof. Assume  is a random algorithm that -learns  with respect to , and from q many -accurate statistical queries. We run  and answer each query by Q[ ]. Denote by 1,… , q the queries made and, without loss of generality, assume  returns the representation of some distribution D. Denote by ′ ⊆  the set on which, with probability at least , the algorithm is successful. Further, let p(P ) as in the proof of Lemma 33 and let
+D = { P ∈ ′ ∶ dTV(P, D) ≥ } . Since p(P ) ≥ 2( − 1/2) for any P ∈ D ⊆ ′ we nd
+2( − 1/2) ≤ Pr P∼ , [∃i , |P[ i] − Q[ i]| > ∣ P ∈ D]
+= PrP∼ , [∃i , |P[ i] − Q[ i]| > ] (D) ≤ PrP∼ , [∃i , |P[ i] − Q[ i]| > ] − PrP∼ [dTV(P, D) < ]
+≤ q
+∑ i=1 PrP∼ , [|P[ i] − Q[ i]| > ] − PrP∼ [dTV(P, D) < ] ≤ q max PrP∼ [|P[ ] − Q[ ]| > ] − PrP∼ [dTV(P, D) < ] ,
+(105)
+where we used the de nition of the conditional probability, the bound on (D) similar to that on (Q) from the proof of Theorem 30 and the union bound. The claim then follows from taking the maximum over all distributions in order to estimate the unknown D.
+It is easy to see that Lemma 35 is tight with respect to : The trivial algorithm that always returns D, where D is the distribution with the -ball of highest weight, will succeed with probability PrP∼ [dTV(P, D) < ]. We conclude this appendix with a note similar to Note 3. Note 5: In general Lemma 35 gives the optimal lower bounds with respect to . However, in some cases directly bounding the weight of all -balls may not be convenient. The following appendix Appendix G gives a general recipe for obtaining such a bound just from the two ingredients used in Theorem 34: The maximally distinguishable fraction and the mass of the ball around the reference distribution. While this strategy is straight forward, the bounds obtained are slightly worse than those obtained by directly invoking Theorem 34, which is why we stick to the latter result in this work. g far from any xed distribution In the main text, we obtained multiple “far-from-uniform"-results for the output distributions of random circuits for di erent depth regimes. In this section, we show that random quantum circuits actually exhibit a more general property. Namely, their output distributions are with overwhelming probability far from any xed distribution. This result was stated in the main text as Informal Theorem 2. Here, we restate it formally and then go on to prove it. Theorem 36: (Formal version of Informal Theorem 2) Let C be the measure on U(2n) induced by local random quantum circuits of depth d . Then, there is a d ′ = O(n) such that at any depth d ≥ d ′, for any ≤ 1/225, and for any distribution D over {0, 1}n it holds
+Pr U∼ C
+[dTV(PU , D) ≥ ] ≥ 1 − c2−n , (106)
+where c is a constant that can be bounded by c < 7 × 106 < 220. In the following, letD denote the arbitrary but xed distribution as in the above theorem. We note
+that to prove Theorem 36, we can distinguish two cases: Either D is itself close to uniform, then a far-from-uniform bound implies a far-from-D bound. In the other case, D is at least some distance away from the uniform distribution. As made explicit by the following lemma, the “far-fromany- xed-distribution"-result for such D is implied by a bound on the maximal distinguishable fraction with respect to the uniform distribution, f = frac( , , ). In fact, the lemma holds not only for the uniform distribution but any choice of reference distribution Q. Thus, a “far-from-any- xed-distribution"-result follows from two ingredients: A “far-from-Q" result and a bound on the maximally distinguishable fraction against Q, for any reference distribution Q. We happen to have calculated these bounds for the particular choice of Q =  already in the main text. Lemma 37: Let , > 0, X be some domain and letQ ∈ X be the reference distribution. Moreover, let D ∈ X be such that
+dTV (Q, D) > + . (107)
+Then for any measure over X it holds
+Pr P∼ [dTV(P, D) < ] ≤ frac( , Q, ) . (108)
+Proof. Recall that by the variational characterization of the total variation distance it holds that dTV(Q, D) = maxT⊂X |Q(T ) − D(T )|. Let S ⊆ X be such a set maximizing the total variation distance and denote by = 1S the characteristic function on S. This is, dTV(D, Q) = |D[ ] − Q[ ]|. By the reverse triangle inequality for any P ′ ∈ B (D) it then holds
+||P ′[ ] − Q[ ]|| ≥ ||||P ′[ ] − D[ ]|| − |D[ ] − Q[ ]||| ≥ ||dTV(Q, D) − dTV(P
+′, D)|| > | + − | = ,
+(109)
+where we have used that |P ′[ ] − D[ ]| ≤ dTV(P ′, D) < together with dTV(Q, D) > + > > dTV(P ′, D). Hence, by Equation (109) it holds
+Pr P∼ [dTV(P, D) < ] ≤ Pr P∼ [|P[ ] − Q[ ]| > ] ≤ frac( , Q, ) , (110)
+where the last inequality is due to the maximum over all functions in the de nition of frac( , Q, ) (De nition 3). Applying Lemma 37 to the choice of Q =  and using our bound for the maximally distinguishable fraction f against uniform from Lemma 7 in Section 4.1, we nd the following:
+Corollary 38: Let , > 0 and let D be any probability distribution over {0, 1}n satisfying
+dTV (D, ) > + (111)
+where  is the uniform distribution. Let C denote the measure over brickwork random quantum circuits as in De nition 5. Then, there is a d ′ = O(n) such that at any depth d ≥ d ′ it holds
+Pr U∼ C
+[dTV(D, PU ) < ] ≤ 3
+2n 2 . (112)
+We now complete the proof of Theorem 36 following the two-cases argument laid out above. Proof of Theorem 36. Let D be an arbitrary distribution, let d large enough and let = 1/450 such that 3 = ′ = 1/150. We distinguish two cases:
+1. dTV(D, ) ≤ 2 ,
+2. dTV(D, ) > 2 . In case 1, we have that
+Pr U∼ C [dTV(PU , D) < ] ≤ Pr U∼ C [dTV (PU , ) < ′] < 3200 ⋅ 2−n ≤ O (2−n) (113)
+by our far-from-uniform result from the main text, namely Corollary 11. In case 2, we have that dTV(D, ) > 2 . Setting = we can apply Corollary 38 to obtain
+Pr U∼ C [dTV(PU , D) < ] < 3 2n 2 = 607500 × 2−n . (114)
+Hence, for any distribution D, any ≤ 1/450 we nd
+Pr U∼ C
+[dTV(PU , D) < ] < 607500 × 2−n = O (2−n) . (115)
+Finally, we summarize the connection between the -ball with the largest weight and the maximally distinguishable fraction as advertised at the end of Appendix E as follows. Lemma 39: Let , > 0, X be some domain, be a measure over X and Q ∈ X an arbitrary distribution. Then for any D ∈ X it holds
+Pr P∼ [dTV(P, D) < ] ≤ max
+{ frac( , Q, ) , Pr
+P∼ [dTV(P, Q) ≤ 2 + ]
+} . (116)
+Proof. We consider two cases. In case dTV(D, Q) > + we obtain the contribution from frac( , Q, ) via Lemma 37. So consider the case dTV(D, Q) ≤ + . In this case we can bound
+Pr P∼ [dTV(P, D) < ] ≤ Pr P∼ [dTV(P, Q) ≤ 2 + ] , (117)
+which yields the claim.

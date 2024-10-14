@@ -1,0 +1,548 @@
+ citation for published version: Lin, K, Li, Q, Yu, R, Chen, J, Attfield, JP & Xing, X 2022, 'Chemical pressure in functional materials', Chemical Society Reviews, vol. 51, no. 13, pp. 5351-5364. https://doi.org/10.1039/d1cs00563d
+Digital Object Identifier (DOI): 10.1039/d1cs00563d link: Link to publication record in Edinburgh Research Explorer
+Document Version: Peer reviewed version
+Published In: Chemical Society Reviews general rights Copyright for the publications made accessible via the Edinburgh Research Explorer is retained by the author(s) and / or other copyright owners and it is a condition of accessing these publications that users recognise and abide by the legal requirements associated with these rights. take down policy The University of Edinburgh has made every reasonable effort to ensure that Edinburgh Research Explorer content complies with UK legislation. If you believe that the public display of this file breaches copyright please contact openaccess@ed.ac.uk providing details, and we will remove access to the work immediately and investigate your claim. Download date: 25. Jan. 2024
+Tutorial reviews
+Please do not adjust margins
+Received 00th January 20xx, Accepted 00th January 20xx
+DOI: 10.1039/x0xx00000x
+Chemical pressure for synthesis of functional materials
+Kun Lina, Qiang Lia, Runze Yua, Jun Chena, and J. Paul Attfieldb,*, Xianran Xinga,*
+Chemical pressure, a strange but familiar concept, is a lattice internal force caused by chemical modifications and arouses
+great interest due to its diversity and efficiency to synthesize new compounds and tune functional materials. Different from
+physical pressure loaded by external force that is positive, chemical pressure can be either positive or negative (contract a
+lattice or expand it), often through flexible and mild chemical synthesis strategies, which are particularly important as a
+degree of freedom to manipulate material behaviors. In this tutorial review, we summarize the features of chemical pressure
+as a methodology and demonstrate its role in synthesizing and discovering some typical magnetic, electric, and thermal
+responsive functional materials. The measure of chemical pressure using experimental lattice strain and elastic modulus was
+proposed, which can be used for quantitative descriptions of the correlation between lattice distortion and property. From
+a lattice strain point of view, we classify chemical pressure into different categories: (i) chemical substitution, (ii) chemical
+intercalation/de-intercalation, (iii) size effect, and (iv) interface constraint, etc. Chemical pressure, combining chemical
+bonding, lattice symmetry, local structure, electron structure and phonon structure effects etc., is a general and effective
+method for synthesizing new compounds and tuning functional materials. 1. The nature of chemical pressure and its features in comparison with physical pressure. 2. Experimental ways to measure chemical pressure. 3. Diverse routes to achieve chemical pressure: (i) chemical substitution, (ii) chemical intercalation/de-intercalation, (iii) size effect, (iv) interface
+constraint, etc. 4. The role of chemical pressure in modulating magnetic, electric, and thermal responsive functional materials. 5. Current challenges and perspectives of the chemical pressure method for achieving high-performance functional materials. introduction Although unfamiliar to many people, the terminology of
+“chemical pressure” emerged as a physical quantify nearly one
+hundred years ago. The story can be traced back to the early
+twentieth century when the volume of an atom was found to be
+compressive. T. W. Richards et al. claimed that there must be a
+“intrinsic distending pressure”, i.e., chemical pressure, to resist
+external pressure and chemical affinity in matter:
+p +  = p + P (1)
+where p presents external physical pressure,  presents
+chemical affinity, p presents intrinsic distending or repulsive pressure (chemical pressure), and P present thermal pressure— the force of lattice strain induced by thermal expansion.1, 2 That is, chemical pressure is a passive interatomic
+force exerted to balance the internal and external forces in
+solids. One of the most useful feature of chemical pressure is
+that it can be modified by elemental substitutions, which
+facilely controls atomic distance in solids like physical pressure does.3, 4 Studies to correlate chemical pressure with physical
+pressure have been carried out, e.g. Nowik et al. reported that
+the valence-phase-transition temperature (Tν) in Yb0.41n0.6Cu2 intermetallic compound decreases with both physical pressure
+(hydrostatic pressure) and chemical pressure (via substitution of Yb3+ with La3+).3 The “chemical pressure” concept became
+popular for explaining variations in the critical temperature of
+superconductor families such as the copper oxides first
+discovered in the 1980’s and the iron-based superconductors in the 2000’s.5-7 Since then, chemical pressure has been widely
+used as a counterpoint strategy to physical pressure in the
+design and synthesis of solids, notably magnetic, electric, and
+thermal responsive functional materials where properties are
+very sensitive to lattice strain. The key point of chemical pressure method is the generation
+of lattice strain, which is realized by a chemical way instead of a
+physical one. It changes transitions such as the spin, orbital, and
+charge orderings of atoms in the lattice, and thus has important
+influence on material properties. The scope of the chemical
+pressure method has grown with the chemistry diversity of
+manipulating the lattice in solids. The employment of chemical
+pressure has been increasing recognized as a diverse and
+effective strategy to control material structures at multiple a) Beijing Advanced Innovation Center for Materials Genome Engineering, Institute of Solid State Chemistry, University of Science and Technology Beijing, Beijing, 100083, China. Email: xing@ustb.edu.cn b) Centre for Science at Extreme Conditions and School of Chemistry, University of Edinburgh, Edinburgh EH9 3FD, United Kingdom. j.p.attfield@ed.ac.uk Electronic Supplementary Information (ESI) available: [details of any supplementary information available should be included here]. See DOI: 10.1039/x0xx00000x
+2 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins
+levels and hence to tailor the performances. In this tutorial
+review, we discussed the nature of chemical pressure and its
+features in comparison with physical pressure, and we redefine
+it as a lattice internal force caused by chemical modifications. Chemical pressure can be introduced by the following four chemical routes: (i) elemental substitution8-12, (ii) small molecules intercalation/de-intercalation13-16, (iii) size effect17-21, and (iv) chemical interfaces22-26. An experimental method to
+quantify chemical pressure is proposed. Furthermore, the
+critical role of chemical pressure in modulating materials
+properties are exampled in a series of magnetic, electric, and
+thermal responsive functional materials. Finally, we
+summarized the current challenges and perspectives of
+chemical pressure method. Kun Lin is a professor at Institute
+of Solid State Chemistry,
+University of Science and
+Technology Beijing, China
+(USTB). He received his BS in
+Metallurgical Engineering from
+Northeastern University, China,
+in 2011, and PhD in
+Metallurgical Physical Chemistry
+from USTB in 2017 under the
+supervision of prof. Xianran Xing. His current research interest
+includes the design and
+synthesis of high-performance
+rare-earth-based metallic
+materials that exhibit
+controllable thermal expansions and related properties, and to
+elucidate the interplay among the structure, magnetism,
+transport, and mechanical properties. Qiang Li received his BS and Ph.D
+from the Department of Physical
+Chemistry at USTB in 2012 and
+2019. Now he jointed Prof.
+Xianran Xing’s group as the
+associate professor of Institute of
+Solid State Chemistry, USTB. In
+recent years, he has focused on
+local structural issues (PDF, XSAFS,
+RMC, TEM etc.) in catalysis,
+negative thermal expansion, and
+functional design for solid-state
+chemistry. Runze Yu received his BS in Solid
+State Physics from Jilin University
+in 2005, and obtained his PhD in
+Condensed Matter Physics from
+Institute of Physics, Chinese
+Academy of Sciences (IOP, CAS) in
+2012. After three years post-doc
+at Tokyo Institute of Technology
+and one and half year post-doc at
+Brookhaven National Laboratory,
+he started his work at IOP, CAS
+from 2017 as an associated
+professor. He became a full
+professor of Institute of Solid
+State Chemistry, USTB from 2021. His current research includes
+synthesis and characterization of novel functional and quantum
+materials using high pressure technique; exploration of
+emergent quantum materials and phenomena under high-
+pressure extreme conditions. Jun Chen is currently a full
+professor at USTB. He earned his
+PhD in Metallurgical Physical
+Chemistry from USTB, China, in
+2007. In 2008–2009, he was
+financially supported by the
+Alexander von Humboldt
+Fellowship at TU-Darmstadt,
+Germany. In 2015, he worked in
+Materials and Structures
+Laboratory, Tokyo Institute of
+Technology, Japan, as an oversea
+guest professor. In 2019, he
+worked in Department of Physics
+and Astronomy, University of
+Padova, Italy, as a visiting
+scientist. Dr. Chen’s current research includes crystal structure,
+correlations with physical or chemical properties, and new
+materials design for ferroelectrics, piezoelectrics, magnetics,
+and negative thermal expansion solids. J. Paul Attfield holds a Chair in
+Materials Science at Extreme
+Conditions at the School of
+Chemistry and Centre for Science
+at Extreme Conditions,
+University of Edinburgh. He
+received B.A. and D.Phil. degrees
+from Oxford University, and he
+was a Co-Director of the
+Interdisciplinary Research Centre
+in Superconductivity at the
+University of Cambridge during
+1991-2003. He received the
+Royal Society of Chemistry’s
+Meldola and Corday-Morgan
+medals and Peter Day award, and
+Kun Lin
+Qiang Li
+Runze Yu
+Jun Chen
+J. Paul Attfield
+This journal is © The Royal Society of Chemistry 20xx J. Name ., 2013, 00 , 1-3 | 3
+Please do not adjust margins
+he was elected a Fellow of the Royal Society in 2014. Early
+research contributions included pioneering resonant X-ray
+scattering experiments of cation and valence ordering, and
+studies of disorder effects in functional oxides. Current research
+is centred on electronic and magnetic materials including use of
+high-pressure methods. Xianran Xing is a Changjiang
+professor at USTB, and head of
+Institute of Solid State Chemistry,
+USTB. He received his BS degree
+in Chemistry from Anqing
+Normal University in 1988, and
+his PhD in Physical Chemistry
+from USTB in 1994. He became a
+fellow of Royal Society of
+Chemistry (FRSC) in 2014. Over
+the last 20 years, he has led a
+group to perform pioneering
+work in the development of
+negative thermal expansion (NTE)
+in perovskite compounds,
+correlated with ferroelectric, magnetoelectric and multiferroic
+properties. His research interests focus on solid state chemistry,
+including synthesis strategies, local structure with PDF
+technique and RMC method, crystal structures and chemical
+pressure design for obtaining functional materials. Chemical pressure versus physical pressure
+It is intuitive that applying a high physical pressure on a solid
+can change its lattice through compressibility, which alters the
+chemistry of an atom by activating its inner electrons and
+unoccupied orbitals, leading to many new and surprising phenomena27, 28. Alternatively, the lattice can be changed by a
+chemical route at ambient pressure, i.e., by chemical pressure. The critical role of physical pressure in synthesizing new
+compounds and revealing new physics in solids is evident;
+nevertheless, high pressure synthesis and characterizations are generally complex and expensive27, 29. Besides, some solid
+materials, based on radioactive actinides for instance, are not convenient for characterization under physical pressure30. By
+comparison, chemical pressure is a gentle and convenient way
+to change the size of a lattice, which facilitates both material
+synthesis and property characterizations. The importance of chemical pressure can be well exampled
+in the studies of 1111-type LnFeAsO-based superconductors (Ln
+= Rare earths). LnFeAsO-based compounds generally adopt
+tetragonal P4/nmm symmetry, constituted by edge-sharing
+FeAs4 and (O,F)Ln4 tetrahedra layers stacking alternatively along the [001] axis (Fig. 1a). Hosono et al. discovered the appearance
+of superconductivity in LaFeAs(O1-xFx) (x = 0.05-0.12) with Tc of 26 K.31 Immediately, it was found that increasing the pressure
+enables a rapid increase in the Tc of LaFeAs(O1-xFx). The onset Tc reaches a maximum of 43 K, well above the McMillan limit,32 at 4 GPa and then decreases with further increasing pressure.33
+Interestingly, the emergent high-temperature
+superconductivity can be realized by chemical pressure method at ambient pressure. Replacing La3+ with smaller rare earth
+cations in LnFeAs(O1-xFx) (x ≈ 0.10), the Tc increases from 26 K for La3+ to 41 K for Ce3+, to 52 K for Pr3+, and to a maximum of 55 K for Sm3+,34 which further decreases to 51 K for Tb3+, to 41 K for Dy3+, and to 33 K for Ho3+.35 Therefore, as shown in Fig. 1b-
+1c, chemical pressure and physical pressure have rather similar
+superconducting phase diagrams for the LnFeAsO-based
+compounds. Fig. 1c shows the pnictogen height (the distance of
+the As to the Fe plane in the FeAs layers) dependence of Tc for the typical Fe-based superconductors. There exists a generally
+symmetric curve with a peak around a critical pnictogen height of 1.38 Å that is in favor of superconducting state.36, 37 The
+universal mechanism for both physical pressure and chemical
+pressure can be understood by the regulation of pnictogen
+height in Fe-based superconductors. This also illustrates the
+more general point that chemical pressure effects in complex
+materials can be positive or negative. This arises when some
+structural geometry is optimum for the property of interest
+(represented by the pnictogen height in the LnFeAs(O1-xFx) series). Starting from the largest Ln = La, increasing chemical pressure (decreasing Ln3+ radius) initially increases Tc until geometry is optimum for Ln = Sm, but then decreases it for the
+smaller Ln cations as shown in Fig. 1c. Another example of
+optimal structure geometry is in perovskites with tolerance
+factor t =1 as described later in the Chemical Substitution
+section. The first superconductor with Tc higher than the boiling point of liquid nitrogen, YBa2Cu3O7, was also designed by a chemical pressure method (replacing La3+ in La2-xBaxCuO4 with Y3+) although this led to an unexpected change in structure type.7, 34
+Xianran Xing
+4 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins
+open symbols are the data under the optimal pressure. Details are shown in Ref. (37). Red diamonds (marked by arrow) indicate physical pressure on LaFeAs(O1-xFx). Physical pressure changes the lattice in solids without
+introducing other variables. However, chemical pressure
+usually brings new variables to the parent material, such as new
+atoms, molecules, or interfaces. These new variables alter the
+structure of the host lattice at multiple levels, and can modify
+material properties as well. To isolate the “pressure” effect of
+chemical pressure, elements with similar chemical properties
+but different sizes, i.e., possessing the same charges and similar
+electronic structures, are ideal. Common examples are lanthanide (rare earth) Ln3+ cations and M2+ alkaline earth (M =
+Ca, Sr, Ba) cations, as illustrated in studies of chemical pressure
+effects on LnFeAs(O1-xFx) superconductors above and thermoelectric performance in LnSb2O2 (Ln = La, Nd, Sm, Gd, Ho, and Er),11 and on phonon vibration in Ba1−xSrxFCl (0 ≤ x ≤ 3)38. A great advantage of chemical pressure is that both positive pressure and negative pressure can be realized.18, 21, 39-41
+Physical pressure presses a material down and diminishes its
+volume, which is usually defined as positive pressure. By
+contrast, chemical pressure can either diminish the volume or expand it, see Fig. 2.42-44 The latter is usually defined as negative
+(chemical) pressure. Negative pressure provides an important
+degree of freedom for materials design in solids, making it a
+powerful method to synthesize new solids and to discover unusual properties.18, 21, 40, 41 In freestanding PbTiO3 nanowires, for example, negative pressure produces a lower-density “PX”
+phase to a higher-density perovskite phase transformation,
+which enhances the tetragonality, Curie temperature and spontaneous polarization.18 In CuO and MnF2 nanoparticles, the negative pressure induced by size effect greatly prompts the
+magneto-lattice effect and transforms the thermal expansion
+behavior from positive to negative below the magnetic ordering temperature.17
+Due to structural anisotropy, chemical pressure can possess
+different signs along different directions, i.e., it can be negative
+along one crystallographic direction while being positive along
+another. Semimetal bismuth has the rhombohedral A7-type
+structure built up by corrugated layers parallel to the (111) planes.19 Inside the plane, each atom is bonded to three
+nearest-neighbor atoms at 3.072 Å by a so-called metal-metal
+covalent bond, while the shortest distance between the atoms
+in adjacent layers is 3.529 Å. This gives rise to strong anisotropy
+in Young’s modulus of 21 GPa and 31 GPa respectively along the a and c axis45. When the particle size reduces to the nanoscale, size effect-induced chemical pressure are strongly anisotropic.19
+When average particles sizes reduced to 28.5nm and 13.1 nm,
+the a axis contracts by 0.42% and 0.54%, corresponding to
+positive chemical pressure of 0.13 GPa and 0.17 GPa; while the
+c axis expands by 0.24% and 0.67%, corresponding to negative
+chemical pressure of -0.05 GPa and -0.14 GPa (Fig. 3a). The
+anisotropic chemical pressure increases the bond angle that
+relaxes under the thermal activation with rising temperature,
+and induces a transition of coefficient of thermal expansion
+from positive to negative along the c axis in nanosized bismuth. 19 By compassion, the size effect-induced chemical pressure in
+cubic ScF3 has the same sign (P>0 here) due to its isotropic character (Fig. 3b)46. measure of chemical pressure Although widely used, chemical pressure has not been truly measured and quantified by experiments so far21, 41, 47-49. Physical pressure is external and can be quantified by direct or
+indirect measurement of force/area, while chemical pressure is
+internal and cannot be measured directly. Instead, the degree
+of lattice strain was often used to describe chemical pressure in
+This journal is © The Royal Society of Chemistry 20xx J. Name ., 2013, 00 , 1-3 | 5
+Please do not adjust margins
+solids, such as 2% compressive strain of chemical pressure12, 26, 41, 49. However, using lattice strain to evaluate chemical pressure
+is indirect and inadequate. This is because the comparison of
+chemical pressures by a lattice strain method is limited to the
+specific materials in a study, as different materials types differ greatly in compressibility or elastic modulus1. We can assert that a 2% lattice strain in Ba1-xSrxTiO3 by Sr2+ substitution for Ba2+ produces a larger chemical pressure than a 1% strain does,
+but we cannot simply assert that a 2% strain in Fe1-xNix produces a larger chemical pressure than a 1% strain in Ba1-xSrxTiO3. Furthermore, chemical pressure should have the same
+force/area units as external pressure (Pa, bar, torr, etc.). So,
+how to quantify the chemical pressure? Fredrickson et al. have developed a density functional
+theory-chemical pressure (DFT-CP) analysis based on electronic interaction in intermetallic compounds50, 51:
+𝑃 = − 𝜕𝐸
+𝜕𝑉 = −∑ ∑
+𝜕
+𝜕𝑉 (𝛾𝐻𝑖𝑗
+2 + (∑ 𝑜𝑛𝑐𝑛,𝑖 ∗ 𝑐𝑛,𝑗𝑛 )𝐻𝑖𝑗) =𝑗𝑖
+1
+𝑁𝑜𝑟𝑏 ∑ ∑ 𝑝𝑖𝑗𝑗𝑖 (2)
+where E is the total energy expressed as a sum of onsite and pairwise interaction terms52, V is cell volume, Hij is the Hamiltonian matrix elements of (Hij), on is the occupancy of that crystal orbital, cn,j is the coefficient of atomic orbital j in crystal orbital n, Norb is the number of orbitals in the crystal, and pij is the pressure arising from the interaction between atomic
+orbitals i and j (i = j terms are zero). The DFT-CP method can be
+employed to calculate and interpret the chemical pressure distributions inside the crystal structures based on DFT results.9, 50, 51, 53 For example, they calculated the 2-Huckel chemical pressure of SrAg5 and a hypothetical CaAg5 phase (Fig. 4). The Sr atom has a net negative chemical pressure of -8.2 GPa, which
+is balanced by the positive chemical pressure values of the Ag
+atoms of 1.7 GPa. Replacing Sr with the smaller Ca, the net
+chemical pressure at the Ca atom increases to -10.2 GPa; such a
+strong chemical pressure drives a transition to the Ca2Ag7 structure with chemical pressure reduced to -1.2 GPa. The DFT-
+CP method is a useful tool to calculate the chemical pressure at
+atomic level, and provides visual prediction of the structural
+stability and phase transformation. Besides the above theoretical analysis, here we propose two
+experimental ways to quantify chemical pressure in solids. The
+first one is to apply both physical pressure and chemical
+pressure to a material; the magnitude of chemical pressure
+should equal to that of physical pressure that (if it can) causes
+the same lattice strain (or volume change, in the parent
+material), see Fig. 5. In other words, if the chemical pressure
+and the physical pressure generate the same lattice (or volume)
+change in a material, we propose that they are equivalent in
+magnitude. This idea is analogue to an ancient Chinese idiom
+story “Cao Chong weighs an elephant”: the mass of an elephant
+is determined by weighing many stones that generate the same
+draught (water-displacement) of a boat, instead of weighing the
+elephant itself. The second experiment method introduced below is more
+convenient and straightforward and so we highly recommend it. In material science, the relationship between strain and stress
+in a material follows the Hooke’s law during elastic deformation
+σ = E e, where σ is the stress, e is the strain along loading
+direction, and E is the Young’s modulus. Since the nature of
+chemical pressure can also be considered as elastic lattice strain,
+in a chemical way instead of a physical one, we can describe chemical pressure by applying Eq. (1-2):54
+𝑑𝑃 = −𝐸 𝑑𝑥
+𝑥0 (3)
+where dP is chemical pressure, dx is the change in lattice size
+(by chemical pressure), x0 is initial lattice size, and E is Young’s modulus. All parameters, dx, x0 and E, are measurable (dx and a0 can be determined by X-ray diffraction, E can be measured by velocity measurement and is known or can be calculated for
+most compounds). The negative sign defines compressive stress
+to be positive and tensile stress to be negative, to keep in
+accordance with physical pressure. Alternatively, we can use
+the volumetric change to describe chemical pressure by:
+6 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins
+𝑑𝑃 = −𝐾 𝑑𝑉
+𝑉0 (4)
+where dV is the change in cell volume, V0 is initial cell volume, and K is bulk modulus (K = E/[3(1-2)],  is Poisson's ratio). In
+fact, Eq. (4) is most often used to describe the compressibility
+of material under uniform hydrostatic pressure. Note that the
+modulus of E and K vary with composition, but the change is
+relatively small when the structure-type and chemical
+composition do not change much (e.g., K is 97 GPa, 93 GPa and 103 GPa respectively for YFe2, TbFe2 and ErFe255). Eq. (3) describes the chemical pressure along a certain
+direction in solids, which is especially useful for thin films and
+low symmetry structures where the lattice strain is highly
+anisotropic. Orientation dependence is unique to chemical
+pressure. It plays a key role in many remarkable physical
+properties that are inaccessible by isotropic hydrostatic physical
+pressure, such as the emergent polar vortices in ferroelectric thin films.18, 22, 24, 49, 56 Eq. (4) is more suitable for isotropic
+chemical pressure, like size effect in nanoparticles, and
+chemical substitution in high symmetry structures. We note
+that from Eq. (3) and (4), the magnitude of chemical pressure is
+a relative value. Its value should be based on a given reference
+state that is defined as the unstrained state. For a given
+reference state, the chemical pressure is proportional to the
+rigidity of the structure and the degree of deformation it
+undergoes. The magnitude of chemical pressure obtained from
+Eq. (3) and (4) can be used for quantitative comparison among
+solids in different types. Some examples of chemical pressure
+values in solids based on experimental lattice strain and elastic
+modulus are shown in Table 1. Diverse routes for chemical pressure
+Chemical substitution The most used chemical pressure
+method is chemical substitution by introducing different atoms
+into the lattice. (This is most simply done by using cations of the
+same valence as noted above, as introduction of aliovalent
+species can lead to further effects such as electronic doping or
+vacancy or interstitial formation.) Up to some limit of structural
+tolerance, an atom in the host lattice can be replaced by a new
+one of different size. If replaced by a larger one, the lattice
+expands and vice versa, known as Vegard’s law if the lattice
+This journal is © The Royal Society of Chemistry 20xx J. Name ., 2013, 00 , 1-3 | 7
+Please do not adjust margins
+parameters change linearly76. The substitution produces a
+stereochemical interaction at the substitution site and a local
+strain gradient propagating from it (Fig. 6a). This brings negative
+or positive pressure to the host lattice, breaks the ideal 3D
+translational periodicity, and changes the properties in solids. Negative thermal expansion (NTE) in open-framework
+structure is driven by low-frequency phonon modes, which is
+coupled to structural symmetry and can be well-controlled by chemical pressure77, 78. For example, ScF3 has a cubic ReO3-type structure (Pm-3m) built up by corner sharing ScF6 octahedra and displays unusual NTE covering a broad temperature range of 10- 1100 K79. The NTE is correlated to the rotary coupling of the ScF6 octahedra rigid units with the average Sc-F-Sc angle to be 180° (Fig. 6b)79, 80, generating phonon modes with negative Grüneisen parameters46, 81. Slight chemical substitution by
+isovalent but smaller cations, i.e., (Sc0.85Ga0.05Fe0.1)F3, introduces positive chemical pressure to the structure (Fe3+: 0.645 Å, Ga3+: 0.62 Å, Sc3+: 0.745 Å)8. X-ray pair distribution
+function (PDF) analysis indicates that the symmetry of
+(Sc0.85Ga0.05Fe0.1)F3 transforms to rhombohedral in the shortrange (R-3c, r < 20 Å). Such a chemical pressure induced
+structure distortion changes the Sc-F-Sc bond angle to be 173.3°,
+which hinders the transverse thermal vibration of fluorine
+atoms. As a result, the NTE is suppressed to zero thermal expansion (Fig. 6c)8. The short-range structure of ScF3 can be further modulated by chemical pressure method in the MZrF6 series (M = Ca, Mn, Fe, Co, Ni and Zn). It was found that the
+flexibility of the metal···F atomic linkage driven by size misfit at
+the M site governs the phonon modes and thus controls the
+thermal expansion. A flexible metal···F atomic linkage induces
+NTE for M = Ca, Mn, Fe; while the stiff ones bring positive
+thermal expansion (PTE) for M = Ni, Co. Thus, thermal expansion
+could be tuned from negative, to zero, and to positive by the chemical substitution method (Fig. 6d)82. The piezoelectric effect arises from net movement of
+positive and negative ions with respect to each other under
+stress, resulting in an electric dipole or polarization. The
+mobility and flexibility of cations are sensitive to their local
+coordination environments and are liable to variation by
+chemical pressure. Li et al. conducted chemical substitution using traces of small Sm3+ cations (1.24 Å) for Pb2+ (1.49 Å)
+cations in Pb(Zn1/3Nb2/3)O3–PbTiO3 (PMN–PT) solid solutions and introduced positive chemical pressure. A combined atomic-
+lever scanning transmission electron microscopy (STEM) and
+first-principles calculations demonstrated that the substitution
+induces significant local structural heterogeneity, which
+perturbs the local order parameters of polarization, and leads
+to heterogeneous polar regions and additional interfacial energies10 (Fig. 7a,7b). As a result, an extraordinarily large piezoelectric constant (d33 > 1,500 pC N–1) was observed in 2.5 mol% Sm-modified into 0.71Pb(Zn1/3Nb2/3)O3–0.29PbTiO3 (2.5Sm-71PMN–29PT) ceramic, in large contrast to the undoped counterpart (~500 pC N–1)83 (Fig. 7c,7d). In 1 mol% Sm-modified
+70PMN-30PT single crystal, they achieved an even larger piezoelectric constant (d33 > 3400 pC N–1)10 Similarly, Ranjan et al. reported an extraordinarily large electrostrain up to 1.3% in
+La-doped 0.55Bi1–yLayFeO3–0.45PbTiO3 (y = 0.3) solid solution ceramics84. Such a large electrostrain behavior is related to the
+chemical pressure induced structure disorder due to size misfit among Pb2+, Bi2+ and La3+ cations, which leads to a low-
+symmetry ferroelectric phase, a large spontaneous lattice strain,
+domain miniaturization, and an appropriate ferroelectric domain switching84. 8 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins
+Generally, the extent of chemical substitution has an upper
+limit. It depends mainly on the size, charge, and
+electronegativity of the atoms— the more similar the atoms,
+the higher degree of the substitution. In simple structure types,
+the range of sizes can be quantified based on geometric
+relations. This is much studied in the ABX3-type perovskite structure where the limit of chemical substitution can be evaluated by the Goldschmidt tolerance factor t 85:
+𝑡 = 𝑟𝐴+𝑟𝑋
+√2(𝑟𝐵+𝑟𝑋) (5)
+where rA, rB, and rX are the average ionic radii of A, B and X site species respectively. For an ideal cubic perovskite structure t =
+1, indicating that the structure is perfectly matched among A, B
+and X cations. In BaMO3 (M = transition metal) perovskites, for example, the tolerance factor t is largely within the range of 0.93–1.0586. Transition temperatures for electronic or magnetic
+orders typically have a maximum value at t = 1 and decrease rapidly as t falls away from this value.87 The same is also true in
+principle for t >1, but in practice this often leads to changes in
+structure to other hexagonal-type perovskites. High (physical)
+pressure has been used to stabilize some cubic-type BaMO3 perovskites, e.g. cubic-BaRuO3 (t = 1.06) has ferromagnetic TC = 60 K whereas SrRuO3 (t = 1.02) has TC = 160 K.88
+Chemical intercalation/de-intercalation. Chemical
+intercalation (or de-intercalation) reaction introduces (or
+removes) new chemical entities into (or from) a host lattice,
+such as molecular water, carbon dioxide, etc. The intercalation
+(or de-intercalation) of these guests expands (or shrinks) the
+host lattice and hence induces chemical pressure. This kind of
+chemical pressure is usually introduced in metal–organic
+frameworks (MOFs) or other inorganic structures with significant void space13, 15, 89, 90. The MOF compound [{Ru2(F3PhCO2)4}2TCNQ(OEt)2] (1) crystallizes in a triclinic D2A-layered structure and displays ferromagnetic ordering at ground state (Fig. 8a) (30). Viewing
+down the a’ axis, the four CN groups of TCNQ(OEt)2 are coordinated with the [Ru2] units to form a wavy layered twodimensional network (D2A layer) that lies on the (020) plane with an interlayer distance of 8.07 Å (Fig. 8b). This compound
+absorbs CO2 into the center of the hexagonal fishnet with an amount of 113 ml STP g−1 (10.6 molecules per formula unit) at
+99 kPa (1⊃CO2). Accordingly, the cell volume increases sharply from 1763.0(2) Å3 for 1 to 2172.3(3) Å3 for 1⊃CO2 by a rate of 23%, and induces significant negative chemical pressure of -3.05
+GPa (B = 13.3 GPa by our calculations) to the lattice (Fig. 8c). As
+a result, the TCNQ(OEt)2 and Ru−N − C bending angle reduces accordingly in 1⊃CO2, flattening the D2A layer and expanding interlayer distance to 8.93 Å (Fig. 8d). Due to the sensitivity of
+magnetism to the distance between magnetic atoms, this
+switches the electronic state from a one-electron-transferred
+state into the neutral state, and transforms the magnetic
+property from ferrimagnetic to paramagnetic (Fig. 8e-8g). Such
+a magnetic phase change is reversable by the guest CO2 molecules intercalation/de-intercalation in the framework16. In open-framework structures, the NTE originates from
+transverse thermal vibrations of atoms where the “true” bond
+lengths are longer than “apparent” bond length, as schemed in
+Fig. 9a. Such transverse thermal vibrations should be hindered
+or reduced by additional chemical pressure from guest ions or molecules in the empty space of framework.14, 77 For YFe(CN)6based Prussian blue analogues, the NTE is dominated by the
+transverse motion of N and C atoms. In YFe(CN)6, Fe atoms coordinates to six C atoms to form regular octahedra (FeC6) and Y atoms coordinates to six N atoms to give a bicapped distorted
+trigonal prism (YN6). The FeC6 and YN6 groups are bridged through CN units in the entire structure with nearly linear Y-NFe linkage (176.01(1)°). After intercalation, K+ and H2O are located in the pores near the YN6 trigonal prism of YFe(CN)6, see Fig. 9c,9f. and the cell volume and atomic positions change due
+to electrostatic interactions. The cell volume of KYFe(CN)6 dramatically contracts by 18.3% compared with that of YFe(CN)6 accompanied by a reduction of Y-N-Fe angle (140.54(5)°). These
+guest ions or molecules act as barriers to block the transverse
+thermal vibrations. As shown in Fig. 9d,9e, the transverse vibrational mode of NTE in YFe(CN)6 at 44 cm-1 shows the
+This journal is © The Royal Society of Chemistry 20xx J. Name ., 2013, 00 , 1-3 | 9
+Please do not adjust margins
+strongest negative Grüneisen parameter and is the main
+contribution to NTE. However, for KYFe(CN)6, the low-frequency contribution of N and C atoms is much weakened due to the presence of K+ ions. The lowest energy mode of KYFe(CN)6 at 49.6 cm-1 has a small negative value of Grüneisen parameter
+(Fig. 9g,9h). In this way, the thermal expansion of YFe(CN)6 can be substantially switched from strong negative (αV = -33.6710- 6 K-1) to positive by chemical pressure induced by the addition of guest H2O molecules or K+ ions (αV = 20.3  10-6 K-1 for KYFe(CN)6, αV = 27.7110-6 K-1 for YFe(CN)6‧4H2O, αV= 42.72 10- 6 K-1 for KYFe(CN)6‧3H2O (Fig. 9b).14
+Size effect. Surface atoms have unique electronic states and
+coordination environments compared with those in the interior. The lattice at the surface of solids usually undergoes a strained state20. When particle size decreases to nanoscale, such a lattice
+strain could penetrate throughout the whole (or most of the)
+particle. As the size of nanoparticles can be well-controlled by
+chemical synthesis, we categorize the size effect-induced lattice
+strain as another type of chemical pressure. Besides lattice
+strain, the chemical pressure from size effect can even change
+the structural symmetry, spin state, and phonon vibration when the particle size reduces below a critical value91, 92. Sun et al. synthesized ferroelectric PbTiO3 nanoparticles (NPs) with sizes of 12 nm, 36 nm, and 1 µm through a two-phase solvothermal method21. It was found that there exists a
+negative chemical pressure in PbTiO3 NPs which strengthens with reducing of particle size with ΔV/Vbulk = 0%, 0.4%, and 2.2% for 1 µm (bulk), 36 nm, and 12 nm, corresponding to chemical
+pressure values of 0 MPa, -558 MPa, and -3.0 GPa (the bulk modulus K of PbTiO3 is 141 GPa75), see Fig. 10. The structural origin of the size effect was investigated by X-ray PDF and XAFS
+analysis. It shows that the nearest Pb-OII bonds (equatorial)
+shortens with reduced NP size while the nearest Pb-OI bonds
+(vertex) elongates, accompanied by an enhanced off-centering
+of Ti ions in the octahedra. Further aberration-corrected STEM
+images indicate that the as-prepared PbTiO3 NPs surfaces are dominated by PbO-terminal layers. These PbO-terminals are
+produced by the confined synthesis of the two-phase
+solvothermal route (Fig. 10b). With particle size decreases to
+nanoscale, the number of surface ions of nanomaterials
+increases geometrically: the overall atomic ratio Pb/Ti increases
+from 1.00 for 1 µm to 1.13 for 12 nm. This significantly alters
+the average coordination environment of Pb atom and
+enhances the size effect. Further theoretical calculation shows
+10 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins
+that the electronic structure origin of chemical pressure is
+related to the hybridizations between Pb 6s and O 2pz orbitals of PbO-terminated surface and between Ti 3dz2 and O 2pz orbitals of TiO6 octahedra, which yield raised tetragonality and large spontaneous polarization in PbTiO3 NPs (Fig. 10).21
+Antiperovskite manganese nitrides (Mn3AN, A = Cu, Zn, Sn, etc.) are well-studied for their interesting NTE behaviors driven
+by magnetism. Song et al. prepared three different
+microstructures of antiperovskite manganese nitrides
+Mn3Cu0.5Ge0.5N: coarse-grained polycrystalline (mean grain size ≈ 2.0 μm), nanocrystalline (mean grain size ≈ 30 nm), and ultrananocrystalline (mean grain size ≈ 12 nm), see Fig. 11.93 All these
+three materials adopt cubic Pm-3m symmetry. Neutron
+diffraction shows that the Mn occupancy decreases from 100%
+in the coarse-grained (Mn1000) to ≈ 87.8% in the
+nanocrystalline (Mn878) and to ≈ 78.7% in the ultra-
+nanocrystalline (Mn787) material. The cell parameters reduce
+from 3.91211(9) Å (Mn1000) to 3.89799(7) Å (Mn878) and to
+3.89332(7) Å (Mn787). This produces chemical pressures of 0
+GPa, 2.7 GPa and 3.6 GPa, respectively. Such size effect weakens
+the magnetic ordering of Mn sublattice with site 3c Mn moment
+reducing from ~3.0 B to 2.6 B and 2.2 B, TC decreasing from 340 K to 260 K and 230 K, for Mn1000, Mn878 and Mn787,
+respectively. As a result, the CTE changes from strongly negative (α = -17.1× 10−6 K−1, 260-340 K) to moderately negative (α = - 3.89× 10−6 K−1, 160-260 K) and to ZTE (0.118 ×10-7 K-1, 12-230 K), see Fig. 11.93
+Interface constraint. In epitaxial thin films, the lattice of the
+film is constrained and modulated by the substrate via the
+“biaxial strain” (binding in-plane but free in the out-of-plane
+direction), which is another form of chemical pressure24, 26, 94. This method is widely used to favour metastable phases over
+the equilibrium phase (epitaxial stabilization). Especially for
+brittle oxides, the lattice strain in the film can reach as large as
+several %, one order of magnitude larger than that in bulk (~ 0.1%)94. As shown in Fig. 12a,12b, through screening substrates
+with different in-plane lattice constant (changes either
+substrate type or its orientation), both positive and negative
+chemical pressure can be achieved, prominently expanding
+material functions such as ferroelectricity, magnetism, band gap, and superconductivity22, 24, 48. When lattice misfit is large,
+dislocations can arise, which tends to relax the large lattice
+strain. To avoid these dislocations, the thickness of the film should be below a critical thickness94, 95. Xu et al. grew 100 nm α-formamidinium lead iodide (α-
+FAPbI3) epitaxial films on a series of mixed methylammonium lead chloride/bromide (MAPbClxBr3−x, 0 ≤ x ≤ 1.5) single crystalline substrates, Fig. 12c,12d26. In their freestanding form,
+both α-FAPbI3 and MAPbClxBr3−x are cubic with Pm3m space group. The lattice constants are 6.35 Å for freestanding α-
+FAPbI3 and 5.83–5.95 Å for MAPbClxBr3-x substrates, indicating that a positive in-plane chemical pressure was imposed on the
+α-FAPbI3 film. As x increases from 0 to 1.5, the lattice parameter a of the substrate reduces, which causes a strain of 2.4% and a
+biaxial chemical pressure of 1.32 GPa, see Fig. 12e (The chemical
+pressure is calculated by P = C12  c/c, where C12 is the transverse elastic constant of FAPbI3 (= -5.5±2.2 GPa)96). Such a strain effectively changes the crystal structure, reduces the
+bandgap, increases the hole mobility of α-FAPbI3, and hence increases the external quantum efficiency (Fig. 12f)26. This journal is © The Royal Society of Chemistry 20xx J. Name ., 2013, 00 , 1-3 | 11
+Please do not adjust margins
+Alternative to biaxial strain imposed by 2D substrate, a new
+interfacial chemical pressure method– “interphase strain” method, was proposed recently25. Two materials with similar
+crystal structures, but different lattice parameters, are used to
+grow in a single composite with coherent lattice matching. In
+this way, an isotropic and 3D compression or tensile strain can
+be introduced into the material that originally had the larger or
+smaller lattice parameters, respectively. For example, PbTiO3 adopts a tetragonal perovskite structure with lattice constants
+a = 3.899 Å, c =4.154 Å, and c/a = 1.065 (Fig. 13a); PbO adopts a
+plate-like tetragonal structure but with a large c/a ratio (a =
+3.973 Å, c =5.022 Å, and c/a = 1.264), see Fig. 13b. In the
+PbTiO3/PbO composite fabricated by “interphase strain” method, PbTiO3 and PbO share the same c lattice constant (4.840 Å) (Fig. 13c-13d). As a result, a super-strong negative
+chemical pressure of -24 GPa was generated with a super-
+tetragonal distortion (c/a = 1.238) in PbTiO3 (ΔV/Vbulk = 17.1%), which induces a state-of-art remanent polarization of 236.3 C/cm2 25. The “interphase strain” method can also be extended to other materials (111).54 For BaTiO3/BaO, the negative chemical pressure (~ -5.7 GPa) was imposed by the coherent lattice strain
+from large cubic BaO to small tetragonal BaTiO3, generating high tetragonality (c/a = 1.12) and facilitating large
+displacements of Ti. This leads to the record remanent polarization Pr (100 μC/cm2) in any forms of BaTiO3 to date with
+a high Curie temperature Tc (above 1000 °C), see Fig. 13f,13g. It was reported that such negative pressure alters the bonding
+states, i.e. inducing bonding of Ba 5p-O 2p hybridization (which
+is ionic bonding in bulk), and strong-bonding of Ti eg and O 2p, which contribute to the tremendously enhanced polarization
+(111). The interphase strain method has the advantage of
+providing not only isotropic negative chemical pressure but also
+isotropic positive chemical pressure, through selective phase
+matches, and the magnitude of chemical pressure can be modulated by adjusting the composition.54 conclusions and outlook This review summarizes the development of chemical
+pressure and defines the concept as a methodology for material
+design: a lattice internal force caused by chemical modifications. The main feature of chemical pressure is that the lattice strain
+is caused by a chemical way, instead of physical one, and hence
+is diverse and does not require extreme conditions. As shown in
+Fig. 14, applying chemical pressure not only changes the lattice
+size itself, but can also change the spin, orbital, and charge
+orderings of the relevant atoms. These changes alter material structures at various levels, including lattice symmetry53, 97, local structure8, 9, 82, electronic structure98, 99, and phonon structure38, 46, and hence influences material properties by
+virtue of structure-property relationship (Fig. 14). By proposing
+two equations for quantification, we can see that the limit of
+chemical pressure is generally within several GPa, around two
+orders of magnitude smaller than that of the highest achievable
+physical pressures. The largest value, -24 GPa to our best
+knowledge, was realized via a newly proposed “interphase
+strain” method in a PbTiO3/PbO coherent lattice, and is accompanied by an unusual ferroelectric response25. More
+novel methods enabling stronger chemical pressures would be
+highly attractive to realize striking or unusual properties in the
+future. More details, such as local strain gradient and its
+propagation from substitution site, and the electronic and
+phonon structures induced by the breaking of ideal 3D
+translational periodicity, remain for further exploration of new
+phenomena in solids by chemical pressure methods. 12 | J. Name. , 2012, 00, 1-3 This journal is © The Royal Society of Chemistry 20xx
+Please do not adjust margins conflicts of interest There are no conflicts to declare. acknowledgements This work was supported by National Natural Science
+Foundation of China (22090042, 21731001 and 21971009),
+National Key R&D Program of China (2020YFA0406200), and
+EPSRC (UK). We thank Dr. Xin Chen from USTB for his DFT
+calculation of the elastic modulus for MOF compound
+[{Ru2(F3PhCO2)4}2TCNQ(OEt)2]. 

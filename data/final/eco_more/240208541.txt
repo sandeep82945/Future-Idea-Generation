@@ -1,0 +1,177 @@
+Tullock contests model real-life scenarios that range from competition among proof-of-work blockchain miners to rent-seeking and lobbying activities. We show that continuous-time bestresponse dynamics in Tullock contests with convex costs converges to the unique equilibrium using Lyapunov-style arguments. We then use this result to provide an algorithm for computing an approximate equilibrium. We also establish convergence of related discrete-time dynamics, e.g., when the agents best-respond to the empirical average action of other agents. These results indicate that the equilibrium is a reliable predictor of the agents’ behavior in these games. 1. introduction Contests are games where agents compete by making costly investments to win valuable prizes. The model of Tullock (1980) is one of the most widely used for studying these environments, and has been applied to scenarios that originate from economics, political science, and computer science (see, e.g., Konrad (2009), Vojnović (2016)). As a concrete real-life application, consider the game among miners in proof-of-work cryptocurrencies such as Bitcoin (Chen et al., 2019; Leshno & Strack, 2020). The probability that a Bitcoin miner adds the next block (and collects the corresponding reward) is proportional to her costly computational effort. A Tullock contest captures the game among these miners: a set of agents compete to win a valuable prize by investing costly effort, and an agent gets a portion of the prize proportional to his effort. Given an environment with strategic agents, such as a contest, it is desirable to be able to reliably predict the agents’ behavior, so as to reason about possible outcomes. Also, when applicable, one may want to design the environment to elicit certain behaviors. Nash equilibrium strategies serve as an initial approximation to this goal, but the existence
+1Department of Computer Science, University of Oxford, Oxfordshire, United Kingdom. Correspondence to: Abheek Ghosh <abheek.ghosh@cs.ox.ac.uk>. of an equilibrium is not always a good predictor of the agents’ behavior. Indeed, the traditional explanation of equilibrium is that it results from analysis and introspection by the agents in a situation where the rules of the game, the rationality of the agents, and the agents’ payoff functions are all common knowledge. Both conceptually and empirically, these assumptions are not always satisfied in real-life scenarios (Fudenberg & Levine, 1998). A model provides a more robust prediction of the outcome of a game if it explains how the outcome can be attained in a decentralized manner, ideally via a process that involves agents responding to incentives provided by their environment. Variations of best-response (BR) dynamics are arguably the simplest and the most intuitive of these models. In BR dynamics, agents sequentially change their current strategy towards one that best-responds to that of the other agents. This framework is especially well-suited to settings such as Tullock contests with convex costs, where pure-strategy equilibria are guaranteed to exist. Recent papers (Ewerhart, 2017; Ghosh & Goldberg, 2023; Ghosh, 2023) have explored discrete-time BR dynamics in Tullock contests with convex costs. In this model, at each time step, an agent updates their current action to their BR action. These papers show that this dynamics converges for homogeneous agents, i.e., when all agents have the same cost function. On the other hand, when the agents are nonhomogeneous, the dynamics does not converge, and this nonconvergence result holds for most instances.1 Intuitively, these results imply that we can expect simple and myopic agents to reach the equilibrium if they have similar cost functions, but not if they have different cost functions. In real-life situations, agents may not be able to instantly change their current actions to their BR actions. They are more likely to slowly move from their current actions to actions with better utility. For example, in the game among Bitcoin miners, which is almost exactly modeled by a Tullock contest, a miner may gradually buy more equipment and thereby increase their computational power if they see an opportunity to improve their utility by doing so. The
+1The set of instances (cost functions, starting state of the dynamics) on which the dynamics does not converge has a positive measure with respect to the set of all instances. ar X
+iv :2
+40 2. 08 54
+1v 1
+[ cs
+.G T
+] 1
+3 Fe
+b 20
+24
+change may be more rapid if the discrepancy is substantial, i.e., if the distance between the current action and the optimal BR action is larger, but we may still expect the change to be smooth enough that other agents can react before a given agent moves from their current action to their BR action. This observation also holds for other applications of Tullock contests: e.g., in a competition among firms for research and development of drugs and vaccines (Dasgupta, 1986), a firm may generally be able to only slowly change their output by hiring/firing researchers or increasing/decreasing their investment. The classic model for studying such smoothly changing actions is the continuous-time BR dynamics (Fudenberg & Levine, 1998), which is the focus of this paper. We show that continuous-time BR dynamics converges to the unique equilibrium when agents have arbitrary, possibly non-homogeneous, weakly convex cost functions.2 Our rate-of-convergence bound is tight: the dynamics converges to an ϵ-approximate equilibrium in Θ(log(1/ϵ)) time. We prove this result using a Lyapunov potential function that measures the total regret, as perceived by the agents, for playing their current action instead of their BR action. We then extend this analysis to show convergence in certain classes of discrete-time dynamics, e.g., when the agents take small steps towards the BR (where the step size is not necessarily limiting to 0 as assumed for continuous time) or when the agents best-respond to the empirical average action of other agents. These results also lend to a simple algorithm to compute an ϵ-approximate Nash equilibrium in time polynomial in 1/ϵ and parameters of the model. 2. related work The works by Ewerhart (2017), Ghosh & Goldberg (2023), and Ghosh (2023) study learning dynamics in Tullock contests and are directly related to ours. Ewerhart (2017) and Ghosh & Goldberg (2023) study a special case of Tullock contests where the cost functions are linear, also known as lottery contests. Ewerhart (2017) shows that a lottery contest with homogeneous agents is a BR potential game (Voorneveld, 2000; Kukushkin, 2004); the class of BR potential games is a strict generalization of the better known classes of ordinal and exact potential games (Monderer & Shapley, 1996). Lottery contests are not exact potential games even with homogeneous agents (Ewerhart, 2017), and they are not
+2The primary focus in the literature has been on convex cost functions, because they model increasing marginal cost per unit utility, or, equivalently, decreasing marginal utility per unit cost, which is a feature of most economic environments. Also, Tullock contests with non-convex cost functions generally do not have a pure-strategy Nash equilibrium (PNE), and BR dynamics are not stable by definition when there does not exist a PNE; hence, such models need to be studied using alternative equilibrium concepts and learning dynamics. ordinal potential games with non-homogeneous agents (Ewerhart, 2020). Ghosh & Goldberg (2023) use the BR potential function of Ewerhart (2017) to derive bounds on the rate of convergence of BR dynamics in lottery contests with homogeneous agents assuming exactly one agent moves at a time. They show that the potential function of Ewerhart (2017) is strongly convex and smooth in a region around the equilibrium point, and the BR dynamics frequently visits this region. Outside this region, the BR potential function never increases, and inside this region they show rapid improvement in the potential using techniques related to coordinate descent (Wright, 2015). Ghosh (2023) extends the convergence results for lottery contests mentioned above to Tullock contests with convex costs (and homogeneous agents). Tullock contests with general convex cost functions do not have a closed-form formula for the BR of an agent. To circumvent this, Ghosh (2023) introduces a dynamics called the discounted-sum dynamics and uses it in his analysis, instead of using a BR potential function or techniques from convex optimization as done by Ghosh & Goldberg (2023). In contrast to the papers above, we study continuous-time BR dynamics and show convergence for arbitrary nonhomogeneous convex cost functions. In our analysis, we use a natural potential function that measures the total regret as perceived by the agents for playing their current action instead of their BR action, and use Lyapunov arguments to prove convergence. This potential function has been used before in a different context of proving convergence of stochastic fictitious play in two-player zero-sum games (Hofbauer & Sandholm, 2002; Shamma & Arslan, 2004); however, these results do not extend to zero-sum games with three or more players.3 Our analysis works because of the special structure exhibited by Tullock contests. Moulin & Vial (1978) implicitly show strategic equivalence between contests and zero-sum games. This directly implies convergence of fictitious play dynamics for two agents (Ewerhart & Valkanova, 2020), but no such result has been proven for three or more agents. A Tullock contest corresponds to a Cournot game with isoelastic inverse demand and constant marginal costs. There are convergence results for learning dynamics that apply to specific types of Cournot games, such as Cournot oligopoly with strictly declining BR functions (Deschamps, 1975; Thorlund-Petersen, 1990), Cournot game with linear demand (Slade, 1994), aggregative games that allow monotone BR selections (Huang, 2002; Dubey et al., 2006; Jensen, 2010), and others (Dragone et al., 2012; Bourlès et al., 2017). However, all these
+3Any n-player game can be written as an (n+ 1)-player zerosum game. methods do not apply to the Tullock contest whose BR function is not monotone (Dixit et al., 1987). A different line of research has studied the convergence (or chaotic behavior) of learning dynamics in other types of contests (such as all-pay auctions) and Cournot games (e.g., Puu (1991); Wärneryd (2018); Cheung et al. (2021)), but these techniques and results also do not apply to Tullock contests. 3. preliminaries In Tullock’s model, n agents participate in a contest with unit prize (normalized). Let [n] = {1, 2, . . . , n}. The agents simultaneously produce non-negative output; we denote the output of agent i by xi ∈ R≥0 and the output profile by x = (x1, . . . , xn) ∈ Rn≥0. Let x−i = (x1, . . . , xi−1, xi+1, . . . , xn) and s−i = ∑ j ̸=i xj . Agent i incurs a cost of ci(xi) for producing the output xi and receives a fraction of the prize proportional to xi if at least one agent produces a strictly positive output, and 1/n otherwise.4 The utility of agent i, ui(x), is
+ui(x) = xi∑ j xj − ci(xi) = xi xi + s−i − ci(xi). (1)
+Notice that the utility of agent i depends upon her output xi and the total output of other agents s−i, but not upon the distribution of s−i across the n− 1 agents. To indicate this, we will write ui(x) as ui(xi, s−i). We make the following assumptions on the cost functions: for every agent i, the cost function ci is (a) twice differentiable; (b) zero cost for non-participation, ci(0) = 0; (c) increasing, c′i(z) > 0 for all z > 0; (d) weakly convex, c′′i (z) ≥ 0 for all z ≥ 0. These assumptions are standard in the literature, and without them, a pure-strategy Nash equilibrium may not exist (see, e.g., Vojnović (2016, Chapter 4), Ewerhart & Quartieri (2020)). Remark 3.1. Our model is equivalent to contests of general logit form with concave success functions and convex costs (Vojnović (2016, Chapter 4)). In logit contests, the utility of agent i is given by ûi(x̂) =
+f̂i(x̂i)∑ j f̂j(x̂j) − ĉi(x̂i), where
+x̂j is the output of agent j. For each i, if f̂i is concave and ĉi is convex (and both are non-negative and strictly increasing), then we can do the change of variables xi = f̂i(x̂i) and set ci(xi) = ĉi(f̂i −1
+(xi)) to write the utility function as given in equation (1). Similarly, a utility function of the form Vixi∑
+j xj − ci(xi), where Vi is the value of the prize for agent i, can be converted to the form given in (1) by scaling down the utility by Vi, which does not affect the strategy of the agent. Also note that Tullock contests with utility functions of the form ûi(x̂) = x̂i
+r∑ j x̂j r − ĉi(x̂i) for some r ∈ (0, 1]
+4Some papers in the literature, e.g., Dasgupta & Nti (1998), assume that if s = 0, all agents get a prize of 0. Our analysis and results remain the same under this alternate assumption as well. are special cases of logit contests where f̂i(x̂i) = x̂i r. 3.1. best-response Given the total output s−i = ∑
+j ̸=i xj of all agents except i, the best-response (BR) of agent i is an action xi such that
+xi ∈ argmax z≥0 ui(z, s−i) = argmax z≥0
+( z
+z + s−i − ci(z)
+) . First, note that an agent has no BR if the output of every other agent is 0.5 To circumvent this technical issue, we make the exogenous assumption that agent i plays some small positive action if s−i = 0. We allow this action to be arbitrary (and can possibly change over time) as long as it is positive and is at most 12maxi c′i(0) . 6 On the other hand, agent i has a unique BR if s−i > 0, i.e., if the output produced by at least one other agent j is non-zero. This unique BR can be computed by taking a derivative of ui(z, s−i) with respect to z. If s−i > 0, then
+∂ui(z, s−i)
+∂z = s−i (z + s−i)2 − c′i(z), (2)
+∂2ui(z, s−i)
+∂z2 = −2s−i (z + s−i)3 − c′′i (z) < 0, (3)
+where the last inequality holds because z ≥ 0, c′′i (z) ≥ 0, and s−i > 0. So, ui(z, s−i) is strictly concave w.r.t. z, i.e., ∂ui(z,s−i)∂z is strictly decreasing w.r.t. z. Let BRi(s−i) denote the BR of agent i given that the total output of other agents is s−i. The first-order conditions for the BR are
+BRi(s−i) > 0 and ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=BRi(s−i) = 0,
+if ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=0 > 0; (4)
+BRi(s−i) = 0 and ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=BRi(s−i) ≤ 0,
+if ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=0 ≤ 0. (5)
+5Indeed, if s−i = 0, then by producing an output of ϵ > 0, agent i gets a utility of ui(ϵ, 0) = 1−ci(ϵ). Since ci is continuous and ci(0) = 0, for sufficiently small ϵ we have ci(ϵ) < 1− 1/n and hence ui(ϵ, 0) > ui(0, 0) = 1/n. Thus, xi = 0 cannot be a BR. Further, no ϵ > 0 can be a BR, because ci is increasing and thus ui(ϵ/2, 0) = 1− ci(ϵ/2) > 1− ci(ϵ) = ui(ϵ, 0). 6This issue of not having any BR to 0 can also be resolved by an alternate technical assumption: the prize is given to agent i with probability xi b+ ∑ j xj and agent i’s expected utility is
+xi b+ ∑ j xj
+− ci(xi), where b is a small positive constant. Under this alternate assumption the prize may remain unallocated with a positive probability of b b+ ∑ j xj , unlike in our model. We expect all results in this paper to hold for this alternate model as well. 3.2. continuous-time br dynamics Let x(t) = (xi(t))i∈[n] denote the action profile of the agents at time t in the BR dynamics. Similarly, let s(t) =∑ j xj(t) and s−i(t) = ∑
+j ̸=i xj(t). The continuous-time (or simply, continuous) BR dynamics starts from an initial profile x(0) = (xi(0))i∈[n] ∈ R≥0. At time t ≥ 0, each agent i ∈ [n] continuously updates their action as
+dxi(t)
+dt = BRi(s−i(t))− xi(t). (6)
+The continuous BR dynamics is a limiting case of the discrete BR dynamics when the step size goes to 0. In discrete BR, for a step size of ∆t = 1, xi(t + 1) = BRi(s−i(t)) ⇐⇒ xi(t + 1) − xi(t) = BRi(s−i(t)) − xi(t) for any given agent i. For arbitrary ∆t ≥ 0, this dynamics can be generalized to xi(t + ∆t) − xi(t) = ∆t(BRi(s−i(t)) − xi(t)) ⇐⇒ xi(t+∆t)−xi(t)∆t = BRi(s−i(t))− xi(t). The continuous dynamics takes the limit ∆t → 0. 3.3. equilibrium A Tullock contest with weakly convex cost functions always has a pure-strategy Nash equilibrium (which is also the unique equilibrium, including mixed-strategy Nash equilibria, see, e.g., Ewerhart & Quartieri (2020)). So, we exclusively focus on pure equilibria in this paper. Definition 3.2 (Pure-Strategy Nash Equilibrium). An action profile x∗ = (x∗1, . . . , x ∗ n) is a pure-strategy Nash equilibrium if it satisfies
+ui(x ∗ i ,x ∗ −i) ≥ ui(x′i,x∗−i),
+for every agent i and every action x′i for agent i. In general, the BR dynamics in a Tullock contest may never exactly reach the equilibrium in finite time, rather it may converge to the equilibrium. The dynamics converges to an equilibrium if it reaches an ϵ-approximate equilibrium in finite time for any ϵ > 0. Definition 3.3 (Approximate Pure-Strategy Nash Equilibrium). An action profile x = (x1, . . . , xn) is an ϵapproximate pure-strategy Nash equilibrium, for ϵ > 0, if it satisfies
+ui(xi,x−i) ≥ ui(x′i,x−i)− ϵ,
+for every agent i and every action x′i for agent i. 4. convergence of continuous br dynamics In this section, we prove that the continuous BR dynamics given in equation (6) rapidly converges to the unique purestrategy Nash equilibrium, i.e., x(t) → x∗ as t → ∞, where x∗ is the equilibrium. Theorem 4.1. The continuous best-response dynamics x(t) in Tullock contests with weakly convex cost functions converges to an ϵ-approximate pure-strategy Nash equilibrium in O(log(1/ϵ)) time. Further, there are instances where reaching an ϵ-approximate equilibrium takes Ω(log(1/ϵ)) time. Note that linear dynamical systems converge in Θ(log(1/ϵ)) time. In our dynamics, see equation (6), the −xi(t) term is linear but the BRi(s−i) term is non-linear, so a Θ(log(1/ϵ)) convergence can be expected but is not obvious. We present the proof for the lower and upper bounds given in Theorem 4.1 separately. Let us start with the upper bound. Proof of Theorem 4.1 (Upper Bound). To prove this convergence result, we use the potential function given in (7). This potential has been used previously to prove the convergence of stochastic fictitious play for two-player zero-sum games with finite action space; see Section 2 for further discussion. For an action profile x, let the potential function V (x) be defined as:
+V (x) = ∑ i∈[n] Vi(x), (7)
+where Vi(x) = max z ui(z, s−i)− ui(xi, s−i)
+= ui(BRi(s−i), s−i)− ui(xi, s−i). Notice that maxz ui(z, s−i) is not well-defined if s−i = 0. In this case, as discussed in Section 3, we assume that BRi(0) ∈ (0, 12maxi c′i(0) ], and Vi(x) = ui(BRi(0), 0) − ui(xi, 0). We will prove that such profiles can only occur during a short initial phase of the BR dynamics. Vi(x) measures agent i’s regret for playing xi instead of the best possible action given s−i, i.e., it is the amount of utility that agent i can increase by playing the BR instead of xi. Notice that, by definition,
+1. V (x) ≥ 0. Because ui(BRi(s−i), s−i) ≥ ui(xi, s−i) ⇐⇒ Vi(x) ≥ 0 for every agent i and profile x, which implies V (x) ≥ 0. 2. V (x) = 0 at the equilibrium. V (x) = 0 ⇐⇒ x = x∗ because V (x) = 0 ⇐⇒ Vi(x) = 0,∀i ∈ [n] ⇐⇒ ui(BRi(s−i), s−i) = ui(xi, s−i),∀i ∈ [n]. Given the profile x(t), we can write the potential at time t as V (x(t)) = ∑ i Vi(x(t)). For conciseness, we denote Vi(x(t)) by Vi(t), or simply Vi, where the dependency on x(t) will be clear from the context; similarly, V (x(t)) by V (t) or V . Given the dynamics followed by x(t), equation (6), we can write the dynamics that V (t) follows as
+dV dt = ∑ i∈[n] ∂V ∂xi dxi dt . (8)
+We next bound the time it takes to reach a state with two positive outputs, and we show that this property always holds thereafter. Warm-Up Phase First, notice that if xi(τ) > 0 at some time point τ , then xi(t) > 0 for all t ≥ τ because dxi(t)dt = BR(s−i(t)) − xi(t) ≥ −xi(t) =⇒ dxi(t)xi(t) ≥ −dt =⇒ xi(t) ≥ xi(τ)e−(t−τ) > 0. So, once we reach a state with two agents i and j ̸= i with positive output, then these two agents will always have a positive output thereafter. Say we start from a profile x(0) = 0, i.e., all agents have 0 output initially. By our technical assumption discussed in Section 3, the action of an agent i is some small constant in (0, 12maxi c′i(0) ], say ηi. So, dxi dt = ηi > 0 at time t = 0 for all i, which implies that at time dt > 0 with dt → 0, we have xi(dt) > 0, as required. Let us now consider the case when there is only one agent i with xi(0) = α > 0, and all other agents j ̸= i have xj(0) = 0. Now, if xi(0) = α < 1c′j(0) for some j ̸= i, then BRj(s−j(0)) = BRj(α) > 0 because by the first-order condition, equation (2), for z = 0, we have
+∂ui(z, α)
+∂z =
+α
+(z + α)2 − c′j(z) =
+1 α − c′j(0) > 0. So, at time 0, we have dxjdt = BRj(s−j(0)) − xj(0) = BRj(α) > 0, which implies that at time dt > 0 with dt → 0, we have xj(dt) > 0. Now, let us consider the case when xi(0) = α ≥ maxj ̸=i
+1 c′j(0) . Let β = maxj ̸=i 1c′j(0) for conciseness. Let us bound the time—denoted by T—it takes to reach xi(T ) < β. As xi(t) ≥ β for all t < T , we have dxi(t) dt = BRi(s−i(t)) − xi(t) = BRi(0) − xi(t) = ηi − xi(t) ≤ β2 − xi(t), where the last inequality holds because ηi ≤ maxj 12c′j(0) ≤ maxj ̸=i 1 2c′j(0)
+= β2 . Using this, we get
+dxi(t) dt ≤ β 2 − xi(t) =⇒ dxi(t)
+xi(t)− β2 ≤ −dt
+=⇒ ln ( xi(t)− β2 α− β2 ) ≤ −t,
+which implies that to reach xi(T ) < B, it is sufficient to have T > ln (
+α− β2 β− β2
+) = ln ( 2α β − 1 ) . Further notice that
+V (x(0)) = Vi(x(0)) = (1 − ci(ηi)) − (1 − ci(xi(0))) = xi(0) − ηi ≥ α − β2 . So, within T = O(log(V (0))) time, we get at least two agents with positive output, and this property holds thereafter. Main Phase Given our analysis of the warm-up phase above, from here on we assume that there are always two
+agents with positive output. We next prove the following lemma about V (t). Lemma 4.2. The potential V (t) = V (x(t)) at any time t satisfies the following differential inequality
+dV
+dt + V ≤ − ∑ i yi∑ j yj ( 1− ∑ j yj yi + s−i )2 ≤ 0,
+where the dependency on t is suppressed, where yi(t) = BRi(s−i(t)), and assuming that there are at least two agents with positive output in the profile x(t). Proof. Let us suppress the dependency on t, e.g., let us write x(t) as x and V (t) as V . Let yi = BRi(s−i) for conciseness. Note that for general convex cost function ci, we do not have a closed-form formula for BRi. But from the first-order conditions, equation (4), we have
+yi > 0 & ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=yi = 0, if ∂ui(z, s−i) ∂z ∣∣∣∣ z=0 > 0;
+yi = 0 & ∂ui(z, s−i)
+∂z
+∣∣∣∣ z=yi ≤ 0, if ∂ui(z, s−i) ∂z ∣∣∣∣ z=0 ≤ 0. Now, ∂ui(z,s−i)∂z = s−i (z+s−i)2 − c′i(z); plugging in z = 0 we get ∂ui(z,s−i)∂z ∣∣∣ z=0 = s−i(0+s−i)2 − c ′ i(0) = 1 s−i − c′i(0). The condition ∂ui(z,s−i)∂z ∣∣∣ z=0 > 0 corresponds to 1s−i − c′i(0) > 0 ⇐⇒ s−ic′i(0) < 1. Similarly, ∂ui(z,s−i)
+∂z
+∣∣∣ z=0
+≤ 0 corresponds to s−ic′i(0) ≥ 1. Using these, the first-order conditions at yi = BRi(s−i) can be rewritten as
+s−i (yi + s−i)2 = c′i(yi), if s−ic ′ i(0) < 1, (9)
+yi = 0, if s−ic′i(0) ≥ 1. (10)
+We can write V as V = ∑ i Vi = ∑ i (ui(yi, s−i)− ui(xi, s−i))
+= ∑ i ( yi yi + s−i − ci(yi)− xi xi + s−i + ci(xi) ) = ∑ i yi yi + s−i − ∑ i ci(yi) + ∑ i ci(xi)− 1. (11)
+The time derivative of V w.r.t. t is dVdt = ∑ k ∂V ∂xk dxk dt , where dxk dt = yk − xk. To write ∂V ∂xk
+, we need to know ∂yi∂xk for all i and k. Note that ∂yi∂xk = 0 for k = i and ∂yi ∂xk
+= dyids−i for k ̸= i. Due to the constraint that yi (the best-response) is always non-negative, there is a point of non-differentiability at yi = 0. In particular, if c′i(0) > 0, then:
+• If s−i > 1c′i(0) , then in the small neighborhood around s−i, say [s−i − δ, s−i + δ] for small δ > 0, we will have the corresponding yi = 0. So, dyids−i = 0. • If s−i < 1c′i(0) , then yi > 0 and is governed by equation (9). We can differentiate this equation w.r.t. to s−i to get
+1 (yi + s−i)2 − 2s−i (yi + s−i)3
+= ( c′′i (yi) +
+2s−i (yi + s−i)3 ) dyi ds−i
+=⇒ dyi ds−i = yi − s−i 2s−i + (yi + s−i)3c′′i (yi) . (12)
+If we take the limit s−i ↑ 1c′i(0) , which implies that yi ↓ 0, we get
+dyi ds−i = −1 2 + c′′i (0)/(c ′ i(0)) 2 < 0,
+where the last inequality is true because c′i(0) > 0 and c′′i (0) ≥ 0. On the other hand, we know that the magnitude is bounded dyids−i = −1 2+c′′i (0)/(c ′ i(0)) 2 ≥ −12 . The above two cases tell us that dyids−i at s−i = 1 c′i(0) has a left limit strictly less than 0 but a right limit equal to 0, so we have non-differentiability at s−i = 1c′i(0) . But as dyi ds−i is bounded near s−i = 1c′i(0) , we can define it to be equal to some finite value in [ −12+c′′i (0)/(c′i(0))2 , 0] at s−i = 1 c′i(0) , which is sufficient for our analysis. An alternate analysis can be done using the envelop theorem of Milgrom & Segal (2002, Theorem 2) to arrive at the same result. Taking partial derivative of V w.r.t. xk we get ∂V∂xk equal to
+= ∂
+∂xk (∑ i yi yi + s−i − ∑ i ci(yi) + ∑ i ci(xi)− 1 )
+= ∑ i ( s−i (yi + s−i)2 − c′i(yi) ) ∂yi ∂xk
+− ∑ i ̸=k yi (yi + s−i)2 + c′k(xk). From the discussion above, we know that either ∂yi∂xk = 0 or s−i
+(yi+s−i)2 = c′i(yi) and ∂yi ∂xk is bounded. In either case, we have (
+s−i (yi+s−i)2 − c′i(yi) ) ∂yi ∂xk = 0, so
+∂V ∂xk = c′k(xk)− ∑ i ̸=k yi (yi + s−i)2 . (13)
+Putting together, we can write dVdt as
+dV dt = ∑ k ∂V ∂xk dxk dt
+= ∑ k (yk − xk)c′k(xk)− ∑ k (yk − xk) ∑ i ̸=k yi (yi + s−i)2
+= ∑ i (yi − xi)c′i(xi)− ∑ i yi(σ − yi − s−i) (yi + s−i)2 ,
+where σ = ∑
+k yk. Adding V and dV dt together, we get
+V + dV
+dt = ∑ i yi yi + s−i − ∑ i ci(yi) + ∑ i ci(xi)− 1
++ ∑ i (yi − xi)c′i(xi)− ∑ i yi(σ − yi − s−i) (yi + s−i)2
+= −1 + ∑ i (−ci(yi) + ci(xi) + (yi − xi)c′i(xi)︸ ︷︷ ︸ ≤0 as ci is convex )
++ ∑ i 2yi yi + s−i − ∑ i
+yiσ
+(yi + s−i)2 . Now, let pi = yi∑ j yi = yiσ and qi = s−i σ . Notice that∑
+i pi = 1 and, for all i, pi ≥ 0 and qi ≥ 0. Plugging this into the inequality above, we get
+V + dV
+dt ≤ −1 + ∑ i 2yi yi + s−i − ∑ i
+yiσ
+(yi + s−i)2 = −1 + ∑ i 2pi pi + qi − ∑ i pi (pi + qi)2
+= ∑ i pi ( −1 + 2 pi + qi − 1 (pi + qi)2 )
+= − ∑ i pi ( 1− 1 pi + qi )2 ≤ 0. Let us now use Lemma 4.2 to get the desired rate of convergence upper bound. We use standard Lyapunov arguments:
+dV (t) dt + V (t) ≤ 0 =⇒ dV (t) V (t) ≤ −dt
+=⇒ V (t) ≤ V (0)e−t. For any t ≥ ln ( 1 ϵ ) + ln(V (0)), we get V (t) ≤ ϵ, which implies that for every agent i we have Vi(t) = Vi(x(t)) ≤ ϵ ⇐⇒ ui(x(t)) ≥ ui(BRi(s−i(t)), s−i(t)) − ϵ. So, we are at an ϵ-approximate equilibrium. This completes the proof for the upper bound. Proof of Theorem 4.1 (Lower Bound). We provide an example where it takes Ω(log ( 1 ϵ ) + log(V (0))) time to converge to an ϵ-approximate equilibrium. Let there be n = 2 homogeneous agents with linear cost function c1(y) = c2(y) = y/4 for any y ≥ 0. It can be easily derived that the unique equilibrium is x∗ = (1, 1) and that there is a closed-form formula for the best-response BRi(s−i) = 2 √ s−i − s−i (see, e.g., Vojnović (2016)). Let x(0) = (y(0), y(0)), where we assume that y(0) is sufficiently large and far away from the equilibrium value 1. As the two players are homogeneous and start from the same action, they will maintain the same action x(t) = (y(t), y(t)), for some y(t), for all t ≥ 0. We suppress the dependency on t to avoid clutter. Let us track the evolution of y. From equation (6), we have
+dy dt = dxi dt = BRi(s−i)− xi = BRi(y)− y
+= (2 √ y − y)− y = 2(√y − y). Let us now compute the potential function V . We have V = ∑ i (ui(BRi(s−i), s−i)− ui(xi, s−i))
+= 2 (u1(2 √ y − y, y)− u1(y, y))
+= 2
+( 2 √ y − y
+2 √ y − y + y − 2 √ y − y 4
+− ( y
+y + y − y 4 )) = 1 + y − 2√y = (√y − 1)2. Further, we can find the rate of change of V using the rate of change of y as
+dV dy = d dy ( √ y − 1)2 = 2( √ y − 1) 2 √ y = √ y − 1 √ y ,
+dV
+dt =
+dV
+dy
+dy dt = √ y − 1 √ y 2( √ y − y) = −2(√y − 1)2
+=⇒ dV dt = −2V =⇒ V (t) = V (0)e−2t. By the definition of V and the symmetry of the two agents, at an ϵ-approximate equilibrium, V (t) = 2ϵ. So, it takes exactly t = 12 ln( 1 2ϵ )+ 1 2 ln(V (0)) = Ω(log ( 1 ϵ ) +log(V (0))) time to reach the ϵ-approximate equilibrium. 5. discrete-time; equilibrium computation In this section, we consider discrete-time BR dynamics. We also provide an algorithm for computing an approximate equilibrium based on such dynamics. Proofs are given in Appendix A. Let us consider a modification to the original Tullock contest model we have studied till now. We assume that each agent i must always play an action xi ≥ xmin instead of xi ≥ 0, for some xmin ≥ 0. Notice that xmin = 0 corresponds to the original model, while a xmin > 0 says that any participant in the contest must have a positive minimum
+output. An assumption of xmin > 0 may be plausible in practical scenarios where there is a positive cost of participation (showing up for the game). We also normalize the cost functions and assume that mini ci(1) = 1 for all i; this ensures that any rational agent will always play an action ≤ 1. We also assume that the second derivative and the ratio of the first derivatives of the cost functions are bounded: maxi,z∈[xmin,1] c ′ i(z) mini,z∈[xmin,1] c ′ i(z) = B1 and maxi,z∈[xmin,1] c ′′ i (z) = B2. The first-order conditions for the case when xmin > 0 are similar to the ones given in (4) except that the critical point above which the first-order condition is satisfied with equality is xmin instead of 0. The analysis for the continuous BR dynamics for this model is also analogous to the analysis for Theorem 4.1. Let us now consider BR dynamics in this model with the step-size, say ∆t, small but not necessarily going to 0. In particular,
+xi(t+∆t) = xi(t) + ∆t · (BRi(s−i(t))− xi(t)). (14)
+The continuous-time BR dynamics corresponds to equation (14) with ∆t → 0. We aim to find bounds on ∆t that ensure convergence. Lemma 5.1. For a profile x, let H(x) be defined as
+H(x) =
+B2 2 ∑ i(yi − xi)2 + ∑ i∈E
+(σ−yi−s−i)2 s2−i∑
+i yi(σ−yi−s−i)2 σ(yi+s−i)2
+,
+where yi = BRi(s−i) and σ = ∑
+i yi. If the step-size at time t is bounded above by 1/max(2, H(x(t)), then the BR dynamics converges to the unique equilibrium. In particular, for 0 < αt ≤ 1/max(2, H(x(t)), we have V (t+ αt) ≤ (1− αt)V (t). If xmin is assumed to be strictly positive, then we can upper bound H(x) as a function of xmin. Lemma 5.2. If xmin > 0, then H(x) = O (
+n(1+B2) x3min ) for all x, which implies that the dynamics reaches an ϵapproximate equilibrium in O ( 1 α log ( V (0) ϵ )) steps with a
+suitable step-size α = Θ (
+x3min n(1+B2)
+) . Notice that the bound in Lemma 5.2 depends upon the number of agents n. This is essential, as highlighted by Lemma 5.3 below. Lemma 5.3. If the step-size is not O(1/n), then there are instances with linear and homogeneous cost functions where the dynamics does not converge. Note that although the bound in Lemma 5.2 does not depend upon B1 (the ratio of the first-derivatives of the cost functions of the agents, which measures the relative skills of
+the agents), B1 may be implicit in xmin. If xmin is not sufficiently small, e.g., if xmin = ω(1/B21), then the equilibrium when the agents are restricted to play xi ≥ xmin may be different from the equilibrium when the agents can play less than xmin. For example, for two agents with linear cost functions c1(x1) = x1 and c2(x2) = βx2, where β ≥ 1, the unique equilibrium is x∗ = ( β
+(1+β)2 , 1 (1+β)2
+) if the agents
+can play any xi ≥ 0. Note that B1 = β, so the equilibrium output of agent-2 is Θ(1/B21). On the other hand, if the agents are restricted to play xi ≥ xmin = ω(1/B21), then the equilibrium will be forced to be different from x∗. Given this observation, it would be natural to assume that xmin is small enough; in particular, xmin = O(1/B21). Moreover, the dependency on B1 is unavoidable, as formalized by Lemma 5.4 below. Lemma 5.4. If the step-size is not O(1/B1), then there are instances with two agents and linear cost functions where the dynamics does not converge. If xmin = 0, then our results do not provide a lower bound on the step-size that is independent of the action profile x(t). In particular, Lemma 5.1 does not directly imply such a bound because H(x) may be unbounded for some profiles x, then the step-size recommended by the lemma at x to ensure convergence goes to 0. Indeed, such a lower bound might not exist. On the other hand, even in the case of xmin = 0, we can simulate with a pseudo x̂min = Θ(ϵ) to compute an equilibrium in poly(1/ϵ, n,B1, B2) steps as shown below. Algorithm Let us construct a modified game with a pseudo lower bound on the outputs of the agents: x̂min = ϵ/(4B1). We simulate the BR dynamics in this game with a step-size of α = Θ ( x̂3min
+n(1+B2)
+) , as recommended by
+Lemma 5.2, to compute an (ϵ/2)-approximate equilibrium of this modified game in O ( 1 α log ( V (0) ϵ )) steps. Let this approximate equilibrium be x̂. At x̂, all agents have a regret of at most ϵ/2 assuming that they can only play above x̂min. By playing below x̂min, they can further increase their utility by at most ci(x̂min) − ci(0) ≤ B1x̂min/(1 − x̂min) ≤ 2B1x̂min ≤ ϵ/2. So, at x̂, the total regret of any agent in the original game is at most ϵ, as required. Best-Response to Empirical Average Let us consider a discrete-time dynamics with a step-size of ∆t = 1, but where the agents best-respond to the empirical average action of the other agents. Let xi(t) = 1t ∑t τ=1 xi(t) and
+s−i(t) = ∑
+j ̸=i xj(t). Formally, the dynamics is defined as follows: the action of agent i at time t+ 1 is
+xi(t+ 1) = BRi(s−i(t)), ∀i ∈ [n], t ∈ Z≥0 (15)
+Given this, we can write the updated empirical average at time t+ 1 as
+xi(t+ 1) = xi(t) + 1
+t+ 1 (BRi(s−i(t)− xi(t)). Notice that xi(t) tracks a BR dynamics with a sequence of decreasing step-sizes that correspond to the harmonic sequence ( 1t )t∈Z≥1 . The harmonic sequence satisfies the following crucial properties: as t → ∞, the sequence 1t → 0 but the series ∑t k=1 1 k → ∞. These two properties ensure that the dynamics converges for the case xmin > 0 using Lemma 5.1. In fact, we can generalize this dynamics to a weighted average, where the step-size at time t is ηt, and xi(t) follows
+xi(t+ 1) = xi(t) + ηt(BRi(s−i(t)− xi(t)). (16)
+Lemma 5.5. If xmin > 0, then a dynamics that evolves according to (16) converges if the sequence of step-sizes (ηt)t∈Z≥1 satisfies: as t → ∞, the sequence ηt → 0 but the series ∑t k=1 ηk → ∞. Other examples of step-size sequences that lead to convergence are ηt = 1/tr for r ∈ (0, 1] and ηt = 1/ log(1 + t). Note that convergence of x also implies convergence of x. 6. conclusion and future research We showed that the continuous BR dynamics, which is motivated by the observation that in certain applications the agents change their actions slowly compared to the feedback they receive from others, converges to the unique equilibrium in Tullock contests with convex costs. We then extended these convergence results to related discrete dynamics with small step sizes. These results indicate that we can expect Tullock contests with convex costs to reach equilibrium in a decentralized manner.

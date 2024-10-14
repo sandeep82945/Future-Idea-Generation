@@ -1,0 +1,483 @@
+In recent years, large language models (LLMs),
+such as GPTs, have attained great impact worldwide. However, how to adapt these LLMs to
+better suit the vertical domain-specific tasks
+by utilizing external knowledge remains not
+completely solved. Indeed, there have emerged
+a few works on this line where most of them
+rely on an alignment heuristic that is built to
+inject the corresponding knowledge tuple into
+the associated text sample.
+However, despite the promise, we identify a pivotal problem in this work ubiquitously. Simply
+put, we find that injecting unaligned (i.e., random) knowledge tuple into the LLMs achieves
+comparable (and sometimes better) results than
+the aligned knowledge being injected. We
+therefore take a thorough investigation of this
+frustrating finding on a variety of related prior
+work and further provide a chain of potential
+interpretations for the phenomenon. Based on
+all that, we offer a simple remediated technique.
+Briefly, the core of this technique is rooted in
+an ideological emphasis on the pruning and
+purification of the external knowledge base to
+be injected into LLMs. At last, we show that
+by integrating this technique into most (if not
+all) knowledge injection frameworks and recent
+LLMs, it manages to overcome the aforementioned sanity problem and further pushes the
+boundary of the performance of the domainadaptive LLMs. The large language models (LLMs)1 — like
+BERT (Devlin et al., 2019), RoBERTa (Liu et al.,
+2019), GPT-3 (Brown et al., 2020), ChatGPT, GPT4, etc. — truly have brought gigantic waves worldwide. While these LLMs have evidently extended
+the frontier of NLP, the prior works (JI et al.,2022; Bang et al., 2023) have also pointed out that
+when lacking domain-specific knowledge, LLMs
+are more prone to hallucinate in downstream tasks.
+Notably, a relatively lightweight but promising
+means to tackle this is through knowledge injection
+such as ERNIE (Zhang et al., 2019), KnowBert (Peters et al., 2019) and K-BERT (Liu et al., 2020)
+where an external knowledge graph is adopted as
+shown in Figure 1. Despite the plethora of work
+on this line being proposed in the past, we present
+a pivotal problem in this work via comprehensive
+scrutiny. Generally, this line of work relies on an
+alignment module where one can automatically associate a given text sample with a knowledge tuple
+that is extracted from an external knowledge base.
+This aligned knowledge tuple is then facilitated to
+influence the downstream task, which manifests a
+hybrid mixing in the input text (Liu et al., 2020),
+positional embedding (He et al., 2020) or the upperlevel embedding space (Zhang et al., 2019).
+Our findings: In brief words, for most, (if not all)
+of the prior work, injecting misaligned, randomized, or (intentionally) irrelevant knowledge tuples
+yields comparable (and sometimes better) results
+than the aligned knowledge being injected. More
+specifically, this ablation protocol indicates a replacement of the matched (aligned) knowledge in
+Figure 1 by a randomly drafted knowledge. These
+results are validated both quantitatively and qualitatively on a variety of prominent knowledge injection frameworks across 12 popular datasets. We
+further note that we dedicate this work to the spectrum of fine-tuning stages thanks to its lightweight
+nature and arguably wider real-world deployment.
+Nevertheless, our work does not mean that
+knowledge injection is unfeasible as a whole.
+Rather, the similar mechanism applied in the pretraining stage did have some successes (Ye et al.,
+2022; Wang et al., 2021b), in spite of the forbidden computational cost incurred. To this end, we
+believe that there are two prioritized prospects thatought to be explained or studied: (i)-to revisit the
+tuning dynamism2 by injected knowledge and (ii)-
+to derive a fix to the problem.
+To do that, we first supplement a set of additional experiments by injecting Gaussian noise as
+a replacement for injected knowledge. Perhaps
+with surprises, this set of injection flow winds up
+with indiscernible results with either randomized or
+aligned knowledge injection. The major question
+we come up with this far is therefore directed to
+why the LLMs treat the aligned knowledge
+similarly to noise. In pursuit of the answer to
+this question, we cast our hypothesis: Within the
+fine-tuning scheme, the LLMs fail to adequately
+disentangle the intricacy possessed in the external
+knowledge base so as to treat the injected item
+ubiquitously as noise. For instance, ERNIE (Zhang
+et al., 2019) intends to integrate a wiki knowledge
+graph that is composed of a vast of more than 5 million entity nodes. We thereby vaguely connect this
+hypothesis — together with the prior empirical conclusion — to data augmentation that explains why
+both randomized knowledge and noise injection
+still renders some performance gain.
+At last, rather than composing a complete
+methodological solution to this newly found problem, we intend to emphasize the importance of
+injected item itself. In particular, we construct a
+new conceptual knowledge graph that is purified
+and pruned from other knowledge base’s taxonomy,
+similar to McCrae et al. (2019). By injecting this
+2This refers to the fine-tuning mechanism.
+knowledge graph into the aforementioned LLM
+frameworks, the LLMs work just as expected and
+manage to overcome the previous sanity-checking
+experiments. In virtue of this workflow, we posit
+that our hypothesis is further strengthened and validated. We prove that this remediated technique can
+seamlessly be consolidated with all prior knowledge injection frameworks, and also recent LLMs
+such as ChatGPT.
+2 Related Works
+2.1 Knowledge injection for LLMs
+Recently, the emergence of large pre-trained language models, such as ChatGPT and GPT-4, has attracted great attention from the community and the
+public, due to their emergent abilities demonstrated
+in many tasks. Although ChatGPT includes a lot
+of knowledge through pre-training, the knowledge
+injection method is still necessary because ChatGPT cannot fully solve problems in professional
+fields, such as healthcare (Wu et al., 2023; Liu et al.,
+2023). For this problem, LLMs can pre-train on
+professional field corpora or retrieve documents
+(like New Bing) to obtain that knowledge. However, these methods may incur substantial costs
+and pose a challenge wherein the obtained knowledge may not align seamlessly with the internal
+knowledge of the models. We aim to integrate the
+external structured knowledge sources in a more
+concise and convenient way, rather than updating
+the internal parameters of LLMs.2.2 Knowledge-Enhanced Models
+Since the large-scale application of pre-trained
+models in the NLP field, many works expect to
+improve the downstream tasks’ performance by
+integrating external knowledge. Among those
+knowledge-enhanced models, many works use
+knowledge representation-based methods to incorporate factual knowledge (Zhang et al., 2019; Su
+et al., 2021; Ye et al., 2022; Peters et al., 2019;
+Wang et al., 2021b; Yamada et al., 2020; Sun et al.,
+2020; He et al., 2020; Yuan et al., 2021). Other
+models use other forms to integrate knowledge into
+the model (Liu et al., 2020; Wang et al., 2021a;
+Meng et al., 2021; Hosseini et al., 2022,?; Ke et al.,
+2020; Lu et al., 2022).
+Among those works, some achieved eyecatching performances on different downstream
+tasks. To name a few, ERNIE (Zhang et al., 2019)
+integrates entities’ knowledge aligned with the
+mentions of the input text in the pre-training and
+fine-tuning stage. LUKE (Yamada et al., 2020)
+proposes an entity-aware self-attention mechanism
+and forms a multi-way injection summarizing both
+words and entities. KnowBert (Peters et al., 2019)
+incorporates an additional entity disambiguation
+module towards improving the entity linker and
+recombines knowledge features for injection. KBERT (Liu et al., 2020) converts the relation triples
+with the context into the sentence tree, then encodes
+them assisted by a novel soft positional encoding
+method. Although they designed various injection
+mechanisms, they do not discuss and analyze the
+research questions in depth. To some extent, this
+makes their works lack interpretability.
+2.3 Interpretable Analysis In LLMs
+The closest to this work is the transparency and
+interpretability analysis of knowledge injection
+frameworks. While there has not been much work
+covering it, as we go deep into the literature: Peters et al. (2019); Jiang et al. (2020); Cao et al.
+(2021) have proved that a pre-trained language
+model can acquire substantial factual knowledge
+via pre-training on large-scale unlabeled data. Li
+et al. (2022) analyzes the capacity of LLMs from
+the aspect of capturing factual knowledge. Zhang
+et al. (2021) exhibits that injecting redundant and irrelevant knowledge causes an efficiency drop. Hou
+et al. (2022) shows there is no positive relationship between knowledge injection corpus size and
+knowledge injection quality.
+video games are considered as electronic opium��
+(1) ��
+(2)
+AttentionLayer AttentionLayer��
+(1) ��
+(6) ��
+(5) ��
+(4) ��
+(3) ��
+(2) ��
+(7)
+videogamesopium��
+(1) ��
+(6) ��
+(5) ��
+(4) ��
+(3) ��
+(2) ��
+(7)
+��
+(1) ��
+(2)
+��
+(1) ��
+(2)
+IntermediateLayer
+��+1
+(1) ��+1
+(6) ��+1
+(5) ��+1
+(4) ��+1
+(3) ��+1
+(2) ��+1
+(7)
+��+1
+(1) ��+1
+(2)
+��
+(1)
+��
+(1)
+��+1
+(1) ��+1(2)
+Figure 2: Word And Knowledge Embedding Fusion Process Diagram. Word embedding (blue) and knowledge
+embedding (green) are usually infused in the intermediate layer, and after that, the related tokens may contain
+some knowledge-related information, as shown in the
+iconic framework ERNIE (Zhang et al., 2019).
+Regardless, we believe proper study on the transparency of knowledge injection is somewhat critical. This line of work is still at its early stage and
+is often neglected or deprioritized by prior works.
+With the study of this work, we may humbly alert
+the community by showcasing some negative results yielded by our proposed protocol.
+3 Preliminaries
+In this section, we present some preliminary concepts related to knowledge injection. And these
+introductions serve as a foundation for the subsequent chapters.
+3.1 Text-KG Alignment
+As a prerequisite step, one needs to align the knowledge graph or its subgraph to the input text. For a
+standard method, it uses the entity alignment tool
+— such as TagMe (Ferragina and Scaiella, 2010a)
+— to detect KG’s entities mentioned in the input
+text and link them to the correct KG entry, then
+tuple them together (Broscheit, 2019). Specifically,
+given a knowledge graph G and a sentence x, this
+process can be defined as
+m, ke = h(x, G), (1)
+where m denotes entities mentioned in x (mention
+entity or mentions), ke denotes the linked entities
+(a kind of factual knowledge) in G, and h means
+the entity linking or alignment tool.
+3.2 Knowledge Injection Methods
+From a high-level standpoint, the mission of knowledge injection methods aims to inject an external source of knowledge into the language models, with an ultimate goal of better suiting the
+models to downstream tasks, particularly the lowsource domains. Throughout the literature, there
+has emerged a few separate branches shedding light
+on different paradigms.
+To begin with, the major division of this line can
+be categorized by injection during the pre-training
+stage or the fine-tuning stage. Hereby, we use the
+iconic framework, ERNIE (Zhang et al., 2019), for
+demonstration. On one hand, in the pre-training
+stage of knowledge injection, ERNIE forms a separate masked language modeling objective. Specifically, it randomly masks off the linked entities and
+has an additional softmax head to recover it. On the
+other hand, during the fine-tuning stage, ERNIE
+fuses the text and aligned knowledge in the vectorial representation space, as shown in Figure 2.
+Notice, the purpose of this paper is not to propose a novel knowledge injection scheme, nor to
+promote any existing method. Therefore, abstracting away from one specific showcasing method, we
+may use the simplest form to represent the knowledge injection process, as follows:
+y = f(x, k), (2)
+where x denotes the input text, k denotes the injected knowledge regardless of its instantiated form,
+y denotes the corresponded gold label and f indicates a trainable neural network. Notice, in this
+investigative work, we cover many instantiations of
+f and k, including not only ERNIE, KnowBert, and
+other models that integrate external knowledge, but
+also ChatGPT, GPT-4, etc., mainly for knowledge
+injection during the fine-tuning stage to achieve
+optimal empirical transparency.
+3.3 The Different Injected Knowledge
+To explore the above questions, we design a set of
+ablation experiments with strictly controlled variables. In those ablation experiments, we follow
+the previous protocol with the origin knowledgeinjected models, only changing the knowledge they
+inject. That knowledge includes:Aligned Knowledge: refers to the retrieved
+knowledge that is injected into the model, as
+done by all prior work, described as k. The
+text-Knowledge Graph alignment process is
+often conducted beforehand.
+• Random Knowledge: refers to the random selection of a knowledge point from an external
+knowledge base and using it in the same form
+as aligned knowledge, denoted as krandom. No
+alignment process is conducted.
+• Wiki Triples Knowledge: refers to the triples
+extracted from WikiData5M (Wang et al.,
+2021b), where the knowledge graph only composes entity id from the linked ones ke. The
+triples are described as k1, k2, . . . , kn, where
+n represents the length of a triplet matched
+by an entity ID. Entity-linking is conducted
+necessarily before retrieving triples.
+• Conceptual Knowledge: refers to the knowledge extracted from Wikidata and Wordnet,
+denoted as kc. Specifically, for an entity id
+in ke, we extract its title and type from Wikidata and find the corresponding concept from
+Wordnet. Finally, we combine title, type, and
+concept into a triplet such as (title, type, concept), as the conceptual knowledge of the corresponding entity. The entity-linking process
+is also necessary to obtain conceptual knowledge.
+4 Random v.s. Aligned
+In this section, we address a research question –
+Does the performance improvement of existing injection algorithms truly attribute to the injected
+knowledge? To solve this issue, we design a series of ablation experiments with rigorously controlled variables to investigate the practical impact
+of knowledge information. The experiment results across 12 pertinent datasets demonstrate that
+aligned knowledge injection is not superior to
+random knowledge injection. In the remainder
+of this section, we will provide a comprehensive
+description of the experimental setup and present
+the corresponding results in detail.
+Ablation Protocol. In hindsight, the effect of
+knowledge injection can be decomposed into two
+parts: (i)-the knowledge injection mechanism as
+to how to inject it and (ii)-the knowledge itself as
+to what to inject. The very majority, if not all,
+of the prior work is dedicated to the (i) and uses
+final performance as the sole metric to check if the
+injection works. Nevertheless, to further enhance
+the transparency of the system, we wholeheartedly
+believe that both conditions shall be studied and
+met. In that regard, to complete the picture, we
+focus majorly on (ii).
+Briefly, we intend to substitute the previouslyadded knowledge with the random knowledge 3.3,
+and assess the performance of the original injection
+(with aligned knowledge 3.3) in comparison. In
+particular, we adopt the following settings:
+1. knowledge injection refers to injecting aligned
+knowledge in the training and testing process,
+which can be described in Equation 2;
+2. random injection refers to injecting random
+knowledge in the training and testing process.
+Other experimental settings, like baseline and
+fine-tuning configurations, are consistent with
+the knowledge injection. It can formally be
+defined as y = f(x, krandom);
+3. noise injection refers to injecting randomized
+Gaussian white noise in the training and testing process, as y = f(x, ϵ).
+Backbones and Datasets. Indeed, different
+downstream tasks may require different knowledgetypes, scales, or quantities. Distinctive knowledge
+injection methods and model backbones for different NLP applications may also vary widely. To
+take a comprehensive revisit of the knowledgeenhanced models, we choose the most advanced
+as well as the best performing knowledge-injected
+LLMs as our baselines, in correspondence to the
+different benchmarks. Following the aforementioned principles, we primarily choose LUKE (Yamada et al., 2020), ERNIE (Zhang et al., 2019),
+KnowBERT (Peters et al., 2019), K-BERT (Liu
+et al., 2020) and KeBioLM (Yuan et al., 2021) as
+the major backbones/methods for the purpose of the
+study. The methods can be primarily classified into
+two categories: text-based methods, exemplified by
+K-BRERT, and embedding-based methods, such
+as KnowBert, ERNIE, LUKE, and KeBioLM. In
+the meantime, we cover most of the major datasets.
+The details and stats of them are provided in Appendix A.1 and A.2. And for the information on
+knowledge graphs, please refer to Appendix A.3.
+Main Results And Discussion. Exhibited in Table 1 to 5c, we conclude that: (i) the knowledge
+injection is not superior to random injection. The
+differences between them generally within 1.0, and
+some are even lower than 0.1; (ii) the difference
+between random injection and noise injection is
+also much neglectable, ranging by no more than
+0.3 by F1.
+These phenomenons can be further inferred that
+the knowledge-injected models do not adequately
+make use of the knowledge injected in the finetuning stage, which may be a fatal problem for
+those injection models. Upon those closer examinations, we have reason to believe that the model may
+treat knowledge injection in a way resemblance to
+white noise injection.
+Further Analysis. To further explore the difference between knowledge injection and random injection, we compare their similarity in the encoder
+and the output of the classifier in Open Entity and
+TACRED and find the differences are also small.
+For the details of the further exploration, please
+refer to Appendix B.
+Takeaways ①. Through these experiments, we
+discover that the previous approaches of knowledge injection, random injection, and even noise
+injection do not produce notable distinctions. It
+renders us that they may not be regarded as favorable choices. Drawing from previous analyses, we
+observe that prior works (Zhang et al., 2019; Yamada et al., 2020) tend to emphasize the injection
+method itself rather than considering the model’s
+ability to accurately perceive and comprehend the
+injected knowledge. This could be identified as the
+underlying cause of the problem.
+5 More Does Not Mean Better
+Prior results have pointed to a devastating conclusion — the knowledge injection frameworks are
+not generally grounded in the knowledge injected
+in the fine-tuning stage. LLMs are more likely to
+treat knowledge injection in a way resemblance to
+white noise injection. In this section, to answer
+the question why the injected LLMs treat the injected knowledge as noise during the fine-tuning
+stage, we begin to analyze the reasons behind thisphenomenon.
+As we posit before, excessive and overly complex injecting knowledge may be partially responsible for this issue. To validate our hypothesis,
+we conducted further experimental explorations by
+increasing the quantity of relevant knowledge injected at once. An excessive amount of knowledge
+may not necessarily indicate better performance,
+and in some cases, it could lead to a performance
+drop, as per Figure 3.
+Experiment Details. In previous ablation experiments, there are mainly two types of knowledge
+injection in the fine-tuning stage, text-based and
+embedding-based. It is hard to design related experiments in embedding-based knowledge-injected
+methods, for adding different knowledge embeddings at a single point may lose a lot of information
+from those knowledge embeddings. However, textbased knowledge-injected methods like K-BERT,
+which are designed for mass knowledge injection
+(such as the design of soft-position embedding and
+seeing layer), are unfit for this kind of experiment.
+Based on these, we design a straightforward textbased injection method. This method involves
+utilizing the corresponding title of the mentions
+to label the mentioned entity within the text and
+appending the corresponding triplet of the mentions at the text’s conclusion. To give a concrete
+example, given the original input text, Grumpy
+Cat, the internet’s most famous cat, died at 7 years
+old. is transferred to be: *Grumpy Cat* Grumpy
+Cat, the internet’s most famous cat, died at 7
+years old. (Grumpy Cat type cat). It can be defined as y = f(x,(k1, k2, . . . , kn)), where n is
+the amount of injecting knowledge we limited and
+(k1, k2, . . . , kn) refer to wiki triples knowledge 3.3.
+To strictly control the variables and correspond to
+the previous experimental analysis, we use BERTbase as the baseline and keep the same fine-tuning
+settings as ERNIE.
+Analysis. Figure 3 shows the performance difference change between knowledge injection and
+random injection on Open Entity and FewRel in the
+text-based method experiment, With the increase of
+injected knowledge. We could observe that as the
+number of injected triples increases, the disparity
+between knowledge injection and random injection
+diminishes on the whole.
+Takeaways ②. More does indeed not mean better without controlling knowledge purity. Consequently, it is imperative to direct our focus from
+injecting more knowledge to injecting more refined
+and targeted knowledge.
+6 A Remedy by a Simple Method
+In this section, we provide an (embarrassingly) simple fix (only in fine-tuning stage) that succeeds in
+all the aforementioned ablation tests. To alleviate
+the problem of knowledge injection failure, we introduce conceptual knowledge, which may be more
+clean and abstract, as a remedy. To validate the effectiveness of the remedy, we devise the last piece
+of our protocol.
+Injection Details. In particular, we propose to
+alter the injected knowledge with a much cleaner
+and more concise one: y = f(x, kc), where kc
+is the conceptual knowledge 3.3 we construct. Incontrast to the factual knowledge base Wikidata
+(including more than 80 million entities), the conceptual knowledge base Wordnet is significantly
+smaller, consisting of only 117 thousand concepts.
+And as the conceptual network (structure of Wordnet) deepens, the conceptual knowledge base can
+be refined and pruned to a greater extent. With the
+conceptual knowledge, the example in section 5
+is transferred to be: *Grumpy Cat* Grumpy Cat,
+the internet’s most famous cat, died at 7 years old.
+(Grumpy Cat cat animal).
+Main Results. We choose BERT-base as our
+backbone and baseline, and follow the previous
+protocol. Notice that, among the comparisons, all
+setups are kept identical except for the different
+forms of injected knowledge. As shown in Table 6
+and 7, we draw the following observations: (i)-
+the performance difference between correct knowledge injection and random injection has been apparently enlarged compared to previous sections, e.g.
++3.91 F1 on the two relation-extraction datasets;
+(ii)-this difference on Open Entity remains relatively smaller (0.32 F1), but it is still better than
+previous ablation experiment results (≤0.06 F1).
+We speculate that this might be caused by the small
+scale (only 2000 samples for training and testing
+each) of the dataset.
+Experiment in ChatGPT To test the practical
+effectiveness of concept injection in ChatGPT, we
+extracted some data from TACRED. This experiment was divided into three groups:
+1. Group 1 adopts the text format of paragraph
+"Injection Details", without triples in the end;
+2. Group 2 retains and injects all the wiki
+triple knowledge (k1, k2, . . . , kn), just as y =
+f(x,(k1, k2, . . . , kn));
+3. Group 3 injects conceptual knowledge kc, exactly as y = f(x, kc).
+The results demonstrate that both Group 1 and
+Group 2 exhibit an accuracy level of 88%. Conversely, Group 3, which incorporates conceptual
+knowledge, achieves a higher accuracy rate of 92%,
+by an absolute 4% enhancement. It implies that
+concept injection may exert a discernible impact
+on ChatGPT. For more experimental information,
+please refer to Appendix D.1.
+Takeaways ③. Pruning the knowledge source
+is essential for successful knowledge injection into
+language models.
+7 Conclusion
+In this article, we present a comprehensive empirical study of current knowledge injection frameworks. Unfortunately, with a series of testing and
+ablation protocols we propose, most, if not all, prior
+knowledge injection methods perform erroneously.
+We then provide an interpretation from the similarity of noise injection. We finally provide a (very)
+simple remediation method that may remedy the
+issues. With this work, we wholeheartedly encourage the community towards (i)-further checking
+the knowledge injection methods; (ii)-focusing a
+bit more on the side of the knowledge itself, rather
+than the entire dedication to the knowledge injection mechanism or the neural architectures. We present our limitations of this work in this section. First, we only pick the most influential, representative and iconic knowledge-injection methods
+and datasets to form the main body of investigation.
+Admittedly, there are other works proposed in recent years (introduced in Section 2.2), but that is
+perhaps beyond the scope of this paper.
+Second, we primarily dedicate our extensive
+study to the knowledge injection performed during fine-tuning. The reasons are three-fold: (i)-
+knowledge injected within the fine-tuning stage is
+the most dominant paradigm in a real-world application, compared to the prompting schemes with
+pre-training which is significantly more unstable;
+(ii)-knowledge injection in the fine-tuning stage extracts much less computational and carbon cost, so
+most of the research groups worldwide can freely
+reproduce our results; (iii)-if we extrapolate into
+the future of the LLMs, it is trendy that these models’ sizes may keep growing. At that point, we
+believe the portions of the model (say, the first couple layers, some intermediate layers, or the penultimate layers, respectively) can still be fine-tuned
+and manageable. By contrast, pre-training a whole
+large LLM with external knowledge-incorporated
+and/or prompted data would become exponentially
+harder.
+Last but perhaps not least, due to computational
+limitations, we conduct the relevant experiments
+only on BERT and RoBERTa models. However,
+We also provide primary investigation on LLMs,
+such as ChatGPT. The work’s primary objective
+is to explore and contribute to integrating external
+knowledge into Language Model architectures.

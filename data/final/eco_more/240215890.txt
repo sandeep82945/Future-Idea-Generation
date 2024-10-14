@@ -1,0 +1,224 @@
+We study a contract design problem between a principal and multiple agents. Each agent participates in an independent task with binary outcomes (success or failure), in which it may exert costly effort towards improving its probability of success, and the principal has a fixed budget which it can use to provide outcome-dependent rewards to the agents. Crucially, each agent’s reward may depend not only on whether she succeeds or fails, but also on whether other agents succeed or fail, and we assume the principal cares only about maximizing the agents’ probabilities of success, not how much of the budget it expends. We first show that a contract is optimal for some objective if and only if it gives no reward to unsuccessful agents and always splits the entire budget among the successful agents. An immediate consequence of this result is that piece-rate contracts and bonuspool contracts, two types of contracts which are well-studied and motivated in the literature on multi-agent contract design, are never optimal in this setting. We then show that for any objective, there is an optimal priority-based weighted contract, which assigns positive weights and priority levels to the agents, and splits the budget among the highest-priority successful agents, with each such agent receiving a fraction of the budget proportional to her weight. This result provides a significant reduction in the dimensionality of the principal’s optimal contract design problem and gives an interpretable and easily implementable optimal contract. Finally, we discuss an application of our results to the design of optimal contracts with two agents and quadratic costs. In this context, we find that the optimal contract assigns a higher weight to the agent whose success it values more, irrespective of the heterogeneity in the agents’ cost parameters. This suggests that the structure of the optimal contract depends primarily on the bias in the principal’s objective and is, to some extent, robust to the heterogeneity in the agents’ cost functions. NYU Abu Dhabi; sumitgoel58@gmail.com; 0000-0003-3266-9035 Technion Israel Institute of Technology; whanncar@gmail.com; 0000-0002-4273-6249 Supported at the Technion by a Zuckerman fellowship. 1 introduction Consider a principal who has assigned individual tasks to multiple agents. The agents exert some effort towards succeeding in their respective tasks, which determines their probability of success. The principal does not observe the effort exerted by the participants, but gets to observe whether the agents succeeded or failed. For instance, consider a tech firm running a crowdsourcing contest in which the participants work towards coming up with an algorithm to solve a programming problem. The tech firm can check if a participant’s submission works by running it on some test cases, but cannot directly observe the effort exerted by the participants. Alternatively, consider a sales manager for a firm who has hired some salespeople to sell the firm’s product. The manager can observe if the salesperson was able to sell the product or not, but cannot directly observe the effort that the salesperson exerted towards making the sale. For such environments, we study the principal’s problem of finding a contract, which is a mapping from observed outcomes to a reward for each agent, so as to incentivize the agents to expend effort into increasing their probability of success. This environment presents a classic example of the hidden action assumption in principalagent models leading to problems of moral hazard. While there is a vast literature studying such problems, it typically assumes that even though the principal suffers a monetary cost from providing higher rewards/wages, it is unconstrained in its capacity to reward the agents. But there are important settings in which the principal might be budget constrained, and additionally, might not care about how much of this budget it exhausts in incentivizing the agents. For instance, the sales manager might be endowed with an exogenous and fixed budget by the firm that it can use towards rewarding its sales force, and the manager might not care how much of this budget it exhausts as long as it able to get the sales in. For the tech firm, the returns from getting a successful submission might be substantially higher than the cost of rewarding the agents, and so it may not care so much about the expenses involved in providing the rewards. With such considerations in mind, we consider the principal’s contract design problem under the assumption that it is budget constrained and that it does not care about how much of the budget is exhausted in rewarding the participants. Our first result identifies a class of contracts whose equilibria characterize the Pareto frontier of the success probabilities that can be sustained in equilibrium. This class of contracts, which we refer to as successful-get-everything (SGE) contracts, has the property that only the successful agents are rewarded, and in addition, the entire budget is split among them. An important consequence of this result is that some contracts that have been well-studied and motivated in the literature, like piece-rate contracts (each agent gets a fixed reward if it succeeds and nothing if it fails) and bonus-pool contracts (a group of agents get rewarded only if all of them succeed), actually lead to Pareto inferior equilibria in our setting. In comparison to these contracts, which support fully independent or fully joint evaluation of the agents’ performance, SGE contracts can be interpreted as inducing competition among the agents, since they are all competing for a fixed budget, and their share of the prize is typically decreasing in the set of agents that succeed. Thus, our result suggests that a
+budget-constrained principal who does not care about how much of the budget it exhausts is better off designing contracts that induce competition among the agents as compared to those that foster teamwork or even treat them independently. Next, we identify a natural subclass of SGE contracts, which we refer to as priority-based weighted (PW) contracts, and we show that these contracts are sufficient to implement the Pareto frontier. A priority-based weighted contract assigns positive weights and priority levels to the agents, and splits the budget among the highest-priority successful agents, with each such agent receiving a fraction of the budget proportional to her weight. These contracts can actually be well-approximated by simple weighted contracts which are PW contracts in which all agents have the same priority. Since the weighted contracts are defined by just a weight for each agent, the optimal contract is easy to interpret, and the dimensionality of the search space is reduced from exponential to linear in the number of agents. In other words, a principal, whose objective is monotone increasing in the success probabilities, can simply optimize over the much smaller class of weighted contracts as compared to optimizing over all contracts or all SGE contracts. We further show that for any equilibrium on the Pareto frontier there is a unique PW contract that implements it, and hence the set of PW contracts is minimal among sets of contracts that implement the Pareto frontier. Lastly, we stress that both our results make no assumptions about heterogeneity of the agents’ cost functions. This allows us to investigate the question of how the structure of the optimal contract might depend on environmental features like the heterogeneity between the agents and the inherent bias of the principal. As an application, we study this for the special case of two agents with quadratic costs and find that under the optimal contract, the principal assigns a higher weight to the agent whose success it values more, irrespective of the discrepancy in the agents’ cost parameters. In particular, if the sales manager derives equal value from the potential sales made by two salespeople, its optimal contract assigns equal weights to them, irrespective of how talented each of them might be. Perhaps surprisingly, this suggests that in some settings, the structure of the optimal contract exhibits a degree of robustness to heterogeneity among the agents. Related literature
+There is a vast literature on principal-agent problems under moral hazard. In the canonical model with a single agent (Holmström [18], Grossman and Hart [15]), the principal offers a wage contract that defines the agent’s payment as a function of its observed output, and then the agent chooses some unobserved action (effort) that determines the distribution over outputs. A key finding is that optimal contracts reward the agent for output realizations that are informative about the target level of effort (informativeness principle), and may therefore be non-monotone in output. There has since been significant work studying variants of this single-agent model incorporating flexible actions (Georgiadis et al. [13]), multiple tasks (Holmstrom and Milgrom [21], Bond and Gomes [4]), bounded payments (Jewitt et al. [25]), combinatorial actions (Dütting et al. [9], Ezra et al. [11]), and informationally robust
+design (Carroll [5], Zhang [40]). See Georgiadis [12], Holmström [20] for surveys of this literature. In particular, Bond and Gomes [4] study a related model in which a single agent chooses effort levels for multiple tasks, each of which may succeed or fail, and finds that there is excessive concentration on certain tasks and the structure of the optimal contract is fragile. Our paper contributes to the literature studying a principal contracting with multiple agents. A major focus in this domain has been on the comparison of independent performance evaluation (through piece-rate contracts), joint performance evaluation (through bonus-pool contracts), and relative performance evaluation (through rank-order tournaments) in incentivizing the agents. Even though relative performance evaluation is noisier and joint performance evaluation may lead to free riding, the literature has identified conditions under which the optimal contract incorporates features of rank-order tournaments (Green and Stokey [14], Lazear and Rosen [27], Malcomson [28], Mookherjee [30], Nalebuff and Stiglitz [31]) or bonus-pool contracts (Itoh [24], Imhof and Kräkel [22], Kambhampati [26]). A related stream of literature with multiple agents has studied moral hazard in teams where the agents’ actions jointly determine the team output and the principal cannot disentangle the contributions of individual agents (Babaioff et al. [1], Holmstrom [19], Battaglini [3], Che and Yoo [7], Winter [39], Dütting et al. [10], Ezra et al. [11], Prendergast [32], Dai and Toikka [8]). Some other related papers include Castiglioni et al. [6], Haggiag et al. [16], Baiman and Rajan [2], who study the multi-agent contract design problem from very different perspectives. 2 model There is a principal and n risk-neutral agents. Each agent i ∈ [n] participates in an independent task, in which it may succeed or fail. Each agent chooses a success probability, pi ∈ [0, 1], and incurs a cost of ci(pi) in doing so. We assume that the each agent’s cost function ci is strictly convex with ci(0) = c ′ i(0) = 0 and c ′′ i > 1. The principal would like to incentivize the agents to maximize the probability that they succeed in their tasks. The principal does not observe the agents’ choices pi, only whether each agent succeeds or fails in her task. Thus, the principal can design a contract that rewards the agents only based on the outcomes of the tasks. Additionally, we assume that the principal has a fixed budget B = 11 that it can use to incentivize the agents so that the total reward for the agents under any outcome cannot exceed the budget. Definition 2.1. A contract is a function f = (f1, . . . , fn) : 2 [n] → R [n] + such that
+• fi(S) ≥ 0 (limited liability) and
+•
+∑
+j∈[n] fj(S) ≤ 1 (budget constraint)
+1The choice of B = 1 is for convenience in exposition; the same results hold with an arbitrary B > 0 with the assumption that c′′
+i > B.
+for each i ∈ [n] and S ⊆ [n]. Under the contract f , if S is the set of agents who succeed, then each agent i receives the reward fi(S). Thus, each agent’s reward may depend not only on whether she succeeds, but also on the success of the other agents. We will denote by F the set of contracts. We assume that the principal cares only about maximizing the agents’ probabilities of success, not how much of the budget it expends. Formally, we assume the principal’s preferences are represented by a continuous, strictly increasing objective V (p1, . . . pn). For example, the objective for a risk-neutral principal who makes a profit of wi if agent i succeeds in her task would be given by
+V (p1, . . . , pn) = ∑
+i∈[n]
+wipi. A contract f ∈ F defines a normal-form game between the n agents, in which each agent chooses pi ∈ [0, 1] and agent i ′s payoff under the profile p = (p1, . . . , pn) is
+ui(p) = E[fi(S)]− ci(pi) = ∑
+S⊂[n]
+fi(S)Pr [n] p (S)− ci(pi)
+where Pr[n]p (S) = ∏
+i:i∈S
+pi ∏
+j:j∈[n]\S
+(1− pj). Observe that since the expected reward ∑ S⊂[n] fi(S)Pr [n] p (S) is linear in pi and the cost functions are strictly convex, each agent’s utility function ui is strictly concave in pi. It follows then that for any contract f ∈ F , a pure-strategy Nash equilibrium exists2. We will denote by E(f) the set of equilibria for the contract f , and by E−1(p) the set of contracts for which p is an equilibrium. We further denote by E the set of profiles that can be induced as equilibria of some contract f :
+E := {p ∈ [0, 1]n : p ∈ E(f) for some f ∈ F}. We say that p ∈ E is Pareto optimal3 if it is a maximal element of E , and we denote by P the set of Pareto optimal profiles. The marginal utility of agent i at profile p is
+∂ui(p)
+∂pi = ri(f, p−i)− c
+′ i(pi),
+2While we haven’t been able to establish uniqueness in general, we can use the diagonally strict concavity condition of Rosen [33] to show that equilibrium is unique if the cost functions are sufficiently convex. 3This definition of Pareto optimality is non-standard; however, as we show, maximal elements of E correspond to maximal equilibrium utility profiles in a sense that we make precise later. where
+ri(f, p−i) = E[fi(S) | i ∈ S]− E[fi(S) | i /∈ S] = ∑
+S⊂[n]−i
+(fi(S ∪ {i})− fi(S))Pr [n]−i p−i (S)
+is agent i’s expected gain in reward from succeeding as compared to failing in her task. It follows from concavity of ui that agent i has a unique best response given by the solution to the first order condition
+c′i(pi) = max{0, ri(f, p−i)}. (1)
+We denote this unique best response by bi(f, p−i). Note that the assumption that c ′′ i > 1 implies c′i(1) > 1. Together with the fact that under the principal’s budget constraint ri(f, p−i) ≤ 1, this ensures that bi(f, p−i) < 1. Finally, the principal’s problem is then to find a contract f ∈ F and an equilibrium p ∈ E(f) which maximizes V (p), Since V is increasing and continuous, it is sufficient to find a profile p∗ ∈ argmaxp∈PV (p) and a contract f
+∗ ∈ E−1(p∗). In this paper, we will provide a characterization of P and a canonical contract for each p ∈ P. We will use this characterization to solve for some natural objectives of the principal. 3 main results To set the stage, consider the single-agent case. In this case, a contract f specifies the agent’s reward when she is successful, f({1}), and her reward when she fails, f(∅). The agent’s relative reward is
+r1(f) = f({1})− f(∅)
+and her best response is
+b1(f) = (c ′ 1) −1(f({1})− f(∅)). Under any objective V , the principal wishes to maximize b1(f). Hence, the principal should choose a contract f that maximizes f({1})− f(∅). Since f({1}) ≤ 1 and f(∅) ≥ 0, this is uniquely achieved by using the contract f with f({1}) = 1 and f(∅) = 0. Hence, the principal rewards the agent with the entire budget if she is successful and gives her no reward if she fails. Our first result shows that aspects of this optimal contract generalize when there is more than one agent. We say that a contract is successful-get-everything if it gives each agent no reward when she fails and it splits the entire budget among those agents who are successful. Definition 3.1. A contract f is successful-get-everything (SGE) if
+• fi(S) = 0 whenever i /∈ S and
+• ∑
+i∈S fi(S) = 1 whenever S 6= ∅. We denote by FSGE the set of SGE contracts. Theorem 1. Suppose p ∈ E(f). Then, p ∈ P if and only if f ∈ FSGE. Observe that contracts like a piece-rate contract (where each agent i gets a fixed reward if she is successful and 0 otherwise), or a bonus pool contract (where each agent gets a nonzero share of the budget only if all agents succeed), are never successful-get-everything. It follows from Theorem 1 that such contracts always produce Pareto inferior outcomes, and so the choice of any such contract would be strictly suboptimal for any objective. In comparison, SGE contracts induce competition between the agents as they are all competing for a fixed budget and their share of the reward will typically decrease (though not necessarily) as more agents are successful. Theorem 1 says that such contracts always lead to Pareto optimal equilibria. Thus, the result suggests that in environments where the principal’s benefit from agents’ success greatly exceeds the cost of incentivizing them, or if the principal operates with an exogenously provided budget, so that it is not concerned about budget exhaustion, fostering competition among the agents through successful-get-everything contracts creates stronger incentives than promoting teamwork via joint performance evaluation through bonus-pool contracts or independent performance assessment through piece-rate contracts. Proving Theorem 1 is quite involved and nontrivial in comparison to the single-agent case. Intuitively, if the principal chooses a contract which is not successful-get-everything, it can adjust the contract in such a way that ri(f, p−i) increases for some agent. However, because p is an equilibrium object, it is not true that an arbitrary increase in reward to a successful agent or decrease in reward to an unsuccessful agent will necessarily produce a Pareto improvement. The proof of Theorem 1 essentially demonstrates that there is always some adjustment that the principal can make that will produce a Pareto improvement. Observe that the set of SGE contracts is Θ(n2n)-dimensional, and a typical SGE contract is complex and hard to interpret. However, as our next result shows, the principal can optimize over an (n− 1)-dimensional, more interpretable set of contracts. We say that f is a weighted contract if there exist (λ1, . . . , λn) with λi > 0 such that
+fi(S) =
+{
+λi∑ j∈S λj , if i ∈ S 0, otherwise
+Weighted contracts assigns weights to the agents and reward each successful agent with a fraction of the budget proportional to her weight. While weighted contracts alone are insufficient to implement the Pareto frontier, the following class of contracts provides a slight generalization which is sufficient. Definition 3.2. A contract f is a priority-based weighted (PW) contract if there are weights (λ1, . . . , λn) with λi > 0 and a non-strict ordering < on the agents such that
+fi(S) =
+{
+λi∑ j∈Top<(S) λj , if i ∈ Top<(S) 0, otherwise
+where Top<(S) = {i ∈ S : i < j ∀j ∈ S}. Priority-based weighted contracts reward each highest-priority successful agent with a fraction of the budget proportional to her weight. We denote by FW and FPW the set of weighted and priority-based weighted contracts, respectively. Note that FW ⊂ FPW ⊂ FSGE. Theorem 2. If p ∈ P, there is a unique contract f ∈ FPW such that p ∈ E(f). In words, if p is Pareto optimal, then there is a unique priority-based weighted contract that implements p. Note that since this contract is unique, the set of PW contracts is minimal among sets of contracts that implement the Pareto frontier. As a consequence of Theorem 2, it follows that it is sufficient for the principal to optimize over the set of PW contracts. Corollary 1. For any strictly increasing, continuous objective V (p),
+sup f∈F sup p∈E(f) V (p) = max f∈FPW max p∈E(f) V (p). We note that Theorems 1 and 2 hold irrespective of the heterogeneity in the agents cost functions. To illustrate our results and investigate how the structure of the optimal contract may depend on the heterogeneity of the cost functions, we solve a tractable but nontrivial example with two agents, quadratic costs, and linear objective. Theorem 3. Suppose n = 2, ci(pi) = 1 2 Cip 2 i with Ci > 1, and V (p1, p2) = wp1 + ·p2. Then, the optimal contract, defined by λ1(w), takes the form
+fi(S) =
+
+ 
+ 
+0, if i /∈ S
+1, if S = {i}
+λi(w), if S = {1, 2}
+,
+where λ2(w) = 1− λ1(w). Moreover, λ1(w) is increasing in w and in particular,
+λ1(w) =
+
+ 
+ 
+0, if w ≤ C1C2−C1 C1C2+C2−1 1 2 , if w = 1 1, if w ≥ C1C2+C1−1 C1C2−C2 . With two agents, the set of PW contracts is parametrized by a single parameter λ that represents agent 1’s share of the budget when both agents succeed, so that fi(S) = 0 whenever i /∈ S, fi(S) = 1 whenever S = {i}, and f1({1, 2}) = 1− f2({1, 2}) = λ. Using equation 1, we solve for the unique equilibrium of such a contract to get that
+p1(λ) = C2 − (1− λ)
+C1C2 − λ(1− λ) p2(λ) =
+C1 − λ
+C1C2 − λ(1− λ) . With this, the principal’s problem becomes maxλ∈[0,1] wp1(λ) + p2(λ). Theorem 3 follows from a straightforward analysis of the first-order condition. As Theorem 3 demonstrates, says that agent 1’s share λ1(w) is increasing in w, and perhaps more surprisingly, λ1(1) = 1 2 regardless of the Ci. Hence, if the principal cares equally about the success of the two agents, it is optimal for the principal to design a symmetric weighted contract that assigns equal weight to the two agents, even if the agents’ costs are heterogeneous. More generally, the principal assigns a higher weight to the agent whose success it values more, though the exact weights might depend on the cost parameters. Thus, Theorem 3 suggests that the structure of the optimal contract is, to some extent, robust to the heterogeneity in the cost functions. We finish the discussion of this example by comparing the performance of PW contracts with that of piece-rate and bonus pool contracts. First, consider a piece-rate contract where agent i receives a reward of λi if she succeeds and 0 otherwise. Under such a contract, p∗i = λi Ci . Observe that for λ ∈ (0, 1), p∗i < pi(λ) for both agents, and for λ ∈ {0, 1}, p∗i < pi(λ) for one of the agents. Hence, by increasing each agent’s reward when she alone succeeds from λi to the entire budget, the principal can induce at least one of the agents to strictly increase their probability of succeeding. Next, under a bonus-pool contract where agent i receives a reward of λi if both agents succeed and a reward of 0 otherwise, both agents choose a probability of success of 0 in equilibrium; hence, every PW contract is better than every bonus-pool contract! 4 pareto optimality In this section, we will introduce and discuss the ideas and techniques that are used to obtain the characterization of optimal contracts given in Theorem 1. First, we show that a principal with arbitrary objectives (not necessarily increasing in pi) can without loss of generality focus on contracts in which agents who fail get nothing. Definition 4.1. A contract f is failures-get-nothing (FGN) if fi(S) = 0 whenever i /∈ S.
+We denote by FFGN the set of FGN contracts. Note that every SGE contract is FGN. Lemma 1. If p ∈ E, there is a contract g ∈ FFGN such that p ∈ E(g). Proof. Let f ∈ F be a contract for which p is an equilibrium. Consider the contract g defined by
+gi(S) =
+{
+λifi(S), if i ∈ S 0, otherwise . where
+λi =
+
+
+
+ri(f, p−i)
+E[fi(S) | i ∈ S] if pi > 0
+0 if pi = 0. . Notice that it follows from the first-order condition in equation 1 that λi ≤ 1 so that g is indeed an FGN contract. Now if pi > 0, agent i’s marginal utility at profile p under the contract g is
+∂ui(p)
+∂pi = E[gi(S) | i ∈ S]− c
+′ i(pi)
+= λiE[fi(S) | i ∈ S]− c ′ i(pi) = ri(f, p−i)− c ′ i(pi) = 0, (because p ∈ E(f))
+so by concavity of payoffs, bi(g, p−i) = pi. If pi = 0, then gi(S) = 0 for all S, so bi(g, p−i) = 0 = pi. Hence, p ∈ E(g). Observe that, given an equilibrium profile p ∈ E , the utilities of the agents at p generally depend on the choice of contract used to induce p. For instance, pi = 0 for all i ∈ [n] is the unique equilibrium under contract f , defined by fi(S) = 0 for all i ∈ [n] and S ⊂ [n], and also under the contract g, defined by gi(S) = 0 for i 6= 1 and g1(S) = 1 for all S ⊂ [n]. But the equilibrium utility of agent 1 is 0 under f and 1 under g. However, as the following result shows, an agent’s utility at p is the same under every FGN contract for which p is an equilibrium. Lemma 2. If f ∈ FFGN and p ∈ E(f), then
+ui(p) = pi · c ′ i(pi)− ci(pi)
+under f for every agent i. Proof. Since f ∈ FFGN , agent i’s utility at profile p is
+ui(p) = pi · ri(f, p−i)− ci(pi). Observe that ri(f, p−i) ≥ 0 since f ∈ FFGN And since p ∈ E(f), it follows from equation 1 that ri(f, p−i) = c ′ i(pi) and the result follows. It follows from Lemmas 1 and 2 that for any p ∈ E , we can write u(p) to unambiguously refer to the utility profile under any FGN contract f ∈ E−1(p). Note that since the agents’ cost functions are strictly concave,
+d
+dx (x · c′i(x)− ci(x)) = x · c ′′ i (x) > 0
+for x ∈ (0, 1), so u(p) is strictly increasing in p. Denote by U the set of equilibrium utility profiles,
+U := {u ∈ R[n] : u(p) = u for some p ∈ E}. Corollary 2. If p ∈ E , then p ∈ P if and only if u(p) is a maximal element of U . This result squares our nonstandard definition of Pareto optimality with the standard notion. An interesting consequence is that a principal restricted to using FGN contracts who cared about maximizing the agents’ utilities rather than their success probabilities could still maximize over P, and from Theorem 2, maximize over the class of PW contracts. As described above, arbitrarily increasing the reward for some agent in the case of success or decreasing the reward of some agent in case of failure does not necessarily result in a Pareto improvement, since the increase in one agents’ probability of success may incentivize another agent to decrease her probability of success. However, in the case where some agent chooses pi = 0, there is a simple modification that induces her to increase her probability of success without affecting the other agents’ incentives. As a consequence, it follows that every agent chooses a nonzero probability of success in every Pareto optimal equilibrium profile. Lemma 3. If p ∈ P, then pi > 0 for all i. Proof. Let f ∈ E−1(p) be an FGN contract, and suppose pk = 0. Consider the contract g where gi(S) = fi(S \ {k}) for i 6= k and
+gk(S) =
+{
+1, if S = {k}
+0, otherwise
+Let p′k = bk(g, p−i), and let p ′ = (p′k, p−k). Observe that since bk(g, p−i) > 0, p ′ k > 0, and for i 6= k, ri(g, p ′ −i) = ri(f, p−i), so bi(g, p−i′) = bi(f, p−i) = pi. Hence, p ′ ∈ E(g) and p′ dominates p. Thus, if pk = 0 for some k, then p /∈ P, and the result follows. An important and useful consequence of Lemma 3 is that if p is Pareto optimal, it must be that 0 < pi < 1 for all i ∈ [n], and therefore, for any S ⊂ [n], Pr [n] p (S) > 0. In the following lemma, we note a useful property of FGN and SGE contracts. Lemma 4. For any p ∈ E , E−1(p) ∩ FFGN , E −1(p) ∩ FSGE are compact, convex subsets of F . Proof. Note first that since F is defined by weak linear inequalities, F is closed and convex. Since |fi(S)| ≤ 1 for every f ∈ F , i ∈ [n], and S ⊆ [n], F is bounded, and it follows that F is compact. Since FFGN and FSGE are defined by weak linear inequalities and FSGE ⊆ FFGN ⊆ F , they are also bounded, so they are also compact and convex. Now, recall from equation 1 that f ∈ E−1(p) if and only if c′i(pi) = max{0, ri(f, p−i)} for all i. If f ∈ FFGN , then ri(f, p−i) ≥ 0, so f ∈ E
+−1(p) if and only if c′i(pi) = ri(f, p−i) for all i. Since this is a system of equations that is linear in f , it follows that E(p) ∩ FFGN and E(p) ∩ FSGE are closed and convex, and the result follows. This property is useful in that it allows us to obtain contracts that still have the same equilibrium while also having some additional properties. The following result will be the key to proving the optimality of SGE contracts. For p ∈ [0, 1)n, define
+z(p) = ∑
+i
+pi · c ′ i(pi) +
+∏
+i
+(1− pi). Lemma 5. If p ∈ E , then z(p) ≤ 1, and if p ∈ E(f) for some f ∈ FSGE, then z(p) = 1. Proof. Observe that for any FGN contract f and profile p,
+E
+[
+∑
+i∈S
+fi(S)
+]
+= ∑
+i
+P[i ∈ S] · E[fi(S) | i ∈ S] = ∑
+i
+pi · ri(f, p−i). Hence, if p ∈ E(f), then by equation 1,
+E
+[
+∑
+i∈S
+fi(S)
+]
+= ∑
+i
+pi · c ′ i(pi) = z(p)− P[S = ∅]. so
+z(p) = E
+[
+∑
+i∈S
+fi(S)
+]
++ P[S = ∅]. Moreover,
+E
+[
+∑
+i∈S
+fi(S)
+]
+= P[S 6= ∅] · E
+[
+∑
+i∈S
+fi(S) |S 6= ∅
+]
+≤ P[S 6= ∅],
+with equality if and only if f is SGE. Hence, for p ∈ E ,
+z(p) ≤ P[S 6= ∅] + P[S = ∅] = 1,
+and if p is an equilibrium for some SGE contract, then z(p) = 1. 4.1 characterization of optimal contracts In this section, we discuss the key ideas to prove Theorem 1, which can be reformulated equivalently as p ∈ P if and only if E−1(p) ⊆ FSGE. We first show that if p ∈ E(f) is Pareto optimal, then the contract f must be SGE. Lemma 6. If p ∈ P and p ∈ E(f), then f ∈ FSGE. One might suspect that when a contract f has some slack at some S ⊂ [n], the principal can simply increase the reward of some agent i ∈ S and that this new contract g will lead to a Pareto dominating equilibrium p′. It turns out this is not necessarily the case because even though the marginal benefit for agent i is higher under g than f , and so the best response of agent i will also be higher, this increase in agent i’s response might diminish some other agent j’s marginal benefit leading agent j to reduce its pj. Thus, because of these equilibrium effects, such a transformation of a non SGE contract may not necessarily lead to Pareto improvements. However, if a contract f is such that the budget is not being exhausted under any outcome S, then we can actually scale the contract simultaneously for all agents (which may involve increasing or decreasing an agent’s share) and at all S ⊂ [n] so as to obtain a Pareto superior equilibrium. Now to prove Lemma 6, we basically show that if p ∈ E(f), f ∈ FFGN and f /∈ FSGE, then we can use the previous lemmas, and in particular Lemma 4 about the convexity of E−1(p) ∩ FFGN , to construct a contract g ∈ E
+−1(p) ∩ FFGN which has the property that the budget is not exhausted under any outcome S. Going into more detail, for any p ∈ P, we define the set
+Kp := {S ⊆ [n] : ∑
+i∈S
+fi(S) < 1 for some f ∈ E −1(p) ∩ FFGN},
+and show that if Kp 6= {φ}, we can find a p ′ that Pareto dominates p. First, we show that Kp is closed under taking subsets. The argument is that if S ∈ Kp and T ⊂ S, we can pick an agent i ∈ T and decrease its reward under T while increasing its reward in S so that p is still an equilibrium. Then, we get that T ∈ Kp. By a similar argument, we show that Kp is also closed under unions and thus, Kp = 2
+κp where κp ⊂ [n]. Next, we show that for any f ∈ E−1(p)∩FFGN , agents in κ C p must have priority over those in κp in that if any agent in κ C p succeeds, agents in κp get no reward. Using this, we construct a contract h ∈ E −1(p)∩FFGN such that ∑
+i∈S hi(S) < 1 for any S ⊂ κp and the reward for agent i /∈ κp do not depend on the success or failure of agents in κp. We then show that we can manipulate the awards for S ⊂ κp to get a new contract h
+′ such that p′ ∈ E(h′) where p′i = pi + ǫ for i ∈ κp and ǫ > 0 while p′i = pi for i /∈ κp. Thus, it must be that κp = φ which complete the proof of this part. Observe that we get the following as an immediate consequence of Lemmas 5 and 6. Corollary 3. If p ∈ P, then
+z(p) = ∑
+i
+pi · c ′ i(pi) +
+∏
+i
+(1− pi) = 1. Corollary 3 provides a simple equation in terms of the model parameters (cost functions) whose solutions contain the Pareto frontier P. So in principle, the principal can potentially try to optimize its objective V (p) over the set of solutions to the equation z(p) = 1, and then check if there is a contract f ∈ FSGE that implements this optimal solution. The second direction of the characterization says that if f is an SGE contract and p ∈ E(f), then there is no p′ ∈ E which dominates p.
+Lemma 7. If f ∈ FSGE and p ∈ E(f), then p ∈ P.
+Proof. Suppose f ∈ FSGE, p ∈ E(f), but p is not Pareto optimal. Then, there must exist a Pareto optimal q ∈ P that Pareto dominates p. Observe that since p ∈ E(f) and f ∈ FSGE, we have from Lemma 5 that z(p) = 1. Also, since q ∈ P, we have from Corollary 3 that z(q) = 1. Now, consider the following:
+∂z
+∂xi
+∣ ∣ ∣
+x≥p = xic
+′′ i (xi) + c ′ i(xi)−
+∏
+j 6=i
+(1− xj)
+> c′i(xi)− ∏
+j 6=i
+(1− xj) (because ci is convex)
+≥ c′i(pi)− ∏
+j 6=i
+(1− xj) (because ci is convex)
+≥ c′i(pi)− ∏
+j 6=i
+(1− pj) (because xj ≥ pj)
+≥ 0 (because p ∈ E(f))
+Note that the last inequality holds because we know from the first order condition in equation 1 that c′i(pi) = ri(f, p−i) and ri(f, p−i) ≥ ∏
+j 6=i(1− pj) since f ∈ FSGE. Now, since q Pareto dominates p, q ≥ p and it follows from above that z(q) > z(p). But this is a contradiction since z(q) = z(p) = 1. It follows then that p ∈ E(f) is Pareto optimal. Together, Lemmas 6 and 7 give Theorem 1. 4.2 implementing the pareto frontier As Theorem 1 shows, Pareto optimal equilibria are exactly the equilibria of SGE contracts, so it is sufficient for the principal to optimize over SGE contracts. Given the high dimensionality of the set of SGE contracts, this may still present the principal with a computationally difficult problem, and the optimal contract may be difficult to understand and implement. Theorem 2 provides a significant reduction in the complexity of the principal’s optimization problem, reducing the search space from a (2n−1(n− 2)+1)-dimensional space of difficult to
+interpret contracts to an (n− 1)-dimensional space of easily interpretable contracts. To prove Theorem 2, we first obtain a useful relationship between any PW contract f and the best responses bi(f, p−i) under any Pareto optimal profile p ∈ P.
+Lemma 8. Suppose p ∈ P and f ∈ FPW . Then, for every i ∈ [n],
+∑
+j:i<j
+pj [ c′j (bj (f, p−j))− c ′ j (pj) ] ≤ 0. And in particular, ∑
+i∈[n]
+pi [c ′ i(bi(f, p−i))− c ′ i(pi)] = 0. Proof. We want to show that if p ∈ P and f ∈ FPW , then for every i ∈ [n],
+∑
+j:i<j
+pj [ c′j (bj (f, p−j))− c ′ j (pj) ] ≤ 0,
+where < denotes the priority relation induced by f ∈ FPW . Suppose p ∈ P, g ∈ E−1(p), and f ∈ FPW . We know from the first-order condition in equation 1 that for all i ∈ [n],
+c′i (bi (f, p−i)) = ∑
+S⊂[n]−i
+fi(S ∪ {i}) Pr [n]−i p−i (S). Multiplying both sides by pi and adding up the equations for agents j such that i < j, we get
+∑
+j:i<j
+pjc ′ j(bj(f, p−j)) =
+∑
+j:i<j
+∑
+S:j∈S
+fj(S) Pr [n] p (S)
+= ∑
+S⊆{j:i<fj}
+Pr[n]p (S) (because f is PW)
+≤ ∑
+j:i<j
+∑
+S:j∈S
+gj(S) Pr [n] p (S) (because g ∈ FSGE)
+= ∑
+j:i<j
+pjc ′ j(pj) (because g ∈ E −1(p))
+Note that the inequality becomes equality when we are adding up over all i ∈ [n] and thus, we get ∑
+i∈[n] pi [c ′ i(bi(f, p−i))− c ′ i(pi)] = 0. Now we are ready to show that for any Pareto optimal p, there exists a PW contract that implements p.
+Lemma 9. Suppose p ∈ P. Then, there exists f ∈ FPW such that p ∈ E(f). To prove Lemma 9, we define for any f ∈ FPW ,
+Z(f) := max i∈[n]
+[c′i(bi(f, p−i))− c ′ i(pi)] ,
+and show that z = inf
+f∈FPW Z(f) = 0. From Lemma 8, we already know that z ≥ 0. To prove z = 0, we basically show that if z > 0 and f ∈ FPW attains z, then we can find another contract g ∈ FPW so that it attains z′ < z. Informally, let z = c′i(bi(f, p−i))− c ′ i(pi) > 0, where i is chosen so that it has the lowest priority among all agents with this property under f . Then all agents j with lower priority than i must be such that c′j(bj(f, p−j))− c ′ j(pj) < z. We then construct another PW contract g by grouping together agents in priority group of i and those in the immediately lower priority group by giving a small weight ǫ to agents in the lower priority group. Then, the best response of any agent j in i’s priority group to p−j will be smaller under g than f while for any agents j in the lower priority group, it will be greater under g than f . For ǫ > 0 small enough, we will have Z(g) < z. With z = 0, we use compactness of FPW and Lemma 8 to get that there must be an f ∈ FPW such that all i ∈ [n],
+(c′i(bi(f, p−i))− c ′ i(pi)) = 0
+which implies f ∈ E−1(p). Thus, for any Pareto optimal p, there is a PW contract f such that p ∈ E(f). The following lemma establishes the uniqueness of the PW contract that implements p.
+Lemma 10. Suppose f ∈ FPW and p ∈ E(f). Then for any g ∈ FPW such that g 6= f , p /∈ E(g). Proof. Consider the case where f, g are weighted contracts and suppose towards a contradiction that p ∈ E(f) ∩ E(g). Let i ∈ [n] denote the agent with the smallest weight ratio λ g i λ f i , where λf , λg represent the weights that define the contracts f, g ∈ FW . It follows from the definition of weighted contracts that for any S ⊂ [n] such that i ∈ S, agent i’s reward is weakly lower under g than f . As a result, it must be that ri(g, p−i) < ri(f, p−i) and so it can’t be that bi(g, p−i) = bi(f, p−i). It follows that two different weighted contracts cannot have the same equilibrium. The argument extends in a natural way to PW contracts. Together, Lemmas 9 and 10 give Theorem 2. Moreover, it follows from Lemma 10 that the class of PW contracts is minimal among classes of contracts that implement the Pareto frontier. 5 conclusion We study a contract design problem between a principal and multiple agents. In a setting where the principal is budget-constrained and does not care about how much of the budget is exhausted in incentivizing the agents, we show that the maximal set of effort levels that can be sustained in equilibrium is characterized by equilibria of contracts in which the entire budget is split among agents that succeed. Hence, piece-rate and bonus-pool contracts are never optimal in this setting. We further identify a natural subclass of priority-based weighted contracts that are sufficient to implement the Pareto frontier of equilibria that can be induced in equilibrium. The result provides a significant reduction in dimensionality of the optimal contract design problem. We illustrate this by applying our results to derive the optimal contract for a special parametric case with two agents. Our result for this case suggests that the structure of optimal contract is, to some extent, robust to the heterogeneity in the agents’ cost functions. 

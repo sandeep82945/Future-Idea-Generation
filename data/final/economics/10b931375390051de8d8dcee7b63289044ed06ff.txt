@@ -1,0 +1,2094 @@
+Objective The aims of this study was to appraise the health economic evidence for adjuvant chemotherapy (AC) strategies in stage II and III colon cancer (CC) and identify gaps in the available evidence that might inform further research. Method A systematic review of published economic evaluations was undertaken. Four databases were searched and full-text publications in English were screened for inclusion. A narrative synthesis was performed to summarise the evidence. Results Thirty-eight studies were identified and stratified by cancer stage and AC strategy. The majority (89%) were full economic evaluations considering both health outcomes, usually measured as quality-adjusted life years (QALYs), and costs. AC was found to be cost-effective compared to no AC for both stage II and III CC. Oral and oxaliplatin-based AC was cost-effective for stage III. Three months of CAPOX was cost-effective compared to 6-month in high-risk stage II and stage III CC. Preliminary evidence suggests that biomarker approaches to AC selection in stage II can reduce costs and improve health outcomes. Notably, assessment of QALYs were predominantly reliant on a small number of non-contemporary health-utility studies. Only 32% of studies considered societal costs such as travel and time off work. Conclusions Published economic evaluations consistently supported the use of AC in stage II and III colon cancer. Biomarker-driven approaches to patient selection have great potential to be cost-effective, but more robust clinical and economic evidence is warranted. Patient surveys embedded into clinical trials may address critical knowledge gaps regarding accurate assessment of QALYs and societal costs in the modern era. background A wide range of adjuvant (AC) strategies are currently employed in stage II and III colon cancers (CC) following surgical resection. Single-agent regimens include intravenous 5-fluorouracil (5FU) or oral equivalents such as capecitabine or tegafur-uracil (UFT). Oxaliplatin-based doublet chemotherapy, either FOLFOX (5-FU + oxaliplatin) or CAPOX (capecitabine + oxaliplatin), are standard in stage III but can also be considered in select stage II patients. For patients undergoing oxaliplatin-based chemotherapy, the results of the International Duration Evaluation of Adjuvant Chemotherapy (IDEA) collaboration suggests that the duration of oxaliplatin-based AC may be shortened from 6 to 3 months in those patients assessed to be at lower risk of recurrence based on tumour and nodal staging [1]. As CC incidence is projected to increase over time, questions surrounding the economic costs of AC strategies will become increasingly important [2, 3]. As an illustration, accounting for drug acquisition, delivery, and management of toxicities, a 6 month course of adjuvant FOLFOX chemotherapy costs in excess of 10,000 US dollars (USD) per patient [4, 5]. Strategies to reduce AC utilisation, such as shortening duration of oxaliplatinbased AC from 6 to 3  months, has been projected to result in healthcare system savings of 3.6 to 61.4 million USD over a 5 year period depending on the country [6]. Another strategy to reduce costs is the use of molecular and genomic biomarkers that allows more precise identification of patients at high risk of recurrence that would most likely benefit from AC, reducing overtreatment by avoiding AC in patients who would least benefit [7–10]. In many countries, such new technologies require reimbursement through taxpayer funds to ensure affordable access. Navigating reimbursement requires demonstration of economic value, which is usually provided by health economic evaluations. As these evaluations are usually derived from clinical trials, more efforts should be made to design trials with future reimbursement considerations in mind. To appraise the health economic evidence of AC strategies in CC, a systematic review of published evaluations assessing AC treatment strategies in stage II and III CC was undertaken. This review also aimed to identify common assumption and limitations in published evaluations that may inform future trial designs, expediting patient access to new therapies and health technologies. methods This review was designed, performed, and reports in line with the Preferred Reporting Items of Systematic Reviews and Meta-Analyses Guidelines, and prospectively
+registered in the International Prospective Register of Systematic Reviews (CRD42021265063) [11, 12]. search strategy and study selection The literature search was performed on 8th July 2021 using the Ovid platform to access the MEDLINE, EMBASE, Health Technology Assessment, and National Health Service Health Economic Evaluation Database platforms. The search terms utilised are presented in the Additional file  1. No restrictions were applied for the year of publication, but studies were restricted to English language only. An updated search was additionally performed on 10th December 2021. Duplicates were removed and two reviewers independently screened titles and abstracts, followed by full text screening. Disagreement was resolved by consensus. The references of included publications were screened for further articles of interest. The full inclusion and exclusion criteria are presented in Table  1. As this analysis reviews the economic evidence for AC strategies following resection of the primary tumour, studies concerning low rectal cancers, often referred to in literature only as “rectal cancers”, have been excluded as treatment incorporates neoadjuvant radio- and chemotherapy and occasionally, avoidance of surgical resection entirely [13, 14]. In comparison, patients with colon and high rectal cancers, referred to collectively in this review as “colon cancers”, are recommended by guidelines to have upfront resection followed by consideration of AC [15, 16]. An evaluation had to meet all inclusion criteria and not fulfil any exclusion criteria to be included in the systematic review. data extraction Data including general article and clinical information, economic methods, and study outcomes was extracted from all included publications utilising a pre-defined data extraction template in Microsoft Excel. The Consolidated Health Economic Evaluation Reporting Standards (CHEERS) checklist, a set of recommendations guiding economic evaluation reporting, was adapted as a report-quality scoring tool, scoring each study according to the proportion of the applicable CHEERS items they reported [17]. results The initial literature search identified 568 publications, of which 44 duplicates were removed. Of the 524 unique publications, 459 were excluded following title and abstract screening (Fig. 1). The remaining 65 studies underwent full text review, with 38 meeting the inclusion criteria [4–6, 18–52]. Reasons for exclusion during the full text review included studies being reviews or
+commentaries, pertaining to rectal cancer or neoadjuvant therapies, not being economic evaluations or full text being unavailable. Another study was excluded as it evaluated a drug that is no longer in used in current clinical practice and therefore, the evaluation was of limited relevance. Selected studies were stratified by stage (II or
+III) and the AC strategies being investigated, with some studies found to examine multiple strategies or report aggregated stage II and III results. general characteristics Table  2 summarises the main characteristics and key results of the identified evaluations. Where applicable, we provided the cost-effectiveness judgement reported by the author(s) and the willingness-to-pay (WTP) threshold per health outcome. Of the 38 studies, 34 (89%) were full economic evaluations with 22 cost-utility analysis (CUA), 4 cost-minimisation analysis (CMA), 2 cost-effectiveness analysis (CEA), 4 combined CUA and CEA, 1 combined CUA and budget impact analysis, and 1 cost-consequence (CC) study. There were 4 partial evaluations that only considered costs. perspective and costs Regarding the perspective on costs, 21 studies (55%) adopted a healthcare payer perspective, 12 (32%) a societal perspective, which considers additional patientrelated costs, and 5 (13%) a healthcare sector perspective. All studies considered the AC drugs and administration costs, 29 (76%) considered costs from adverse events (AEs) that did not result in hospitalisation, 33 (87%) hospitalisations from AEs, 23 (61%) cancer surveillance, 21 (55%) treatment of recurrence, 12 (32%) patient travel costs, and 13 (34%) costs due to loss of productivity. Of the studies that costed adverse events (n = 33), 21 (64%) specifically costed the management of treatmentrelated febrile neutropenia, 21 (64%) diarrhoea, and 19 (58%) nausea and vomiting. Twelve studies (36%)
+Ta bl
+e 2
+Su m
+m ar
+y of
+th e
+st ud
+y ch
+ar ac
+te ris
+tic s
+an d
+ke y
+fin di
+ng s
+of th
+e fin
+al s
+am pl
+e of
+e co
+no m
+ic e
+va lu
+at io
+ns
+St ag
+e Pu
+bl ic
+at io
+n Co
+un tr y (c ur re
+nc y)
+Ec on
+om ic
+pe
+rs pe
+ct iv
+e Ev
+al ua
+tio n
+ty pe
+M od
+el lin g te ch ni qu e
+Ti m e ho
+ri zo
+n D
+is co
+un t
+ra te
+(% )
+Tr ea
+tm en t st ra te gi es (e xp er im en
+ta l
+vs . c
+on tr
+ol )
+H ea
+lth
+ou tc
+om es
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+o n
+co st
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+on
+h ea
+lth
+ou tc
+om es
+A ut
+ho rs ’ co st - eff ec tiv en
+es s
+ju dg
+em en
+t
+W TP
+A C
+v s.
+no A
+C II
+A ya
+ci , 2
+01 3
+[1 8]
+U SA
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+M ar
+ko v
+5 ye
+ar s
+3 5F
+U v
+s. no
+A C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st e
+ffe ct
+iv e
+50 ,0
+00
+FO LF
+O X
+vs . no A
+C Q
+A LY
+In cr
+ea se
+In cr
+ea se
+N ot
+c os teff ec tiv e
+III Sm
+ith , 1
+99 3
+[1 9]
+A us
+tr al
+ia
+(A U
+D )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+D
+ec is
+io n
+tr ee
+20 y
+ea rs
+5 5F
+U +
+LV v s. no A C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se A
+ut ho
+r d id
+no
+t p ro
+vi de
+co
+nc lu
+si on
+N ot re
+po rt
+ed
+Br ow
+n, 1
+99 4
+[2 0]
+U SA
+(U SD
+) So
+ci et
+al C
+EA M
+ar ko
+v 30
+y ea
+rs 6
+5F U
++ Le
+va v s. no A C
+LY In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+50 ,0
+00
+La irs
+on , 2
+01 4
+[2 1]
+U SA
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+Pa tie
+nt le
+ve l
+da ta
+Li fe
+tim e
+3 5F
+U +
+LV v s. no A C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+10 0,
+00 0
+FO LF
+O X
+vs . no A
+C In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+II an
+d III
+N or
+um , 1
+99 7
+[2 2]
+N or
+w ay
+(B P)
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+Pa
+tie nt
+le ve l da ta Li
+fe tim
+e 5
+5F U
++ Le
+va v s. no A C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st e
+ffe ct
+iv e
+20 ,0
+00
+M ic
+he l,
+19 99
+[2
+3] Fr
+an ce
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C EA
+D ec
+is io
+n tr
+ee 5
+ye ar
+s N
+o di sco un t
+A C
+in s
+ta ge
+II
+an d
+III v
+s. A
+C in
+st
+ag e
+III o
+nl y
+N o.
+o f s
+ur vi vin g pa tie nt
+s In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+10 ,0
+00
+O ra l vs . I V ch em oth er ap y
+III Ca
+ss id
+y, 2
+00 6
+[2 4]
+U K
+(B P)
+So ci
+et al
+C EA
+, C U
+A
+PS A
+Li fe
+tim e
+1. 5
+(c os
+t) ; 6
+(e
+ffe ct
+) Ca
+pe ci
+ta bi
+ne
+vs . 5
+FU LM
+, Q A
+LM D
+ec re
+as e
+In cr
+ea se
+Ca pe
+ci ta
+bi ne
+do
+m in
+at es
+5F
+U
+N ot re
+po rt
+ed
+Eg gi
+ng to
+n,
+20 06
+[2 5]
+U K
+(B P)
+H ea
+lth ca
+re
+pa ye
+r C
+EA , C
+U A
+M
+ar ko
+v 50
+y ea
+rs 6
+(c os
+t) ; 1
+.5
+(e ffe
+ct )
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+LY , Q
+A LY
+D ec
+re as
+e In
+cr ea
+se Ca
+pe ci
+ta bi
+ne
+do m
+in at
+es
+5F U
+20 ,0
+00
+H o,
+2 00
+6 [2
+6] Ca
+na da
+(C
+A D
+) So
+ci et
+al C
+M A
+D ec
+is io
+n tr
+ee 5
+ye ar
+s N
+R XE
+LO X
+vs . FO LF
+O X
+N /A
+D ec
+re as
+e N
+/A N
+/A N
+/A
+D ou
+ill ar
+d,
+20 07
+[2 7]
+Fr an
+ce (E
+ur o)
+H ea
+lth ca
+re
+pa ye
+r CC
+D ec
+is io
+n tr
+ee 3
+ye ar
+s N
+o di sco un t
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+Re la
+ps e-
+fre e
+su rv
+iv al
+D ec
+re as
+e In
+cr ea
+se Ca
+pe ci
+ta bi
+ne
+do m
+in at
+es
+5F U
+N ot re
+po rt
+ed
+D iC
+on st
+an zo , 20 08 [2
+8] Ita
+ly (E
+ur o)
+H ea
+lth ca
+re
+pa ye
+r C
+EA , C
+U A
+PS
+A 10
+y ea
+rs 3. 5 Ca
+pe ci
+ta bi
+ne
+vs . 5
+FU LM
+, Q A
+LM D
+ec re
+as e
+In cr
+ea se
+Ca pe
+ci ta
+bi ne
+do
+m in
+at es
+5F
+U
+N ot re
+po rt
+ed
+G oe
+rn er
+, 2 00 9 [2 9] G
+er m
+an y
+(E ur
+o) H
+ea lth
+ca re
+pa
+ye r
+Co st
+in g
+an al
+ys is
+D ec
+is io
+n tr
+ee 6
+m on
+th s
+N R
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+N /A
+D ec
+re as
+e N
+/A N
+/A N
+/A
+Sh iro
+iw a,
+2 00 9 [3 0] Ja
+pa n
+(Y en
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+M ar
+ko v
+30 y
+ea rs
+3 Ca
+pe ci
+ta bi
+ne
+vs . 5
+FU Q
+A LY
+D ec
+re as
+e In
+cr ea
+se Ca
+pe ci
+ta bi
+ne
+do m
+in at
+es
+5F U
+0
+H su
+, 2 01
+1 [3
+1] U
+K (B
+P) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+PS A
+10 y
+ea rs
+3 Ca
+pe ci
+ta bi
+ne
+vs . 5
+FU Q
+A LM
+D ec
+re as
+e In
+cr ea
+se Ca
+pe ci
+ta bi
+ne
+do m
+in at
+es
+5F U
+N ot re
+po rt
+ed
+Ta bl
+e 2
+(c on
+tin ue
+d)
+St ag
+e Pu
+bl ic
+at io
+n Co
+un tr y (c ur re
+nc y)
+Ec on
+om ic
+pe
+rs pe
+ct iv
+e Ev
+al ua
+tio n
+ty pe
+M od
+el lin g te ch ni qu e
+Ti m e ho
+ri zo
+n D
+is co
+un t
+ra te
+(% )
+Tr ea
+tm en t st ra te gi es (e xp er im en
+ta l
+vs . c
+on tr
+ol )
+H ea
+lth
+ou tc
+om es
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+o n
+co st
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+on
+h ea
+lth
+ou tc
+om es
+A ut
+ho rs ’ co st - eff ec tiv en
+es s
+ju dg
+em en
+t
+W TP
+Xi e,
+2 01
+3 [3
+2] C
+hi na
+(U SD
+) So
+ci et
+al Co
+st in g an al ys
+is Pa
+tie nt
+le ve l da ta 6
+m on
+th s
+N o
+di s-
+co un
+t C
+A PO
+X vs . FO LF O
+X N
+/A D
+ec re
+as e
+N /A
+N /A
+N /A
+So ni
+, 2 01 4 [3 3] U
+S (U
+SD )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+M
+ar ko
+v 5
+ye ar
+s 3
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+Q A
+LY In
+cr ea
+se D
+ec re
+as e
+5F U
+d om ina te s Ca pe
+ci t-
+ab in
+e
+10 0,
+00 0
+C he
+n, 2
+01 5
+[3 4]
+Ta iw
+an (N
+T) So
+ci et
+al C
+U A
+Pa
+tie nt
+le ve l da ta 28
+w ee
+ks N
+o di sco un t
+Ca pe
+ci t-
+ab in
+e ±
+o xa lipl at in v s. 5F U ± o xa lip lat in
+H ea
+lth -
+re la
+te d
+Q O L sc or es
+D ec
+re as
+e N
+o di
+ffe re
+nc e
+Co st
+-e ffe
+ct iv
+e N
+ot re po
+rt ed
+Le rd
+ki at
+tik or
+n,
+20 15
+[3 5]
+Th ai
+la nd
+(B
+ah t)
+So ci
+et al
+C U
+A
+M ar
+ko v
+99 y
+ea rs
+3 Ca
+pe ci
+ta bi
+ne
+vs . 5
+FU Q
+A LY
+In cr
+ea se
+In cr
+ea se
+N ot
+c os
+t e ffe ctiv e 30
+0, 00
+0
+Li n,
+2 01
+5 [3
+6] Ta
+iw an
+(N T)
+So ci
+et al
+Co st
+in g
+an al
+ys is
+Pa tie
+nt le
+ve l
+da ta
+25 m
+on th
+s N
+o di sco un t
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+H ea
+lth -
+re la
+te d
+Q O L sc or es
+D ec
+re as
+e N
+o di
+ffe re
+nc e
+Co st
+s av
+in g
+N /A
+va nG
+ils , 2
+01 5
+[3 7]
+N et
+he rla
+nd s
+(E ur
+o) H
+ea lth
+ca re
+se
+ct or
+Co st
+in g
+an al
+ys is
+Pa tie
+nt le
+ve l
+da ta
+6 m
+on th
+s N
+o di sco un t
+Ca pe
+ci ta
+bi ne
+vs
+. 5 FU
+N /A
+D ec
+re as
+e N
+/A N
+/A N
+/A
+II an
+d III
+M ur
+ad , 1
+99 7
+[3 8]
+Br az
+il &
+A rg
+en tin a (R ea l)
+H ea
+lth ca
+re
+pa ye
+r C
+M A
+D ec
+is io
+n Tr
+ee 18
+m on
+th s
+N R
+U FT
++ LV
+v s.
+5F U
++ LV
+N /A
+D ec
+re as
+e N
+/A N
+/A N
+/A
+M an
+id ak
+is ,
+20 09
+[3 9]
+G re
+ec e
+(E ur
+o) So
+ci et
+al C
+M A
+Pa tie
+nt le
+ve l
+da ta
+12 m
+on th
+s N
+R C
+A PO
+X vs . FO LF O
+X N
+/A D
+ec re
+as e
+N /A
+N /A
+N /A
+W en
+, 2 01 4 [4 0] C
+hi na
+(U SD
+) So
+ci et
+al C
+U A
+M
+ar ko
+v 6
+m on
+th s
+N R
+C A
+PO X
+vs . FO LF
+O X
+Q A
+LY D
+ec re
+as e
+D ec
+re as
+e Co
+st -e
+ffe ct
+iv e
+17 ,8
+15
+(3 ×
+G D
+P)
+H su
+, 2 01
+9 [4
+1] Ta
+iw an
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C M
+A D
+ec is
+io n
+Tr ee
+6 m
+on th
+s N
+R U
+FT +
+LV v s. 5F U +
+LV N
+/A D
+ec re
+as e
+In cr
+ea se
+N /A
+N /A
+Ta bl
+e 2
+(c on
+tin ue
+d)
+St ag
+e Pu
+bl ic
+at io
+n Co
+un tr y (c ur re
+nc y)
+Ec on
+om ic
+pe
+rs pe
+ct iv
+e Ev
+al ua
+tio n
+ty pe
+M od
+el lin g te ch ni qu e
+Ti m e ho
+ri zo
+n D
+is co
+un t
+ra te
+(% )
+Tr ea
+tm en t st ra te gi es (e xp er im en
+ta l
+vs . c
+on tr
+ol )
+H ea
+lth
+ou tc
+om es
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+o n
+co st
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+on
+h ea
+lth
+ou tc
+om es
+A ut
+ho rs ’ co st - eff ec tiv en
+es s
+ju dg
+em en
+t
+W TP
+O xa
+lip l-
+at in
+v s.
+no o
+xa li-
+pl at
+in
+II A
+ya ci
+,, 20
+13
+[1 8]
+U SA
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+M ar
+ko v
+5 ye
+ar s
+3 FO
+LF O
+X vs . 5F U +
+LV Q
+A LY
+In cr
+ea se
+In cr
+ea se
+N ot
+c os
+t e ffe ctiv e 50
+,0 00
+III Pa
+nd or
+, 2 00 6 [4 2] U
+K (B
+P) H
+ea lth
+ca re
+pa
+ye r
+C EA
+, C U
+A
+M ar
+ko v
+50 y
+ea rs
+6 (c
+os t)
+; 1 .5
+(e
+ffe ct
+) FO
+LF O
+X vs . 5F U +
+LV Q
+A LY
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e 20
+,0 00
+FO LF
+O X
+vs . 5F U
++ LV
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e
+FO LF
+O X
+vs . Ca pe
+ci ta
+bi ne
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e
+Eg gi
+ng to
+n,
+20 06
+[2 5]
+U K
+(B P)
+H ea
+lth ca
+re
+pa ye
+r C
+EA , C
+U A
+M
+ar ko
+v 50
+y ea
+rs 6
+(c os
+t) ; 1
+.5
+(e ffe
+ct )
+FO LF
+O X
+vs . 5F U
++ LV
+LY , Q
+A LY
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e 20
+,0 00
+A ba
+lle a,
+2 00 7 [4 3] U
+K (B
+P) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+PS A
+50 y
+ea rs
+3. 5
+FO LF
+O X
+vs . 5F U
++ LV
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st e
+ffe ct
+iv e
+30 ,0
+00
+A ba
+lle a,
+2 00 7 [4 4] U
+SA (U
+SD )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+PS
+A 50
+y ea
+rs 3
+FO LF
+O X
+vs . 5F U
++ LV
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st e
+ffe ct
+iv e
+50 – 10
+0, 00
+0
+G oe
+rn er
+, 2 00 9 [2 9] G
+er m
+an y
+(E ur
+o) H
+ea lth
+ca re
+pa
+ye r
+Co st
+in g
+an al
+ys is
+D ec
+is io
+n tr
+ee 6
+m on
+th s
+N o
+di s-
+co un
+t FO
+LF O
+X vs . 5F U +
+LV N
+/A In
+cr ea
+se N
+/A N
+/A N
+/A
+C A
+PO X
+vs . 5F U
++ LV
+In cr
+ea se
+N /A
+N /A
+A tt
+ar d,
+2 01 0 [4 5] Ca
+na da
+(C
+A D
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+PS A
+50 y
+ea rs
+5 FO
+LF O
+X vs . 5F U +
+LV Q
+A LY
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e N
+ot re po
+rt ed
+Sh iro
+iw a,
+2 01 2 [4 6] Ja
+pa n
+(Y en
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+PS A
+30 y
+ea rs
+3 FO
+LF O
+X vs . 5F U +
+LV Q
+A LY
+In cr
+ea se
+In cr
+ea se
+Co st
+-e ffe
+ct iv
+e 5
+m ill
+io n
+So ni
+, 2 01 4 [3 3] U
+SA (U
+SD )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+M
+ar ko
+v 5
+ye ar
+s 3
+FO LF
+O X
+vs . 5F U
++ LV
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+10 0,
+00 0
+C A
+PO X
+vs . 5F U
++ LV
+Q A
+LY In
+cr ea
+se D
+ec re
+as e
+5F U
+d om ina te s C A
+PO X
+10 0,
+00 0
+Le rd
+ki at
+tik or
+n,
+20 15
+[3 5]
+Th ai
+la nd
+(B
+ah t)
+So ci
+et al
+C U
+A
+M ar
+ko v
+99 y
+ea rs
+3 FO
+LF O
+X vs . 5F U +
+LV Q
+A LY
+In cr
+ea se
+In cr
+ea se
+N ot
+c os
+t e ffe ctiv e 30
+0, 00
+0
+va nG
+ils , 2
+01 5
+[3 7]
+N et
+he rla
+nd s
+(E ur
+o) H
+ea lth
+ca re
+se
+ct or
+Co st
+in g
+an al
+ys is
+Pa tie
+nt le
+ve l
+da ta
+6 m
+on th
+s N
+R FO
+LF O
+X vs . 5F U +
+LV N
+/A In
+cr ea
+se N
+/A N
+/A N
+/A
+FO LF
+O X
+vx . Ca pe
+ci ta
+bi ne
+N /A
+In cr
+ea se
+N /A
+N /A
+C A
+PO X
+vs . 5F U
++ LV
+N /A
+In cr
+ea se
+N /A
+N /A
+C A
+PO X
+vs . Ca pe
+ci ta
+bi ne
+N /A
+In cr
+ea se
+N /A
+N /A
+Ta bl
+e 2
+(c on
+tin ue
+d)
+St ag
+e Pu
+bl ic
+at io
+n Co
+un tr y (c ur re
+nc y)
+Ec on
+om ic
+pe
+rs pe
+ct iv
+e Ev
+al ua
+tio n
+ty pe
+M od
+el lin g te ch ni qu e
+Ti m e ho
+ri zo
+n D
+is co
+un t
+ra te
+(% )
+Tr ea
+tm en t st ra te gi es (e xp er im en
+ta l
+vs . c
+on tr
+ol )
+H ea
+lth
+ou tc
+om es
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+o n
+co st
+Im pa
+ct o f ex pe ri m en
+ta l
+vs . c
+on tr
+ol
+st ra
+te gy
+on
+h ea
+lth
+ou tc
+om es
+A ut
+ho rs ’ co st - eff ec tiv en
+es s
+ju dg
+em en
+t
+W TP
+3 M
+v s.
+6 M
+II Jo
+ng en
+ee l,
+20 20
+[4 ]
+N et
+he rla
+nd s
+(E ur
+o) So
+ci et
+al C
+U A
+M
+ar ko
+v Li
+fe tim
+e 4
+(c os
+t) ; 1
+.5
+(e ffe
+ct )
+3 M
+v s.
+6 M
+FO
+LF O
+X Q
+A LY
+D ec
+re as
+e D
+ec re
+as e
+N ot
+c os teff ec tiv e; ne ga tiv e
+N M
+B
+50 ,0
+00
+3 M
+v s.
+6 M
+C
+A PO
+X D
+ec re
+as e
+In cr
+ea se
+3 M
+C A
+PO X
+do m
+in at
+es
+6 M
+II an
+d III
+Ro bl
+es -Z
+ur ita , 20 18 [4
+7] U
+K (B
+P) H
+ea lth
+ca re
+se
+ct or
+C U
+A
+PS A
+8 ye
+ar s
+3. 5
+3 M
+v s.
+6 M
+C
+A PO
+X Q
+A LY
+D ec
+re as
+e In
+cr ea
+se 3
+M d
+om i-
+na te
+s 6
+M 30
+,0 00
+Iv es
+on , 2
+01 9
+[4 8]
+U K
+(B P)
+H ea
+lth ca
+re
+se ct
+or C
+U A
+PS
+A 8
+ye ar
+s 3. 5 3
+M v
+s. 6
+M A
+C Q
+A LY
+D ec
+re as
+e In
+cr ea
+se 3
+M d
+om i-
+na te
+s 6
+M 30
+,0 00
+H an
+na , 2
+02 1
+[6 ]
+M ul
+tico
+un -
+tr y
+(U SD
+) H
+ea lth
+ca re
+se
+ct or
+C U
+A , B
+IA Pa
+tie nt
+le ve l da ta 10
+y ea
+r 3. 5 3
+M v
+s. 6
+M A
+C Q
+A LY
+D ec
+re as
+e In
+cr ea
+se Co
+st e
+ffe ct
+iv e
+42 ,0
+00
+Bi om ar
+ke r
+II H
+or nb
+er ge r, 20 12 [4
+9] U
+SA (U
+SD )
+So ci
+et al
+C U
+A
+M ar
+ko v
+Li fe
+tim e
+3 O
+nc ot
+yp e
+D x
+vs . S
+O C
+Q A
+LY D
+ec re
+as e
+In cr
+ea se
+G en
+om ic
+as
+sa y
+do m ina te s SO C
+50 ,0
+00
+A lb
+er ts
+, 2 01 4 [5 0] U
+SA (U
+SD )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+M
+ar ko
+v Li
+fe tim
+e 3
+O nc
+ot yp
+eD x
+vs .S
+O C
+Q A
+LY D
+ec re
+as e
+In cr
+ea se
+G en
+om ic
+as
+sa y
+do m ina te s SO C
+50 ,0
+00
+Jo ng
+en ee l, 20 21 [5
+1] N
+et he
+rla nd s (E ur os
+) So
+ci et
+al C
+U A
+M
+ar ko
+v Li
+fe tim
+e 4
+(c os
+t) ; 1
+.5
+(e ffe
+ct )
+Bi om
+ar ke r (M SS + B RA F/ KR A S) v s. SO C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+50 ,0
+00
+To , 2
+02 1
+[5 ]
+A us
+tr al
+ia
+(A U
+D )
+H ea
+lth ca
+re
+pa ye
+r C
+U A
+M
+ar ko
+v Li
+fe tim
+e 5
+ct D
+N A
+v s.
+SO C
+Q A
+LY D
+ec re
+as e
+In cr
+ea se
+ct D
+N A
+d om ina te S O C
+20 ,0
+00
+A la
+rid -E
+sc u-
+de r,
+20 21
+[5 2]
+U SA
+(U SD
+) H
+ea lth
+ca re
+pa
+ye r
+C U
+A
+M ar
+ko v
+Li fe
+tim e
+3 Bi
+om ar
+ke r
+(C D
+X2 ) v s. no A C
+Q A
+LY In
+cr ea
+se In
+cr ea
+se Co
+st -e
+ffe ct
+iv e
+10 0,
+00 0
+3  M
+3  m
+on th
+d ur
+at io
+n of
+c he
+m ot
+he ra
+py , 6
+ M 6
+ m on
+th d
+ur at
+io n
+of c
+he m
+ot he
+ra py
+, 5 FU
+5 -fl
+uo ro
+ur ac
+il, A
+C ad
+ju va
+nt c
+he m
+ot he
+ra py
+, A U
+D A
+us tr
+al ia
+n D
+ol la
+rs , B
+IA B
+ud ge
+t i m
+pa ct
+a na
+ly si
+s, BP
+B rit
+is h
+Po un
+d, C
+EA c
+os t-
+eff ec
+tiv en
+es s
+an al
+ys is
+, C M
+A co
+st -m
+in im
+is at
+io n
+an al
+ys is
+, c tD
+N A
+ci rc
+ul at
+in g
+tu m
+ou r
+D N
+A , C
+U A
+co st
+-u til
+ity a
+na ly
+si s,
+IV in
+tr av
+en ou
+s, LV
+le uc
+ov or
+in , L
+Y lif
+eye
+ar s,
+PS A
+pa rt
+iti on
+ed s
+ur vi
+va l a
+na ly
+si s,
+N T
+Ta iw
+an D
+ol la
+r, N
+R no
+t re
+po rt
+ed , Q
+AL Y
+Q ua
+lit y-
+ad ju
+st ed
+li fe
+y ea
+rs , S
+O C
+st an
+da rd
+o f c
+ar e,
+U SD
+U ni
+te d
+St at
+e D
+ol la
+rs
+considered the cost of additional AEs with the most common being oxaliplatin-related neurotoxicity (8 of 24 studies that included oxaliplatin), stomatitis/mucositis (n = 8) and palmar-plantar erythrodysesthesia (PPE; n = 6). health utility values The most common measure of health outcomes were quality-adjusted life years (QALYs), reported by 27 economic evaluations. In measuring QALYs, 21 (78%) of these studies utilised health utility values (HUVs) from literature with the remaining measuring HUVs directly from recruited patients. Nineteen of the evaluations relied on published HUV utilised values measured in the 1990s [53, 54]. Notably, all studies comparing AC duration adopted utilities derived from patient surveys collected alongside the SCOT study, a phase III clinical trial randomising patients to 3 or 6 months AC [55]. quality of reporting On average, the evaluations reported 89% of applicable items on the CHEERS checklist (range: 74% to 100%). The mostly poorly reported CHEERS items were the abstract (58%) due to incomplete reporting of uncertainty analyses, model parameters (63%), and conflict of interest (63%). The detailed scoring is available in the Additional file 1. ac vs. no ac All studies reported that AC was cost-effective compared to no AC in stage II (n = 3) and stage III (n = 5) [18–23]. All studies only considered single agent AC aside from one study that concluded doublet AC was cost-effective in stage III patients [21]. oral vs. intravenous ac Of the 9 full economic evaluations comparing capecitabine to 5FU in stage III, 6 (67%) concluded capecitabine dominates 5-FU (being less costly and more effective) and 1 (11%) reported cost-effectiveness (more costly but more effective) [24–32, 34, 36–41]. Of the two remaining studies, Soni et al. utilised data from a retrospective cohort study, noting patients receiving capecitabine were older (mean age: 73 vs. 67 years) and less fit (ECOG 2–4: 14.6% vs. 6.3%) [33]. Accordingly, these patients were less likely to receive full intensity of treatment with the authors concluding that capecitabine would be costeffective if treatment intensity approached 100%. In the remaining study, the cost of capecitabine acquisition was reported as almost 10 times the cost of 5-FU, which is substantially higher than reported in other studies [35]. Notably, there was no full evaluation comparing capecitabine to 5FU in stage II CC. Further analyses demonstrated that CAPOX reduced costs compared to FOLFOX with one CUA reported cost-effectiveness in a combined cohort of high-risk stage II and stage III patients [26, 34, 39, 40]. oxaliplatin-based ac There was only one evaluation of oxaliplatin-based therapy in stage II patients, concluding that FOLFOX was not cost-effective compared to 5-FU [18]. Amongst stage III studies, 7 of 8 (88%) full economic evaluations determined that FOLFOX was cost-effective compared to 5-FU alone [25, 33, 42–46]. The remaining study modelled strategies that included different treatments for metastatic recurrence, limiting the assessment of AC alone [35]. Additionally, Pandor et  al. concluded that FOLFOX dominates capecitabine in stage III [42]. Conversely, Soni et al. concluded that 5-FU dominates CAPOX but as previously noted, capecitabine-treated patients in this study were less likely to receive the full intensity of treatment, limiting efficacy [33]. three vs. six month duration Three studies were modelled on data from the SCOT trial, a randomised controlled trial of 3 versus 6 months of oxaliplatin-based doublet AC in a cohort of highrisk stage II and stage III patients [4, 6, 47, 48]. Two of these studies concluded that 3 months of AC dominates 6  months. The remaining study assumed partial prescription of shortened AC duration based on a survey of physicians (stage II: 18%; stage III: 50%) but despite this limited uptake, a 3-month treatment duration was still cost-effective [6]. Jongeneel et  al. analysed AC in high-risk stage II patients by specific regimen, concluding that 3  months of CAPOX dominates 6  months but that 3  months of FOLFOX was not cost-effective [4]. Importantly, they considered T4 staging and microsatellite stability (MSS) as high-risk histological features compared to the more expansive definition of high risk disease utilised in the SCOT trial [55]. biomarker vs. standard of care Two studies evaluated the use of OncotypeDx, a clinically validated and commercially available tumour-based genomic assay, in stage II patients with T3 and pMMR tumours. Compared to SOC patient selection, both studies reported an absolute decrease in AC prescription based on assay use (17–22%), concluding that Oncotype Dx reduces cost whilst improving health outcomes [49, 50]. To et al. modelled the use of post-operative circulating tumour DNA (ctDNA) in unselected stage II CC patients. Assigning AC to patients with detectable ctDNA alone resulted in a 13% absolute reduction in AC prescription compared to SOC [5]. Furthermore, they considered a scenario in which some ctDNA negative patients would also receive AC. Both complete and incomplete adherence to ctDNA testing resulted in ctDNA dominating SOC [5]. Jongeneel et al. compared several AC selection strategies in stage II cancers that were T4, and MSS tumours utilising a biomarker approach based on the presence of BRAF and KRAS mutations [51]. The study concluded that AC prescription based on molecular biomarkers (4.8%) dominates no patients receiving AC. Patients in this model could have received either 3-months of CAPOX or 6-months of 5FU or FOLFOX, with the biomarker strategy retaining cost-effectiveness in scenarios in which only capecitabine-based AC was prescribed. Alarid-Escudero et al. modelled a biomarker approach in stage II patients with T3 tumours, assigning FOLFOX to CDX2 negative patients only (7.2% of tested patients) [52]. Compared to no patients receiving AC, this biomarker approach was cost-effective in the base-case scenario and in > 88% of scenarios in which the effectiveness of AC was varied. discussion This systematic review included 38 health economic evaluations that compared a number of AC strategies currently employed in stage II and III CC, aiming to report the cost-effectiveness of these strategies and identify areas of potential improvements to inform further trial design and economic evaluations. Firstly, the evaluations consistently implied that single agent AC is cost-effective compared to no AC. Secondly, most studies reported that oral capecitabine was costeffective to or dominates (i.e., improved health outcomes at lower cost) 5-FU. In contrast, Soni et al. reported that 5FU dominates both capecitabine and CAPOX. However, this study was modelled on a real-world patient cohort, observing that as older and less fit patients were more likely to receive oral AC, capecitabine-based therapy was also associated with reduced dose intensity (RDI) and a lower probability of 5-year OS [56]. As comparison, an age based analysis of the phase III X-ACT trial reported similar efficacy of capecitabine in all age groups (including ≥ 70  years) despite higher rates of toxicity and dose reduction observed amongst older patients, contradicting the findings noted by Soni et al. [57] Economic evaluations are often based on clinical trials which recruits participants that tend to be younger and fitter than realworld counterparts, resulting in an observable difference between the efficacy observed in-trial and in routine clinical-practice [58, 59]. Modelling purely based on trial
+data may over-estimate efficacy but also underestimate toxicities, leading to favourable incremental cost-effective ratios (ICERs). One possible solution is the utilisation of real-world data (RWD) to inform model parameters in economic evaluations. RWD could be used to more accurately model control or standard strategies, with relative outcomes from clinical trials being applied. In the case of targeted therapies, RWD could also provide more accurate estimates of uptake based on prevalence of targeted mutations if routinely tested. Well maintained cancer registries could provide robust RWD and improve the generalisability of economic evaluation results. Notably, three of the included studies utilised such registries in modelling transitions between health states such as disease free to recurrence or death. Two studies utilised the Netherlands Cancer Registry (NCR) to develop a health model that simulates patients with stage II colon cancer from diagnosis to death [4, 51]. The third study utilised an Australian-based multi-site colorectal cancer registry (ACCORD) to model the progression of patients following recurrence to death [5]. These studies illustrates the feasibility of using RWD to inform model parameters, perhaps better reflecting real-world outcomes. The majority of economic evaluations also reported 6-months of FOLFOX as being cost-effective compared to 5-FU in stage III CC. However, following publication of the IDEA collaboration, consensus guidelines now recommend for patients undergoing oxaliplatin-based AC, 3  months duration can also be considered based on further risk stratification [15, 16]. Given all identified economic evaluations demonstrated that 3  months of oxaliplatin-based AC dominates 6  months in stage II and III, shortened AC should be incorporated as a comparator in all economic evaluation as modelling 6 months alone may overestimate costs. Of the 2 biomarker studies published following the IDEA collaboration, only one modelled shortened CAPOX chemotherapy. Additionally, only a small number of oxaliplatin-related evaluations costed or considered long-term disutility from neurotoxicity. Given that the key rationale for shortening oxaliplatin exposure is to reduce neurotoxicity, more consistent consideration of this AE is required [1]. Economic evaluations must be careful in utilising relevant comparators in their assessments as regulators may reject reimbursement submissions that do not provide evidence for cost-effectiveness compared to current standard of care practices. Furthermore, detailed consideration of relevant toxicities and associated costs may more accurately reflect economic benefits. Current consensus guidelines recommend the use of clinicopathological parameters to guide selection of stage II CC patients for AC. Such an approach results in 20–30% of patients receiving AC but meta-analyses
+reports only modest reductions in absolute recurrence risk suggesting that a significant proportion of patients are exposed to unnecessary treatment [60–63]. This has led to the significant interest in risk-stratifying biomarkers that could better define patients that would benefit from AC. We identified 5 studies that investigated a molecular or genomic biomarker approach to patient selection for stage II CC. It is noted that these approaches and their associated costs vary significantly from study to study. Additionally, the modelled efficacy of these biomarkers are based on either retrospective or early phase studies meaning the economic results are to be considered only as early indications of potential cost-effectiveness. Certainly, economic evaluations based on results from larger prospective studies such as the recently published DYNAMIC study, which randomised stage II CC patients to either a ctDNA guided approach to AC patient selection or SOC, is required to confirm cost-effectiveness [64]. Acknowledging these limitations, three of the studies demonstrated that a reduction in AC prescription (range: 14% to 22%) resulted in biomarker informed care dominating SOC, demonstrating the positive economic impact of reducing AC overtreatment [5, 49, 50]. The two remaining studies reported that compared to no AC, biomarker patient selection was cost-effectiveness but notably in these analyses, the uptake of AC in the biomarker strategy was limited (range: 5.8–7.4%). However, as a biomarker’s impact depends on whether it actually can change treatment decisions, economic evaluations should model compliance to biomarker results but only two studies did so. Alberts et al. utilised a survey of clinicians presented with OncotypeDx results and To et al. assumed a low non-compliance rate based on experiences in breast cancer patients [5, 50]. In assessing the economic value of 3 months AC, Hanna et al. utilised a clinician survey to model the clinical uptake of shortened AC, recognising significant variation in clinical practice [6]. Whilst clinician surveys have limitations, they can offer timely insight into the real-world uptake of new biomarkers or treatment recommendations, allowing more robust economic evaluations. Most studies utilised HUVs from literature, however two of the sources were based on surveys of patients in the 1990s, which may be lower than contemporary values given improvements in the recognition and management of toxicities. Given that cost-utility analysis requires accurate estimation of QALYs, HUVs that are temporally and geographically relevant to the patient cohort under investigation are important. The SCOT study, a randomised phase III trial comparing 3–6 months AC, routinely collected quality-of-life (QoL) questionnaires from recruited patients. The QoL data formed the basis of the HUVs utilised by all economic evaluations assessing
+shortened duration AC, allowing for more accurate modelling of QALYs, reflecting the outcomes of patients exposed to the treatment under evaluation in a contemporary time period. This demonstrates the importance of collecting patient reported outcomes and QoL data from ongoing clinical trials with the SCOT study serving as a case study. This will allow economic evaluations to provide stronger cost-effectiveness evidence and hopefully expedite reimbursement processes. Additionally, patient surveys can also more accurately capture additional information such as travel costs and patient and carer time-off work, allowing for greater insight into societal costs. conclusion The available health economic evidence suggests that single-agent AC is cost-effective compared to no AC for both stage II and stage III CC, that oral AC is cost-effective compared to intravenous AC for stage III CC, that oxaliplatin-based AC is cost-effective for stage III CC, and that 3-month CAPOX is cost-effective compared to 6-months for high-risk stage II and low-risk stage III CC. The early evidence also suggests that biomarker-driven approaches to refine patient treatment selection for AC for stage II CC may be cost-effective compared to current standard of care, though more robust randomised clinical and economic evidence is warranted. Supplementary Information The online version contains supplementary material available at https:// doi. org/ 10. 1186/ s12962- 023- 00422-2. Additional file 1. Supplementary Material 1. Acknowledgements Not applicable. Author contributions The research design, including conceptualization, was developed as a combined effort of all authors. The data curation (i.e. literature search) and formal analysis was performed by YHT in close co-operation with and under the supervision of KD. All authors contribute to the interpretation and discussion of the results. The first draft of the manuscript was written by YHT and all authors commented on previous version of the manuscript. All authors read and approved the final manuscript. Funding No funding was received for performing this study. Availability of data and materials The datasets used and/or analysed during the current study are available from the corresponding author on reasonable request. declarations Ethics approval and consent to participate Not applicable. Consent for publication Not applicable. Competing interests An economic evaluation authored by YHT with co-authors KD, JT, PG and MIJ was included in the systematic analysis. There are no other actual or potential conflict of interest including any financial, personal or other relationships with other people or organizations within that could inappropriately influence (bias) their work. Received: 20 July 2022 Accepted: 23 January 2023

@@ -1,0 +1,363 @@
+The transportation industry is a significant contributor to greenhouse gas emissions, particularly carbon dioxide. This study broadens the literature on environmental Kuznets curve (EKC) by assessing Pakistan’s carbon dioxide emissions in the transport sector taking into account the impact of non-renewable energy, urbanization, and economic growth for the period of 1995–2018 using the novel QARDL model. Moreover, the outcomes of the study make a momentous benefaction to the literature by focusing a sector that contributes substantially to pollution in Pakistan. Specifically, the study finds that the EKC curve is confirmed for Pakistan’s transportation sector in moderate to higher quantiles. Urbanization and non-renewable energy are also two other vital ingredients that dramatically aggravate the destruction of the environment. Except for the lowest (0.05th–10th) and highest (90th–95th) quantiles, urbanization affects transport-based carbon pollution positively. The study concludes by proposing some policy interventions for Pakistan. introduction Climate change is one of the most pressing global issues of our time, with greenhouse gas emissions causing significant environmental damage and posing a threat to human well-being. Among various sources of greenhouse gas emissions, the transportation sector is a significant contributor, particularly in developing countries that are rapidly urbanizing. Concerns about the deterioration of the environment are prompting governments to yield innovative ecological strategies to lessen the change in the global climate. In this
+situation, examining and understanding the causes of sectoral CO2 emissions are a more plausible method as compared to aggregate and macro-level analysis. With the help of disaggregated data on CO2 emissions from a specific sector, focused and outcome-oriented policies can be provided. The transportation sector is a significant contributor to greenhouse gas (GHG) emissions, exacerbating global warming. It relies heavily on fossil fuels, such as oil, coal, and gas, for road, rail, air, and marine transportation, leading to a sharp rise in CO2 emissions from vehicle exhaust (Lu and Cao, 2015). The sector is a major source of environmental deterioration, particularly due to its high dependence on non-renewable energy resources (Alataş, 2022; Raza et al., 2019). Furthermore, the sector’s rapid growth rate is concerning, with energy consumption projected to increase by 50% by 2030 and CO2 emissions expected to rise by 80% by 2050, according to the International Energy Agency (IEA, 2019). The increasing energy consumption trend necessitates policy and decision-makers to develop sustainable and environmentally friendly fuels and technological solutions. It is crucial to adopt environmentally sustainable modes of transportation to reduce pollution, particularly in transport Responsible Editor: Ilhan Ozturk * Ashar Awan asharawan786@hotmail.com 1 Department of Econometrics, Graduate School of Social Science, Karadeniz Technical University, Trabzon, Turkey 2 Kashmir Institute of Economics, University of Azad Jammu and Kashmir, Muzaffarabad, Pakistan 3 Graduate School, Nisantasi University, Istanbul, Turkey
+1 3
+and other sectors. The transportation sector serves as a critical link for daily needs and consumption, connecting supply chains across the economy and transcontinental regions, making it an organizationally indispensable component of life and economic activities. The COVID-19 pandemic has further highlighted the significance of the sector in terms of pollution. Pakistan is the fifth most damaged nation, according to the GermanWatch’s global climate risk index assessment (German Watch 2021; Butt, 2021) by the harmful and long-lasting effects of climate changes such as storms, flash floods, heatwaves, landslides, sea storms, and earthquakes for the last 20-year period. Moreover, Pakistan is at the top of the list of countries with the poorest air quality worldwide. The Climate Transparency Report for Pakistan (2020) highlights that transportation-related emissions in Pakistan are on the rise, with per capita emissions in the sector increasing by 44% between 2013 and 2018. The projection from 2015 to 2030 emphasizes a 300% increase in GHG for Pakistan, given the projected gross domestic product (GDP) growth of 9% and increasing dependence on fossil fuels (UNFCCC, 2021). Pakistan’s transportation industry is a significant contributor to environmental degradation and requires immediate attention (Sohail et al.,2021). Concerning electrification and net-zero emissions targets, the country has embraced policies and other measures to promote vehicle electrification (IEA 2022;106). The National Transport Policy of the country, launched under Vision 2025, aims to create a sustainable, efficient, and robust transportation system, with a focus on eco-friendly concepts and road-based transportation. However, the greatest challenge to sustainable transport remains the lack of access to electricity in Pakistan, which primarily needs to be solved (Abbas et al. 2021). Electric vehicle initiatives are unsuccessful because of the non-constant supply of electricity (Rasool et al. 2019). The China-Pakistan-Economic-Corridor (CPEC) is expected to contribute to Pakistan’s development by promoting electricity generation and expanding transportation infrastructure, including railways and roads (Bhattacharjee, 2015). The consumption of fossil fuels will be Pakistan’s main source of energy for the transport sector as well as contribute to CO2 emissions in any case. However, Pakistan has more efficient potential such as maritime, rail, and air routes that can reduce CO2 emissions from heavy road transport. Therefore, Pakistan has a great chance to turn the traffic crisis into an opportunity by developing public transport system to deal with the growing urbanization rate and non-renewable energy demand. The transportation industry is a critical component of societal progress and the improvement of living standards, and the primary cause of the decline in environmental quality (Lin and Xie, 2014;). However, the global transportation
+sector contributes 24% to global CO2 emissions (IEA, 2018), with Pakistan’s transport sector contributing approximately 28% of the country’s total carbon emissions (Enerdata, 2020). This shows that about one-third of total carbon emissions are directly attributable to transportation in Pakistan. The transportation sector is one of the main contributors to environmental degradation since it consumes a significant amount of non-renewable energy sources and ranks second after the industrial sector in Pakistan in terms of the contributor of CO2 emissions and energy consumption. However, due to the closure of many industries during the energy crisis, the transport sector’s contribution to CO2 emissions has nearly caught up with the industrial sector. Its current performance demonstrates that the transport sector in Pakistan will soon become the largest CO2 emitter (Shirwani et al. 2020; Asghar et al. 2021; Lin and Raza 2020) in the upcoming years. Considering that transport-related CO2 emissions are one of the biggest struggles in Pakistan, it is seriously vital and useful to investigate the determinants of sectoral emissions. Ironically, with the ongoing increase in new automobiles, this sector is becoming a cost argument for environmental damage. One of the main barriers faced by Pakistan that cope with is expanding vehicle demand. The total number of registered vehicles in Pakistan has hiked from 3.9 million in 2002 to 17.7 million in 2015 (Shah and Longsheng 2020; Zahoor et al. 2016). Pakistan has been confronting a tremendous increasing growth rate in the transport sector with 19% between 1990 with 2015 (Ahmad et al. 2016) causing traffic emissions and the deterioration in climate (Mohsin et al. 2019). Furthermore, the prevalence of two-stroke engines in Pakistan’s transportation sector is contributing significantly to the increasing rate of emissions (Economic Survey of Pakistan 2018). However, other factors such as urbanization (Rehman et al. 2020) are responsible for traffic-related emissions in Pakistan. The continuous expansion of road infrastructure because of the population outbursts is a key milestone in the sector and it means that more vehicles will add to the road with the presence of aging vehicles. The accelerated urbanization that comes along with this fast-growing population causes a significant increase in the number of automobiles. This means that the transportation sector is producing more CO2 emissions overall. Therefore, the increase in urbanization in Pakistan shows that this is another triggering factor contributing to CO2 emissions. Given these startling foresight and assessments, it is clear that investigating the determinants of transportation-related carbon emissions is a vital issue for Pakistan. Environmental deterioration caused by Pakistan’s transportation sector is the most pressing issue that requires an effective resolution. Especially in tussling with climate change, performing such an empirical examination of the sector is remarkable. As
+1 3
+the need for effective new critical strategies for the sector become inevitable in Pakistan, it is very substantial to draw essential policies that need to be developed from this worsening picture and shed light on the improvement efforts. This paper aims to provide an examination of the EKC hypothesis based on the quantile-dependent impact of economic growth, non-renewable energy, and urbanization on transported-based environmental degradation in Pakistan for the period of 1995–2018. To shed light on the determinants of emissions based on the transport sector, this study aims to present the following novelties and contributions to the literature. In this context, the motivation for this study lies in three different ways. Firstly, the study prefers to look at environmental degradation on a sectoral basis, transportation, for a country like Pakistan, which ranks very high in its category, rather than focusing on total CO2 emissions, which most researchers examine in detail. Unlike total emissionbased studies mostly considered, this study provides evidence for sectoral-based analysis. Highlighting transportrelated CO2 knowledge gaps across Pakistan may happen analytically, and also empirically based on the result of this paper. So more specific and more focused solution proposals for emissions originating from the transport sector may be easily articulated. Hence, the results are intended to serve as a guide for effectively addressing and also creating a solution, for a sector that considerably affects carbon dioxide emissions in Pakistan. The EKC hypothesis is yet another fundamental argument in the literature. The hypothesis briefly expresses that as the economy grows, the environment initially suffers from greater and more barren use of natural resources, however, after reaching a level, it begins to improve through the use of cleaner and more environmentally friendly technologies. Furthermore, the EKC models nexus between economic growth and environmental degradation (Kuznets 1955) has been persistently highlighted by numerous researchers (Ozcan et al. 2018; Doğan and InglesiLotz 2020; Ahmed and Long 2013; Genç et al. 2022; Yılancı and Pata 2020; Raza and Lin 2020; Barış-Tüzemen et al. 2020; Bölük and Mert 2015; Barış-Tüzemen and Tüzemen 2022; Sarkodie 2018; Aziz et al. 2021; Tutulmaz 2015; Bibi and Jamil 2021; Yılancı et al. 2022). Moreover, the majority of the existing research has used aggregate CO2 emissions. Besides, it can be argued that the literature to date examining CO2 emissions from transport is just a growing issue under the conceptual framework of the EKC (Liddle 2015; Amin et al. 2020; Mohsin et al. 2019; Kharbach and Chfadi (2017) but still limited. Secondly, the study seeks to add to the body of knowledge by examining the applicability of the EKC hypothesis to Pakistan’s transportation industry. Moreover, so far, numerous papers usually explore the determinants of transport-related CO2 emissions utilizing the standard linear models and the mean method such as the ordinary least squares, traditional cointegration tests of
+ARDL, and the Johansen approach. Whereas different levels of economic growth, non-renewable energy, and urbanization may have different impacts on transportation-related CO2 emissions from the lower emissions level to the high CO2 emissions level. It is crucial in this situation to use an advanced approach that allows for capturing nonlinear and asymmetric relationships between the variables. To capture these possible quantile different impacts on transportationrelated CO2 emissions, we allow the novel QARDL method proposed by Cho et al. (2015). Also, the application of the QARDL method can be of multiple benefits to related research. The first of these benefits is that the location of the dependent variable in its conditional distribution might be crucial for the locational asymmetries between variables in the QARDL approach (Shahbaz et al. 2018; Lahiani 2018). The second one, the method enables addressing the long-run connection concurrently with short-term underlying associations over a range of quantiles of the response variable. Lastly, the shocks can induce changes in the co-integrating coefficient across the quantiles (Godil et al. 2020a). The current research, to the best of our knowledge, is one of the few empirical investigations using the QARDL to examine the nexus in Pakistan. The use of quantile-based transportrelated CO2 emissions is the main and final motivation for this study to highlight the emerging concern about higher CO2 emissions from the transport sector in Pakistan. In this way, on the one hand, this is the first study to reveal asymmetric long-term information between low-carbon emissions levels to higher ones for transport-related CO2 emissions using the QARDL method, and on the other hand, it also offers more comprehensive confirmation, focusing on quantile dynamics for the EKC hypothesis of the transport sector in the CO2 emissions literature. Considering that transportrelated CO2 emissions are one of the major challenges in Pakistan which have been coping with, the current paper’s empirical results based on both quantile ARDL and the EKC hypothesis framework may tender the key solutions to relatively little existing literature in revitalizing and devising new strategies for transport-related environmental policies. Literature, data, and methodology constitute the structure of the current paper, respectively. The study’s last section pursues the conclusion after the results section. literature review Empirical research on environmental issues has been abundant in the past decades (Chishti & Dogan, 2022; Chishti, 2023; Jahanger et al., 2022), yet many studies tend to overlook sector-specific data and rely solely on country-specific (Yang et al., 2023; Chishti et al., 2023a; Jahanger et al., 2023b) or total carbon dioxide emissions data. The contribution of carbon dioxide emissions from each sector varies
+1 3
+based on its unique dynamics. Unfortunately, many studies rely on country-specific or total carbon dioxide emissions data instead of sector-specific information (Karış 2017; Anwar et al. 2022; Tandoğan and Genç 2019; Jahanger et al., 2023a; Chishti et al., 2023b; Cutcu et al. 2023; Yurtkuran and Terzi 2018). Nonetheless, conducting sector-based research facilitates identifying industry-specific issues that require policymakers’ attention (Guo et al. 2018; Alataş 2022). Besides the transportation sector, numerous studies have investigated the primary factors affecting sector-based CO2 emissions in the electricity, building, production, manufacturing, agriculture, industrial, technological innovation, and household sectors in various countries. These studies consider energy consumption, population growth, economic development, and sector-specific factors such as exports, imports, and foreign direct investment (Rehman et al. 2020; Zhao et  al. 2015; Katırcıoğlu 2014; Kumbaroğlu 2011; Mózner 2013; Akbar et al. 2021; Khan et al. 2020; Ghisetti and Quatraro 2017; Alataş and Akın 2022). It is widely acknowledged that there is a growing body of empirical research exploring the variables associated with transportation-related CO2 emissions. This research aims to draw attention to the concerning trend of increasing CO2 emissions linked to transportation. Although most studies have focused on exploring the relationships between variables without considering the EKC hypothesis, a handful of studies have delved into this relationship in the context of the EKC hypothesis. The literature on the relationship between transportation-related CO2 emissions, economic growth, and other factors has yielded mixed results. The studies by Mohsin et al. (2019) and Kharbach and Chfadi (2017) have shown that economic development and population growth are the main drivers of CO2 emissions in the transportation sector. Mohsin et al. (2019) confirmed the EKC hypothesis for Pakistan’s transport sector, showing an inverted U-shaped relationship between environmental degradation and economic development. Meanwhile, Kharbach and Chfadi (2017) found that rising vehicle ownership and population expansion were the primary drivers of CO2 emissions in the road transportation industry in Morocco. Both studies highlighted the importance of considering various factors, such as energy use, diesel consumption, and total population, in understanding the impact of economic and population growth on transportation-related CO2 emissions. The studies discussed above present valuable insights into the relationships between economic growth, energy consumption, urbanization, and CO2 emissions from the transportation sector. While some studies support the EKC hypothesis, others find mixed results. For instance, Alshehry and Belloumi (2017) did not find evidence for the EKC hypothesis between CO2 emissions and economic growth in Saudi Arabia, while Amin et al. (2020) supported the EKC hypothesis for 14 different countries. Similarly, Mohsin et al. (2019) confirmed the EKC hypothesis for Pakistan’s transport sector, whereas Kharbach and Chfadi (2017) supported the EKC theory using data from Morocco’s transportation industry. These mixed findings suggest the need for further research to explore the factors influencing CO2 emissions from the transportation sector in different contexts. Additionally, the studies highlight the significance of different factors, such as population growth, energy consumption, fuel prices, road infrastructure, and urbanization, in driving CO2 emissions from the transportation sector. The studies by Shahbaz et al. (2015) and Kharbach and Chfadi (2017) indicate that rising vehicle ownership and population expansion are primary drivers of CO2 emissions in the transportation sector. Shahbaz et al. (2015) also demonstrated the two-way causality between energy use in road transport and CO2 emissions, while Xu and Lin (2018) emphasized the need for addressing the heterogeneous effects of various driving forces on different provinces. Overall, these studies underscore the importance of addressing transportation-related environmental degradation, including the need for promoting energy and environmentally friendly forms of transportation, improve the road infrastructure, and raising awareness about transportation pollution. The findings of these studies may provide useful insights for policymakers in formulating effective strategies for reducing transportation-related environmental degradation. More recently, Mohmand et al. (2021) provided a framework for examining the causal relationships between economic growth, transportation infrastructure, fuel consumption in the transport sector, and transportation-related carbon emissions between 1971 and 2017 in Pakistan. The results of the Wald test statistic and the vector error correction model supported the existence of a short-run causality connecting transportation infrastructure, economic growth, and fuel consumption to CO2 emissions. However, in the long run, there is a unidirectional causality connecting economic growth, infrastructure improvement, and emissions. Rasool et al. (2019) examined important drivers of carbon emissions in Pakistan’s transportation industry using data from 1970 to 2014, including oil prices, road transport energy intensity, economic growth, and population density. As in many investigations, the STIRPAT model was used to describe the CO2 function (Xu and Lin 2015; Sheng and Guo 2016). According to the results of the bounds technique, there is a significant long-term relationship between oil prices, energy intensity, economic growth, population density, road infrastructure, and the CO2 emissions associated with transportation. Moreover, they reported that there is a unidirectional causality running from population density, economic growth, and road infrastructure to transport-related CO2 emissions as well as a bidirectional causal relationship between oil prices, energy intensity,
+1 3
+and transport-related CO2 emissions, oil prices, and energy intensity. Zhang and Nian (2013) investigated the association between CO2 emissions in the transport sector and its determinants for the data from 1995 to 2010 at the national and 29 regional levels in China. The Pedroni cointegration test’s findings showed that, while regional effects varied, passenger transport had a disproportionately large impact on emissions in the transportation sector. The results for electrification, on the other hand, demonstrated its enormous potential to reduce CO2 emissions. To break down the fluctuations in the primary variables of Pakistan’s transport CO2 emissions, Raza and Lin (2020) used the Logarithmic Mean Divisia Index (LMDI) and Tapio’s decoupling method. The findings for the period 1984–2018 indicated that only economic growth is increasing CO2 emissions. Anchour and Belloumi (2016) investigated the causal relationships between transportation infrastructure, transport value-added, gross capital formation, transportation energy consumption, and transport CO2 emissions for the years 1971 to 2012 in Tunisia. They found that a unidirectional short-run causality ran from transport CO2 emissions to road transport-related energy consumption while a unidirectional short-run causality ran from transport CO2 emissions to transportation infrastructure. They also noted the existence of unidirectional long-run causalities that ran from the transport value-added, road transport-related energy consumption, transport CO2 emissions, and gross capital formation to the road infrastructure as well as a unidirectional long-run causality that ran from the railway infrastructure, the transport value-added, gross capital formation, and transport CO2 emissions to the rail transport-related energy consumption. In a study of Pakistan for the years 1990–2015, Danish et al. (2018) looked into the nexus between the growth of the economy, CO2 emissions from the transportation sector, including foreign direct investment and urbanization, and the consumption of gas and fossil fuels for transportation. The results of the cointegration study showed a very substantial impact of transportation energy consumption on transportation sector CO2 emissions and deteriorated environmental quality. Furthermore, empirical data revealed that, in contrast to economic growth and urbanization, which both have a negligible effect on transportation-related CO2 emissions, foreign direct investment dramatically increases the rate of CO2 emission from the sector. Overall, these studies provide valuable insights into the factors driving transportation-related carbon emissions in Pakistan, Tunisia, and China. They highlight the importance of transportation infrastructure, economic growth, energy consumption, and population density in contributing to CO2 emissions, and they suggest potential policy solutions, such as electrification, to reduce these emissions. The studies also
+underscore the need for continued research in this area to develop more effective policies and strategies for mitigating the impact of transportation on the environment. In the context of the literature review, it can be argued that the transportation sector is a major contributor to greenhouse gas emissions, especially in developing countries like Pakistan. Despite the increasing attention given to this issue in empirical research, there is still a research gap in sector-specific data, particularly in the context of the EKC hypothesis. This study fills that gap by exploring the quantile-dependent long-run and short-run relationships between carbon dioxide emissions and economic growth, urbanization, and non-renewable energy in Pakistan’s transportation sector. data and methodology  data In this study, we investigate the nexus of transport-based environmental degradation and non-renewable energy and urbanization in the EKC framework in Pakistan for the quarterly data spanning the period from 1995 to 2018 for Pakistan. For this purpose, CO2 emission in the transport sector (TCO2) is considered the dependent variable, while the real gross domestic product (GDP), non-renewable energy consumption (NREN), and urbanization (URB) are used as the explanatory variables. Following the literature (Amin et al. 2020; Mohsin et al. 2019; Kharbach and Chfadi 2017; Xu and Lin 2018), NREN and URB are reckoned in the analysis as two important control variables to diminish omitted variable bias in the estimates. Generally, the transport sector’s key energy sources are fossil fuels. Especially in Pakistan, where 97% of the energy mix is made up of fossil fuels, the transport sector consumes energy at a rate of roughly 28%, it ranks second in terms of energy consumption. Pakistan’s transportation sector depends heavily on non-renewable energy sources (Rasool et al. 2019). In this respect, excluding non-renewable energy consumption from the model may lead to ignoring the possible effects of CO2 emission in the transport sector. The addition of the variable is important for capturing the effects. On the other hand, urbanization-related changes to the transportation system increase the amount of energy used for transportation (Adams et al. 2020). Also, transport energy consumption will continue to rise as urbanization fosters industrialization and grows concurrently with it (Lin and Du, 2015). Therefore, the process of urbanization may affect CO2 emissions in the transport sector. The data including GDP, NREN, and URB are collected from World Bank. The data on TCO2 emissions from transport comes from the Emissions Database for Global Atmospheric Research (EDGAR). Finally, to benefit from quarterly
+1 3
+information, we converted the data of low frequency to high-frequency data following the quadratic match sum method, as in the studies by Shahzad et al. (2017), Sharif et al. (2020a), and Afshan and Yaqoob (2022). Lastly, all variables are utilized in the natural logarithm form. In time series analysis, the first analysis that should be performed to reliably control the process is to examine the unit root properties of the time series. As with the ARDL approach, determining the stationarity properties of the time series is one of the prerequisites for QARDL. Therefore, we begin the analysis by examining the stationarity properties of the time series using two different unit root tests of ADF and Zivot Andrews (2002), which explores the structural breaks in the time series. After this process, we analyze the short-run dynamics and long-run cointegration relationships across a range of quantiles with the Quantile autoregressive distributed lag (QARDL) model. methodology  qardl Many econometric techniques have the characteristic of focusing only on the behavior of the conditional mean. On the other hand, information based on the mean may not be perfect and complete. Since, this may ignore the possibility that the long-run relationship and short-run movements may be fundamentally heterogeneous across different quantiles of the conditional distribution of the variables (Cho et al., 2015). Therefore, the use of methods that take location (quantile) asymmetries into account can exhibit empirical results that make it feasible to obtain parameters that are in many respects superior and more robust than conventional methods. The dynamic quantile autoregressive distributed lag (QARDL) model proposed by Cho et al. (2015), an extension of ARDL established by Pesaran and Shin (1995) using the quantile regression context, is one of the sophisticated methods. The method submits simultaneous overcoming of long-run cointegration relationships and short-run movements over a range of quantiles by allowing for timevarying patterns of relationships. However, the approach of QARDL makes it possible to show the different impact levels of the independent variables at all levels of the dependent variable. Furthermore, QARDL is superior not only to linear models but also to other existing nonlinear models like nonlinear autoregressive distributed lag (NARDL) (Shin et al. 2014; Godil et al. 2020b). When analyzing the environmental Kuznets curve (EKC) model, researchers must be aware of the potential problem of multicollinearity. However, it is important to note that multicollinearity is a linear phenomenon and the EKC model is based on a non-linear relationship between economic growth and environmental degradation. Therefore, while evaluating the cost-benefit
+analysis of including a squared term in the model, which may cause multicollinearity, it is advisable to ignore multicollinearity as a linear phenomenon. This is because the theoretical foundation of the EKC model supports a non-linear relationship between economic growth and environmental degradation. To examine the short-run and long-run relationship of transported-based CO2 emission with GDP, squared GDP, urbanization, and non-renewable energy consumption under the EKC framework for Pakistan across different quantiles of transportedbased CO2 emission, we use the QARDL model. we start the model with the traditional ARDL approach, specified as follows:
+where TCO2, GDP, GDP2, NREN, and URB represent transport-based CO2 emission, the real gross domestic product, non-renewable energy consumption, and urbanization, respectively. εt, in Equation (1), is the error term that is specified as CO2t − E[CO2t| θt − 1] with θt − 1 being the smallest σ-field yielded by {GDPt, GDP2t, NRENt, URBt, CO2t − 1, G DPt − 1, GDP2t − 1, NRENt − 1, URBt − 1, …}, and p and q1, q2, q3, and q4 show lag orders. Following the assumption of the τth quantile of TCO2t conditional on the information set θt − 1, the extended QARDL model is re-written by Cho et al. (2015):
+where ϵt(τ) is defined as TCO2t − QTCO2t [ | t−1 ] and 0 < τ < 1,as in Kim and White (2003). Some specific quantiles of τ, 0.05, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, and 0.95 are measured for empirical analysis. Also, we calculate the cumulative short-run impact of the earlier TCO2 on recent TCO2; however, the cumulative short-run impact of the past and concurrent level of the real GDP, real GDP squared, non-renewable energy consumption, and
+(1)
+TCO2t = α +
+p ∑
+i=1
+βiTCO2t−i +
+q1 ∑
+i=0
+γiGDPt−i
++
+q2 ∑
+i=0
+δiGDP 2 t−i +
+q3 ∑
+i=0
+ϑiNRENt−i
++
+q4 ∑
+i=0
+φiURBt−i + εt
+(2)
+Q TCO2 t = α( ) +
+p ∑
+i=1
+βi(τ)ΔTCO2t−i +
+q1 ∑
+i=0
+γi(τ)ΔGDPt−i
++
+q2 ∑
+i=0
+δi(τ)ΔGDP 2 t−i +
+q3 ∑
+i=0
+ϑi(τ)ΔNRENt−i
++
+q4 ∑
+i=0
+φiΔURBt−i
+α 1(τ)TCO2t−1 + α2(τ)GDPt−1 + α3(τ)GDP
+2
+t−1
++ α 4(τ)NRENt−1 + α5(τ)URBt−1 + εt(τ)
+urbanization on the current level of transported-based CO2 by considering the delta method. Furthermore, long-run cointegration estimates are measured with the same approximation. Finally, to detect the both short-run and the long-run asymmetric impact of the real GDP, real GDP squared, nonrenewable energy consumption, and urbanization on TCO2 emission, we use the method of Wald. The null hypotheses of short-run symmetry for Equation (2) is explained as:
+For long run, empirical results Before applying the QARDL method, the examination of the statistical properties including mean, minimum, and
+HShort 0 ∶ i(0.05) = i(0.10) = ⋯ = i(0.95)
+HShort 0 ∶ i(0.05) = i(0.10) = ⋯ = i(0.95)
+HShort 0 ∶ i(0.05) = i(0.10) = ⋯ = i(0.95)
+HShort 0 ∶ i(0.05) = i(0.10) = ⋯ = i(0.95)
+H long
+0 ∶ 2(0.05) = 2(0.10) = ⋯ = 2(0.95)
+H long
+0 ∶ 3(0.05) = 3(0.10) = ⋯ = 3(0.95)
+H long
+0 ∶ 4(0.05) = 4(0.10) = ⋯ = 4(0.95)
+H long
+0 ∶ 5(0.05) = 5(0.10) = ⋯ = 5(0.95)
+maximum values, and the standard deviation of the variables provides a priori information for the following process. Table 1 presents the descriptive statistics of all variables in the analysis. Firstly, all statistics for mean, minimum, and maximum are positive. GDP has the highest mean, followed by TCO2, NREN, and URB. The highest volatility is observed for TCO2. However, the Jarque-Bera test statistics for all the series reject the null hypothesis of normality at a 1% significance level. The Jarque-Bera statistics show that the data are non-normally distributed. This indicates that the QARDL model is suitable for examining the cointegration relationship between the variables (Afshan and Yaqoob 2022; Sharif et al. 2020b). In time series analysis, checking the stationary properties of the series is most important before employing the QARDL model. Because the condition that the order of integration of the variables is not greater than I(1) or a mixed integration of I(0) and I(1) is a necessary condition in the application of the QARDL model, as in ARDL. Thus, the current study follows the unit root test of the Augmented Dickey-Fuller (ADF) (Dickey and Fuller 1979) with Zivot Andrews to benefit from the advantage of accounting structural breaks in the data. Table 2 reports the findings of unit root tests. The overall outcome suggests that GDP, NREN, and TCO2 are nonstationary at the level, while URB is stationary at the level. So the time series of GDP, NREN, and TCO2 are I(1) while URB is I(0). The findings obtained for the order of integration for the variables show that it is quite appropriate to continue the analysis with the QARDL model. The findings of QARDL predominantly differ from the past literature by presenting quantile-varying cointegration coefficients in Table 3. Firstly, the error correction parameters (ρ∗) of the QARDL model for specific quantiles for TCO2 are negatively significant for the quantiles from 20th to 95th. For the first two lowest quantiles of 0.05th
+1 3
+Ta bl
+e 3
+R es
+ul ts
+o f q
+ua nt
+ile a
+ut or
+eg re
+ss iv
+e di
+str ib
+ut ed
+la g
+(Q A
+R D
+L) fo
+r T CO
+2
+Th e
+t-s ta
+tis tic
+s a re
+b et
+w ee
+n br
+ac ke
+ts . *
+** , *
+*, a
+nd *
+in di
+ca te
+si gn
+ifi ca
+nc e
+at th
+e 1%
+, 5 %
+, a nd
+1 0%
+le ve
+ls , r
+es pe
+ct iv
+el y
+Q ua
+nt ile
+s C
+on st
+an t
+EC M
+Lo ng
+-r un
+e sti
+m at
+es Sh
+or t -
+ru n
+es tim
+at es
+(τ )
+α ∗ (τ
+) ρ ∗
+(τ )
+Β G D
+P( τ)
+Β G D
+P2 (τ
+) Β U
+R B (τ
+) Β N
+R EN
+(τ )
+φ 1 (τ
+) G D P
+0 ( )  
+G D P 2 0 ( )   
+U R B 0 ( )   
+N R E N 0 ( )   
+N R E N 1 ( )   
+0. 05
+− 6. 44 3
+− 0. 04 57
+0. 53
+9 −
+0. 01
+14 0. 30 1
+0. 05
+4 0. 48 7*
+* 15
+.6 7
+− 0. 32 1
+− 1. 01 6
+0. 15
+3 −
+0. 45 3 (2 0. 21 ) (0 .1 05 ) (1 .6 66 ) (0 .0 32 ) (1 .0 07 ) (0 .3 04 ) (0 .2 07 ) (3 5. 80 ) (0 .7 54 ) (2 2. 03 ) (0 .8 79 ) (0 .6 42 ) 0. 10 − 2. 56 2 − 0. 08 93 0. 21 4 − 0. 00 58 0. 98 4 0. 05 0 0. 39 4* * 10 .3 9 − 0. 21 5 − 2. 45 4 0. 41 6 − 0. 26 0 (1 0. 76 ) (0 .0 63 ) (0 .8 93 ) (0 .0 17 ) (0 .7 30 ) (0 .2 13 ) (0 .1 77 ) (2 4. 10 ) (0 .5 05 ) (1 1. 56 ) (0 .5 61 ) (0 .4 61 ) 0. 20 − 6. 56 1 − 0. 07 25 * 0. 54 2 − 0. 01 20 0. 73 6* 0. 02 5 0. 32 1* ** 3. 25 3 − 0. 07 0 6. 19 2 0. 73 0 − 0. 15 9 (4 .5 29 ) (0 .0 38 ) (0 .3 74 ) (0 .0 07 ) (0 .4 17 ) (0 .0 67 ) (0 .1 06 ) (1 3. 90 ) (0 .2 88 ) (9 .6 50 ) (0 .5 47 ) (0 .3 10 ) 0. 30 − 4. 56 5 − 0. 06 17 ** 0. 37 7 − 0. 00 85 0. 61 3* * 0. 04 1 0. 38 4* ** − 0. 90 8 0. 02 0 6. 90 7 0. 95 0* * − 0. 22 5 (4 .6 11 ) (0 .0 29 ) (0 .3 79 ) (0 .0 07 ) (0 .2 81 ) (0 .0 66 ) (0 .0 90 ) (9 .7 86 ) (0 .2 05 ) (7 .2 00 ) (0 .4 10 ) (0 .2 14 ) 0. 40 − 6. 58 3* − 0. 07 49 ** * 0. 54 5* − 0. 01 19 * 0. 65 6* ** 0. 05 7 0. 36 2* ** − 2. 93 9 0. 06 1 9. 57 0 0. 98 8* ** − 0. 17 7 (3 .8 15 ) (0 .0 23 ) (0 .3 13 ) (0 .0 06 ) (0 .1 66 ) (0 .0 57 ) (0 .0 88 ) (5 .7 51 ) (0 .1 22 ) (6 .2 12 ) (0 .2 92 ) (0 .1 83 ) 0. 50 − 8. 27 8* * − 0. 08 06 ** * 0. 68 7* * − 0. 01 45 ** 0. 56 2* ** 0. 08 1* 0. 36 9* ** − 3. 95 7 0. 08 3 12 .6 2* * 0. 94 7* ** − 0. 16 6 (3 .4 99 ) (0 .0 16 ) (0 .2 88 ) (0 .0 05 ) (0 .1 20 ) (0 .0 42 ) (0 .1 04 ) (6 .4 96 ) (0 .1 36 ) (5 .3 16 ) (0 .2 29 ) (0 .1 58 ) 0. 60 − 8. 32 4* − 0. 08 28 ** * 0. 69 0* − 0. 01 44 ** 0. 53 5* ** 0. 08 7* 0. 38 0* ** 1. 67 9 − 0. 03 5 12 .5 7* * 1. 03 6* * − 0. 31 8*
+*
+(4 .3
+27 )
+(− 3. 04 7)
+(0 .3
+58 )
+(0 .0
+07 )
+(0 .1
+19 )
+(0 .0
+47 )
+(0 .0
+96 )
+(7 .4
+70 )
+(0 .1
+57 )
+(5 .0
+67 )
+(0 .2
+46 )
+(0 .1
+25 )
+0. 70
+− 7. 87 6*
+− 0. 08 32
+** *
+0. 65
+3* −
+0. 01
+35 **
+0. 46
+0* *
+0. 10
+9* *
+0. 39
+4* **
+2. 69
+6 −
+0. 05
+5 14
+.4 5*
+* 1. 10 3*
+** −
+0. 38
+0* **
+(4 .0
+57 )
+(0 .0
+17 )
+(0 .3
+35 )
+(0 .0
+06 )
+(0 .1
+79 )
+(0 .0
+43 )
+(0 .0
+99 )
+(8 .5
+87 )
+(0 .1
+80 )
+(5 .1
+62 )
+(0 .2
+87 )
+(0 .1
+11 )
+0. 80
+− 7. 46 6
+− 0. 10 5*
+** 0. 62 1
+− 0. 01 34
+* 0. 68 9*
+** 0. 16 1*
+** 0. 33 3*
+** 5. 21 4
+− 0. 10 9
+14 .1
+4* **
+1. 06
+7* *
+− 0. 36 1*
+*
+(4 .8
+08 )
+(0 .0
+25 )
+(0 .4
+00 )
+(0 .0
+07 )
+(0 .2
+00 )
+(0 .0
+43 )
+(0 .1
+02 )
+(1 0. 13 )
+(0 .2
+13 )
+(5 .1
+68 )
+(0 .3
+27 )
+(0 .1
+61 )
+0. 90
+− 3. 24 6
+− 0. 11 5*
+* 0. 27 6
+− 0. 00 62
+0. 72
+8 0. 19 0
+0. 53
+7* **
+27 .9
+2 0. 58 6
+5. 05
+1 0. 93 1*
+− 0,
+61 3*
+(1 1. 00 )
+(0 .0
+82 )
+(0 .9
+05 )
+(0 .0
+17 8)
+(0 .7
+34 )
+(0 .2
+12 )
+(0 .1
+65 )
+(1 9. 01 )
+(0 .4
+02 )
+(1 5. 91 )
+(0 .4
+85 )
+(0 .3
+56 )
+0. 95
+10 .8
+1 −
+0. 21
+9* −
+0. 85
+8 0. 01 47
+1. 54
+2 0. 58 2*
+0. 75
+5* **
+9. 47
+3 −
+0. 19
+0 −
+4. 42
+5 0. 64 3
+− 0. 81 4*
+(1 5. 86 )
+(0 .0
+82 )
+(1 .3
+06 )
+(0 .0
+25 )
+(0 .9
+68 )
+(0 .3
+12 )
+(0 .2
+06 )
+(2 1. 72 )
+(0 .4
+62 )
+(1 3. 15 )
+(0 .4
+81 )
+(0 .4
+73 )
+1 3
+and 10th, the error correction parameters are found to be negative, however, insignificant. In the QARDL model, the error correction term shows the adjustment mechanism of the model toward long-run equilibrium. If the error correction term is statistically significant and negative, it indicates that there is a tendency for the dependent variable to adjust to the equilibrium relationship in the long run. This means that reaching a long-run equilibrium condition is corrected in the next period, with speed determined by the coefficient on the error correction term. The expected negative sign suggests a convergence to the long-run equilibrium among the TCO2, GDP, URB, and NREN. As seen from the long-run results, economic growth positively and significantly affects TCO2 for the middle to high quantiles of 40th, 50th 60th, and 70th. This finding highlights the fact that the transportation sector in Pakistan is highly dependent on economic growth for its carbon emissions. The positive relationship between economic growth and carbon emissions may be attributed to the increased demand for transportation services, which is directly linked to economic growth. The results also suggest that the magnitude of long-run relationships is higher in the median and middle-high quantile, indicating that the impact of economic growth on transport-based carbon emissions is stronger when emissions levels in Pakistan are moderate to high. These results are consistent with the results of Rasool et al. (2019), Raza and Lin (2020) who found a positive impact of economic growth on carbon emissions in Pakistan’s transport sector. However, the results suggest while economic growth has a positive impact on emissions, the square of economic growth has negatively significant impacts on transport-based carbon dioxide emissions which validates the EKC hypothesis. In the long run, the impact of GDP2 on emissions is negative for the 0.40 and 0.80 quantiles. This indicates that beyond a certain threshold, economic growth becomes detrimental to the environment. In Pakistan’s case, economic growth has a positive impact on carbon emissions up to a certain level but beyond that level, the impact becomes negative. These results suggest that policymakers need to focus on sustainable development policies that balance economic growth and environmental protection. This outcome provides evidence to the findings of Amin et al. (2020) paper that exerted the validation of the EKC hypothesis for European Union countries. For urbanization, results also vary across different quantiles. Our study findings endorse that URB positively and significantly affects transport-based carbon emission for the majority of the quantiles except for the 0.05th, 10th, 90th, and 95th quantiles. At the 20th quantile, a 1% change in urbanization leads to 0.736% significant increase in carbon emission, whereas this impact decreased to 0.460% at 70th quantile, and rose to 0.689% at the 80th quantile. The finding that urbanization has a positive impact
+on emissions for the majority of the quantiles suggests that urbanization is indeed one of the major factors contributing to the increase in CO2 emissions from transport in Pakistan. The inadequate public transportation system in Pakistani cities further exacerbates the reliance on private transportation, leading to even higher carbon emissions. Mohsin et al. (2019) have found similar results that increasing trends of both economic growth and urbanization are the major cause of the increase in transport-based environmental degradation. This result for urbanization also confirms the result of Solaymani (2022), who found that urbanization is the key contributor to the increase in CO2 emissions from transport in Malaysia. Lastly, the long-run impact for NREN is found positive and significant at the 50th, 60th, 70th, and 80th quantiles. These positive impacts of non-renewable energy on CO2 emissions from transport in Pakistan indicate an upward trend in the long-run relationship between the variables. It is also noteworthy that non-renewable energy has reached its highest effect of 0.582% on emissions when transportbased emission is at the highest levels, at the 95th quantile. These results of NREN across quantiles contribute to the empirical literature by expanding studies that examine the relationship with the causality framework (Mohmand et al. 2021, Anchour and Belloumi 2016). Furthermore, the short-run dynamics, in Table 3, indicate that current transport-based CO2 is positively and significantly affected by its past levels. But it is evident that a statistically significant short-term impact of GDP and GDP2 on emissions. In the short run, previous and current changes in GDP and also GDP2 do not impact transport-based CO2, significantly. For URB, past and current changes in URB significantly and positively affect the past and current variations in transport-based CO2 at quantiles ranging from 50th to 0.80th. Moreover, the past and current changes in NREN significantly and positively affect the variations in emissions at moderate to highest quantiles ranging from 30th to 90th. The overall results of the QARDL model suggest that in the long-run economic growth and urbanization compared to other variables have the highest impacts on the increase in CO2 emissions from transport in Pakistan. However, the situation is slightly different for short-term dynamics. In the short run, mainly the impact of URB and NREN on emissions is much more noticeable in terms of coefficient magnitude than in the long run. In the short term, the migration of significant numbers of rural households to cities increases the urban population. The income increase of households migrating to urban areas brings both energy and emission increase (Ahmed et al. 2019; Solaymani 2022). The fact that the emission-increasing effect of NREN in the long term is less than in the short term can be considered an indicator of the transition to cleaner technologies in the long term. Furthermore, the short-run dynamics, in Table 3, indicate that
+current transport-based CO2 is positively and significantly affected by its past levels. But it is evident that a statistically significant short-term impact of GDP and GDP2 on emissions. In the short run, previous and current changes in GDP and also GDP2 do not impact transport-based CO2, significantly. For URB, past and current changes in URB significantly and positively affect the past and current variations in transport-based CO2 at quantiles ranging from 50th to 0.80th. Moreover, the past and current changes in NREN significantly and positively affect the variations in emissions at moderate to highest quantiles ranging from 30th to 90th. Overall, the short-term dynamics indicate that the impacts of URB and NREN on emissions are more pronounced in the short run than in the long run. This may be because the effects of urbanization and energy use on emissions are more immediate in the short term, while the transition to cleaner technologies takes time to have an impact on emissions. The findings also suggest that the impact of economic growth on emissions is more long-term in nature, and may be influenced by factors such as technology innovation and policy measures that promote sustainability. These results highlight the importance of considering the dynamic nature of the relationship between these variables and transport-based carbon emissions in Pakistan. The findings suggest that policy interventions aimed at promoting sustainable urbanization and transitioning to renewable energy sources may have a more pronounced impact in the short run, while in the long run, economic growth may play a larger role in driving emissions. The varying effects across quantiles for the variables also are supported by the Wald test results in Table 4. The test statistics of Wald indicate that the null hypothesis of the parameter of constancy of the speed adjustment parameter is rejected. The test statistics also show the long-run
+asymmetric relationships of transport-based carbon emission with GDP, GDP2, URB, and NREN in Pakistan. Therefore, based on these findings, it can be said that the cointegrating parameter between GDP, GDP2, URB and NREN, and TCO2 is dynamic. For the short-run parameters, the Wald test statistics fail to reject the null hypothesis of the parameter constancy for all variables, except NREN. In addition, the shortterm cumulative impact of URB and NREN is significant. conclusion and policy recommendations Our study contributes to the literature by analyzing the impact of non-renewable energy, urbanization, and economic growth on transport-based carbon emissions in Pakistan within the EKC framework. Our findings indicate that these factors have a quantile-dependent long-run and short-run relationship with transport-based carbon emissions, with economic growth following an inverted U-shaped relationship. Furthermore, we found that the environmental damage caused by non-renewable energy consumption is less at the lower quantile and high at the upper quantile level, highlighting the importance of switching to renewable energy in transportation. The implications of our study for policymakers are clear. We suggest that growth-oriented policies are necessary to validate the EKC hypothesis and that policymakers in Pakistan should target development and growth-related policies without fear of environmental degradation. We also recommend re-arranging urban planning priorities to minimize transport-based environmental pollution, such as improving the public transport system and encouraging high-rise building culture. Dissemination of sustainable alternative fuel use and infrastructure within the scope of green transformation are important steps for decarbonization, and we suggest that the government give green finance to convert current vehicles to renewable energy. In addition, we recommend the introduction of a comprehensive transportation system with a special focus on vehicle fitness monitoring to reduce transport-based carbon emissions. Financial penalties should be used to discourage out-of-order vehicles that are emitting smoke. Energy efficiency in the transport sector and optimization of vehicle speed can also contribute to reducing emissions. The dissemination of vehicles based on fuel economy and support of tax incentives can make a significant difference. Finally, we emphasize the importance of the public transport system in overcoming the environmental issues caused by the transport sector and suggest that the government encourage the public and private sectors to invest in and provide a high-quality public transport system to the citizens.

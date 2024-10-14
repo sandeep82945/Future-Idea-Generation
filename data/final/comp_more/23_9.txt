@@ -1,0 +1,617 @@
+The potential of offline reinforcement learning (RL) is that high-capacity models
+trained on large, heterogeneous datasets can lead to agents that generalize broadly,
+analogously to similar advances in vision and NLP. However, recent works argue
+that offline RL methods encounter unique challenges to scaling up model capacity.
+Drawing on the learnings from these works, we re-examine previous design choices
+and find that with appropriate choices: ResNets, cross-entropy based distributional
+backups, and feature normalization, offline Q-learning algorithms exhibit strong
+performance that scales with model capacity. Using multi-task Atari as a testbed for scaling and generalization, we train a single policy on 40 games with
+near-human performance using up-to 80 million parameter networks, finding that
+model performance scales favorably with capacity. In contrast to prior work, we
+extrapolate beyond dataset performance even when trained entirely on a large
+(400M transitions) but highly suboptimal dataset (51% human-level performance).
+Compared to return-conditioned supervised approaches, offline Q-learning scales
+similarly with model capacity and has better performance, especially when the
+dataset is suboptimal. Finally, we show that offline Q-learning with a diverse
+dataset is sufficient to learn powerful representations that facilitate rapid transfer
+to novel games and fast online learning on new variations of a training game,
+improving over existing state-of-the-art representation learning approaches.1 INTRODUCTION
+High-capacity neural networks trained on large, diverse datasets have led to remarkable models that
+can solve numerous tasks, rapidly adapt to new tasks, and produce general-purpose representations in
+NLP and vision (Brown et al., 2020; He et al., 2021). The promise of offline RL is to leverage these
+advances to produce polices with broad generalization, emergent capabilities, and performance that
+exceeds the capabilities demonstrated in the training dataset. Thus far, the only offline RL approaches
+that demonstrate broadly generalizing policies and transferable representations are heavily-based on
+supervised learning (Reed et al., 2022; Lee et al., 2022). However, these approaches are likely to
+perform poorly when the dataset does not contain expert trajectories (Kumar et al., 2021b).
+Offline Q-learning performs well across dataset compositions in a variety of simulated (Gulcehre et al.,
+2020; Fu et al., 2020) and real-world domains (Chebotar et al., 2021; Soares et al., 2021), however,
+these are largely centered around small-scale, single-task problems where broad generalization and
+learning general-purpose representations is not expected. Scaling these methods up to high-capcity
+models on large, diverse datasets is the critical challenge. Prior works hint at the difficulties: on
+small-scale, single-task deep RL benchmarks, scaling model capacity can lead to instabilities or
+degrade performance (Van Hasselt et al., 2018; Sinha et al., 2020; Ota et al., 2021) explaining why
+decade-old tiny 3-layer CNN architectures (Mnih et al., 2013) are still prevalent. Moreover, works
+that have scaled architectures to millions of parameters (Espeholt et al., 2018; Teh et al., 2017;
+Vinyals et al., 2019; Schrittwieser et al., 2021) typically focus on online learning and employ many
+sophisticated techniques to stabilize learning, such as supervised auxiliary losses, distillation, and
+pre-training. Thus, it is unclear whether offline Q-learning can be scaled to high-capacity models.
+∗ Co-senior authors.
+1
+Published as a conference paper at ICLR 2023
+ResNet encoder
+FC layers
+Q-values for
+Q-values for Amidar
+Amidar
+Q-values for
+Q-values for Amidar Q-values for Amidar
+Amidar
+Train on potentially sub-optimal
+ofine trajectories.
+Eval online. Fine-tune novel games ofine
+or online for novel modes.
+ResNet encoder
+FC layers
+Q-values for
+Q-values for Amidar
+Amidar
+Q-values for
+Q-values for Amidar Q-values for Amidar
+Amidar
+ResNet encoder
+FC layers
+Q-values for
+fne-tuning
+game
+Initialize encoder with
+pretrained weights. Separate heads for 40 games
+Figure 1: An overview of the training and evaluation setup. Models are trained offline with potentially
+sub-optimal data. We adapt CQL to the multi-task setup via a multi-headed architecture. The pre-trained
+visual encoder is reused in fine-tuning (the weights are either frozen or fine-tuned), whereas the downstream
+fully-connected layers are reinitialized and trained.
+In this paper, we demonstrate that with careful design decisions, offline Q-learning can scale to highcapacity models trained on large, diverse datasets from many tasks, leading to policies that not only
+generalize broadly, but also learn representations that effectively transfer to new downstream tasks and
+exceed the performance in the training dataset. Crucially, we make three modifications motivated by
+prior work in deep learning and offline RL. First, we find that a modified ResNet architecture (He et al.,
+2016) substantially outperforms typical deep RL architectures and follows a power-law relationship
+between model capacity and performance, unlike common alternatives. Second, a discretized
+representation of the return distribution with a distributional cross-entropy loss (Bellemare et al.,
+2017) substantially improves performance compared to standard Q-learning, that utilizes mean
+squared error. Finally, feature normalization on the intermediate feature representations stabilizes
+training and prevents feature co-adaptation (Kumar et al., 2021a).
+To systematically evaluate the impact of these changes on scaling and generalization, we train a
+single policy to play 40 Atari games (Bellemare et al., 2013; Agarwal et al., 2020), similarly to
+Lee et al. (2022), and evaluate performance when the training dataset contains expert trajectories
+and when the data is sub-optimal. This problem is especially challenging because of the diversity
+of games with their own unique dynamics, reward, visuals, and agent embodiments. Furthermore,
+the sub-optimal data setting requires the learning algorithm to “stitch together” useful segments of
+sub-optimal trajectories to perform well. To investigate generalization of learned representations, we
+evaluate offline fine-tuning to never-before-seen games and fast online adaptation on new variants of
+training games (Section 5.2). With our modifications,
+• Offline Q-learning learns policies that attain more than 100% human-level performance on
+most of these games, about 2x better than prior supervised learning (SL) approaches for
+learning from sub-optimal offline data (51% human-level performance).
+• Akin to scaling laws in SL (Kaplan et al., 2020), offline Q-learning performance scales
+favorably with model capacity (Figure 6).
+• Representations learned by offline Q-learning give rise to more than 80% better performance
+when fine-tuning on new games compared to representations from state-of-the-art returnconditioned supervised (Lee et al., 2022) and self-supervised methods (He et al., 2021; Oord
+et al., 2018).
+By scaling Q-learning, we realize the promise of offline RL: learning policies that broadly generalize
+and exceed the capabilities demonstrated in the training dataset. We hope that this work encourages
+large-scale offline RL applications, especially in domains with large sub-optimal datasets.
+2 RELATED WORK
+Prior works have sought to train a single generalist policy to play multiple Atari games simultaneously
+from environment interactions, either using off-policy RL with online data collection (Espeholt et al.,
+2018; Hessel et al., 2019a; Song et al., 2019), or policy distillation (Teh et al., 2017; Rusu et al.,
+2015) from single-task policies. While our work also focuses on learning such a generalist multi-task
+2
+Published as a conference paper at ICLR 2023
+DT (200M) DT (40M) BC (80M) Online MT DQN (5X)* Scaled QL (Ours, 80M) Behavior Policy 0%
+20%
+40%
+60%
+Human-Normalized Median
+0%
+20%
+40%
+60%
+80%
+Human-Normalized IQM
+Sub-optimal Data
+0.0 0.5 1.0 1.5 2.0
+Human Normalized Score (τ)
+0%
+25%
+50%
+75%
+100%
+Fraction of games wit
+h
+s
+c
+o
+r
+e
+>
+τ
+Performance Profile (Sub-optimal Data)
+Figure 2: Offline multi-task performance on 40 games with sub-optimal data. Left. Scaled QL significantly
+outperforms the previous state-of-the-art method, DT, attaining about a 2.5x performance improvement in
+normalized IQM score. To contextualize the absolute numbers, we include online multi-task Impala DQN (Espeholt et al., 2018) trained on 5x as much data. Right. Performance profiles (Agarwal et al., 2021) showing
+the distribution of normalized scores across all 40 training games (higher is better). Scaled QL stochastically
+dominates other offline RL algorithms and achieves superhuman performance in 40% of the games. “Behavior
+policy” corresponds to the score of the dataset trajectories. Online MT DQN (5X), taken directly from Lee et al.
+(2022), corresponds to running multi-task online RL for 5x more data with IMPALA (details in Appendix C.5).
+policy, it investigates whether we can do so by scaling offline Q-learning on suboptimal offline data,
+analogous to how supervised learning can be scaled to large, diverse datasets. Furthermore, prior
+attempts to apply transfer learning using RL-learned policies in ALE (Rusu et al., 2015; Parisotto
+et al., 2015; Mittel & Sowmya Munukutla, 2019) are restricted to a dozen games that tend to be
+similar and generally require an “expert”, instead of learning how to play all games concurrently.
+Closely related to our work, recent work train Transformers (Vaswani et al., 2017) on purely offline
+data for learning such a generalist policy using supervised learning (SL) approaches, namely, behavioral cloning (Reed et al., 2022) or return-conditioned behavioral cloning (Lee et al., 2022). While
+these works focus on large datasets containing expert or near-human performance trajectories, our
+work focuses on the regime when we only have access to highly diverse but sub-optimal datasets. We
+find that these SL approaches perform poorly with such datasets, while offline Q-learning is able to
+substantially extrapolate beyond dataset performance (Figure 2). Even with near-optimal data, we
+observe that scaling up offline Q-learning outperforms SL approaches with 200 million parameters
+using as few as half the number of network parameters (Figure 6).
+There has been a recent surge of offline RL algorithms that focus on mitigating distribution shift
+in single task settings (Fujimoto et al., 2018; Kumar et al., 2019; Liu et al., 2020; Wu et al., 2019;
+Fujimoto & Gu, 2021; Siegel et al., 2020; Peng et al., 2019; Nair et al., 2020; Liu et al., 2019;
+Swaminathan & Joachims, 2015; Nachum et al., 2019; Kumar et al., 2020; Kostrikov et al., 2021;
+Kidambi et al., 2020; Yu et al., 2020b; 2021). Complementary to such work, our work investigates
+scaling offline RL on the more diverse and challenging multi-task Atari setting with data from 40
+different games (Agarwal et al., 2020; Lee et al., 2022). To do so, we use CQL (Kumar et al., 2020),
+due to its simplicity as well as its efficacy on offline RL datasets with high-dimensional observations.
+3 PRELIMINARIES AND PROBLEM SETUP
+We consider sequential-decision making problems (Sutton & Barto, 1998) where on each timestep,
+an agent observes a state s, produces an action a, and receives a reward r. The goal of a learning
+algorithm is to maximize the sum of discounted rewards. Our approach is based on conservative
+Q-learning (CQL) (Kumar et al., 2020), an offline Q-learning algorithm. CQL uses a sum of two
+loss functions to combat value overestimation on unseen actions: (i) standard TD-error that enforces
+Bellman consistency, and (ii) a regularizer that minimizes the Q-values for unseen actions at a given
+state, while maximizing the Q-value at the dataset action to counteract excessive underestimation.
+Denoting Qθ(s, a) as the learned Q-function, the training objective for CQL is given by:
+min
+θ
+α
+
+Es∼D "
+log X
+a′
+exp(Qθ(s, a
+′
+))!#−Es,a∼D [Qθ(s, a)]!
++ TDError(θ; D), (1)
+where α is the regularizer weight, which we fix to α = 0.05 based on preliminary experiments unless
+noted otherwise. Kumar et al. (2020) utilized a distributional TDError(θ; D) from C51 (Bellemare
+3
+Published as a conference paper at ICLR 2023
+Figure 3: An overview of the network architecture. The key design decisions are: (1) the use of ResNet
+models with learned spatial embeddings and group normalization, (2) use of a distributional representation
+of return values and cross-entropy TD loss for training (i.e., C51 (Bellemare et al., 2017)), and (3) feature
+normalization to stablize training.
+et al., 2017), whereas (Kumar et al., 2021a) showed that similar results could be attained with the
+standard mean-squared TD-error. Lee et al. (2022) use the distributional formulation of CQL and
+found that it underperforms alternatives and performance does not improve with model capacity. In
+general, there is no consensus on which formulation of TD-error must be utilized in Equation 1, and
+we will study this choice in our scaling experiments.
+Problem setup. Our goal is to learn a single policy that is effective at multiple Atari games and can
+be fine-tuned to new games. For training, we utilize the set of 40 Atari games used by Lee et al.
+(2022), and for each game, we utilize the experience collected in the DQN-Replay dataset (Agarwal
+et al., 2020) as our offline dataset. We consider two different dataset compositions:
+1. Sub-optimal dataset consisting of the initial 20% of the trajectories (10M transitions)
+from DQN-Replay for each game, containing 400 million transitions overall with average
+human-normalized interquartile-mean (IQM) (Agarwal et al., 2021) score of 51%. Since
+this dataset does not contain optimal trajectories, we do not expect methods that simply copy
+behaviors in this dataset to perform well. On the other hand, we would expect methods that
+can combine useful segments of sub-optimal trajectories to perform well.
+2. Near-optimal dataset, used by Lee et al. (2022), consisting of all the experience (50M
+transitions) encountered during training of a DQN agent including human-level trajectories,
+containing 2 billion transitions with average human-normalized IQM score of 93.5%.
+Evaluation. We evaluate our method in a variety of settings as we discuss in our experiments in
+Section 5. Due to excessive computational requirements of running huge models, we are only able
+to run our main experiments with one seed. Prior work (Lee et al., 2022) that also studied offline
+multi-game Atari evaluated models with only one seed. That said, to ensure that our evaluations
+are reliable, for reporting performance, we follow the recommendations by Agarwal et al. (2021).
+Specifically, we report interquartile mean (IQM) normalized scores, which is the average scores
+across middle 50% of the games, as well as performance profiles for qualitative summarization.
+4 OUR APPROACH FOR SCALING OFFLINE RL
+In this section, we describe the critical modifications required to make CQL effective in learning
+highly-expressive policies from large, heterogeneous datasets.
+Parameterization of Q-values and TD error. In the single game setting, both mean-squared TD
+error and distributional TD error perform comparably online (Agarwal et al., 2021) and offline (Kumar
+et al., 2020; 2021a). In contrast, we observed, perhaps surprisingly, that mean-squared TD error does
+not scale well, and performs much worse than using a categorical distributional representation of
+return values (Bellemare et al., 2017) when we train on many Atari games. We hypothesize that this
+is because even with reward clipping, Q-values for different games often span different ranges, and
+training a single network with shared parameters to accurately predict all of them presents challenges
+pertaining to gradient interference along different games (Hessel et al., 2019b; Yu et al., 2020a).
+While prior works have proposed to use adaptive normalization schemes (Hessel et al., 2019b; Kurin
+et al., 2022), preliminary experiments with these approaches were not effective to close the gap.
+4
+Published as a conference paper at ICLR 2023
+Amidar
+Assault
+Asterix
+Atlantis
+BankHeist
+BattleZone
+BeamRider
+Boxing
+Breakout
+Carnival
+Centipede
+ChopperCommand
+CrazyClimber
+DemonAttack
+DoubleDunk
+Enduro
+FishingDerby
+Freeway
+Frostbite
+Gopher
+Gravitar
+Hero
+IceHockey
+Jamesbond
+Kangaroo
+Krull
+KungFuMaster
+NameThisGame
+Phoenix
+Pooyan
+Qbert
+Riverraid
+Robotank
+Seaquest
+TimePilot
+UpNDown
+VideoPinball
+WizardOfWor
+YarsRevenge
+Zaxxon
+−100%
+−10%
+−1%
+0%
+1%
+10%
+100%
+1000%
+% Improvement (Log scale)
+0% 200% 400% 600% 800% 1000%
+Improvement of Scaled QL over DT (τ)
+0.00
+0.25
+0.50
+0.75
+1.00
+Fraction of runs with s
+c
+o
+r
+e
+>
+τ
+Sub-optimal data
+Figure 4: Comparing Scaled QL to DT on all training games on the sub-optimal dataset.
+Q-function architecture. Since large neural networks has been crucial for scaling to large, diverse
+datasets in NLP and vision (e.g., Tan & Le, 2019; Brown et al., 2020; Kaplan et al., 2020)), we explore
+using bigger architectures for scaling offline Q-learning. We use standard feature extractor backbones
+from vision, namely, the Impala-CNN architectures (Espeholt et al., 2018) that are fairly standard
+in deep RL and ResNet 34, 50 and 101 models from the ResNet family (He et al., 2016). We make
+modifications to these networks following recommendations from prior work (Kumar et al., 2022):
+we utilize group normalization instead of batch normalization in ResNets, and utilize point-wise
+multiplication with a learned spatial embedding when converting the output feature map of the vision
+backbone into a flattened vector which is to be fed into the feed-forward part of the Q-function.
+To handle the multi-task setting, we use a multi-headed architecture where the Q-network outputs
+values for each game separately. The architecture uses a shared encoder and feedforward layers with
+separate linear projection layers for each game (Figure 3). The training objective (Eq. 1) is computed
+using the Q-values for the game that the transition originates from. 
+Feature Normalization via DR3 (Kumar et al., 2021a). While the previous modifications lead to
+significant improvements over naïve CQL, our preliminary experiments on a subset of games did not
+attain good performance. In the single-task setting, Kumar et al. (2021a) proposes a regularizer that
+stabilizes training and allows the network to better use capacity, however, it introduces an additional
+hyperparameter to tune. Motivated by this approach, we regularize the magnitude of the learned
+features of the observation by introducing a “normalization” layer in the Q-network. This layer forces
+the learned features to have an ℓ2 norm of 1 by construction, and we found that this this speeds
+up learning, resulting in better performance. We present an ablation study analyzing this choice
+in Table 2. 
+To summarize, the primary modifications that enable us to scale CQL are: (1) use of large
+ResNets with learned spatial embeddings and group normalization, (2) use of a distributional
+representation of return values and cross-entropy loss for training (i.e., C51 (Bellemare et al.,
+2017)), and (3) feature normalization at intermediate layers to prevent feature co-adaptation,
+motivated by Kumar et al. (2021a). For brevity, we call our approach Scaled Q-learning.
+5 EXPERIMENTAL EVALUATION
+In our experiments, we study how our approach, scaled Q-learning, can simultaneously learn from
+sub-optimal and optimal data collected from 40 different Atari games. We compare the resulting
+multi-task policies to behavior cloning (BC) with same architecture as scaled QL, and the prior
+state-of-the-art method based on decision transformers (DT) (Chen et al., 2021), which utilize returnconditioned supervised learning with large transformers (Lee et al., 2022), and have been previously
+proposed for addressing this task. We also study the efficacy of the multi-task initialization produced
+by scaled Q-learning in facilitating rapid transfer to new games via both offline and online fine-tuning,
+in comparison to state-of-the-art self-supervised representation learning methods and other prior
+approaches. Our goal is to answer the following questions: (1) How do our proposed design decisions
+impact performance scaling with high-capacity models?, (2) Can scaled QL more effectively leverage
+higher model capacity compared to naïve instantiations of Q-learning?, (3) Do the representations. learned by scaled QL transfer to new games? We will answer these questions in detail through
+multiple experiments in the coming sections, but we will first summarize our main results below.
+Main empirical findings. Our main results are summarized in Figures 2 and 5. These figures show
+the performance of scaled QL, multi-game decision transformers (Lee et al., 2022) (marked as “DT”),
+a prior method based on supervised learning via return conditioning, and standard behavioral cloning
+baselines (marked as “BC”) in the two settings discussed previously, where we must learn from:
+(i) near optimal data, and (ii) sub-optimal data obtained from the initial 20% segment of the replay
+buffer (see Section 3 for problem setup). See Figure 4 for a direct comparison between DT and BC.
+0%
+20%
+40%
+60%
+80%
+Human-Normalized IQM
+Sub-optimal Data
+0%
+20%
+40%
+60%
+80%
+100%
+Human-Normalized IQM
+Near-optimal Data
+DT (200M)
+DT (40M)
+BC
+MT Impala-DQN*
+Scaled QL (Ours, 80M)
+Behavior Policy
+Figure 5: Offline scaled conservative Q-learning vs
+other prior methods with near-optimal data and suboptimal data. Scaled QL outperforms the best DT model,
+attaining an IQM human-normalized score of 114.1% on
+the near-optimal data and 77.8% on the sub-optimal data,
+compared to 111.8% and 30.6% for DT, respectively.
+In the more challenging sub-optimal data setting,
+scaled QL attains a performance of 77.8% IQM
+human-normalized score, although trajectories
+in the sub-optimal training dataset only attain
+51% IQM human-normalized score. Scaled QL
+also outperforms the prior DT approach by 2.5
+times on this dataset, even though the DT model
+has more than twice as many parameters and
+uses data augmentation, compared to scaled QL.
+In the 2
+nd setting with near-optimal data, where
+the training dataset already contains expert trajectories, scaled QL with 80M parameters still
+outperforms the DT approach with 200M parameters, although the gap in performance is small
+(3% in IQM performance, and 20% on median
+performance). Overall, these results show that
+scaled QL is an effective approach for learning
+from large multi-task datasets, for a variety of
+data compositions including sub-optimal datasets, where we must stitch useful segments of suboptimal trajectories to perform well, and near-optimal datasets, where we should attempt to mimic the
+best behavior in the offline dataset.
+To the best of our knowledge, these results represent the largest performance improvement over the
+average performance in the offline dataset on such a challenging problem. We will now present
+experiments that show that offline Q-learning scales and generalizes.
+30 40 60 100 200
+Parameters (x1 Million)
+40%
+60%
+80%
+100%
+Human-Normalized IQM
+DT
+30 40 60 100 200
+Parameters (x1 Million)
+20%
+40%
+60%
+80%
+100%
+Human-Normalized Median
+DT
+Scaling curves with near-optimal data
+Scaled QL + ResNet/MSE Scaled QL + ResNet/C51 CQL + IMPALA
+Figure 6: Scaling trends for offline Q-learning. Observe that while the performance of scaled QL instantiated
+with IMPALA architectures (Espeholt et al., 2018) degrades as we increase model size, the performance of
+scaled QL utilizing the ResNets described in Section 4 continues to increase as model capacity increases. This is
+true for both an MSE-style TD error as well as for the categorical TD error used by C51 (which performs better
+on an absolute scale). The CQL + IMPALA performance numbers are from (Lee et al., 2022).
+5.1 DOES OFFLINE Q-LEARNING SCALE FAVORABLY?
+One of the primary goals of this paper was to understand if scaled Q-learning is able to leverage the
+benefit of higher capacity architectures. Recently, Lee et al. (2022) found that the performance of
+CQL with the IMPALA architecture does not improve with larger model sizes and may even degrade
+with larger model sizes. To verify if scaled Q-learning can address this limitation, we compare our
+value-based offline RL approach with a variety of model families: (a) IMPALA family (Espeholt
+et al., 2018): three IMPALA models with varying widths (4, 8, 16) whose performance numbers are
+6
+Published as a conference paper at ICLR 2023
+0.0
+0.5
+1.0
+1.5
+Normalized Score
+Alien
+0.0
+0.5
+1.0
+MsPacman
+0.00
+0.25
+0.50
+0.75
+1.00
+Pong
+0.00
+0.25
+0.50
+0.75
+1.00
+SpaceInvaders
+0.0
+0.2
+0.4
+0.6
+0.8
+StarGunner
+Scaled QL (ours)
+Scaled QL (frozen)
+Scaled QL (scratch)
+MAE
+BC (pre-trained)
+DT (pre-trained)
+CPC+DT
+Figure 7: Offline fine-tuning performance on unseen games trained with 1% of held-out game’s data, measured
+in terms of DQN-normalized score, following (Lee et al., 2022). On average, pre-training with scaled QL
+outperforms other methods by 82%. Furthermore, scaled QL improves over scaled QL (scratch) by 45%,
+indicating that the representations learned by scaled QL during multi-game pre-training are useful for transfer.
+Self-supervised representation learning (CPC, MAE) alone does not attain good fine-tuning performance.
+taken directly from Lee et al. (2022) (and was consistent with our preliminary experiments), (b)
+ResNet 34, 50, 101 and 152 from the ResNet family, modified to include group normalization and
+learned spatial embeddings.These architectures include both small and large networks, spanning a
+wide range from 1M to 100M parameters. As a point of reference, we use the scaling trends of the
+multi-game decision transformer and BC transformer approaches from Lee et al. (2022).
+Observe in Figure 6 that the performance of scaled Q-learning improves as the underlying Q-function
+model size grows. Even though the standard mean-squared error formulation of TD error results in
+worse absolute performance than C51 (blue vs orange), for both of these versions, the performance
+of scaled Q-learning increases as the models become larger. This result indicates that value-based
+offline RL methods can scale favorably, and give rise to better results, but this requires carefully
+picking a model family. This also explains the findings from Lee et al. (2022): while this prior work
+observed that CQL with IMPALA scaled poorly as model size increases, they also observed that the
+performance of return-conditioned RL instantiated with IMPALA architectures also degraded with
+higher model sizes. Combined with the results in Figure 6 above, this suggests that poor scaling
+properties of offline RL can largely be attributed to the choice of IMPALA architectures, which may
+not work well in general even for supervised learning methods (like return-conditioned BC).
+5.2 CAN OFFLINE RL LEARN USEFUL INITIALIZATIONS THAT ENABLE FINE-TUNING?
+Next, we study how multi-task training on multiple games via scaled QL can learn general-purpose
+representations that can enable rapid fine-tuning to new games. We study this question in two
+scenarios: fine-tuning to a new game via offline RL with a small amount of held-out data (1%
+uniformly subsampled datasets from DQN-Replay (Agarwal et al., 2020)), and finetuning to a new
+game mode via sample-efficient online RL initialized from our multi-game offline Q-function. For
+finetuning, we transfer the weights from the visual encoder and reinitialize the downstream feedforward component (Figure 1). For both of these scenarios, we utilize a ResNet101 Q-function
+trained via the methodology in Section 4, using C51 and feature normalization.
+Scenario 1 (Offline fine-tuning): First, we present the results for fine-tuning in an offline setting:
+following the protocol from Lee et al. (2022), we use the pre-trained representations to rapidly learn
+a policy for a novel game using limited offline data (1% of the experience of an online DQN run). In
+Figure 7, we present our results for offline fine-tuning on 5 games from Lee et al. (2022), ALIEN,
+MSPACMAN, SPACE INVADERS, STARGUNNER and PONG, alongside the prior approach based on
+decision transformers (“DT (pre-trained)”), and fine-tuning using pre-trained representations learned
+from state-of-the-art self-supervised representation learning methods such as contrastive predictive
+coding (CPC) (Oord et al., 2018) and masked autoencoders (MAE) (He et al., 2021). For CPC
+performance, we use the baseline reported in Lee et al. (2022). MAE is a more recent self-supervised
+approach that we find generally outperformed CPC in this comparison. For MAE, we first pretrained
+a vision transformer (ViT-Base) (Dosovitskiy et al., 2020) encoder with 80M parameters trained via a
+reconstruction loss on observations from multi-game Atari dataset and freeze the encoder weights as
+done in prior work (Xiao et al.). Then, with this frozen visual encoder, we used the same feed forward
+architecture, Q-function parameterization, and training objective (CQL with C51) as scaled QL to
+7
+Published as a conference paper at ICLR 2023
+Scaled QL (Ours) Scaled QL (Scratch) MAE (Pretrain) Single-game DQN (50M) 0
+5
+10
+15
+20
+25
+Game Score
+Freeway (m1d0)
+0
+2000
+4000
+6000
+Hero (m1d0)
+0
+50
+100
+150
+Breakout (m12d0)
+Figure 8: Online fine-tuning results on unseen game variants. Left. The top row shows default variants and
+the bottom row shows unseen variants evaluated for transfer: Freeway’s mode 1 adds buses, more vehicles, and
+increases velocity; Hero’s mode 1 starts the agent at level 5; Breakout’s mode 12 hides all bricks unless the ball
+has recently collided with a brick. Right. We fine-tune all methods except single-game DQN for 3M online
+frames (as we wish to test fast online adaptation). Error bars show minimum and maximum scores across 2
+runs while the bar shows their average. Observe that scaled QL significantly outperforms learning from scratch
+and single-game DQN with 50M online frames. Furthermore, scaled QL also outperforms RL fine-tuning on
+representations learned using masked auto-encoders. See Figure B.1 for learning curves.
+finetune the MAE network. We also compare to baseline methods that do not utilize any multi-game
+pre-training (DT (scratch) and Scaled QL (scratch)).
+Results. Observe in Figure 7 that multi-game pre-training via scaled QL leads to the best fine-tuning
+performance and improves over prior methods, including decision transformers trained from scratch.
+Importantly, we observe positive transfer to new games via scaled QL. Prior works (Badia et al., 2020)
+running multi-game Atari (primarily in the online setting) have generally observed negative transfer
+across Atari games. We show for the first time that pre-trained representations from Q-learning enable
+positive transfer to novel games that significantly outperforms return-conditioned supervised learning
+methods and dedicated representation learning approaches.
+Scenario 2 (Online fine-tuning): Next, we study the efficacy of the learned representations in
+enabling online fine-tuning. While deep RL agents on ALE are typically trained on default game
+modes (referred to as m0d0), we utilize new variants of the ALE games designed to be challenging for
+humans (Machado et al., 2018) for online-finetuning. We investigate whether multi-task training on
+the 40 default game variants can enable fast online adaptation to these never-before-seen variants. In
+contrast to offline fine-tuning (Scenario 1), this setting tests whether scaled QL can also provide a good
+initialization for online data collection and learning, for closely related but different tasks. Following
+Farebrother et al. (2018), we use the same variants investigated in this prior work: BREAKOUT,
+HERO, and FREEWAY, which we visualize in Figure 8 (left). To disentangle the performance gains
+from multi-game pre-training and the choice of Q-function architecture, we compare to a baseline
+approach (“scaled QL (scratch)”) that utilizes an identical Q-function architecture as pre-trained
+scaled QL, but starts from a random initialization. As before, we also evaluate fine-tuning performance
+using the representations obtained via masked auto-encoder pre-training (He et al., 2021; Xiao et al.).
+We also compare to a single-game DQN performance attained after training for 50M steps, 16× more
+transitions than what is allowed for scaled QL, as reported by Farebrother et al. (2018).
+Results. Observe in Figure 8 that fine-tuning from the multi-task initialization learned by scaled
+QL significantly outperforms training from scratch as well as the single-game DQN run trained with
+16x more data. Fine-tuning with the frozen representations learned by MAE performs poorly, which
+we hypothesize is due to differences in game dynamics and subtle changes in observations, which
+must be accurately accounted for in order to learn optimal behavior (Dean et al., 2022). Our results
+confirm that offline Q-learning can both effectively benefit from higher-capacity models and learn
+multi-task initializations that enable sample-efficient transfer to new games.
+5.3 ABLATION STUDIES
+Finally, in this section we perform controlled ablation studies to understand how crucial the design
+decisions introduced in Section 4 are for the success of scaled Q-learning. In particular, we will
+attempt to understand the benefits of using C51 and feature normalization.
+MSE vs C51: We ran scaled Q-learning with identical network architectures (ResNet 50 and ResNet
+101), with both the conventional squared error formulation of TD error, and compare it to C51, which
+our main results utilize. Observe in Table 1 that C51 leads to much better performance for both
+8
+Published as a conference paper at ICLR 2023
+Table 1: Performance of Scaled QL with the standard mean-squared TD-error and C51 in the offline
+40-game setting aggregated by the median human-normalized score. Observe that for both ResNet 50 and
+ResNet 101, utilizing C51 leads to a drastic improvement in performance.
+Scaled QL (ResNet 50) Scaled QL (ResNet 101)
+with MSE 41.1% 59.5%
+with C51 53.5% (+12.4%) 98.9% (+39.4%)
+ResNet 50 and ResNet 101 models. The boost in performance is the largest for ResNet 101, where
+C51 improves by over 39% as measured by median human-normalized score. This observation is
+surprising since prior work (Agarwal et al., 2021) has shown that C51 performs on par with standard
+DQN with an Adam optimizer, which all of our results use. One hypothesis is that this could be the
+case as TD gradients would depend on the scale of the reward function, and hence some games would
+likely exhibit a stronger contribution in the gradient. This is despite the fact that our implementation
+of MSE TD-error already attempts to correct for this issue by applying the unitary scaling technique
+from (Kurin et al., 2022) to standardize reward scales across games. That said, we still observe that
+C51 performs significantly better.
+Importance of feature normalization: We ran small-scale experiments with and without feature
+normalization (Section 4). In these experiments, we consider a multi-game setting with only 6 games:
+ASTERIX, BREAKOUT, PONG, SPACEINVADERS, SEAQUEST, and we train with the initial 20% data
+for each game. We report aggregated median human-normalized score across the 6 games in Table 2
+for three different network architectures (ResNet 34, ResNet 50 and ResNet 101). Observe that the
+addition of feature normalization significantly improves performance for all the models. Motivated by
+this initial empirical finding, we used feature normalization in all of our main experiments. Overall,
+the above ablation studies validate the efficacy of the two key design decisions in this paper.
+Table 2: Performance of Scaled QL with and without feature normalization in the 6 game setting reported
+in terms of the median human-normalized score. Observe that with models of all sizes, the addition of feature
+normalization improves performance.
+Scaled QL (ResNet 34) Scaled QL (ResNet 50) Scaled QL (ResNet 101)
+without feature normalization 50.9% 73.9% 80.4%
+with feature normalization 78.0% (+28.9%) 83.5% (+9.6%) 98.0% (+17.6%)
+Additional ablations: We also conducted ablation studies for the choice of the backbone architecture
+(spatial learned embeddings) in Appendix B.3, and observed that utilizing spatial embeddings is
+better. We also evaluated the performance of scaled QL without conservatism to test the importance
+of utilizing pessimism in our setting with diverse data in Appendix B.4, and observe that pessimism
+is crucial for attaining good performance on an average. We also provide some scaling studies for
+another offline RL method (discrete BCQ) in Appendix B.2. This work shows, for the first time, that offline Q-learning can scale to high-capacity models trained
+on large, diverse datasets. As we hoped, by scaling up capacity, we unlocked analogous trends to those
+observed in vision and NLP. We found that scaled QL trains policies that exceed the average dataset
+performance and prior methods, especially when the dataset does not contain expert trajectories.
+Furthermore, by training a large-capacity model on diverse tasks, we show that Q-learning is sufficient
+to recover general-purpose representations that enable rapid learning of novel tasks. Although we
+detailed an approach that is sufficient to scale Q-learning, this is by no means optimal. While we
+did a preliminary attempt to perform online fine-tuning on an entirely new game (SPACEINVADERS),
+we found that this did not work well for any of the pretrained representations (see Figure B.1).
+Addressing this is an important direction for future work. We speculate that this challenge is related
+to designing methods for learning better exploration from offline data, which is not required for
+offline fine-tuning.

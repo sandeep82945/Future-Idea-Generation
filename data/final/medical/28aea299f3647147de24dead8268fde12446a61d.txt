@@ -1,0 +1,1679 @@
+© The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http:// creat iveco mmons. org/ licen ses/ by/4. 0/. The Creative Commons Public Domain Dedication waiver (http:// creat iveco mmons. org/ publi cdoma in/ zero/1. 0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data. Perioperative Medicine background Inappropriate opioid prescribing is an internationally recognized threat to population health and a pressing challenge for healthcare services (Kiang et al. 2020; Curtis et al. 2019; Degenhardt et al. 2019). The North American ‘opioid crisis’ continues, with an ongoing rise in opioidrelated mortality, initially due to prescription opioids and more recently illicit heroin and fentanyl use (Berterame et al. 2016). Despite increased awareness of risks and opioid abuse, prescription opioid use remains historically high in both North America and Europe (Jani et al. 2020; Schieber et al. 2019; Verhamme and Bohnen 2019; Lancet *Correspondence: C. Thomas caroline.thomas27@nhs.net 1 Department of Anaesthesia, St. James’ University Hospital, Leeds Teaching Hospitals NHS Trust, Leeds LS9 7TF, UK 2 Department of Anaesthesia, Leeds Teaching Hospitals NHS Trust, Leeds, UK 3 Leeds Institute of Health Research, University of Leeds, Leeds, UK 4 Primary Care, Leeds Institute of Health Sciences, University of Leeds, Leeds, UK
+2022). Inappropriate prescribing following surgery is increasingly recognized as a contributor to the problem. Opioids are effective analgesics for managing acute pain following surgical trauma (Small and Laycock 2020) and were increasingly used in longer and higher doses following the publication of guidelines on post-operative pain management (Ballantyne et  al. 2016). However, opioids also have significant adverse effects, including sedation, constipation, nausea, and confusion. Long-term use can lead to tolerance, dependence, hyperalgesia, addiction and increased mortality (Colvin et  al. 2019). There is increasing attention being paid to the role of postoperative opioids in slowing recovery from surgery and contributing to long-term opioid use (Glare et al. 2019; Levy et  al. 2021; Daliya et  al. 2021). Enhanced recovery after surgery (ERAS) programmes often include the provision of multi-modal analgesia to promote faster recovery with fewer complications. Whilst short-term opioid use provides effective relief from acute pain following surgery, it is increasingly recognized that the perioperative period is a time when longer-term opioid usage may begin. Effective opioid stewardship in the perioperative period is therefore of critical importance. Improving opioid stewardship in the peri- and postoperative management of patients with bowel cancer has the potential to improve recovery, lead to faster discharge, improve outcomes and most importantly, prevent patient harm. A requirement for an effective opioid stewardship program is the ability to measure the appropriateness of opioid use. Health care quality indicators are a type of performance measure (Stelfox and Straus 2013) that evaluate aspects of quality of care, without which the monitoring of healthcare quality is impossible (Mainz 2003; Arah et  al. 2006). Quality indicators are used to measure the variability in the quality of care, identify potential areas for improvement and can be used to feedback on performance to healthcare teams to change clinical practice. They should be relevant, actionable, reliable, show room for improvement and data collection should be feasible (Ivers et al. 2012; Kelley and Hurst 2006; Fabian and Geppert 2011). Donabedian’s framework (Donabedian 1988) describes quality as a function of three domains: structure, process and outcome. The structure is defined by the attributes of the setting in which care is provided, process by the input of the practitioners working in that system and outcome by the change in health status of the patient. No quality indicators for perioperative opioid use are currently described in the National Institute for Health and Care Excellence Standards and Indicators library (Standards and Indicators | NICE (accessed 22nd March 2022). A rapid review was performed to identify
+quality indicators for perioperative opioid stewardship for patients undergoing abdominal surgery for bowel cancer. This is a form of knowledge synthesis that streamlines the process of conducting a traditional systematic review to produce evidence in a rapid resource-efficient manner (Hamel et al. 2021) and has been chosen to allow timely evidence synthesis to inform decision-making (Haby et al. 2016). The objective of this rapid review was to identify and extract potential quality indicators from the best available evidence on perioperative opioid use in patients undergoing major abdominal surgery for bowel cancer. This approach to the development of actionable quality indicators has been described and applied effectively in other clinical settings (Kallen et al. 2018). methods Cochrane rapid review methods were followed (Garrity et  al. 2021). A systematic literature search of Medline was performed and included all articles available to April 2021. Systematic reviews and primary studies were sought. The types of participants were not restricted and could be individuals, organizations or systems. Search terms are shown in Table 1 and include terms and truncations for quality indicators, opioids, surgery (with potential limitation to colorectal cancer surgery) and development. The search was limited to studies of adult subjects and studies published in English. A manual search was conducted of the reference lists of the selected papers. Searches were conducted between the 1st and the 25th August 2021 and supplementary searches of reference lists were conducted in December 2021. The National Quality Measures Clearinghouse project (2022) was also reviewed for relevant content. The initial search identified 588 abstracts. These results were imported into Rayyan (http:// rayyan. qcri. org/) (Ouzzani et  al. 2016) a free web tool used to facilitate the screening and selection of studies for systematic and scoping reviews. Three members of the project team (MA, KP, DY) screened all titles and abstracts for inclusion. Duplicate studies, case reports, editorials, non-English language studies, quality improvement not concerning opioid use, abdominal or colorectal surgery, or performance measures and quality improvement in specific subgroups of patients were excluded. Where a decision on inclusion could not be reached, two further team members (CT, SH) reviewed the titles and abstracts. All studies included at this stage underwent full-text review, undertaken by two members of the project team (CT, SH). MA, KP, and DY accessed the full-text articles of all included papers, which were uploaded and accessed using Rayyan. The extraction of quality indicators from the full texts
+was undertaken by CT and SH. All those included were papers from which quality indicators could be extracted. A quality indicator extraction tool was developed in advance of data extraction, with potential indicators categorized to the stage of perioperative care they relate to (Supplementary materials  1) to enable reproducible results. Finally, a full list of potential indicators was composed, in which indicators were rephrased where needed and duplicate indicators removed. Reporting has been guided by the PRISMA extension for scoping reviews (PRISMA-ScR) (Extension and for Scoping Reviews (PRISMA-ScR): Checklist and Explanation | The EQUATOR Network (equator-network.org) (accessed 22nd March 2022). results Five hundred eighty-eight publications were identified by the literature search. Three duplicates and a further 425 abstracts were removed as they did not meet inclusion criteria. Eighty-three of these papers were included for full-text review, of which 53 were excluded because they reported on another outcome or population, or because the paper did not include quality indicators. Thirty papers were included, the references of which were reviewed. A further 35 full-text papers were reviewed, of which 17 were included. The study selection flowchart (Fig. 1) details this process. In total, 47 papers were identified from which quality indicators were extracted. Review of the quality indicators clearinghouse did not yield results. The characteristics (study design and numbers of participants) of the included papers are shown in Supplementary Materials 2. One hundred twenty-eight quality indicators from 47 papers were extracted, with some papers describing several indicators. See Supplementary materials  1 for full details of all raw extracted quality indicators. Duplicates were removed, leading to the identification of 24 discrete
+indicators. Table 2 shows the numbers of discrete quality indicators identified at each stage of the patient journey. Instruments for collecting data on quality indicators, and structural, process, and outcome indicators were collated. These are grouped according to stage in the perioperative journey and are shown in Table 3. The quality indicators identified which could be grouped into five topics: patient education, staff education, preoperative patient optimization, patient and procedure-specific prescribing and deprescribing and opioid-related adverse drug events (ORADEs) and are shown in Table 4. Full details of the quality indicator topics are shown in Supplementary materials 3. discussion Opioids are highly effective analgesics but can cause harm and there is now increasing concern about their perioperative use. A number of contributing problems have been identified. Opioid tolerance preoperatively is a risk factor for poorer outcome (Cron et  al. 2017; Gan et  al. 2020; Gan et  al. 2015; Kessler et  al. 2013). When opioids are used by either opioid-naïve or opioid tolerant patients, they are put at risk of opioid-related adverse drug events (ORADEs) (Macintyre et al. 2014; Minkowitz et al. 2014; Keller et al. 2019; Kessler et al. 2013; Oderda et al. 2013), and opioid use is associated with postoperative complications and increased length of stay (Cron et al. 2017; Gan et al. 2020; Gan et al. 2015). Additionally, the perioperative period has been identified as a period of risk for the development of chronic opioid use (Lee et al. 2017; Brummett et al. 2017; Clarke et al. 2014; Macintyre et al. 2014; Roughead et al. 2019; Srivastava et al. 2021). At discharge, opioid prescriptions in excess of requirements are widely reported (Neuman et al. 2019; Bromberg et al. 2021; Hill et al. 2017; Hill et al. 2018; Pruitt et al. 2020; Bartels et  al. 2016; Agarwal et  al. 2021; Howard et al. 2019; Meyer et al. 2021) and opioids initially used
+* Truncation symbol = different words/terms can be searched for (singular/plural/conjugations) Limited to English language and adults
+1. Quality indicator [Mesh] OR 2. Quality criterion OR 3. Quality measure* OR 4. Performance indicator OR 5. Performance measure OR 6. Outcome measure OR 7. Outcome indicator OR 8. Audit OR 9. Outcome assessment [Mesh] OR 10. Process assessment [Mesh]
+1. Analgesics, Opioid [Mesh] OR 2. Opioid* OR 3. Stewardship [tw] OR 4. Appropriate opioid use [tw] OR 5. Opioid use
+1. Colonic neoplasms [Mesh] OR 2. Colorectal neoplasms [Mesh] OR 3. Intestinal neoplasms [Mesh] OR 4. Bowel cancer OR 5. Laparoscopy [Mesh] OR 6. Digestive system surgical procedures [Mesh] OR 7. Colectomy [Mesh] OR 7. Bowel cancer surgery OR 9. Abdominal surgery
+for short-term pain relief can become part of repeat prescriptions following hospital discharge. Poor practice around safe storage and disposal of opioids following
+discharge contributes to increased opioid in the community with the potential for opioid diversion (Fujii et al. 2018; Hill et  al. 2017; Bartels et  al. 2016). These factors contribute to the development of persistent postoperative opioid use (PPOU) with the increased potential for ORADEs in the community following discharge. Effective opioid stewardship is therefore an important part of the provision of opioids in the perioperative period, and a need to improve has been identified (Srivastava et al. 2021). Quality indicators are used to monitor and improve quality in healthcare (Stelfox and Straus 2013; Mainz 2003; Fabian and Geppert 2011; Donabedian 1988; Rademakers et  al. 2011). Good quality indicators are based on the best available evidence, should be highly specific and sensitive, with the integration of best clinical evidence, clinical expertise, and patient values. No quality indicators for perioperative opioid stewardship
+Table 2 Numbers of discrete quality indicators identified at each stage of the patient journey
+Stage of patient journey
+Number of quality indicators
+Number of papers Number of distinct quality indicators
+Pre-operative 26 19 7
+Intra-operative 13 12 1
+Recovery 5 13 2
+Post-operative 19 17 4
+Discharge 43 17 6
+Follow up 22 13 4
+Ta bl
+e 3
+St ru
+ct ur
+al , p
+ro ce
+ss , a
+nd o
+ut co
+m e
+qu al
+ity in
+di ca
+to rs
+a cr
+os s
+th e
+pa tie
+nt p
+er io
+pe ra
+tiv e
+jo ur
+ne y
+Fi rs
+t a ut
+ho r,
+ye ar
+o f p
+ub lic
+at io
+n Br
+ie f t
+op ic
+o f q
+ua lit
+y in
+di ca
+to r
+In st
+ru m
+en ts
+fo r c
+ol le
+ct in
+g da
+ta
+on q
+ua lit
+y in
+di ca
+to rs
+St ru
+ct ur
+al /p
+ro ce
+ss q
+ua lit y in di ca to rs
+O ut
+co m
+e qu
+al it
+y in
+di ca
+to rs
+Pr eo pe ra tiv e
+(B ar
+di au
+e t a
+l. 19
+99 )
+(F ie
+ld s
+et a
+l. 20
+19 ) (
+Le e
+et a
+l. 20
+17 )
+(N eu
+m an
+e t a
+l. 20
+19 )
+Pa tie
+nt e
+du ca
+tio n
+Pr es
+en ce
+o f p
+re op
+er at
+iv e
+pa tie
+nt
+ed uc
+at io
+n m
+at er
+ia ls
+o n
+pe rio
+pe ra - tiv e pa in a nd p ai n m an ag em en t, ris ks o f o pi oi ds
+(B on
+gi ov
+an ni
+e t a
+l. 20
+20 )
+(H op
+ki ns
+e t a
+l. 20
+20 )
+St aff
+e du
+ca tio
+n Pr
+es en
+ce o
+f m ul
+tipr
+of es
+si on
+al
+ed uc
+at io
+n m
+at er
+ia ls
+fo r s
+ta ff
+on o
+pi oi
+d st
+ew ar
+ds hi
+p an
+d ne
+ed
+fo r m
+ul tim
+od al
+a na
+lg es
+ia
+(B ra
+t e t a
+l. 20
+18 ) (
+C ro
+n et
+a l.
+20 17 ) (F ie ld s et a l. 20 19 ) (G an e t a l. 20 20 ) ( H ill ia rd e t a l. 20 18 ) ( Tr uo ng e t a l. 20 19 )
+Pr eo
+pe ra
+tiv e
+id en
+tifi ca
+tio n
+an d
+op tim
+iz at
+io n
+fo r p
+at ie
+nt s
+w ith
+o pi
+oi d
+to le
+ra nc
+e
+O pi
+oi d
+to le
+ra nt
+d efi
+ni tio
+n: if
+o pi - oi ds u se d fo r m or e th an 7 d ay s in th e 60 d ay s pr io r t o su rg er y/ an y op io id u se in 1 2/ 12 p rio r to s ur ge ry , a ny o pi oi d m ed ic at
+io n
+on a
+dm is
+si on
+m ed
+s lis
+t
+Sy st
+em to
+id en
+tif y
+pr eo
+pe ra
+tiv e
+op io
+id u
+se in
+e le
+ct iv
+e po
+pu la
+tio n
+Sp ec
+ia lis
+t p ai
+n re
+fe rr
+al p
+at h-
+w ay
+to e
+na bl
+e op
+io id
+w ea
+ni ng
+an
+d pe
+rio pe
+ra tiv
+e an
+al ge
+si c
+pl an - ni ng fo r p re op er at iv e op tim iz at io n in o pi oi d to le ra nt p op ul at io n
+(B ru
+m m
+et t e
+t a l.
+20 17 ) (C la rk e et a l. 20 14 ) ( Fi
+el ds
+e t a l. 20 19 ) ( Jia ng e t a l. 20 17 ) ( Le e
+et a l. 20 17 ) ( M ac in ty re e t a l. 20 14 ) ( St af - fo rd e t a l. 20 18 )
+Id en
+tifi ca
+tio n
+of p
+at ie
+nt s
+at g
+re at - es t r is k of p er si st en t p os to pe ra tiv e op io id u se (P PO U )
+O pi
+oi d
+Ri sk
+T oo
+l ( O
+RT ),
+Sc re
+en er
+fo r O
+pi oi
+d A
+ss es
+sm en t an d Pa tie nt s w ith P ai n (S O A PP ) an d Br ie f R is k In te rv ie w (B RI ) m
+ay
+be o
+f u se
+in a
+cu te
+p ai
+n se
+tt in
+g
+Pr es
+en ce
+o f s
+cr ee
+ni ng
+to ol
+to
+id en
+tif y
+ris k
+fa ct
+or s
+fo r p
+er si ste nt p os to pe ra tiv e op io id u se (P PO U ) d efi ne d as u se o f o pi oi
+ds
+at 9
+0– 18
+0 da
+ys p
+os to
+pe ra
+tiv el y Id en tifi ed p re va le nc e of P PO
+U ri
+sk
+(M in
+ko w
+itz e
+t a l.
+20 14
+) Id
+en tifi
+ca tio
+n of
+p at
+ie nt
+s at
+ri sk
+of
+o pi
+oi d-
+re la
+te d
+ad ve
+rs e
+dr ug
+ev
+en ts
+(O RA
+D Es
+)
+Pr es
+en ce
+o f s
+cr ee
+ni ng
+to ol
+to id
+en -
+tif y
+pr eo
+pe ra
+tiv el
+y th
+os e
+at g
+re at
+er
+ris k
+of p
+os to
+pe ra
+tiv e
+op io
+id -r
+el at
+ed
+ad ve
+rs e
+dr ug
+e ve
+nt s
+(O RA
+D Es
+)
+(F el
+lin g
+et a
+l. 20
+18 ) (
+Ya p
+et a
+l. 20
+20 )
+U se
+o f m
+ul tim
+od al
+a na
+lg es
+ia Pr
+es en
+ce o
+f p ro
+to co
+l t o
+re du
+ce
+pe rio
+pe ra
+tiv e
+op io
+id u
+se w
+ith p
+re -
+op er
+at iv
+e m
+ul tim
+od al
+a na
+lg es
+ia
+(L ee
+e t a
+l. 20
+17 ) (
+M ac
+in ty
+re e
+t a l.
+20 14
+) Co
+nc ep
+t o f ‘u
+ni ve
+rs al
+p re
+ca ut
+io ns ’ in th e us e of p er io pe ra tiv e op io id s
+A do
+pt io
+n of
+‘u ni
+ve rs
+al p
+re ca
+ut io
+ns ’
+w he
+n in
+iti at
+in g
+pe rio
+pe ra
+tiv e
+op io
+id s
+In tr ao
+pe ra tiv e
+(B ar
+di au
+e t a
+l. 19
+99 ) (
+Br an
+da l e
+t a l.
+20 17 ) (C
+he un
+g et
+a l.
+20 09
+) (F
+el lin
+g et
+a l.
+20 18
+) ( Ke
+lle r e
+t a l.
+20 19
+) ( M
+uj uk
+ia n
+et a
+l. 20
+20 ),
+(N eu
+m an
+e t a
+l. 20
+19 )
+(S ta
+ffo rd
+e t a
+l. 20
+18 )
+(T hi
+el e
+et a
+l. 20
+15 ) (
+Tr uo
+ng e
+t a l.
+20 19
+) (W
+ic k
+et a
+l. 20
+17 )
+(Y ap
+e t a
+l. 20
+20 )
+U se
+o f m
+ul tim
+od al
+a na
+lg es
+ia Pr
+es en
+ce o
+f o pi
+oi d-
+sp ar
+in g
+pr ot oco l f or in tr a op er at iv e us e in cl ud - in g m in im al ly in va si ve s ur ge ry , re gi on al b lo ck s an d m ul tim od al an al ge si a A dh er en ce to in tr aop er at iv e op io id s pa rin g pr ot oc ol
+Ta bl
+e 3
+(c on
+tin ue
+d)
+Fi rs
+t a ut
+ho r,
+ye ar
+o f p
+ub lic
+at io
+n Br
+ie f t
+op ic
+o f q
+ua lit
+y in
+di ca
+to r
+In st
+ru m
+en ts
+fo r c
+ol le
+ct in
+g da
+ta
+on q
+ua lit
+y in
+di ca
+to rs
+St ru
+ct ur
+al /p
+ro ce
+ss q
+ua lit y in di ca to rs
+O ut
+co m
+e qu
+al it
+y in
+di ca
+to rs
+Re co ve ry
+(F ie
+ld s
+et a
+l. 20
+19 )
+Id en
+tifi ca
+tio n
+of p
+at ie
+nt s
+at g
+re at - es t r is k of P PO
+U Pr
+es en
+ce o
+f r ev
+ie w
+/r e-
+sc re
+en
+w ith
+n ew
+ri sk
+fa ct
+or s
+fo r P
+PO U
+in
+cl ud
+in g
+fo rm
+at io
+n of
+a s
+to m
+a
+(B ar
+di au
+e t a
+l. 19
+99 ) (
+Br an
+da l e
+t a l.
+20 17
+) ( C
+he un
+g et
+a l.
+20 09
+) (F
+el lin g et a l. 20 18 ) (K el le r e t a l. 20 19 ) ( M uj uk ia n et a l. 20 20 ) (N eu m an e t a l. 20 19 ) (S ta ffo rd e t a l. 20 18 ) (T hi el e et a l. 20
+15 )
+(T ru
+on g
+et a
+l. 20
+19 )
+(W ic
+k et
+a l.
+20 17
+) ( Ya
+p et
+a l.
+20 20
+)
+U se
+o f m
+ul tim
+od al
+a na
+lg es
+ia Pr
+es en
+ce o
+f o pi
+oi d-
+sp ar
+in g
+pr o-
+to co
+l f or
+re co
+ve ry
+/im m
+ed ia
+te p
+os t-
+op er
+at iv
+e us
+e in
+cl ud
+in g
+re gi
+on al
+bl
+oc ks
+a nd
+m ul
+tim od
+al a
+na lg
+es ia
+A dh
+er en
+ce to
+re co
+ve ry
+/im m
+ed i-
+at e
+po st
+op er
+at iv
+e op
+io id
+s pa
+rin g
+pr ot
+oc ol
+Po st op
+er at iv e
+(B ar
+di au
+e t a
+l. 19
+99 ) (
+Br an
+da l e
+t a l.
+20 17
+) A
+cc es
+s to
+a cu
+te p
+ai n
+se rv
+ic e
+A va
+ila bi
+lit y
+of a
+n ac
+ut e
+pa in
+s er
+vi ce
+D el
+iv er
+y of
+a d
+ai ly
+p ai
+n re
+vi ew
+(B ar
+di au
+e t a
+l. 19
+99 ) (
+Br an
+da l e
+t a l.
+20 17
+) ( C
+he un
+g et
+a l.
+20 09
+) (F
+el lin g et a l. 20 18 ) ( G an e t a l. 20 15 ) (K el le r et a l. 20 19 ) ( M uj uk ia n et a l. 20 20 ) (N eu m an e t a l. 20 19 ) (S ta ffo rd et a l. 20 18 ) (T hi el e et a l. 20 15 ) (T ru on g et a l. 20 19 ) ( W ic k et a l. 20 17 ) ( Ya p et a l. 20 20 )
+U se
+o f m
+ul tim
+od al
+a na
+lg es
+ia Pr
+es en
+ce o
+f o pi
+oi d-
+sp ar
+in g
+pr ot
+oc ol
+fo r p
+os to
+pe ra
+tiv e
+us e
+in cl
+ud in
+g re
+gi on
+al b
+lo ck
+s an
+d m
+ul -
+tim od
+al a
+na lg
+es ia
+A dh
+er en
+ce to
+p os
+to pe
+ra tiv e op io id s pa rin g pr ot oc ol
+Ra te
+o f p
+os to
+pe ra
+tiv e
+ile us
+(K el
+le r e
+t a l.
+20 19
+) ( Ke
+ss le
+r e t a l. 20 13 ) ( Le e et a l. 20 10 ) ( O de rd a et a l. 20 13 ) (T su i e t a l. 19 96 )
+Pr es
+en ce
+o f O
+RA D
+Es Sc
+or in
+g of
+fr eq
+ue nc
+y, s
+ev er
+ity ,
+an d
+di st
+re ss
+o f o
+pi oi
+dre
+la te
+d si
+de
+eff ec
+ts a
+s 0
+to 6
+0 on
+th e
+Pe rio
+pe ra - tiv e O pi oi dre la te d Sy m pt om D is tr es s sc al e
+Pr es
+en ce
+o f r
+ev ie
+w fo
+r O RA
+D Es
+Ra te
+o f O
+RA D
+Es , s
+ev er
+ity o
+f O RA
+D Es
+de
+te ct
+ed , i
+m pa
+ct o
+f O RA
+D Es
+on
+le ng
+th o
+f s ta
+y
+(G re
+co e
+t a l.
+20 14 ) (N eu m an e t a l.
+20 19
+) ( Sy
+ro w
+at ka
+et
+a l.
+20 21
+)
+Pr ot
+oc ol
+iz ed
+o pi
+oi d
+pr es
+cr ib
+in g
+in h
+os pi
+ta l
+Pr oc
+ed ur
+esp
+ec ifi
+c pr
+ot oc
+ol fo
+r u se
+of
+in -h
+os pi
+ta l o
+pi oi
+ds , p
+ro m
+ot in g av oi da nc e of lo ng a ct in g op io id s El ec tr on ic c lin ic al q ua lit y m ea su re (e CQ M ) t o as se ss p ot en tia lly in ap - pr op ria te h ig h do se p os to pe ra tiv e op io id p re sc rib in g pr ac tic es , e .g ., an a ve ra ge d ai ly d os e ≥ 9 0 M M E fo r t he d ur at io n of p os to pe ra tiv e op io id p re sc rip - tio n in p re op er at iv el y op io id n aï ve pa tie nt s
+Ta bl
+e 3
+(c on
+tin ue
+d)
+Fi rs
+t a ut
+ho r,
+ye ar
+o f p
+ub lic
+at io
+n Br
+ie f t
+op ic
+o f q
+ua lit
+y in
+di ca
+to r
+In st
+ru m
+en ts
+fo r c
+ol le
+ct in
+g da
+ta
+on q
+ua lit
+y in
+di ca
+to rs
+St ru
+ct ur
+al /p
+ro ce
+ss q
+ua lit y in di ca to rs
+O ut
+co m
+e qu
+al it
+y in
+di ca
+to rs
+D is
+ch ar
+ge (B
+ra nd
+al e
+t a l.
+20 17
+) (B
+ro m
+be rg
+et
+a l.
+20 21
+) ( C
+he n
+et a
+l. 20
+18 )
+(F ie
+ld s
+et a
+l. 20
+19 ) (
+Fu jii
+e t a l. 20 18 ) (H ill e t a l. 20 17 ) ( H ill
+e t a l. 20 18 ) ( H op ki ns e t a l. 20 20 ) (L ee et a l. 20 17 ) (M ac in ty re e t a l. 20
+14 )
+(N eu
+m an
+e t a
+l. 20
+19 ) (
+Pr ui
+tt e
+t a l.
+20 20
+) ( Th
+ie ls
+e t a
+l. 20
+17 ) (
+W an g et a l. 20 21 ) ( W ic k et a l. 20 17 )
+Pr ot
+oc ol
+iz ed
+o pi
+oi d
+pr es
+cr ib
+in g
+on d
+is ch
+ar ge
+Pr oc
+ed ur
+esp
+ec ifi
+c M
+M E
+ce nt
+ile s
+to re
+du ce
+in te
+rpr
+es cr
+ib er
+v ar
+ia tio
+n Pr
+es en
+ce o
+f a p
+at ie
+nt g
+ro up
+sp ec
+ifi c
+gu id
+el in
+e or
+a lg
+or ith
+m fo
+r d isc
+ha rg e op io id p re sc rib in g, o pi oi d us e in 2 4 h pr io r t o di sc ha rg e to g ui de op io id s p re sc rib ed o n di sc ha rg e ai m in g at p re sc rib in g th e lo w es t do se o pi oi d po ss ib le fo r t he sh or tes t d ur at io n Pr oc ed ur e sp ec ifi c po st o p pr es cr ib - in g gu id el in es to p ro vi de e no ug h do se s t o co ve r 7 5% o f p at ie nt s Pr oc ed ur e sp ec ifi c pr es cr ib in g lim its bu ilt in to e le ct ro ni c pa tie nt re co rd Pr oc ed ur esp ec ifi c m ea n di sc ha rg e M M E pr es cr ib ed
+To ta
+l m ill
+ig ra
+m o
+f m or
+ph in
+e eq
+ui va - le nt s (M M E) c on su m ed d ur in g 24 h pr io r t o di sc ha rg e O pi oi d pr es en t o n ho sp ita l d is - ch ar ge p re sc rip tio n Fr eq ue nc y of s lo w -r el ea se o pi oi ds pr es cr ib ed o n di sc ha rg e Fr eq ue nc y of im m ed ia te -r el ea se op io id s pr es cr ib ed o n di sc ha rg e N on -o pi oi d ad ju va nt a na lg es ia p re - se nt o n di sc ha rg e pr es cr ip tio n
+(B ra
+nd al
+e t a
+l. 20
+17 )
+(W an
+g et
+a l.
+20 21
+) Re
+vi ew
+o f i
+np at
+ie nt
+o pi
+oi d
+us e
+Pr es
+en ce
+o f r
+ec or
+di ng
+to ol
+fo r o
+pi -
+oi ds
+u se
+d du
+rin g
+in pa
+tie nt
+s ta
+y To
+ta l m
+ill ig
+ra m
+o f m
+or ph
+in e
+eq ui
+va -
+le nt
+s (M
+M E)
+c on
+su m
+ed d
+ur in
+g ho spi ta l s ta y Pr oc ed ur e sp ec ifi c m ea n da ily in pa - tie nt M M E us ed
+(F ie
+ld s
+et a
+l. 20
+19 ) (
+H oa
+ng e
+t a l.
+20 20
+) Id
+en tifi
+ca tio
+n of
+p at
+ie nt
+s at
+g re
+at -
+es t r
+is k
+of P
+PO U
+U se
+> 9
+0t h
+ce nt
+ile M
+M E
+op io
+id s,
+or e
+qu iv
+al en
+t o f o
+ve r 5
+0 5
+m g
+ox y-
+co do
+ne p
+re sc
+rib ed
+a t d
+is ch
+ar ge
+as
+ri sk
+fa ct
+or /fl
+ag fo
+r P PO
+U
+(H op
+ki ns
+e t a
+l. 20
+20 ) (
+M ac
+in ty
+re
+et a
+l. 20
+14 )
+O pi
+oi d
+de -e
+sc al
+at io
+n an
+d ta
+pe rin
+g Pr
+es en
+ce o
+f a d
+ees
+ca la
+tio n
+pl an
+fo
+r o pi
+oi ds
+p re
+sc rib
+ed o
+n di
+sc ha
+rg e
+U se
+o f ‘r
+ev er
+se p
+ai n
+la dd
+er ’ t
+o gu
+id e
+de -e
+sc al
+at io n Pa in m an ag
+em en
+t p la
+n an
+d ta
+pe r-
+in g
+st ra
+te gi
+es c
+le ar
+ly c
+om m uni ca te d to p rim ar y ca re te am in a ti m el y m an ne r
+(B ar
+te ls
+e t a
+l. 20
+16 ) (
+Fu jii
+e t a
+l. 20
+18 )
+(L ee
+e t a
+l. 20
+17 ) (
+H ill
+e t a
+l. 20
+17 )
+(M ac
+in ty
+re e
+t a l.
+20 14
+) ( N
+eu m
+an
+et a
+l. 20
+19 )
+Pa tie
+nt e
+du ca
+tio n
+Pr ov
+is io
+n of
+p at
+ie nt
+e du
+ca tio n on s af e st or ag e an d di sp os al of u nu se d op io id s an d av oi da
+nc e
+of o
+pi oi
+d di
+ve rs
+io n
+O pi
+oi d-
+sp ec
+ifi c
+di sc
+ha rg
+e ad
+vi ce , e. g. , d o no t d riv e fo r u p to 4 w ee
+ks
+un til
+o pi
+oi d
+do se
+is s
+ta bl
+e
+Ta bl
+e 3
+(c on
+tin ue
+d)
+Fi rs
+t a ut
+ho r,
+ye ar
+o f p
+ub lic
+at io
+n Br
+ie f t
+op ic
+o f q
+ua lit
+y in
+di ca
+to r
+In st
+ru m
+en ts
+fo r c
+ol le
+ct in
+g da
+ta
+on q
+ua lit
+y in
+di ca
+to rs
+St ru
+ct ur
+al /p
+ro ce
+ss q
+ua lit y in di ca to rs
+O ut
+co m
+e qu
+al it
+y in
+di ca
+to rs
+(M ac
+in ty
+re e
+t a l.
+20 14
+) Id
+en tifi
+ca tio
+n of
+p at
+ie nt
+s at
+ri sk
+of
+O RA
+D Es
+Id en
+tif y
+th os
+e at
+ri sk
+o f O
+RA D
+Es
+w he
+n pr
+es cr
+ib in
+g op
+io id
+s fo
+r u se
+at
+h om
+e. M
+al e,
+o be
+se , o
+ve r 6
+5,
+gr ea
+te r c
+om or
+bi di
+tie s,
+pr e-
+op
+op io
+id u
+se , c
+on cu
+rr en
+t s ed
+at iv e m ed ic at io n us e.
+Fo llo
+w u
+p (A
+ga rw
+al e
+t a l.
+20 21
+) ( Ba
+rt el
+s et
+a l.
+20 16
+) ( Br
+om be
+rg e
+t a l.
+20 21 ) (H ow ar d et a l. 20 19 ) ( M ey er
+e t a l. 20 21 ) ( Pr ui tt e t a l. 20 20 ) ( Ro ug he
+ad
+et a
+l. 20
+19 )
+Re vi
+ew o
+f o pi
+oi ds
+p re
+sc rib
+ed v
+us
+ed M
+M E
+pr es
+cr ib
+ed a
+nd c
+on su
+m ed
+Pr es
+en ce
+o f p
+ro ce
+ss to
+a ss
+es s
+op io
+id s
+pr es
+cr ib
+ed v
+o pi
+oi ds
+us
+ed fo
+llo w
+in g
+su rg
+ic al
+p ro
+ce -
+du re
+s to
+a llo
+w ta
+ilo rin
+g of
+o pi
+oi d
+pr es
+cr ip
+tio ns
+to n
+ee d
+fo r a
+p at
+ie nt
+gr
+ou p/
+sp ec
+ifi c
+pr oc
+ed ur
+e re
+du ce
+un
+us ed
+o pi
+oi d
+in th
+e co
+m m
+un ity
+Po st
+o p
+pr es
+cr ip
+tio n
+co ns
+id er
+ed
+to h
+av e
+be en
+g iv
+en if
+o pi
+oi ds
+di
+sp en
+se d
+be tw
+ee n
+2– 7
+da ys
+fo llo
+w -
+in g
+di sc
+ha rg
+e
+(B ra
+t e t a
+l. 20
+18 ) (
+C la
+rk e
+et a
+l. 20
+14 )
+(F ie
+ld s
+et a
+l. 20
+19 ) (
+H ill
+e t a
+l. 20
+18 )
+(P ul
+lm an
+e t a
+l. 20
+21 ) (
+Ro ug
+he ad
+et
+a l.
+20 19
+)
+Id en
+tifi ca
+tio n
+of p
+at ie
+nt s
+at g
+re at - es t r is k of o r w ith P PO U
+In p
+rim ar
+y ca
+re , d
+et ec
+tio n
+of o
+pi -
+oi d
+m is
+us e/
+PP O
+U a
+ft er
+d is
+ch ar
+ge ,
+de fin
+ed a
+s at
+le as
+t o ne
+o f t
+he IC
+D -9
+di
+ag no
+si s
+co de
+o f o
+pi oi
+d de
+pe nd - en ce , a bu se , o r o ve rd os e
+H os
+pi ta
+l a na
+lg es
+ic p
+ol ic
+ie s
+in cl
+ud e
+st ra
+te gi
+es to
+s up
+po rt
+p os
+tdi sch ar ge a ss es sm en t a nd fo llo w
+-u p
+of p
+at ie
+nt s
+at ri
+sk o
+f b ec
+om in g ch ro ni c op io id u se rs
+N ew
+o r r
+ep ea
+t o pi
+oi d
+pr es
+cr ip
+tio ns
+w
+ith in
+3 0
+da ys
+o f d
+is ch
+ar ge
+U se
+o f h
+ig he
+r d os
+ag e
+of o
+pi oi
+ds
+at a
+ny ti
+m e
+(> 5
+0– 60
+M M E) PP O U : o ng oi ng o pi oi d us e at 9 0– 18 0 da ys p os tdi sc
+ha rg e In ci de nc e of o pi oi dre la te d re - ad m is si on s Ti m e to o pi oi d ce ss at io n: a p
+er io d w ith ou t a n op io id p re sc rip tio n eq ui va le nt to th re e tim es th e es tim at ed s up pl y du ra tio n in p re op er ativ el y op io id n aï ve p at ie nt s
+(P ru
+itt e
+t a l.
+20 20
+) St
+aff e
+du ca
+tio n
+St aff
+e du
+ca tio
+n: p
+re sc
+rib er
+s se
+nt
+qu ar
+te rly
+re po
+rt s
+on th
+ei r p
+re sc
+rib -
+in g
+v gu
+id el
+in es
+(M ac
+in ty
+re e
+t a l.
+20 14
+) M
+an ag
+em en
+t o f t
+ho se
+w ith
+P PO
+U Pr
+es en
+ce o
+f p la
+n/ pr
+ot oc
+ol if
+o pi
+oi d
+ab us
+e or
+m is
+us e
+is d
+et ec
+te d
+Patient education The site provides and delivers patient education materials in the preoperative period which cover expectations of perioperative pain and pain management options including the risks and benefits of opioids
+The site provides and delivers patient education materials at discharge which cover the provision of patient education on safe storage and disposal of unused opioids in the community, the requirement to avoid opioid diversion, and opioid specific discharge advice, e.g., DVLA requirements
+Staff education The site provides and delivers multi-professional education materials on opioid stewardship
+The site provides and delivers multi-professional education materials on the provision of multimodal analgesia at all stages of the patient journey starting in the preoperative setting
+Percentage of prescribers who receive regular reports comparing their prescribing to hospital guidelines
+The site provides and delivers educational materials on the need for a clear discharge pain management plan and tapering strategy
+Preoperative patient optimization The presence of a system to identify opioid tolerance preoperatively, defined as opioids used for 7 days or fewer in the 60 days prior to surgery. The provision of a specialist pain service and referral pathway to enable opioid weaning and patientspecific analgesic planning for preoperative optimization for patients with opioid tolerance
+The site uses a preoperative screening tool to identify patients with risk factors for persistent postoperative opioid use (PPOU)
+Patient and procedure-specific prescribing and deprescribing
+The site has an acute pain service with the ability to provide a daily pain review
+The electronic record is used as a means to detect or highlight potentially inappropriate high-dose postoperative opioid prescriptions
+Review takes place to evaluate the procedure-specific mean daily inpatient MME used
+Use of higher dosage of opioids (> 50–60 MME per day) at any time during the perioperative journey is used as a flag for further review
+The site has a perioperative analgesia protocol which includes regional blocks and multimodal analgesia
+The presence of procedure-specific protocols for use of in-patient opioids specifically promoting the avoidance of long-acting opioids
+The presence of a review postoperatively seeking new risk factors for PPOU identified including, e.g., formation of a stoma
+The percentage of those who are still using opioids at 90–180 days postoperatively (where the denominator is patients undergoing major surgery for bowel cancer)
+The use of protocolized opioid prescribing for hospital discharge:
+The site has a system to guide prescribing
+The site has a system to allow the review of the procedure-specific mean discharge opioids prescribed for a particular patient group
+The site has a patient group-specific guideline or algorithm to guide discharge opioid prescribing
+The electronic record is used to enable procedure-specific prescribing limits
+Procedure-specific postoperative prescribing guidelines are used to provide enough doses at discharge to cover 75% of patients (where the denominator is all patients undergoing that procedure)
+The site has a system in place to allow the discharge pain management plan and tapering strategy to be clearly communicated to primary care team in a timely manner The opioid requirement, e.g., total consumed during the 24 h prior to discharge is used as a guide for opioids prescribed on discharge
+The presence of a review process for opioid prescription at discharge, where the denominator is all patients discharged having had a major surgery for bowel cancer:
+The frequency of any opioids prescribed on hospital discharge
+The frequency of slow-release opioid prescription on discharge
+currently exist. The review of the supporting evidence base is required to enable the development of a practical set of reliable quality indicators (Stelfox and Straus 2013). extracted quality indicators Our review identified indicators relating to five key topics during the perioperative patient journey. These five topics are patient education, staff education, preoperative patient optimization, patient and procedure-specific prescribing and deprescribing and opioid-related adverse drug events. All five topics include structure, process, and outcome quality indicators (Table 4). Definitions and comparisons Varying definitions used in the literature have emerged from this review and consideration of these when discussing quality indicators is useful. Persistent perioperative opioid use is frequently described as the ongoing use of opioids at 90–180  days postoperatively (Fields et al. 2019; Lee et al. 2017; Clarke et al. 2014; Roughead et  al. 2019; Pullman et  al. 2021). Opioid tolerance is variably described as being present if a patient has used opioids for more than 7 days in the 60 days prior to surgery, any opioid use in 12  months prior to surgery or any opioid on the admission medication list (Fields et al. 2019; Brat et al. 2018; Cron et al. 2017; Gan et al. 2020; Hilliard et  al. 2018; Truong et  al. 2019). Milligrams of morphine equivalents (MME) or oral morphine
+equivalents (OME) are the most widely used methods to describe and compare opioid use. When reviewing postoperative patients in the community, the postoperative prescription can be considered to have been used if the prescribed opioids are dispensed between 2 and 7  days following discharge (Roughead et  al. 2019). The detection of opioid misuse or PPOU after discharge is defined as at least one of the ICD-9 diagnosis code of opioid dependence, abuse or overdose (Brat et  al. 2018). When reviewing the time to opioid cessation, a suggested definition is a period without an opioid prescription equivalent to three times the estimated supply duration in preoperatively opioid naïve patients (Roughead et al. 2019). data collection tools Instruments to collect data for quality indicators are also reported although none have been specifically developed for postoperative opioid use. The Opioid Risk Tool (ORT), Screener for Opioid Assessment and Patients with Pain (SOAPP), and Brief Risk Interview (BRI) have been proposed for use in perioperative practice when screening patients preoperatively for risk of PPOU (Macintyre et  al. 2014). The frequency, severity, and distress caused by opioid-related side effects can be scored as 0 to 60 on the Perioperative Opioid-related Symptom Distress scale and has been reported as a tool to assess ORADEs (Lee et al. 2010). Opioid-related adverse drug events (ORADEs) The site uses a preoperative screening tool to identify patients at greatest risk of postoperative opioidrelated adverse drug events (ORADEs). Documented risk factors are those who are male, obese, over 65, with comorbidities, a history of preoperative opioid use and those concurrently using sedative medication. The site has a system in place to detect ORADEs among postoperative inpatients
+There is a system in place to detect ORADEs in the community setting following discharge addressing the gaps More process quality indicators than structure or outcome quality indicators are described in the literature. However, the factors which are reported to make the greatest difference to a patient’s assessment of healthcare quality are process-related and process quality indicators are especially useful to consider when quality improvement is desired (Rademakers et  al. 2011). Fewer quality indicators concern the intraoperative and immediate recovery period. The impact of specific changes in practice on long-term outcomes remains unclear, and our rapid review of quality indicators will enable rigorous studies of the implementation and impact of interventions to improve opiate stewardship in the perioperative period. algorithms and electronic systems The screening of patients for potential opioid tolerance, future likelihood of PPOU, and patient-group-specific prescribing with limits on the type, dose, and duration of opioid prescription may be best undertaken with the use of algorithms and the development in machine learning (Ellis et al. 2019). Electronic records and prescribing (which are already well-embedded in primary care) are now used increasingly in hospital clinical practice and this may present a good opportunity to develop patientor patient-group-specific guidelines for opioid prescribing with limits and alerts if there is deviation from agreed protocols. limitations Limitations of this work include those relating to rapid review methodology. This is a relatively recently developed form of knowledge synthesis, and while valid (Garrity et al. 2021), is less comprehensive than a systematic review. Most of the studies included are retrospective cohort studies, and most originate using data from patients in a different healthcare systems (often from the USA). The characteristics of papers are reported (Supplementary Materials 2) but an assessment of risk of bias was not undertaken. This work has been done to drive improvement in outcomes for patients undergoing bowel cancer and this may limit its applicability to a wider perioperative population. conclusion and future work The concept of ‘universal precautions’ have been suggested as being applicable to the prescribing and administration of opioids in the perioperative period (Lee et  al. 2017; Macintyre et  al. 2014) and encompass strategies at each stage of a patient’s perioperative
+journey to ensure that the lowest dosage, shortest acting opioids are used for the shortest possible time, while ensuring good analgesia and patient satisfaction. This will be used as an underpinning principle for our ongoing work. This project forms part of the wider YCRBCIP program for use in the improvement of outcomes for patients with bowel cancer undergoing surgery. We have identified a set of quality indicators which may help to improve quality of care for patients undergoing major abdominal surgery for bowel cancer who receive perioperative opioids. 

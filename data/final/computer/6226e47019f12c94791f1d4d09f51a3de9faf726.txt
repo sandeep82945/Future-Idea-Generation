@@ -1,0 +1,200 @@
+Extremely large-scale array (XL-array) is envisioned to achieve super-high spectral efficiency in future wireless networks. Different from the existing works that mostly focus on the nearfield communications, we consider in this paper a new and practical scenario, called mixed nearand far-field communications, where there exist both nearand far-field users in the network. For this scenario, we first obtain a closed-form expression for the inter-user interference at the near-field user caused by the far-field beam by using Fresnel functions, based on which the effects of the number of BS antennas, far-field user (FU) angle, near-field user (NU) angle and distance are analyzed. We show that the strong interference exists when the number of the BS antennas and the NU distance are relatively small, and/or the NU and FU angle-difference is small. Then, we further obtain the achievable rate of the NU as well as its rate loss caused by the FU interference. Last, numerical results are provided to corroborate our analytical results. ii. system model As shown in Fig. 2, we consider a two-user XL-array wireless communication system under the mixed near- and far-field communication scenario, where an N -antenna BS with a uniform linear array (ULA) serves a single-antenna NU and a singleantenna FU. Specifically, the NU and FU are respectively located near and far from the BS with the corresponding BS-user distance smaller and larger than the so-called Rayleigh distance, denoted by Z = 2D 2
+λ with D and λ representing the array aperture and carrier wavelength, respectively.2 a. channel models 1) Far-field channel model: Similar to [8], when the user locates sufficiently far from the BS (in the far-field region), the BS→FU channel can be characterized based on the planar-wave assumption, which is given by
+hHfar = √ Nhfara H(ψ), (1)
+where hfar denotes the complex-valued channel gain between the BS and FU. aH(ψ) denotes the far-field steering vector, given by
+a(ψ) , 1√ N
+[ 1, ejπψ, · · · , ejπ(N−1)ψ ]T , (2)
+where ψ = 2d cos(ϕ)/λ denotes the spatial angle of the FU with ϕ being the physical angle-of-departure (AoD) from the BS center to the FU. Without loss of generality, we assume that the N -antenna BS is placed along the y-axis and the nth antenna is located at (0, δnd) m, where δn = 2n−N+12 with n = 0, 1, . . . , N − 1, and d = λ2 denotes the antenna spacing. 2) Near-field channel model: For the NU, we consider the more accurate spherical-wave propagation model, which applies as well when the user locates in the far-field region. As such, the BS→NU channel can be modeled as
+hHnear = √ Nhnearb H(θ, r), (3)
+where hnear = √ β r e − 2πrλ is the complex-valued channel gain3 with β and r denoting the reference channel gain at a distance of 1 m and the distance between the BS center and the NU, respectively. bH(θ, r) denotes the near-field steering vector, which is given by [10]
+b (θ, r)= 1√ N
+[ e−j2π(r (0)−r)/λ, · · · , e−j2π(r (N−1)−r)/λ ]T , (4)
+2The NU reduces to a FU when N is sufficiently small and/or the BS-user distance is sufficiently large. 3In this paper, we consider the Fresnel region with the BS-NU distance r larger than 1.2D, for which the amplitude variations over XL-array antennas are negligible [9], while the case with non-negligible amplitude variations will be left for future work. where θ = 2d cos(φ)/λ denotes the spatial angle of the NU with φ denoting the physical AoD from the BS center to the NU; r(n) = √ r2 + δ2nd
+2 − 2rθδnd represents the distance between the n-th antenna at the BS (i.e., (0, δnd)) and NU. b. signal model under mixed-field communications The BS is equipped with NRF ≥ K radio frequency (RF) chains to enable multiuser communications (i.e., K users). Without loss of generality, we assume NRF = 2 for the two-user case. Moreover, to facilitate the interference analysis in the sequel, we assume the analog-only beamforming for each user, while the analysis can be extended when digital beamforming is applied to further reduce the interference. Let xk, k = {1, 2} denote the transmitted symbol by the BS to user k with power Pk, and vnear and vfar represent the transmit beamformers for the NU and FU, respectively. Then, the received signal at the NU is given by
+ynear = h H nearvnearxnear + h H nearvfarxfar + z0
+= √ Nhnearb H(θ, r)(vnearxnear + vfarxfar) + z0, (5)
+where z0 is the received additive white Gaussian noise (AWGN) at the NU with power σ2. As such, the receive signal-to-interference-plus-noise ratio (SINR) at the NU is given by
+SINRnear = Pnear ∣∣∣√NhnearbH (θ, r)vnear∣∣∣2 Pfar
+∣∣∣√NhnearbH (θ, r)vfar∣∣∣2 + σ2 . (6) For ease of implementation and maximizing the received signal power at the intended user, the beamformers for these two users are respectively designed as vnear = b(θ, r) and vfar = a(ψ). Hence, the achievable rate of the NU in bits per second per Hertz (bps/Hz) is given by
+Rnear = log2 (1 + SINRnear)
+= log2
+( 1 +
+Pneargnear Pfargnearf2(N,ψ, θ, r) + σ2
+) , (7)
+where gnear = Nβ/r2, and f(N,ψ, θ, r) = ∣∣bH (θ, r)a(ψ)∣∣ is defined as the normalized (mixed-field) interference power caused by the far-field beam to the near-field channel steering vector. In the following, we first characterize useful properties of the normalized interference power and then obtain the achievable rate of the NU. iii. normalized interference power analysis  a. normalized interference power First, with the definitions of a(ψ) in (2) and bH (θ, r) in (4), the normalized interference power f(N,ψ, θ, r) can be explicitly expressed as
+f(N,ψ, θ, r) , ∣∣bH (θ, r)a(ψ)∣∣
+(a1)≈ 1 N ∣∣∣∣∣∣ ∑ δn e j 2πλ ( −δndθ+ δ2nd 2(1−θ2) 2r ) +jπ((δn+N−12 )ψ) ∣∣∣∣∣∣ (a2) = 1
+N ∣∣∣∣∣ N−1∑ n=0 e jπ ( n2d(1−θ2) 2r −n ( θ−ψ+ d(N−1)(1−θ 2) 2r ))∣∣∣∣∣ , (8) where (a1) follows from the taylor expansion and Fresnel approximation with r(n) = √ r2 + δ2nd 2 − 2rθδnd ≈ r −
+3 (a) 3D illustration -5 -4 -3 -2 -1 0 1 2 3 4 5 1 1 2 3 4 5 2 -15 -10 -5 (b) 2D illustration
+Fig. 3: Illustrations of function G(β1, β2) in (9) versus β1 and β2. δndθ + δ2nd 2(1−θ2) 2r , and (a2) is obtained by replacing δn with n, i.e., δn = 2n−N+12 . Note that (a1) is accurate when the BSNU/scatter distance is larger than 0.5 √ D3/λ, which is much smaller than the Rayleigh distance 2D2/λ. However, the normalized interference power in (8) is still in a complicated form, thus making it hard to characterize the properties of normalized interference power. To tackle this issue, similar to [11], we approximate the normalized interference power in a more tractable form by using Fresnel functions. Theorem 1. The normalized interference power f(N,ψ, θ, r) in (8) can be approximated as
+f(N,ψ, θ, r) ≈ G(β1, β2) = ∣∣∣∣∣ Ĉ(β1, β2) + jŜ(β1, β2)2β2 ∣∣∣∣∣ , (9)
+where β1 = (θ − ψ)
+√ r
+d(1− θ2) , (10)
+β2 = N
+2
+√ d(1− θ2)
+r . (11)
+Moreover, Ĉ(β1, β2) , C(β1+β2)−C(β1−β2) and Ŝ(β1, β2) , S(β1 + β2) − S(β1 − β2), where C(·) and S(·) are the Fresnel integrals, defined as C(x) = ∫ x 0 cos(π2 t 2)dt and S(x) =∫ x
+0 sin(π2 t 2)dt. Proof: First, from (8), we have
+f(N,ψ, θ, r) = ∣∣∣∣∣ 1N N−1∑ n=0 ejπ(A1n−A2) 2 ∣∣∣∣∣ = |F (A1, A2)| , where A1 = √ d(1−θ2)
+2r and A2 = 1 A1 ( θ−ψ 2 + (N−1)d(1−θ2) 4r ) . Then, the summation in F (A1, A2) can be approximated as an integral,
+F (A1, A2) (b1)≈ 1
+N ∫ N 0 ejπ(A1n−A2) 2 dn
+(b2) =
+1
+N √
+2A1 ∫ √2A1N−√2A2 − √ 2A2 ejπ 1 2 t 2 dt, (12)
+where (b1) is accurate when N →∞ according to the Riemann integral, and (b2) is obtained by letting A1n−A2 = √ 2 2 t.
+Next, based on the Fresnel integrals, we have
+F (A1, A2) = 1
+N √
+2A1 ∫ √2A1N−√2A2 − √ 2A2 ejπ 1 2 t 2 dt
+=
+∫√2A1N−√2A2 0 ejπ 1 2 t 2 dt− ∫ −√2A2 0 ejπ 1 2 t 2
+dt √
+2A1N
+500 1000 1500 2000 Number of BS antennas, N
+-15
+-10
+-5
+N o
+rm al
+iz ed
+i n
+te rf
+er en
+ce p
+o w
+er (
+d B
+)
+=0.05, =0, r=3, approx. (9) =0.05, =0, r=3, actual vaue (8) =0.05, =0, r=7, approx. (9) =0.05, =0, r=7, actual value (8)
+(a) Accuracy of approximation in (9). 500 1000 1500 2000 Number of BS antennas, N
+-18
+-16
+-14
+-12
+-10
+-8
+-6
+-4
+N o
+rm al
+iz ed
+i n
+te rf
+er en
+ce p
+o w
+er (
+d B
+)
+=0.05, =0, r=3 =0.10, =0, r=3 =0.15, =0, r=3 =0.20, =0, r=3
+150 200 250 300 -11
+-10
+-9
+-8
+-7
+-6
+(b) Effect of number of BS antennas. Fig. 4: Normalized interference power vs. number of BS antennas. = C(β1 + β2)− C(β1 − β2) + j (S(β1 + β2)− S(β1 − β2))
+2β2 ,
+where β1 = (θ − ψ) √ r d(1−θ2) and β2 = N 2 √ d(1−θ2) r . By defining G(β1, β2) = |F (A1, A2)| and combining the above leads to the desired result in (9). Remark 1 (Useful properties of function G(·)). To draw useful insights, we first illustrate in Fig. 3 that function G(β1, β2) versus β1 and β2 in both 2D and 3D. Several important properties of the function G(·) are summarized as follows. • First, G(·) is symmetric with respect to β1. With β1 defined
+in (10), this symmetry indicates that the normalized interference power keeps unchanged when the absolute values of the near-and-far user angle-difference θ − ψ are the same. Moreover, it is worth mentioning that G(·) is almost invariable with β1 when β2 is sufficiently small. • Second, given β1, G(·) generally decreases with β2, while there exist large and small fluctuations in G(·) with growing β2, when |β1| is relatively large (e.g., |β1| > 0.6) and small (e.g., |β1| ≤ 0.6). • Moreover, it is worth noting that the derived closed-form expression for G(·) in (9) is a generalization of the column coherence between two near-field steering vectors defined in [12] by setting β1 = 0, i.e., both near- and far-field steering vectors are at the same angle (θ = ψ). Remark 2 (What determines the normalized interference power?). Theorem 1 shows an important result that the normalized interference power is fundamentally determined by the function G(·), as well as the two parameters β1 and β2. To be more specific, β1 is a function of the FU (spatial) angle, the NU angle and distance, while β2 is jointly determined by the number of BS antennas, as well as the NU angle and distance. These factors will be studied in more details in the next. b. effects of key parameters 1) Effect of the Number of BS Antennas: To begin with, we first plot Fig. 4(a) to compare the obtained approximated normalized interference power in (9) and its actual value in (8). It is observed that the approximation in (9) is accurate under different numbers of BS antennas and NU distances. Next, given the fixed FU angle, NU angle and distance, β2 is affected by the number of BS antennas N only, while β1 becomes a constant. Moreover, the BS antenna size affects the near-field region, since the Rayleigh distance, Z = 12N
+2λ, is quadratically increasing with the number of BS antennas. To characterize the effect of N , we plot in Fig. 4(b) the normalized
+4 -1 -0.5 0 0.5 1
+FU angle,
+-35
+-30
+-25
+-20
+-15
+-10
+N o rm
+al iz
+ed i
+n te
+rf er
+en ce
+p o w
+er (
+d B
+)
+=0, N=256, r=3 =0.45, N=256, r=3
+(a) Effect of FU angle. 0 0.1 0.2 0.3 0.4 0.5 0.6
+Angle-difference, -
+-30
+-25
+-20
+-15
+-10
+-5
+0
+N o rm
+al iz
+ed i
+n te
+rf er
+en ce
+p o w
+er (
+d B
+)
+r=3, N=256 r=10, N=256 r=30, N=256
+(b) Effect of angle-difference. -1 -0.5 0 0.5 1
+NU angle,
+-35
+-30
+-25
+-20
+-15
+-10
+-5
+N o rm
+al iz
+ed i
+n te
+rf er
+en ce
+p o w
+er (
+d B
+)
+=0, N=256, r=3 =0.4, N=256, r=3
+(c) Effect of NU angle. 10 20 30 40 50 60
+NU distance, r (m)
+-20
+-15
+-10
+-5
+N o rm
+al iz
+ed i
+n te
+rf er
+en ce
+p o w
+er (
+d B
+)
+=0.005, =0, N=256 =0.1, =0, N=256 =0.15, =0, N=256 =0.2, =0, N=256
+2 3 4 5 -10
+-8
+(d) Effect of NU distance. Fig. 5: Normalized interference power versus key parameters, where the normalized interference power is obtained based on (9). interference power versus the number of BS antennas. First, it is observed that the normalized interference power is first increasing and then decreasing with N . The reason is that, when N is small, increasing N leads to a wider interference region in the angular domain (see Fig. 1); hence, increasing N renders the NU more likely reside in the interference region and thus growing interference power. Nevertheless, when N is sufficiently large, the NU (in the interference region) suffers decreasing interference power with an increasing N due to the wider interference region. Second, when N is relatively small (i.e., β2 is small), a larger angle-difference (i.e., larger β1) leads to a smaller interference, which is consistent with the second property in Remark 1. By contrast, in the large-N regime (e.g., N > 400), the interference powers for different angle differences are comparable. This is expected since the interference region becomes wider with a larger N and will occupy almost the whole spatial region when N is sufficiently large, for which different angle-differences will suffer comparable interference power. 2) Effect of the FU Angle: Next, given the fixed number of BS antennas, the NU angle and distance, we characterize the effect of FU angle. In this case, β1 is determined by the FU angle ψ, while β2 is a constant. To be more specific, we plot in Fig. 5(a) the normalized interference power versus the FU angle. An interesting observation is that when the FU beam angle locates in the neighborhood of the NU angle, there is always strong interference power at the NU. Moreover, the interference power is symmetric with respect to the NU angle, which is in accordance with the first property in Remark 1. Given the NU angle, the FU angle also determines the nearand-far user angle-difference, whose effects are discussed below. Remark 3 (Near-and-far user angle-difference). In Fig. 5(b), we show the effect of the angle-difference on the normalized interference power. First, it is observed that, when the angledifference is sufficiently small, e.g., θ − ψ < 0.01, a longer NU distance (e.g., r = 30 m) yields a higher interference power. This is intuitively expected since when the NU and FU are very close, the interference power will increase with the NU distance, and the maximum interference power is obtained when the NU distance exceeds the Rayleigh distance (i.e., far-field region). Second, as the angle-difference increases, the interference power for different angle-differences generally decreases, and eventually appears very close when the angle-difference exceeds a threshold (e.g., θ−ψ > 0.35). Besides, the interference power with a longer NU distance decreases faster. This reason is that a longer NU distance leads to a narrower interference region. 3) Effect of the NU Angle: Note that both β1 and β2 are functions of NU angle θ with the fixed number of BS antennas, FU angle, and NU distance, thus making it difficult to obtain clear insights with respect to the effect of the NU angle. To this end, we plot in Fig. 5(c) the normalized interference power versus the NU angle θ. It is observed that the effect of NU angle is very similar to that of the FU angle, whereas in the large-θ regime, the interference power fluctuates more drastically. 4) Effect of the NU Distance: Last, we study the effect of the NU distance r on the normalized interference power, given the fixed number of BS antennas, NU and FU angles. Based on Theorem 1, it can be easily verified that β1 monotonically increases with r, while β2 decreases with r. Although it is difficult to analytically characterize the effect of NU distance, we provide the numerical result in Fig. 5(d) for illustration. Specifically, similar to Fig. 4(b), for the case with a small angledifference (e.g., θ − ψ = 0.1, 0.15 and 0.2), the normalized interference power first slightly increases and then drastically decreases with the NU distance. In contrast, when the angledifference is sufficiently small (e.g., θ−ψ = 0.005), the normalized interference power first increases and then saturates when r is sufficiently large, which is in accordance with Remark 3. Moreover, it is observed that, with a very small angle-difference (e.g., θ − ψ = 0.005), the NU suffers the strongest interference power when it is sufficiently far from the BS, for which case it reduces to a FU. iv. rate loss analysis In this section, we study the effect of normalized interference power on the achievable rate of the NU. For notational brevity, we use f to denote f(N,ψ, θ, r) in the sequel. a. rate loss To characterize the rate loss due to the FU interference, we first provide the ideal achievable rate of the NU with no interference, which is given by
+R∗near = log2
+( 1 +
+Pneargnear σ2
+) , (13)
+Then, we define ∆R = R∗near−Rnear as the rate loss caused by the FU interference, which is upper-bounded as follows. Lemma 1. The rate performance loss ∆R can be upper-bounded as
+∆R ≤ log2 ( 1 + Pneargnear
+σ2 · Pfarf
+2
+Pfarf2 + Pnear
+) . (14)
+Proof: Based on (7) and (14), we have
+∆R = R ∗ near −Rnear
+5
+where (c) is obtained by dropping the term σ4, thus completing the proof. Lemma 1 is intuitively expected since a higher normalized interference power leads to a larger rate loss ∆R. Combined with the results for the analysis of the interference power, it can be concluded that there is a larger rate loss when the NU and FU angles are very close. However, the analysis for the effects of number of BS antennas and NU distance are not straightforward. For example, when N decreases, it can be shown that gnear monotonically decreases, while f2 generally increases, leading to a larger Pfarf 2
+Pfarf2+Pnear . Thus, we further provide numerical results
+in the next to examine these effects. b. numerical results Last, we show the effects of the four key parameters on the achievable rate of the NU in Figs. 6(a)–6(d) with the simulation parameters shown in Table I. To begin with, we plot in Figs. 6(a) and 6(b) the results based on the used Fresnel approximation in (9) and its actual value in (8) versus N and ψ. It is observed that the used approximation is highly accurate with the actual value under different N and ψ. Second, it is observed from Fig. 6(a) that the rate loss is monotonically decreasing with N , which agrees with the result in Lemma 1. An interesting observation is that there still exists a large rate loss when the number of antennas becomes very large (i.e., very low interference power). This is because, with an increasing N , the interference power generally decreases, while the beamforming gain (i.e., gnear in (14)) increases, thus leading to the performance gap between the achievable and ideal rates of NU. On the other hand, the rate loss fluctuates when the FU angle is in the neighborhood of the NU angle, and drastically decreases when the angle is larger than a threshold (see Figs. 6(b) and 6(c)). Next, in Fig. 6(d), we observe that the rate loss first slightly fluctuates when r is small, and sharply decreases when r increases. Last, it is observed from Figs. 6(b)–6(d) that the achievable rate of NU will eventually approach to the ideal rate when the rate loss is sufficiently small. v. conclusions In this paper, we analyzed the inter-user interference in the new mixed near- and far-field communication scenario. Specifically, we first obtained a closed-form expression for the normalized interference power at the NU caused by the FU beam, based
+on which, the effects of the number of BS antennas, FU angle, NU angle and distance were analyzed. Moreover, the explicit rate-loss expression caused by the FU interference was obtained, which was verified by numerical results. 

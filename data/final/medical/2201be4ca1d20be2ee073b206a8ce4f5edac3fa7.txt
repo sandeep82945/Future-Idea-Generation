@@ -1,0 +1,109 @@
+Since two quantum states that are local unitary (LU) equivalent have the same amount of entanglement, it is meaningful to find a practical method to determine the LU equivalence of given quantum states. In this paper, we present a valid process to find the unitary tensor product decomposition for an arbitrary unitary matrix. Then, by using this process, the conditions for determining the local unitary equivalence of quantum states are obtained. A numerical verification is carried out, which shows the practicability of our protocol. We also present a property of LU invariants by using the universality of quantum gates which can be used to construct the complete set of LU invariants. 1. introduction Quantum entanglement is one of the most extraordinary features in quantum information science, and quantum entangled states have become the most important physical resource [1]. In particular, multipartite quantum entanglement plays key roles in the rapidly developing field of quantum information science, for example, in one-way quantum computing, quantum error correction, and quantum secret sharing [2,3]. However, it is more difficult to understand multipartite mixed states with nonlocal properties. Fortunately, the entanglement (or the local hidden variable models) of quantum states remains unchanged under local unitary (LU) transformations. In addition, local operations and classical communication (LOCC) equivalence states are interconvertible also by local unitary transformations [4]. Therefore, it is very important to determine whether or not two states are LU equivalent. Definition 1. Let ρ and ρ̃ be two states in general H1 ⊗ H2 ⊗ · · ·HN quantum systems with dim Hi = di, i = 1, 2, . . . , N. They are LU equivalent if
+ρ̃ = (U1 ⊗U2 ⊗ · · ·UN)ρ(U1 ⊗U2 ⊗ · · ·UN)†
+for some unitary operators Ui, i = 1, 2, . . . , N, where † denotes transpose and conjugate. At present, there are many results on LU equivalence and LU invariants [4–24]. In this paper, we present a practical method to find the unitary tensor decomposition of an arbitrary unitary matrix. Then, we derive a local unitary equivalence strategy for arbitrary quantum states with non-degenerate density matrices from the point of view of block matrix and unitary matrix tensor decomposition. Exact examples are analyzed numerically. We also present a property of LU invariants which can lead to the construction of a complete set of LU invariants. Entropy 2023, 25, 1139. https://doi.org/10.3390/e25081139 https://www.mdpi.com/journal/entropy 2. unitary tensor decomposition of an arbitrary unitary matrix In this section, we will present a sufficient and necessary condition for the existence of the unitary tensor decomposition of an arbitrary unitary matrix. We start with the bipartite decomposition. 2.1. The Decomposition Scheme of W = U ⊗V Set W = U ⊗V, with U and V as 2× 2 and d× d matrices, respectively. Set
+U = [
+u11 u12 u21 u22 ] with ukl as the entries, and
+W = [
+W11 W12 W21 W22
+] (1)
+as the block representation of W. Then, according to the tensor product of matrices, one obtains W = U ⊗V = [
+u11V u12V u21V u22V ] We have WklW†mn = uklVV†u†mn, where k, l, m, n ∈ {1, 2}. Furthermore, we can obtain
+tr(WklW†kl) = d|ukl | 2, when k = m, l = n. Thus,
+ukl =
+√ tr(WklW†kl)
+d · eiθkl , (2)
+where eiθkl is the complex phase of ukl , k, l = {1, 2}. Thus, we set
+W = [
+ũ11 ũ12 ũ21 ũ22
+] ⊗ eiθ11 V ≡ Ũ ⊗ Ṽ, (3)
+with Ũ = e−iθ11U and Ṽ = eiθ11 V. Without loss of generality, we set tr(W11W†11) 6= 0. Combining (1) and (3), we can obtain
+Ṽ = eiθ11 ·V = W11 ũ11 , (4)
+where ũ11 = √ tr(W11W†11) d . We can further derive that for the remaining entries of ũkl with kl = {12, 21, 22},
+ũkl = (Wkl)11
+ṽ11 , (5)
+where ṽ11 is the (1, 1) entry of Ṽ, which is assumed to be nonzero. We also obtain that matrices Wkl must be the scalar multiplications of Ṽ for any k, l ∈ {1, 2}. For unitary matrix W = U ⊗ V, where U and V are arbitrary d1 × d1 and d2 × d2 unitary matrices, we can also find unitary matrices Ũ and Ṽ such that W = Ũ⊗ Ṽ by using the same method. To summarize, let W be any d1d2 × d1d2 unitary matrix with block representation W = (Wkl), where k, l ∈ {1, 2, · · · , d1} and Wkl are d2 × d2 matrices. According to the above analysis, we directly derive the following theorem. Theorem 1. If Wkl is a scalar multiplication of a unitary matrix for any k, l ∈ {1, 2, · · · , d1}, then we can always derive the tensor product decomposition W = Ũ ⊗ Ṽ, where Ũ and Ṽ are d1 × d1 and d2 × d2 unitary matrices, respectively. We can always select one of tr(WklW†kl) 6= 0. Without loss of generality, we set tr(W11W†11) 6= 0. The entries of Ũ and Ṽ are given by
+ũ11 =
+√ tr(W11W†11)
+d1 ;
+Ṽ = W11 ũ11 ;
+ũkl = (Wkl)11
+ṽ11 , k, l ∈ {1, 2, · · · d1}, kl 6= 11. (6)
+2.2. The Decomposition Scheme of W = Q⊗U ⊗V To simplify the expression, we set Q, U and V as 2× 2 matrices with entries qkl , ukl and vkl , respectively. We then consider W = Q⊗U ⊗V = Q⊗ P, and set P = U ⊗V. We obtain
+W = [
+q11P q12P q21P q22P
+] = [ W11 W12 W21 W22 ] ,
+where Wkl are the block matrices of W, and
+P = [
+u11V u12V u21V u22V
+] =  p11 p12 p13 p14 p21 p22 p23 p24 p31 p32 p33 p34 p41 p42 p43 p44 , V = [v11 v12v21 v22 ] . We can obtain WklW†mn = qkl PP†q†mn, and tr(WklW†kl) = 2|qkl |, for k, l, m, n ∈ {1, 2}. Thus,
+qkl =
+√ tr(WklW†kl)
+4 · eiθkl ,
+where eiθkl is the complex phase of qkl , k, l ∈ {1, 2}. Without loss of generality, one still sets tr(W11W†11) 6= 0. We then set
+q̃11 =
+√ tr(W11W†11)
+4 ;
+P̃ = W11 q̃11 ;
+q̃kl = (Wkl)11
+p̃11 , kl = {12, 21, 22}. (7)
+Thus, we have W = eiθ11 Q̃⊗ P = Q̃⊗ eiθ11 P = Q̃⊗ P̃. Then, by using the decomposition scheme in Section 2.1 for P̃, one finally obtains
+W = Q̃⊗ Ũ ⊗ Ṽ. One can then derive the decomposition scheme of W = U1 ⊗U2 ⊗ · · · ⊗UN in the same way. 2.3. Numerical Verification
+We use the rand() function in MATLAB to generate a random matrix [25,26]. This function can generate random numbers between 0 and 1 according to a uniform distribution. Then, using the singular value decomposition of this matrix, a random unitary matrix can be obtained. Example 1. As an example, let us consider the tensor decomposition of the following unitary matrix:
+W =  0.439154− 0.260657i 0.489398 + 0.00346013i 0.43702− 0.263586i 0.489097 + 0i 0.42086− 0.249799i −0.510671− 0.00361053i 0.418815− 0.252606i −0.510356 + 0i 0.438872− 0.26049i 0.489085 + 0.00345791i −0.4373 + 0.263755i −0.489411 + 0i 0.42059− 0.249639i −0.510344− 0.00360822i −0.419084 + 0.252768i 0.510684 + 0i , which is generated randomly by U1 and U2, i.e., W = U1 ⊗U2, where
+U1 = [
+0.7073157717804006 + 0.005000843737265154i 0.70688003971863 0.7068623728603339 + 0.004997638129189724i −0.7073334499706543
+] ,
+and
+U2 = [
+0.6182373567761775− 0.3728863629370793i 0.69190919275723i 0.5924837578103638− 0.3573532254686829i −0.721984535137726
+] . According to the previous analysis, W can be decomposed as W = U ⊗V with
+U = [
+0.7073 + 0.0000i 0.7069− 0.0050i 0.7069− 0.0000i −0.7073 + 0.0050i
+] ,
+and
+V = [
+0.6209− 0.3685i 0.6919 + 0.0049i 0.5950− 0.3532i −0.7220− 0.0051i
+] . Example 2. We consider a 8× 8 unitary matrix W = Y1 + Y2i, with
+Y1 =  0.4652 0.1795 0.4922 0.1948 0.4231 0.1783 0.4355 0.1881 0.1932 −0.430 0.2045 −0.4691 0.1758 −0.4292 0.1809 −0.4529 0.4890 0.1886 −0.4683 −0.1854 0.4447 0.1874 −0.4144 −0.1790 0.2031 −0.4541 −0.1945 0.4463 0.1847 −0.4511 −0.1721 0.4309 0.4278 0.1650 0.4526 0.1792 −0.4601 −0.1939 −0.4736 −0.2046 0.1777 −0.3973 0.1880 −0.4313 −0.1911 0.4668 −0.1967 0.4925 0.4496 0.1735 −0.4307 −0.1705 −0.4836 −0.2038 0.4506 0.1946 0.1868 −0.4176 −0.1789 0.4104 −0.2009 0.4906 0.1872 −0.4686  ,
+and
+Y2 =  −0.0560 −0.0753 −0.0158 −0.0624 0.0814 −0.0157 0.1241 0 −0.0233 0.1813 −0.0066 0.1501 0.0338 0.0377 0.0516 0 −0.0588 −0.0792 0.0151 0.0593 0.0855 −0.0165 −0.1181 0 −0.0244 0.1906 0.0063 −0.1428 0.0355 0.0396 −0.0490 0 −0.0515 −0.0693 −0.0146 −0.0573 −0.0885 0.0170 −0.1350 0 −0.0214 0.1667 −0.0060 0.1380 −0.0368 −0.0410 −0.0561 0 −0.0541 −0.0728 0.0138 0.0546 −0.0930 0.0179 0.1284 0 −0.0225 0.1753 0.0058 −0.1313 −0.0386 −0.0431 0.0533 0  ,
+which is randomly generated by
+U1 = [
+0.701056− 0.224367i 0.67689 0.644678− 0.206324i −0.736084
+] ,
+U2 = [
+0.686641− 0.06032i 0.72449 0.721711− 0.0634009i −0.689285
+] ,
+U3 = [
+0.888143 + 0.253079i 0.383606 0.36892 + 0.105125i −0.923497
+] . After numerical verification, the unitary tensor decomposition W = Q ⊗ U ⊗ V can be obtained with
+Q = [
+0.7361− 0.0000i 0.6447 + 0.2063i 0.6769− 0.0000i −0.7011− 0.2244i
+] . U = [
+0.6893 + 0.0000i 0.7217 + 0.0634i 0.7245− 0.0000i −0.6866− 0.0603i
+] ,
+V = [
+0.9169− 0.1103i 0.3537− 0.1485i 0.3809− 0.0458i −0.8515 + 0.3574i
+] . The Matlab code is supplied in the Supplementary Materials. 3. determine the lu equivalence of non-degenerate quantum states The key to investigating the local unitary equivalence of quantum states lies in the unitary tensor decomposition of the corresponding unitary matrix. In this section, we present a general method to determine the LU equivalence of any pair of non-degenerate quantum states by the unitary tensor decomposition protocol derived in the above section. Let ρ and ρ̃ be the density matrices of two states in quantum systems H1⊗H2⊗ · · ·HN with dimHi = d, i = 1, 2, . . . , N. We assume that both ρ and ρ̃ are non-degenerate. We further set that ρ and ρ̃ have the same eigenvalues, which is the necessary condition for the LU equivalence of the two density matrices. Let ρ = XΣX† and ρ̃ = YΣY† be the spectral decomposition of ρ and ρ̃. Thus, there is a unitary matrix W = YX† such that
+ρ̃ = WρW†. To certify that ρ and ρ̃ are local unitary equivalent, one needs to further find unitary matrices Ui, i = 1, 2, . . . , N such that
+W = U1 ⊗U2 ⊗ · · ·UN . In the following, we consider bipartite quantum systems as an example. The processes of judging the local unitary equivalence of quantum states are as follows: [1] Check whether the density matrices ρ and σ of quantum states are non-degenerate and whether they have the same eigenvalues;
+[2] Find the spectral decompositions ρ = XΣX† and ρ̃ = YΣY†. Compute W = YX†; [3] Determine whether W can be decomposed into the tensor product of two unitary
+matrices, such as W = U ⊗V. Example 3. We consider two quantum states
+ρ =  0.2 0 0 0 0 0.2743 0.0429 −0.0086 0 0.0429 0.2286 0.0143 0 −0.0086 0.0143 0.2971 ,
+σ =  0.2648 −0.0360 −0.0228 −0.0217 −0.0360 0.2225 0.0212 −0.0011 −0.0228 0.0212 0.2369 −0.0369 −0.0217 −0.0011 −0.0369 0.2759 
+with spectral decompositions ρ = XΣX† and σ = YΣY†, respectively, where
+Σ =  0.2 0 0 0 0 0.2 0 0 0 0 0.3 0 0 0 0 0.3 ,
+X =  1 0 0 0 0 −0.507092552837110 0.609449400220044 0.609449400220044 0 0.845154254728517 0.212930374147564 0.490280472260179 0 −0.169030850945703 −0.763696329922311 0.623054160640762 ,
+Y =  −0.585389075528045 −0.098738906989822 −0.087850024051642 −0.799907889555417 −0.490973763578605 −0.730809679765713 −0.109038680416598 0.461489481582411 −0.494334763695753 0.621997602780637 −0.502988683425162 0.340227141602823 −0.414605276295110 0.263223901540746 0.852874740975106 0.177257774815572 . Then, the matrix W = YX† can be decomposed into the tensor product of two unitary matrices,
+i.e., W = U ⊗V, where
+U = [
+0.7640, 0.6452 0.6452,−0.7640
+] ,
+V = [ −0.7662,−0.6426 −0.6426, 0.7662 ] . Therefore, the quantum states ρ and σ are local unitary equivalent. 4. lu invariants Let f (ρ) be a function of density matrix ρ ∈ HA ⊗ HB. In this section, we set dimHA = dimHB = d = 2n. If f is an LU invariant, then for any quantum state ρ and unitary matrices U and V, it satisfies
+f (ρ′) = f (ρ),
+where ρ′ = U ⊗ VρU† ⊗ V†. Such kinds of functions contain polynomial local unitary invariants, rational local unitary invariants and so on [24]. Let G be the set of all “singlequbit” and CNOT gates. According to the universality of quantum gates, an arbitrary unitary operation on n qubits can be implemented using a circuit containing O(n24n) unitary operators in G. Then, for any unitary matrices U and V, there exist unitary matrices Ui ∈ G and Vi ∈ G, i = 1, 2, . . . , k, such that U = U1 ⊗ U2 ⊗ · · · ⊗ Uk and V = V1 ⊗V2 ⊗ · · · ⊗Vk, respectively. Theorem 2. A function f is an LU invariant if and only if f is invariable under LU operations of the form Ui ⊗ I and I ⊗Vi for all Ui ∈ G and Vi ∈ G.
+Proof. The “only if” is obvious. For the if part, one has to prove that the following equation
+f (ρ′) = f (U ⊗VρU† ⊗V†) = f (ρ)
+holds. Suppose U and V can be rewritten as U = U1 ⊗U2 ⊗ · · · ⊗Uk1 and V = V1 ⊗V2 ⊗ · · · ⊗Vk2 . One can always set k1 = k2 = k. Otherwise, the identity matrix I can be used as a complement. We have
+f (ρ′) = f (U ⊗VρU† ⊗V†) = f ((U1 ⊗V1)(U2 ⊗V2) · · · (Uk ⊗Vk)ρ(Uk ⊗Vk)† · · · (U2 ⊗V2)†(U1 ⊗V1)†) = f ((U1 ⊗ I)(I ⊗V1)(U2 ⊗V2) · · · (Uk ⊗Vk)ρ(Uk ⊗Vk)† · · · (U2 ⊗V2)†(I ⊗V1)†(U1 ⊗ I)†) = f ((I ⊗V1)(U2 ⊗V2) · · · (Uk ⊗Vk)ρ(Uk ⊗Vk)† · · · (U2 ⊗V2)†(I ⊗V1)†) = · · · = f (ρ),
+which ends the proof of the theorem. 5. conclusions In this paper, we have studied the local unitary equivalence of quantum systems from the perspective of unitary matrix tensor decomposition. We have presented a detailed process to find the unitary matrices in the tensor decomposition of an arbitrary tensorfactorable unitary matrix. We have also derived a property of LU invariants that may be used to find a complete set of LU invariants. It should be noted that our schemes are convenient to discuss the local unitary equivalence when the number and the dimension of the subsystems are small

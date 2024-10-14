@@ -1,0 +1,337 @@
+Department of Electronic Engineering and Computer Science, School of Science and Technology, Hong Kong Metropolitan University, Ho Man Tin, Hong Kong SAR, China International Center for AI and Cyber Security Research and Innovations, Department of Computer Science and Information Engineering, Asia University, Taichung 413, Taiwan Symbiosis Centre for Information Technology (SCIT), Symbiosis International University, Pune, India Lebanese American University, Beirut, 1102, Lebanon Center for Interdisciplinary Research at University of Petroleum and Energy Studies (UPES), Dehradun, Uttarakhand, India Department of Computer Science, Dar Alhekma University, Jeddah, Saudi Arabia Department of Computer Science and Engineering, School of Technology, Pandit Deendayal Energy University, Gandhinagar, India Instituto de Telecomunicações, Aveiro, Portugal Asia University, Taichung 41354, Taiwan School of Information Technology, Skyline University College, P.O. Box 1797, UAE Al-Balqa Applied University, Salt, Jordan Department of Information and Communication Engineering, Yeungnam University, Gyeongsan, Republic of Korea research article  multiround transfer learning and modified generative  adversarial network for lung cancer detection Kwok Tai Chui ,1 Brij B. Gupta ,2,3,4,5,6 Rutvij H. Jhaveri ,7 Hao Ran Chi,8 Varsha Arya,4,9 Ammar Almomani,10,11 and Ali Nauman12
+1Department of Electronic Engineering and Computer Science, School of Science and Technology, Hong Kong Metropolitan University, Ho Man Tin, Hong Kong SAR, China 2International Center for AI and Cyber Security Research and Innovations, Department of Computer Science and Information Engineering, Asia University, Taichung 413, Taiwan 3Symbiosis Centre for Information Technology (SCIT), Symbiosis International University, Pune, India 4Lebanese American University, Beirut, 1102, Lebanon 5Center for Interdisciplinary Research at University of Petroleum and Energy Studies (UPES), Dehradun, Uttarakhand, India 6Department of Computer Science, Dar Alhekma University, Jeddah, Saudi Arabia 7Department of Computer Science and Engineering, School of Technology, Pandit Deendayal Energy University, Gandhinagar, India 8Instituto de Telecomunicações, Aveiro, Portugal 9Asia University, Taichung 41354, Taiwan 10School of Information Technology, Skyline University College, P.O. Box 1797, UAE 11Al-Balqa Applied University, Salt, Jordan 12Department of Information and Communication Engineering, Yeungnam University, Gyeongsan, Republic of Korea
+Correspondence should be addressed to Kwok Tai Chui; jktchui@hkmu.edu.hk and Brij B. Gupta; gupta.brij@gmail.com
+Received 20 October 2022; Revised 31 January 2023; Accepted 14 February 2023; Published 3 March 2023
+Academic Editor: Lianyong Qi
+Copyright © 2023Kwok Tai Chui et al.Tis is an open access article distributed under the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited. Lung cancer has been the leading cause of cancer death for many decades. With the advent of artifcial intelligence, various machine learning models have been proposed for lung cancer detection (LCD). Typically, challenges in building an accurate LCD model are the small-scale datasets, the poor generalizability to detect unseen data, and the selection of useful source domains and prioritization of multiple source domains for transfer learning. In this paper, a multiround transfer learning and modifed generative adversarial network (MTL-MGAN) algorithm is proposed for LCD. Te MTL transfers the knowledge between the prioritized source domains and target domain to get rid of exhaust search of datasets prioritization among multiple datasets, maximizing the transferability with a multiround transfer learning process, and avoiding negative transfer via customization of loss functions in the aspects of domain, instance, and feature. In regard to the MGAN, it not only generates additional training data but also creates intermediate domains to bridge the gap between the source domains and target domains. 10 benchmark datasets are chosen for the performance evaluation and analysis of the MTL-MGAN. Te proposed algorithm has signifcantly improved the accuracy compared with related works. To examine the contributions of the individual components of the MTLMGAN, ablation studies are conducted to confrm the efectiveness of the prioritization algorithm, the MTL, the negative transfer avoidance via loss functions, and the MGAN. Te research implications are to confrm the feasibility of multiround transfer learning to enhance the optimal solution of the target model and to provide a generic approach to bridge the gap between the source domain and target domain using MGAN. Hindawi International Journal of Intelligent Systems Volume 2023, Article ID 6376275, 14 pages https://doi.org/10.1155/2023/6376275 1. introduction Cancer is the second leading cause of global death, according to the World Health Organization [1]. Among all types of cancers, lung cancer is ranked frst that has caused 1.8 million deaths in each year. Lung cancer detection (LCD) in the early stage is important for medical staf to tailor-make the treatment plan and perform the prognostic estimation. LCD using artifcial intelligence receives increasing attention in both academia and practice in view of the inadequacies of medical staf [2] and the heavy workload [3]. Reducing the time spent on medical diagnosis provides more time to medical doctors to concentrate on professional surgery and consultation and thus leveraging the healthcare quality. In this paper, we consider the traditional lung cancer screening via biomedical imaging, instead of an emerging approach using breath by the electronic nose [4, 5]. Te traditional machine learning model is trained with a dataset that often reaches a bottleneck in achieving excellent model performance (e.g., in terms of sensitivity, specifcity, and accuracy) to fulfl the mission-critical medical diagnosis. In addition, large-scale datasets may not be available for training an accurate deep learning-based model for all applications. Tese drive the emerging research trend in applying transfer learning, that performs knowledge transfer from the source domain to the target domain. In literature, it is well demonstrated the superiority and applicability of transfer learning in many research applications [6, 8]. Attention is drawn to a more general scenario, where the source domain and target domain are diferent but related (less difcult) or diferent and unrelated (more challenging). Te issue of the negative transfer becomes more severe with the increase of dissimilarities between the source domain and target domain because there are more unrelated samples from the source domain [8]. Te loss functions can be formulated to reduce the impact of negative transfer. Te rest of the paper is organized as follows. Section 1 is divided into three subsections to present a summary of the related works, a discussion of the research limitations of the related works, and the major research contributions of our work. Section 2 presents the design and formulations of the proposed algorithm for LCD. Section 3 summarizes the details of the 10 benchmark datasets and presents the performance evaluation and comparison. To investigate the contributions of the individual components of the proposed algorithm, ablation studies are conducted in Section 4. At last, in Section 5, a conclusion is drawn with future research directions. 1.1. Related Works. Although existing works [9–16] formulated the transfer learning problems with a single source domain and single target domain, the discussion has merit as these works fell into the same research area, i.e., transfer learning for LCD. In the following, two common types of formulations will be discussed: (i) transfer learning between the similar source domain and target domain [9–12] and (ii) transfer learning between the distant source domain and target domain [13–16]. Te discussion begins with the transfer learning problem using a similar source domain and target domain. In [9], a hybrid residual and deep neural networks was proposed for the transfer learning from Luna16 to a small-scale dataset (125 chest computed tomography (CT) scans) collected by researchers in Shandong Provincial Hospital.Te ablation study showed that the transfer learning strategy enhanced the accuracy of the LCDmodel from 79.5% to 85.7%. ImageNet was served as the source model in the transfer learning strategy to fne-tune the target model [10]. VGG16 and deep neural network were used to build the LCD model, which was evaluated using two benchmark datasets. Transfer learning enhanced the accuracy of the model from 87.5% to 90.8%. To transfer the knowledge from LUNA16 to the target domain of the Gangneung Asan Hospital for LCD, a YOLOX algorithm was used [11]. Results showed a slight enhancement of the model’s accuracy from 89.7% to 90.9%. Some scenarios also suggested that improper settings in the fne-tuning of the target model may lead to deterioration on the model performance, which is a well-known issue of negative transfer. In [12], a nodule identifcation convolutional neural network was pretrained that would transfer knowledge to the target model (using data collected from some hospitals). Semisupervised deep transfer learning was designed and implemented. Results showed that the sensitivity, specifcity, and accuracy were improved from 90.2% to 92.2%, 66.3% to 78.6%, and 83.4% to 88.3%, respectively. On the other hand, the transfer learning problems are formulated with distant sources and target domains. Te work [13] conducted an exploratory analysis on 11 common feature extractors for the source domain (ImageNet), including NASNetLarge, NASNetMobile, DenseNet201, DenseNet169, InceptionResNetV2, ResNet50, InceptionV3, Xception, MobileNet, VGG19, and VGG16. Te knowledge was transferred to build various classifers, such as random forest, K-nearest neighbors, support vector machine, multilayer perceptron, and Näıve Bayes. Results revealed that ResNet50 with support vector machine achieved the best performance with sensitivity and accuracy of 85.4% and 88.4%, respectively. Te work also demonstrated the efectiveness of the pretrained model using ImageNet to perform transfer learning on the target domain of chest CT [14]. Four common architectures, namely, DenseNet169, MobileNet, VGG19, and VGG16 were used to build the LCDmodel.Te performance of the model was the best with VGG 16, yielding an accuracy of 91.3%. A recent work [15] has reported a difculty in the transfer learning strategy without model overftting. Te model was with 98.8% and 83.4% of training accuracy and testing accuracy, respectively. ImageNet was served as the source domain for the knowledge transfer of a VGG19 pretrained model to the target domain of 150 patients with CTscans [16]. Te model achieved sensitivity, specifcity, and accuracy of 75%, 87%, and 82%, respectively. 1.2. Research Limitations of the Related Works. Te major research limitations of the related works are summarized as follows:
+(i) Lack of studies in multiround transfer learning for LCD: existing works considered one-round transfer learning for LCD where only one source domain was involved. Although the target model receives a beneft in the enhancement of model’s performance, the model is usually having room for further enhancement (not yet achieved global optimal solution). With more source datasets, it is expected that more unseen data and potential knowledge can be transferred (positive transfer) to further enhance the performance of the target model. (ii) Lack of studies in negative transfer between the source domain and the target domain: theoretically, one can formulate the transfer learning problem with the source dataset and target dataset with high similarities [9–12] or low similarities [13–16]. Te negative transfer becomes more severe with the decrease in similarities because more unrelated samples can be found in the source dataset. If knowledge from unrelated samples is transferred to the target model, the model’s performance becomes worsened. It is needed to avoid negative transfer to ensure the enhancement of performance of the target model, i.e., to guarantee the model moves towards the global optimal solution. (iii) Lack of studies in the creation of intermediate domains as a bridge between the source and target domains: controlling the knowledge transfer from the source domain to the target domain is important to enhance the chance of positive transfer. Intermediate domains should be used to break down the transfer learning problem into multiple subproblems. In this consideration, the similarities between the source domain and intermediate domain, as well as between intermediate domain and target domain, are higher than that in the original formulation, between the source domain and the target domain. 1.3. Research Contributions of Our Work. A multiround transfer learning and modifed generative adversarial network (MTL-MGAN) algorithm is proposed to address the research limitations. Te research contributions of our work are summarized as follows:
+(i) Enhancing the optimal solutions of the LCD model with multiround transfer learning: it has been demonstrated inmany existing works for the benefts of transfer learning from the source model to the target model. Applying transfer learning multiple times (multiround transfer learning) with multiple source models is expected to enhance the optimal solutions of the LCDmodel (target model) where the performance of the target model in the next round is better than that in the current round. Tis strategy outperforms traditional single-round transfer learning. Ablation study reveals that multiround transfer learning (MTL) enhances the average sensitivity, specifcity, and accuracy of the LCDmodel by 8.28%, 8.21%, and 8.26%, respectively. (ii) Te loss functions are designed to minimize the impact of negative transfer: data heterogeneity is always existing between the source domain and target domain. Terefore, transfer learning is experienced discrepancies in the joint distributions between the source domain and the target domain. Reformulating the loss functions in domains, instances, and features for the reliable selection of relevant data and knowledge aims to enhancing the performance of the target model. Existing works did not fully consider the issue of negative transfer in the architecture of the transfer learning-based deep learning models. Te ablation study shows that the proposed algorithm enhances the sensitivity, specifcity, and accuracy of the LCDmodel by 1.57–2.23%, 1.42–2.26%, and 1.53–2.24%, respectively. (iii) A modifed generative adversarial network (MGAN) is designed to create two intermediate domains as bridges between the source domain and target domain: bridging the gap between the source and target domains is important to maximize the enhancement of the performance of the LCDmodel, particularly when the distant source domain is selected. It is worth noting that the merit comes to the applicability of distant source domains where a wide variety of source domains can be selected to contribute to the target model. It could also serve as a generic formulation for distant transfer learning between various types of the source domain and target domain. Te MGAN is designed to incorporate the advantages of various baseline generative adversarial network (GAN) algorithms. Te rationale is to generate more relevant samples in source domains to enhance the model transferability. In other words, the unrelated samples become less dominant as more relevant samples are available with MGAN. Ablation study shows that the MGAN enhances the sensitivity, specifcity, and accuracy of the LCD model by 3.07–4.61%, 2.92–4.33%, and 3.15–4.47%, respectively. 2. methodology Te design and formulations of the MTL-MGAN are presented. Tis section is comprised of the overview of the MTL-MGAN, the prioritization algorithm, the loss functions, and the MGAN. 2.1. Overview of the MTL-MGAN. Before the illustration of the design and formulations of the proposed MTL-MGAN, an overview of the architecture is shown in Figure 1. For better visualization, it shows a scenario with multiple source datasets and one target dataset. Consider M source datasets (Ds1, . . . ,DsM) and one target dataset (TD). All source datasets are ranked in terms of the similarities between source datasets and target datasets using a prioritization algorithm (details in Subsection 2.2). Te output of the algorithm provides prioritized source datasets in descending
+order, where the highest similarity frst, denoted by (PDs1, . . . ,PDsN), with N≤M because some of the source datasets could be removed if they contain a signifcant portion of unrelated samples that may lead to negative transfer to the target domain. A threshold can be defned to flter sourcetarget dataset pairs with low similarity. Te removal of these pairs reduces the severity of negative transfer because more irrelevant knowledge could potentially be transferred to the target model. Both prioritized multiple source datasets and target datasets will perform MGAN to create intermediate domains as bridges. Te trained target model Dt is updated usingMTLwith the repetitions of the abovementioned steps. 2.2. Prioritization Algorithm for Multiple Source Datasets. Selecting appropriate source models to be transferred is important to avoid the waste of efort to transfer limited knowledge to the target domain. More importantly, the transfer of irrelevant knowledge to the target domain, as a well-known issue of negative transfer, should be avoided. Among relevant source models, for those carrying similarities (relevant samples) to the target domain, it is desired to prioritize the models to be transferred (one-to-one transfer learning) in descending order of similarities between the source and target domains. Te rationale is due to the enhancement of the robustness of the target model during initial iterations to lower the impact of negative transfer from less similar source domains during later iterations. In addition, prioritization of multiple source datasets helps eliminate source-target domain pairs with low similarity (a threshold can be defned). To design the prioritization algorithm for multiple source models, a hybrid approach is proposed to merge (i)
+modifed 2D dynamic warping (M2DW): traditional 2D dynamic warping (2DW) using bidirectional mapping optimally aligns between two images on a similarity basis. However, M2DW performs well only with even resolutions across multiple sensors [17]. Te proposed M2DW flls the gap to enable uneven resolutions that are commonly used in practice; (ii) Silhouette coefcient: inspired by [18], where Silhouette coefcient was used to select the source domains using only with pretrained model and target domain. Our work extends the consideration with the aid of the characteristics of the source domains. To begin with, the design and formulations of the M2DW algorithm are presented. Te algorithm frst runs through the classes of each dataset and then takes the mean of the image set for each class. Initializing the 2DW barycenter averaging with the medoid of the time series set. Te iteration carries out for every pair of datasets using one-to-one mapping. Te distance between any pair of datasets equals to the minimal 2DW distance between classes. Te total similarity score SSij for dataset Di with Ni sequences and dataset Dj with Nj sequences is given by the following equation:
+SSij � 
+m∈ 1,Ni[ ],n∈ 1,Nj 
+smn, (1)
+where smn is the similarity score between them th sequence in Di and the nth sequence in Dj. Regarding the Silhouette coefcient, the target training datasets is frst encoded with every source models. Te average Silhouette coefcient SC for each set of encodings is measured with the following formulations:
+SCi � (h − g)
+max (g, h) ,
+g � x∈G,x≠id(i, x) 
+NG − 1(  ,
+h �
+min H≠G x∈Hd(i, x) 
+NH ,
+SC � i∈Ls(i) 
+NL ,
+(2)
+where SCi is the Silhouette coefcient for a single encoding vector i, d is the distance between two encodings, G and H are some labels of i, L is the label for the fnal model, and NG, NH, and NL are the number of encodings labeled for labels G, H, and L, respectively. Te total similarity scores for all pairs are normalized and weighted with the results using the Silhouette coefcient. As a result, the priorities of the source domains (to be transferred) are obtained. 2.3. minimizing the negative transfer with loss functions. Transfer learning does not guarantee to improve the performance of the target model, that is a commonly known issue of negative transfer. A recent survey on negative transfer [19] summarizes the solutions into three types: (i) secure transfer: the objective function is defned to ensure positive transfer to the target model; (ii) distant transfer: low similarities between source dataset and target dataset may
+happen when the datasets are in diferent domains (research topics). Some researchers demonstrated the efectiveness of setting up an intermediate domain to bridge between the source and target domains; (iii) transferability enhancement: enhancing the data quality in the source datasets leads to the improvement of the transfer learning to the target model. Te frst approach is not chosen because of the requirement of the full understanding of all source domains and restrictions on the design and formulations of the transfer learning problem. It is not feasible based on the research initiative to allow distant transfer learning with a wide variety of dissimilar source datasets and target datasets. Te second approach is also not appropriate that requires knowledge of source domains and experiences challenging to obtain or create an intermediate domain. Terefore, the last approach is considered to enhance the data transferability between the source domain and the target domain. To comprehensively enhance the data quality, we have formulated the optimization problems in the aspects of domains, instances, and features. Te rationale is to fully consider the entire transfer learning process to ensure negative transfer avoidance in all phases. After the selection of useful samples (knowledge), unequal weighting factors are introduced to the frst and second-order features. Penalization may also be performed for unrelated samples. Regarding domains, we frst consider the moment distance dmoment(DS, DT) for the measurement of the similarity between every pair of domains. Denote the source domains as DS � D1, · · · , DNs  with a total number of source domains Ns and single target domain DT. Te moment distance is defned as
+dmoment DS, DT(  �
+ Ns i�1 F Xsi  1 −F Xt(  1 ������2 ������� +  Ns i�1 F Xsi  2 −F Xt(  2 ������2 �������  
+Ns ,
+(3)
+where F(Xsi) 1 and F(Xsi) 2 are the average operation of the 1st order and 2nd order features with the si source domain, respectively. Likewise, F(Xt) 1 and F(Xt) 2 are the average operation of the 1st order and 2nd order features with the target domain, respectively. Equation (3) assumes equal weighting factors for all source domains; however, this cannot precisely describe the fact that diferent extent of similarities exists between multiple source domains and target domain. Terefore, modifed moment distance dmodi fied(DS, DT) is proposed:
+dmoment DS, DT(  �
+ Ns i�1αi F Xsi  1 −F Xt(  1 ������2 +  Ns i�1αi ������� ������� F Xsi  2 −F Xt(  2 ������2  
+Ns ,
+(4)
+where αi is the normalized weight (iαi � 1) of the source domain si. In the aspect of instances, the consideration is on the transfer of useful components in the source domain to the target domain. A minimization problem of the transfer learning based on component Ci can be formulated as
+min Mi βi M T i Mi  + ci αi − min αi 
+���� ���� + δTi, (5)
+where Mi is the Mahalanobis distance of Ci, βi is the hyperparameter to control the generalization error of Mi, ci is the hyperparameter to control the regularization of the samples in Ci, and δTi is the loss function (or error) to predict
+a sample in DT. Te loss function is calculated by the following equation:
+δTi � SWDwithin − SWDacross, (6)
+where SWDwithin and SWDacross are the sum of the weighted diferences within classes and across classes, respectively. In the aspect of features, for those with small singular values can be penalized via singular value decomposition (SVD) with penalization. Te feature matrix F � [f1, · · · , fN] is denoted with size N. Te representation of F using SVD is given by the following equation:
+F � UΣVT, (7)
+where U is the left singular vector, Σ is the singular value matrix of F, and V is the right singular vector. Rearrange the singular values of Σ as [μ1, · · · , μN] in descending order. Te idea for transferability enhancement in the feature layer is to penalize the smallest p singular values:
+Lpenalize(F) � ρ p
+i�1 μi( 
+2 , (8)
+where ρ is the hyperparameter to control the strength of penalization and p equals to the number of penalized singular values. 2.4. MGAN for the Creation of Intermediate Domains. Recall the rationale of the creation of intermediate domains between the source domain and the target domain, is to increase the similarities between the source domain and the target domain. In each round of MTL, two intermediate domains are created. One intermediate domain ID-MGANs is based on the source domain and another ID-MGANt is
+based on the target domain using MGAN. Te intermediate domains link closely with the source domain and the target domain to ensure they are based on the distribution of the original datasets (source dataset and target dataset). Figure 2 introduces the architecture of the transfer learning process with two intermediate domains.Tis has divided the original transfer learning process between the source domain and target domain into three subproblems: (i) subproblem 1: transfer learning between the source domain and IDMGANs; (ii) subproblem 2: transfer learning between IDMGANs and ID-MGANt; (iii) subproblem 3: transfer learning between ID-MGANt and target domain. Te baseline GAN is often not performing well in recent complex machine learning problems because of the fatal theory corruption with random noise vector [20]. Two popular (with highcitations in the research publications) variants of GANs namely auxiliary classifer GAN [21] and conditional GAN [22] were thus proposed to solve the limitation. In this paper, we combine these variants of GANs, as the architecture of MGAN. Figure 3 shows the architecture of theMGAN. Defne the notations: noise vector n, conditional variable c, generatorG, latent variable z, data distribution X, and discriminator D. MGAN is featured with (i) all generated samples are assigned with label and (ii) adding additional input, conditional variable to the discriminator. Te idea of the algorithm is to use G to fool D, with c. G knows the mapping between latent space and data distribution whereas D classifers the generated samples from the ground truth distribution. Defne the loss functions Lsource and Lclass for the source and class, respectively.Te objective functions of the MGAN are formulated as follows:
+Lsource � E logP Source � fake Xfake    + E logP Source � real Xreal   ,
+Lclass � E logP Class � c Xfake    + E logP Class � c Xreal   ,
+Generator: maxLclass − Lsource,
+Discriminator: maxLclass + Lsource. (9) 3. performance evaluation and comparison To evaluate the performance of the MTL-MGAN, 10 benchmark datasets are selected. Te performance of the MTL-MGAN is analyzed. Tis is followed by the performance comparison between the MTL-MGAN and existing works. 3.1. BenchmarkDatasets. 10 benchmark datasets are selected for which fve of them are related to lung cancer datasets (with higher similarities given the application is LCD) and the remaining fve of them are related to nonlung cancer datasets (with lower similarities). Te fve lung cancer datasets are NSCLC-Radiomics [23], NSCLC-RadiomicsGenomics [24], SPIE-AAPM Lung CT Challenge [25], LungCT-Diagnosis [26], and Lung CT Segmentation Challenge 2017 [27]. Te nonlung cancer datasets are CIFAR-10 dataset [28], ImageNet dataset [29], Microsoft Common Objects in Context [30] of images for multidisciplinary research, prostate cancer dataset NaF Prostate [31], and breast cancer dataset QIN-Breast [32]. Trivially, it is expected that the similarities between lung cancer datasets [23–27] are high and thus the model experiences less severity of negative transfer. For image datasets of multidiscipline, the datasets [28–30] contain highly dissimilar samples which are more prone to negative transfer. For prostate cancer [31] and breast cancer datasets [32], there exist some similarities between datasets because of the nature of cancer images. Tese hypotheses will be examined in the following sections. 3.2. Performance Evaluation of the MTL-MGAN. Tis research study is intended to conduct research on the prioritization of source datasets, the negative transfer avoidance, generation of intermediate domains, and the multiple transfer learning so that the feature extraction and classifcation algorithms are not major research directions. Terefore, the convolutional neural network is employed as the basic architecture of the target model. To examine the issue of model overftting and better fne-tuning the models, 5-fold cross-validation is adopted that has been justifed as a common setting of k-fold crossvalidation (with k � 5) [33, 34]. Since 10 benchmark datasets are chosen, at most, the target model performs 9-
+round of MTL-MGAN from nine source datasets. Te training will stop when negative transfer becomes severe, i.e., the performance (accuracy) of the target model is less than that of the target model using the preceding source dataset. Figure 4 shows the accuracy of the 5 target models (lung cancer-related) in each round of MTL-MGAN. Several following observations are drawn:
+(i) Te maximum number of rounds of MTL-MGAN varies across the target models. Te ascending order is given by seven rounds in NSCLC-RadiomicsGenomics [24] and LungCT-Diagnosis [26], eight rounds in NSCLC-Radiomics [23] and Lung CT Segmentation Challenge 2017 [27], and nine rounds in SPIE-AAPM Lung CT Challenge [25]. (ii) Te rank in ascending order for the overall percentage improvement between the frst and last round of iteration using MTL-MGAN is 6.85% in SPIE-AAPM Lung CT Challenge [25], 7.00% in NSCLC-Radiomics [23], 8.16% in NSCLC-Radiomics-Genomics [24], 8.70% in Lung CT Segmentation Challenge 2017 [27], and 9.92% in LungCTDiagnosis [26]. (iii) Te percentage improvement per round using MTL-MGAN in ascending order is 0.761% in SPIE-AAPM Lung CT Challenge [25], 0.875% in NSCLC-Radiomics [23], 1.09% in Lung CT Segmentation Challenge 2017 [27], 1.17% in NSCLCRadiomics-Genomics [24], and 1.42% in LungCTDiagnosis [26]. 3.3. Performance Comparison with Related Works. Te performance comparison between our work and related works covered in Section 1.1 is shown in Table 1. We summarize the observations in each column as follows:
+(i) Source domain and target domain: the related works [9–12] formulated the transfer learning problem using a similar source domain and target domain whereas other works [13–16] considered the distant source and target domains. Our work considered 10 benchmark datasets to evaluate the MTL using similar and distant sources and target domains. (ii) Intermediate domains: related works [9–16] did not introduce any intermediate domains to bridge the gap between the source domain and target domain. Our work creates two intermediate domains using MGAN to reduce the level of dissimilarities between the source domain and target domain and thus enhancing the transferability. Particularly, it is important when the source domain and target domain are highly difered from each other. (iii) Methodology: the related works formulated the classifcation problems using traditional deep learning algorithms. In view of the research limitations, our work proposed the prioritization algorithm, the multiple transfer learning, the negative transfer avoidance algorithm by designing loss functions, and the MGAN. (iv) Cross-validation: related works [9–12, 14, 15] did not employ cross-validation. Te performance evaluation possessed limitations in partial utilization of the dataset and lack of information on the evaluation of potential model overftting when it comes to a deep learning environment. Related works [13, 16] adopted 10-fold cross-validation whereas our work used 5-fold cross-validation. Both 5-fold and 10-fold settings are commonly used in literature with comparable performance [35, 36]. (v) Ablation study: related works [13–16] did not conduct an ablation study. It is an important element to evaluate the contributions of individual components of the transfer learning model on the performance enhancement of the target model. It is worth noting that negative transfer may exist that is equivalent to a worsened performance on the target model after transfer learning. Other
+related works [9–12] and our work carry out ablation studies and report the contributions of the transfer learning model in the enhancement of model performance. (vi) Sensitivity: related works [9–11, 14, 15] did not report the sensitivity. It is important to report both the sensitivity and specifcity to ensure that biased classifcation is not observed. Te works [13, 16] reported the sensitivity of the LCD model when transfer learning is applied. Te work [12] revealed the improvement of sensitivity by 2.22% using the transfer learning model. Our work shows an improvement of sensitivity by 6.86–10.8% in the fve target models. (vii) Specifcity: similar to the sensitivity of the model, observation is made for the absence of reporting of the specifcity and only the result after using the transfer learning model. Te work [12] improved the specifcity by 18.6%, nevertheless, model overftting is observed. Our work shows an improvement of specifcity by 6.70–10.4% in the fve target models. (viii) Accuracy: all related works and our work report the accuracy. Related works [13–16] only reported the results after applying the transfer learning model. Te percentage improvement of the accuracy is 7.80% [9], 3.77% [10], 1.34% [11], 5.88% [12], and 6.85–9.92% (our work). 4. ablation studies To evaluate the benefts of the components of the MTLMGAN, ablation studies are carried out on four key components namely prioritization algorithm, MTL, negative transfer avoidance with loss functions, and MGAN. Ta bl
+e 1:
+Pe rf or m an ce
+co m pa ri so n be tw ee n M TL
+-M G A N
+an d re la te d w or ks . W or k
+So ur ce do m ai n
+In te rm
+ed ia te
+do m ai ns
+Ta rg et do m ai n
+M et ho
+do lo gy
+C ro ss -v al id at io n
+A bl at io n st ud
+y Se ns iti vi ty
+Sp ec if ci ty
+A cc ur ac y
+[9 ]
+Lu na 16
+N o
+Sh an do
+ng pr ov in ci al
+ho sp ita
+l Re
+sid ua ln
+eu ra ln
+et w or k
+an d de ep
+ne ur al ne tw or k
+N o
+Ye s
+N /A
+N /A
+Fr om
+79 .5 % to 85 .7 %
+[1 0]
+Im ag eN
+et N o
+N at io na ll un
+g sc re en in g tr ia l
+an d th e na tio
+na li ns tit ut e of
+al le rg y an d in fe ct io us
+di se as eT B po rt al
+V G G 16
+an d de ep
+ne ur al
+ne tw or k
+N o
+Ye s
+N /A
+N /A
+Fr om
+87 .5 % to 90 .8 %
+[1 1]
+Lu na 16
+N o
+G an gn
+eu ng
+A sa n ho
+sp ita
+l YO
+LO X
+N o
+Ye s
+N /A
+N /A
+Fr om
+89 .7 % to 90 .9 %
+[1 2]
+N od
+ul e
+id en tif
+ca tio n C N N
+N o
+W es tC
+hi na
+ho sp ita
+lo fS
+ic hu an un iv er sit y, Ru iji n ho sp ita lo f Sh an gh ai Jia o To ng un iv er sit y Sc ho ol of m ed ic in e, an d C ha ng zh en g ho sp ita lo fs ec on d m ili ta ry m ed ic al un iv er sit y
+Se m isu
+pe rv ise
+d de ep
+tr an sf er
+le ar ni ng
+N o
+Ye s
+Fr om
+90 .2 %
+to 92 .2 %
+Fr om
+66 .3 %
+to 78 .6 %
+Fr om
+83 .4 % to 88 .3 %
+[1 3]
+Im ag eN
+et N o
+LI D C /I D RI
+Re sN
+et 50
+an d SV
+M 10 -f ol d
+N o
+85 .4 %
+N /A
+88 .4 %
+[1 4]
+Im ag eN
+et N o
+C he st
+C T
+V G G 16 ,V
+G G 19 ,
+M ob
+ile N et
+an d
+D en se N et 16 9
+N o
+N o
+N /A
+N /A
+91 .3 %
+w ith
+V G G 16
+(b es t)
+[1 5]
+V G G 16
+N o
+Ir aq -o nc ol og y te ac hi ng
+ho sp ita l an d na tio na lc en te r fo r ca nc er di se as es
+Se m isu
+pe rv ise
+d de ep
+tr an sf er
+le ar ni ng
+N o
+N o
+N /A
+N /A
+98 .8 %
+(t ra in in g)
+an d 83 .4 % (t es tin g)
+[1 6]
+Im ag eN
+et N o
+C T
+D ee p co nv
+ol ut io na l
+ne ur al
+ne tw or k
+10 -f ol d
+N o
+75 %
+87 %
+82 %
+O ur w or k
+U p to
+9 of
+[2 4–
+32 ]
+PD -M
+G A N s an d
+D -M
+G A N t
+[2 3]
+M TL
+-M G A N
+5- fo ld
+Ye s
+Fr om
+91 .8 %
+to 98 .1 %
+Fr om
+90 .9 %
+to 97 .3 %
+Fr om
+91 .4 % to 97 .8 %
+O ur w or k
+U p to
+9 of
+[2 3,
+25 –3
+2] PD
+-M G A N s an d D -M G A N t
+[2 4]
+M TL
+-M G A N
+5- fo ld
+Ye s
+Fr om
+90 .2 %
+to 97 .6 %
+Fr om
+91 .4 %
+to 98 .7 %
+Fr om
+90 .7 % to 98 .1 %
+O ur w or k
+U p to
+9 of
+[2 3,
+24 ,2
+6– 32 ]
+PD -M
+G A N s an d
+D -M
+G A N t
+[2 5]
+M TL
+-M G A N
+5- fo ld
+Ye s
+Fr om
+91 % to 97 .4 %
+Fr om
+92 .5 %
+to 98 .7 %
+Fr om
+92 % to 98 .3 %
+O ur w or k
+U p to
+9 of
+[2 3–
+25 ,2
+7– 32 ]
+PD -M
+G A N s an d
+D -M
+G A N t
+[2 6]
+M TL
+-M G A N
+5- fo ld
+Ye s
+Fr om
+89 .3 %
+to 98 .9 %
+Fr om
+90 .0 %
+to 99 .4 %
+Fr om
+89 .7 % to 99 .2 %
+O ur w or k
+U p to
+9 of
+[2 3–
+26 ,2
+8– 32 ]
+PD -M
+G A N s an d
+D -M
+G A N t
+[2 7]
+M TL
+-M G A N
+5- fo ld
+Ye s
+Fr om
+91 .1 %
+to 98 .9 %
+Fr om
+90 .3 %
+to 98 .3 %
+Fr om
+90 .8 % to 98 .7 %
+4.1. Contribution of the Prioritization Algorithm. Te prioritization algorithm helps ranking the similarities of the multiple source domains to the target domain. Table 2 compares the number of MTL-MGAN execution with and without the prioritization algorithm.Te scenario without the prioritization algorithm is equivalent to the exhaustive search (the total number of executions can be found by permutation).Te results are identical across diferent target domains. 4.2. Contribution of theMTL. Te sensitivity, specifcity, and accuracies of the target model with and without MTL are summarized in Table 3. Observations are drawn as follows:
+(i) Sensitivity: the improvement by MTL is 6.86% [23], 8.20% [24], 7.03% [25], 10.8% [26], and 8.56% [27]. Te average sensitivity of the fve target models is 8.28%. (ii) Specifcity: the improvement by MTL is 7.04% [23], 7.99% [24], 6.70% [25], 10.4% [26], and 8.86% [27]. Te average specifcity of the fve target models is 8.21%. (iii) Precision: the improvement by MTL is 7.02% [23], 8.41% [24], 6.89% [25], 10.4%, and 8.72% [27]. Te average precision of the fve target models is 8.29%. (iv) F-measure: the improvement by MTL is 6.91% [23], 8.02% [24], 6.99% [25], 10.0% [26], and 8.68% [27].Te average F-measure of the fve target models is 8.12%. (v) Accuracy: the improvement by MTL is 7.00% [23], 8.16% [24], 6.85% [25], 10.6% [26], and 8.70% [27].Te average accuracy of the fve target models is 8.26%. 4.3. Contribution of theNegative TransferAvoidancewith Loss Functions. Recall the loss functions are designed based on three aspects: domains, instances, and features. Table 4 summarizes the performance of the target model with and without the design of loss function in domains, instances, and features. Te comparisons are as follows:
+(i) Domains: the improvements of the sensitivity, specifcity, precision, F-measure, and accuracy are ranged 2.09–2.40%, 1.97–2.47%, 2.07–2.40%, 2.07–2.52%, and 2.18–2.30%. Te average improvements of the fve target models are 2.23%, 2.26%, 2.27%, 2.31%, and 2.24% in sensitivity, specifcity, precision, F-measure, and accuracy, respectively. (ii) Instances: the improvements of the sensitivity, specifcity, precision, F-measure, and accuracy are ranged 1.67–2.06%, 1.84–2.40%, 1.55–2.41%, 1.75–2.29%, and 1.85–2.17%. Te average improvements of the fve target models are 1.97%, 2.05%, 2.06%, 2.01%, and 1.99% in sensitivity, specifcity, precision, F-measure, and accuracy, respectively. (iii) Features: the improvements of the sensitivity, specifcity, precision, F-measure, and accuracy are ranged 1.33–1.76%, 1.23–1.57%, 1.43–1.55%, 1.14–2.28%, and 1.34–1.66%. Te average improvements of the fve target models are 1.57%, 1.42%, 1.47%, 1.53%, and 1.53% in sensitivity, specifcity, precision, F-measure, and accuracy, respectively. 4.4. Contribution of the MGAN. MGAN is applied to create two intermediate domains based on the source domain and target domain. Table 5 verifes the contributions of MGAN. Te improvements of the sensitivity, specifcity, precision, F-measure, and accuracy are ranged 3.07–4.61%, 2.92–4.33%, 3.06–4.81%, 2.18–4.24%, and 3.15–4.47%, respectively. Te average improvements in sensitivity, specifcity, precision, F-measure, and accuracy using with the inclusion of MGAN are 3.61%, 3.56%, 3.70%, 3.32%, and 3.58%, respectively. 4.5. Complexity of the Algorithms. It can be seen from the results that the prioritization algorithm is important to signifcantly reduced the trials of the MTL-MGAN with diferent orders of multiple source datasets. Tis also refects a signifcant reduction in the complexity of the model that avoids unnecessary computing power on exhaustive search. Regarding MTL, which is the strategy to perform multiple times of the transfer learning process. To avoid negative transfer, the loss functions are designed based on the aspects of domains, instances, and features. Although this increases the complexity of the optimization algorithm, the ablation study (Section 4.3) confrms the efectiveness of loss functions. Creating two intermediate domains using MGAN increases the time and computing power of the transfer learning process, however, they contribute to the avoidance of negative transfer. 5. conclusion Te technological advancement of the machine learning algorithms has received attention in recent years to enhance the medical diagnosis of lung cancers. Responding to the research limitations of existing lung cancer detection models in multiround transfer learning, negative transfer, and lack of bridge between source and target domains, we have proposed a multiround transfer learning and modifed generative adversarial network algorithm with a prioritization algorithm and modifed loss functions in domains, instances, and features perspectives. 10 benchmark datasets are selected to evaluate the performance of the proposed
+algorithm. It signifcantly enhances the performance of the lung cancer detection model, compared with related works. Ablation studies also provide convincing results to reveal the contributions of the components of the proposed algorithm in the aspects of prioritization algorithm, multiple transfer learning, customized loss functions in domains, instances, features, and modifed generative adversarial network. Te implication of the proposed algorithm releases the constraints in the selection of source domains and target domains. Terefore, it can contribute to various research areas, such as sustainable development goals [37], green applications [38], cyber-physical systems [39, 40], smart homes [41], and medical diagnosis [6, 7, 42]. To enhance the efciency of the optimization algorithm, future investigations could be conducted with various types of optimization approaches, which details can be referred to in review articles [46, 47]. List 1 Summary of the acronyms and symbols. acronyms 2DW: 2D dynamic warping MTL: Multiround transfer learning c: Conditional variable MTL-MGAN: Multiround transfer learning and modifed generative adversarial network CT: Computed tomography n: Noise vector d: Distance between two encodings NG: Number of encodings labeled for label G dmoment(DS, DT): Moment distance NH: Number of encodings labeled for label H dmodi fied(DS, DT)
+: Modifed moment distance NL: Number of encodings labeled for label L D: Discriminator PDs1 , . . . ,PDsN N: Prioritized source datasets with N≤M DS: Source domains p: Number of penalized singular values Ds1 , . . . ,DsM: M source datasets smn: Similarity score between the m th sequence in Di and the nth sequence in Dj Dt: Trained target model SCi: Silhouette coefcient for a single encoding vector DT: Single target domain SC: Average Silhouette coefcient F � [f1, · · · , fN]
+: Feature matrix with size N SSij: Total similarity score for dataset Di with Ni sequences and dataset Dj with Nj sequences F(Xsi) 1: Average operation of the 1st order features with the si source domain SVD: Singular value decomposition F(Xsi)
+2: Average operation of the 2nd order features with the si source domain
+SWDacross: Sum of the weighted diferences across classes F(Xt) 1: Average operation of the 1st order features with the target domain Xt SWDwithin: Sum of the weighted diferences within classes F(Xt)
+2: Average operation of the 2nd order features with the target domain Xt
+TD: Target dataset G: Generator U: Left singular vector GAN: Generative adversarial network V: Right singular vector H: Some labels of i X: Data distribution ID-MGANs: Intermediate domain based on the source domain using MGAN z: Latent variable ID-MGANt: Intermediate domain based on the target
+domain using MGAN
+αi: Normalized weight (iαi � 1) of the source domain si L: Label for the fnal model βi: Hyperparameter to control the generalization error of Mi LCD: Lung cancer detection ci: Hyperparameter to control the
+regularization of the samples in component Ci
+M2DW: Modifed 2D dynamic warping δTi: Loss function to predict a sample in DT Mi: Mahalanobis distance of component Ci ρ: Hyperparameter to control the strength of penalization MGAN: Modifed generative adversarial network Σ: Singular value matrix of F. data availability Te data used to support the study are included in the paper. conflicts of interest Te authors declare that there are no conficts of interest.

@@ -1,0 +1,446 @@
+We study a repeated Bayesian persuasion problem (and more generally, any generalized principal-agent problem with complete information) where the principal does not have commitment power and the agent uses algorithms to learn to respond to the principal’s signals. We reduce this problem to a one-shot generalized principal-agent problem with an approximatelybest-responding agent. This reduction allows us to show that: if the agent uses contextual no-regret learning algorithms, then the principal can guarantee a utility that is arbitrarily close to the principal’s optimal utility in the classic non-learning model with commitment; if the agent uses contextual no-swap-regret learning algorithms, then the principal cannot obtain any utility significantly more than the optimal utility in the non-learning model with commitment. The difference between the principal’s obtainable utility in the learning model and the nonlearning model is bounded by the agent’s regret (swap-regret). If the agent uses mean-based learning algorithms (which can be no-regret but not no-swap-regret), then the principal can do significantly better than the non-learning model. These conclusions hold not only for Bayesian persuasion, but also for any generalized principal-agent problem with complete information, including Stackelberg games and contract design. 1 introduction How well can one persuade through strategic information revelation when the receiver of the information does not act with textbook rationality? The equilibria of classic models of information design, such as Bayesian persuasion (Kamenica and Gentzkow, 2011) and cheap talk (Crawford and Sobel, 1982), depend on the receiver forming an accurate belief about the state of the world after receiving the sender’s information (which requires the receiver accurately knowing the prior as well as the signaling scheme of the sender) and acting optimally based on his belief. These strong knowledge and rationality assumptions, often observed to be violated in practice (Camerer, 1998; Benjamin, 2019), are also key to many other principal-agent problems, including contract design and Stackelberg games. In this work, using information design (Bayesian persuasion) as the main example, we study general principal-agent problems under an alternative behavioral model for the agent: learning. The use of learning as a behavioral model dates back to early economic literature on learning in games (Brown, 1951; Fudenberg and Levine, 1998) and has been actively studied recently in the computer science community (Nekipelov et al., 2015; Braverman et al., 2018; Deng et al., 2019; Mansour et al., 2022; Cai et al., 2023; Rubinstein and Zhao, 2024). A learning agent no longer has perfect knowledge of the prior or the principle’s strategy. Instead of best responding, which is no
+∗Harvard University, tlin@g.harvard.edu †Harvard University, yiling@seas.harvard.edu
+longer possible or well-defined, the agent chooses his action based on past interactions with the principal. We focus on no-regret learning, which requires the agent to not feel a large regret due to not taking the optimal action in the end of repeated interactions with the principal. This is a mild requirement satisfied by many natural learning algorithms (e.g., ε-greedy, MWU, UCB, Exp3) and can reasonably serve as a possible behavioral assumption for real-world agents. Main results Assuming a no-regret learning agent, we aim to characterize the principal’s optimal strategy and payoff in principal-agent games. Our first result shows that, against a no-regret learning agent, the principal can always guarantee a payoff that is arbitrarily close to the principal’s optimal payoff in the original principal-agent problem where the agent best responds. The difference between the principal’s payoff in the learning model and the best-response model is at most O ( √
+Reg(T ) T
+) where Reg(T ) is the regret of the agent and T is the time horizon:
+Theorem 1.1 (Informal). Playing against a no-regret learning agent with regret Reg(T ) in T periods, the principal can always obtain an average payoff of at least U∗ −O ( √
+Reg(T ) T
+) , where U∗
+is the principal’s optimal payoff in the principal-agent problem with best response. To achieve this, the principal does not need to know the exact learning algorithm of the agent (knowing the regret bound Reg(T ) is sufficient) and the principal can simply use a fixed strategy across all periods. Our second result shows that, if the agent does a stronger version of no-regret learning, noswap-regret learning (Hart and Mas-Colell, 2000; Blum and Mansour, 2007), then the principal can never obtain any payoff that is significantly higher than the optimal payoff in the best-response model. Theorem 1.2 (Informal). Playing against a no-swap-regret learning agent with swap-regret SReg(T ) in T periods, the principal cannot obtain any payoff larger than U∗ +O (SReg(T )
+T
+) . This holds even
+if the principal knows the learning algorithm of the agent and uses time-varying strategies. Finally, we show that, if the agent uses some learning algorithm satisfying no-regret but not no-swap-regret, then there exist instances where the principal can do significantly better than the best-response optimal objective U∗. We show this in the Bayesian persuasion problem specifically:
+Theorem 1.3 (Informal). There exist Bayesian persuasion instances where, against a no-regret but not no-swap-regret learning agent, the principal can do significantly better than U∗. Reduction from learning to approximate best response The main intuition behind our first two results is: principal-agent problems with a no-regret learning agent is closely related principalagent problems with an agent who approximately best respond to the principal’s strategy. The no-regret learning behavior of the agent can be seen as a form of approximate best response, where the agent makes sub-optimal decisions with the sub-optimality measured by the regret. When the sub-optimality/regret is small, the principal-agent problem with approximate best response returns to the problem with exact best response. This explains why the principal against a noregret learning agent can obtain a payoff that is close to the payoff with a best-responding agent, and cannot obtain any payoff better than that. However, formalizing the exact connection between learning and approximate best response is tricky. In particular, since no-regret (no-swap-regret) learning algorithms are randomized, they correspond to approximately-best-responding agents who use randomized strategies. We find that, against an agent using randomized δ-approximately-best-responding strategies, the principal can
+and can only obtain payoff in [U∗ − O( √ δ), U∗ + O(δ)]. If the agent only uses deterministic δapproximately-best-responding strategies, then the range of principal payoff is [U∗ − O(δ), U∗ + O(δ)]. Here, we see an interesting asymmetry between the lower bound (with a squared-root dependency on δ) and the upper bound (with a linear dependency on δ) with randomized strategies, but not with deterministic strategies. Structure of the paper Since information design is the main motivation of our work, we define the model of persuasion (cheap talk) with a learning agent in Section 2. With a learning agent, Bayesian persuasion and cheap talk turn out to be equivalent. We then define a general model, generalized principal-agent problem with a learning agent, in Section 3. We develop our main results in Section 4 and Section 5, by first reducing the generalized principal-agent problem with a learning agent to the problem with approximate best response, and then characterizing the problem with approximate best response. Finally, Section 6 applies our general results to the three specific principal-agent problems mentioned above: Bayesian persuasion, contract design, and Stackelberg games. Related works The literature on information design has investigated various relaxations of the strong rationality assumptions in the classic models. For the sender, known prior (Dworczak and Pavan, 2020; Camara et al., 2020; Kosterina, 2022; Zu et al., 2021; Ziegler, 2020; Wu et al., 2022) and known utility (Babichenko et al., 2021; Castiglioni et al., 2020; Feng et al., 2022) are relaxed. For the receiver, the receiver may make mistakes in Bayesian updates (de Clippel and Zhang, 2022), be risk-conscious (Anunrojwong et al., 2023), do quantal response (Feng et al., 2024) or approximate best response (Yang and Zhang, 2024). We focus on a learning receiver and show that it can be reduced to approximate best response. While Yang and Zhang (2024) show that Bayesian persuasion with approximate best response is computationally hard as the instance size increases, our results imply that this problem is not hard with a fixed instance and a diminishing degree of approximate best response. Learning agents have been studied in principal-agent problems like auctions (Braverman et al., 2018; Cai et al., 2023; Rubinstein and Zhao, 2024; Kumar et al., 2024), bimatrix Stackelberg games (Deng et al., 2019; Mansour et al., 2022; Arunachaleswaran et al., 2024), and contract design (Guruganesh et al., 2024), but not in Bayesian persuasion. These problems belong to the class of generalized principalagent problems (Myerson, 1982; Gan et al., 2024). We thus propose a framework of generalized principal-agent problem with a learning agent, which not only encompasses several previous models but also provides new results for Bayesian persuasion with a learning agent. Camara et al. (2020) also propose a general framework of principal-agent problems with learning players, but has two key differences with ours: (1) They drop the common prior assumption while we still keep it. This assumption allows us to compare the principal’s utility in the learning model with the classic model with common prior. (2) Their principal has commitment power, which is reasonable in, e.g., auction design, but less realistic in information design where the principal’s strategy is a signaling scheme. Our principal does not commit. Deng et al. (2019) show that the follower’s no-swap-learning can cap the leader’s utility in Stackelberg games. We find that this is a general conclusion that holds for all generalized principalagent problems with complete information. Nevertheless, this conclusion does not hold when the agent has private information, as shown by Mansour et al. (2022)’s work on Bayesian Stackelberg games. 2 special model: persuasion (cheap talk) with a learning re- ceiver
+We define a repeated persuasion model where the receiver learns to respond to the sender’s signals using some algorithms. There are a finite set Ω of states of the world, a signal set S, an action set A, a prior distribution µ0 ∈ ∆(Ω) over the states, a sender utility function u : Ω × A → R, and a receiver utility function v : Ω × A → R. When the state is ω ∈ Ω and the receiver takes action a ∈ A, the sender and the receiver obtain utility u(ω, a), v(ω, a), respectively. The sender knows the prior µ0. The receiver does not know the prior µ0 or the signaling scheme of the sender. The sender and the receiver interact for T rounds. Persuasion with a Learning Receiver
+In each round t = 1, . . . , T , the following events happen:
+(1) The sender chooses a signaling scheme πt : Ω → ∆(S), which is a mapping from each state to a distribution over signals. The receiver does not know πt. (2) A state of the world ωt ∼ µ0 is drawn, observed by the sender but not the receiver. The sender then sends signal st ∼ πt(ωt) to the receiver. (3) Upon receiving st, the receiver (randomly) chooses some action at ∈ A to take, using some learning algorithm (described in details later). (4) The sender obtains utility ut = u(ωt, at) and the receiver obtains utility vt = v(ωt, at). With some knowledge of the receiver’s learning algorithm, the sender aims to maximize its expected average utility 1
+T E [∑T t=1 u(ω t, at) ] . Since the receiver does not know the sender’s signaling scheme when making decisions, we can flip the order of the decision making processes of the two players:
+Alternative Equivalent Definition of “Persuasion with a Learning Receiver”
+In each round t = 1, . . . , T , the following events happen:
+(1’) The receiver first chooses, using some learning algorithm, a strategy ρt : S → ∆(A) that maps each signal s ∈ S to a probability distribution over actions ρt(s) ∈ ∆(A). (2’) The sender chooses a signaling scheme πt : Ω → ∆(S). (3’) A state of the world ωt ∼ µ0 is drawn. Signal st ∼ πt(ωt) is sent to the receiver, who then chooses an action at according to the distribution ρt(st). (4) The sender obtains utility ut = u(ωt, at) and the receiver obtains utility vt = v(ωt, at). One can see from the alternative definition that the sender does not need to commit to the signaling scheme. The receiver’s strategy ρt is chosen before the sender’s signaling scheme and the sender has an incentive to best respond to it. This in fact corresponds to the well-known cheap talk model (Crawford and Sobel, 1982) where the sender does not have commitment power. So, our model can also be called “cheap talk with a learning receiver”. Receiver’s learning algorithm: no-regret and no-swap-regret The receiver’s learning problem can be regarded as a contextual multi-armed bandit problem (Tyler Lu et al., 2010) where A is the set of arms, and the signal st ∈ S serves as a context that affects the utility of each
+arm a ∈ A. The receiver picks an arm to pull based on the current context st and the historical information about each arm under different contexts, adjusting its strategy over time based on the feedback collected after each round. What feedback can the receiver observe after each round? One may assume that the receiver sees the state ωt after each round (this is call full-information feedback in the multi-armed bandit literature), or not the state but just the utility vt = v(ωt, at) obtained in that round (this is called bandit feedback). We do not make specific assumptions on the feedback. All we need is that the feedback is sufficient for the receiver to achieve contextual no-regret or contextual no-swap-regret, which are defined below. Definition 2.1. The receiver’s learning algorithm satisfies:
+• contextual no-regret if: there exists a function CReg(T ) = o(T ) such that, for any deviation function d : S → A, the regret of the receiver not deviating according to d is at most CReg(T ):
+E
+[ T∑
+t=1
+( v(ωt, d(st))− v(ωt, at) )] ≤ CReg(T ) = o(T ), ∀d : S → A. (1)
+• contextual no-swap-regret if: there exists a function CSReg(T ) = o(T ) such that, for any deviation function d : S ×A → A, the regret of the receiver not deviating according to d is at most CSReg(T ):
+E
+[ T∑
+t=1
+( v(ωt, d(st, at))− v(ωt, at) )] ≤ CSReg(T ) = o(T ), ∀d : S ×A → A. (2)
+We call CReg(T ) and CSReg(T ) the contextual regret and contextual swap-regret of the receiver. Clearly, contextual no-swap-regret implies contextual no-regret because the former has a larger set of deviation functions. Contextual no-regret (no-swap-regret) algorithms can be constructed easily by running an ordinary no-regret (no-swap-regret) algorithm for each context independently. Since algorithms with O( √ T ) regret (swap-regret) with bandit feedback are known to exist (Audibert and Bubeck, 2010; Ito, 2020), they can be converted into algorithms with O( √
+|S|T ) contextual regret (swap-regret). The following proposition formalizes this; the proof is in Appendix A. Proposition 2.1. There exist learning algorithms with contextual regret CReg(T ) = O( √
+|A||S|T ) and contextual swap-regret CSReg(T ) = O(|A| √
+|S|T ). They can be constructed by running an ordinary no-regret (no-swap-regret) multi-armed bandit algorithm for each context independently. 3 general model: generalized principal-agent problems This section defines a more general model, generalized principal-agent problem (with a learning agent), that includes Bayesian persuasion as a special case. Introducing this general model actually simplifies the analysis for the problem of persuasion with a learning agent, and allows us to apply our results to other principal-agent problems, such as contract design and Stackelberg games, with learning agents (see Section 6 for details). 3.1 generalized principal-agent problem with a learning agent Generalized principal-agent problem, originally proposed by (Myerson, 1982), is a general model that includes auction design, contract design, and Stackelberg games. Gan et al. (2024) further generalize it to include Bayesian persuasion. We take the model of (Gan et al., 2024).1
+There are two players in a generalized principal-agent problem: a principal and an agent. The principal has a convex, compact decision space X and the agent has a finite action set A. The principal and the agent have utility functions u, v : X ×A → R. We assume that u(x, a), v(x, a) are linear in x ∈ X , which is satisfied by all the examples of generalized principal-agent problems we will consider (Bayesian persuasion, Stackelberg games, contract design). There is a signal/message set S. Signals are usually interpreted as action recommendations, where S = A, but we allow any general finite signal set. A strategy of the principal is a distribution π ∈ ∆(X × S) over pairs of decision and signal {(xi, si)}i with probability πi = π(xi, si) ≥ 0 for the pair (xi, si), ∑
+i πi = 1. When the utility functions are linear, it is without loss of generality to assume that the principal does not randomize over multiple decisions for one signal, namely, the principal chooses a distribution over signals and a unique decision xs associated with each signal s ∈ S (Gan et al., 2024). So, we can write a principal strategy as π = {(πs, xs)}s∈S where πs ≥ 0 is the probability of signal s ∈ S, ∑
+s∈S πs = 1, and xs ∈ X . There are two variants of generalized principal-agent problems:
+• Unconstrained (Myerson, 1982): there is no restriction on the principal’s strategy π. • Constrained (Gan et al., 2024): the principal’s strategy π has to satisfy the constraint:
+∑ s∈S πsxs ∈ C (3)
+where C ⊆ X is some convex set. Unconstrained generalized principal-agent problems include contract design and Stackelberg games (see Section 6 for details). Constrained generalized principal-agent problems further include Bayesian persuasion (discussed later). In a one-shot generalized principal-agent problem where the principal has commitment power, the principal first commits to a strategy π = {(πs, xs)}s∈S , then nature draws a signal s ∈ S according to the distribution {πs}s∈S and sends s to the agent (note: due to the commitment assumption, this is equivalent to revealing the pair (s, xs) to the agent), then the agent takes an action as = argmaxa∈A v(xs, a) to maximize its utility, and the principal obtains utility u(xs, as). The principal aims to maximize its expected utility Es∼π[u(xs, as)] by choosing the strategy π.
+Bayesian persuasion as a generalized principal-agent problem We show why Bayesian persuasion is a special case of constrained generalized principal-agent problems. The sender is the principal; the receiver is the agent. It is well-known (Kamenica and Gentzkow, 2011) that a signaling scheme π : Ω → ∆(S) in the Bayesian persuasion problem decomposes the prior µ0 into a distribution over posteriors: Let µs ∈ ∆(Ω) be the posterior belief induced by signal s: ∀ω ∈ Ω,
+µs(ω) = µ0(ω)π(s|ω)
+πs , where πs =
+∑ ω∈Ω µ0(ω)π(s|ω) is the probability that signal s is sent. 1The models of Myerson (1982) and Gan et al. (2024) allow the agent to have private information. In this work we study the complete-information version of their models. Our conclusions do not hold for the private-information case. Then
+∑ s∈S πsµs = µ0 ∈ {µ0} =: C, ∑ s∈S πs = 1. (4)
+Equation (4) is called the Bayes plausibility condition. Conversely, any distribution over posteriors {(ps, µs)}s∈S satisfying Bayes plausibility ∑
+s∈S psµs = µ0 can be converted into a signaling scheme that sends signal s with probability ps. Thus, we can use a distribution over posteriors {(πs, µs)}s∈S satisfying Bayes plausibility to represent a signaling scheme. Then, let’s equate the posterior belief µs to the principal’s decision xs in the generalized principal-agent problem, so the principal/sender’s decision space is X = ∆(Ω). When the agent/receiver takes action a, the principal/sender’s (expected) utility under decision/posterior xs = µs is:
+u(xs, a) = Eω∼µsu(ω, a) = ∑
+ω∈Ω µs(ω)u(ω, a). Suppose the agent takes action as given signal s ∈ S. Then we see that the sender’s utility of using signaling scheme π in Bayesian persuasion (left) is equal to the principal’s utility of using strategy π in the generalized principal-agent problem (right):
+∑ ω∈Ω µ0(ω) ∑ s∈S π(s|ω)u(ω, as) = ∑ s∈S πs ∑ ω∈Ω µs(ω)u(ω, as) = ∑ s∈S πsu(xs, as) = Es∼π[u(xs, a)]. Similarly, the agent/receiver’s utilities in the two problems are equal. The utility functions u(x, a), v(x, a) are linear in the principal’s decision x ∈ X , satisfying our assumption. Generalized principal-agent problem with a learning agent Now we define the model of generalized principal-agent problem with a learning agent, which generalizes persuasion with a learning agent. The principal has no commitment power and the agent learns to respond to signals. In each round t = 1, . . . , T :
+(1) The principal chooses a strategy πt = {(πts, xts)}s∈S , which is a distribution over signals S and a decision xts ∈ X associated with each signal. The agent does not know πt. (2) Nature draws a signal st ∼ πt and reveals to the agent. The principal makes decision xt = xt st . (3) Based on st and history (and not knowing xt), the agent (randomly) chooses an action at ∈ A, using some learning algorithm. (4) The principal and the agent obtain utility ut = u(xt, at) and vt = v(xt, at).2
+The definition of utility in (4) is slightly different from the persuasion model. The utility in the persuasion model is the ex post utility u(ωt, at), v(ωt, at) while the utility here is the expected utility conditioning on decision/posterior xt, u(xt, at), v(xt, at). Since we are concerned with the expected utility of the sender and the expected regret of the receiver, this difference does not matter. 2The agent does not necessarily observe the utility v(xt, at) as the feedback. He can observe, e.g., v(ωt, at) in persuasion. 3.2 approximate best response As we will prove in Section 4, the generalized principal-agent problem with a learning agent can be reduced to the generalized principal-agent problem with an approximately-best-responding agent. So we define “approximate best response” here. Classic works on Bayesian persuasion and generalized principal-agent problems assume that, after receiving a signal s ∈ S (and observing the principal’s decision xs ∈ X ), the agent will take an action ∈ argmaxa∈A v(xs, a) to maximize its utility with respect to xs. This means that the agent uses a strategy ρ∗ that best responds to the principal’s strategy π:
+ρ∗(s) ∈ argmax a∈A v(xs, a), ∀s ∈ S =⇒ ρ∗ ∈ argmax ρ:S→∆(A) V (π, ρ). (5)
+Here, V (π, ρ) denotes the expected utility of the receiver when the principal uses strategy π and the receiver uses (randomized) strategy ρ : S → ∆(A):
+V (π, ρ) = ∑
+s∈S πs
+∑ a∈A ρ(a|s)v(xs, a). (6)
+In this work, we allow the agent to approximately best respond. Let δ ≥ 0 be a parameter. We define two types of δ-best-responding strategies for the agent: deterministic and randomized. • A deterministic strategy ρ: for each signal s ∈ S, the agent takes an action a that is δ-optimal for xs. Denote this set of strategies by Dδ(π):
+Dδ(π) = { ρ : S → A | v(xs, ρ(s)) ≥ v(xs, a′)− δ,∀a′ ∈ A } . (7)
+• A randomized strategy ρ: for each signals s, the agent can take a randomized action. The expected utility of ρ is at most δ-worst than the best strategy ρ∗. Rδ(π) = { ρ : S → ∆(A) | V (π, ρ) ≥ V (π, ρ∗)− δ } . (8)
+Equivalently, Rδ(π) = { ρ : S → ∆(A) | V (π, ρ) ≥ V (π, ρ′)− δ, ∀ρ′ : S → A } . Clearly, Dδ(π) ⊆ Rδ(π). Our model of approximately-best-responding agent includes, for example, two other models in the Bayesian persuasion literature that also relax the agent’s Bayesian rationality assumption: the quantal response model (proposed by McKelvey and Palfrey (1995) in normal-form games and studied by Feng et al. (2024) in Bayesian persuasion) and a model where the agent makes mistakes in Bayesian update (de Clippel and Zhang, 2022). Example 3.1. Assume that the receiver’s utility is in [0, 1]. In Bayesian persuasion, the following receiver strategies are δ-best-responding:
+• Quantal response: given signal s ∈ S, the agent chooses action a ∈ A with probability exp(λv(µs ,a))∑
+a′∈A exp(λv(µs ,a ′)) , with λ > 0. This strategy belongs to Rδ(π) with δ = 1+log(|A|λ) λ . • Inaccurate belief: given signal s ∈ S, the agent forms some posterior µ′s that is different yet close to the true posterior µs in total variation distance dTV(µ ′ s, µs) ≤ ε. The agent picks an
+optimal action for µ′s. This strategy belongs to D2ε(π). See Appendix B for a proof of this example. Principal’s objectives With an approximately-best-responding agent, we will study two types of objectives for the principal. The first type is the maximal utility that the principal can obtain if the agent approximately best responds in the worst way for the principal: for X ∈ {D,R}, define
+OBJX(δ) = sup π min ρ∈Xδ(π) U(π, ρ), (9)
+where U(π, ρ) is the principal’s expected utility when the principal uses strategy π and the agent uses strategy ρ:
+U(π, ρ) = ∑
+s∈S πs
+∑ a∈A ρ(a|s)u(xs, a). (10)
+We used “sup” in (9) because the maximizer does not necessarily exist. OBJX(δ) is a “maximin” objective and can be regarded as the objective of a “robust generalized principal-agent problem”. The second type of objectives is the maximal utility that the principal can obtain if the agent approximately best responds in the best way:
+OBJ X (δ) = max
+π max ρ∈Xδ(π) U(π, ρ). (11)
+This is a “maximax” objective that quantifies the maximal extent to which the principal can exploit the agent’s irrational behavior. Clearly, OBJX(δ) ≤ OBJX(0) ≤ OBJX(0) ≤ OBJX(δ). And we note that OBJX(0) = OBJ(0) is independent of X and equal to the optimal principal utility in the classic generalized principalagent problem, which we denote by U∗:
+U∗ = OBJ(0) = max π max ρ: best-response to π U(π, ρ). (12)
+Finally, we note that, because D0(π) ⊆ Dδ(π) ⊆ Rδ(π), the following series of inequalities hold:
+OBJR(δ) ≤ OBJD(δ) ≤ U∗ ≤ OBJD(δ) ≤ OBJR(δ). (13) 4 reduction from learning to approximate best response Our first main result is a reduction from the generalized principal-agent problem with a learning agent to the one-shot problem with an approximately-best-responding agent. We show that, if the agent uses contextual no-regret learning algorithms, then the principal can always obtain an average utility that is at least the “maximin” approximate-best-response objective OBJR ( CReg(T )/T ) . On the other hand, if the agent does contextual no-swap-regret learning, then the principal cannot do better than the “maximax” approximate-best-response objective OBJ R( CSReg(T )/T ) . In addition, we show that the principal can do better than the “maximax” objective OBJ R( CSReg(T )/T ) if the agent uses some natural learning algorithms that are no-regret but not no-swap-regret (in particular, mean-based algorithms (Braverman et al., 2018)). 4.1 agent’s no-regret learning: lower bound on principal’s utility Theorem 4.1. Suppose the agent uses a contextual no-regret learning algorithm. By using some fixed strategy πt = π in all T rounds, the principal can obtain an average utility 1
+T E [∑T t=1 u(x t, at) ]
+that is arbitrarily close to OBJR ( CReg(T )/T ) . To prove Theorem 4.1, we first prove a lemma to characterize the agent’s regret and the principal’s expected utility. We define some notations. Let the principal use some fixed strategy πt = π and the agent use some learning algorithm. Let pt
+a|s = Pr[a t = a | st = s] be the probability that the
+agent’s algorithm chooses action a conditioning on signal s being sent in round t. Let ρ : S → ∆(A) be a randomized agent strategy that, given signal s, chooses each action a ∈ A with probability
+ρ(a|s) = ∑T t=1 p t a|s
+T . (14)
+Lemma 4.2. When the principal uses a fixed strategy πt = π in all T rounds, the regret of the agent not deviating according to d : S → A is equal to 1
+T E [∑T t=1 ( v(xt, d(st)) − v(xt, at) )] =
+V (π, d) − V (π, ρ), and the average utility of the sender 1 T E [∑T t=1 u(x t, at) ] is equal to U(π, ρ). Proof. Since πt = π is fixed, we have πts = πs and x t s = xs, ∀s ∈ S. The regret of the receiver not deviating according to d is:
+1 T E
+[ T∑
+t=1
+( v(xt, d(st))− v(xt, at) )] = 1
+T
+T∑
+t=1
+∑ s∈S πts ∑ a∈A pta|s
+( v(xts, d(s))− v(xts, a) )
+= ∑
+s∈S πs
+∑
+a∈A
+∑T t=1 p t a|s
+T
+( v(xs, d(s)) − v(xs, a) )
+= ∑
+s∈S πsv(xs, d(s)) −
+∑ s∈S πs ∑ a∈A ρ(a|s)v(xs, a) = V (π, d)− V (π, ρ). Here, d is interpreted as an agent strategy that deterministically takes action d(s) for signal s. By a similar derivation, we see that the principal’s expected utility is equal to
+1 T E
+[ T∑
+t=1
+u(xt, at) ] = ∑
+s∈S πs
+∑
+a∈A
+∑T t=1 p t a|s
+T u(xs, a) = U(π, ρ),
+which proves the lemma. Proof of Theorem 4.1. By Lemma 4.2 and the no-regret condition that the agent’s regret E [∑T
+t=1
+( v(xt, d(st))− v(xt, at) )] ≤ CReg(T ), we have
+V (π, d) − V (π, ρ) = 1 T E
+[ T∑
+t=1
+( v(xt, d(st))− v(xt, at) )] ≤ CReg(T ) T , ∀d : S → A
+This means that the agent’s randomized strategy ρ is a δ = CReg(T ) T
+-best-response to the principal’s fixed signaling scheme π:
+ρ ∈ R δ=CReg(T )
+T
+(π). This holds for any π. In particular, if for any ε > 0 the principal uses a signaling scheme πε that obtains an objective that is ε-close to OBJR(δ) = supπ minρ∈Rδ(π) U(π, ρ), then the principal obtains an expected utility of, by Lemma 4.2:
+1 T E
+[ T∑
+t=1
+u(at, ωt) ]
+= U(πε, ρ) ≥ min ρ∈Rδ(πε)
+U(πε, ρ) ≥ OBJR ( δ = CReg(T )
+T
+)
+− ε
+in the learning model. Letting ε → 0 proves the theorem. 4.2 agent’s no-swap-regret learning: upper bound on principal’s utility Theorem 4.3. If the agent uses a contextual no-swap-regret learning algorithm, then the principal’s obtainable utility, even using time-varying strategies, is at most:
+1 T E
+[ T∑
+t=1
+u(xt, at) ] ≤ OBJR (CSReg(T )
+T
+) . Proof. Let pts = Pr[s t = s] = E
+[ 1[st = s] ] = E[πts] be the probability that signal s ∈ S is sent in
+round t. Let pt a|s = Pr[a t = a | st = s] be the probability that the agent takes action a conditioning on signal st = s is sent in round t. Let d : S×A → A be any deviation function for the agent. The utility gain by deviation for the agent is upper bounded by the contextual swap-regret:
+CSReg(T ) T ≥ 1 T E
+[ T∑
+t=1
+( v(xt, d(st, at))− v(xt, at) )]
+(15)
+= 1
+T
+T∑
+t=1
+∑ s∈S pts ∑ a∈A pta|sExts|st=s
+[ v(xts, d(s, a)) − v(xts, a) ]
+= 1
+T
+T∑
+t=1
+∑ s∈S pts ∑ a∈A pta|s
+( v(E[xts|st = s], d(s, a)) − v(E[xts|st = s], a) )
+by linearity of v(·, a)
+= ∑
+s∈S
+∑
+a∈A
+∑T j=1 p j sp j a|s
+T
+1 ∑T
+j=1 p j sp j a|s
+T∑
+t=1
+ptsp t a|s
+( v(E[xts|st = s], d(s, a)) − v(E[xts|st = s], a) )
+= ∑
+s∈S
+∑
+a∈A
+∑T j=1 p j sp j
+a|s T
+[
+v (∑T t=1 p t sp t a|s E[xts|st=s] ∑T
+j=1 p j sp j
+a|s
+, d(s, a) ) − v (∑T t=1 p t sp t a|s E[xts|st=s] ∑T
+j=1 p j sp j
+a|s
+, a )] . Define qs,a =
+∑T j=1 p j sp j
+a|s
+T and ys,a =
+∑T t=1 p t sp t a|s
+E[xts|st=s] ∑T
+j=1 p j sp j
+a|s
+∈ X . Then the above is equal to
+= ∑
+s∈S
+∑ a∈A qs,a
+[ v(ys,a, d(s, a)) − v(ys,a, a) ] . (16)
+We note that ∑ s∈S ∑ a∈A qs,a = ∑T j=1 ∑ s∈S ∑ a∈A p j sp j a|s T = 1, so q is a probability distribution over S ×A. And note that
+∑
+s,a∈S×A qs,ays,a =
+∑
+s,a∈S×A
+1
+T
+T∑
+t=1
+ptsp t a|sE[x t s|st = s] =
+1
+T
+T∑
+t=1
+∑ s∈S ptsE[x t s|st = s]
+= 1
+T
+T∑
+t=1
+∑ s∈S E [ 1[st = s]xts ] = 1 T
+T∑
+t=1
+E [∑
+s∈S 1[st = s]xts
+] = 1
+T
+T∑
+t=1
+E [ xt ]
+= 1
+T
+T∑
+t=1
+E [∑
+s∈S πtsx t s
+] ∈ C because
+∑ s∈S πtsx t s ∈ C.
+This means that π′ = {(qs,a, ys,a)}(s,a)∈S×A defines a valid principal strategy with the larger signal space S ×A. Then, we note that (16) is the difference between the agent’s expected utility under
+principal strategy π′ when responding using strategy d : S × A → A and using the strategy that maps signal (s, a) to action a. And (16) is upper bounded by CSReg(T )
+T by (15):
+(16) = V (π′, d) − V (π′, (s, a) 7→ a) ≤ CSReg(T ) T , ∀d : S ×A → A. (17)
+In particular, this holds when d is the agent’s best-responding strategy. This means that the agent strategy (s, a) 7→ a is a (CSReg(T )
+T )-best-response to π′. So, the principal’s expected utility is upper
+bounded by the utility in the approximate-best-response model:
+1 T E
+[ T∑
+t=1
+u(xt, at) ] = 1
+T
+T∑
+t=1
+∑ s∈S pts ∑ a∈A pta|sv(E[x t s|st = s], a)
+= ∑
+s∈S
+∑ a∈A qs,au(ys,a, a) = U(π ′, (s, a) → a) ≤ OBJR (CSReg(T ) T ) . 4.3 agent’s mean-based learning: exploitable by the principal Many no-regret (but not no-swap-regret) learning algorithms (e.g., MWU, FTPL, EXP-3) satisfy the following contextual mean-based property:
+Definition 4.1 (Braverman et al. (2018)). Let σts(a) = ∑ j∈[t]:sj=s v(ω j , a) be the sum of historical utility of the receiver in the first t rounds if he takes action a when the signal/context is s. An algorithm is called γ-mean-based if: whenever ∃a′ such that σt−1s (a) < σt−1s (a′)−γT , the probability that the algorithm chooses action a at round t if the context is s is Pr[at = a|st = s] < γ, with γ = o(1). Theorem 4.4. There exists a Bayesian persuasion instance where, as long as the receiver does γ-mean-based learning, the sender can obtain a utility significantly larger than OBJ R (γ) and U∗. Proof The instance has 2 states (A, B), 3 actions (L, M, R), uniform prior µ0(A) = µ0(B) = 0.5, with the following utility matrices (left for sender’s, right for receiver’s):
+u(ω, a) L M R v(ω, a) L M R A 0 −2 −2 A √γ −1 0 B 0 0 2 B −1 1 0
+Claim 4.5. In this instance, the optimal sender utility U∗ in the classic BP model is 0, and the approximate-best-response objective OBJ R (γ) = O(γ). Proof. Recall that any signaling scheme decomposes the prior µ0 into multiple posteriors {µs}s∈S . If a posterior µs puts probability > 0.5 to state B, then the receiver will take action M, which gives the sender a utility ≤ 0; if the posterior µs puts probability ≤ 0.5 to state B, then no matter what action the receiver takes, the sender’s expected utility on µs cannot be greater than 0. So, the sender’s expected utility is ≤ 0 under any signaling scheme. An optimal signaling scheme is to reveal no information (keep µs = µ0); the receiver takes R and the sender gets utility 0. This instance satisfies the assumptions of Theorem 5.3, so OBJ R (γ) ≤ U∗ +O(γ) = O(γ). Claim 4.6. By doing the following, the sender can obtain utility ≈ 12 − O( √ γ) if the receiver is γ-mean-based learning:
+• in the first T/2 rounds: if the state is A, send signal 1; if the state is B, send 2. • in the remaining T/2 rounds, switch the scheme: if the state is A, send 2; if state is B, send 1. Proof Sketch. In the first T/2 rounds, the receiver finds that signal 1 corresponds to state A so he will take action L with high probability when signal 1 is sent; signal 2 corresponds to B so he will take action M with high probability. In this phase, the sender obtains utility ≈ 0 per round. At the end of this phase, for signal 1, the receiver accumulates utility ≈ T2 12 √ γ = T4 √ γ for action L. For signal 2, the receiver accumulates utility ≈ T2 12 · 1 = T4 for action M. In the remaining T/2 rounds, the following will happen:
+• For signal 1, the receiver finds that the state is now B, so the utility of action L decreases by 1 every time signal 1 is sent. Because the utility of L accumulated in the first phase was ≈ T4 √ γ, after ≈ T4 √ γ rounds in second phase the utility of L should decrease to below 0,
+and the receiver will no longer play L (with high probability) at signal 1. The receiver will not play M at signal 1 in most of the second phase either, because there are more A states than B states at signal 1 historically. So, the receiver will play action R most times, roughly T 4 − T4 √ γ rounds. This gives the sender a total utility of ≈ (T4 − T4 √ γ) · 2 = T2 −O(T √ γ). • For signal 2, the state is now A. But the receiver will continue to play action M in most times. This because: R has utility 0; L accumulated ≈ −T4 utility in the first phase, and only increases by √ γ per round in the second phase, so its accumulated utility is always negative;
+instead, M has accumulated T4 utility in the first phase, and decreases by 1 every time signal 2 is sent in the second phase, so its utility is positive until near the end. So, the receiver will play M. This gives the sender utility 0. Summing up, the sender obtains total utility ≈ T2 − O(T √ γ) in these two phases, which is
+1 2 −O(
+√ γ) > 0 per round in average. 5 generalized principal-agent problems with approximate best Response
+Having presented the reduction from learning to approximate best response in Section 4, we now turn to study generalized principal-agent problems with approximate best response. We derive lower bounds on the maximin objectives OBJD(δ), OBJR(δ), and upper bounds on the maximax objectives OBJ D (δ), OBJ R (δ). We will show that, when the degree δ of agent’s approximate best response is small, all the four objectives will be close to the optimal principal objective U∗ in the best-response model. Assumptions and notations We make some innocuous assumptions. First, the agent has no weakly dominated action:
+Assumption 5.1 (No Dominated Action). An action a0 ∈ A of the agent is weakly dominated if there exists a mixed action α′ ∈ ∆(A \ {a0}) such that v(x, α′) = Ea∼α′ [v(x, a)] ≥ v(x, a0) for all x ∈ X . We assume that the agent has no weakly dominated action. Claim 5.1. Assumption 5.1 implies: there exists a constant G > 0 such that, for any agent action a ∈ A, there exists a principal decision x ∈ X such that v(x, a)−v(x, a′) ≥ G for every a′ ∈ A\{a}. The proof of this claim is in Appendix C.1. The constant G > 0 in Claim 5.1 is analogous to the concept of “inducibility gap” in Stackelberg games (Von Stengel and Zamir, 2004; Gan et al., 2023). In fact, Gan et al. (2023) show that, if the inducibility gap G > δ, then the maximin approximate-best-response objective satisfies OBJD(δ) ≥ U∗ − δ
+G in Stackelberg games. Our results will significantly generalize theirs to any generalized
+principal-agent problem, to randomized agent strategies, and to the maximax objectives OBJ D (δ), OBJ R (δ). To present our results, we need to introduce a few more notions and assumptions. Let
+diam(X ; ‖ · ‖) = max x1,x2∈X ‖x1 − x2‖ (18)
+be the diameter of the space X , where ‖ · ‖ is some norm. For convenience we assume X ⊆ Rd and use the ℓ1-norm ‖x‖1 = ∑d i=1 |x(i)| or the ℓ∞-norm ‖x‖∞ = maxdi=1 |x(i)|. For a generalized principal-agent problem with the constraint ∑
+s∈S πsxs ∈ C, let ∂X be the boundary of X and let
+dist(C, ∂X ) = min c∈C,x∈∂X ‖c− x‖ (19)
+be the distance from C to the boundary of X . We assume that C is away from the boundary of X :
+Assumption 5.2 (C is in the interior of X ). dist(C, ∂X ) > 0. Assumption 5.3 (Bounded and Lipschitz utility). The principal’s utility function is bounded: |u(x, a)| ≤ B, and L-Lipschitz in x ∈ X : |u(x1, a)− u(x2, a)| ≤ L‖x1 − x2‖. Main results We now present the main results of this section: lower bounds on OBJX(δ) and upper bounds on OBJ X (δ) in generalized principal-agent problems without and with constraints. Theorem 5.2 (Without constraint). For an unconstrained generalized principal-agent problem, under Assumptions 5.1 and 5.3, for 0 ≤ δ < G, we have
+• OBJD(δ) ≥ U∗ − diam(X )L δ G . • OBJR(δ) ≥ U∗ − 2 √
+2BL G diam(X )δ for δ < diam(X )GL2B . • OBJ D (δ) ≤ OBJR(δ) ≤ U∗ + diam(X )L δ
+G . Theorem 5.3 (With constraint). For a generalized principal-agent problem with the constraint ∑
+s∈S πsxs ∈ C, under Assumptions 5.1, 5.2 and 5.3, for 0 ≤ δ < Gdist(C,∂X ) diam(X ) , we have
+• OBJD(δ) ≥ U∗ − ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ G . • OBJR(δ) ≥ U∗ − 2 √
+2B G ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ. • OBJ D (δ) ≤ OBJR(δ) ≤ U∗ + ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ G . The expression “ diam(X )dist(C,∂X )δ” suggests that 1 dist(C,∂X ) is similar to a “condition number” (Renegar, 1994) that quantifies the “stability” of the principal-agent problem against the agent’s approximatebest-responding behavior. When dist(C, ∂X ) is larger (C is further away from the boundary of X ), the condition number is smaller, the problem is more stable, and the δ-best-response objectives OBJX(δ), and OBJ X (δ) are closer to the best-response objective U∗. Lower bounds for OBJD(δ) imply lower bounds for OBJR(δ) The lower bounds for OBJD(δ) in Theorem 5.2 and 5.3 actually imply the lower bounds for OBJR(δ). This is one step in the proofs of the two theorems, so we present it here. We use the following lemma (proved in Appendix C.2):
+Lemma 5.4. For any δ ≥ 0,∆ > 0, OBJR(δ) ≥ OBJD(∆)− 2Bδ∆ . Using Lemma 5.4 with ∆ = √
+2BGδ diam(X )L and the bound for OBJ D(∆) in Theorem 5.2, we obtain:
+OBJR(δ) ≥ OBJD(∆)− 2Bδ∆ ≥ U ∗ − diam(X )L∆ G − 2Bδ∆ = U
+∗ − 2 √
+2BL G diam(X )δ,
+which gives the lower bound for OBJR(δ) in Theorem 5.2. Using Lemma 5.4 with ∆ = √
+2BGδ Ldiam(X )+2B diam(X )dist(C,∂X ) and the bound for OBJD(∆) in Theorem
+5.3,
+OBJR(δ) ≥ OBJD(∆)− 2Bδ∆ ≥ U ∗ − ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) ∆ G − 2Bδ∆
+= U∗ − 2 √
+2B G ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ. This proves the lower bound for OBJR(δ) in Theorem 5.3. The bound OBJR(δ) ≥ U∗ − O( √ δ) is tight. We note that, in Theorem 5.2 and 5.3, the maximin objective with randomized agent strategies is bounded by OBJR(δ) ≥ U∗ −O( √ δ) while the objective with deterministic agent strategies is bounded by OBJD(δ) ≥ U∗ −O(δ). This is not because our analysis is not tight. In fact, the tight bound for OBJR(δ) is U∗ − Θ( √ δ), with a squared root dependency on δ. We prove this by giving an example where OBJR(δ) ≤ U∗−Ω( √ δ). Consider the following classical Bayesian persuasion example with two states and two actions:
+Example 5.1. There are two states Ω = {Good,Bad}, two actions A = {a, b}. The sender wants the receiver to take action a regardless of the state. Action a gives the receiver utility 1 at Good state and −1 at Bad state; action b gives utility 0. The prior is represented by a real number µ0 ∈ [0, 1] denoting the probability of Good state. Assume µ0 < 12 , so the receiver will take action b by default. sender a b receiver a b Good 1 0 Good 1 0 Bad 1 0 Bad −1 0
+In this example, for δ < µ02 , OBJ R(δ) ≤ U∗ − 2 √ 2µ0δ + δ = U ∗ − Ω( √ δ). (The proof is in Appendix C.3.) 5.1 proof of theorem 5.2 and 5.3 Since we have shown that the lower bounds for OBJD(δ) imply the lower bounds for OBJR(δ), we only need to prove the lower bounds for OBJD(δ) and the upper bounds for OBJ R (δ). Lemma 5.5. In an unconstrained generalized principal-agent problem, OBJD(δ) ≥ U∗−diam(X )L δ G . With the constraint ∑ s∈S πsxs ∈ C, OBJD(δ) ≥ U∗ − ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ G . Lemma 5.6. In an unconstrained generalized principal-agent problem, OBJ R (δ) ≤ U∗+diam(X )L δ
+G . With the constraint ∑ s∈S πsxs ∈ C, OBJ R (δ) ≤ U∗ + ( diam(X )L+ 2B diam(X )dist(C,∂X ) ) δ G . Lemma 5.5 and 5.6 immediately prove Theorem 5.2 and 5.3. We prove Lemma 5.6 here and Lemma 5.5 in Appendix C.4. The main idea is the following: let (π, ρ) be a pair of principal’s strategy and agent’s δ-best-responding strategy that gives the principal a high utility. We perturb the principal’s strategy π slightly to be a strategy π′ for which ρ is best-responding (such a perturbation is possible due to Assumption 5.1). Since ρ is bestresponding to π′, the pair (π′, ρ) cannot give the principal a higher utility than U∗ (which is the optimal principal utility under the best-response model). This means that the original pair (π, ρ) cannot give the principal a utility much higher than U∗. Proof of Lemma 5.6. Let π be a principal strategy and ρ ∈ Rδ(π) be a δ-best-responding randomized strategy of the agent. The principal strategy π consists of pairs {(πs, xs)}s∈S with
+∑ s∈S πsxs =: µ0 ∈ C. (20)
+At signal s, the agent takes action a with probability ρ(a|s). Let δs,a be the “suboptimality” of action a with respect to xs:
+δs,a = max a′∈A
+{ v(xs, a ′)− v(xs, a) } . (21)
+By Claim 5.1, for action a there exists ya ∈ X such that v(ya, a)− v(ya, a′) ≥ G for any a′ 6= a. Let θs,a =
+δs,a G+δs,a ∈ [0, 1] and let x̃s,a be the convex combination of xs and ya with weights 1− θs,a, θs,a:
+x̃s,a = (1− θs,a)xs + θs,aya. (22)
+Claim 5.7. We have two useful claims regarding x̃s,a and θs,a:
+(1) a is an optimal action for the agent with respect to x̃s,a: v(x̃s,a, a)− v(x̃s,a, a′) ≥ 0,∀a′ ∈ A. (2) ∑
+s∈S ∑ a∈A πsρ(a|s)θs,a ≤ δG . Proof. (1) For any a′ 6= a, by the definition of x̃s,a and θs,a,
+v(x̃s,a, a)− v(x̃s,a, a′) = (1− θs,a) [ v(xs, a)− v(xs, a′) ] + θs,a [ v(ya, a)− v(ya, a′) ]
+≥ (1− θs,a)(−δs,a) + θs,aG = GG+δs,a (−δs,a) + δs,a G+δs,a G = 0. (2) By the condition that ρ is a δ-best-response to π, we have
+δ ≥ max ρ∗:S→A
+V (π, ρ∗)− V (π, ρ) = ∑
+s∈S πs
+(
+max a′∈A
+{ v(xs, a ′) } −
+∑ a∈A ρ(a|s)v(xs, a)
+)
+= ∑
+s∈S
+∑ a∈A πsρ(a|s)max a′∈A { v(xs, a ′)− v(xs, a) } = ∑ s∈S ∑ a∈A πsρ(a|s)δs,a. So, ∑ s∈S ∑ a∈A πsρ(a|s)θs,a = ∑ s∈S ∑ a∈A πsρ(a|s) δs,a G+δs,a ≤ ∑s∈S ∑ a∈A πsρ(a|s) δs,a G ≤ δ G . We let µ′ be the convex combination of {x̃s,a}s,a∈S×A with weights {πsρ(a|s)}s,a∈S×A:
+µ′ = ∑
+s,a∈S×A πsρ(a|s)x̃s,a. (23)
+Note that µ′ might not satisfy the constraint µ′ ∈ C. So, we want to find another vector z ∈ X and a coefficient η ∈ [0, 1] such that
+(1− η)µ′ + ηz ∈ C. (24)
+(If µ′ already satisfies µ′ ∈ C, then let η = 0.) To do this, we consider the ray pointing from µ′ to µ0: {µ′ + t(µ0 − µ′) | t ≥ 0}. Let z be the intersection of the ray with the boundary of X :
+z = µ′ + t∗(µ0 − µ′), t∗ = argmax{t ≥ 0 | µ′ + t(µ0 − µ′) ∈ X}. Then, rearranging z = µ′ + t∗(µ0 − µ′), we get 1 t∗ (z − µ′) = µ0 − µ′ ⇐⇒ (1− 1t∗ )µ ′ + 1 t∗ z = µ0 ∈ C,
+which satisfies (24) with η = 1 t∗ . We then give an upper bound on η = 1 t∗ :
+Claim 5.8. η = 1 t∗ ≤ diam(X )dist(C,∂X ) δ G . (See proof in Appendix C.5.) The convex combinations (24) (23) define a new principal strategy π′ (with |S|× |A|+1 signals) consisting of x̃s,a with probability (1− η)πsρ(a|s) and z with probability η. Consider the following deterministic agent strategy ρ′ in response to π′: for x̃s,a, take action ρ′(x̃s,a) = a; for z, take any action that is optimal for z. We note that ρ′ is a best-response to π′, ρ′ ∈ R0(π′), because, according to Claim 5.7, a is an optimal action with respect to x̃s,a. Then, consider the principal’s utility under π′ and ρ′:
+U(π′, ρ′) (24),(23) = (1− η) ∑
+s∈S
+∑ a∈A πsρ(a|s)u(x̃s,a, ρ′(x̃s,a)) + ηu(z, ρ′(z))
+≥ (1− η) ∑
+s∈S
+∑ a∈A πsρ(a|s)u(x̃s,a, a) − ηB
+≥ (1− η) ∑
+s∈S
+∑ a∈A πsρ(a|s)
+(
+u(xs, a)− L ‖x̃s − xs‖ ︸ ︷︷ ︸
+=‖θs,a(ya−xs)‖≤θs,adiam(X )
+)
+− ηB
+≥ (1− η)U(π, ρ) − Ldiam(X ) ∑
+s∈S
+∑ a∈A πsρ(a|s)θs,a − ηB
+(Claim 5.7) ≥ U(π, ρ)− Ldiam(X ) δ G − 2ηB (Claim 5.8) ≥ U(π, ρ)− ( Ldiam(X ) + 2B diam(X )dist(C,∂X ) ) δ G . Rearranging, U(π, ρ) ≤ U(π′, ρ′)+ ( Ldiam(X )+2B diam(X )dist(C,∂X ) ) δ G . Note that this argument holds for any pair (π, ρ) that satisfies ρ ∈ Rδ(π). And recall that ρ′ ∈ R0(π′). So, we conclude that
+OBJ R (δ) = max
+π max ρ∈Rδ(π) U(π, ρ) ≤ max π′ max ρ′∈R0(π) U(π′, ρ′) + ( Ldiam(X ; ℓ1) + 2B diam(X )dist(C,∂X ) ) δ G
+= U∗ + ( Ldiam(X ; ℓ1) + 2B diam(X )dist(C,∂X ) ) δ G . This proves the case with the constraint ∑
+s∈S πsxs ∈ C. The case without ∑
+s∈S πsxs ∈ C is proved by letting η = 0 in the above argument. 6 applications to specific principal-agent problems In this section, we apply the general results in Section 4 and 5 to specific principal-agent problems to derive some concrete results for Bayesian persuasion, Stackelberg games, and contract design with learning agents. Our result for Bayesian persuasion is new, while our results for Stackelberg games and contract design refine Deng et al. (2019) and Guruganesh et al. (2024). 6.1 bayesian persuasion As noted in Section 3, Bayesian persuasion is a generalized principal-agent problem with constraint
+∑ s∈S πsxs ∈ C = {µ0}
+where each xs = µs = (µs(ω))ω∈Ω ∈ X = ∆(Ω) is a posterior belief. Suppose the principal’s utility is bounded: |u(ω, a)| ≤ B. Then, the principal’s utility function u(µs, a) = ∑
+ω∈Ω µs(ω)u(ω, a) is (L = B)-Lipschitz (under ℓ1-norm):
+|u(µ1, a)− u(µ2, a)| ≤ ∑
+ω∈Ω |µ1(ω)− µ2(ω)| · |u(ω, a)
+∣ ∣ ≤ ‖µ1 − µ2‖1B, (25)
+so Assumption 5.3 is satisfied. Suppose the prior µ0 has positive probability for every ω ∈ Ω, and let
+p0 = min ω∈Ω µ0(ω) > 0. Then, we have the distance
+dist(C, ∂X) = min { ‖µ0 − µ‖1 : µ ∈ ∆(Ω) s.t. µ(ω) = 0 for some ω ∈ Ω } ≥ p0 > 0,
+so Assumption 5.2 is satisfied. The diameter satisfies, because ‖µ‖1 = 1 for µ ∈ ∆(Ω),
+diam(X ; ℓ1) = max µ1,µ2∈∆(Ω) ‖µ1 − µ2‖1 ≤ 2. Finally, we assume Assumption 5.1 (no dominated action for the agent). Then, Theorem 5.3 gives bounds on the approximate-best-response objectives in Bayesian persuasion:
+Corollary 6.1 (Bayesian persuasion with approximate best response). For 0 ≤ δ < Gp02 ,
+• OBJD(δ) ≥ U∗ − 2B(1 + 2 p0 ) δ G . • OBJR(δ) ≥ U∗ − 4B √
+(1 + 2 p0 ) δ G . • OBJ D (δ) ≤ OBJR(δ) ≤ U∗ + 2B(1 + 2
+p0 ) δ G . Further applying Theorem 4.1 and 4.3, we obtain the central result of our main problem, persuasion with a learning agent:
+Corollary 6.2 (Persuasion with a learning agent). Suppose T is sufficiently large such that CReg(T ) T
+< Gp0 2 and CSReg(T ) T < Gp02 , then
+• with a contextual no-regret learning agent, the principal can obtain utility at least
+1 T E [
+T∑
+t=1
+u(xt, at) ] ≥ OBJR (CReg(T ) T ) ≥ U∗ − 4B
+√
+(1 + 2 p0 ) 1 G
+√ CReg(T )
+T (26)
+using a fixed signaling schemes in all rounds. • with a contextual no-swap-regret learning agent, the principal’s obtainable utility is at most
+1 T E [
+T∑
+t=1
+u(xt, at) ] ≤ OBJD (CSReg(T ) T ) ≤ U∗ + 2B(1 + 2 p0 ) 1 G CSReg(T ) T
+(27)
+even using time-varying signaling schemes. The result (27) is particularly interesting. Recall (from Section 2) that the learning agent actually chooses strategy before the principal, so the principal can best respond to the agent’s strategy. Nevertheless, (27) shows that the principal cannot do much better than the classic model where the principal moves first. This is a special property of no-swap-regret learning. If the agent does no-regret but not no-swap-regret learning, then the principal can do significantly better than U∗ in some instances, as we showed in Section 4.3. 6.2 stackelberg games In a Stackelberg game, the principal (leader), having a finite action set B, first commits to a mixed strategy x = (x(b))b∈B ∈ ∆(B), which is a distribution over actions. So the principal’s decision space X is ∆(B). The agent (follower) then takes an action a ∈ A in response to x. The (expected) utilities for the two players are u(x, a) = ∑
+b∈B x(b)u(b, a) and v(x, a) = ∑
+b∈B x(b)u(b, a). The signal s can (but not necessarily) be an action that the principal recommends the agent to take. Assume bounded utility |u(b, a)| ≤ B. Then, the principal’s utility function is bounded in [−B,B] and (L = B)-Lipschitz (by a similar argument as (25)). The diameter diam(X ) = maxx1,x2∈∆(B) ‖x1 − x2‖1 ≤ 2. Applying the theorem for unconstrained generalized principal-agent problems (Theorem 5.2) and the theorems for learning agent (Theorem 4.1 and 4.3), we obtain:
+Corollary 6.3 (Stackelberg game with a learning agent). Suppose T is sufficiently large such that CReg(T )
+T < G and CSReg(T ) T < G, then: • with a contextual no-regret learning agent, the principal can obtain utility 1 T E [∑T t=1 u(x t, at) ] ≥
+OBJR (CReg(T )
+T
+) ≥ U∗ − 4B√
+G
+√ CReg(T )
+T using a fixed strategy in all rounds. • with a contextual no-swap-regret learning agent, the principal cannot obtain utility more than 1 T E [∑T t=1 u(x t, at) ] ≤ OBJD (CSReg(T ) T ) ≤ U∗ + 2B G CSReg(T ) T even using time-varying strate-
+gies. The conclusion that the principal can obtain utility at least U∗−o(1) against a no-regret learning agent and no more than U∗+ o(1) against a no-swap-regret agent in Stackelberg games was proved by Deng et al. (2019). Our Corollary 6.3 reproduces this conclusion and moreover provides bounds on the o(1) terms, namely, U∗ − O( √
+CReg(T ) T ) and U∗ + O(CSReg(T ) T
+). This demonstrates the generality and usefulness of our framework. 6.3 contract design In contract design, there is a finite outcome space O = {r1, . . . , rd} where each ri ∈ R is a monetary reward to the principal. When the agent takes action a ∈ A, outcome ri will happen with probability pai ≥ 0, ∑d i=1 pai = 1. The principal cannot observe the action taken by the agent but can observe the realized outcome. The principal’s decision space X is the set of contracts, where a contract
+x = (x(i)) d i=1 ∈ [0,+∞]d is a vector that specifies the payment to the agent for each possible outcome. So, if the agent takes action a under contract x, the principal obtains expected utility
+u(x, a) = d∑
+i=1
+pai(ri − x(i))
+and the agent obtains v(x, a) = ∑d
+i=1 paix(i). The signal s can (but not necessarily) be an action
+that the principal recommends the agent to take. The principal’s decision space X ⊆ [0,+∞]d in contract design, however, may be unbounded and violate the requirement of bounded diameter diam(X ) that we need. We have two remedies for this. The first remedy is to require the principal’s payment to the agent be upper bounded by some constant P < +∞, so 0 ≤ x(i) ≤ P and X = [0, P ]d. Under this requirement and the assumption of bounded reward |ri| ≤ R, the principal’s utility becomes bounded by |u(x, a)| ≤ ∑d i=1 pai(R+P ) = R+ P = B and (L = 1)-Lipschitz under ℓ∞-norm:
+|u(x1, a)− u(x2, a)| = ∣ ∣
+d∑
+i=1
+pai(x1(i) − x2(i)) ∣ ∣ ≤ dmax
+i=1 |x1(i) − x2(i)|
+d∑
+i=1
+pai = ‖x1 − x2‖∞. (28)
+And the diameter of X is bounded by (under ℓ∞-norm)
+diam(X ; ℓ∞) = max x1,x2∈X ‖x1 − x2‖∞ = max x1,x2∈[0,P ]d d max i=1 |x1(i) − x2(i)| ≤ P. (29)
+Now, we can apply the theorem for unconstrained generalized principal-agent problems (Theorem 5.2) and the theorems for learning agent (Theorem 4.1 and Theorem 4.3) to obtain:
+Corollary 6.4 (Contract design (with bounded payment) with a learning agent). Suppose T is sufficiently large such that CReg(T ) T < PG2(R+P ) and CSReg(T ) T < G, then:
+• with a contextual no-regret learning agent, the principal can obtain utility at least 1 T E [∑T t=1 u(x t, at) ]
+≥ OBJR (CReg(T )
+T
+) ≥ U∗ − 2
+√ 2(R+P )P
+G
+√ CReg(T )
+T using a fixed contract in all rounds. • with contextual a no-swap-regret learning agent, the principal cannot obtain utility more than 1 T E [∑T t=1 u(x t, at) ] ≤ OBJD (CSReg(T ) T ) ≤ U∗+ P G CSReg(T ) T even using time-varying contracts. The second remedy is to write contract design as a generalized principal-agent problem in another way. Let x̃ = (x̃(a))a∈A ∈ [0,+∞]|A| be a vector recording the expected payment from the principal to the agent for each action a ∈ A:
+x̃(a) = d∑
+i=1
+paix(i). (30)
+And let r̃(a) be the expected reward of action a, r̃(a) = ∑d
+i=1 pairi. Then, the principal and the agent’s utility can be rewritten as functions of x̃ and a:
+u(x̃, a) = r̃(a) − x̃(a), v(x̃, a) = x̃(a), (31)
+which are linear in x̃ ∈ X̃ . Assuming bounded reward |r̃(a)| ≤ R, we can without loss of generality assume that the expected payment x̃(a) is bounded by R as well, because otherwise the principal will get negative utility. So, the principal’s decision space can be restricted to
+X̃ = { x̃ | ∃ x ∈ [0,+∞]d such that x̃(a) =
+d∑
+i=1
+paix(i) for every a ∈ A } ∩ [0, R]|A|, (32)
+which is convex and has bounded diameter (under ℓ∞ norm)
+diam(X̃ ; ℓ∞) ≤ diam([0, R]|A|; ℓ∞) = R. (33)
+The utility function u(x̃, a) is bounded by 2R and (L = 1)-Lipschitz (under ℓ∞ norm):
+|u(x̃1, a)− u(x̃2, a)| = |x̃1(a) − x̃2(a)| ≤ max a∈A |x̃1(a) − x̃2(a)| = ‖x̃1 − x̃2‖∞. (34)
+Thus, we can apply the theorem for unconstrained generalized principal-agent problems (Theorem 5.2) and the theorems for learning agent (Theorem 4.1 and Theorem 4.3) to obtain:
+Corollary 6.5 (Contract design with a learning agent). Suppose T is sufficiently large such that CReg(T )
+T < G2 and CSReg(T ) T < G, then: • with a contextual no-regret learning agent, the principal can obtain utility at least 1 T E [∑T t=1 u(x t, at) ]
+≥ OBJR (CReg(T )
+T
+) ≥ U∗ − 4R√
+G
+√ CReg(T )
+T using a fixed contract in all rounds. • with a contextual no-swap-regret learning agent, the principal cannot obtain utility more than 1 T E [∑T t=1 u(x t, at) ] ≤ OBJD (CSReg(T ) T ) ≤ U∗+ R G CSReg(T ) T even using time-varying contracts. Providing the quantitative lower and upper bounds, the above results refine the result in Guruganesh et al. (2024) that the principal can obtain utility at least U∗ − o(1) against a noregret learning agent and no more than U∗ + o(1) against a no-swap-regret agent. This again demonstrates the versatility of our general framework.

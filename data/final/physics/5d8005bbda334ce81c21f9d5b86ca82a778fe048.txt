@@ -1,0 +1,206 @@
+One of the several possibilities offered by the interesting clathrate hydrates is the opportunity to encapsulate several atoms or molecules, in such a way that more efficient storage materials could be explored or new molecules that otherwise do not exist could be created. These types of applications are receiving growing attention from technologists and chemists, given the future positive implications that they entail. In this context, we investigated the multiple cage occupancy of helium clathrate hydrates, to establish stable novel hydrate structures or ones similar to those predicted previously by experimental and theoretical studies. To this purpose, we analyzed the feasibility of including an increased number of He atoms inside the small (D) and large (H) cages of the sII structure through first-principles properly assessed density functional approaches. On the one hand, we have computed energetic and structural properties, in which we examined the guest–host and guest–guest interactions in both individual and two-adjacent clathrate-like sII cages by means of binding and evaporation energies. On the other hand, we have carried out a thermodynamical analysis on the stability of such He-containing hydrostructures in terms of changes in enthalpy, DH, Gibbs free energy, DG, and entropy, DS, during their formation process at various temperature and pressure values. In this way, we have been able to make a comparison with experiments, reaffirming the ability of computational DFT approaches to describe such weak guest–host interactions. In principle, the most stable structure involves the encapsulation of one and four He atoms inside the D and H sII cages, respectively; however, more He atoms could be entrapped under lower temperature and/or higher pressure thermodynamic conditions. We foresee such accurate computational quantum chemistry approaches contributing to the current emerging machinelearning model development. 1. computational details  1.1 target hydrate structures In Fig. 1, we display all clathrate-like cluster structures under consideration in this work, which consist of the individual small 512 or D and large 51264 or H cages, formed by 20 water molecules with a diameter of 7.4 Å, and 28 water molecules with a diameter of 9.0 Å, respectively, as well as two adjacent cages contained in the sII hydrate crystal. Taking into account the connections established in the sII lattice (see Fig. 1), three such cage systems will be considered: the small–small (DD) system composed of 35 water molecules, and the small–large (DH) system formed by 43 water molecules, both sharing a pentagonal face between the cages, and the large–large (HH) system containing 50 water molecules, with the H cage sharing, an hexagonal face. All cage system configurations were extracted, using the DENEB software package,61 from the three-dimensional (3D) crystalline frameworks of the sII clathrate hydrates, as have been determined in ref. 62. The positions of the water oxygen atoms were experimentally determined by X-ray diffraction analysis of clathrate hydrate structures, while the positions of the water hydrogen atoms were ordered in such a way that they
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 16846 | Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 This journal is © the Owner Societies 2023
+satisfy the ice rules, having the lowest potential energy orientation for the protons, and a net zero dipole moment. It has been found62 that different proton distributions show a fairly narrow potential energy spread, and thus a rather small perturbative effect on the interaction energies of the guests in the cage systems is expected. However, such water rearrangements have been found to affect the nuclear quantum translational–rotational dynamics of guest molecules.63,64 In turn, taking into account that in crystal clathrates each water molecule participates in four hydrogen bonds, which probably restricts its orientation, it could be considered that guest–host effects should be described better in the case of the rigid cages. Hence, at least initially, the guest–cage can be treated as an isolated system to a very good approximation, providing an excellent starting point for gradual inclusion of the weak interactions with the extended environment, such as guest–guest in the twoadjacent cages or guest-lattice effects in periodic crystals later on. Thus, each of these empty (rigid) sII cage structures is gradually filled with an increasing number (N) of He atoms (see Fig. 1), and their structures (HeN@D/H, HeN@DD/DH/HH) and energies have been then computed, as described below. 1.2 electronic structure calculations Geometry optimization and single point calculations were carried out for the empty and filled cage systems using both WF-based methods, such as CCSD(T), domain-based local pair natural orbital coupled-cluster (DLPNO-CCSD(T)) and its explicitly correlated (-F12) counterpart,65,66 and DFT approaches, such as the GGA PW86PBE67,68 and the hybrid PBE069 methods. The choice of these DFT functionals in describing the interactions is based on their performance against WF-based methods, as reported in previous studies among various GGA, metaGGA and hybrid functionals for similar clathrate-like cage and crystal structures.57,58,70,71 Thus, the DFT computations were carried out with the Gaussian72 and QE73–75 software, while the CCSD(T) and DLPNO-CCSD(T)/DLPNO-CCSD(T)-F12 calculations were performed with the MOLPRO76–78 and ORCA79,80 packages of codes, respectively. Since dispersion forces have been found to significantly affect the underlying interactions in these systems,57,58 all DFT calculations have taken into account such contributions through the D481–83 and XDM84,85 dispersion correction schemes, as implemented in the DFTD486 and POSTG87,88 or QE codes, respectively. In the DLPNO-CCSD(T) calculations, the augmented correlation consistent basis sets, AVXZ, were used, in addition to the equivalent correlation fitting AVXZ/C basis set for the resolution of the identity (RI). The tight threshold for both selfconsistent field (SCF) and pair natural orbital (PNO) settings was specified to achieve better converged wave-functions and to reduce numerical noise, respectively. In the case of DLPNOCCSD(T)-F12 computations, correlation consistent basis sets, VXZ, were employed, together with the equivalent correlation fitting, AVXZ/C, and a complementary auxiliary basis set, VXZF12/CABS. In the rest of the WF-based and density-based methods, the AVXZ basis sets were used. In particular, geometry optimization calculations of N isolated He atoms were
+carried out using CCSD(T)/AVXZ (with X = 6 for N = 2–4 He atoms, X = 5 for N = 5–6, X = Q for N = 7–8, and X = T for 9 He atoms) and for both isolated HeN and those encapsulated inside the sII (D, H, DD, HH, DH) cage hydrostructures, the PW86PBE/AVTZ level of theory was used. The basis set superposition error (BSSE) through the counterpoise correction (CP)89 was applied to the energies in the CCSD(T), DLPNOCCSD(T) and DLPNO-CCSD(T)-F12 results, while the weighted average complete basis set (CBS) extrapolation scheme of the CP-corrected and uncorrected energies developed by Lee et al.90 was used in the case of the CCSD(T) calculations to obtain wellconverged CCSD(T)/CBS interaction energies. In order to analyze the stability (energetically favored) of the different cage systems under study, two quantities are considered: the binding energies, DEbinding ¼ EoptHeN@cage=s Ecage=s EoptHeN , and evaporation energies, DEevaporation¼ E
+opt HeN@cage=s
+Ecage=s N EHe N , where EoptHeN@cage=s corresponds
+to the total energy of the optimized HeN@cage/s system formed by the rigid cage/s encapsulating HeN atoms, Ecage/s to the total energy of the clathrate cage/s, EoptHeN to the total energy of the optimized isolated HeN atoms, and EHe to the total energy of a single He atom. Moreover, we also examined the thermodynamic stability by analysing the enthalpy (DH), Gibbs free energy (DG) and entropy (DS) variations, under different T–P conditions, involved in the encapsulation of one or several (N) He atoms inside the cages of the sII structure, both individual (D and H) and connected to their neighbor cage (DD, HH and DH). Consequently, these properties can give us an idea about the thermodynamic feasibility and the spontaneous nature of the clathrate formation process. The thermochemical quantities have been determined through standard statistical thermodynamics techniques for finite-size systems,91 as implemented in the Gaussian package,72,92 by carrying out DFT calculations. Therefore, the geometry optimizations of the HeN atoms inside the rigid cage systems are followed by frequency calculations at PBE0-D4/AVTZ level of theory. The DH, DG and DS are calculated for the HeN@cage/s clathrate formation reactions as DH/G/S = H/G/SHeN@cage/s H/G/Scage/s H/G/SHeN, where H = E + ZPE + e0, G = H T S and Stot = Se+ Sv + Sr + St, with E being the total electronic energies, ZPE the zero-point vibrational energy corrections, e the internal thermal corrections to the energy (given by electronic, vibrational, rotational and translational contributions) and Se, Sv, Sr and St the electronic, vibrational, rotational and translational contributions to the entropy. 2 results and discussion  2.1 benchmarking the simplest he–he and he–h2o interactions In our previous studies57,58 a variety of DFT functionals were assessed for different He clathrate hydrate structures, by extensive and systematic comparisons against well-converged
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 | 16847
+WF-based reference data, concluding that the PW86PBE-XDM/ D4 and PBE0-D4 functionals are the best-performing. As we are interested in the multiple cage occupancy of such systems, we decided to check the performance of these DFT-D functionals on the simplest He–He and He–H2O interactions involved in the present case too. Thus, in Fig. 2 we plot the potential curves for the He2 (left panel) and He–H2O (right panel) systems as a function of the He–He and He–O distances (see inset plots), respectively, as obtained from the CCSD(T), DLPNO-CCSD(T)/F12, PW86PBE/ XDM/D4 and PBE0/XDM/D4 calculations in this work, as well as from the semiempirical and ab initio model potentials available in the literature.57,93–97 Starting with the PW86PBE functional, one can see that dispersion correction schemes are needed to correctly represent both interactions. The D4 scheme substantially improves the description of the minima, giving results close to those of DLPNO-CCSD(T)-F12/AVQZ (within 0.1 cm 1) in the He–He case, while for the He–H2O interaction the PW86PBE-D4 energies are lying between the DLPNO-CCSD(T)/ AVQZ (above by E1.4 cm 1) and DLPNO-CCSD(T)-F12/AVQZ (below by E0.6 cm 1) values. As regards the PW86PBE-XDM energies, there is a surprising level of agreement with the accurate He–He model potential of ref. 96, and a difference of 0.8 cm 1 with respect to the CCSD(T)/CBS56 results. Moreover, we have also examined the efficiency of the PW86PBE-XDM/D4 functional in the He3 case, as one can see in Fig. S1 in the ESI,† verifying once again that PW86PBE-XDM provides CCSD(T)-like results. Now, in the case of He–H2O, the PW86PBE-XDM energy values are found to be between the CCSD(T)/AV5Z and DLPNOCCSD(T)/AVQZ results, shifted by E1.5 cm 1 from each of them. As for the PBE0 and PBE0-D4/XDM functionals, we found that they overestimate binding, although in the He–H2O case the pure PBE0 functional provides energy values that almost overlap with those from the DLPNO-CCSD(T)/AVQZ calculations. Such behavior has been also observed previously in the clathrate-like cages;58 thus, together with PW86PBE-XDM/D4,
+we will also take into consideration the PBE0-D4/XDM functional. 2.2 multiple-cage-occupancy effects: structures and energetics The first helium clathrate hydrate, He@sII, was synthesized in 2018,29 and its structure has been analyzed by neutron diffraction experiments. Previous reported data from thermodynamic modeling26 and ab initio molecular dynamics98 have indicated that the large H cages of the sII structure could encapsulate up to 4 He atoms in tetrahedrally degenerate positions, while the small D cages could be occupied by one or two He atoms. Similar findings have been also reported for the multiple occupancy in H2@sII,
+99–102 where the large cages could entrap up to 4 H2 molecules, although the double and triple occupancy appeared to be the most stable, while the small cages remained with only one guest hydrogen molecule. Although the H atom is larger than the He one, we can observe comparable tendencies in terms of multi-occupancy of the cages and in general, it seems that the most stable configuration is the one that minimizes the occupancy of the small cages and maximizes that of the large cages. Therefore, we first analyze here the multiple helium occupancy in the D and H cages of the sII structure on the basis of DFT calculations on binding and evaporation energies. We start by performing geometry optimization calculations for both isolated He atoms (at CCSD(T)/AV(T/Q/5/6)Z and PW86PBE/AV(T/Q)Z levels of theory), and those encapsulated inside the rigid D and H sII cages (at the PW86PBE/AVTZ level of theory). For this purpose, we introduced up to 4 and 10 He atoms inside the D and H cavities, respectively. The resulting configurations can be seen in the left panel of Fig. 3, with the corresponding energies listed in Tables S1–S3 (see ESI†). One can distinguish ordered positions in the HeN complexes with up to 6 He atoms, such as triangles, pyramids or even rhombuses, while for species formed from 7 to 9 He atoms it starts to become difficult to recognize orderly shapes. We have also optimized the He10@H system; however, the results show that one He is ejected from the cage (see Fig. S2 in the ESI†). In the upper right panel of Fig. 3, the average He–He bond lengths of isolated HeN and encapsulated HeN@D/H atoms are represented from the PW86PBE calculations. As is shown, the PW86PBE functional does not adequately estimate the He–He bond lengths, so we simply concentrate our attention on the observed trends. As expected, the He–He bond length decreases as we move from the free to trapped He atoms in the H and D cages, and also as the number of caged He atoms is increasing. Such modifications in the bond distances for noble-gas molecules encapsulated in fullerenes have already been reported in the literature, resulting in a change in the noble gas reactivity too.103
+In the lower right panel of Fig. 3, evaporation energies calculated at the PW86PBE/AVTZ level, including D4 and XDM dispersion corrections, are plotted as a function of the number of trapped He atoms. This quantity gives us an idea of the energy gain when an extra He atom is added in the cage/s. One can see that the pure PW86PBE functional predicts
+Fig. 2 Interaction energy curves for the He–He and He–H2O systems obtained from the indicated WF-based and DFT-based methods, as well as with various potential models. [1] CCSD(T)/CBS[56] for He2 and CCSD(T)/ AV5Z for He–H2O. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 16848 | Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 This journal is © the Owner Societies 2023
+unbound cage systems, and therefore, we will only discuss the DFT-D results. As we can see, the energy shoots up when more than one He atom is encapsulated in the D cage, although in principle the inclusion of two He atoms is energetically favored too. Regarding the H cage, the energy goes slightly down until it is filled with four He atoms, which is the most stable configuration in this case, and then it begins to rise, remaining favorable up to seven trapped He atoms. In order to further analyze the energetic stability of these cage systems, the binding energies calculated at PW86PBE-D4/XDM and PBE0-D4/ XDM levels of theory are shown in Fig. 4. Once we had checked that there was no significant difference between the AVTZ and AVQZ results (see Fig. S3 in the ESI†), we decided to analyze the AVTZ curves, considering the PW86PBE/AVTZ optimized geometries. It should be noted that whilst the evaporation energies refer to the energy gain with respect to the addition of an extra He atom, the binding energies correspond to the total energy gain of the cage system in contrast with its isolated fragments (water cages and He-atoms) in their equilibrium. Starting with the D cage, both the PW86PBE-D4/XDM and PBE0-D4/XDM functionals predict the same behavior as that
+found for the evaporation energies, although PBE0-D4 estimates that He2@D is slightly more favored than He@D in terms of energy, with the inclusion of 3 or more He atoms being totally unfeasible. As for the H cage, a different trend is observed. The PW86PBE-D4/XDM functional predicts that the most favorable configurations are those entrapping 4 to 6 He atoms, and in principle up to 7 He atoms can be encapsulated, while the PBE0-D4/XDM results show that the inclusion of 6 He atoms implies the most stable configurations, and that up to 9 (or even a few more) He atoms could get trapped. So far, we have analyzed the guest–host interactions in individual clathrate-like cages, and in turn we intend to explore the inter-cage effects by means of two-adjacent DD, HH and DH cage systems. As before, the computations for double clathratelike cages have been carried out for empty and single or multiple He cage filling. On the basis of the individual cage results, we considered examining a total of 18 different configurational combinations, consisting of up to two He atoms inside the D cages and 4 He atoms trapped in the H cages, such as He(1/0)@DD, He(1/1)@DD, He(2/0)@DD, He(1/2)@DD, He(2/2)@DD, He(0/1)@DH, . . ., He(4/4)@HH, with the (n/m) index indicating the number of He atoms in each (D/H) cage of the DD, DH and HH systems. In Fig. 5 the binding energies obtained from the PW86PBE-XDM and PW86PBE-D4 calculations are presented, and both results are in accord. The first aspect that stands out is the surprisingly strong binding for the He(1/0)@DD and He(2/2)@DD cage systems. Such a trend has already been observed for the individual cages, where the inclusion of one He atom inside the D cage involved a fairly large gain in energy, being even more favorable than introducing more He atoms into the H cage. For the DD cages, the most stable configuration is predicted to be the one with one singly occupied cage (1/0), although the one with maximum (2/2) occupancy in both D cages is also close in energy. In turn, for the HH cage system, once again the most stable configuration is the one with the maximum number of He’s inside both cages, He(4/4)@HH. In fact, the maximum occupancy of 4 He’s in at least one H cage is always prioritized. As regards the DH cage system, the most energetically favored configuration is found to be the He(1/4)@DH one, in agreement with the experiment, while He(2/4)@DH is also very close in energy, just within 100 cm 1 above it. Moreover, as just mentioned, the presence of one He inside the D cage (1/0) is preferred over the (0/1) in the H cage. In general, it holds again that the maximum occupancy prevails in the H cages. Indeed, the (0/4) configuration is one of the most energetically favored, which may support some investigations that defend H cages needing to be completely filled or nearly so, while some D cages could even remain empty if the stabilization provided by the rest of the cages in the clathrate hydrate is sufficient.39–41 Finally, for the PW86PBE-D4 results (see Fig. 5), the same tendency is observed for the DD and HH cage systems. Nonetheless, some differences are encountered in the DH cages, such as the second most energetically favored configuration being (0/4) rather than the (2/4) one, and the least stable one being (2/0) instead of (0/1). Fig. 3 Left panel: Optimized structures for the isolated HeN atoms and encapsulated HeN@D/H at CCSD(T) and PW86PBE levels of theory, respectively. Right upper panel: Average He–He bond-lengths (in Å) from the geometry optimization PW86PBE/AVTZ calculations. Right lower panel: Evaporation energies (in cm 1) from the PW86PBE/XDM/D4 calculations. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 | 16849
+Fig. 4 Binding energies for the HeN@D/H systems, with N up to 4 atoms inside the D cage and N up to 9 atoms in the H cage, from the PW86PBE-XDM/ D4 and PBE0-XDM/D4 calculations. Fig. 5 Binding energies (in cm 1) of two-adjacent DD, DH, and HH HeN@sII cage systems computed at PW86PBE-XDM and PW86PBE-D4 levels of theory, assuming the indicated single and multiple He cage occupancy. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 16850 | Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 This journal is © the Owner Societies 2023
+Taking into account all this information, we can infer that the most energetically efficient filling processes correspond to just one singly occupied D cage, He(1/0)@DD, at an energy of 1813.4 cm 1, or doubly occupied cages He(2/2)@DD, at 1661.4 cm 1, followed by tetrahedrally occupied cages He(4/4)@HH, at 1068.7 cm 1, and by the singly occupied D in combination with tetrahedrally occupied H in He(1/4)@DH systems, at an energy of 643.5 cm 1. The fact that the He(1/0)@DD cage system is the most stable configuration is astonishing, although consistent with the results obtained for the individual D sII cages. Among the 18 configurations analyzed here, we found that the presence or absence of He atoms in the neighbor cage has a clear impact on the energy, and altogether, the H cages seek to be overloaded, whereas the D cages prefer minimal He occupancy. 2.3 multiple cage occupancy effects: thermochemical properties The determination of thermochemical properties is crucial to ascertain the viability of a particular reaction and to know if it entails an energy absorption or release. In this context, the calculation of enthalpy (DH), Gibbs free energy (DG) and entropy (DS) variations is a valuable tool to understand the stability of a system and its spontaneous evolution towards an equilibrium state. Further, when experimental data are available, it can serve as a point of comparison to verify the reliability of theoretical results, and moreover could be useful for the development of corrections in theoretical predictive methodologies. In the case of the helium clathrate hydrates, only the He@sII structure has been observed in recent laboratory experiments,29 and its synthesis has been reported in the range of 80–120 K and 50–150 MPa. Having this in mind, our next step consists of evaluating DH, DG and DS for the HeN + D/H - HeN@cage formation reactions by means of DFT-D geometry optimizations and frequency calculations under a wide variety of temperature (T) and pressure (P) conditions, ranging from 50–298 K and 1–1500 atm, respectively. As in a previous work58 the DH and DG variations have been examined for the single He occupation of the individual D and H cages of the sII structure, we here focused on studying the multiple He cage occupancies. First, we have analyzed the He2@D and He4@H cases by studying the influence of more He guests on the thermodynamic stability of these systems. The DH as a function of temperature is displayed in Fig. 6 in comparison with the corresponding single He occupancy cases. The range of experimental conditions is highlighted in the plot, and as one can see, the effect resulting from the inclusion of more than one He atom in the D cage is not visible at these temperatures. Translated into numbers, at 50–80 K the difference between enthalpies is approximately 1%, at 100 K it is 3% and at 120 K it is around 64%. In spite of the fact that this difference is greater as the temperature increases, in any case DH is negative, which means that the encapsulation of one or two He atoms inside the D cage is an exothermic process with a consequent release of energy. Nevertheless, at temperatures higher than 298 K the process is expected to become
+endothermic, especially in the He2@D case. Continuing with the H cage, in contrast to the D case, the entrapment of one or four He’s has a noticeable impact on DH values. Although in both systems the process is exothermic, the trend observed as the temperature increases is totally opposite. While in He@D the higher the temperature, the lower the DH, in He4@H the tendency is contrary to this, as observed in the D cage. Furthermore, the influence of the temperature on the DH variation is more prominent in the H cages than in the D cages. In turn, Fig. 7 shows the corresponding results of the DG energies as a function of temperature and pressure. The formation of the single-occupied He@D/H cages has been reported to be spontaneous in the range of experimental conditions.58 Nonetheless, the incorporation of more He atoms inside these hydrostructures may entail a modification of the spontaneity of the reaction. Starting with He2@D, we see that DG is positive in all the T and P values considered, with the exception at 50 K between 500–1500 atm, which signifies that the encapsulation of two He’s inside the D cage is a spontaneous process, and therefore, the reaction benefits by itself the formation of the products under this given set of conditions. In the case of He4@H, DG also takes positive values under most of the conditions studied. Surprisingly, however, at 80–100 K and 500–1500 atm, which are within the experimental regime, DG is negative and therefore, the reaction is thermodynamically favored. These outcomes are very satisfactory, since they fully correspond to those observed in experiments.29 In principle, it seems that the inclusion of one He inside the D cage and four He’s inside the H one corresponds to spontaneous processes in the range of experimental conditions, while the encapsulation of two He’s in the D case is also spontaneous only at lower temperatures. Finally, in order to complete the thermodynamic stability analysis of the individual D and H cages, we have also examined the change in entropy, DS, as shown in Fig. 8. We see that in both singly, He@D/H (except at high pressures), and multiply occupied, He2@D and He4@H, cages, DS has negative values, whatever the temperature and pressure values are. This indicates that the disorder of the reactants has decreased or, in
+O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . This journal is © the Owner Societies 2023 Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 | 16851
+other words, the encapsulated He atoms inside the individual D/H cages are more ordered than in their isolated configurations. This makes sense, given that the He’s inside the clathrate-like cages become closer, and have less randomness as a result of the volume decrease. Moreover, taking into account that DG = DH TDS and that DH and DS are negative, this means that the spontaneity of the reaction will depend on the temperature value, as in fact we have verified in the analysis of DG. Finally, we should note two peculiarities. On the one hand, different slopes are observed in the curves: while in the He@D, He2@D and He4@H cases DS increases with the temperature, in the He@H case the tendency is the opposite. This
+behavior was already observed for DH. In any case, the change suffered as a consequence of the temperature is not significant (10 4 order of magnitude between temperature values), DS being more affected by the pressure (10 3 order of magnitude between pressure values), although also to a very low extent. On the other hand, the more He atoms are encapsulated, the more negative DS is, as it implies a higher ordering with respect to the initial isolated structures. In the same vein, we next examined the evolution of DH, DG and DS in the two-adjacent sII cage systems. Given the size of the double-cage systems and the increase in computational resources, we decided to analyze the stability of the experimentally observed He(1/4)@DH structure, through the He + He4 + DH - He(1/4)@DH formation reaction, considering only the range of experimental T–P conditions, between 80–120 K for temperatures and 500–1500 atm for pressures. The obtained results are shown in Fig. 9, and we comment below the observed changes with respect to the individual D/H cages and their possible extrapolation from these smaller entities. In general, we observe similar trends to those in the individual D and H sII cages. The DH values are also negative (exothermic reaction), presenting the same behavior as in
+Fig. 7 DG (in kcal mol 1) as a function of temperature (in K) at various pressure values (in atm) for the multiply occupied He2@D (squares) and He4@H (downwards triangle) sII clathrate-like cages in comparison with the data from ref. 58 (see dashed lines in the inset plots) for the singly occupied He@D (circles) and He@H (upwards triangle) systems. The dashed black boxes indicate the experimental conditions. Fig. 8 DS (in kcal mol 1 K 1) as a function of temperature (in K) at various pressure values (in atm) for He@D (circles), He2@D (squares), He@H (upwards triangles) and He4@H (downwards triangles) cage systems. The dashed black boxes indicate the experimental conditions. O pe
+n A
+cc es
+s A
+rt ic
+le . P
+ub lis
+he d
+on 1
+7 M
+ay 2
+02 3. D ow
+nl oa
+de d
+on 1
+/1 2/
+20 24
+7 :3
+7: 41
+P M . T hi s ar tic le is li ce ns ed u nd er a C re at iv e C om m on s A ttr ib ut io nN on C om m er
+ci al
+3 .0
+U np
+or te
+d L
+ic en
+ce . 16852 | Phys. Chem. Chem. Phys., 2023, 25, 16844–16855 This journal is © the Owner Societies 2023
+He@H, that is, the higher the temperature the more negative DH is. DG only corresponds to a spontaneous process for T = 80 K and T = 500–1500 atm (similar to He4@H), meaning that this reaction is favored at lower T and higher P values. Finally, DS is positive throughout the studied range, indicating that the encapsulated structure is becoming more disordered than the reactant fragments, which are indeed thermodynamically more stable. So, if we recapitulate, we see that the quantity that is most affected by the effects of neighbor-cage occupation is DG, showing that low temperatures and high pressures conditions are necessary to favor the corresponding formation reactions. Indeed, this fact matches with the standard conditions under which such clathrate hydrates are formed. 3 summary and conclusions We have evaluated the multiple cage occupancy effects on the stability of the HeN@sII clathrate-like cage systems through first-principles DFT-D approaches and under a variety of P–T conditions, motivated by previously reported experimental and theoretical studies. Once we had ensured the reliability of the PW86PBE-XDM and PBE0-D4 functionals on the simplest He– He and He–H2O interactions, we performed geometry optimizations for both isolated gas-phase HeN complexes and their encapsulated analogs inside the individual (D/H) and twoadjacent (DD/DH/HH) sII clathrate-like cage systems, determining evaporation and binding energies as the number of trapped He atoms increases. Our results predict that both He@D and He2@D structures are energetically favored, with the inclusion of just one He inside the D cage being the most stable configuration, while for the H cage, the most energetically favored configurations are those including 4–6 He’s, although up to 7–8 He’s could be encapsulated. Next, by analyzing the inter-cage effects of first-neighbors, we have concluded that for the DD systems the most energetically efficient filling processes are that with just one singly occupied cage, He(1/0)@DD, and the one with doubly occupied cages, He(2/2)@DD, while in HH cages the most favored one is the doubly tetrahedrally occupied He(4/4)@HH, and in DH it is the one with singly and tetrahedrally occupied D and H cages, He(1/4)@DH. Furthermore, we have been able to verify that the presence/absence of He atoms in the neighbor sII cage clearly influences the energy and in general, the H cages seek multiple He occupancy, while on the contrary, D cages prefer minimal He filling. Finally, we have examined the stability of the multi-occupied individual D and H, as well as the double DH sII clathrate-like cages, by means of enthalpy, DH, Gibbs free energy, DG, and entropy, DS, variations. To this purpose, a wide range of temperature (50–298 K) and moderate pressure (1–1500 atm) values were selected, including the regime of experimental conditions. Our results reveal that while the formation reactions of He@D and He@H are exothermic and spontaneous in the range of experimental conditions, those associated with the formation of He2@D, He4@H and He(1/4)@DH are exothermic and mostly non-spontaneous. In order to make them
+thermodynamically favored, lower temperature and/or higher pressure values are needed. In all individual cage cases studied (except He@D at high pressures) the encapsulated He atoms inside the sII cages are more orderly structured than their isolated counterparts. In summary, we have verified that the conclusions extracted from the study of the individual cages, as well as from the twoadjacent cage systems, are very similar and are in accord with the experimental observations of a multiple cage filling of He atoms (up to 4) in the H cages of the sII clathrate hydrates and single He occupancy of the D cages. Moreover, we have verified that some D sII cages may even stay empty if the stabilization provided by the overloaded H cages is enough, while the inclusion of two He atoms in D cages is possible by adjusting the thermodynamical conditions.

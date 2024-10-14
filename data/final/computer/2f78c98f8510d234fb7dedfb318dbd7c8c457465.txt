@@ -1,0 +1,42 @@
+In real-world human-robot systems, it is essential for a robot to comprehend human objectives and respond accordingly while performing an extended series of motor actions. Although human objective alignment has recently emerged as a promising paradigm in the realm of physical human-robot interaction, its application is typically confined to generating simple motions due to inherent theoretical limitations. In this work, our goal is to develop a general formulation to learn manipulation functional modules and long-term task goals simultaneously from physical human-robot interaction. We show the feasibility of our framework in enabling robots to align their behaviors with the long-term task objectives inferred from human interactions. ii. methodology  a. problem formulation We model pHRI as a discrete system with forward dynamics function f in line with prior works [2]–[4]:
+xt+1r = f(x t r, u t r + u t h). (1)
+where x ∈ Rn×6 denotes the joint positions and velocities of the n-DOF robot, ur ∈ R6 is commanded velocity of the end effector, and uh ∈ R6 is the velocity of the end effector resulting from the wrench applied by the human at the time step t. In the presence of human actions, the robot’s trajectory is subject to deformation to conform to human corrections. We assume that there is a task parameter β, which captures the desired goal of humans in carrying out the task. The robot, lacking knowledge of the human’s true target, relies on human interactions to gain information about this objective. For example, β could denote the desired quantity of liquids or powders to complete the pouring task, or the target size for chopping. The robot estimates β by filtering based on observations o0:t = {xtr, xte, utr, uth}, where xte represents the state measurement of the environment. In our task setting, xte denotes the measured poured amount. The robot updates a belief bt(β) = P (β|o0:t) from the previous history of observations o0:t. Utilizing Bayes’ theorem, we have:
+P (β|o0:t) ∝ P (ot|β, o0:t−1)P (β|o0:t−1) (2)
+We can expand the likelihood P (ot|β, o0:t−1) as:
+P (ot|β, o0:t−1) = P (xtr, xte, utr, uth|β, o0:t−1) = P (utr|β, o0:t−1, xtr, xte, uth) P (uth|β, o0:t−1, xtr, xte)P (xtr, xte|β, o0:t−1)
+(3) We make three reasonable assumptions to justify the simplification of the likelihood P (ot|β, o0:t−1). The first assumption is that the robot’s action complies with the human during the interaction while being a deterministic mapping from β and xte when there is no interaction. Thus,
+ar X
+iv :2
+30 9. 04 59
+6v 1
+[ cs
+.R O
+] 8
+S ep
+2 02
+3
+P (utr|β, o0:t−1, xtr, xte, uth) can be reduced in the equations 3. The second assumption is human’s action follows the Markov property, so uth is independent of o
+0:t−1 conditioned on the task goal β and states xt+1r , x t+1 e . The third assumption is that state transition dynamics are deterministic for both robot and environment, so P (xt+1r , x t+1 e |β, o1:t) disappears. We can then express the likelihood as:
+P (ot|β, o0:t−1) ∝ P (uth|β, xtr, xte) (4) Combining Equation 2 and Equation 4, we can now get
+the iterative posterior distribution over the task goal belief:
+bt(β) ∝ P (uth|β, xtr, xte) bt−1(β) (5) b. approximate inference over task goals Observation Model. We model that humans’ actions reflect the difference between the current task progress and the desired task goal. For example, in the task of robot pouring, the human operator adjusts the robot’s pouring speed based on the difference between the desired and actual amount of liquid. When the gap is large, the operator will adjust the robot to pour more aggressively, while for a smaller gap, the operator will adjust the robot to pour more conservatively. To formalize this relationship, we define a distance function ∆(xte, β) to measure the discrepancy between the current progress xte and the desired task goal β. We then use a function g that maps the distance to a probability distribution over the space of possible actions, giving us:
+p(uth|β, xtr, xte) ∝ p(uth|β, xte) ∝ g(∆(xte, β)). (6) In the case of robot pouring, the function g can be chosen to be a sigmoid function that maps the discrepancy to a probability of choosing a certain pouring speed, with higher discrepancy values corresponding to higher probabilities of aggressive pouring. In the event that the robot state xtr aligns with human expectations, it is expected that humans will refrain from taking action, denoted by uth being zero. Approximating Task Goal Posterior. Since there is no linear relationship between the observation model and the task goal, and given the cardinality of the task goal space |B|, we represent the belief as the density of a sampled distribution:
+bt(β) = |B|∑ i=1 wtiδ(βi) (7)
+where δ(βi) is a delta function centered at βi. Using importance sampling, we can approximate a target distribution bt(β) by drawing samples from a proposal distribution q(βt|u0:th ) [5]. The weight wti can be represented as:
+wti ∝ p(βi|o0:t)
+q(bt(βi)|o0:t) . (8)
+The weight can be written recursively as:
+wti ∝ wt−1i P (uth|β, xtr, xte)
+q(bt(βi)|bt−1(βi), ot) . (9)
+Taking the proposal distribution q(bt(βi)|bt−1(βi), ot) to be a deterministic value, we have:
+wti ∝ wt−1i P (u t h|β, xtr, xte). (10)
+In practice, we want to ensure the weights are normalized, specifically to satisfy the condition of ∑|B| i=0 w t i = 1. The full algorithm is summarized in Algorithm 1. Algorithm 1: Online Goal Learning from pHRI Initialize: wt=0i=0:|B| ← 1 |B|
+for t = 0 to T do utr = Br(q̇ t r − q̇t) +Kr(qtr − qt)
+η = 0 if uth = 0 then
+P (uth|βi, xtr, xte)← 1 else
+P (uth|βi, xtr, xte)← Pg(∆(xte,βi))(u t h) ▷ (6)
+end for i = 1 to |B| do
+wti ← w t−1 i p(u t h|β, xte) ▷ (10)
+η ← η + wti end for i = 1 to |B| do
+wti ← wti/η end utr ← Opt(∆(βcur, bt(β)))
+end iii. conclusion and future works In this work, we introduce a novel framework that employs importance sampling within a Bayesian paradigm to minimize the human effort required in various daily scenarios that involve pHRI. We formalize how the robot can effectively infer task objectives (i.e., target pouring amount) and optimize the task skills (i.e., shaking, pouring, stopping) during the physical interaction. We show the analysis that how task goals can be inferred in complex daily manipulation tasks. We plan to conduct a user study to demonstrate the applicability of the proposed framework in a series of complex pouring tasks involving shaking and tapping motions.

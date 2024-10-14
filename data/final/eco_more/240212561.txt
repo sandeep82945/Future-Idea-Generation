@@ -1,0 +1,315 @@
+Problem definition: Appointment scheduling problems under uncertainty encounter a fundamental trade-off between cost minimization and customer waiting times. Most existing studies address this trade-off using a weighted sum approach, which puts little emphasis on individual waiting times and, thus, customer satisfaction. In contrast, we study how to minimize total cost while providing waiting time guarantees to all customers. Methodology/results: Given box uncertainty sets for service times and no-shows, we introduce the Robust Appointment Scheduling Problem with Waiting Time Guarantees. We show that the problem is NP-hard in general and introduce a mixed-integer linear program that can be solved in reasonable computation time. For special cases, we prove that polynomial-time variants of the well-known Smallest-Variance-First sequencing rule and the Bailey-Welch scheduling rule are optimal. Furthermore, a case study with data from the radiology department of a large university hospital demonstrates that the approach not only guarantees acceptable waiting times but, compared to existing robust approaches, may simultaneously reduce costs incurred by idle time and overtime. Managerial implications: This work suggests that limiting instead of minimizing customer waiting times is a win-win solution in the trade-off between customer satisfaction and cost minimization. Additionally, it provides an easy-to-implement and customizable appointment scheduling framework with waiting time guarantees. 1. introduction Excessive waiting times negatively affect customer satisfaction, perceived service quality, and loyalty in various services, such as call centers, public transportation, and health care (Huang 1994, Taylor and Baker 1994). A customer’s tolerance for waiting, which separates acceptable from excessive waiting times, has been shown to range from 37 minutes for a majority of patients in an outpatient clinic to 11 seconds for most users to load a website (Bouch et al. 2000, Moschis et al. 2003, Hill and Joonas 2005). The tolerance depends amongst others on the perceived and expected waiting time and can be influenced by many effective interventions, e.g., Kumar et al. (1997), Davis and Heineke (1998), Bielen and Demoulin (2007). Meanwhile, there is a lack of appointment scheduling approaches to control actual waiting times. Appointment scheduling is a multi-criteria problem that typically involves uncertainty in service times and other attributes. In particular, appointment scheduling problems face a fundamental trade-off between waiting times and capacity utilization: Shorter waiting times come at the cost of longer idle times, and vice versa. In the literature, this trade-off has been modeled predominantly by minimizing a weighted sum of waiting times, idle times, and overtime (Ahmadi-Javid et al. 2017). However, it has long been known that such weighted sum approaches can lead to unbalanced and excessive waiting times for some customers (Cayirli and Veral 2003), and in combination with individual no-show predictions even to racial disparity (Samorani et al. 2021). This paper proposes a new approach to appointment scheduling that considers waiting (in)tolerance. In particular, we study the following robust appointment scheduling and sequencing problem. For a set of preselected customers, we are given the shortest and longest possible service time of each customer as well as the total number of no-shows. We limit each customer’s waiting time, even in a worst-case scenario, to a predetermined tolerance for waiting (so-called maximum waiting time guarantee). Then we minimize a weighted sum of idle times and overtime (so-called total cost). The main contributions of this work can be summarized as follows. Maximum Waiting Time Guarantees. To the best of our knowledge, this paper is the first to introduce maximum waiting time guarantees for intraday appointment scheduling. The
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 3
+guarantees ensure that each customer’s waiting time stays below a given individual threshold, even in a worst-case scenario. Hence, they ensure that all customers experience acceptable waiting times and prevent customer dissatisfaction due to excessive waiting times. In addition, communicating these guarantees can increase customer satisfaction (Kumar et al. 1997). Optimal Scheduling and Sequencing Rules. We show that the robust appointment scheduling and sequencing problem with customer-specific maximum waiting time guarantees is NP-hard in general, and introduce a mixed-integer linear programming formulation. We present optimal scheduling and sequencing rules for the following polynomial-time solvable problem variants. First, we consider the case of constant idle time costs, minimizing total idle time plus overtime cost. For this case, we prove optimality of an extended variant of the well-known Smallest-Variance-First rule, sorting customers in ascending order by the degree of uncertainty in their service time and their waiting time guarantees. For the case of non-increasing idle time costs and any given but fixed customer sequence, we prove optimality of the so-called ASAP rule, scheduling customers as early as possible while fulfilling the waiting time guarantees. Computational Study Using Patient Data from a Radiology Department. Using real data from the radiology department of a large hospital, we first show that the problem can be solved in reasonable computation times for all considered instances. Second, we conduct a sensitivity analysis of the waiting times, idle times, and overtime obtained with optimal schedules and sequences. Third, we compare the schedules with those obtained by a weighted sum approach. The results show that waiting time guarantees lead to limited and more balanced waiting times across all customers. Moreover, by definition, our approach introduces the waiting time guarantees with a minimal increase in worst-case total cost. In particular, in cases in which the waiting times obtained by the weighted sum approach are also acceptable for all patients, our approach generally leads to lower total costs without increasing the waiting time of the longest waiting patient. The remainder of the paper is organized as follows. Section 2 reviews related optimization problems in the appointment scheduling literature. Section 3 formally introduces the Robust Appointment Scheduling Problem with Waiting Time Guarantees. We show that it is NP-hard in general
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 4
+and derive a mixed-integer linear program formulation. In Section 4, we present optimal scheduling and sequencing rules for relevant special cases in polynomial time. In Section 5, we conduct a computational study with real-world data, showing that introducing maximum waiting time guarantees can improve both waiting times and total cost compared to a weighted sum approach. 2. literature review For an overview of general appointment scheduling, we refer the interested reader to Cayirli and Veral (2003), Gupta and Denton (2008), and Ahmadi-Javid et al. (2017). In the following, we review two streams of the appointment scheduling literature that are most relevant to our research. In Section 2.1, we discuss robust optimization approaches using box uncertainty sets for service times. In Section 2.2, we survey alternative approaches for modeling waiting time, distinct from the widely used weighted sum approach that minimizes total idle time, total waiting time, and overtime. 2.1. robust optimization framework Robust approaches to appointment scheduling that require only the shortest and longest service times but no other distributional information are scarce. To the best of our knowledge, Mittal et al. (2014) present the first such approach, minimizing a weighted sum of idle time costs and waiting time costs. Schulz and Udwani (2019) generalize the problem in Mittal et al. (2014) to idle time costs that are heterogeneous in the customer sequence and thus implicitly heterogeneous over time. Both works derive scheduling and sequencing rules for various special cases that are remarkably easy to implement. Given a customer sequence and homogeneous idle time costs, Mittal et al. (2014) present a polynomial-time algorithm to compute optimal interappointment times, which decrease as the planning horizon progresses. They also show that a simple variant of Smith’s rule, scheduling customers in ascending order of the length of their service time intervals divided by their waiting time costs, is a 1.137 approximation. Schulz and Udwani (2019) prove a slightly adapted variant of this rule to be 1.0604-approximate, and the problem of simultaneously scheduling and sequencing customers with heterogeneous idle time costs and the weighted sum objective function to be strongly NP-hard. Recently, Issabakhsh et al. (2021) addressed a robust appointment
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 5
+scheduling problem for infusion centers and solved it with a scheduling heuristic based on Adaptive Large Neighborhood Search. Advancing this first stream of literature, whose robust optimization framework we follow and additionally extend to account for no-shows, we provide waiting time guarantees to all customers. 2.2. modeling waiting time Building on the classification by Bertsimas et al. (2011), we divide approaches for modeling waiting times into two substreams, based on the criterion used to evaluate waiting time. The utilitarian criterion minimizes a weighted sum of waiting times, while fairness criteria address individual waiting times more directly. 2.2.1. Utilitarian Criterion. In the first substream, we review appointment scheduling approaches that deviate from the classic weighted sum objective function but retain the utilitarian criterion. Sang et al. (2021) use a stochastic optimization approach to minimize any quantile of the total (idle time, overtime, and waiting) cost for a given job sequence. They find a semi-domeshaped pattern with increasing interappointment times at the beginning of the planning horizon and constant interappointment times later. Zhou et al. (2022) use a chance-constraint approach, minimizing, among others, the probability that the sum of waiting times exceeds a certain threshold. They find optimal interappointment times to follow the well-known dome-shaped pattern in the case of zero no-shows and walk-ins. With a positive number of walk-ins, they find optimal interappointment times in the middle of the planning horizon to be constant, forming a so-called plateau dome-shaped pattern. 2.2.2. Fairness Criteria. Qi (2017) presents the first optimization study with the primary objective of fair customer waiting times. She lexicographically minimizes the so-called delay unpleasantness of the longest-waiting customer, which considers the frequency and intensity of delays above a certain threshold. Optimal scheduling rules depend on waiting time thresholds and the weighting of overtime costs. As the weighting of overtime increases, the interappointment times between the first appointments are shorter than with weighted sum approaches. As the waiting
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 6
+time threshold decreases, later start times are assigned to the later appointments in the planning horizon. Following a queuing approach, Benjaafar et al. (2023), by contrast, assign the earliest possible appointment time to each customer request while limiting the expected waiting time of
+each customer. They find that the optimal times between appointments increase in the order of arrival. Finally, for a given customer sequence, Bendavid et al. (2018) minimize the completion time of the last appointment while bounding the probability of delay for each appointment. Under
+the assumption that the distribution of service times is known, they develop a simulation-based sequential algorithm and show that optimal interappointment times follow a dome-shaped pattern. 2.2.3. Our Contribution. In this paper, we contribute to the fairness criteria by providing an a priori waiting time guarantee for each customer, effectively limiting their worst-case waiting time. These waiting time guarantees can be customized to match the tolerance levels for waiting
+identified in empirical studies. Moreover, compared to existing approaches, we allow for substantial cost reduction by accounting for no-shows, (heterogeneous) idle time costs, and the sequencing decision. 3. robust appointment scheduling with waiting time guarantees This section is organized as follows. In Section 3.1, we formally introduce the Robust Appointment
+Scheduling Problem with Waiting Time Guarantees. In Section 3.2, we show that the problem is NP-hard. In Section 3.3, we derive two mixed-integer linear programs, the first for the case that all customers show up and the second for the general case, which considers no-shows. 3.1. mathematical model We consider a set of n preselected customers denoted by [n] := {1, . . . , n}, and a single service provider with a regular working time of L time units. Our decisions involve determining the customer sequence and appointment times. To determine the customer sequence, we introduce binary variables πij for i, j ∈ [n], where πij = 1 if and only if exactly i− 1 customers are served before customer j. In other words, customer j is assigned to the i-th appointment. We define continuous variables Ai ≥ 0 to represent the start time of each appointment i ∈ [n]. We consider the following
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 7
+costs. Idle time before the first appointment incurs a per-time unit cost c1, and idle time between two consecutive appointments i− 1 and i incurs a per-time unit cost ci, for 2≤ i≤ n. If there is any idle time before the planning horizon of L time units ends, it incurs a per-time unit cost cn+1. Additionally, overtime incurs a per-time unit cost co. We aim to determine a customer sequence and appointment times that minimize the cost incurred by idle time and overtime, while ensuring that no customer j ∈ [n] waits longer than their maximum waiting time guarantee Wj . The main difficulty is that customers have uncertain service times and no-show behavior. For each customer j ∈ [n], we only have information about the shortest and longest possible service times, denoted as ¯ pj and p̄j, respectively. This leads to the scenario set of possible service time realizations P := [ ¯ p1, p̄1]× . . .× [ ¯ pn, p̄n]. Additionally, we know the total number of customers who will show up within the planning horizon, denoted as k, where k ≤ n. We have no information on which k out of n customers show up. This leads to the scenario set of possible no-show realizations Λk := {λ∈ {0,1} n : ∑n j=1 λj = k}, where λj =1 if and only if customer j shows up. We assume that customers who show up are on time. For any given but fixed service time scenario p ∈ P and no-show scenario λ ∈ Λk, and given π and A, we compute waiting times, idle times, and overtime as follows. We start by initializing C0(π,A,p,λ) := 0, and define completion times recursively for each appointment i ∈ [n] as Ci(π,A,p,λ) := max{Ai,Ci−1(π,A,p,λ)} + ∑n j=1 πijλjpj. It is useful and easy to see by induction that the completion times can be reformulated as Ci(π,A,p,λ) = maxl∈[1,i] { Al + ∑i
+k=l
+n∑ j=1 πkjλjpj
+}
+, see Lemma 3 in the Online Appendix. The waiting time before
+each appointment i∈ [n] then equals the duration between the completion of the previous appointment and the start of the current appointment, expressed as
+waiti(π,A,p,λ) := (Ci−1(π,A,p,λ)−Ai) + ,
+with (·)+ :=max{0, ·}. Similarly, the idle time before each appointment i ∈ [n+1], with An+1 :=L, is given by (Ai−Ci−1(π,A,p,λ)) + , and overtime is computed as (Cn(π,A,p,λ)− L) +. The cost function cost(π,A,p,λ) := n∑
+i=1
+ci (Ai−Ci−1(π,A,p,λ)) + +max{cn+1(L−Cn(π,A,p,λ)), co(Cn(π,A,p,λ)−L)}
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 8
+accounts for the total cost arising from idle time and overtime. We refer to Table 7 in the Online Appendix for a summary of the notation. To establish sustainable solutions, appointment schedules should be designed sufficiently robust to withstand unfortunate service times and no-shows. Excessive waiting times, idle time, and overtime not only incur high costs but also lead to employee and customer stress, dissatisfaction, and reduced loyalty. In healthcare, these factors can even harm patient health (Bae and Fabry 2014). Hence, we introduce a robust optimization approach that ensures smooth operations for all stakeholders, even in adverse scenarios. This gives rise to the following Robust Appointment Scheduling Problem with Waiting Time Guarantees:
+min π,A U (1)
+s.t. max p∈P,λ∈Λk
+{
+cost(p,λ,π,A)−U,max i∈[n]
+{
+waiti(p,λ,π,A)− n∑
+j=1
+πijWj
+}}
+≤ 0 (2)
+n∑
+i=1
+πij = 1, n∑
+j=1
+πij = 1 ∀i, j ∈ [n] (3)
+A1 = 0 (4) πij ∈ {0,1} ∀i, j ∈ [n] (5)
+The Objective Function (1) minimizes the upper bound U on total cost incurred by idle time and overtime. Constraint (2) enforces this upper bound to remain valid even in worst-case scenarios, preventing excessive idle time and excessive overtime. Additionally, it ensures that the waiting time guarantees of all customers are met across all scenarios, ensuring acceptable waiting times. Thus, by preparing both the provider and the customers for their respective worst-case scenarios, Constraint (2) ensures smooth operation even on a challenging day. Constraints (3) enforce that each customer is assigned to exactly one appointment, and each appointment is assigned to exactly one customer. Constraint (4) sets the start time of the first appointment to 0. Remark 1. Due to the adversarial problems in Constraint (2), which maximize the total cost and the waiting time of the longest-waiting customer, the above problem formulation is non-linear. In particular, it is not amenable to standard MIP solvers in this form. Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 9
+Remark 2. The problem always has a feasible solution. For an arbitrary but fixed sequence π, it is easy to see that the appointment times A1 := 0 and Ai := (
+maxl∈[1,i−1]
+(
+Al + ∑i−1
+k=l ∑n j=1 πkj p̄j
+)
+− ∑n
+j=1 πijWj
+)+
+for i ∈ [2, n] are feasible solutions. In the
+special case that all waiting time guarantees are so long that the latter term equals 0 for all i ∈ [n], all customers could be scheduled at time 0, which corresponds to the single block rule (Cayirli and Veral 2003). Remark 3. It is noteworthy that in special cases a monotonic increase in the appointment times is not guaranteed. Specifically, given a worst-case scenario p and λ, an assignment π, and appointment times A1, . . . ,Ai−1, it holds that Ai can be chosen to be earlier than Ai−1 if and only if max{0,Ci−1(π,A,p,λ)−Ai−1}+ ∑n j=1 πi−1,jpj < ∑n j=1 πijWj . 3.2. complexity analysis In this section, we establish theNP-hardness of the Robust Appointment Scheduling Problem with Waiting Time Guarantees, which holds even under the assumption of zero no-shows and identical waiting time guarantees for all customers. This result expands upon existing NP-hardness proofs for appointment scheduling and sequencing problems employing weighted sum approaches (Bosch 1997, Kong et al. 2016, Schulz and Udwani 2019). Theorem 1 (NP-Hardness). Let all customers show up and have identical waiting time guarantees W . Moreover, let the idle time costs fulfill c1 = . . .= cσ > cσ+1 = . . .= cn for some σ ∈ [n−1] and the overtime cost co = 0. Then the Robust Appointment Scheduling Problem with Waiting Time Guarantees is NP-hard. We briefly sketch the proof and refer to the Online Appendix for details. In a worst-case scenario, worst-case idle times arise in two ways: If no idle time occurs up to and including appointment i∗− 1, then the idle time before appointment i∗ equals ∑i∗−1
+i=1 ∑n j=1 πij(p̄j−
+¯ pj)−W . The idle time
+before all subsequent appointments i > i∗ equals ∑n
+j=1 πi−1,j(p̄j− ¯ pj). In the case of i
+∗ = σ, the unit
+idle time cost before appointment i∗ exceeds all later unit costs of idle time. The challenge lies in partitioning the customers into two groups such that the idle time sum ∑i∗−1
+i=1 ∑n j=1 πij(p̄j−
+¯ pj)−W
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 10
+is minimized. In the Online Appendix, we show that the well-known Subset Sum Problem can be reduced to this particular problem, establishing the NP-hardness of RASWTG. Remark 4. If the assumption on idle time costs in Theorem 1 is replaced by constant idle time costs c1 = . . .= cn, indicating no time preference for idle time occurrence, the Robust Appointment Scheduling Problem with Waiting Time Guarantees becomes solvable in polynomial time. We discuss this case in detail in Section 4. 3.3. Linearization Due to the recursive nature of completion times in the cost function, applying the classical dualization scheme by Bertsimas and Sim (2004) for linearization is impractical. However, we overcome this challenge by exploring structural problem properties. In Section 3.3.1, we leverage structural properties to determine worst-case service times analytically. This allows us to formulate a compact Mixed-Integer Linear Program (MILP) for the case of zero no-shows. Section 3.3.2 then motivates the consideration of no-shows and outlines advanced structural properties utilized for linearization in the presence of no-shows. For a detailed consideration of no-shows as well as for proofs not included in the main paper, we refer the interested reader to the Online Appendix B. 3.3.1. Worst-Case Service Time Scenarios. We investigate service times in adversarial scenarios maximizing cost and waiting times, respectively. Consequently, we present a compact MILP for the case of zero no-shows. Adversarial Problem of Maximizing Cost. The following theorem shows that the total cost is maximized in one of the n+1 sequence-dependent scenarios, in which customers scheduled for the first i∗ ∈ {0, . . . , n} appointments require minimum service duration (idle time maximization), and all subsequent customers require maximum service time (overtime maximization). Theorem 2. Given a customer sequence π, appointment times A, and λ∈Λk, let ¯ Ci(π,A,λ) :=
+max{Ai, ¯ Ci−1(π,A,λ)}+
+∑n j=1 πijλj
+¯ pj for i∈ [n], with ¯ C0(π,A,λ) := 0, define the completion times
+when all customers require minimum service time. Then maxp∈P cost(p,λ,π,A) is equivalent to
+max i∗∈{0,...,n+1}
+i∗∑
+i=1
+ci(Ai− ¯ Ci−1(π,A,λ))
++ + co
+(
+Ai∗ + n∑
+k=i∗
+n∑
+j=1
+πkjλj p̄j −L
+)+
+,
+where An+1 :=L. Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 11
+Adversarial Problem of Maximizing Waiting Times. As for each no-show scenario λ ∈ Λk, service time scenario p ∈ P, and patient j ∈ [n], the realized service time λjpj is non-negative, it is straightforward to see that the scenario of maximum service times
+p̄ := (p̄1, . . . , p̄n)∈ argmax p∈P
+{
+max l∈[1,i−1]
+(
+Al + i−1∑
+k=l
+n∑ j=1 πkjλjpj
+)}
+, (6)
+uniformly maximizes the waiting time for each appointment i∈ [n] in Constraint (2). MILP. Now, let ∆i denote the idle time before appointment i ∈ [n + 1] and σi∗ denote the overtime accumulated starting from appointment i∗ ∈ [n+ 1]. Then the worst-case service time
+scenarios from Theorem 2 allow us to obtain the following mixed-integer linear program for the
+case of zero no-shows (RASWTG-0):
+minU (7)
+s.t.U ≥ i∗∑
+i=1
+ci∆i+ coσi∗ ∀i ∗ ∈ [n+1] (8)
+∆i ≥Ai− ¯ Ci−1 ∀i∈ [n+1] (9) ¯ Ci =max{Ai, ¯ Ci−1}+ n∑
+j=1
+πij ¯ pj ∀i∈ [n] (10)
+σi∗ ≥Ai∗ + n∑
+k=i∗
+n∑
+j=1
+πkj p̄j −L ∀i ∗ ∈ [n] (11)
+Al + i−1∑
+k=l
+n∑ j=1 πkj p̄j −Ai ≤ n∑ j=1 πijWj ∀i, l : i ∈ [n], l ∈ [i− 1] (12)
+n∑
+j=1
+πij = 1, n∑
+i=1
+πij = 1 ∀i, j ∈ [n] (13)
+A1 = 0, ¯ C0 = 0,An+1 =L (14) Ai, ¯ Ci ≥ 0 ∀i∈ [n] (15) ∆i, σi ≥ 0 ∀i∈ [n+1] (16)
+πij ∈ {0,1} ∀i, j ∈ [n] (17)
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 12
+Compared to (1 - 5), RASWTG-0 can be characterized as follows: Based on Lemma 2, Con-
+straints (8) - (11) determine the worst-case total cost incurred by idle time and overtime. Based on
+(6), Constraint (12) ensures that the waiting time guarantees are fulfilled even in the worst case. RASWTG-0 is an assignment problem of customers to appointments with assignment-dependent cost. It has O(n2) binary variables, O(n) continuous variables, and O(n2) constraints. Using stan-
+dard linearization techniques, Constraint (10) can be linearized by introducing another O(n) binary
+variables, see Remark 6 in the Online Appendix. The computational study in Section 5 shows that
+RASWTG-0 is solvable with a state-of-the-art MIP solver in short times for all instances with up
+to twenty patients from a data set of CT examinations in a large university hospital. 3.3.2. Worst-Case No-Show Scenarios. No-shows introduce uncertainties that, if over-
+looked, can strongly elevate costs. The example given in Remark 5 illustrates that considering
+no-shows can reduce idle time cost by 70%, and this pattern consistently holds across various
+examples. Remark 5 (Potential for Cost Reduction.). Consider a scenario with five customers in
+a fixed order and service time intervals [5, 6], [5, 7], [5, 8], [5, 9], [5, 10], in which two out of five
+customers do not show up. All customers have a maximum waiting time guarantees of 10 time
+units. Idle time costs c1 = . . .= cn are constant. For simplicity, we do not consider idle time after the last appointment or overtime, i.e., cn+1 = 0, co = 0. In Section 4, we demonstrate that this leads to the following optimal solutions: Disregarding the no-show information (planning for 0 no-shows)
+results in appointment times of 0, 0, 3, 11, 20, incurring a worst-case total idle time of 10 units. However, accounting for the accurate count of two no-shows yields appointment times of 0, 0, 3,
+5, 7, with a worst-case total idle time of only 3 units. We now address the task of formulating a MILP for the general Robust Appointment Schedul-
+ing Problem with Waiting Time Guarantees and k no-shows, 0 ≤ k ≤ n. To this end, we explore
+the adversarial problems, seeking no-show scenarios that maximize waiting times and total cost,
+respectively. Identifying worst-case no-show scenarios is notably more complex than determining
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 13
+worst-case service times. Moreover, maximizing total cost is particularly intricate because the cost incurred by a no-show is not only proportional to the customer’s service time but also encompasses sequence-dependent idle time and overtime costs. For a comprehensive understanding of the technical aspects, we direct the interested reader to the Online Appendix B. Here, we summarize our key findings:
+Adversarial Problem of Maximizing Cost. In Lemma 5 in the Online Appendix, we characterize a worst-case no-show scenario for an arbitrary but fixed sequence. Specifically, it suffices to consider, for each i∗ ∈ {1, . . . , n+1}, a no-show scenario in which, among the customers scheduled for the last n− i∗+1 appointments, those with the longest maximum service times show up. If k > n− i∗+1, all customers scheduled for these last appointments show up. Additionally, among the customers scheduled for the first i∗− 1 appointments, the k− (n− i∗ +1) ones with the smallest product of idle time cost and minimum service time show up. Adversarial Problem of Maximizing Waiting Times. The following lemma establishes the equivalence of (i) computing a single worst-case scenario that maximizes the waiting time for the longest waiting customer and (ii) independently computing a worst-case scenario for each customer that maximizes their waiting time. This inherent decomposability of the adversary problem for waiting times stems from the scenario-independent appointment times. Lemma 1 (Decomposability). Given a customer sequence (πij)i,j∈[n] and appointment times
+(Ai)i∈[n], it holds that maxp∈P,λ∈Λk−1
+{
+maxi∈[n]
+{
+Ci−1(π,A,p,λ)−Ai− ∑n j=1 πijWj
+}}
+≤ 0 if and
+only if maxi∈[n]
+{
+maxp(i)∈P,λ(i)∈Λk−1
+{
+Ci−1(π,A,p (i), λ(i))−Ai− ∑n j=1 πijWj
+}}
+≤ 0. By employing the completion time reformulation, leveraging the total unimodularity of the constraint matrix associated with the adversarial problem for each appointment, and applying LP duality, the adversarial problem of maximizing waiting times is then reduced to O(n) linear programming problems. Each of these problems entails O(n) variables and constraints. MILP. These results lead to a comprehensive MILP for the general case, detailed in the Online Appendix B and denoted as RASWTG. This MILP encompasses O(n3) variables and constraints, where the constraint matrix exhibits sparsity. The computational study in Section 5
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 14
+demonstrates the efficient solvability of RASWTG for all instances involving up to ten patients
+from a dataset of CT examinations in a large hospital, employing a state-of-the-art MIP solver. 4. optimal scheduling and sequencing In this section, we present optimal scheduling and sequencing rules to solve RASWTG in polynomial
+time in special cases, as summarized in Table 1. Additionally, we investigate optimal interappoint-
+ment times for the general case. All results demonstrate how to provide maximum waiting time
+guarantees cost-efficiently. 4.1. polynomial-time sequencing for the case of constant idle time costs and zero no-shows Finding an optimal customer sequence can substantially reduce idle time costs (Cayirli et al. 2008,
+Deceuninck et al. 2018) but appears extremely difficult (Mak et al. 2015). Similarly, Theorem 1
+implies that (unless P =NP) we cannot find a universal optimal scheduling and sequencing rule for
+the Robust Appointment Scheduling Problem with Waiting Time Guarantees in polynomial time. However, for a relevant special case, we now prove optimality of a polynomial-time sequencing rule
+consistent with the well-known Smallest-Variance-First (SVF) heuristic. SVF is the most common heuristic for weighted sum approaches to appointment sequencing
+with stochastic service times. It ranks customers in ascending order of variance, following the
+intuition to reduce the probability of deviating from the schedule by placing customers with less
+variable service times first. For recent SVF studies in a stochastic optimization framework, we refer
+to Kong et al. (2016), Jafarnia-Jahromi and Jain (2020), and de Kemp et al. (2021). Moreover,
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 15
+Mak et al. (2015) prove, under a mild condition, the optimality of the SVF rule for a robust meanvariance model with an arbitrary number of appointments. Recently, Kong et al. (2016) showed that the optimality of the SVF policy depends on the number of customers as well as the shape of service time distributions. Lemma 2 (Optimal Customer Sequence). Let the number of no-shows equal zero and idle time costs c1 = . . .= cn+1 be constant, indicating no time preference for the occurrence of idle time. Then it is optimal to schedule customers j ∈ [n] in non-decreasing order w.r.t. p̄j− ¯ pj +(1+ co)Wj. Under the given assumptions, it is optimal to schedule customers j ∈ [n] in non-decreasing order with respect to their service time uncertainty p̄j − ¯ pj and their waiting time guarantee Wj, as a function of overtime cost co. This result intuitively extends the SVF rule to account for waiting time guarantees: Uncertainty is kept as low as possible for as long as possible, particularly for customers with stricter waiting time guarantees. The relative importance of both criteria depends on the overtime cost. We call it the Smallest-Variance-First Rule with Waiting Time Guarantees (SVF-WTG). We will further determine optimal appointment times under these (and milder) assumptions in Section 4.2. 4.2. polynomial-time scheduling rule under non-increasing idle time costs In the following, we assume that an arbitrary sequence of customers is given. We first present the so-called As Soon As Possible (ASAP) scheduling rule defined by Algorithm 1. Second, we show that in the case of non-increasing idle time costs, it leads to an optimal solution in polynomial time. Third, we describe how ASAP generalizes the well-known Bailey-Welch rule (Welch and Bailey 1952). The ASAP scheduling rule schedules each customer as early as possible while respecting the waiting time constraints. It is constructed as follows by Algorithm 1. The start time of the first appointment is set to 0 in Line 1. For each subsequent appointment, the algorithm computes the latest possible completion time of the previous appointment using Lines 5 and 7. Line 5 calculates the maximum sum of service times from the l-th to the ith appointment under k − 1 show-ups,
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 16
+which corresponds to the term in Line 7 if all customers show up. Line 8 ensures that even in a
+worst-case scenario, the waiting time guarantee is met by setting the i-th appointment time to
+the latest possible completion time of the previous appointment and subtracting the waiting time
+guarantee of the customer scheduled for the i-th appointment. In the special case of zero no-shows, Lines 3 to 7 can be skipped, and Line 8 can be replaced by Ai = ( ∑i−1
+k=1 ∑n j=1 πkj p̄j − ∑n j=1 πijWj
+)+
+. Algorithm 1 computes optimal appointment times for a given sequence under non-increasing
+idle time costs, as stated in the following theorem. This condition, while crucial for the optimality
+proof (see Remark 7 in the Online Appendix), holds practical significance. Constant idle time costs
+indicate no time preference for the occurrence of idle time. Decreasing idle time costs indicate that
+later idle time is less expensive than earlier idle time, potentially due to its productive use for
+documentation work incurred by earlier appointments. Theorem 3 (Optimal Appointment Times). Given non-increasing idle time costs c1 ≥ . . .≥ cn+1, and a customer sequence π, Algorithm 1 computes optimal appointment times in polynomial time for the Robust Appointment Scheduling Problem with Waiting Time Guarantees. Algorithm 1 ASAP Scheduling Rule Require: n ∈N, c∈Rn+1 with c1 ≥ . . .≥ cn+1, (Wj)j∈[n], p̄∈R n, k≥ 0, π ∈ {0,1}n×n
+1: A1← 0 2: for i← 2 to n do
+3: for l← 1 to i− 1 do
+4: if i− l > k− 1 then 5: Ul←minα,z { (k− 1)α+ ∑i−1 σ=l zσ : zσ +α≥ ∑n j=1 πσj p̄j, zσ ≥ 0 ∀σ ∈ [l, i− 1] } 6: else 7: Ul← ∑i−1
+σ=l ∑n j=1 πσj p̄j
+8: Ai←
+(
+maxl∈[i−1]Al +Ul− n∑
+j=1
+πijWj
+)+
+9: return (A1, . . . ,An)
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 17
+The ASAP rule can be considered a generalization of the well-known Bailey-Welch rule, which schedules the first two customers simultaneously and all subsequent customers sequentially. In Line 8, each customer is scheduled to arrive at time 0 as long as the latest possible completion times of the previous customers are not longer than their waiting time guarantee. If this condition is no longer met, customers are scheduled sequentially. In particular, the maximum waiting time guarantees control how many customers can be scheduled at the start time of the planning horizon. 4.3. optimal interappointment times for varying costs and no-show rates In the literature, empirical studies on optimal interappointment times are commonly pursued in settings where analytical approaches face significant challenges. Accordingly, while we have proven optimality of the ASAP scheduling rule for the case of non-increasing costs, we derive further insights for the case of increasing costs by analyzing optimal interappointment times. The optimal schedules are computed using Gurobi and illustrated by the example of ten identical customers, each with a minimum service time of 15 minutes, a maximum service time of 25 minutes, and a waiting time guarantee of 30 minutes. In the cases of non-increasing idle time costs, we observe in Figure 1 that the optimal interappointment times follow variants of the well-known plateau dome shape (Denton and Gupta 2003, Robinson and Chen 2003, Kong et al. 2020, Sang et al. 2021). Specifically, interappointment times initially increase, followed by a plateau of constant interappointment times, and non-increasing
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 18
+interappointment times towards the end of the planning horizon. We provide a detailed explana-
+tion and generalize these findings for all cases with non-increasing idle time costs in the Online
+Appendix, employing the ASAP scheduling rule. The complexity observed in the case of increasing
+costs supports the hypothesis from Remark 7 that establishing optimal scheduling rules in this
+scenario is more complex. 5. computational study In this section, we evaluate the performance of RASWTG schedules on a real-world data set from
+the radiology department of a large university hospital. In particular, we analyze runtimes, conduct
+a sensitivity analysis, and present managerial insights from comparing waiting times, idle times,
+and overtime obtained with RASWTG to those obtained with a weighted sum approach. We use
+the standard time notation mm:ss, where mm denotes the number of completed minutes and ss
+the number of completed seconds since the start of the minute. 5.1. instances We generate test instances based on 7,745 CT examination records performed on one of three
+CT machines in the radiology department of a large university hospital in Munich, Germany. All
+exams were performed in 2019 or the first quarter of 2020. For each CT examination, we have
+the following information: Exam type, exam day, start time, and completion time. The start and
+completion times were recorded as so-called “Modality Performed Procedure Steps”. That is, they
+do not include setup times before and after the irradiation procedure, such as preparing the patient
+at the unit or removing the patient from the unit, but only the scanning time. Service times are
+calculated as the difference between completion time and start time. We first split the data into an interval estimation set and a test set. The interval estimation
+set consists of all 6,359 CT examinations recorded in 2019; the test set consists of all 1,386 CT
+examinations recorded in the first quarter of 2020. The interval estimation set is used to estimate
+the service time intervals for the examinations in the test set. Specifically, for each of the 64
+examination types, we estimate the minimum and maximum service time as the 5th and 90th
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 19
+percentiles of the empirical distribution of service times within the interval estimation set. We
+tested that this choice ensures meeting the waiting time guarantees for nearly all patients while
+also resulting in reasonable total costs. We then compute schedules for the examination requests
+recorded in the test set using these service time interval estimates. In case of multiple optimal
+solutions, we choose one that minimizes the sum of appointment times in accordance with the
+ASAP rule. The schedules are evaluated using the service times recorded in the test set and a
+random sample of n− k no-shows. To generate test instances, we consider four factors: number of patients, level of no-shows, waiting
+time guarantees, and structure of the idle time costs. In a ceteris paribus design, we systematically
+vary these factors using three values each, as outlined in Table 2. Further insights into the rationale
+behind selecting these factors are available in the following and the Online Appendix D.1. Unless
+specified otherwise, our analysis centers on the base case characterized by bold values, encompassing
+constant idle time costs, ten patients who all show up, and a maximum waiting time guarantee of
+30 minutes. set that contain at least n appointments. Subsequently, we randomly sample n consecutive patient
+records from these days. This process generates 252 instances across all classes with five patients,
+107 instances across all classes with ten patients, and 39 instances across all classes with twenty
+patients. We differentiate three types of idle time costs: constant, decreasing, and increasing. Constant
+idle time costs (ci)i∈[n] remain fixed at ci = 1 for all i ∈ [n+ 1]. Decreasing idle time costs follow three assumptions: Idle time before the first appointment incurs a per-unit time cost of 1, idle time
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 20
+after the last appointment, fully utilized by staff for tasks like documentation, incurs a per-unit
+time cost of only 0.5, and costs linearly decrease between the first and last idle time. This results in ci = 1− i−1 2n for idle time before appointment i∈ [n+1]. For completeness, we also consider linearly increasing idle time costs with ci = n+i−1
+2n , i ∈ [n+ 1]. Overtime cost, complying with current US
+federal law requiring a minimum of 1.5 times the regular pay rate, is set at co =1.25. Finally, the length L of the planning horizon crucially impacts the trade-off between idle time
+cost and overtime cost. A short planning horizon may cause significant worst-case overtime, while
+an extended one may lead to no overtime but substantial idle time. For a comprehensive evaluation
+of the model, we set the length of the planning horizon for each instance to a specific time between
+the earliest and latest possible completion times of the last appointment, accommodating both idle
+time and overtime. Specifically, L is chosen as the sum of maximum service times minus the waiting
+time guarantee for the last appointment. For instances with zero no-shows and a waiting time
+guarantee of 30 minutes, the resulting average planning horizon is 50:05 minutes for five patients,
+132:08 minutes for ten patients, and 312:32 minutes for twenty patients. The average cumulative
+uncertainty within this horizon, obtained as the sum of the service time interval lengths, amounts
+to 46:53 minutes for five patients, 91:02 minutes for ten patients, and 178:09 minutes for twenty
+patients, and accordingly higher in the case of no-shows. 5.2. runtimes In Table 3, we report the average runtimes to compute an optimal schedule using the polynomial-
+time algorithm (PTA) that results from first applying Lemma 2 and then Algorithm 1 in the case
+of constant idle time costs and zero no-shows, the mixed-integer program RASWTG-0 for the case
+of zero no-shows, and the general mixed-integer program RASWTG. All experiments have been
+performed on an Intel Core i7-10510U 1.8 GHz machine (in 64-bit mode) with 16 GB memory
+under Microsoft Windows 10 and Gurobi 9.5.0 in Python 3.9.0. In the case of zero no-shows and constant idle time costs, our polynomial-time algorithm effi-
+ciently computes optimal schedules in milliseconds, even for a substantial number of patients. Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 21
+When there are zero no-shows but non-constant idle time costs, we employ the mixed-integer linear program RASWTG-0. With this model, Gurobi finds optimal schedules within seconds for up to 10 patients and within 200 seconds for 20 patients. For the case of a positive number of no-shows, we utilize the mixed-integer linear program RASWTG to calculate optimal schedules. Computation times increase noticeably with higher patient numbers and no-show rates. The model remains computationally tractable for 10 patients. For situations involving 20 patients and a positive number of no-shows, Gurobi solves (almost) no instance within a one-hour time limit. Furthermore, our experimental results support the conjecture from Section 4 that decreasing idle time costs lead to simpler optimal solution structures than increasing idle time costs. 5.3. Results We first conduct a sensitivity analysis and then compare the results with those obtained by minimizing a weighted sum of waiting times, idle times, and overtime. 5.3.1. Sensitivity Analysis. We assess the impact of each of the four factors listed in Table 2 on waiting times, idle times, and overtime, from which we derive practical managerial recommen-
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 22
+dations. To comprehensively understand the dynamics, we recall the trade-offs between waiting time and idle time until the last appointment, and the trade-off between overtime and idle time following the last appointment. Base Case. In the base case, the average waiting time per patient is 10:55 minutes, and the waiting time guarantees are met for 97% of the patients. The slight discrepancy from 100% is due to the estimation of minimum and maximum service times derived from empirical service time data in the separate interval estimation set, excluding outliers. In cases where realized service times are outside the estimated range, the waiting time guarantees of a few later patients are unmet. Furthermore, the average total idle time amounts to 37:40 minutes and overtime to 1:46 minutes, relative to an average cumulative uncertainty of 91:02 minutes. Figure 2 illustrates the distribution of waiting and idle times by appointment. Number of Patients. Table 4 summarizes our findings regarding waiting times, idle times, and overtime across a varying number of patients. Generally, as the number of patients in the planning horizon increases, the RASWTG approach leads to shorter waiting times and longer idle times (see Online Appendix, Section D.2). Moreover, given our choice of the planning horizon L, overtime decreases as the number of patients rises. No-Shows. Table 5 demonstrates that higher no-show rates correspond to enhanced adherence to waiting time guarantees and slightly increased overtime. Total idle time is not significantly affected by higher no-show rates, which highlights the model’s performance with no-shows. Looking at the increase from 0% to 10% and from 10% to 20%, waiting times on average decrease by 1:08 minutes, and the fulfillment of waiting time guarantees increases by 1.14%. This pattern is driven by the elevated planning uncertainty associated with higher no-show rates, prompting the conservatism
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 23
+of RASWTG, which ensures that all waiting time guarantees are met even if exactly the patients included in the worst-case scenario for waiting times show up. Moreover, a 10% increase in the no-show rate leads to a 0:42-minute rise in overtime, attributed to the planning horizon choice dependent on the number of show-ups. Finally, it is important to note that the RASWTG approach relies on precise predictions of the number of no-shows. If practitioners cannot accurately forecast this number, we recommend underestimating the total number of no-shows to ensure the fulfillment of all waiting time guarantees. Waiting Time Guarantees. Practitioners should tailor waiting time guarantees to align with their customers’ waiting time tolerance levels. Figure 2a illustrates how waiting and idle times vary across the planning horizon for different waiting time guarantee choices. Table 5 shows the corresponding total idle time, average waiting times, and adherence to the waiting time guarantee. Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 24
+Increasing the waiting time guarantee by 10 minutes, on average, improves the fulfillment of the
+waiting time guarantee by 1.90%, boosts capacity utilization by 18.44%, and maintains stability
+in terms of overtime. This substantial capacity utilization increase results from greater flexibility
+in terms of the waiting time constraints and, correspondingly, a shorter overall planning horizon. Idle Time Costs. The idle time costs control whether idle times occur rather early or late in the
+planning horizon and, oppositely, whether waiting times occur rather early or late. Decreasing idle
+time costs, by definition, particularly avoid early idle times. Thus, idle times predominantly occur
+later in the planning horizon, as can be seen in Figure 2b for the base case. The opposite is true
+for increasing idle time costs. Constant idle time costs do not define a preference for when idle
+time occurs. Notably, both total idle time and overtime are highest in the case of increasing idle
+time costs and significantly lower and closely aligned for constant and decreasing idle time costs. This observation suggests that the simple greedy rule which utilizes capacities as early as possible
+proves effective when minimizing total idle time. Furthermore, constant and decreasing idle time
+costs lead to later and, thus, potentially more productively usable idle times. 5.3.2. Comparison to a Weighted Sum Approach. In this section, we compare waiting
+times, idle times, and overtime acquired using RASWTG in contrast to those obtained using a
+weighted sum approach. Unless stated otherwise, we use the RASWTG approach in the base case
+setting. In particular, we assume that all patients show up. We refer to the following problem as
+Weighted Sum Robust Appointment Scheduling Problem (WSRAS). min π,A U (18)
+s.t.U ≥ n+1∑
+i=1
+ci (Ai−Ci∗,i−1) + +
+n∑
+i=1
+cw (Ci∗,i−1−Ai) + + co (Ci∗n−L) + ∀i∗ ∈ [n+1] (19)
+Ci∗i =max{Ai,Ci∗,i−1}+
+     ∑n j=1 πij ¯ pj, i < i ∗
+∑n j=1 πij p̄j, i≥ i ∗
+∀i∗ ∈ [n+1] (20)
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 25
+n∑
+j=1
+πij =1, n∑
+i=1
+πij =1 ∀i, j ∈ [n] (21)
+A1 =0,An+1 =L,Ci∗0 = 0 ∀i ∗ ∈ [n+1] (22)
+The Objective Function (18) minimizes the upper bound on total cost, as established in Con-
+straint (19). Specifically, Constraint (19) upper bounds the sum of waiting times, weighted by constant cost cw, idle times, weighted by sequence-dependent cost ci, and overtime, weighted by co; while ensuring robustness with respect to the same worst-case scenarios as RASWTG (see Theo-
+rem 2). Constraint (20) defines the completion times, while Constraint (21) reflects the assignment constraint known from the Robust Appointment Scheduling Problem with Waiting Time Guarantees. To enhance our understanding of optimal WSRAS schedules, we briefly explore optimal
+interappointment times, as illustrated in Figure 6 in the Online Appendix. Notably, Mittal et al. (2014) study a related robust appointment scheduling problem that minimizes a weighted sum of idle time and waiting time costs under a collective worst-case scenario. Our works show, independently of each other and with different objective functions, that it is
+sufficient to consider the same n+1 critical service time scenarios (see Theorem 2). Waiting Times. We compare, first, how to control waiting times with both approaches and, second, the distribution of waiting times across all appointments. Applying the weighted sum
+approach, we need to carefully tune the waiting time costs to manage waiting times. In contrast,
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 26
+when applying RASWTG, the waiting time guarantees constitute input parameters which (a priori)
+limit all worst-case waiting times, and indirectly also the realized waiting times. It is therefore
+easier to control waiting times with RASWTG than with the weighted sum approach. In addition, Figures 3 and 4 present boxplots illustrating patient waiting times depending on
+their position in the appointment schedule. These waiting times correspond to the optimal inter-
+appointment intervals depicted in Figure 6 in the Online Appendix. Notably, for modest waiting
+time costs (cw), waiting times with the weighted sum approach exhibit an increasing trend until the penultimate or last appointment, and excessive waiting times for some later appointments. High waiting time costs lead to very short waiting times for all appointments. In contrast, the
+RASWTG approach demonstrates an initial (limited) increase in waiting times followed by a grad-
+ual decrease. It is worth mentioning that this decline can be mitigated by introducing uncertainty
+budgets. Furthermore, for comparable overall costs, waiting times are distributed more equitably
+across appointments with RASWTG, and excessive waiting times are less likely. Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 27
+Costs. We finally evaluate the cost of replacing the weighted sum approach with RASWTG. We consider that a healthcare provider replaces WSRAS schedules with fixed waiting time cost (i) cw = 0.00001, (ii) cw = 0.1, and (iii) cw = 1 over all days. Our findings are summarized in Table 6. Let us first examine overtime. For WSRAS, we observe that overtime decreases with lower waiting time costs, as lower waiting costs allow for scheduling appointments earlier. Surprisingly, RASWTG exhibits the lowest overtime, on average only 1:46 minutes. This suggests that, even with hard waiting time constraints, RASWTG permits slightly earlier scheduling of the last appointment even compared to the weighted sum approach with low waiting time cost. Overall, both approaches maintain reasonable average overtime within a 1 to 7-minute range, and minimal with RASWTG. Considering total idle time, we find that it naturally increases with rising waiting time costs for WSRAS. RASWTG displays the lowest total idle time, a result consistent with our findings regarding overtime. It is worth noting that idle time for both approaches could be reduced by opting for a shorter planning horizon L but at the expense of increased overtime, which we aimed to prevent in the first place. However, as a substantial amount of idle time remains between the last appointment and the end of the planning horizon L for both approaches, we also compare the idle time up to the last appointment, which is less dependent on the choice of L. Again, for all waiting time costs except for cw = 0.00001, which comes with excessive waiting times, RASWTG yields lower idle time than WSRAS. We conclude with the following rule of thumb. In environments where most customers experience acceptable waiting times, introducing RASWTG offers both a priori waiting time guarantees and total cost reduction. The cost reduction typically comes with a limited increase in average waiting times. In environments where many customers experience excessive waiting times, introducing RASWTG effectively prevents excessive waiting times with a minimum increase in total worst-case cost. In all cases, RASWTG effectively mitigated excessive waiting times and overtime. 6. conclusion This work was motivated by the lack of intraday appointment scheduling and sequencing approaches to precisely control waiting times. We introduce maximum waiting time guarantees to respect
+Bauerhenne, Kolisch, and Schulz: Robust Appointment Scheduling with Waiting Time Guarantees 28
+customers’ waiting time tolerance even in a worst-case scenario of uncertain service times and no-shows. Hence, the established guarantees prevent negative effects of waiting times on customer dissatisfaction, perceived service quality, and loyalty shown in previous empirical research. At the same time, we minimize worst-case costs incurred by idle time and overtime. We show that the presented appointment scheduling problem with waiting time guarantees is NP-hard and find optimal scheduling and sequencing rules in polynomial time for practically relevant special cases. Assuming constant idle time costs and zero no-shows, we show optimality of a sequencing rule that schedules customers in ascending order with the amount of uncertainty about their service times and their waiting tolerance. This rule provides a deeper understanding of the optimality of the well-known SVF rule and extends it to consider waiting time guarantees. Moreover, for the case of non-increasing idle time costs, we show optimality of the ASAP scheduling rule that sets each appointment time as early as possible while fulfilling the waiting time guarantees. The presented sequencing and scheduling rules are intuitive and easy to implement. Our case study with real data from the radiology department of a large hospital shows that robust appointment scheduling with waiting time guarantees not only prevents excessive waiting times. Compared to weighted sum approaches, our approach also provides more flexibility to control the timing of idle and waiting times. Most importantly, we introduce the waiting time guarantees with a minimal increase in worst-case costs, which in many cases is even negative. Thus, compared to weighted sum approaches, waiting time guarantees can even reduce costs without increasing the waiting time of the longest waiting customer. 

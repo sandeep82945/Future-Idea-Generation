@@ -1,0 +1,523 @@
+To precisely evaluate a language model’s capability for logical reading comprehension, we
+present a dataset for testing the understanding of the rationale behind critical reasoning.
+For questions taken from an existing multiplechoice logical reading comprehension dataset,
+we crowdsource rationale texts that explain why
+we should select or eliminate answer options,
+resulting in 3,003 multiple-choice subquestions
+that are associated with 943 main questions. Experiments on our dataset show that recent large
+language models (e.g., InstructGPT) struggle
+to answer the subquestions even if they are able
+to answer the main questions correctly. We find
+that the models perform particularly poorly in
+answering subquestions written for the incorrect options of the main questions, implying
+that the models have a limited capability for
+explaining why incorrect alternatives should
+be eliminated. These results suggest that our
+dataset encourages further investigation into
+the critical reasoning ability of language models while focusing on the elimination process
+of relevant alternatives. Critical reasoning, a type of logical reasoning not
+tied to formal logic, is a core ability of humans
+that is required for thoughtful reading of text. It
+involves not only understanding what a passage explicitly says but also comprehending its underlying
+assumptions, argument structure, and supported
+conclusions. Developing systems capable of critical reasoning as reliably as humans is one of the
+ultimate goals of natural language processing. Recent studies have proposed datasets that evaluate
+logical reasoning including critical reasoning ability (Yu et al., 2020; Liu et al., 2020) in reading
+comprehension. Owing to the recent development
+of large language models (LLMs; Brown et al.,
+2020; He et al., 2023), the performance of the stateof-the-art models is nearing that of humans (Jiao
+et al., 2022; Wang et al., 2022). However, current multiple-choice questions in
+existing logical reading comprehension datasets
+may not sufficiently test the ability of critical reasoning. The example illustrated in Figure 1 shows
+that even if a model can answer a question taken
+from the ReClor dataset (Yu et al., 2020) that has
+questions for graduate admission examinations, it
+cannot answer an auxiliary question that queries the
+implicit rationale for eliminating a relevant alternative. This behavior might be due to the model’s
+limited generalizability that is exposed by input perturbation (Si et al., 2021; Lin et al., 2021; Shi et al.,
+2023) or characterized as shortcut reasoning (Niven
+and Kao, 2019; Geirhos et al., 2020). Because a
+single question cannot fully ask the rationale of
+why we select an option as the correct answer and
+eliminate the others as the incorrect ones, current
+datasets may not be sufficient to comprehensively
+evaluate the process of critical reasoning.
+Recent studies propose methods for probing the reasoning process using auxiliary generation tasks
+such as in the form of simple commonsense facts
+(Aggarwal et al., 2021), logical graphs (Huang
+et al., 2022), and arithmetic equations (Ribeiro
+et al., 2023). However, this line of approach may
+not be suitable to capture the implicit rationale of
+critical reasoning. In particular, it cannot explicitly
+consider the selection and elimination process of
+relevant alternatives in logical reasoning. In addition, the format of such auxiliary tasks is usually
+not the same as that of the main task, which may
+fail to evaluate the target abilities consistently.
+As a first step to address these limitations, we
+construct a benchmark that comprehensively evaluates language models’ ability of critical reasoning
+in logical reading comprehension. Our dataset, rationale understanding for logical reasoning evaluation (RULE), consists of main questions taken from
+ReClor and auxiliary subquestions that we newly
+create for this study. The process of constructing
+our dataset is illustrated in Figure 2. Our core
+idea is that for each answer option in a main question, we crowdsource a free-form human-written
+rationale that explains why that option should be
+selected or eliminated, and use those rationales to
+create a set of subquestions that are associated with
+the main question. After manual filtering to ensure
+human answerability, in addition to 943 main questions, we obtain 3,003 subquestions for the testonly purpose. The common multiple-choice format
+of the main questions and subquestions enables us
+to evaluate the models’ capability of critical reasoning concisely and consistently.
+In our experiments using strong baseline models
+including LLMs, e.g., Flan-UL2, (Tay et al., 2023),
+LLaMA 2 (Touvron et al., 2023b), and InstructGPT (Ouyang et al., 2022), we observe that the
+models cannot answer the main questions and subquestions consistently, showing a larger than 30%
+gap against humans in our strict consistency metric.
+In particular, we find that the models struggle to answer eliminative subquestions, which are pertinent
+to the rationale of eliminating incorrect options,
+showing a large gap (≈ 20% accuracy) between
+humans and the best-performing LLM. Conversely,
+the models tend to correctly answer selective subquestions, which are pertinent to the rationale of
+selecting the correct option. This clear contrast suggests that these models provide the correct answer
+without fully understanding why the other options
+are incorrect. Our analysis using a follow-up task and manual annotations supports this observation.
+We also compare our human-written rationales with
+model-generated ones using an LLM, finding that
+our rationales are likely to be more detailed and
+supportive than the model-generated ones.
+Our contributions are as follows: (i) Based on
+an existing logical reading comprehension dataset,
+we create a dataset including over 3,000 auxiliary
+questions designed to test a model’s consistent ability for critical reasoning. (ii) We evaluate cuttingedge models, including LLMs, across finetuned,
+few-shot, and zero-shot settings, showing that even
+the best model falls short of human performance,
+particularly lagging in understanding eliminative
+rationales for incorrect answer options. (iii) Our
+annotation analysis also highlights the model’s deficiency in understanding eliminative rationales and
+shows that our human-written rationales are of
+higher quality than model-generated ones.1
+2 Related Works
+Critical and Logical Reasoning Critical reasoning is one of the core abilities of logical reasoning
+that humans perform, along with analytical reasoning (Zhong et al., 2022) and abductive reasoning
+(Bhagavatula et al., 2020). This reasoning is related to understanding the structure of practical
+arguments that is generally composed of ground
+(premise), warrant (rationale), and claim (conclusion). As formulated by Toulmin (2003), given
+facts or data as the ground, we provide the warrant
+that acts as a bridge between the ground and the
+claim we are making. Recent research includes
+developing ways to model this behavior in tasks
+such as argument mining and question answering
+(QA) (e.g., ReClor). For example, Habernal et al.
+(2018) propose a task of identifying implicit rationale (i.e., warrant) in arguments. However, Niven
+and Kao (2019) find that successful systems on
+the argument reasoning task exploit superficial input features. Similarly, QA systems have been
+shown to exhibit shallow understanding by input
+perturbation (Si et al., 2021; Lin et al., 2021; Shi
+et al., 2023). For example, Lin et al. (2021) demonstrate that QA performance significantly decreases
+when incorrect options are replaced with irrelevant
+texts in an adversarial manner. This means that
+successful models on those datasets do not necessarily exhibit generalizable capabilities in other
+datasets. These findings necessitate the explainability of the (informal) logical reasoning process
+for better evaluation of intended reasoning abilities
+(e.g., the critical reasoning in this study).
+Reasoning Explanation Although some studies explain the rationale behind commonsense and
+logical reasoning using graphs (Saha et al., 2021;
+Ribeiro et al., 2023), others explain it as a decomposition (Khot et al., 2020; Dalvi et al., 2021; Geva
+et al., 2021), a combination of supporting textual
+spans in the input (Yang et al., 2018; Inoue et al.,
+2020), commonsense rules (Saha et al., 2022), or
+underlying facts (Aggarwal et al., 2021). The work
+most similar to ours is MetaLogic (Huang et al.,
+2022), which focuses on generating graphs explaining the logical relations between sentences in ReClor examples, aiming to model the valid reasoning
+process. In contrast, we employ free-text rationales
+that explain the process of critical reasoning, enabling us to construct multiple-choice questions
+about the understanding of rationales. We also aim
+to faithfully test the models’ performance on the
+main questions as well as auxiliary subquestions in
+the multiple-choice discrimination task, instead of
+the generation of the reasoning process in a different format from the original task.
+3 RULE Data Collection
+3.1 Design Choices
+We construct a new dataset, RULE (rationale understanding for logical reasoning evaluation), to
+evaluate the consistent rationale understanding in
+logical reading comprehension. The dataset comprises main questions and their auxiliary questions
+(subquestions). The subquestions are designed totest the understanding of the rationale necessary
+for answering the main questions correctly. In constructing our dataset, we make three decisions in
+its design choices.
+Source Dataset Among existing datasets for testing logical reading comprehension, we use ReClor
+for the following reasons: (1) It covers various
+types of logical reasoning required in the multiplechoice format, (2) its context passages are of sufficient length to compose a meaningful rationale
+(e.g., the contexts in LogiQA (Liu et al., 2020) are
+shorter), and (3) it contains a sufficient number
+of examples to create an auxiliary benchmarking
+dataset. We cannot find other candidate datasets,
+but our approach is applicable to similar ones.
+Rationale Collection The task of writing implicit rationales from scratch for logical reasoning questions is not straightforward because the
+reasoning process can involve multiple steps with
+differing granularity. Therefore, to facilitate rationale writing, we use answer options in the multiplechoice questions. To answer a question with four
+options, the reasoning process should involve the
+rationale of both identifying the correct option and
+eliminating the three incorrect options. By focusing on the correctness of each option, we can
+decompose the complex task of rationale writing
+into smaller intuitive tasks. In addition, we collect
+human-written free-form rationales to expect benefits over model-generated rationales (Sun et al.,
+2022), in particular for covering the implicit process of critical reasoning.
+Task Format We also aim to design auxiliary
+questions so that we can easily evaluate models on
+both main questions and subquestions in the same
+task format. To this end, we use four rationalescollected for a main question as the four answer options of its subquestion. A single main question has
+at most four subquestions that share the same set
+of answer options, which can be seen as questionwise contrastive evaluation (Gardner et al., 2020;
+Ashida and Sugawara, 2022).
+3.2 Collecting Rationales
+We use crowdsourcing to collect rationales for creating our subquestions. Appendix A shows our
+crowdsourcing instructions and examples.
+Qualification We conduct a two-stage qualification test to recruit crowdworkers for our tasks. The
+first stage is a QA task to identify workers who
+carefully answer logical reading comprehension
+questions. The task consists of ten questions taken
+from ReClor, and workers achieving ≥ 80% accuracy advance to the next test. In the second stage,
+workers are presented with a single ReClor question that is randomly sampled from a pool of ten
+questions. The task is to write four implicit rationales (one sentence each) behind each option’s
+(in)correctness. To guide them, we provide detailed
+instructions with eight writing examples.
+Through preliminary pilot studies, we define two
+essential criteria for writing rationales: specificity
+and necessity. Specificity requires rationales to
+be well informed and support the corresponding
+options exclusively. This requirement is crucial
+because non-specific rationales could support multiple options, rendering them unsuitable for options
+in subquestions. Necessity emphasizes the importance of ensuring that the rationale is essential for
+validating the option’s correctness. Even if a detailed rationale is provided, it must be aligned with
+the main question’s point to preserve its validity.
+Following these criteria, the authors manually
+assess the rationales provided by the workers. We
+identify 57 workers through this qualification process. These workers are invited to both the rationale
+writing and subsequent validation tasks.
+Rationale Writing We take 1,200 questions
+from the training set of ReClor. As with the second
+phase of the qualification task, we present workers
+with a context, question, and four options marked
+as either correct or incorrect, and then ask workers
+to write rationale sentences for each option. Of
+these qualified individuals, 50 were actively engaged in this task. We collect 4,800 rationales in
+total and send them to the rationale validation step.
+Rationale Validation To validate the collected
+rationales, we first focus on their specificity, which
+is critical for creating a set of reasonable subquestions about a given main question. Because assessing the necessity of rationales may not be straightforward, we analyze the reasoning types involved
+in understanding rationales in Section 5.
+For the validation, we conduct an alignment test
+between a set of rationales and answer options.
+In this test, workers are presented with one main
+question, its four options, and one rationale. They
+are then asked to identify which one of the options
+is supported by the given rationale. If a rationale is
+insufficiently detailed and could potentially support
+other options, it would be difficult for workers to
+correctly match the rationale to its corresponding
+option. We ensure that the worker who validates a
+rationale is different from the one who wrote it.
+This test enables us to refine our initial pool
+of 4,800 rationales down to 3,828, ensuring that
+each rationale is sufficiently specific to support its
+corresponding option.
+3.3 Subquestion Construction
+Question Generation We then generate question texts to construct subquestions using a language model. Given one main question and one
+of its options, the model is instructed to generate
+a subquestion that asks about the reason for the
+correctness of the option. For example, when we
+input the prompt “What mistake does the argument
+make in its reasoning?” and the incorrect answer
+option “It confuses probability and certainty,” the
+model generates the question “What evidence is
+there that the argument does not make the mistake
+of confusing probability and certainty?” We use
+different prompts for the correct and incorrect options to avoid the problem of the model omitting
+negatives (e.g., “not”) when generating eliminative
+subquestions. For the generation, we use InstructGPT (text-davinci-003), which is one of the
+strong large language models. Appendix B shows
+an example of our prompt.
+Subquestion Construction Coupling the validated rationales with generated question texts, we
+construct at most four subquestions for a single
+main question. Each subquestion corresponds to
+each of the four answer options in the main question. The four answer options of the subquestions
+are identical to the four rationales written for the
+main question. The correct answer option of a subquestion is the rationale written for the option that
+the subquestion is made from.
+A subquestion must have four validated rationales to compose the multiple-choice format. However, when we look at a main question, all four
+rationales are not always valid, which could largely
+decrease the number of possible subquestions. To
+mitigate this issue, we create a subquestion even
+if three out of the four rationales are valid, by replacing the invalid rationale with the “None of the
+above choices” option. Through this process, we
+obtain 3,824 subquestions. We discard a main question if it has no valid subquestions.
+3.4 Human Validation
+As the final step of our data collection, we validate
+the answerability of the subquestions by humans.
+Despite the ensured specificity of rationales, the
+complexity of the subquestion texts could potentially make the subquestions unanswerable. To
+address this issue, we ask three workers to answer
+each subquestion to evaluate its human answerability. A subquestion is considered answerable if
+at least two workers answer it correctly, or if all
+workers select “None of the above choices.” In the
+latter scenario, we replace the correct answer in the
+question with “None of the above choices.” This
+process results in 3,003 answerable subquestions
+with 943 main questions. We expect the number of
+questions in our dataset can demonstrate statistical
+power for meaningful model benchmarking and
+comparison (Card et al., 2020).
+We then ask different workers to answer the questions, collecting three additional labels for each
+question to measure human accuracy.
+3.5 Dataset Statistics
+Table 1 shows the dataset statistics. Compared to
+the main questions (ReClor), our subquestions have
+longer questions and answer options. The subquestions that have “None of the above choices” as the
+correct answer comprise 7.4% (222/3,003) of the
+dataset, which is comparable to a similar multiplechoice reading comprehension dataset (6.7% in
+CosmosQA; Huang et al., 2019). We also report
+the crowdsourcing details in Appendix C.
+4 Baseline Performance on RULE
+We measure the baseline performance of recent
+state-of-the-art models on our dataset. Because the
+main purpose of our dataset is to perform an exten-sive evaluation of the models tested on ReClor, we
+use all of our main questions and subquestions as
+a test set. Our hypothesis is that if the models can
+effectively generalize to understand the rationale
+behind the correct answer, they should exhibit a
+similar degree of performance on both the main
+questions and subquestions.
+Evaluation Metrics In addition to the simple accuracy over the main questions (MainQ Accuracy)
+and subquestions (SubQ Accuracy), we calculate
+the accuracy across the subquestions written for
+the correct and incorrect original options (Selective
+and Eliminative SubQ Accuracy), respectively. We
+also calculate the Consistency score to see how often a model answers both the main question and
+all of its subquestions correctly and thereby shows
+the comprehensive capability of critical reasoning.
+Because the SubQ accuracy is a micro average, we
+also report a macro average for reference (MainQwise SubQ Accuracy). To compute these scores for
+humans, we take a majority vote of the three labels
+for each main question and subquestion.
+4.1 Models and Settings
+The models we evaluate are either in the fullyfinetuned setting on the training set of ReClor (excluding our main questions), few-shot of ReClor,
+and zero-shot that uses only the task instruction.
+Fully-Finetuned Models We use DeBERTa-v3
+(large; He et al., 2023) and UnifiedQA-v2 (base,
+large, and 3B; Khashabi et al., 2020, 2022). Bothmodels are reported to exhibit strong generalization
+performance on QA datasets.
+Few- and Zero-Shot Models We include recent
+LLMs such as FLAN-T5 (XXL; Chung et al.,
+2022), Flan-UL2 (20B; Tay et al., 2023), Vicuna (7B and 13B; Chiang et al., 2023), LLaMA
+2 (7B to 70B; Touvron et al., 2023b), Mistral (7B; Jiang et al., 2023) and InstructGPT
+(text-davinci-003; Ouyang et al., 2022). In
+the few-shot setting, the input prompt has five ReClor exemplars. Because some models only accept
+a limited length of input, we only report one-shot
+results of those models. For reference, we report
+few-shot results using RULE examples. The zeroshot prompt only has the task instruction. We also
+include Chain-of-Thoughts (CoT; Wei et al., 2022)
+and zero-shot CoT (Kojima et al., 2022) of InstructGPT, providing the models with explanatory examples to potentially enhance their performance. In
+CoT, the prompt includes ReClor exemplars each
+of which is followed by the rationale of the correct answer option that is collected in this study.
+Appendix D shows examples of our CoT prompt.
+In the few- and zero-shot settings, we follow
+the test split approach used by Ravichander et al.
+(2022) and split our dataset into five disjoint sets
+to measure the variability of models’ performance.
+Appendix E describes the details.
+4.2 Results
+Table 2 presents our main results. In the fullyfinetuned setting, we observe that the SubQ accuracy does not significantly exceed the chance rate
+(25.0%), which is far below the zero-shot performance of UnifiedQA-v2 as well as the human performance. This degradation may be due to overfitting to ReClor examples, by which the models rely
+heavily on superficial features of answer options
+that are not useful in answering the subquestions.
+In our dataset, a group of subquestions shares the
+same set of four rationales, which requires that the
+models closely examine the question texts.
+In the few- and zero-shot settings, we observe
+that the highest accuracy is 80.3% on the main
+questions by LLaMA 2 70B with five-shot exemplars of ReClor and 65.7% on the subquestions by
+Flan-UL2 in the zero-shot setting. Both the MainQ
+and the SubQ accuracies are lower than the human
+accuracy by large margins (∆ = 11.2%, 16.9%),
+highlighting a severe limitation in the models’ rationale understanding; in most cases, the models may
+only understand part of the necessary rationales for
+the comprehension process.
+Although it is not our intended task setting, when
+we use a part of the subquestions for in-context
+learning, the highest SubQ accuracy is 70.1% by
+InstructGPT in the five-shot setting. This result
+is still below the human accuracy by a noticeable
+margin. Interestingly, the in-context learning on
+subquestions is not helpful for smaller models such
+as Vicuna 7B and 13B.
+Looking at the best Selective and Eliminative
+SubQ Accuracies, we find that although the former accuracy (five-shot LLaMA 2 70B, 90.0%) is
+close to the human performance, the latter accuracy
+(zero-shot Flan-UL2, 59.1%) is significantly below
+the human performance (78.9%). This contrast
+shows that answering the eliminative subquestions
+is difficult for the models, highlighting the limited
+capacity of LLMs: Even if the models can choose
+the correct answer option, they may not understand
+why incorrect answer options should be refuted.
+Consistency and MainQ-wise SubQ Accuracy
+also conform to this trend. Although the consistency by humans is not high (52.9%), probably owing to the difficulty of the subquestions, a
+large margin still exists between the human consistency and the best consistency by InstructGPT
+(18.2%). MainQ-wise SubQ Accuracy provides
+a bit more intuitive observation: The best model
+answers only 64.3% of the subquestions per one
+main question, although humans get them wrong
+less often (81.5%). We report the detailed number
+of MainQ-wise SubQ Accuracy in Appendix F.
+Contrary to our expectations, CoT does not improve the performance of InstructGPT. Rather, it
+leads to a decline in the MainQ and SubQ accuracies. This result is consistent with findings on
+the unreliable nature of CoT (Wang et al., 2023;
+Turpin et al., 2023), which may be exposed by the
+complexity of critical reasoning.
+Does the Model Answer “None of the above
+choices” Questions Correctly? Some of our subquestions contain “None of the above choices,”
+which might make the questions challenging. In
+particular, the model performance on this type
+of question might be strongly affected by the incontext learning of exemplars. To investigate this
+hypothesis, we calculate the accuracy of the subquestions that include the “None” option. In the
+five-shot InstructGPT using RULE examples, we
+find that although the model achieves 62.7% accuracy for the subquestions that have the “None”
+option, it shows 32.0% when “None” is the correct answer. This low accuracy is decomposed into
+40.9% accuracy if the prompt includes the “None”
+option as the correct answer and 13.7% accuracy
+otherwise. These results demonstrate that using
+exemplars helps to answer those questions to some
+extent but not significantly. Table 3 reports the
+accuracy of five-shot InstructGPT across the five
+batches.
+We report the complementary results of the main
+experiment in Appendix G, in which the one-shot
+setting does not improve the model performance
+consistently. Appendix H shows the SubQ accuracy
+only for the main questions the models answer
+correctly. Appendix I shows the performance plot
+across the question and option length.
+5 Analysis
+To qualitatively investigate the models’ behavior
+observed in Section 4, we aim to answer the following research questions.Why Are the Eliminative Subquestions Difficult? As discussed in the previous section, we
+find a performance discrepancy between the selective and eliminative subquestions. We attribute this
+discrepancy to two potential reasons. First, the
+eliminative subquestions are inherently complex
+because of the negation included in their question
+text, which the models may find difficult to handle
+(Ravichander et al., 2022). Second, the model may
+lack the ability to comprehend why certain options
+are incorrect, which is partially supported by studies that highlight the susceptibility for distractors
+in the multiple-choice QA (Si et al., 2021).
+To distinguish between the difficulty of comprehending complex questions and that of refuting relevant alternatives in the eliminative subquestions,
+we develop a follow-up task, rationale alignment.
+In this task, given a context, the main question, one
+of the main options, and four rationales, the model
+selects one out of the four rationales that validates
+the correctness of the given option. We use InstructGPT in the five-shot setting and report the average
+results from five different prompts. Appendix J
+provides the input prompt.
+Because the subquestion text is not used in this
+task, we expect that the results are not affected by
+the complexity of subquestion texts. The result
+is 89.7% and 31.5% accuracy for the correct and
+incorrect answer options, respectively, showing a
+distinct difference between them. This discrepancy
+suggests the model’s serious deficiency in comprehending eliminative rationales.
+Is the Model Better at Writing Rationales than
+Humans? Given that CoT does not improve the
+model performance, we are interested in the quality
+and potential usefulness of model-generated rationales compared to our human-written rationales.
+We use a similar prompt to that used in our CoT
+setting, instructing InstructGPT to generate rationales for 50 options. We then randomly shuffle
+the order of human-written and model-generated
+rationales, and manually annotate which rationale
+is better in terms of necessity and specificity. The
+result is 35 wins by humans and 15 wins by the
+model among the 50 comparisons, showing that
+the human-written rationales are likely to be more
+detailed and supportive than the model-generated
+ones. In particular, we find that the model rationales struggle to capture the implicit rationale necessary for certifying the validity of the target option.
+When the rationale is explicit and described well
+Direct Indirect Total
+Contextual 37 / 47 28 / 22 65 / 69
+External 22 / 20 13 / 11 35 / 31
+Total 59 / 67 41 / 33 100
+Table 4: Annotation results of rationale types on 100
+examples randomly sampled from all subquestions (left)
+and from the error examples by InstructGPT (right).
+in the context, the model rationale looks convincing and close to the human rationale. Among the
+15 examples where humans lose, we find five examples unsatisfactory to validate the target option,
+implying that approximately 10% of unreasonable
+rationales are potentially included in our dataset.
+What Types of Reasoning are Required in the
+Rationale Understanding? To qualitatively analyze the collected rationales, we first sample 100
+subquestions to annotate reasoning types. We define two dichotomies: direct/indirect and contextual/external. Direct reasoning occurs if a rationale
+involves an explicit description for the certification
+of a target option’s (in)validity, whereas indirect
+reasoning only provides relevant facts for the validity. Context reasoning includes facts (or their
+interpretation and summarization) described in the
+context, while external reasoning is pertinent to
+commonsense and norms that are not described in
+the context. For comparative error analysis, we
+also sample 100 subquestions among those that
+InstructGPT answers incorrectly.
+We report our annotation results in Table 4. The
+number of the direct and contextual rationales is
+the largest among the other types, which further
+increases when we look at the error cases of InstructGPT. We find that our dataset covers a sufficient number of indirect and external reasoning, i.e.,
+various modes of rationale understanding. Error examples for the four reasoning types are reported in
+Appendix K. Although we also examine the reasoning types originally labeled in the ReClor dataset,
+we do not observe any remarkable trends in the
+subquestion accuracy (Appendix L).
+Do the Rationales Help the Model to Answer the
+Main Questions? Because the collected rationales are expected to support the decision of selecting and eliminating answer options, we investigate
+whether adding the rationales to the main questions
+improves the performance in the five-shot InstructGPT. We append the rationale to the context, main
+question, and four options with the Rationale:
+label. The results are shown in Table 5. We observe an improvement when the selective rationale
+is added; however, degradation occurs when we
+add the eliminative rationale, even if it is provided
+with the selective rationale. This result adds insight
+to the observation by Sun et al. (2022), showing
+that the model cannot use eliminative rationales
+for answering main questions and becomes confused by those rationales. We also investigate the
+context-ablated setting in Appendix M. We construct a dataset to evaluate the models’ ability of critical reasoning in logical reading comprehension. We crowdsource free-form rationale for
+main questions taken from an existing dataset and
+use an LLM to generate subquestion texts. Resulting questions ask about the underlying rationales
+for why a certain answer option should be selected
+and the others should be eliminated. We find that
+LLMs are particularly bad at answering eliminative subquestions, highlighting that those models
+do not necessarily have the comprehensive ability
+of critical reasoning. Ethical Consideration
+We use crowdsourcing in our data collection. We
+make sure to be responsible to the crowdworkers
+and to make fair compensation for their work. We
+do not collect any personal information other than
+worker IDs on the platform, which are removed
+in our data release. Before the workers accept our
+tasks, we inform them of our purpose for the data
+collection. This study is approved by the internal
+review board of the authors’ institutes.
+Limitations
+We recognize the following limitations in this
+study.
+Task Format In this study, we focus on the
+multiple-choice QA task. This task format allows
+us to flexibly ask about various linguistic phenomena and human reasoning by selecting and eliminating alternatives, and we consider solving such
+a discriminative task would be a minimal requirement for human-like linguistic behaviors. However,
+it has an inherent limitation in assessing the ability
+of natural language understanding. For example,
+we cannot evaluate the models’ ability to produce
+an intended output.
+Annotation Analysis We conduct the annotation
+analysis in Section 5, in which we define the reasoning types and manually review the sampled examples. Although we make our annotation data
+and guideline publicly available for ensuring the
+reproducibility of annotation results, the results
+of our annotation analysis inevitably involve our
+subjective judgments.
+Source Dataset We create our auxiliary questions on top of an existing English logical reading comprehension dataset, ReClor. Although our
+methodology of the data collection (i.e., writing
+the rationale for selecting and eliminating alternatives) is widely applicable to other datasets and
+languages, using the single dataset in the single
+language would limit the generalizability of our
+findings.

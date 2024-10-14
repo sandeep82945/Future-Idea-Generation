@@ -1,0 +1,319 @@
+This study introduces a novel spatial autoregressive model in which the dependent variable is a function that may exhibit functional autocorrelation with the outcome functions of nearby units. This model can be characterized as a simultaneous integral equation system, which, in general, does not necessarily have a unique solution. For this issue, we provide a simple condition on the magnitude of the spatial interaction to ensure the uniqueness in data realization. For estimation, to account for the endogeneity caused by the spatial interaction, we propose a regularized two-stage least squares estimator based on a basis approximation for the functional parameter. The asymptotic properties of the estimator including the consistency and asymptotic normality are investigated under certain conditions. Additionally, we propose a simple Wald-type test for detecting the presence of spatial effects. As an empirical illustration, we apply the proposed model and method to analyze age distributions in Japanese cities. 1 introduction Spatial interdependence among units is a crucial element in spatial data analysis. To incorporate spatial
+interactions into econometric analysis, researchers have extensively utilized the Spatial Auto-Regressive
+(SAR) model:
+yi “ α0 n ÿ
+j“1 wi,jyj ` xJi β0 ` εi, (1.1)
+where yi denotes a scalar outcome, wi,j denotes a known spatial weight between i and j, xi denotes a vector of explanatory variables, and εi denotes an error term. The spatial lag term řn j“1wi,jyj captures the spatial trend of the outcome variable in the neighborhood of i, and the scalar parameter α0 measures its impact. The usefulness of SAR modelling (1.1) has been demonstrated in various empirical topics,
+including regional economics, local politics, real estate, crimes, etc. In addition, if we define the weight
+term wi,j based on social distance or friendship connections instead of geographic distance, then the SAR models can be utilized to analyze social network data, and their applicability is vast. To further broaden the applications of SAR modelling, this study aims to extend (1.1) to a functional
+SAR model where the dependent variable is a function defined on the common support r0, 1s:
+qipsq “ n ÿ
+j“1 wi,j
+ż 1
+0 qjptqα0pt, sqdt ` xJi β0psq ` εipsq, for s P r0, 1s, (1.2)
+where qi : r0, 1s Ñ R denotes the outcome function of interest. In particular, for empirical relevance, this study primarily focuses on the case in which qi is the quantile function for a scalar dependent variable of interest. Regression models involving functional variables have been widely studied in the
+literature of functional data analysis (FDA) for several decades (e.g., Ramsay and Silverman, 2005). Our model is essentially different from the existing ones in that we explicitly consider the simultaneous
+spatial interactions of the outcome functions. As a motivating example, suppose we intend to investigate the impact of a regional childcare subsidy
+program in a given city on the age distribution of the city. The policy is likely to attract households
+with young children from other regions to benefit from the subsidy. Additionally, if childcare facilities
+and schools need to be newly constructed, inflows of other age groups can also be anticipated as workers. To obtain a comprehensive picture of the shift in the age distribution owing to the subsidy program
+in its entirety, it would be natural to consider a regression model in which the dependent variable
+represents the age distribution of each city, such as the quantile function. Meanwhile, when the size of
+the young population in a given city is in an increasing trend (no matter the cause), which serves as a
+driver of economic growth of the city, this might also lead to an influx of working-age population into
+the surrounding regions owing to the spatial spillover of economic activities. The proposed functional
+SAR model (1.2) is able to account for such interdependency between the outcome functions of nearby
+spatial units. In the literature, we are not the first to consider an SAR-type modelling in the functional regression
+context. Zhu et al. (2022) proposed a social network model similar to ours in a time-series setting,
+where the response variable is a function of time. They assumed that only concurrent interactions exist
+at each moment such that the past and future outcomes of others do not affect the present outcome. Consequently, when fixed at each time point, their model can be reduced to the standard SAR model in (1.1). In this regard, our model may be considered to be a generalization of theirs such that α0pt, sq ‰ 0 is allowed for t ‰ s in general. Another related modelling approach to ours is the SAR quantile regression (e.g., Su and Yang, 2011;
+Malikov et al., 2019; Xu et al., 2022). When qi represents a quantile function, our model and theirs are conceptually similar in that both approaches can examine the distributional effects of explanatory
+variables on the outcome and the spatial interaction of outcomes in a unified framework. However, a
+fundamental distinction lies in that we consider a model in which each unit has its own unique quantile
+function as the dependent variable. Consequently, we can explicitly allow for each specific quantile
+value of an outcome to interact with other quantiles of others’ outcomes. For instance, our model can
+investigate the impacts of median outcome of neighborhoods on a specific (say) 10 percentile value of
+own outcome. Notice that our model (1.2) is characterized as a simultaneous integral equation system, and to
+the best of our best knowledge, this type of modelling has not been investigated in the econometrics
+literature. To construct a consistent estimator for our model, the model space should be restricted such
+that the realized qi’s are uniquely (in some sense) associated with the true parameters. We show that to establish this uniqueness property, as in the standard SAR model (cf. Kelejian and Prucha, 2010),
+the spatial effects α0 must be bounded within a certain range. In particular, we demonstrate that the tightness of the bound required for α0 depends on the smoothness of the outcome function. To estimate the model parameters, we need to address the endogeneity issue arising from the
+simultaneous interaction among the outcome functions. Thus, we propose a regularized two-stage least squares (2SLS) estimator that is based on a series approximation of α0p¨, sq at each evaluation point s. Under the availability of a sufficient number of instrumental variables (IVs) and regularity conditions, we prove that both the estimator for β0 and that for α0pt, sq are consistent at certain convergence rates and asymptotically normally distributed. Additionally, we develop a Wald-type test for assessing
+the presence of any spatial effects at each s. We show that the proposed test statistic asymptotically
+distributes as the standard normal after appropriate normalization. Furthermore, we discuss performing the estimation when the outcome functions are not fully observable on the entire interval r0, 1s, but are only discretely observed, which is typical in most empirical situations. Our proposed estimator relies
+on a simple interpolation method, and we derive a set of conditions under which the estimator can
+achieve the same asymptotic properties as the infeasible counterpart. As an empirical illustration, we investigate the determinants of age distribution in Japanese cities. Since many Japanese cities are currently rapidly aging, which has emerged as one of the central social
+problems in the country, understanding the mechanisms underlying the age structure of cities is crucial. Using recent government survey data, including the Census, we apply our estimation and testing method
+to 1883 Japanese cities. Here, the outcome function qi represents the quantile function of the age distribution in city i, and covariates xi include variables such as annual commercial sales, unemployment rate, number of childcare facilities, and others. Our results suggest that spatial interaction effects are
+extremely weak at quantiles close to the boundary points 0 or 1. This may not be surprising as all
+individuals are born at age 0 and have a life expectancy of approximately 100 years at maximum,
+resulting in little regional heterogeneity. In contrast, strong spatial effects are observed when both t
+and s are at approximately the ages of young working population, possibly indicating that economic
+activities and their spillovers are the main factors in shaping the spatial trend of age structure. The remainder of this paper is organized as follows: In Section 2, we formally introduce the model
+proposed in this study and discuss the condition under which it is well defined with a unique solution. In addition, focusing on the cases where the outcome function is a quantile function, we discuss the
+motivations and interpretation of such a modelling approach. In Section 3, we describe our 2SLS
+method for estimating β0 and α0. Thereafter, we study the asymptotic properties of the proposed estimator under a set of assumptions. In this section, we also propose a test statistic for testing the null hypothesis that α0pt, sq “ 0 for t P I, and its asymptotic distribution is derived. In Section 4, we present the results of Monte Carlo experiments to evaluate the finite sample performance of
+the proposed estimator and test. Section 5 presents our empirical analysis on the age distribution of
+Japanese cities, and Section 6 concludes the paper. Notation For a natural number n, In denotes an n ˆ n identity matrix. For a function h defined on r0, 1s, the Lp norm of h is written as ||h||Lp :“ p ş1 0 |hpsq|
+pdsq1{p, and Lpp0, 1q denotes the set of h’s such that ||h||Lp ă 8. For a random variable x, the Lp norm of x is written as ||x||p :“ pE|x|pq1{p. For a matrix A, ||A|| and ||A||8 denote the Frobenius norm and the maximum absolute row sum of A, respectively. If A is a square matrix, we use ρmaxpAq and ρminpAq to denote its largest and smallest eigenvalues, respectively. In addition, A´ is a symmetric generalized inverse of A. We write a À b and a Àp b if a “ Opbq and a “ OP pbq, respectively. Finally, we write a „ b when a À b and b À a. 2 functional sar models  2.1 model setup and completeness Suppose that we have data of size n: tpqi, xi, wi,1, . . . , wi,nquni“1, where qi denotes a random outcome function of interest with the common support r0, 1s, xi “ pxi,1, . . . , xi,dxqJ P Rdx denotes a vector of covariates including a constant term, and wi,j P R denotes the pi, jq-th element of an nˆn pre-specified spatial weight matrix Wn “ pwi,jqni,j“1. The value of each wi,j is determined non-randomly. As is the convention, we set wi,i “ 0 for all i for normalization. Note that the spatial configurations of the units generally change with the sample size. Thus, the variables generally form triangular arrays, and
+model parameters depend on n through spatial interactions. However, when there is no confusion, the
+dependence on n is suppressed for notational convenience. As shown in (1.2), our working model is
+qipsq “ ż 1
+0 qiptqα0pt, sqdt ` xJi β0psq ` εipsq, for s P r0, 1s,
+where qi denotes the spatial lag of the outcome function: qi :“ řn j“1wi,jqj . The unknown parameters to be estimated are α0 and β0 “ pβ01, . . . , β0dxqJ. For instance, in our empirical analysis, qipsq denotes
+the s-th quantile of the age distribution in city i, and α0pt, sq captures the impacts from the t-th quantile ages of neighborhood cities to the s-th quantile age of own city. For other examples, qipsq could be the s-th quantile of the income distribution in city i, s-th quantile of the daily activity energy
+expenditure of person i, number of available bicycles at the bicycle-sharing station i at time s, and so forth. Hereinafter, we assume that qi P Lpp0, 1q for some 2 ď p ă 8 and that α0 P Cr0, 1s2, where Cr0, 1s2 denotes the set of continuous functions on r0, 1s2. Before turning to the estimation of α0 and β0, we discuss the completeness of our model, that is, whether model (1.2) can be characterized by a unique solution pq1, . . . , qnq. As our model comprises a system of n functional equations, the existence and uniqueness of the solution are non-trivial problems. If the system does not have or has multiple solutions, consistently estimating the model parameters
+without some ad hoc assumptions is generally impossible. Let Qpsq “ pq1psq, . . . , qnpsqqJ, X “ px1, . . . , xnqJ, and Epsq “ pε1psq, . . . , εnpsqqJ. Then, we can re-write (1.2) in matrix form as
+Qpsq “ Wn ż 1
+0 Qptqα0pt, sqdt ` Xβ0psq ` Epsq. This expression suggests that our model is seen as a system of Fredholm integral equations of the second kind with kernel α0pt, sq. Defining α0 :“ maxpt,sqPr0,1s2 |α0pt, sq|, whose existence is ensured under the continuity of α0, assume the following:
+Assumption 2.1. α0 À 1 and ||Wn||8 À 1 such that α0||Wn||8 ă 1. Let Hn,p :“ tH “ ph1, . . . , hnq : hi P Lpp0, 1q for all iu, and define a linear operator T as
+pT Hqpsq :“ Wn ż 1
+0 Hptqα0pt, sqdt
+for H P Hn,p, whose range is Hn,p under Assumption 2.1. Thus, we can write Q “ T Q ` Xβ0 ` E . Then, denoting Id to be the identity operator, if the inverse operator pId ´ T q´1 exists, the solution Q of the system can be uniquely determined (as an element of Hn,p) as Q “ pId ´ T q´1rXβ0 ` Es. The next proposition states that Assumption 2.1 is sufficient for the existence of pId ´ T q´1 and uniqueness of Q. Proposition 2.1. Suppose that Assumption 2.1 holds. Then, pId ´ T q´1 exists, and Q is the only solution of (1.2) in the Banach space pHn,p, || ¨ ||8,pq, where ||H||8,p :“ max1ďiďn ||hi||Lp . The proof is straightforward. Under Assumption 2.1, we have
+}tT Hui}Lp “
+› › › › › n ÿ
+j“1 wi,j
+ż 1
+0 hjptqα0pt, ¨qdt
+› › › › ›
+Lp
+ď n ÿ
+j“1 |wi,j |
+ˆ ż 1
+0
+ˇ ˇ ˇ ˇ ż 1
+0 hjptqα0pt, sqdt
+ˇ ˇ ˇ ˇ
+p
+ds
+˙1{p
+ď n ÿ
+j“1 |wi,j |
+ˆ ż 1
+0
+ż 1
+0 |hjptq|p |α0pt, sq|p dtds
+˙1{p
+ď α0||Wn||8 max 1ďjďn ||hj ||Lp ă ||H||8,p ă 8
+(2.1)
+for any H P Hn,p by Minkowski’s and Jensen’s inequalities. This implies that T H P Hn,p. As is well known, if the operator norm of T is smaller than one, pId ´ T q´1 exists, and we have the Neumann series expansion pId ´ T q´1 “
+ř8 ℓ“0 T ℓ converging in the operator norm (e.g., Theorem 2.14, Kress
+(2014)). It is immediate from (2.1) that }T H}8,p ă 1 follows for any H such that ||H||8,p “ 1, which yields the desired result. When the spatial weight matrix is row-normalized such that ||Wn||8 “ 1, as is often the case in empirical applications, Assumption 2.1 can be reduced to α0 ă 1, which somewhat resembles the solvability condition |α0| ă 1 for the standard linear SAR model (1.1). Remark 2.1 (Alternative condition). If one imposes a stronger assumption on the space of the input
+functions, the requirement for the kernel can be relaxed. For example, for all i, suppose that qi belongs to Cr0, 1s. Then, by the extreme value theorem, qi’s are bounded. Letting Hn,8 :“ tH “ ph1, . . . , hnq : hi P Cr0, 1s for all iu and ||H||8,8 :“ max1ďiďnmaxsPr0,1s |hipsq|, we can easily show that Q is the only solution in the Banach space pHn,8, || ¨ ||8,8q if ||Wn||8 maxsPr0,1s ş1 0 |α0pt, sq|dt ă 1 is satisfied.1 If the spatial weight matrix is row-normalized, then the condition can be further simplified to maxsPr0,1s ş1 0 |α0pt, sq|dt ă 1, which is a familiar requirement for the solvability of the Fredholm integral equation of the second kind (e.g., Corollary 2.16, Kress (2014)). It is known that compactly supported continuous functions are dense in Lp (1 ď p ă 8). Thus, in practice, assuming that all qi’s are continuous is almost harmless, and hence the violation of Assumption 2.1 should be allowed to some extent. The Neumann series expansion implies that Q can be expressed as Q “ Xβ0 ` T Xβ0 ` T 2Xβ0 ` ¨ ¨ ¨ ` E ` T E ` T 2E ` ¨ ¨ ¨ , that is,
+Qp¨q “ Xβ0p¨q ` WnX ż 1
+0 β0ptqα0pt, ¨qdt ` WnWnX
+ż 1
+0
+ż 1
+0 β0pt1qα0pt1, t2qα0pt2, ¨qdt1dt2 ` ¨ ¨ ¨
+Hence, the marginal effect of increasing xi,j on Qp¨q is obtained by
+BQp¨q Bxi,j “ eiβ0jp¨q ` Wnei ż 1 0 β0jptqα0pt, ¨qdt ` WnWnei ż 1 0 ż 1 0 β0jpt1qα0pt1, t2qα0pt2, ¨qdt1dt2 ` ¨ ¨ ¨ ,
+where ei denotes the i-th column of In. This clearly shows that a change in i’s covariate affects not only the outcome of i but also those of other units through the spatial interaction - the so-called spatial
+multiplier effect. 2.2 leading example: a distributional sar model One of the situations in which model (1.2) can be most nicely applied empirically would be when the
+outcome function qi represents the quantile function for the cumulative distribution function (CDF) of
+1Clearly, for any given H P Hn,8 such that ||H||8,8 “ 1, we have
+|tpT Hqpsqui| ď n ÿ
+j“1 |wi,j |
+ż 1
+0
+|hjptq| ¨ |α0pt, sq|dt ď ||Wn||8 max sPr0,1s
+ż 1
+0
+|α0pt, sq|dt. a variable of interest. In our empirical analysis, we study the determinants of the population pyramids
+of Japanese cities by employing the age quantile function of city i as qi. Suppose that for each i we can observe a random CDF Fi for an outcome variable y P Yi Ď R of interest. The quantile function of y for i is defined as qipsq :“ infty P Yi : s ď Fipyqu. In the FDA literature, models where the response variable represents a probability distribution have garnered
+significant attention, for example, Petersen and Müller (2016), Han et al. (2020), Yang et al. (2020),
+Yang (2020), Ghodrati and Panaretos (2022), Petersen et al. (2021), Chen et al. (2023). For an excellent
+review on this topic, refer to Petersen et al. (2022). A common view in these studies is that performing
+a regression analysis directly in the space of CDFs (or densities) is often problematic. Hence, we should
+consider imposing a regression model on the quantile function (rather than on the CDF per se), as in
+Yang et al. (2020) and Yang (2020), enabling us to enjoy several analytically and interpretationally
+preferable properties as mentioned below. First, quantile functions can be easily computed without considering the range boundaries, unlike
+CDFs. Second, the domains of CDFs are typically heterogeneous across individuals, whereas that of quantile functions is always the fixed interval r0, 1s. Third, the least-squares regression of the quantile function can be nicely interpreted as a Wasserstein distance minimization problem. More specifically for the third point, denoting Fα,βi to be the CDF induced from the quantile
+function qα,βi psq :“ ş1 0 qiptqαpt, sqdt ` x J i βpsq, the squared 2-Wasserstein distance between Fi and F α,β i is obtained as2
+W22 pFi, F α,β i q “
+ż 1
+0
+´ qipsq ´ qα,βi psq ¯2 ds. Thus, minimizing the mean squaredWasserstein distance with respect to pα, βq: minα,β n´1 řn i“1W22 pFi, F α,β i q is equivalent to performing a functional least squares regression based on model (1.2). Note, however, that the resulting least squares estimator does not produce a consistent estimate of pα0, β0q because of the endogeneity of qi. To circumvent the endogeneity issue, we introduce a penalized 2SLS method in the next section. It is also worth noting that the spatially lagged quantile qi corresponds to the quantile function of the
+spatially weighted Fréchet mean F i of tF1, . . . , Fnu at the location of i: F i :“ argminF řn j“1wi,jW22 pF, Fjq, which is also referred to as the Wasserstein barycenter, with wi,j ě 0 and řn j“1wi,j “ 1. Rather than using qi, one might consider employing the quantile function of the spatially lagged CDF: řn j“1wi,jFi as the spatial trend term. However, a linear mixture of CDFs is generally multimodal and does not inherit
+the shape properties of the original CDFs. In this regard, the weighted Fréchet mean should be more
+representative and faithful as an indicator of the neighborhood trend. This point is also highlighted in
+Gunsilius (2023) in the context of synthetic control analysis. 2Formally, the Wasserstein distance is a distance between two probability measures. We abuse the notation using CDFs in its arguments for ease of explanation. For more precise discussions on the properties of Wasserstein distance, see Panaretos and Zemel (2020), for instance. 3 estimation and asymptotics  3.1 penalized 2sls estimator We now discuss the estimation of α0 and β0. Let tϕk : k “ 1, 2, . . .u be a series of basis functions, such as Fourier series, B-splines, and wavelets, such that we can expand α0pt, sq “ ř8 k“1 ϕkptqθ0kpsq for each s. Then, we have ş1 0 qiptqα0pt, sqdt “ ř8 k“1 ri,kθ0kpsq, where ri,k :“ ş1 0 qiptqϕkptqdt. Hence, our model (1.2) can be re-written as
+qipsq “ K ÿ
+k“1 ri,kθ0kpsq ` xJi β0psq ` εipsq ` uipsq
+where ri,k :“ řn j“1wi,jrj,k, uipsq :“ ş1 0 qiptqα0pt, sqdt ´ řK k“1 ri,kθ0kpsq, and K ” Kn is a sequence of integers tending to infinity as n grows. Note that this is just a multiple regression model having K endogenous regressors ri “ pri,1, . . . , ri,KqJ with a composite error term εipsq ` uipsq. Thus, we can resort to the 2SLS approach to estimate θ0psq “ pθ01psq, . . . , θ0KpsqqJ and β0psq under the availability of a sufficient number of valid IVs for ri. Suppose that we have an Lˆ1 vector z1,i of IVs that are correlated with ri but not with εi such that L ” Ln ě Kn. The choice of IVs will be discussed later. Further, let zi “ pzJ1,i, xJi qJ, Z “ pz1, . . . , znqJ, R “ pr1, . . . , rnqJ, Mz “ ZpZJZq´ZJ, Mx “ XpXJXq´1XJ, and Rx “ pIn ´ MxqR. Then, our 2SLS estimator is defined as follows:
+pβnpsq :“ “ XJpIn ´ SqX ‰´1 XJpIn ´ SqQpsq pθnpsq :“ ” R J xMzRx ` λDn ı´1 R J xMzQpsq
+(3.1)
+for a given evaluation point s P p0, 1q, where S “ MzRrR J MzRs´R J Mz, λ ” λn is a non-negative regularization parameter tending to zero as n increases, and D denotes a K-dimensional matrix, which is positive semidefinite, symmetric, and satisfies ρmaxpDq À 1 uniformly in K. Once pθnpsq “ ppθn1psq, . . . , pθnKpsqqJ is obtained, we can estimate α0p¨, sq by pαnp¨, sq :“ řK k“1 ϕkp¨qpθnkpsq. To recover the entire functional form of α0p¨, ¨q and β0p¨q, we can repeat the described estimation procedure over a sufficiently fine grid on r0, 1s. Remark 3.1 (Choice of instruments). Observing that qipsq « ş1 0 qiptqα0pt, sqdt`x J i β0psq, where qiptq :“ řn j“1wi,jqjptq, and xi :“ řn j“1wi,jxj , the spatially lagged covariates xi would be natural IV candidates for ri,k “ ş1 0 qiptqϕkptqdt, assuming that β0 ‰ 0. For identification, the number of valid IVs must be larger than or equal to K. While it is theoretically required that K tends to infinity as n increases to consistently estimate α0p¨, sq, the dimension of xi, dx, is fixed in our model. Note that, as long as both α0 and β0 are non-degenerate, it is possible to create arbitrarily many IVs by taking the spatial lags of xi of higher and higher order: xi, xi, ... and so forth. However, the higher the order, the weaker the instruments. Since K is at most less than ten or so for most practical sample sizes, we believe that
+finding sufficient IVs may not be a serious concern in most empirical situations where researchers can
+collect a reasonable number of independent variables. A more formal consideration of the many-weak
+IV  In practice, the 2SLS estimator in (3.1) would be rarely feasible because function qi can usually only be incompletely observed. For instance, we might only be able to observe the values of qi at finite points, qipsi,1q, . . . , qipsi,miq. This is the case of our empirical analysis of the age distribution in Japanese cities. In this empirical analysis, we cannot access the complete age distribution for each city, but we
+only know the distribution up to every five-year age interval. In such a case, for example, we can apply
+a linear interpolation method to obtain an approximation of the entire functional form of qi. Without loss of generality, suppose the observations are ordered in an increasing way: si,1 ď si,2 ď ¨ ¨ ¨ ď si,mi . Then, for each given s P rsi,l, si,l`1s, we estimate qipsq by
+pqipsq “ ωipsqqipsi,lq ` p1 ´ ωipsqqqipsi,l`1q, (3.2)
+where ωipsq “ psi,l`1 ´ sq{psi,l`1 ´ si,lq. When s ă si,1 (resp. s ą si,mi), we can set pqipsq “ qpsi,1q (resp. pqipsq “ qpsi,miq). When qi is a quantile function, it is also typical that a finite sample tyi,1, . . . , yi,miu randomly drawn from Fi is only available. In this case, a straightforward approach to estimate qi would be to perform a nonparametric kernel CDF estimation and invert the estimate. Alternatively, we can also use a simple
+interpolation method as described in Yang (2020). Letting pqi be any estimator of qi, compute pri,k :“ řn j“1wi,j ş1 0 pqjptqϕkptqdt and let pri “ ppri,1, . . . , pri,Kq J. Now, the feasible version of (3.1) is defined as
+rβnpsq :“ ” XJpIn ´ pSqX ı´1 XJpIn ´ pSq pQpsq
+rθnpsq :“ ” pRJxMz pRx ` λDn ı´1 pRJxMz pQpsq
+where pQpsq “ ppq1psq, . . . , pqnpsqqJ, pR “ ppr1, . . . , prnqJ, pRx “ pIn´Mxq pR, and pS “ Mz pRr pRJMz pRs´ pRJMz. The estimator for α0p¨, sq can be obtained by rαnp¨, sq :“ řK k“1 ϕkp¨qrθnkpsq. 3.2 convergence rates and limiting distributions To derive the asymptotic properties of our estimators, we first need to specify the structure of our sampling space. Following Jenish and Prucha (2012), let D Ă Rd, 1 ď d ă 8 be a possibly uneven lattice, and Dn Ă D be the set of observation locations, which may differ across different n. For spatial data, D would be defined by a geographical space with d “ 2. Notably, D does not necessarily have to be exactly observable to us. For example, D is possibly a complex space of general social and economic characteristics. In this case, we can consider it to be an embedding of individuals in a latent space,
+instead of their physical locations. Assumption 3.1. (i) The maximum coordinate difference between any two observations i, j P D, which we denote as ∆pi, jq, is at least (without loss of generality) 1; and (ii) a threshold distance ∆ exists such that wi,j “ 0 if ∆pi, jq ą ∆. Assumptions 3.1(i) and (ii) together imply that the number of interacting neighbors for each unit
+is bounded. We believe this is not too restrictive in practice. Assumption 3.2. (i) tziuni“1 are non-stochastic and uniformly bounded; and (ii) limnÑ8 ZJZ{n exists and is nonsingular. Assumption 3.3. (i) For all i, εi P Lpp0, 1q for some 2 ď p ă 8; (ii) tεiuni“1 are independent; and (iii) Erεipsqs “ 0 for all i, inf1ďiďn; ně1 ||εipsq||2 ą 0, and sup1ďiďn; ně1 ||εipsq||4 À 1. Assumption 3.2(i) states that the covariates and instruments are constant. The same type of
+assumption as this has been often utilized in the literatures on spatial econometrics and many-IV
+estimation (e.g., Kelejian and Prucha, 2010; Hausman et al., 2012). Note that this assumption is essentially equivalent to considering all stochastic arguments as being conditional on tziuni“1. Assumption 3.3 restricts the distribution of the error functions, which accommodates virtually any form of
+heteroscedasticity. We might be able to relax the independence assumption in (ii) to some weak depen-
+dence condition, but we introduce this for technical simplicity. The s in (iii) is a given interior point of r0, 1s at which the estimation is performed. Assumption 3.4. (i) For all k, ϕk P L2p0, 1q; (ii) ||α0p¨, sq ´ ϕKp¨qJθ0psq||L2 ď ℓKpsq, where ϕK “ pϕ1, . . . , ϕKqJ; and (iii) ρmaxp ş1 0 ϕKptqϕKptq Jdtq À 1. Assumption 3.4 imposes a set of conditions on the basis functions. The L2-convergence rate of
+the approximation errors for various bases is discussed in Belloni et al. (2015), where it is shown that ℓKpsq À K´π typically holds when α0p¨, sq is a π-smooth function (i.e., Hölder class of smoothness order π). Assumption 3.5. (i) ρmaxpErR J Z{nsErZJR{nsq, ρmaxpErR J xZ{nsErZJRx{nsq À 1; and (ii) there exists νKL ą 0 such that νKL ď lim infnÑ8 ρminpErR J Z{nsErZJR{nsq, lim infnÑ8 ρminpErR J xZ{nsErZJRx{nsq. The νKL in Assumption 3.5(ii) governs the strength of the identification of α0, which conceptually corresponds to the measure of ill-posedness in the IV regression in high-dimensional models (e.g.,
+Breunig et al., 2020) or that in the nonparametric IV models (e.g., Blundell et al., 2007; Hoshino, 2022). When the order of basis expansion K increases, the minimum singular values of ErZJR{ns and ErZJRx{ns converge to zero in general, potentially slowing down the rate of convergence and blowing up the variance of our estimator. We introduce the penalty term λD to control the variance inflation
+by restricting the flexibility of the estimated function. To state the next assumption, we define the following matrices: Vnpsq :“ diagtErε21psqs, . . . ,Erε2npsqsu, Ωn,xpsq :“ ΨJn,xVnpsqΨn,x{n,
+Ψn,x :“ X ´ ZpZJZ{nq´EpZJR{nq ” ERJMzER{n ı´1 EpRJX{nq,
+Σn,x :“ XJX{n ´ EpXJR{nq ” ERJMzER{n ı´1 EpRJX{nq. Assumption 3.6. Σx :“ limnÑ8 Σn,x and Ωxpsq :“ limnÑ8 Ωn,xpsq exist and are nonsingular. The next theorem gives the convergence rate of our estimator. Theorem 3.1. Suppose Assumptions 2.1 and 3.1 – 3.6 hold. In addition, assume L ? K{pν2KL ? nq À 1. Then, we have
+(i) ||pβnpsq ´ β0psq|| Àp n´1{2, and (ii) }pαnp¨, sq ´ α0p¨, sq}L2 Àp ? K{ ? n ` ℓKpsq? νKL ` λρD ` λ||θ0psq||D νKL ` λρD ,
+where ρD :“ ρminpDq, and ||θ0psq||D :“ a θ0psqJDθ0psq. The proofs of Theorem 3.1 and those presented below are somewhat similar in several parts to
+those in Hoshino (2022), but for completeness, they are all presented in Appendix A. Theorem 3.1(i)
+shows that the coefficients of xi can be estimated at the root-n rate. Meanwhile, result (ii) indicates that the L2-convergence rate of pαnp¨, sq is not standard owing to the potential weak identification and the presence of the penalty term λD. We can observe a trade-off that the first term converges to
+zero quickly by selecting a large λ, while the second term can vanish if we select λ diminishing at a sufficiently fast rate such that νKL{λ Ñ 8. It is clear that the order of ||θ0psq||D is bounded by ? K. When θ0psq is a sparse vector or it is decaying in the order of basis expansion, ||θ0psq||D À 1 might be possible. Next, define σn,λpt, sq :“ b ϕKptqJΣ´1n,r,λΩn,rpsqΣ ´1 n,r,λϕKptq, Σn,r,λ :“ ER J xMzERx{n ` λD, and
+Ωn,rpsq :“ ER J xMzVnpsqMzERx{n. Moreover, let
+pCnpsq :“ “ XJpIn ´ SqX{n ‰´1 ´ XJpIn ´ Sq pVnpsqpIn ´ SqX{n ¯ “ XJpIn ´ SqX{n ‰´1
+rpσn,λpt, sqs2 :“ ϕKptqJ ” R J xMzRx{n ` λD ı´1 ´ R J xMz pVnpsqMzRx{n ¯ ” R J xMzRx{n ` λD ı´1 ϕKptq
+where pVnpsq :“ diagtpε21psq, . . . , pε2npsqu, and pεipsq :“ qipsq ´ rJi qθnpsq ´ xJi pβnpsq, where qθnpsq denotes the estimator of θ0psq obtained following (3.1) with λ set to zero. Then, the limiting distribution of our estimator can be characterized as in the following theorem. Theorem 3.2. Suppose Assumptions 2.1 and 3.1 – 3.6 hold. In addition, assume
+K „ L, K3{pν4KLnq Ñ 0, ? nℓKpsq{ ? νKL Ñ 0, ? n|ϕKptqJθ0psq ´ α0pt, sq|{||ϕKptq|| Ñ 0, λ{ν2KL Ñ 0, ? nλ||θ0psq||D{νKL Ñ 0. Then, we have
+(i) ? nppβnpsq ´ β0psqq dÑ N p0,Σ´1x ΩxpsqΣ´1x q, and (ii) ? nppαnpt, sq ´ α0pt, sqq
+σn,λpt, sq dÑ N p0, 1q. Furthermore, (iii) || pCnpsq ´ Σ´1x ΩxpsqΣ´1x || “ oP p1q and (iv) |pσn,λpt, sq ´ σn,λpt, sq| “ oP p1q. Remark 3.2 (Choice of tuning parameters). To implement our estimator, we need to select three
+tuning parameters λ, K, and L. For the penalty parameter λ, considering the assumptions in Theorem 3.2, it must converge to zero faster at least than n´1{2. In the numerical studies presented below, we set λ „ n´3{5. For the order of basis expansion K, assume that L „ K „ nk for some k ą 0. We
+further assume that the ill-posedness is mild such that νKL À K´ν for some ν ą 0 and suppose that α0p¨, sq is a π-smooth function such that ℓKpsq À K´π. Then, easy calculations yield that K must satisfy 1{p2π ´ νq ă k ă 1{p3 ` 4νq to ensure the asymptotic normality results. This clearly indicates that when the IVs are not strong, a modest K should be employed. In Section 4, we numerically
+examine the impact of tuning parameters selection. The results demonstrate that the choice of λ is
+more influential on the estimation performance than that of K. More sophisticated, data-driven tuning
+parameter choice methods. 3.3 testing the presence of spatial effects In this section, we consider statistically testing the presence of spatial effects. Specifically, for each
+given s, we test the following null hypothesis:
+H0 : α0pt, sq “ 0 almost everywhere t P I
+where I denotes a non-degenerate sub-interval of r0, 1s. Then, a natural test statistic for testing H0 would be the Wald-type statistic given as follows:
+Tn :“ n ż
+I pα2npt, sqdt,
+where the dependence of Tn on s is suppressed. To derive the asymptotic distribution of Tn under H0, let Ξn :“ Σ´1n,r,λEpR J xZ{nqpZJZ{nq´ and ΦI :“ ş I ϕKptqϕKptq Jdt. Further, define
+µn :“ tr ␣ ΞJnΦIΞnpZJVnpsqZ{nq ( vn :“ 2tr ␣ ΞJnΦIΞnpZJVnpsqZ{nqΞJnΦIΞnpZJVnpsqZ{nq ( ,
+which serve as the mean and variance of Tn, respectively. Here, we introduce the following miscellaneous assumptions. Assumption 3.7. (i) sup1ďiďn; ně1 ||εipsq||6 À 1; and (ii) 0 ă ρminpΦIq ď ρmaxpΦIq À 1. The next theorem characterizes the asymptotic distribution of our test statistic. Theorem 3.3. Suppose Assumption 3.7 and the assumptions in Theorem 3.2 are all satisfied. In addition, assume 1{pKν2KLq Ñ 0 and K3{pν5KLnq Ñ 0. Then, we have pTn ´ µnq{ ? vn dÑ N p0, 1q. When H0 does not hold, the standardized test statistic pTn ´ µnq{ ? vn deviates to a positive value. Thus, considering Theorem 3.3, we can reject H0 at the 100α% significance level if the realized value of pTn ´ µnq{ ? vn exceeds the upper α-quantile of N p0, 1q. To implement the test in practice, we need to consistently estimate µn and vn, which can be easily performed by the sample analogue estimators, the definitions of which should be clear from the context. The consistency of these estimators follows
+straightforwardly from the described arguments (refer to Lemmas A.3 and A.4 and Theorem 3.2(iii),
+(iv)). Remark 3.3. The proposed test can easily be extended to a more general null hypothesis: H0 : α0pt, sq “ aptq for t P I, where ap¨q is any given function that is pre-specified by the researcher (or estimable with a certain convergence rate). The resulting test statistic would take the following form: Tn “ ş Ippαnpt, sq ´ aptqq 2dt, and H0 can be tested using the same procedure as above. Finally, it is important to notice that when H0 : α0pt, sq “ 0 is indeed true over the entire r0, 1s, higher-order spatially-lagged covariates are not valid IVs, that is, for example, xi and qi are not related to each other. Thus, basically, we need to prepare a sufficient number of IVs using only xi and possibly its transformations in this case. 3.4 asymptotic properties under interpolated outcome functions Finally, in this section, we examine the cases in which the outcome functions are only discretely observed, and they are linearly interpolated following (3.2). Letting si,0 “ 0 and si,mi`1 “ 1 for all i, we introduce the following assumption. Assumption 3.8. For all i, (i) there exists a positive sequence κ ” κn tending to zero as n increases such that |si,l`1 ´ si,l| À κ, for all l “ 0, 1, . . . ,mi; and (ii) there exists a constant ξ P p0, 1s such that |qips1q ´ qips2q| À |s1 ´ s2|ξ for any s1, s2 P r0, 1s. Assumption 3.8(i) determines the overall precision of the linear interpolation approximation. For
+simplicity of discussion, it assumes that the values of the outcome function are (quasi) uniformly
+observed such that the distance of any two consecutive observations is of order κ. In addition, note
+that we treat each observation point as nonstochastic. Assumption 3.8(ii) requires that the outcome
+function is Hölder continuous with exponent ξ for all i. This assumption may be somewhat restrictive,
+but similar assumptions are often considered in the FDA literature (e.g., Crambes et al., 2009). The following theorem states that the approximation errors caused by the linear interpolation are
+asymptotically negligible if κξ is sufficiently small. Theorem 3.4. Suppose Assumption 3.8 and those in Theorem 3.2 are all satisfied. In addition, assume ? nκξ{?νKL Ñ 0. Then, rβnpsq and rαnp¨, sq are asymptotically equivalent to pβnpsq and pαnp¨, sq, respectively. Under Assumption 3.8, the approximation error |pqipsq ´ qipsq| is of order κξ uniformly in s. The condition ? nκξ{?νKL Ñ 0 states that the interpolation error should shrink to zero faster than n´1{2, similar to the basis approximation error ℓKpsq. From this result, it is also straightforward to observe the asymptotic equivalence between the feasible Wald test rTn :“ n ş I rα 2 npt, sqdt and Tn presented in the previous section. 4 numerical experiments Performance of the 2SLS estimator In this section, we first examine the finite sample performance
+of the proposed 2SLS estimator. We consider the following three data-generating processes (DGPs) for
+the Monte Carlo experiments:
+qipsq “ ż 1
+0 qiptqα0pt, sqdt `
+7 ÿ j“1 xi,jβ0jpsq ` εipsq,
+where
+DGP 1: α0pt, sq “ pt ` sq{2 DGP 2: α0pt, sq “ PDF of N pt ´ s, 0.72q
+DGP 3: α0pt, sq “ 0.3 ` 0.7t sinp2πpt ´ sqq
+β0jpsq “ 1 ` 1.2 logps ` 1q for j “ 1, 2, 3, β0jpsq “ exppsq ´ 0.4 for j “ 4, . . . , 7, xi,j IID„ N p0, 1q for all j, and εipsq “ ε1,i ` ř4 j“1 s j{2ε2,i,j with ε1,i IID„ N p0, 0.32q and ε2,i,j IID„ N p0, 0.62q for all j. When estimating the model, an intercept term is also included. The spatial weight matrix Wn is defined according to the Rook contiguity with row normalization. We randomly allocate n units on the lattice of n{20 ˆ 40, where we consider two sample sizes: n P t400, 1600u. Since these three DGPs satisfy the requirements in Assumption 2.1, we can generate the outcome functions Q using the Neumann series approximation: Q « QpLq :“ řL
+ℓ“0 T ℓrXβ0 ` Es, where L is increased until max1ďiďn |q pLq i psq ´
+q pL´1q i psq| ă 0.001 is met for all s. For computing the integrals over r0, 1s, we approximate them by finite summations over 199 grid points: 0.005, 0.010, . . . , 0.995. For the choice of the basis functions tϕku, we use the cubic B-splines. We examine two values for the number of the inner knots of the B-splines: # knots P t2, 3u, corresponding to K “ 6 and 7, respectively, both of which are equally spaced in r0, 1s. The IVs used are the first- and second-order spatial lags of t1, xi,1, . . . , xi,7u. Note that because there may exist some units that have no neighboring units, the spatial lags of 1 are not necessarily constant. For the penalty term λD, we set D “ IK (i.e., the ridge penalty) and attempt using four values for λ “ λcn´3{5 with λc P t0.5, 1, 2, 3u. The number of Monte Carlo repetitions for each setup is set to 1000. Throughout, the evaluation point s is fixed at s “ 0.5. The performance of the coefficient estimator pβn is evaluated using the average bias (BIAS) and the average root mean squared error (RMSE):
+BIAS: 1
+7
+7 ÿ
+j“1
+«
+1
+1000
+1000 ÿ
+r“1
+pβ prq nj psq ´ β0jpsq
+ff
+, RMSE: 1
+7
+7 ÿ
+j“1
+«
+1
+1000
+1000 ÿ r“1 ppβprqnj psq ´ β0jpsqq 2
+ff1{2
+,
+where superscript prq means that the estimate is obtained from the r-th replicated dataset. Similarly, for the estimator pαn of the spatial effect, we evaluate the performance based on the BIAS and RMSE averaged over the 19 evaluation points tt1, t2, . . . , t19u equally spaced on r0, 1s:
+BIAS: 1
+19
+19 ÿ
+j“1
+«
+1
+1000
+1000 ÿ r“1 pαprqn ptj , sq ´ α0ptj , sq
+ff
+, RMSE: 1
+19
+19 ÿ
+j“1
+«
+1
+1000
+1000 ÿ r“1 ppαprqn ptj , sq ´ α0ptj , sqq2
+ff1{2
+. Table 1 summarizes the simulation results. Our main findings are as follows: First, the results
+suggest that our estimator works satisfactorily well for all scenarios. The RMSE values for estimating
+β0 are approximately halved when the sample size is increased from 400 to 1600, which is consistent with our theorem. Meanwhile, the RMSE values for estimating α0 do not decrease significantly even when the sample size is increased. This result would be owing to the increased variances caused by employing a smaller penalty parameter λ (recall that λ „ n´3{5). When comparing the results of the estimators with different λ values, our results suggest that when the functional form of the spatial effect
+α0 is simple as in DGPs 1 and 2, using an estimator with a relatively large penalty advisable in terms of RMSE. In contrast, when the functional form of α0 is complex as in DGP 3, the estimator with the smallest penalty outperforms the others, which should be a reasonable result. It seems that the number
+of inner knots has only minute impacts on the estimation performance. Performance of the Wald test Next, we assess the finite sample performance of our test for the
+presence of spatial effects. In this analysis, we use the same DGP as given above to generate the data,
+with a slight modification on α0 in DGP 2. Specifically,
+α0pt, sq “ ϱ ˆ PDF of N pt ´ s, 0.72q,
+where ϱ P t0, 0.1, 0.2u. The null hypothesis to be tested is H0 : α0pt, 0.5q “ 0 for t P r0.1, 0.9s. Thus, H0 holds true when ϱ “ 0. In Table 2, we present the rejection frequency over 1000 Monte Carlo repetitions at the 10%, 5%, and 1% significance levels. The results for ϱ “ 0 demonstrate that the size of our test is reasonably well-controlled, with at most 1–2% deviation from the nominal levels for most cases. When the spatial effect is mild in magnitude (ϱ “ 0.1), the estimator with a smaller penalty (λc “ 0.5) is not sufficiently powerful to detect the effect probably owing to its large estimation variance. However, as expected, the
+power of the test can be significantly improved by increasing the sample size. In the case of a stronger spatial effect (ϱ “ 0.2), all tests exhibit nearly perfect power property for all sample sizes. Simulations under discretely observed outcome functions Finally, we evaluate the perfor-
+mance of our estimator and test when the entire shapes of the outcome functions are not perfectly
+observed but their values are discretely observable at finite points. The DGPs investigated here are
+identical to those used previously. To recover the entire functional form of the outcome function for
+each unit, we use the linear interpolation method in (3.2). For all units, we assume that m pairs of points tpsi,j , qipsi,jqqumj“1 are observable, where si,j ’s are uniformly randomly drawn from r0, 1s, and m is selected from two values m P t15, 50u. To save space, the simulation results are omitted here and provided in Tables B1 and B2 in Appendix
+B. From these tables, we can observe similar overall tendencies as those shown above. An interesting
+finding is that, although increasing m from 15 to 50 improves the RMSE for most cases, there are some
+situations in which the estimator with a smaller m achieves an even slightly better RMSE. Similarly, comparing the results when m “ 15 with those when the outcome function is fully observable (those reported in Table 1), the former occasionally exhibits smaller RMSE values. We conjecture that these
+phenomena occurred because the linear interpolation “smoothed out” the original, potentially noisier,
+outcome function, leading to a reduction in estimation variance. A similar discussion can be found in
+Imaizumi and Kato (2018) in a different context. In contrast, regarding the size property of the Wald
+test, the linear interpolation seems to introduce certain distortions. Unsurprisingly, these distortions can be somewhat mitigated if m is large. Except when λc “ 0.5, the test exhibits a satisfactory power for both values of m. 5 an empirical illustration: age distribution of japanese cities In this section, we apply the proposed estimator and test to analyze the determinants of the age distri-
+bution of Japanese cities. While this type of data has been regularly studied in the FDA literature (e.g.,
+Delicado, 2011; Hron et al., 2016; Bigot et al., 2017), there are few papers attempting a regression-based
+analysis. In recent decades, many rural Japanese cities have been facing a serious aging population,
+prompting them to plan campaigns to encourage young people from urban areas to settle in their cities. Thus, investigating the relationship between the regional socioeconomic characteristics and the age
+structure and the impact of neighborhood trend on it would be meaningful. Our sample comprises all local municipalities (Shi-ku-cho-son) in Japan. The age distribution data
+for each city are taken from the 2020 Census. For the covariates to explain the age distribution, we use
+the ratio of agricultural, forestry, and fishery workers, number of hospital beds per capita, number of
+childcare facilities per capita, unemployment rate, logarithm of annual commercial sales, and logarithm
+of average residential landprice. All variables are as of the most recent year before 2020, and they are all publicly available.3 In addition to these, we include five regional dummies.4 After excluding
+the observations with missing items, the analysis is performed on 1883 municipalities. Table C3 in
+Appendix C summarizes the detailed definitions of the variables used and their basic statistics. Our age distribution data are not complete; we only have information on the population size at five-
+year intervals (0 – 4 years old, 5 – 9 years old, and so forth). Therefore, when computing the quantile
+function for each city, we performed the linear interpolation as in (3.2). In Figure 1, we depict the
+obtained quantile functions for 20 randomly selected cities from our dataset. The figure clearly shows
+the existence of certain regional heterogeneity in age compositions except those close to the boundary
+points. For estimation, we follow the same procedure as in the previous section with K “ 7 (three inner knots) and λ “ 3n´3{5. The integrals are replaced by summations over 399 equally-spaced grid points on r0, 1s. For the spatial weight, expecting that the impacts from demographic changes in large cities
+3Landprice data: https://www.lic.or.jp/landinfo/research.html; all others: https://www.e-stat.go.jp/en. 4They correspond to each of the following: Hokkaido-Tohoku, Chubu, Kinki, Chugoku-Shikoku, and Kyushu-Okinawa
+regions. should be larger than those from small cities, we consider the following specification:
+wi,j “ 1ti and j are adjacentu
+a
+Populationj ř
+j‰i 1ti and j are adjacentu a Populationj . When city i has no neighbors (e.g., islands), we set wi,j “ 0 for all j. The estimation is performed on nine quantile values: s “ 0.1, 0.2, . . . , 0.9. To save space, the estimated coefficients β0psq are presented in Figure C1 in Appendix C. Our major findings from the figure are as follows: Interestingly, for all variables, the impacts on age distribution become prominent around the median (s “ 0.5), suggesting the residential flexibility of this age group in response to the socioeconomic conditions of a city. The variables considered as indicators of urbanness,
+such as the commercial sales and the landprice, exhibit negative effects, contributing to population
+rejuvenation. As expected, cities with a higher rate of agricultural workers exhibit a significant aging
+trend. Both the number of hospital beds and childcare facilities positively affect age distribution,
+although the underlying mechanisms are unclear. It is important to recall that in this study, the
+covariates are treated as fixed, and their potential endogeneity is ignored. To interpret the obtained
+results as a causal relationship, addressing the endogeneity issue more carefully would be necessary. The estimated spatial effect function is reported in Figure 2. The figure includes nine panels,
+each corresponding to different s-values. In the figure, we also report the computed test statistic pTn ´ µnq{ ? vn for I “ r0, 1s. From these results, we can observe the following: First, the values of the test statistic suggest that the spatial effects exist significantly at all nine quantiles. However, when
+quantile t of the neighbor is close to either of the boundary points 0 or 1, almost no or weak spatial
+effects are present. This seems reasonable considering Figure 1; only a little regional heterogeneity in age
+distribution is present at these extreme quantiles. The spatial interaction effects become particularly
+strong when both t and s are approximately 0.2 – 0.5, which roughly correspond to the ages of the
+younger working population. This result might suggest that the growth of economic activities and their
+spillovers play main roles in forming the spatial trend of age distribution. Notably, the impacts from
+these lower-to-middle quantile values somewhat persist even for higher quantile ages. This could be
+reflecting the indirect effects from positive interactions among younger age groups, rather than a direct
+causal relationship across different quantiles. 6 conclusion In this study, we developed a novel SAR model for analyzing spatial interactions among functional
+outcomes. For estimation, we developed a penalized 2SLS estimator and established its asymptotic
+properties under certain regularity conditions. Additionally, we developed a method for statistically
+testing the presence of spatial interactions. To illustrate the effectiveness of our proposed method, we
+performed an empirical analysis focusing on the age distribution in Japanese cities. An important potential limitation of our study is that, while we have treated the covariates as fixed
+variables to simplify the theoretical exposition, this approach essentially obscures the endogeneity issue
+underlying the covariates. For instance, in our empirical analysis, it might be reasonable to consider
+the unemployment rate as an endogenous variable correlated with unobserved regional factors affecting
+the age distribution as well. 

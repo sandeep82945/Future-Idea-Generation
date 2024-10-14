@@ -1,0 +1,2281 @@
+Background Shared decision-making facilitates collaboration between patients and health care providers for informed health decisions. Our review identified interventions to support Indigenous Peoples making health decisions. The objectives were to synthesize evidence and identify factors that impact the use of shared decision making interventions. Methods An Inuit and non-Inuit team of service providers and academic researchers used an integrated knowledge translation approach with framework synthesis to coproduce a systematic review. We developed a conceptual framework to organize and describe the shared decision making processes and guide identification of studies that describe interventions to support Indigenous Peoples making health decisions. We conducted a comprehensive search of electronic databases from September 2012 to March 2022, with a grey literature search. Two independent team members screened and quality appraised included studies for strengths and relevance of studies’ contributions to shared decision making and Indigenous self-determination. Findings were analyzed descriptively in relation to the conceptual framework and reported using guidelines to ensure transparency and completeness in reporting and for equity-oriented systematic reviews. Results Of 5068 citations screened, nine studies reported in ten publications were eligible for inclusion. We categorized the studies into clusters identified as: those inclusive of Indigenous knowledges and governance (“Indigenousoriented”)(n = 6); and those based on Western academic knowledge and governance (“Western-oriented”)(n = 3). The studies were found to be of variable quality for contributions to shared decision making and self-determination, with Indigenous-oriented studies of higher quality overall than Western-oriented studies. Four themes are reflected in an updated conceptual framework: 1) where shared decision making takes place impacts decision making opportunities, 2) little is known about the characteristics of health care providers who engage in shared decision making processes, 3) community is a partner in shared decision making, 4) the shared decision making process involves trust-building. Conclusions There are few studies that report on and evaluate shared decision making interventions with Indigenous Peoples. Overall, Indigenous-oriented studies sought to make health care systems more amenable to shared decision making for Indigenous Peoples, while Western-oriented studies distanced shared decision making from the health care settings. *Correspondence: Janet Jull janet.jull@queensu.ca Full list of author information is available at the end of the article Page 2 of 22 Jull et al. Archives of Public Health (2023) 81:174 background Systemic racism continues to challenge the resilience and undermine the self-determination of Indigenous1 Peoples [1–3] by severely restricting their capacity to participate and innovate for better health outcomes. Indigenous Peoples demonstrate tremendous resilience, self-determination, and capacity to innovate [4–6]. Despite these strengths, there are global disparities in health between Indigenous and non-Indigenous Peoples [7–11]. For example, the health of urban Indigenous, Inuit, First Nations, and Métis populations in Canada have been described as poor, with shorter life expectancies, and higher rates of illness, injury, and mental health issues when compared to general populations [10, 12, 13], a pattern that is evident in other colonial societies such as the United States, Australia and New Zealand [14]. Additionally, Indigenous Peoples consistently report poor experiences in health and social systems, that undermine access and uptake of services [15–17]. These disparities are the result of socially produced structures that are perpetuated by and directly related to colonialism [8]. The result is “health inequities”, defined as preventable, systematic, and socially produced differences in health between and within populations [7]. Indigenous Peoples must have opportunities to be central to and participate in health care that meets the needs they identify as important, that is, health care that is person-centred [18]. Shared decision making is a central feature of person-centred care [19, 20]. It is a process that engages people who are personally experiencing a health issue (“patients”), and their families, with health care providers to make decisions about screening, treatments, or management of chronic conditions [21]. We use the term ‘health care provider’ to refer to all people who are engaged in actions whose primary intent is to improve health, including both health care professionals (e.g. audiology, speech language pathology, dentistry, medicine, nursing, midwifery, occupational, physiotherapy) and health support workers (e.g. peer support worker, lay health worker) [22]. Standard care provides patients with
+evidence-based information about their health choices. With shared decision making, the patients’ informed preferences, values and beliefs, along with clinical evidence, are also considered in making health decisions [23, 24] There are approaches and tools such as decision coaching and patient decision aids, that can support people to work with their health care providers and participate in their health decisions [25, 26]. Studies have shown that shared decision making improves patient outcomes and experiences [27], improves the experiences and effectiveness of health professionals in their communication with patients [28], and may optimise costs in health care [29]. Shared decision making has also been found to benefit those who are more likely to experience disadvantage in health systems [30]. There is a growing body of work about how shared decision making may enhance opportunities for Indigenous Peoples to participate in their health decision making; however, little is known about the scope of the literature regarding approaches and tools as strategies to support shared decision making with Indigenous Peoples. A systematic review, published in 2013, focused on interventions for Indigenous Peoples making health decisions and identified one study that reported a shared decision making strategy [31]. The literature search for the systematic review was conducted with no start date limitation, i.e., from the earliest data sources on each database, e.g., 1947 or earlier, and up to 16 September 2012. That review found many studies that were aimed at educating Indigenous participants to comply with particular health behaviours, rather than engaging them in a process of making shared decisions with health care providers [31]. Since the 2013 review, there have been important guiding documents that assert the right to self-determination of Indigenous Peoples, and promote actions to not perpetuate or reproduce existing colonial structures in society [32–34]. As well, these documents explain why it is important to conduct research to advance self-determination, in ways that Indigenous Peoples themselves identify as strengths-based, respectful and inclusive. In addition, there are a growing number of research guidelines for the conduct of research done with Indigenous Peoples [35–38]. The results of these research guidelines are contributions to research outcomes in the areas of balancing individual and collective rights, upholding ethical principles and community-driven research that upholds self-determination [39]. Shared decision making 1 Indigenous communities, Peoples and nations have a historical continuity with pre-invasion and pre-colonial societies that developed on their territories and consider themselves distinct from other sectors of society that now prevail on those territories (1,2) In Canada, there are 3 distinct Peoples with unique histories, languages, cultural practices and spiritual beliefs: First Nations, Inuit and Métis (3). We capitalize Indigenous Peoples to recognize Indigenous Peoples as Nations. may be one way to address the health inequities experienced by Indigenous Peoples. The research to develop and evaluate shared decision making strategies must be done in ways that advance self-determination and  are identified as respectful and inclusive. We are a team of Inuit and non-Inuit members of service providers and academic health care researchers who are active in health care systems that provide services to communities in the Qikiqtani (Baffin) region of Nunavut and in Ottawa, Ontario. In a research project called “Not Deciding Alone”, we have been working to enhance opportunities for Inuit to participate in decisions about their health care. The purpose of Not Deciding Alone is to promote Inuit self-determination in research processes [38] in the development of interventions to support shared decision making in health systems. Our work is conducted with Inuit service organizations and community member partners and described in detail elsewhere [17]. Our team decided that it is important to determine the state of the research evidence and learn from interventions that support shared decision making with Indigenous Peoples. We decided to conduct a systematic review of the international literature (“the review”). The purpose of the review is to identify interventions to support Indigenous Peoples making health decisions. The objectives are to a) synthesize evidence from studies focused on the development and/or testing of interventions to support Indigenous Peoples making health decisions, and; b) identify factors, such as barriers and facilitators, that impact the use of interventions to support Indigenous Peoples making health decisions. methods The Not Deciding Alone team consists of an Inuit and non-Inuit Steering Committee, who guide the work and includes an Elder, and academic research members who operationalize research tasks (JJ, KF, BH) (www. notde cidin galone. com) To complement the skills of the Not Deciding Alone team in the conduct of our review, we engaged two additional non-Indigenous research team members with expertise in library science (AD) and framework synthesis methods (SO). The review team (“the team”), all authors on this paper, between them hold knowledge and/or experience in the areas of Inuit societal values, Inuit and Indigenous health issues, shared decision making tools and approaches, knowledge translation, systematic review methods, framework synthesis, library sciences, collaborative research approaches with Inuit and Indigenous Peoples, qualitative and quantitative research methods. The first author (JJ) identifies as a non-Indigenous settler scholar of EuroCanadian descent, and the second author (KF) identifies
+as Nunavummiut. The team shares concerns about Inuit access and uptake of health services, and experiences of Inuit in health systems. Our aim is to conduct research from within equitable partnerships that prioritize Inuit knowledge and experience, to ensure that Inuit communities are the primary benefactors of our work. To ensure transparency and completeness in our work, we used the Enhancing Transparency in Reporting the Synthesis in Qualitative Research (ENTREQ) [40] (Supplementary file 1) and the Preferred Reporting Items for Systematic Reviews and Meta-Analysis statement extended for equity (PRISMA-Equity) [41] (Supplementary file 2). We organized our study with the National Inuit Strategy on Research (NISR) [38]. We conducted our research to align with the views expressed by Inuit in community consultations, and with a focus on a principled approach to research [35, 42]. The principles of Inuit Qaujimajatuqangit guide a strengths-based approach to research and promotes Inuit self-determination and self-reliance. Inuit Qaujimajatuqanigit centre on collaborative decision making and working together for the common good [43, 44]. Previous work has shown the relevance and importance of centring on and promoting Inuit worldviews in both the research processes [45] and in the development and use of shared decision making research products [46]. Our study uses an integrated knowledge translation (KT) approach [47, 48] and is structured to support coproduction with study governance and collaborative conduct by those who will use or be impacted by the research [49]. The Steering committee members of the team were engaged with research team members throughout the entire review process to conceptualize, guide, reflect on, and amend or approve each step (Fig. 1). theoretical framework There are systematic reviews that demonstrate the benefits of frameworks to organize thinking about relationships between concepts [50]. We used a framework to organize concepts important to shared decision making in Indigenous contexts. To understand interventions for Indigenous Peoples making health decisions requires attention to knowledges that are not yet evident within Western-oriented health and social care frameworks [16]. We consider people and communities to be nested within broader structural and contextual contexts [8, 51, 52], and conceptualize shared decision making as a highly relational process. Here, we explain our perspective on shared decision making, in relation to others’ work. Interventions to support shared decision making processes are described in frameworks and models that reflect
+shared decision making concepts, support a relational approach to shared decision making, and are based on research. The Ottawa Decision Support Framework (ODSF) describes decision support interventions, such as decision coaching and patient decision aids, as useful to address patients’ decisional needs [53, 54]. The Interprofessional Shared Decision Making
+(IP-SDM) model broadens the perspective of shared decision making beyond the patient-practitioner dyad, and positions shared decision making to be operating at the levels of patients, health care provider teams, and the health care system [55, 56]. Likewise, the Making Informed Decisions Individually and Together (MIND-IT) model describes the multipleroles in shared decision making in health care systems and identifies factors and roles of patient and health care providers, and other stakeholders, that impact patient and clinician reasoning about health decisions [57, 58]. Another framework called “Aspects of patient involvement”, relates the complexity of involvement in decision making and patient relationships with health care providers [59]. Finally, the Medicine Wheel Framework was developed with an urban Indigenous community and describes their perspectives on shared decision making, with their roles and perceptions of health care providers’ roles within the shared decision making process [60]. The Medicine Wheel Framework is used to explain the relational nature of shared decision making, and the role of shared decision making in culturally safe care [60]. The pre-existing frameworks and models  focus on interactions between patients, health care providers and health systems. Our team developed the Shared Decision Making Process Framework, to organize concepts important to Indigenous Peoples and shared decision making  (“conceptual framework”). The conceptual framework is based on understandings of shared decision making by our team [25], our learning in collaboration with Inuit community partners, and incorporates concepts from the Indigenous and non-Indigenous shared decision making frameworks and models discussed here. The purpose of the conceptual framework is to provide a foundation for reflection on concepts important to shared decision making processes. The conceptual framework describes the context and people involved, and their influence on shared decision making processes and practice. (Fig. 2; see also Supplementary file 3). Our team’s perspective on shared decision making reflects processes that uphold relationality, mutual learning, and co-production of knowledge. Scholars have identified the importance of resolving oppression of Indigenous Peoples from within partnerships [61]. Our intent is to identify factors that impact the use of shared decision making as a strategy to correct imbalances of power within health systems. Our perspective centres on the need to align Indigenous Peoples as equal partners within health systems, and to support opportunities for participation in health decisions. study inclusion and exclusion criteria We framed the study inclusion and exclusion criteria in a systematic manner, using the elements of a clinical question and include population, intervention, comparator, and outcome and study description (PICOS) [62]. We included primary studies published in peerreviewed journals that met our inclusion criteria, with no restrictions on the types of studies to be included: 1) Populations identified as Indigenous and making a health decision for themselves and/or a family member, 2) Interventions to influence making a health decision, 3) Any comparators for intervention studies examining effectiveness and not applicable for qualitative studies, 4) Outcomes that report on factors that impact the attributes of the decision or decision process, 5) Any study design. We excluded any papers for which full text was not available, and non-peer reviewed studies (editorials, commentaries, letters, dissertations). data searches We developed the search strategy protocol with the academic librarian team member  (AP), after consultation with subject experts on health, decision-making and Indigenous and health research, and based on  an earlier study [31]. The search strategy included subject headings and keywords for: the concepts of Indigenous identity combined with the concepts of informed or shared decision making, consumer health or health literacy. The librarian conducted searches for our team in major databases that cover the subject matter and
+without language restriction. The database selection includes: OVID MEDLINE, Global Health, CINAHL, Scopus, Native Health Database, Arctic Science and Technology Information System (ASTIS) database, Arctic Health, Circumpolar Health bibliographic database, and WHO’s Global Index Medicus. Due to the limited data available prior to 2012, we have focused our search to the previous 10 years September 17, 2012 to March 17, 2022. We did not limit by language. To supplement the database searches, we chose to  conduct a Google Scholar search to cover grey literature as well as to identify relevant studies that have cited each of the included studies (forwards searching) and reference lists of included studies (backwards searching). We contacted experts on shared decision making and authors of included studies to identify other relevant studies (Supplementary file 4). All screening was conducted by two authors (JJ, BH) using Covidence [63], with the oversight of a third author (KF) and discussion among all three authors about studies for which there was uncertainty about inclusion or exclusion. First, a title and abstract screen was conducted by two authors independently to determine study relevance to the overall objective of the systematic review and following the eligibility criteria. All studies identified as “included” and “unsure” were retained for full text screening; only studies excluded by both authors were excluded. The full text screening was based on the inclusion/exclusion criteria. During full text screening, the rational for exclusion was documented and final decisions confirmed with the team. study quality: reflections on strengths and relevance Following team discussions, we chose to focus on “quality” as a reflection on the strengths and relevance of included studies’ contributions to shared decision making and Indigenous self-determination. Our team wanted to: prompt reflection on study practices to develop and/or test interventions; identify factors that impact the use of interventions  to support health decision  making; and, include the knowledge of those who use or are the focus of the shared decision making intervention. We used tools intended for use with heterogeneous Indigenous studies, and studies conducted with Aboriginal and Torres Strait Islanders [64, 65]. Using the Well Living House quality appraisal tool [64], each document was scored in three domains: 1) community relevance, 2) rigour of study methodology, and 3) strength of evidence. Each included study was rated out of a total possible score of 12, within a range: low = 6–7, med = 8–9, high = 10–12. For Indigenous self-determination we used a reporting guideline developed  to improve the quality of published health research and health outcomes, called the Consolidated criteria for strengthening reporting of health research for Indigenous Peoples (CONSIDER statement). We used the CONSIDER statement to guide reflection on whether the criteria of research priorities, governance, relationships, methodologies, capacity, and dissemination are reported in the studies [65]. Two authors (JJ, KF) independently assessed the included studies, then the research team (JJ, KF, SO, BH) engaged in discussion and reflection that extended to the whole team (JJ, KF, SO, BH, with the guidance and approval of the Not Deciding Alone Team). The reflections on strengths and relevance of each study and any discrepancies in assessment between the team members was discussed and final decisions agreed upon and reported. data abstraction We used our conceptual framework to reflect concepts related to shared decision making and  to guide data abstraction and analysis of included studies. We included  criteria for general study information  from reporting guidelines to improve completeness in reporting of interventions [66], and research conduct [65]. Two authors (JJ, BH) conducted a pilot test of the data collection form with three studies prior to data abstraction. A third author (KF) verified the accuracy of the data. Each included study was inspected to identify the reported features:
+• characteristics of the article (e.g., first author, publication year) and study (e.g., aims, design, ethics, conclusions, limitations)
+• the intervention, including the knowledge organizing systems [67] (theories, frameworks, models) underpinning the approach to shared decision making • the features described in our conceptual framework (see Fig. 1) • study authors’ explanations of facilitators and/or barriers, outputs, and outcomes. data synthesis One member of the team (JJ) led the conduct of framework synthesis with three other authors (SO, KF, BH) and the oversight (review processes, discuss, provide guidance) of the team, by 1) becoming familiar with the data, 2) applying the conceptual framework to abstracted data, 3) tabulating and interpreting the findings [68]. Data that did not correspond to the conceptual framework were incorporated as emergent themes. The findings were reflected upon, and discussed among team members  to confirm similarities and differences within the data, and to determine associations between themes [69]. Our team engaged in reflection on the objectives of our review to guide interpretations in the conduct of the synthesis. results  search results and characteristics The search identified a total of 5068 studies of which we included nine studies, reported in 10 publications (Supplementary file 5). The studies were conducted in the United States (n = 4), Canada (n = 3), New Zealand (n = 1) and Australia (n = 1). The studies were focused on the development and/or evaluation of shared decision making interventions in the areas of Depression (n = 1), Cancer screening (n = 1), Child welfare (n = 2), Any health decision (n = 1), Cancer care (n = 1), Intimate partner violence (n = 1), Tobacco use (n = 1), and Arthritis (n = 1). Most of the studies were a qualitative design (n = 8) and reported some form of Indigenous and academic research partnership (n = 7). The characteristics of included studies are listed in Table 1. The descriptions of interventions to support the shared decision making process ranged from online/electronic, paper-based, and paper-based plus training, to models of practice to facilitate decision making. The providers of the shared decision making interventions included health care providers, trained decision coaches, coordinators or agency personnel, trained youth and project staff, or trained researchers who were testing the intervention with the intent for use by health care providers. Two interventions were designed to be used without provider involvement. The studies reported the use of the shared
+Ta bl
+e 1
+C ha
+ra ct
+er is
+tic s
+of in
+cl ud
+ed s
+tu di
+es
+St ud
+y Co
+un tr
+y Te
+am To
+pi c
+Pa rt
+ic ip
+an t G
+ro up
+s N
+um be
+r o f
+In di
+ge no
+us
+Pa rt
+ic ip
+an ts
+A ge
+R an
+ge (y
+ea rs
+) M
+et ho
+do lo
+gi ca l Fr am ew or k
+D at
+a Co
+lle ct
+io n
+A na
+ly si
+s
+*D irk
+s et
+a l.,
+20 18
+[7 0]
+U S
+In di
+ge no
+us
+an d
+ac ad
+em ic
+pa
+rt ne
+rs
+D ev
+el op
+a nd
+e va
+lu -
+at e
+a de
+ci si
+on s
+up -
+po rt
+to ol
+w ith
+A I/
+A N
+, f or
+d is
+cu ss
+io n
+ab ou
+t d ep
+re ss
+io n
+A N
+/A I w
+ho w
+ill
+di sc
+us s
+de pr
+es si
+on
+m an
+ag em
+en t
+37 5
+40 .7
+x Q
+ua lit
+at iv
+e Su
+rv ey
+, f oc
+us
+gr ou
+ps Th
+em at
+ic a
+na ly
+si s
+Fr er
+ic hs
+e t a
+l., 20
+20 [7
+1] U
+S In
+di ge
+no us
+an
+d ac
+ad em
+ic
+pa rt
+ne rs
+Ev al
+ua te
+th e
+im pa
+ct
+of th
+e co
+lo re
+ct al
+ca
+nc er
+(C RC
+) s cr
+ee n-
+in g
+de ci
+si on
+a id
+ad
+ap te
+d fo
+r A I a
+du lts
+on
+th ei
+r C RC
+-r el
+at ed
+ou
+tc om
+es
+A I c
+on si
+de rin g co lo re ct al c an
+ce r
+sc re
+en in
+g
+10 4
+50 –7
+5 Pr
+epo
+st s
+tu dy
+de
+si gn
+, p ilo
+t t es
+t To
+ol s
+w ith
+s ca
+le s
+St at
+is tic
+al a
+na ly
+si s
+G ra
+ce e
+t a l.,
+20 18
+[7 2]
+A us
+tr al
+ia In
+di ge
+no us
+an
+d ac
+ad em
+ic
+pa rt
+ne rs
+Ex am
+in e
+w he
+th er
+A bo
+rig in
+al
+ch ild
+re n
+in c
+hi ld
+pr
+ot ec
+tio n
+se rv
+ic es
+re
+la te
+a nd
+re sp
+on d
+to th
+e Ki
+ds S
+ay c
+ar ds
+C hi
+ld re
+n in
+c hi
+ld
+pr ot
+ec tio
+n 20
+8– 18
+Q ua
+lit at
+iv e
+In te
+rv ie
+w s
+Co nt
+en t a
+na ly
+si s
+of q
+ua lit
+at iv
+e da
+ta
+Ju ll
+et a
+l., 20
+15 [7
+3] Ca
+na da
+In di
+ge no
+us
+an d
+ac ad
+em ic
+pa
+rt ne
+rs
+D es
+cr ib e th e ad
+ap ta
+tio n
+an d
+us ab
+ili ty
+te st - in g of th e O tt aw a Pe rs on al D ec is io n G ui de (O PD G ) to s up po rt d ec is
+io n
+m ak
+in g
+w ith
+In di gen ou s w om en
+M em
+be rs
+of
+a n
+FN IM
+w om
+en ’s
+co m
+m un
+ity
+w ho
+h av
+e le
+ft
+si tu
+at io
+n of
+v io
+le nc e or im pa ct s of re si - de nt ia l s ch oo ls
+19 20
+–6 0
+Q ua
+lit at
+iv e
+Fo cu
+s gr
+ou ps , in te rv ie w
+s Th
+em at
+ic a
+na ly
+si s
+Ju ll
+et a
+l. 20
+19 [4
+6] Ca
+na da
+In di
+ge no
+us
+an d
+ac ad
+em ic
+pa
+rt ne
+rs
+To ta
+ilo r a
+nd fi
+el d-
+te st
+a s
+ha re d de ci si on -m
+ak in g st ra te gy fo r u se by In ui t i n ca nc
+er
+ca re
+In ui
+t f ac
+in g
+de ci - si on s ab ou t c an
+ce r
+ca re
+, p ee
+r s up
+po rt
+w
+or ke
+rs
+13 n/
+r Q
+ua lit
+at iv
+e Fo
+cu s
+gr ou
+ps ,
+in te
+rv ie
+w s
+Th em
+at ic
+a na
+ly si
+s
+Ko zi
+ol -M
+cL ai
+n et
+a l.,
+20 18
+[7 4]
+N ew
+Z ea
+la nd
+A ca
+de m
+ic To
+te st
+th e
+effi ca
+cy
+of a
+W eb
+-b as
+ed
+sa fe
+ty d
+ec is
+io n
+ai d
+(iS af
+e) fo
+r w om
+en
+ex pe
+rie nc
+in g
+IP V
+W om
+en m
+ak -
+in g
+de ci
+si on s ab ou t s af et y
+11 3
+16 –5
+9* Ra
+nd om
+iz ed
+c on - tr ol tr ia l
+To ol
+s w
+ith s
+ca le
+s St
+at is
+tic al
+a na
+ly si
+s
+Ta bl
+e 1
+(c on
+tin ue
+d)
+St ud
+y Co
+un tr
+y Te
+am To
+pi c
+Pa rt
+ic ip
+an t G
+ro up
+s N
+um be
+r o f
+In di
+ge no
+us
+Pa rt
+ic ip
+an ts
+A ge
+R an
+ge (y
+ea rs
+) M
+et ho
+do lo
+gi ca l Fr am ew or k
+D at
+a Co
+lle ct
+io n
+A na
+ly si
+s
+M ar
+cy ny
+sz yn
+e t a
+l., 20
+12 [7
+5] U
+S In
+di ge
+no us
+an
+d ac
+ad em
+ic
+pa rt
+ne rs
+D es
+cr ib
+es a
+n ad
+ap te d Fa m ily G ro up D ec isi
+on
+M ak
+in g
+pr ac
+tic e
+m od
+el a
+nd it
+s e va
+lu -
+at io
+n am
+on g
+La ko
+ta
+co m
+m un
+ity fo
+r c hi
+ld
+w el
+fa re
+D ec
+is io
+ns
+ab ou
+t c hi
+ld w
+el fa
+re n/
+r n/
+r Q
+ua lit
+at iv
+e O
+bs er
+va tio
+n D
+es cr
+ip tio n of th e pr oc
+es s
+M on
+tg om
+er y
+et a
+l., 20
+12 [7
+6] U
+S A
+ca de
+m ic , un cl ea r on re se ar ch re la tio ns hi p w ith In di ge - no us p ar tn
+er s
+D es
+cr ib
+es th
+e de
+ve l-
+op m
+en t o
+f c ur
+ric ul
+um
+th at
+tr ai
+ns A
+I/A N
+yo
+ut h
+le ad
+er s t
+o pl
+an ,
+w rit
+e, a
+nd d
+es ig n co m ic b oo ks to e nh an ce h
+ea lth y de ci sio n m ak in g in to ba cc o us e
+Yo ut
+h in
+a ft
+er sc
+ho ol
+yo
+ut h
+pr og
+ra m
+6 12
+–1 5
+Q ua
+lit at
+iv e
+Su rv
+ey s,
+pa rt
+ic ip
+an t
+ob se
+rv at
+io n,
+in te rac tiv e m ee tin g
+D es
+cr ip
+tio n
+of th
+e pr
+oc es
+s
+*# St
+ar ks
+e t a
+l., 20
+15 [7
+7] U
+S In
+di ge
+no us
+an
+d ac
+ad em
+ic
+pa rt
+ne rs
+D ev
+el op
+a nd
+e va
+lu -
+at e
+an a
+pp lic
+at io n to e ng ag e A I/A N in c on ve rs at io n ab ou t d ep re ss io n w ith h ea lth ca re pr ov id er s
+A N
+/A I w
+ho w
+ill
+di sc
+us s
+de pr
+es si
+on
+m an
+ag em
+en t
+36 n/
+r Q
+ua lit
+at iv
+e –
+ca se
+st
+ud y
+In te
+rv ie
+w s,
+do cu - m en ts , s ta ke ho
+ld er
+co
+ns ul
+ta tio
+ns
+St ak
+eh ol
+de r e
+ng ag em en t c on si st in g of m ee tin gs , m ap - pi ng p ha se s, ite ra tiv e di sc us si on s, cr iti ca l re fle ct io n to d es cr ib e th e fin al D M -D ST an d pr oj ec t c yc le
+U m
+ae fu
+la m
+e t a
+l., 20
+22 [7
+8] Ca
+na da
+In di
+ge no
+us
+an d
+ac ad
+em ic
+pa
+rt ne
+rs
+To a
+da pt
+th e
+Ea rly
+RA
+p at
+ie nt
+d ec isi on a id fo r u se w ith In di ge no us pa tie nt s
+In di
+ge no
+us p
+at ie
+nt s
+fa ci
+ng R
+A d
+ec is
+io ns
+16 28
+–6 9
+Q ua
+lit at
+iv e
+In te
+rv ie
+w s
+Th em
+at ic
+a na
+ly si
+s
+SD M
+s ha
+re d
+de ci
+si on
+m ak
+in g
+D M
+-D ST
+D ep
+re ss
+io n
+M an
+ag em
+en t D
+ec is
+io n
+Su pp
+or t T
+oo l
+AI A
+m er
+ic an
+In di
+an
+AN A
+la sk
+an N
+at iv
+e
+FN IM
+F irs
+t N at
+io ns
+, I nu
+it, M
+ét is
+IP V
+In tim
+at e
+Pa rt
+ne r V
+io le
+nc e
+RA R
+he um
+at oi
+d A
+rt hr
+iti s
+Pt D
+A Pa
+tie nt
+D ec
+is io
+n A id * O ne s tu dy re po rt ed in tw
+o pu
+bl ic
+at io ns x D et ai l o n ag e ra ng e no t p ro vi de d (m ea
+n ag
+e of
+4 0. 7 (S
+D =
+1 6. 2) # d at a no t d is ag gr eg at ed fo r I nd ig en ou s pa rt ic ip an ts
+decision making intervention prior to meeting the health care provider, during the health care provider meeting, or during a prolonged process before and during making a decision. Most studies (n = 8) report knowledge organizing systems (theories, frameworks, models) for the shared decision making intervention as Indigenous only (n = 2), Indigenous and Western-oriented (n = 3), or Western-oriented only (n = 3). The characteristics of interventions are listed in Table 2. study quality: reflections on strengths and relevance We reflected on the strengths and relevance of the included studies to determine the contributions to shared decision making and Indigenous self-determination [64, 65]. To determine contributions to shared decision making, we reflected on the community relevance, rigour of the methodology, and the strength of the evidence reported in the studies. We found studies to range from medium to high for eight of the nine interventions. Our reflection centred on six areas related to Indigenous self-determination; of the nine studies, only one study (reported in two publications) was found to provide information on all six areas of Indigenous self-determination. The strengths and relevance of the included studies are reported in Table 3. We categorized the nine studies into two clusters of studies: a larger cluster that we identified as Indigenous-oriented, and a smaller cluster identified as Western-oriented (Table 4). The six studies in the Indigenous-oriented cluster report on research that reflects Indigenous self-determination and the priorities of people who are the focus of the research [46, 70, 72, 73, 75, 77, 78]. In addition, studies in this cluster report on the use of Indigenous knowledge organizing systems (theories, frameworks, models), with Indigenous-led or partnered governance models. The exception was a study that was conceptualized, developed and conducted by Indigenous scholars who did not explicitly report Indigenous knowledge organizing system [78]. The studies in the Indigenous-oriented cluster met most (at least 5/6) of the CONSIDER statement criteria, with dissemination being the least reported. The exception was one study about an Indigenous approach to evaluation of a shared decision making intervention, that was conducted by an Indigenous community and did not report on capacity building of researchers or community members [75]. Of the three studies in the smaller, Western-oriented cluster [71, 74, 76], none of the studies report on research that reflects the priorities of people who are the focus of the research or Indigenous leadership (governance). These studies reported at most two of the CONSIDER
+statement criteria. In addition, none of the studies in the Western-oriented cluster report on the use of Indigenous knowledge organizing systems, and only one of the studies reports on an Indigenous partnership. The strengths and relevance of the included studies with knowledge organizing systems and team governance are reported in Table 4. synthesis We assessed the included studies in relation to the conceptual framework, and identified four themes, reflected in an updated conceptual framework, The Shared Decision Making Process Framework (version 2) (Fig. 3):
+1) Where shared decision making takes place impacts decision making opportunities, 2) Little is known about the characteristics of health care providers who engage in shared decision making processes, 3) Community is a partner in shared decision making, 4) The shared decision making process involves trustbuilding. Theme 1. Where shared decision making takes place impacts decision making opportunities The first theme relates to the importance of context for shared decision making. All of  the included studies report on aspects of the structural determinants of health: that is, the social, historical and political contexts that underpin opportunities for health and wellness in society and reflect the continuing impacts of colonialism in society. These determinants are the basis for understanding the importance of relationships, interconnections, and community [8]. The included  studies present the development and/or evaluation of shared decision making interventions as a way to negotiate the impacts of the structural determinants of health or disrupt colonialism in health systems. Place, in particular the built environment, was reported in the studies to reflect the underlying power dynamics in the relationships, and values of people who control the spaces. We define the concept of “space” to mean a physical space and geography (location, form of built environment). The concept of “place” gives meaning to space, as place is space where values are expressed and there are connections to cultural and personal identity [79]. The three studies in the Western-oriented cluster describe the development of interventions to be used in settings preferred by Indigenous participants. Two of these studies specifically identify Western-oriented settings as problematic places and the shared decision making intervention as a way to avoid these settings [71,
+Ta bl
+e 2
+C ha
+ra ct
+er is
+tic s
+of in
+te rv
+en tio
+ns
+A ut
+ho r (
+ye ar
+) Br
+ie f n
+am e
+an d
+w hy
+W ha
+t ( m
+at er
+ia ls
+, p ro
+ce ss ) fo r t he S D M in te rv en tio
+n W
+ho p
+ro vi
+de d
+SD M
+H ow
+, W he
+re , W
+he n,
+H ow
+m
+uc h
+D ev
+el op
+, a da
+pt S
+D M
+in
+te rv
+en tio
+n Kn
+ow le
+dg e
+or ga
+ni zi
+ng
+sy st
+em s
+(t he
+or y,
+m od
+el ,
+fr am
+ew or
+k)
+*D irk
+s et
+a l.,
+20 18
+[7 0]
+Pi lo
+t o f D
+M -D
+ST -E
+va lu
+at e
+eff ec
+tiv en
+es s
+of D
+M -D
+ST
+fo r A
+N /A
+I
+A n
+el ec
+tr on
+ic to
+ol (D
+M -
+D ST
+) t o
+en ga
+ge A
+N /A I in d ec is io n m ak in g co nve rs at io ns w ith h ea lth ca
+re
+pr ov
+id er
+s
+iP ad
+a pp
+lic at
+io n
+ad m
+in -
+is te
+re d
+by p
+rim ar
+y ca
+re
+pr ov
+id er
+s or
+b eh
+av io
+ur al
+he
+al th
+c on
+su lta
+nt s
+Pa rt
+ic ip
+an ts
+u se
+d 20
+-m in
+de
+ci si
+on s
+up po
+rt to
+ol p
+rio r
+to m
+ee tin
+g he
+al th
+ca re
+pr
+ov id
+er a
+t p rim
+ar y
+ca re
+ap
+po in
+tm en
+t
+A pp
+lic at
+io n
+de ve lop ed w ith c om m
+un ity
+st
+ak eh
+ol de
+rs fo
+r u se
+by
+A N
+c om
+m un
+ity
+m em
+be rs
+N uk
+a Sy
+st em
+o f C
+ar e
+Fr er
+ic hs
+e t a
+l., 20
+20 [7
+1] Cu
+ltu ra
+lly A
+da pt
+ed D
+ec i-
+si on
+A id
+-E va
+lu at
+e C
+RC
+sc re
+en in
+g de
+ci si
+on a
+id
+ad ap
+te d
+fo r A
+I
+9- m
+in v
+id eo
+(d ec
+is io
+n ai
+d)
+to p
+re pa
+re A
+I t o
+pa rt
+ic ip
+at e
+in C
+RC s
+cr ee
+ni ng
+d ec
+is io
+ns
+Vi de
+o di
+ss em
+in at
+ed
+th ro
+ug h
+w eb
+, p ro
+m pt s vi ew er s to s pe ak w ith h ea lth ca re p ro vi
+de r
+Pa rt
+ic ip
+an ts
+v ie
+w ed
+o nl
+in e
+vi de
+o ab
+ou t s
+cr ee nin g op tio ns s tr ea m
+ed
+or d
+ow nl
+oa de
+d at
+h om
+e
+Vi de
+o de
+ve lo
+pe d
+by re
+se ar
+ch er
+s fo
+r u se
+w
+ith A
+I c om
+m un
+iti es
+in
+e as
+te rn
+U S
+So ci
+al c
+og ni
+tiv e
+th eo
+ry ,
+th eo
+ry o
+f p la
+nn ed
+b eh
+av -
+io ur
+s
+G ra
+ce e
+t a l.,
+20 18
+[7 2]
+Ki ds
+S ay
+C ar
+ds -E
+xa m
+in e
+re sp
+on se
+o f c
+hi ld
+re n
+to K
+id s
+Sa y
+to ol
+Ki ds
+S ay
+c ar
+ds to
+fa ci
+lit at e co nv er sa tio n an d en ga ge - m en t b y ch ild re n in d ec isi on m ak in g w ith c hi ld w el fa re w or ke rs
+Re se
+ar ch
+er s*
+u se
+w
+ith c
+hi ld
+re n
+*d es
+ig ne
+d to
+b e
+us ed
+by
+c hi
+ld w
+el fa
+re W
+or ke
+rs /
+Pr of
+es si
+on al
+s
+Re se
+ar ch
+er s
+ch os
+e 10
+ou
+t o f 4
+4 Ki
+ds S
+ay c
+ar ds
+fo
+cu s
+gr ou
+p or
+in di - vi du al in te rv ie w (t
+im e
+no t r
+ep or
+te d)
+to p
+ro m
+pt
+ch ild
+(re n)
+in c
+on ve
+rs at
+io n,
+at
+c om
+m un
+ity e
+ve nt
+Ca rd
+s de
+ve lo
+pe d
+by A
+bo rig
+in al
+c om
+m un
+ity
+fo r A
+bo rig
+in al
+c hi
+ld re
+n
+W in
+an ga
+y kn
+ow l-
+ed ge
+— ap
+pr oa
+ch g
+ui de d by N at io na l H ea lth an d M ed ic al R es ea rc h co un ci l’s v al ue s of e qu al - ity , r es pe ct , r ec ip ro ci ty , re sp on si bi lit y, s ur vi va l, an d pr ot ec tio n
+Ju ll
+et a
+l., 20
+15 [7
+3] A
+da pt
+ed O
+PD G
+(D ec
+is io n A id ) - A da pt at io n of O PD G to s up po rt d ec is io n m ak - in g by A bo rig in al w om en
+A p
+at ie
+nt d
+ec is
+io n
+ai d
+fo r u
+se b
+y In
+di ge
+no us
+w
+om en
+a nd
+in cl
+ud es
+d ec isi on c oa ch in g
+D ec
+is io
+n Co
+ac h
+60 –9
+0 m
+in in
+te rv
+ie w s in c om m un ity s et tin
+g su ppo rt ed b y de ci si on c oa ch to a pp ly to ol to s am pl e de ci si on
+A g
+en er
+ic d
+ec is
+io n
+ai d
+ad ap
+te d
+by In
+di ge
+no us
+an
+d no
+nIn
+di ge
+no us
+te am
+w
+ith c
+om m
+un ity
+p ar
+tn er - sh ip s an d t w ith In di gen ou s (F N IM ) w om en in C an ad a
+O tt
+aw a
+D ec
+is io
+n Su
+pp or t Fr am ew or k, M ed ic in e W he el fr am ew or k fo r s ha re d de ci si on m ak in g
+Ju ll
+et a
+l. 20
+19 [4
+6] N
+ot D
+ec id
+in g
+A lo
+ne
+-P ro
+m ot
+e th
+e us
+e of
+S D
+M
+by In
+ui t i
+n Ca
+nc er
+C ar
+e
+A b
+oo kl
+et a
+nd tr
+ai ni
+ng
+to g
+ui de
+c on
+ve rs
+at io
+ns
+be tw
+ee n
+he al
+th ca
+re
+pr ov
+id er
+s an
+d cl
+ie nt s, to p re pa re fo r S D M
+Pe er
+s up
+po rt
+w or
+ke r
+tr ai
+ne d
+in d
+ec is
+io n
+co ac hin g
+Tr ai
+ne d
+pe er
+s up
+po rt
+w
+or ke
+r w as
+m at
+ch ed
+w
+ith c
+om m
+un ity
+m em
+be r
+to re
+ad a
+nd u
+nd er
+st an d bo ok le t a nd h av e co
+nv er - sa tio n us in g SD M s tr at eg y in b oo kl et in c om m un ity se tt in g
+A n
+SD M
+s tr
+at eg
+y (b
+oo kl
+et ,
+tr ai
+ni ng
+) d ev
+el op
+ed
+w ith
+In ui
+t c om
+m un
+ity
+an d
+se rv
+ic e
+pr ov
+id er s, fo r I nu it
+In ui
+t s oc
+ie ta
+l v al
+ue s,
+O tt
+aw a
+de ci
+si on
+s up
+po rt
+fra
+m ew
+or k
+Ta bl
+e 2
+(c on
+tin ue
+d)
+A ut
+ho r (
+ye ar
+) Br
+ie f n
+am e
+an d
+w hy
+W ha
+t ( m
+at er
+ia ls
+, p ro
+ce ss ) fo r t he S D M in te rv en tio
+n W
+ho p
+ro vi
+de d
+SD M
+H ow
+, W he
+re , W
+he n,
+H ow
+m
+uc h
+D ev
+el op
+, a da
+pt S
+D M
+in
+te rv
+en tio
+n Kn
+ow le
+dg e
+or ga
+ni zi
+ng
+sy st
+em s
+(t he
+or y,
+m od
+el ,
+fr am
+ew or
+k)
+Ko zi
+ol -M
+cL ai
+n et
+a l.,
+20 18
+[7 4]
+iS af
+eTe
+st e
+ffi ca
+cy o
+f w eb - ba se d sa fe ty d ec is io nai d (iS af e) fo r w om en ex pe rie nc in g IP V
+A w
+eb -b
+as ed
+d ec
+is io n ai d de ve lo pe d fo r g
+en -
+er al
+p op
+ul at
+io ns
+a pp
+lie d
+w ith
+w om
+en (i
+nc lu
+de s
+su bg
+ro up
+o f M
+āo ri)
+in N
+ew
+Ze al
+an d
+w ho
+e xp
+er ie
+nc e
+IP V
+O nl
+in e
+de ci
+si on
+-a id
+/in te rve nt io n w eb si
+te W
+om en
+in in
+te rv
+en tio n gr ou p w er e pr ov id ed li
+nk
+an d
+pa ss
+w or
+d to
+w eb - si te th ro ug ho ut 1 -y ea r po st ba se lin e fo llo w -u p pe rio d to in te rv en - tio n an d in di vi du al iz ed re so ur ce s an d sa fe ty
+p la
+n;
+co nt
+ro l g
+ro up
+o ffe
+re d
+lin k
+an d
+pa ss
+w or
+d to
+w eb - si te w ith s ta nd ar di ze d re so ur ce s an d sa fe ty
+p la n In te rv en tio n do ne at h om e
+n/ r
+Em po
+w er
+m en
+t m od
+el
+an d
+de ci
+si on
+s ci
+en ce
+M ar
+cy ny
+sz yn
+e t a
+l., 20
+12 [7
+5] Fa
+m ily
+G ro
+up D
+ec i-
+si on
+M ak
+in g
+-P ro
+m ot e a de ci si on -m ak in g pr ac tic e m od el fo r N at
+iv e
+A m
+er ic
+an c
+om m
+un i-
+tie s
+th at
+c ou
+ld b
+e us
+ed
+in C
+hi ld
+a nd
+F am
+ily
+Se rv
+ic es
+A M
+āo ri
+Fa m
+ily G
+ro up
+D
+ec is
+io n
+M ak
+in g
+pr ac
+tic e
+m od
+el , i
+m pl
+em en
+te d
+w ith
+c hi
+ld a
+nd fa
+m ily
+se
+rv ic
+es s
+et tin
+g to
+b rin g in L ak ot a w ay s of b ui ld in g an d su st ai ni ng fa m ily c
+on -
+ne ct
+io ns
+In de
+pe nd
+en t C
+oo rd
+in at
+or ,
+A ge
+nc y
+pe rs
+on el
+In de
+pe nd
+en t c
+oo rd
+in at
+or
+co nv
+en es
+fa m
+ily g
+ro up
+m
+ee tin
+g w
+ith a
+ge nc y pe rs on ne l, af te r i ni tia l pr es en ta tio ns fa m ily gr ou p m ee ts o n ow n to w or k th ro ug h in fo
+rm a-
+tio n
+gi ve
+n an
+d fo
+rm ul
+at e
+re sp
+on se
+a nd
+p la
+n, p
+re fe ren ce is g iv en to fa m ily gr ou ps p la n, re fe rr in g ag en cy s up po rt fa m ily to im pl em en t p la n
+A M
+āo ri
+pr ac
+tic e
+m od
+el
+ad ap
+te d
+to L
+ak ot
+a kn
+ow l-
+ed ge
+a nd
+c ul
+tu re
+M āo
+ri tr
+ad iti
+on al
+p ra ctic es , a da pt ed to in cl
+ud e
+La ko
+ta tr
+ad iti
+on al
+v al
+ue s
+an d
+pr ac
+tic es
+M on
+tg om
+er y
+et a
+l., 20
+12 [7
+6] N
+at iv
+e Co
+m ic
+B oo k Pr og ra m -T ra in N at iv e yo ut
+h le
+ad -
+er s
+to c
+re at
+e co
+m ic
+b oo
+ks
+to e
+nh an
+ce h
+ea lth
+y de
+ci -
+si on
+m ak
+in g
+A c
+ur ric
+ul um
+fo r A
+I/A N
+yo
+ut h
+to d
+es ig
+n co
+m ic
+bo
+ok s
+fo r h
+ea lth
+y de
+ci si
+on
+m ak
+in g
+Pr oj
+ec t S
+ta ff/
+Tr ai
+ne d
+yo ut
+h 2
+h se
+ss io
+ns o
+ve r 8
+-w ee k pe rio d du rin g su m m er af te rsc ho ol p ro gr am w he re y ou th p ar tic ip at
+ed
+in c
+ur ric
+ul um
+fo cu
+se d
+on d
+ec is
+io n-
+m ak
+in g
+an d
+co m
+ic b
+oo k
+de ve
+lo p-
+m en
+t
+A c
+ur ric
+ul um
+d ev
+el op
+ed
+fo r g
+en er
+al y
+ou th
+p op
+ul a-
+tio ns
+a da
+pt ed
+fo r A
+I/A N
+yo
+ut h
+W es
+te rn
+-o rie
+nt ed
+k no
+w l-
+ed ge
+a bo
+ut s
+ha re
+d de
+ci -
+si on
+m ak
+in g
+(m od
+el )
+*S ta
+rk s
+et a
+l., 20
+15 [7
+7] D
+M -D
+ST -D
+ev el
+op m
+en t
+of d
+ep re
+ss io
+n m
+an ag em en t d ec is io n su pp or t to ol
+D ev
+el op
+m en
+t o f D
+M -
+D ST
+fo r A
+I/A N
+to in
+te -
+gr at
+e pa
+tie nt
+p rio
+rit ie s an d ne ed s in to d ep
+re ss
+io n
+m an
+ag em
+en t d
+ec is
+io ns
+iP ad
+a pp
+lic at
+io n
+ad m
+in -
+is te
+re d
+by p
+rim ar
+y ca
+re
+pr ov
+id er
+s/ be
+ha vi
+ou ra l he al th c on su lta nt s
+Sm al
+le r p
+ilo t t
+es t ( n
+= 2
+0)
+ha d
+pa rt
+ic ip
+an ts
+g o
+th ro
+ug h
+20 -m
+in d
+ec is
+io n
+ap pl
+ic at
+io n
+A pp
+lic at
+io n
+de ve lop ed w ith c om m
+un ity
+st
+ak eh
+ol de
+rs fo
+r u se
+by
+A N
+c om
+m un
+ity
+m em
+be rs
+N uk
+a Sy
+st em
+o f C
+ar e
+Ta bl
+e 2
+(c on
+tin ue
+d)
+A ut
+ho r (
+ye ar
+) Br
+ie f n
+am e
+an d
+w hy
+W ha
+t ( m
+at er
+ia ls
+, p ro
+ce ss ) fo r t he S D M in te rv en tio
+n W
+ho p
+ro vi
+de d
+SD M
+H ow
+, W he
+re , W
+he n,
+H ow
+m
+uc h
+D ev
+el op
+, a da
+pt S
+D M
+in
+te rv
+en tio
+n Kn
+ow le
+dg e
+or ga
+ni zi
+ng
+sy st
+em s
+(t he
+or y,
+m od
+el ,
+fr am
+ew or
+k)
+U m
+ae fu
+la m
+e t a
+l., 20
+22 [7
+8] A
+da pt
+at io
+n of
+E ar
+ly R
+A
+Pt D
+A -A
+da pt
+e xi
+st in
+g RA
+Pt
+D A
+fo r u
+se b
+y In
+di g-
+en ou
+s pa
+tie nt
+s at
+p oi
+nt
+of c
+ar e
+A da
+pt at
+io n
+of e
+xi st
+in g
+pa pe
+rba
+se d
+de ci
+si on
+a id
+to
+ol
+D is
+pl ay
+ed a
+t Co
+ho rt
+1 : 1
+5– 45
+m in
+in -
+pe rs
+on in
+te rv
+ie w
+a t c
+lin ic
+an
+d as
+ke d
+to p
+ro vi
+de
+fe ed
+ba ck
+w he
+n pr
+ov id
+ed
+w ith
+d ec
+is io
+n ai d Co ho rt 2 : 1 5– 45
+-m in
+v id
+eo
+co nf
+er en
+ce o
+r p ho
+ne
+in te
+rv ie
+w s
+ab ou
+t a da pta tio n of d ec is io n ai d (p ro vi de d ea rli er )
+A n
+RA d
+ec is
+io n
+ai d
+ad ap
+te d
+fo r u
+se b
+y In
+di g-
+en ou
+s pe
+op le
+in C
+an ad
+a
+O tt
+aw a
+D ec
+is io
+n Su
+pp or t Fr am ew or k
+SD M
+s ha
+re d
+de ci
+si on
+m ak
+in g
+D M
+-D ST
+D ep
+re ss
+io n
+M an
+ag em
+en t D
+ec is
+io n
+Su pp
+or t T
+oo l
+AI A
+m er
+ic an
+In di
+an
+AN A
+la sk
+an N
+at iv
+e
+FN IM
+F irs
+t N at
+io ns
+, I nu
+it, M
+ét is
+IP V
+In tim
+at e
+Pa rt
+ne r V
+io le
+nc e
+RA R
+he um
+at oi
+d A
+rt hr
+iti s
+Pt D
+A Pa
+tie nt
+D ec
+is io
+n A id * O ne s tu dy re po rt ed in tw
+o pu
+bl ic
+at io
+ns
+Ta bl
+e 3
+Th e
+st re
+ng th
+s an
+d re
+le va
+nc e
+of th
+e in
+cl ud
+ed s
+tu di
+es
+* O ne
+s tu
+dy re
+po rt
+ed in
+tw o
+pu bl
+ic at
+io ns
+St ud
+y A
+pp ra
+is al
+S co
+re :
+Lo w
+= 6
+–7
+M ed
+= 8 –9 H ig h = 1 0–
+12 Pr
+ior itiz
+ati on
+Go ve
+rn an
+ce
+Re la
+tio ns
+hi ps
+M et
+ho do
+lo gi
+es Ca
+pa cit
+y Dis
+sem ina
+tion
+*D irk
+s et
+a l.,
+20 18
+[7 0]
+; S ta
+rk s
+et a
+l., 20
+15 [7
+7] H
+ig h
+x x
+x x
+x x
+Ju ll
+et a
+l., 20
+15 [7
+3] H
+ig h
+x x
+x x
+x -
+Ju ll
+et a
+l., 20
+19 [4
+6] H
+ig h
+x x
+x x
+x -
+U m
+ae fu
+la m
+e t a
+l., 20
+22 [7
+8] H
+ig h
+x x
+x x
+x -
+G ra
+ce e
+t a l.,
+20 18
+[7 2]
+M ed
+x x
+x x
+x -
+M ar
+cy ny
+sz yn
+e t a
+l., 20
+12 [7
+5] M
+ed x
+x x
+x -
+x
+Fr er
+ic hs
+e t a
+l., 20
+20 [7
+1] M
+ed -
+- x
+- -
+-
+Ko zi
+ol -M
+cL ai
+n, e
+t a l.,
+20 18
+[7 4]
+M ed
+- -
+- x
+- -
+M on
+tg om
+er y
+et a
+l., 20
+12 [7
+6] Lo
+w -
+- x
+- x
+-
+Pr io
+ri tiz
+at io
+n: R
+es ea
+rc h
+re fle
+ct s
+ne ed
+/p rio
+rit y
+of p
+eo pl
+e w
+ho a
+re th
+e fo
+cu s
+of th
+e re
+se ar
+ch G
+ov er
+na nc
+e: In
+di ge
+no us
+re se
+ar ch
+le ad
+er sh
+ip Re
+la tio
+ns hi
+ps : R
+es ea
+rc h
+pa rt
+ne rs
+hi ps
+M et
+ho do
+lo gi
+es : I
+nd ig
+en ou
+s pa
+ra di
+gm , m
+et ho
+ds , v
+al ue
+s Ca
+pa ci
+ty : R
+es ea
+rc he
+r, Co
+m m
+un ity
+p ar
+tn er
+s D
+is se
+m in
+at io
+n: S
+ha rin
+g to
+b en
+efi t p
+eo -
+pl e
+w ho
+a re
+th e
+fo cu
+s of
+th e
+re se
+ar ch
+74]. For example, one study reports that “Decision aid viewing was not linked to clinical visits, and participants viewed the decision aid privately in their homes or at the location from which they were recruited (i.e., church or senior centre).” [71]. The third study in the Westernoriented cluster reports on the shared decision making intervention as a way to bring decision making to places where traditional and cultural practices are upheld [76]. The six studies in the Indigenous-oriented cluster describe processes to develop and evaluate [46, 72, 73, 75] or to develop and implement [70, 77] shared decision making interventions intended for use within Western-oriented health care systems. For example, a study to determine the acceptability to Aboriginal children of a culturally appropriate tool that facilitates the voices of Aboriginal children and young people in care by supporting professionals to ask good questions and listen. The study identifies the importance of “providing spaces for children and young people to engage requires consideration of the conditions in which they might be comfortable to participate” [72]. Another study describes the development of a stakeholder driven decision support tool to address the issues that included lack of patient preparation to participate with health care providers, and recommendations from health care providers that “…were not in line with patient values and preferences.” [70]. Western-oriented health care settings are built to support Western-oriented values and approaches to health, and are places that are perceived by Indigenous (and other groups) to limit opportunities for person-centred care [80]. The studies in our review present shared decision making interventions as strategies to position Indigenous Peoples in health care settings as decision makers, rather than passive recipients of care. Theme 2. Little is known about the characteristics of health care providers who engage in shared decision making processes We found that the included studies report little or no data about health care providers and their shared decision making knowledge, experience, skills, attitude and motivation, as well as other characteristics such as culture and language. Relational competencies in shared decision making are defined as those necessary to create an environment for communication and interaction in clinical settings and includes listening to and involving people to the degree that they wish to be involved [81]. Of the nine included studies, five of the studies in the Indigenous-oriented cluster report on the health care providers as the partner involved in the shared decision making relationship as Indigenous [46, 75], nonIndigenous [73], or who were not reported as Indigenous or non-Indigenous [72, 77]. Of these studies, only four report specific information about health care providers
+in relation to the shared decision making intervention [46, 73, 75, 77]. Of the four studies from the Indigenous-oriented cluster that report specific information about health care providers, two report on the knowledge health care providers have about shared decision making and the health system [46, 73]. All four studies report that the previous experience of health care providers with shared decision making is important to support patients in decision making [46, 73, 75, 77]. Three of the four studies report on health care provider skill (how to support engagement of patients) and attitude (value of patient participation in decisions, a commitment to person-oriented care) [46, 73, 75]. One additional study reports on the experience, skill, and attitude health care providers should bring to be partners in care, as a willingness to listen and to take patient views and experiences seriously [72]. Three of the four studies report on the characteristics of health care providers, that includes culture and language [46, 73, 75]. Two studies report on additional characteristics (e.g. years of work, clinical area, gender, age) of Indigenous (n = 5) [46] and non-Indigenous (n = 1) [73] health care providers involved with the shared decision making interventions. The characteristics of participants (patients, health care providers) related to shared decision making, culture/language and other characteristics, are reported in Table 5. Theme 3: Community is a partner in shared decision making The next theme relates that community – meaning the groups with which individuals are connected and hold shared beliefs – is an important partner in health decision making. We found the included studies to identify a role for community as a source of knowledge and support in shared decision making. All the studies report that the values and knowledge held within community networks support participation of patients and families to make health decisions [46, 70–73, 75–78]. For example, one study describes shared decision making as an engagement process that positions families and communities to “reclaim customary practices and to resolve issues within their wider circle” [75]. In another study the authors reflect on the need to align a curriculum for healthy decision making for youth, with the values of family and community, in addition to the place and personal gifts (skills, knowledge) of people involved [76]. A subset of the included studies describes how to engage community members in partnerships. Five of the studies from the Indigenous-oriented cluster [46, 72, 73, 75, 78] and one from the Western-oriented cluster [76] report that those who deliver the shared decision making intervention need to understand the
+community values in which shared decision making will take place. These studies describe the delivery of the shared decision making intervention by members of the community [46, 76], or those who are non-Indigenous and have the knowledge and skills to partner with Indigenous patients and communities [72, 73, 78]. For example, in a study conducted with urban First Nations, Inuit and Metis women, the community members identify the importance of respect for their community traditions and communication styles in shared decision making and “… encouraged the decision coach in a process of learning with them as well as about them and their decision making needs” [73]. Theme 4: The shared decision making process involves trust‑building Studies from the Indigenous-oriented cluster report on factors that enhance research practices with Indigenous Peoples and increase research accountability [65] and trust-building in the development and evaluation of shared decision making interventions (see Table  4). For example, one study describes an approach to shared decision making to overcome intergenerational grief and trauma experienced by the Indigenous communities and that positions families and communities to reclaim customary practices. The study authors report on their approach to engagement of families in decisions that relate to child welfare, to overcome the lack of trust between families, health care providers, and others in the health system [75]. In another example, a team evaluated an intervention called “The Kids Say” that involves the use of cards to prompt conversation with health care providers “…to open the way for young people to share their experiences and be part of decisions that are about their lives” [72]. The study authors report that a relationship of trust is an essential feature of the shared decision making process. Furthermore, the authors indicate that children and young people should not be asked to share their views with health care providers “…unless the relevant adults are prepared to take them [children and youth] seriously and to act on their behalf” [72]. Other studies describe meeting the socio-cultural needs of the community partner, and the role of the shared decision making intervention to help people deal with the colonial history and ongoing negative experiences through engagement and relationship building with their health care providers author, year participants: [46, 78]. The Indigenous-oriented studies reported on processes to support trust-building as an essential feature of shared decision making processes. We found limited reporting in studies from the Western-oriented cluster on factors to support research accountability and trust-building to enhance research practices with Indigenous Peoples. Instead, these studies focused on interventions that people could use to avoid the negative influences of health systems. For example, a web-based safety decision aid for women facing intimate partner violence was designed to offer women the opportunity to prioritize and plan for safety for themselves and their families. In their discussion, the authors propose that for Maori women who face racism and other significant barriers to service use, the option to use a decision aid outside of the health system is a way to avoid potential racism or discrimination [74]. Another team proposed a patient decision aid that can be used by people who identify as American Indian, to address issues with participation in cancer screening that are the result of mistrust of health care providers and systems [71]. In these examples, the shared decision making interventions are proposed as a way for patients to navigate health systems that are not trusted sources of support. discussion Our review was conducted to identify interventions about shared decision making for Indigenous Peoples making health decisions, to synthesize evidence and to identify factors (barriers and facilitators) that impact the use of shared decision making interventions (Fig. 4). Here, we identify and describe interventions and contribute to other, previously conducted reviews about interventions that support shared decision making with Indigenous Peoples [31] and groups who experience disadvantage [30]. Our review also contributes to the broader literature about the potential for shared decision making interventions to advance health equity for people who experience limited opportunities to participate in their health decision making [82–84]. Our findings report on examples of shared decision making interventions,  and include a conceptual framework to provide a foundation for reflection on shared decision making processes. We used a conceptual framework to extend consideration of the relational features of shared decision making processes to identify: impacts of place (where shared decision making happens) on opportunities for participation in health decision making; a gap in the reporting about characteristics of health care providers in relation to shared decision making processes; the inclusion of community as a source of knowledge and support and a partner in shared decision making;
+trust-building as a complex, important and active process integral to shared decision making. We report the findings in an updated conceptual framework that depicts shared decision making processes as highly relational (Fig. 3). Extend understanding of shared decision making as a relational process Western-oriented health care settings are built to support Western-oriented values and approaches to health, and are places that may be perceived by Indigenous Peoples (and other groups) to limit opportunities for personcentred care [80]. The Indigenous-oriented studies in our review present shared decision making interventions as strategies to position patients in health care settings as decision makers in their care. The Indigenous-oriented studies focused on resources and training to improve discussions between Indigenous participants and health care providers within health systems. These approaches include: training community support workers in shared decision making [46]; training community and agency workers in a family group decision making practice [75]; resources and workshops for supporting professionals’ skills in active and respectful listening [72]; a decision aid and coaching for sharing decisions between patient and health care provider(s) [73]; and a decision support tool to facilitate discussions between patients and their health care providers [70, 77]. In contrast, the Western-oriented studies adopted health promotion approaches for Indigenous participants to support decision making in homes or community settings outside of the health system: to encourage their uptake of cancer screening [71]; to protect themselves from violence and its impact on mental health [74]; and to engage in activities to learn about and ’enhance healthy decision making’ [76]. The findings of our review also highlight the importance of who is present to participate in health decision making with patients and families. The role of health care providers with shared decision making is highlighted in the literature. In studies with general populations, health care providers have been found to often not involve patients in decision making about their care [85, 86], an issue also identified by Indigenous Peoples [16, 60, 87]. Other studies have identified the impacts of health care provider characteristics on shared decision making experiences of patients and families who experience disadvantage in society [88]. Our study highlights a gap in reporting on the characteristics of health care providers involved in the delivery of interventions to support shared decision making. In addition, many of the studies included in our review describe how non-Indigenous health care providers need to foster active relationships with Indigenous community networks to better engage in shared decision making processes with people in the community [46, 72, 73, 75, 76, 78]. Our review describes shared decision making processes as highly relational and trust as a foundation for the relationships. Studies from the Indigenous-oriented
+cluster report on factors that enhance research practices with Indigenous Peoples and increase research accountability [65] and trust-building in the development and evaluation of shared decision making interventions. Trust in the health care system and interpersonal relationships (between patient and health care providers) are an essential feature of shared decision making processes [89, 90]. We found that all the studies in our review emphasize the importance of active processes of trust-building among patients, families, communities, and health care providers. The focus on trust-building in shared decision making  is identified elsewhere in the literature [89, 91, 92], and a feature of research agendas aimed at supporting person-centred care [90, 93]. High quality research upholds Indigenous self‑determination The findings of our review include examples of research studies that demonstrate how to support Indigenous selfdetermination in research about shared decision making. The included studies provide examples of high-quality solutions-focused research. Research that is undertaken in collaboration with those who will use or be impacted by the research fosters democratic processes of knowledge coproduction [48], and is an important source of information to develop policies to support patient values and preferences in healthcare decisions [94]. Research partnerships with those who will use or be impacted by the research [95] has been identified as important for successful implementation of shared decision making [96, 97]. Our review identified multiple models for collaborative research with a ‘nothing about us, without us’ approach, a central feature of research that upholds Indigenous self-determination [35]. The conduct of research with the collaboration and governance of Indigenous team members, founded on Indigenous knowledges, means research is more likely to produce evidence that is useful and able to be used by those ultimately impacted by the research [98]. For Indigenous Peoples, colonization, racism, social exclusion and self-determination are important concepts that must be considered in research practices [9]. In our review, Western-oriented studies focused on interventions that people could use to avoid the negative influences of health systems. In contrast, we found the Indigenous-oriented studies sought to change health systems by supporting Indigenous Peoples to participate in their health decision making. limitations and strengths The limitations and strengths of the review centre on the appropriateness and relevance of reviews to address
+Indigenous issues [99]. The potential limitations of this review include poor indexing of studies in databases, a lack of tested protocols for conducting systematic reviews in Indigenous health, and the potential for inclusion of more grey literature. In response, given the poor indexing of studies in electronic databases, it is possible that some studies were missed; however, there is transparency in the extensive search strategy. The review is limited by the reality that currently most health research is written, reviewed, and published by non-Indigenous scholars and journals in academic systems that are founded in colonial systems. The important contributions of Indigenous scholars and knowledge systems to health research contexts will become more visible as the capacity for journals to support publication of health research that is equityoriented improves and with the increasing numbers of Indigenous researchers who extend thinking about how to conduct health research. Our review is not intended as an effectiveness review and involves framework synthesis that is unlikely to substantially change with the inclusion of new evidence [100]; additionally, no new studies were located with the grey literature search. We anticipate using the findings from this review to build grey literature search strategies in another, future review. The strengths of our review include: 1) the oversight and governance of Indigenous team members to embed Indigenous knowledges and practices in our review processes; 2) the use of a conceptual framework to organize concepts important to shared decision making with Indigenous Peoples; 3) a comprehensive search strategy that was developed with an academic librarian, the use of two independent reviewers at each screening stage, and; 4) Indigenous critical appraisal tools to identify the strengths and relevance of included studies’ contributions to shared decision making and Indigenous selfdetermination. Additionally, the use of the ENTREQ and PRISMA-Equity guidelines in this review provide a standardized approach to reporting and contributes to building evidence on best standards for systematic reviews supporting health equity [40, 41]. conclusions Health care systems and settings have been identified as places where racism and negative histories exist, with policies that structure routines and behaviour that are not inclusive [80, 101]. While there are examples of health care settings that have been designed to provide culturally appropriate care that include care for Indigenous Peoples [102–104], there are limited descriptions of interventions to support Indigenous Peoples to participate in health decision making. Shared decision making tools and approaches are complex interventions that are developed to facilitate shared decision making process with people who span health systems, from patients and families to policy makers [105]. Our review provides examples of how to develop and evaluate shared decision making interventions with Indigenous Peoples. It extends thinking beyond Westernoriented conceptions of shared decision making interventions. Overall, Indigenous-oriented studies sought to make health care systems more amenable to shared decision making for Indigenous Peoples, while Western-oriented studies distanced shared decision making from health care settings. Our findings demonstrate that it is possible to do high quality research to develop and evaluate shared decision making interventions with potential to  support Indigenous Peoples to participate in their health decisions. 
