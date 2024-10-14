@@ -4,7 +4,7 @@
 # **Can Large Language Models Unlock Novel Scientific Research Ideas?**
 
 > **Description:** This repository contains the code and data used in the paper titled **"Can Large Language Models Unlock Novel Scientific Research Ideas?
-"**. It includes implementations for all the experiments, data preprocessing, and the models presented in the paper.
+"**. It includes implementations for all the experiments, data presented in the paper.
 
 ## **Table of Contents**
 
@@ -35,28 +35,22 @@ Published in **EMNLP 2024 Main**.
     git clone https://github.com/sandeep82945/Future-Idea-Generation.git
     ```
 
-2. **Install dependencies:**
-
-    Use `pip` to install the required libraries:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-    Alternatively, you can set up using a virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ```
 
 ## **Usage**
 
-1. **Prepare your data:**
+1. ** Data:**
 
-   If your project requires specific data pre-processing, provide steps here for preparing or loading the data.
+   The dataset is in data folder.
+   The dataset contains 5 domain (Computer, Physics, Chemistry, Computer, Ecomonics) 
+   The dataset contains the paper with future inspiration in Final folder.
+   The extracted Future inspirations are in the annotations/RealF folder in excel sheet format.
 
-2. **Run the experiments:**
-
-   To reproduce the experiments from the paper:
-   ```bash
-   python main.py --experiment <name>
+3. **Run the experiments:**
+    1. To calculate the IAScore
+      ```bash
+       python code/run2.py
+       ```
+    2. To use LLM as Judge
+      ```bash
+       python code/GPT_as_reviewer.py
+       ```
