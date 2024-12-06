@@ -10,13 +10,14 @@ from test_preprocessing import preprocess
 from anthropic_bedrock import AnthropicBedrock, HUMAN_PROMPT, AI_PROMPT
 import openai
 from tqdm import tqdm
+from code.llama import generate_llama
 #from gemini import inference as gemini_inference  #keep changing
-from claude import inference as claude_inference
+#from claude import inference as claude_inference
 #from galactica import inference as galactica_inference
 
-from gpt import generate_openai
+#from gpt import generate_openai
 
-with open('code/config2.yml', 'r') as config_file:
+with open('/mnt/d/Future-Idea-Generation/config2.yml', 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 paper_dump_path = config["paper_dump_path"]
@@ -29,6 +30,12 @@ dump_folder = os.path.join(paper_dump_path,model_name, domain)
 if not os.path.exists(dump_folder):
     os.makedirs(dump_folder)
 
+def generate_llama_70b(paper_text):
+     prompt = f"""Imagine you are a research scientist. After reading the following paper, brainstorm to generate potential future research ideas.:  
+        ``` {paper_text}```
+         Potential future research ideas from the paper in bullet points are: """
+     response = generate_llama(prompt)
+     return response 
 
 def generate_gpt(paper_text):
      prompt = f"""Imagine you are a research scientist. After reading the following paper, brainstorm to generate potential future research ideas.:  
@@ -67,6 +74,8 @@ def choose_model(text):
         return generate_claude2(text)
     elif model_name == 'gpt4':
         return generate_gpt(text)
+    elif model_name=='llama':
+        return generate_llama_70b(text)
 
 for filename in tqdm(os.listdir(input_folder)):
     if not filename.endswith('.txt'):

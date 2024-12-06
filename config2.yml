@@ -1,0 +1,3 @@
+input_folder: 'data/final/computer'
+paper_dump_path: 'data/Response2'
+model_name : 'llama'
