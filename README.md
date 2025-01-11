@@ -21,7 +21,6 @@ This repository contains the official code and datasets used in our paper:
 
 > **"Can Large Language Models Unlock Novel Scientific Research Ideas?"**
 
-Published in **EMNLP 2024 Main**.
 
 ## Paper Link
 
